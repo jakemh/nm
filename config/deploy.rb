@@ -52,7 +52,7 @@ namespace :deploy do
   task :start do
     on roles(:web) do
       within current_path do
-          execute :bundle, "foreman start"
+          execute "foreman start"
         end
     end
   end
