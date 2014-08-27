@@ -59,8 +59,7 @@ namespace :deploy do
   task :start do
     on roles(:web) do
       within current_path do
-        execute "foreman start"
-          # execute :bundle, "exec puma -e production -p 5000 -S ~/puma -C config/puma.rb"
+          execute :bundle, "exec puma -e production -p 5000 -S ~/puma -C config/puma.rb"
         end
     end
   end

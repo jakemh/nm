@@ -1,6 +1,7 @@
 # config/puma.rb
 threads 1, 6
 workers 2
+daemonize true
 
 on_worker_boot do
   # require "active_record"
