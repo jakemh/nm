@@ -48,7 +48,16 @@ namespace :deploy do
     end
   end
 
-  after :publishing, :restart
+  desc 'Start Puma'
+  task :start do
+    on roles(:web) do
+      within current_path do
+          execute :bundle, "foreman start"
+        end
+    end
+  end
+
+  after :publishing, :start
 
   after :restart, :clear_cache do
     on roles(:web), in: :groups, limit: 3, wait: 10 do
