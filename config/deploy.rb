@@ -39,6 +39,13 @@ set :deploy_via, :copy
 # set :keep_releases, 5
 
 namespace :deploy do
+  def root
+    "/home/nm/www/shared"
+  end
+
+  def working_directory
+    "/home/nm/www/current"
+  end
 
   desc 'Restart application'
   task :restart do
@@ -57,8 +64,19 @@ namespace :deploy do
     end
   end
 
-  after :publishing, :start
+  desc "Symlink application.yml to the release path"
+  task :finalize do
+    on roles(:web) do
+      within current_path do
+        puts "SYM LINKING"
+        execute "ln -sf #{root}/application.yml #{working_directory}/config/application.yml"
+      end
+    end
 
+  end
+
+  after :publishing, :start
+  after :start, :finalize
   after :restart, :clear_cache do
     on roles(:web), in: :groups, limit: 3, wait: 10 do
       # Here we can do anything such as:
