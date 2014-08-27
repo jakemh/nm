@@ -2,9 +2,9 @@
 lock '3.2.1'
 
 set :application, 'NextMission'
-set :repo_url, '.'
+set :repo_url, 'file://.git/'
 set :deploy_to, '/home/nm/www/'
-set :deploy_via, :remote_cache
+set :deploy_via, :copy
 
 # Default branch is :master
 # ask :branch, proc { `git rev-parse --abbrev-ref HEAD`.chomp }.call
