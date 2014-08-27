@@ -2,7 +2,10 @@
 lock '3.2.1'
 
 set :application, 'NextMission'
-set :repo_url, 'file://.git/'
+# set :repo_url, 'file://.git/'
+set :repository,  "/Users/jh/Developer/NextMission/.git
+"
+set :local_repository, "/Users/jh/Developer/NextMission/.git"
 set :deploy_to, '/home/nm/www/'
 set :deploy_via, :copy
 
