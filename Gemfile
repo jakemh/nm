@@ -40,7 +40,7 @@ group :development, :test do
   gem 'factory_girl_rails'
   gem 'sqlite3'
   gem 'thin'
-  gem 'debugger'
+  # gem 'debugger'
   gem 'byebug'
 end
 
