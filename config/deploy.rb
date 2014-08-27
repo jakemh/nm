@@ -2,8 +2,7 @@
 lock '3.2.1'
 
 set :application, 'NextMission'
-set :repo_url, 'file:///Users/jh/Developer/NextMission/.git
-'
+set :repo_url, '.'
 set :deploy_to, '/home/nm/www/'
 set :deploy_via, :remote_cache
 
