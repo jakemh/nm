@@ -47,6 +47,11 @@ namespace :deploy do
   def working_directory
     "/home/nm/www/current"
   end
+
+  def puma_pid
+    root + "/tmp/pids/puma.pid"
+  end 
+
   set :app_name, "NextMission"
 
   desc 'Restart application'
