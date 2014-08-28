@@ -68,7 +68,7 @@ namespace :deploy do
   task :restart do
     on roles(:web) do
 
-      foreman.export
+      # foreman.export
 
       # on OS X the equivalent pid-finding command is `ps | grep '/puma' | head -n 1 | awk {'print $1'}`
       run "(kill -s SIGUSR1 $(ps -C ruby -F | grep '/puma' | awk {'print $2'})) || #{sudo} service #{app_name} restart"
