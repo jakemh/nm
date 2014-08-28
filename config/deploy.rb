@@ -69,7 +69,7 @@ namespace :deploy do
   task :restart_puma do
     on roles(:web) do
       within current_path do
-          puts "RESTARTING UNICORN"
+          puts "RESTARTING PUMA"
           execute "kill -s USR2 `cat #{puma_pid}`"
         end
     end
@@ -86,8 +86,8 @@ namespace :deploy do
 
   end
 
-  after :publishing, :start
-  after :start, :finalize
+  after :publishing, :restart_puma
+  after :restart_puma, :finalize
   after :finalize, :clear_cache do
     on roles(:web), in: :groups, limit: 3, wait: 10 do
       # Here we can do anything such as:
