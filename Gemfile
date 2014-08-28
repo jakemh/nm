@@ -27,7 +27,8 @@ gem 'figaro'
 gem 'puma'
 gem 'foreman'
 gem 'devise'
-
+gem 'therubyracer'
+gem 'less-rails'
 
 group :production do
   gem 'unicorn'
