@@ -7,6 +7,7 @@ set :repo_url, "file:///home/git/next-mission.git"
 # set :local_repository, "/Users/jh/Developer/NextMission/.git"
 set :deploy_to, '/home/nm/www/'
 set :deploy_via, :copy
+set :puma_pid, '/home/oli/www/shared/tmp/pids/puma.pid'
 
 # Default branch is :master
 # ask :branch, proc { `git rev-parse --abbrev-ref HEAD`.chomp }.call
@@ -65,15 +66,12 @@ namespace :deploy do
     end
   end
 
-  task :restart do
+  task :restart_puma do
     on roles(:web) do
-
-      # foreman.export
-
-      # on OS X the equivalent pid-finding command is `ps | grep '/puma' | head -n 1 | awk {'print $1'}`
-      run "(kill -s SIGUSR1 $(ps -C ruby -F | grep '/puma' | awk {'print $2'})) || #{sudo} service #{app_name} restart"
-
-      # foreman.restart # uncomment this (and comment line above) if we need to read changes to the procfile
+      within current_path do
+          puts "RESTARTING UNICORN"
+          execute "kill -s USR2 `cat #{puma_pid}`"
+        end
     end
   end
 
@@ -88,9 +86,9 @@ namespace :deploy do
 
   end
 
-  after :publishing, :restart
-  after :restart, :finalize
-  after :restart, :clear_cache do
+  after :publishing, :start
+  after :start, :finalize
+  after :finalize, :clear_cache do
     on roles(:web), in: :groups, limit: 3, wait: 10 do
       # Here we can do anything such as:
       # within release_path do
