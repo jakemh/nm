@@ -46,6 +46,7 @@ namespace :deploy do
   def working_directory
     "/home/nm/www/current"
   end
+  set :app_name, "NextMission"
 
   desc 'Restart application'
   task :restart do
@@ -64,6 +65,16 @@ namespace :deploy do
     end
   end
 
+  task :restart, :roles => :app do
+    foreman.export
+
+    # on OS X the equivalent pid-finding command is `ps | grep '/puma' | head -n 1 | awk {'print $1'}`
+    run "(kill -s SIGUSR1 $(ps -C ruby -F | grep '/puma' | awk {'print $2'})) || #{sudo} service #{app_name} restart"
+
+    # foreman.restart # uncomment this (and comment line above) if we need to read changes to the procfile
+  end
+
+  end
   desc "Symlink application.yml to the release path"
   task :finalize do
     on roles(:web) do
@@ -75,8 +86,8 @@ namespace :deploy do
 
   end
 
-  after :publishing, :start
-  after :start, :finalize
+  after :publishing, :restart
+  after :restart, :finalize
   after :restart, :clear_cache do
     on roles(:web), in: :groups, limit: 3, wait: 10 do
       # Here we can do anything such as:
