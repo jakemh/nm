@@ -74,7 +74,6 @@ namespace :deploy do
     # foreman.restart # uncomment this (and comment line above) if we need to read changes to the procfile
   end
 
-  end
   desc "Symlink application.yml to the release path"
   task :finalize do
     on roles(:web) do
