@@ -65,13 +65,16 @@ namespace :deploy do
     end
   end
 
-  task :restart, :roles => :app do
-    foreman.export
+  task :restart do
+    on roles(:web) do
 
-    # on OS X the equivalent pid-finding command is `ps | grep '/puma' | head -n 1 | awk {'print $1'}`
-    run "(kill -s SIGUSR1 $(ps -C ruby -F | grep '/puma' | awk {'print $2'})) || #{sudo} service #{app_name} restart"
+      foreman.export
 
-    # foreman.restart # uncomment this (and comment line above) if we need to read changes to the procfile
+      # on OS X the equivalent pid-finding command is `ps | grep '/puma' | head -n 1 | awk {'print $1'}`
+      run "(kill -s SIGUSR1 $(ps -C ruby -F | grep '/puma' | awk {'print $2'})) || #{sudo} service #{app_name} restart"
+
+      # foreman.restart # uncomment this (and comment line above) if we need to read changes to the procfile
+    end
   end
 
   desc "Symlink application.yml to the release path"
