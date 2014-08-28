@@ -5,7 +5,7 @@ daemonize true
 
 root = "/home/nm/www/shared"
 working_directory = "/home/oli/www/current"
-pid "#{root}/tmp/pids/puma.pid"
+pidfile "#{root}/tmp/pids/puma.pid"
 
 on_worker_boot do
   # require "active_record"
