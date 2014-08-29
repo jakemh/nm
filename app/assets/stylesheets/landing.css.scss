@@ -1,3 +1,23 @@
-// Place all the styles related to the landing controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.email-form-landing{
+  margin: 0 auto;
+  width: 65%;
+  height: 300px;
+  background: rgb(248, 248, 248);
+  padding: 40px;
+  border: 1px solid;
+  border-radius: 5px;
+  border-color: rgb(231, 231, 231);
+}
+
+.welcome-landing{
+  text-align: center;
+}
+
+.email-input-container-landing{
+  margin: 75px auto;
+  width: 75%;
+}
+
+.email-input-container-landing input, .email-input-container-landing button{
+  height: 50px;
+}
