@@ -91,8 +91,8 @@ namespace :deploy do
 
   end
 
-  after :publishing, :start
-  after :start, :finalize
+  after :publishing, :restart
+  after :restart, :finalize
   after :finalize, :clear_cache do
     on roles(:web), in: :groups, limit: 3, wait: 10 do
       # Here we can do anything such as:
