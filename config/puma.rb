@@ -1,7 +1,6 @@
 # config/puma.rb
 threads 1, 6
 workers 2
-daemonize true
 
 root = "/home/nm/www/shared"
 working_directory = "/home/oli/www/current"
