@@ -1,41 +1,18 @@
-<nav class="navbar navbar-default" role="navigation">
-  <div class="container-fluid">
-    <!-- Brand and toggle get grouped for better mobile display -->
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand" href="#">NextMission</a>
-    </div>
-
-    <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      
-      <form class="navbar-form navbar-right" role="search">
-        <div class="form-group">
-          <input type="text" class="form-control" placeholder="Search">
-        </div>
-      </form>
-      <ul class="nav navbar-nav navbar-right">
-        <li><a href="#">Log in</a></li>
-        <li><a href="#">Sign up</a></li>
-        
-      </ul>
-    </div><!-- /.navbar-collapse -->
-  </div><!-- /.container-fluid -->
-</nav>
+<%= render 'shared/top_bar' %>
 
 <div class="email-form-landing">
   <h1 class="welcome-landing"> Welcome to Next Mission! </h1>
-  <div class="email-input-container-landing">
-    <div class="input-group">
-      <input type="text" class="form-control">
-      <span class="input-group-btn">
-        <button class="btn btn-primary" type="button">Sign up!</button>
-      </span>
-    </div><!-- /input-group -->
-  </div>
+
+  <%= form_for(:email, :html => {:id => 'email-submit'}) do |f| %>
+    <div class="email-input-container-landing">
+      <div class="input-group">
+        <%= f.text_field :email, :class => "form-control", :type => "email", :id => "email-field-landing" %>
+        <span class="input-group-btn">
+          <%= f.submit "Sign up!", :class => "btn btn-primary" %>
+        </span>
+      </div><!-- /input-group -->
+    </div>
+  <% end %>
 </div>
+
+<%= render 'shared/sign_up_modal' %>

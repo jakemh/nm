@@ -29,6 +29,7 @@ gem 'foreman'
 gem 'devise'
 gem 'therubyracer'
 gem 'less-rails'
+gem 'bootstrap_form'
 
 group :production do
   gem 'unicorn'

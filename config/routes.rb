@@ -1,9 +1,13 @@
 Rails.application.routes.draw do
   get 'landing/index'
 
-  devise_for :users
-
-  root :to => "landing#index"
+  devise_for :users, :controllers => {registrations: 'landing'}
+  devise_scope :user do
+    root to: 'landing#index'
+    post 'landing/index', :to => "landing#add_email"
+  end
+  # root :to => "landing#index"
+  # post 'landing/index', :to => "landing#create"
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
