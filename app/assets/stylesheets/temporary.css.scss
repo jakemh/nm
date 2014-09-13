@@ -10,6 +10,19 @@
   background-size: cover;
 }
 
+.flash{
+  color: white;
+  background: $orange-color;
+  min-height: 50px;
+  width: 100%;
+  text-transform: uppercase;
+  letter-spacing: .2em;
+  font-size: 1.2em;
+  line-height: 3em;
+  text-align: center;
+  padding-right: 10px;
+}
+
 .logo__temp img{
   $mult: .5px;
   image: 405*$mult;
