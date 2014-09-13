@@ -1,0 +1,21 @@
+<h1>Sign Up</h1>
+
+<div class="modal-body signup-modal-body-landing">
+        <%= bootstrap_form_for(resource, as: resource_name, url: registration_path(resource_name), layout: :horizontal, label_col: "col-sm-3", control_col: "col-sm-8") do |f| %>
+          <%= devise_error_messages! %>
+
+          <%= f.email_field :email, :id => "email-field-modal"%>
+          <%= f.text_field :first_name, :id => "first-name" %>
+          <%= f.text_field :last_name %>
+          <%= f.text_field :zip %>
+          <%= f.password_field :password, autocomplete: "off" %>
+          <%= f.form_group :is_veteran do %>
+            <%= f.check_box :is_veteran, label: "I CERTIFY I AM A VETERAN OF THE U.S. ARMED FORCES" %>
+          <% end %>
+          <div class="modal-footer">
+
+            <div><%= f.submit "Sign up", :class => "btn btn-primary" %></div>
+          </div>
+
+        <% end %>
+      </div>

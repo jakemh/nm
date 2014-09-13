@@ -30,6 +30,7 @@ gem 'devise'
 gem 'therubyracer'
 gem 'less-rails'
 gem 'bootstrap_form'
+gem 'font-awesome-rails'
 
 group :production do
   gem 'unicorn'

@@ -15,4 +15,6 @@
 //= require turbolinks
 //= require bootstrap
 //= require bootstrap/dist/js/bootstrap
+//= require jquery.tagsinput/jquery.tagsinput.js
 //= require landing
+//= require me/businesses

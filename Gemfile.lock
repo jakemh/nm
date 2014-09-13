@@ -80,6 +80,8 @@ GEM
     figaro (0.7.0)
       bundler (~> 1.0)
       rails (>= 3, < 5)
+    font-awesome-rails (4.2.0.0)
+      railties (>= 3.2, < 5.0)
     foreman (0.63.0)
       dotenv (>= 0.7)
       thor (>= 0.13.6)
@@ -222,6 +224,7 @@ DEPENDENCIES
   devise
   factory_girl_rails
   figaro
+  font-awesome-rails
   foreman
   jbuilder (~> 2.0)
   jquery-rails

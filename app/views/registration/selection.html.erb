@@ -1,0 +1,40 @@
+<div class="selection">
+  <div class="selection-menu">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="selection-menu-unit">
+          <%= link_to edit_user_registration_path do %>
+            <div class="selection-menu-unit__side selection-menu-unit__left">
+            User Profile
+            </div>
+          <% end %>
+          <div class="selection-menu-unit__side selection-menu-unit__right"></div>
+        </div>
+
+        <div class="selection-menu-unit">
+          <%= link_to new_me_business_path do %>
+
+            <div class="selection-menu-unit__side selection-menu-unit__left">
+              Business Profile
+            </div>
+          <% end %>
+          <div class="selection-menu-unit__side selection-menu-unit__right"></div>
+        </div>
+        <div class="selection-menu-unit">
+
+          <div class="selection-menu-unit__side selection-menu-unit__left">
+            Explore and Connect
+
+          </div>
+          <div class="selection-menu-unit__side selection-menu-unit__right"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<% content_for :content do %>
+  <%= render 'layouts/business_signup_form' %>
+<% end %>
+
+<%= render 'shared/sign_up_modal' %>

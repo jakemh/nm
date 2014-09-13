@@ -1,11 +1,28 @@
 Rails.application.routes.draw do
-  get 'landing/index'
 
+  get 'emails/new'
+
+  get 'emails/create'
+
+  resource :business
+  resource :emails
   devise_for :users, :controllers => {registrations: 'landing'}
+  root to: 'temporary#index'
+
   devise_scope :user do
-    root to: 'landing#index'
     post 'landing/index', :to => "landing#add_email"
+    get 'registration/selection', :to => "registration#selection", :as => :selection
   end
+
+  # get 'me', :to => "user_profile#index", :as => :user_profile
+
+  resources :users
+  resource :me, :controller => :users, :module => :me do
+    resources :connections 
+    resources :businesses
+    resources :friendships
+  end
+
   # root :to => "landing#index"
   # post 'landing/index', :to => "landing#create"
 

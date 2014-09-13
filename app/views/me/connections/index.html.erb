@@ -1,0 +1,20 @@
+<h2>Friends</h2>
+<ul>
+  <% for friendship in @user.friendships %>
+    <li>
+      <%=h friendship.friend.name %>
+      <%= "(pending)" if friendship.pending? %>
+      (<%= link_to "remove", me_friendship_path(friendship), :method => :delete %>)
+    </li>
+  <% end %>
+</ul>
+
+<p><%= link_to "Find Friends", users_path %></p>
+
+<h2>Friend requests</h2>
+<ul>
+  <% for user in @user.pending_friends %>
+    <li><%=h user.name %></li>
+    <%= link_to "Approve", me_friendships_path(:friend_id => user), :method => :post %>
+  <% end %>
+</ul>

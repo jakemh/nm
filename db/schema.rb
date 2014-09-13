@@ -11,10 +11,63 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140829023607) do
+ActiveRecord::Schema.define(version: 20140910015610) do
+
+  create_table "business_connections", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "businesses", force: true do |t|
+    t.string   "name"
+    t.string   "website"
+    t.string   "address"
+    t.string   "city"
+    t.string   "state"
+    t.integer  "zip"
+    t.string   "business_type"
+    t.string   "industry"
+    t.text     "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "connections", force: true do |t|
+    t.integer  "user_id"
+    t.string   "relationship"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "connect_to_id"
+    t.string   "type"
+  end
 
   create_table "emails", force: true do |t|
     t.string   "email"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "friendships", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "friend_id"
+    t.string   "relationship"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.boolean  "pending"
+  end
+
+  create_table "ownerships", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "business_id"
+    t.string   "position"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "tags", force: true do |t|
+    t.string   "name"
+    t.integer  "taggable_id"
+    t.string   "taggable_type"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -35,6 +88,7 @@ ActiveRecord::Schema.define(version: 20140829023607) do
     t.string   "first_name"
     t.string   "last_name"
     t.integer  "zip"
+    t.boolean  "is_veteran"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

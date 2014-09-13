@@ -23,22 +23,22 @@ ready = ->
         $("#first-name").focus()
       )
 
-  $("#new_user").submit (e)->
-    e.preventDefault()
+  # $("#new_user").submit (e)->
+  #   e.preventDefault()
 
-    $.ajax(
-      url: "/users"
-      type: "post"
-      async: true
-      data: $(this).serialize()
-      dataType: "script"
-      beforeSend: (xhr) ->
-        xhr.setRequestHeader "X-CSRF-Token", $("meta[name=\"csrf-token\"]").attr("content")
-    ).fail((error) ->
-      alert "FAILS"
-    ).success( ->
-      window.location = "/"
-    ).always ->
+  #   $.ajax(
+  #     url: "/users"
+  #     type: "post"
+  #     async: true
+  #     data: $(this).serialize()
+  #     dataType: "script"
+  #     beforeSend: (xhr) ->
+  #       xhr.setRequestHeader "X-CSRF-Token", $("meta[name=\"csrf-token\"]").attr("content")
+  #   ).fail((error) ->
+  #     alert "FAILS"
+  #   ).success( ->
+  #     window.location = "/"
+  #   ).always ->
     
     
 

@@ -13,4 +13,7 @@
  *= require_tree .
  *= require_self
  *= require bootstrap/dist/css/bootstrap
+ *= require jquery.tagsinput/jquery.tagsinput.css
+ *= require font-awesome
+
  */

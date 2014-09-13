@@ -1,0 +1,39 @@
+@media (max-width: 768px) {
+  .logo__temp{
+    margin: auto;
+    display: block !important;
+    position: static !important;
+  }
+
+  .text__temp{
+    margin: auto;
+    display: block !important;
+    float: none !important;
+    position: static !important;
+    padding: 45px !important;
+    text-align: center;
+    width: 100% !important;
+    // text-align: middle;
+  }
+
+  .email-input-container__temp{
+    width: 100% !important;
+    margin: 70px auto !important;
+    padding: 20px;
+
+  }
+}
+
+@media only screen 
+    and (max-device-width : 480px)
+    {
+      .text__temp{
+        font-size: 1em !important;
+      }
+
+      .email-input-container__temp{
+        margin: 0 auto !important;
+      }
+      }
+
+

@@ -15,4 +15,9 @@
   <% end %>
 </div>
 
+<% content_for :content do %>
+  <%= render 'layouts/signup_form' %>
+<% end %>
+
 <%= render 'shared/sign_up_modal' %>
+

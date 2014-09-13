@@ -1,0 +1,11 @@
+<h2>My Businesses</h2>
+<%= link_to "Add new business", new_me_business_path %>
+<ul>
+  <% for owned_business in @owned_businesses %>
+    <li>
+      <%=h owned_business.name %>
+
+
+    </li>
+  <% end %>
+</ul>
