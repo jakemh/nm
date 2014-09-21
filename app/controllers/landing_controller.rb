@@ -1,5 +1,6 @@
-class LandingController < Devise::RegistrationsController
-  
+#class LandingController < Devise::RegistrationsController
+class LandingController < ApplicationController
+
   def index
     new
   end

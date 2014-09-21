@@ -1,28 +1,62 @@
 Rails.application.routes.draw do
+  namespace :me do
+  get 'photos/index'
+  end
 
-  get 'emails/new'
+  namespace :me do
+  get 'photos/show'
+  end
 
-  get 'emails/create'
+  namespace :me do
+  get 'photos/new'
+  end
 
+  namespace :me do
+  get 'photos/credit'
+  end
+
+  namespace :me do
+  get 'photos/edit'
+  end
+
+  namespace :me do
+  get 'photos/update'
+  end
+
+  namespace :me do
+  get 'photos/destroy'
+  end
+
+  mount Judge::Engine => '/judge'
   resource :business
   resource :emails
-  devise_for :users, :controllers => {registrations: 'landing'}
+  # devise_for :users, :controllers => {registrations: 'landing'}
+  devise_for :users, :controllers => {registrations: 'registration'}
+
   root to: 'temporary#index'
 
   devise_scope :user do
+    
+    get '/alpha', :to => "landing#index"
     post 'landing/index', :to => "landing#add_email"
     get 'registration/selection', :to => "registration#selection", :as => :selection
-  end
+  
 
   # get 'me', :to => "user_profile#index", :as => :user_profile
+  namespace :me do
+    resources :posts
+  end
 
   resources :users
   resource :me, :controller => :users, :module => :me do
+    resources :posts, :type => "UserPost"
     resources :connections 
-    resources :businesses
+    resources :businesses do
+      resources :business_posts
+    end
     resources :friendships
   end
-
+  end
   # root :to => "landing#index"
   # post 'landing/index', :to => "landing#create"
 

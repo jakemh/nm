@@ -1,3 +1,227 @@
-// Place all the styles related to the registration controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+@import "nm_root";
+
+/* centered columns styles */
+.row-centered {
+    text-align:center;
+}
+.col-centered {
+    display:inline-block;
+    float:none;
+    /* reset the text-align */
+    text-align:left;
+    /* inline-block space fix */
+    margin-right:-4px;
+}
+
+.select__form{
+
+  height: 32px;
+  border-radius: 0;
+  -webkit-appearance: none;
+
+
+}
+
+.reg{
+  height: 100%;
+  width: 100%;
+  background: $black-color;
+  position: relative;
+  overflow: auto;
+  font-size: .9em;
+  display: inline-block;
+}
+
+.login__top{
+  position: absolute;
+  top: 0px;
+  right: 50px;
+  font-size: .8em;
+}
+.login__top input{
+  line-height: 1.2em;
+  width: 115px;
+  outline: none;
+  border: none;
+  height: 2.2em;
+  text-align: center;
+}
+
+.button__login{
+  height: 2.3em !important;
+  width: 70px !important;
+  background: $orange-color;
+  font-family: 'helvetica', sans-serif !important;
+  font-weight: 100;
+  text-transform: uppercase;
+  color: white !important;
+}
+.form__login{
+
+  margin: 0;
+  padding: 0;
+  width: 370px;
+}
+.form__login div{
+  width: 120px;
+  display: inline-block;
+}
+
+.caption__reg{
+  position: relative;
+  display: inline-block;
+  width: 300px;
+  bottom: 40%;
+  font-size: 1.1em;
+  font-family: 'lato', sans-serif !important;
+  font-weight: 100;
+  color: white !important;
+  padding: 20px;
+}
+.form__reg{
+
+  margin: auto;
+  width: 500px;
+}
+
+.form__reg > input{
+  text-align: center;
+}
+.error-border{
+  outline: 2px solid $red-color !important;
+  padding: 2px;
+  border-radius: 3px;
+}
+.error .input__form-reg, .error .input__form-bus{
+  outline: 2px solid $red-color !important;
+  border-radius: 0px;
+}
+.error__form{
+  border: 1px red !important;
+  overflow: hidden;
+
+}
+
+.no-space{
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+select{
+  -webkit-appearance: none;
+    color: #999 !important;
+    font-family: 'lato', Helvetica, Arial, sans-serif !important;
+}
+
+.form__reg .input__form-reg, .form__reg .input__form-bus{
+  font-family: 'lato', sans-serif;
+  // font-weight: lighter;
+  color: $black-color;
+  margin: 0 10px;
+  margin-left: -10px;
+  width: 100%;
+  padding: 5px 5px 5px 5%;
+}
+
+.tag-input__form-bus{
+  height: 45px !important;
+  margin-left: 10px !important;
+}
+
+.padding__form{
+  padding: 10px 0px 10px 15px!important;
+}
+.form__reg .input__form-bus--half{
+
+}
+
+.wrapper__form-bus{
+  overflow: hidden;
+  display: inline-block;
+  width: 100%;
+
+}
+
+.wrapper__form-bus--margin{
+  margin-right: 55px !important;
+
+}
+
+.input__form-reg:focus{
+  border: 2px solid orange-color(.8);
+  outline: none;
+  box-shadow: 0 1px 1px orange-color(1) inset, 0 0 8px orange-color(1);
+  outline: 0 none;
+}
+
+.check-label__form-reg{
+  display: inline-block;
+  color: white;
+  width: 200px;
+  text-transform: uppercase;
+  font-family: 'helvetica', sans-serif !important;
+  font-weight: 100;
+
+}
+
+.button__form-reg{
+  border: none;
+  outline: none;
+  display: relative;
+  width: 60% !important;
+  display: block;
+  font-family: 'helvetica', sans-serif !important;
+  font-weight: 100;
+  color: white !important;
+
+  margin: 10px auto !important;
+  letter-spacing: .1em;
+  padding: 7px !important;
+  background: $orange-color;
+}
+
+.check-container__form-reg{
+  margin-top: 10px;
+}
+
+.body__reg{
+  background: $gray-color;
+  padding: 20px;
+  margin-top: 150px;
+  color: $red-color;
+
+}
+
+.button-mandatory__form-reg{
+  text-transform: uppercase;
+  font-family: 'lato', sans-serif;
+  font-weight: lighter;
+  color: rgba(255,255,255,.8);
+  text-align: center;
+  font-size: .9em;
+}
+
+.top__reg{
+  position: absolute;
+  height: 150px;
+  position: fixed;
+  width: 100%;
+  text-align: center;
+  line-height: 150px;
+  background: $black-color;
+  z-index: 1000;
+}
+
+.bottom__reg{
+  height: 100px;
+  position: absolute;
+  bottom: 0;
+  z-index: 100;
+}
+
+.top__reg img{
+  display: inline-block;
+  @include main-logo(.6px);
+
+  vertical-align: middle;
+}

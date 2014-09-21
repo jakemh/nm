@@ -1,11 +1,12 @@
 <h2>My Businesses</h2>
-<%= link_to "Add new business", new_me_business_path %>
 <ul>
-  <% for owned_business in @owned_businesses %>
-    <li>
-      <%=h owned_business.name %>
-
-
-    </li>
+  <% for owned_business in @businesses %>
+    <div class="row">
+      <div class="col-sm-3">
+        <%=link_to owned_business.name, me_business_path(owned_business)%>
+      </div>
+    </div>
   <% end %>
+
+  <%= link_to "Add new business", new_me_business_path %>
 </ul>

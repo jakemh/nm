@@ -1,0 +1,2 @@
+class BusinessPost < Post
+end

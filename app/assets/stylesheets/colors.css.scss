@@ -1,2 +1,7 @@
-$orange-color: #ff7618;
+$orange-color: rgba(255, 118, 24, 1);
 $gray-color: #333333;
+$black-color: rgba(0,0,0,1);
+$red-color: #990000;
+@function orange-color($a){
+  @return rgba(255, 118, 24, $a);
+}

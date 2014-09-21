@@ -175,10 +175,10 @@
 	$.fn.tagsInput = function(options) { 
     var settings = jQuery.extend({
       interactive:true,
-      defaultText:'add a tag',
+      defaultText:'',
       minChars:0,
-      width:'300px',
-      height:'100px',
+      width:'100%',
+      marginLeft: '10px',
       autocomplete: {selectFirst: false },
       'hide':true,
       'delimiter':',',

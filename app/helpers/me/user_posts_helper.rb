@@ -1,0 +1,2 @@
+module Me::UserPostsHelper
+end

@@ -24,16 +24,20 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 
 # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
 gem 'figaro'
-gem 'puma'
 gem 'foreman'
 gem 'devise'
 gem 'therubyracer'
 gem 'less-rails'
 gem 'bootstrap_form'
 gem 'font-awesome-rails'
+gem 'cancancan'
+gem 'simple_form'
+gem 'judge-simple_form'
+gem 'paperclip'
+gem 'aws-sdk'
 
 group :production do
-  gem 'unicorn'
+  gem 'puma'
   gem 'pg'
   gem 'rails_12factor'
 end
@@ -43,8 +47,8 @@ group :development, :test do
   gem 'factory_girl_rails'
   gem 'sqlite3'
   gem 'thin'
-  # gem 'debugger'
   gem 'byebug'
+  gem 'htmlbeautifier'
 end
 
 group :development do

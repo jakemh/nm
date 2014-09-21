@@ -1,7 +1,10 @@
-@import "colors";
+@import "nm_root";
 
 html, body{
   height: 100%;
   width: 100%;
 }
 
+.nowrap{
+  white-space: nowrap;
+}

@@ -1,43 +1,51 @@
 <div class="top__temp">
   <div class="container-fluid">
+      <div class="row">
+          <div class="col-sm-2">
+              Sidebar content
+          </div>
+          <div class="col-sm-10" style="text-align: right">
+              Body content
+          </div>
+      </div>
+  </div>
+  <% if false %>
+  <div class="container-fluid">
     <div class="row">
       <div class="col-sm-2">
         <div class="logo__temp logo__temp--left">
           <%= image_tag 'logo_nm.png' %>
         </div>
       </div>
-
       <div class="col-sm-3 col-sm-offset-3">
         <div class="text__temp text__temp--right">
           Military Veterans make great entrepreneurs
         </div>
       </div>
+    </div>
   </div>
-  </div> 
+  <% end %>
   <div class="container-fluid">
     <div class="row">
-   <%= form_for(@email, :html => {:class => 'form__temp'}) do |f| %>
-    <div class="email-input-container__temp">
-      <div class="input-group input-group__email">
-        <%= f.text_field :email, :class => "input__email", 
+      <%= form_for(@email, :html => {:class => 'form__temp'}) do |f| %>
+        <div class="email-input-container__temp">
+          <div class="input-group input-group__email">
+            <%= f.text_field :email, :class => "input__email", 
           :type => "email",
           :placeholder => "EMAIL"
         %>
-        <span class="input-group-btn input-group-btn__email">
-          <%= f.submit "SIGN UP FOR NEWS", :class => "btn btn-primary submit__email" %>
-        </span>
-      </div><!-- /input-group -->
+            <span class="input-group-btn input-group-btn__email">
+              <%= f.submit "SIGN UP FOR NEWS", :class => "btn btn-primary submit__email" %>
+            </span>
+          </div><!-- /input-group -->
+        </div>
+      <% end %>
     </div>
-  <% end %>
-</div>
-</div>
+  </div>
   <div class="bottom-bar__temp">
     <%= fa_icon 'chevron-down' %>
-
-
   </div>
 </div>
-
 <div class="bottom__temp">
   <div class="container-fluid container-bottom__temp">
     <div class="row">
@@ -46,68 +54,54 @@
           <div class="title__info-bottom-temp">
             LEARN
           </div>
-
           <div class="body__info-bottom-temp">
             Online modules and lessons designed to help you quickly learn how to start and grow a business.
           </div>
         </div>
       </div>
       <div class="col-sm-6">
-        
       </div>
     </div>
-
-     <div class="row">
+    <div class="row">
       <div class="col-sm-6">
-        
       </div>
       <div class="col-sm-6">
         <div class="info__bottom-temp">
-        <div class="title__info-bottom-temp">
-          Do
+          <div class="title__info-bottom-temp">
+            Do
+          </div>
+          <div class="body__info-bottom-temp">
+            Find discounts on services to help launch and grow your business. Start now.
+          </div>
         </div>
-
-        <div class="body__info-bottom-temp">
-         Find discounts on services to help launch and grow your business. Start now.
-        </div>
-      </div>
       </div>
     </div>
-
-     <div class="row">
+    <div class="row">
       <div class="col-sm-6">
         <div class="info__bottom-temp">
           <div class="title__info-bottom-temp">
             Grow
           </div>
-
           <div class="body__info-bottom-temp">
-            Millions of veterans already own business and millions more want to learn now. Let's do business together. 
+            Millions of veterans already own business and millions more want to learn now. Let's do business together.
           </div>
         </div>
       </div>
       <div class="col-sm-6">
-        
       </div>
     </div>
-
-
-
-  <div class="about__temp">
-    <div class="info__bottom-temp">
-      <div class="title__info-bottom-temp">
-        ABOUT US
-      </div>
-
-      <div class="body__info-bottom-temp">
-Founded by two combat veterans, NextMission is a technology company promoting veteran to veteran business. The NextMission web platform connects the millions of existing veteran entrepreneurs to future veteran entrepreneurs, creating new growth and business opportunities. 
-        
+    <div class="about__temp">
+      <div class="info__bottom-temp">
+        <div class="title__info-bottom-temp">
+          ABOUT US
+        </div>
+        <div class="body__info-bottom-temp">
+          Founded by two combat veterans, NextMission is a technology company promoting veteran to veteran business. The NextMission web platform connects the millions of existing veteran entrepreneurs to future veteran entrepreneurs, creating new growth and business opportunities.
+        </div>
       </div>
     </div>
   </div>
-
-  </div>  <!-- fluid-container -->
-
+  <!-- fluid-container -->
   <div class="bottom-bar__temp-bottom">
     Next Mission
   </div>

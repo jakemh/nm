@@ -1,4 +1,6 @@
 class BusinessController < ApplicationController
+  layout "signup_bar"
+
   def index
   end
 

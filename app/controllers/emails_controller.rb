@@ -12,12 +12,11 @@ class EmailsController < ApplicationController
       else
         flash[:error] = "Something went wrong. Please tell Justin!"
         render :action => :new # This displays the new form again
-      end
-
+    end
   end
 
 
-  protected
+  private
     def whitelist
       params.require(:email).permit(:email)
     end

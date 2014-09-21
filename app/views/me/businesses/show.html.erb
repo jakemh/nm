@@ -1,2 +1,8 @@
-<h1>Me::Businesses#show</h1>
-<p>Find me in app/views/me/businesses/show.html.erb</p>
+<%= form_for [:me, @business, BusinessPost.new] do |f| %>
+  <%= f.text_area :content %>
+  <%= f.submit "Done" %>
+<% end %>
+
+<% @posts.each do |post| %>
+  <%= post.content %>
+<% end %>

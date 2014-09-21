@@ -1,20 +1,101 @@
-<div class="modal-body signup-modal-body-landing">
-  <%= bootstrap_form_for([:me, @business], layout: :horizontal, label_col: "col-sm-3", control_col: "col-sm-8") do |f|%>
-    <%= f.text_field :name %>
-    <%= f.text_field :website %>
-    <%= f.fields_for :tags do |t| %>
-      <%= t.text_field :name, :label => "Tags", :id => "js-business-tags" %>
-    <% end %>
-    <%= f.text_field :address %>
-    <%= f.text_field :city %>
-    <%= f.text_field :state %>
-    <%= f.text_field :zip %>
-    <%= f.text_area :description %>
+<%= simple_form_for([:me, @business], layout: :horizontal, label_col: "col-sm-3", control_col: "col-sm-8", html: {class: "form-inline form__reg"}) do |f| %>
+  <div class="container-fluid no-space">
+    <div class="row no-space">
+      <div class="col-sm-6 no-space">
+        <%= f.input :name, label: false,
+         placeholder: "BUSINESS NAME*",  
+         input_html: { class: 'input__form-bus input__form-bus--half'},
+         wrapper_html: {class: "padding__form wrapper__form-bus"}
 
-    <div class="modal-footer">
-
-      <div><%= f.submit "Submit", :class => "btn btn-primary" %></div>
+       %>
+      </div>
+      <div class="col-sm-6 no-space">
+        <%= f.input :website, label: false,
+         placeholder: "BUSINESS WEBSITE*",  
+         input_html: { class: 'input__form-bus input__form-bus--half' },
+         wrapper_html: {class: "padding__form wrapper__form-bus"}
+       %>
+      </div>
     </div>
-
+  </div>
+  <% grid_helper(12) do %>
+    <%= f.input :address, label: false,
+    placeholder: "BUSINESS ADDRESS",  
+    input_html: { class: 'input__form-bus' },
+         wrapper_html: {class: "padding__form wrapper__form-bus"}
+      %>
   <% end %>
-</div>
+  <div class="container-fluid no-space">
+    <div class="row no-space">
+      <div class="col-sm-4 no-space">
+        <%= f.input :city, label: false,
+           placeholder: "CITY",  
+           input_html: { class: 'input__form-bus input__form-bus--half'},
+           wrapper_html: {class: "padding__form wrapper__form-bus"}
+
+         %>
+      </div>
+      <div class="col-sm-4 no-space">
+        <%= f.input :state, label: false,
+           placeholder: "STATE",  
+           input_html: { class: 'input__form-bus input__form-bus--half' },
+           wrapper_html: {class: "padding__form wrapper__form-bus"}
+         %>
+      </div>
+      <div class="col-sm-4 no-space">
+        <%= f.input :zip, label: false,
+           placeholder: "ZIP CODE*",  
+           input_html: { class: 'input__form-bus input__form-bus--half' },
+           wrapper_html: {class: "padding__form wrapper__form-bus"}
+         %>
+      </div>
+    </div>
+  </div>
+  <div class="container-fluid no-space">
+    <div class="row no-space">
+      <div class="col-sm-6 no-space">
+        <%= f.input :industry, 
+          collection: Business.types.collect.with_index{|item, i| [item, i]},
+          label: false,
+          prompt: "BUSINESS TYPE",  
+          input_html: { class: 'input__form-bus select__form', id: "js-industry-select" },
+           wrapper_html: {class: "padding__form wrapper__form-bus"}, :placeholder => "TSTE"
+  %>
+      </div>
+      <div class="col-sm-6 no-space">
+          <%= f.input :industry, 
+          collection: Business.industries.collect.with_index{|item, i| [item, i]},
+          label: false,
+    prompt: "BUSINESS INDUSTRY",  
+    input_html: { class: 'input__form-bus select__form', id: "js-industry-select" },
+           wrapper_html: {class: "padding__form wrapper__form-bus"}, :placeholder => "TSTE"
+  %>
+      </div>
+    </div>
+  </div>
+  <div class="container-fluid no-space">
+    <div class="row no-space">
+      <div class="col-sm-12 no-space">
+  <%= f.simple_fields_for :tags, Tag.new do |t| %>
+      <%= t.input :name, :label => "Tags", 
+          :id => "js-business-tags",
+          input_html: { class: "input__form-bus tag-input__form-bus", 
+            id: 'js-business-tags' },
+          label: false,
+           wrapper_html: {class: "padding__form wrapper__form-bus"}
+   %>
+    <% end %>
+  </div></div></div>
+
+  <% grid_helper(12) do %>
+    <%= f.input :description, type: :text, label: false,
+    placeholder: "ENTER A SHORT PROFESSIONAL DESCRIPTION OF BUSINESS AND PRODUCTS/SERVICES OFFERED",  
+    input_html: { class: 'input__form-bus' },
+           wrapper_html: {class: "padding__form wrapper__form-bus"}
+  %>
+  <% end %>
+  <%= f.submit "CREATE BUSINESS PROFILE", :class => "button__form-reg"  %>
+  <div class="button-mandatory__form-reg">
+    * fields are mandatory
+  </div>
+<% end %>

@@ -1,0 +1,7 @@
+@import "colors";
+@import "fonts";
+
+@mixin main-logo($mult){
+  width: 405*$mult;
+  height: 158*$mult;
+}

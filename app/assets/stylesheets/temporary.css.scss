@@ -1,4 +1,4 @@
-@import "colors";
+@import "nm_root";
 
 .top__temp { 
   width: 100%;
@@ -25,9 +25,7 @@
 
 .logo__temp img{
   $mult: .5px;
-  image: 405*$mult;
-  height: 158*$mult;
-
+  @include main-logo($mult);
 }
 
 .email-input-container__temp{
@@ -97,18 +95,17 @@
 }
 
 .text__temp{
+  position: absolute;
   padding: 10px;
-
+  display: block;
   font-size: 2em;
   text-transform: uppercase;
   color: white;
   font-family: 'Montserrat';  // font-weight: thin;
   letter-spacing: .1em;
   width: 550px;
-  display: inline-block;
-  float: right;
   position: fixed;
-
+  right: 0;
 }
 
 .title__info-bottom-temp{

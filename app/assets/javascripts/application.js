@@ -18,3 +18,8 @@
 //= require jquery.tagsinput/jquery.tagsinput.js
 //= require landing
 //= require me/businesses
+//= require underscore
+//= require json2
+//= require judge
+//= require registration
+//= require select2

@@ -1,0 +1,83 @@
+<%= simple_form_for([:me, Business.new], layout: :horizontal, label_col: "col-sm-3", control_col: "col-sm-8", html: {class: "form-inline form__reg"}) do |f| %>
+  <div class="container-fluid no-space">
+    <div class="row no-space">
+      <div class="col-sm-6 no-space">
+        <%= f.input :name, label: false,
+         placeholder: "BUSINESS NAME*",  
+         input_html: { class: 'input__form-bus input__form-bus--half'},
+         wrapper_html: {class: "wrapper__form-bus"}
+
+       %>
+      </div>
+      <div class="col-sm-6 no-space">
+        <%= f.input :website, label: false,
+         placeholder: "BUSINESS WEBSITE*",  
+         input_html: { class: 'input__form-bus input__form-bus--half' },
+         wrapper_html: {class: "wrapper__form-bus"}
+       %>
+      </div>
+    </div>
+  </div>
+  <%= f.input :address, label: false,
+    placeholder: "BUSINESS ADDRESS",  
+    input_html: { class: 'input__form-bus' }
+  %>
+  <div class="container-fluid no-space">
+    <div class="row no-space">
+      <div class="col-sm-4 no-space">
+        <%= f.input :name, label: false,
+           placeholder: "BUSINESS NAME*",  
+           input_html: { class: 'input__form-bus input__form-bus--half'},
+           wrapper_html: {class: "wrapper__form-bus"}
+
+         %>
+      </div>
+      <div class="col-sm-4 no-space">
+        <%= f.input :website, label: false,
+           placeholder: "BUSINESS WEBSITE*",  
+           input_html: { class: 'input__form-bus input__form-bus--half' },
+           wrapper_html: {class: "wrapper__form-bus"}
+         %>
+      </div>
+      <div class="col-sm-4 no-space">
+        <%= f.input :website, label: false,
+           placeholder: "BUSINESS WEBSITE*",  
+           input_html: { class: 'input__form-bus input__form-bus--half' },
+           wrapper_html: {class: "wrapper__form-bus"}
+         %>
+      </div>
+    </div>
+  </div>
+</div>
+<%= f.input :city, label: false,
+    placeholder: "CITY",  
+    input_html: { class: 'input__form-bus' }
+  %>
+<%= f.input :state, label: false,
+    placeholder: "STATE",  
+    input_html: { class: 'input__form-bus' }
+  %>
+<%= f.input :state, label: false,
+    placeholder: "STATE",  
+    input_html: { class: 'input__form-bus' }
+  %>
+<%= f.input :zip, label: false,
+    placeholder: "ZIP CODE*",  
+    input_html: { class: 'input__form-bus' }
+  %>
+<%= f.input :business_type, label: false,
+    placeholder: "BUSINESS TYPE",  
+    input_html: { class: 'input__form-bus' }
+  %>
+<%= f.input :industry, label: false,
+    placeholder: "BUSINESS INDUSTRY",  
+    input_html: { class: 'input__form-bus' }
+  %>
+<%= f.input :description, label: false,
+    placeholder: "ENTER A SHORT PROFESSIONAL DESCRIPTION OF BUSINESS AND PRODUCTS/SERVICES OFFERED",  
+    input_html: { class: 'input__form-bus' }
+  %>
+<%= f.submit "CREATE BUSINESS PROFILE", :class => "input__form-bus button__form-bus"  %>
+<div class="button-mandatory__form-reg">
+  * fields are mandatory
+</div>

@@ -1,30 +1,52 @@
 class Me::BusinessesController < MeController
-
-  layout 'layouts/profile'
-
+  layout "profile", :except => [:new, :create]
 
   def index
-    @owned_businesses = current_user.owned_businesses
+    @businesses = current_user.businesses
   end
 
   def show
+    @business = current_user.businesses.find(params[:id])
+    @post = BusinessPost.new
+    @posts = @business.posts
   end
 
   def new
     @business = Business.new
     @business.tags << Tag.new
+    render :action => 'new', :layout => 'signup_bar'
   end
 
   def create
-    tags = whitelist.delete(:tags_attributes)
-    business = Business.new(whitelist)
-    current_user.owned_businesses << business
-    tags["0"]["name"].split(",").each do |tag|
-      business.tags << Tag.new(:name => tag)
-    end 
+    w = whitelist
+    tags = w.delete(:tags_attributes)
+    @business = current_user.businesses.build w
+
+      if @business.save
+
+        tags["0"]["name"].split(",").each do |tag|
+          @business.tags << Tag.new(:name => tag)
+        end 
+        flash[:notice] = "Business has been successfully saved."
+        redirect_to [:me, :businesses]
+      else
+
+        flash[:error] = "Error. Business was not saved successfully."
+        # format.html { redirect_to me_business_path(business) }
+        render :action => 'new', :layout => 'signup_bar'
+
+      end
+    
   end
 
   def destroy
+    business = current_users.business.find(params[:id])
+    if business.destroy
+      flash[:notice] = "Business has been successfully deleted"
+    else
+      flash[:error] = "Error. Business was not successfully deleted"
+    end
+    redirect_to :back
   end
 
 
@@ -34,6 +56,7 @@ class Me::BusinessesController < MeController
         :name, 
         :address, 
         :website, 
+        :industry,
         :city, 
         :state, 
         :address, 
