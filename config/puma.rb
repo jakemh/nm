@@ -4,7 +4,7 @@ workers 2
 daemonize true
 
 root = "/home/nm/www/shared"
-working_directory = "/home/oli/www/current"
+working_directory = "/home/nm/www/current"
 pidfile "#{root}/tmp/pids/puma.pid"
 
 on_worker_boot do
