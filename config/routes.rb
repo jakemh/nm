@@ -1,31 +1,5 @@
 Rails.application.routes.draw do
-  namespace :me do
-  get 'photos/index'
-  end
 
-  namespace :me do
-  get 'photos/show'
-  end
-
-  namespace :me do
-  get 'photos/new'
-  end
-
-  namespace :me do
-  get 'photos/credit'
-  end
-
-  namespace :me do
-  get 'photos/edit'
-  end
-
-  namespace :me do
-  get 'photos/update'
-  end
-
-  namespace :me do
-  get 'photos/destroy'
-  end
 
   mount Judge::Engine => '/judge'
   resource :business
@@ -53,6 +27,7 @@ Rails.application.routes.draw do
     resources :connections 
     resources :businesses do
       resources :business_posts
+      resources :photos, :controller => :business_photos
     end
     resources :friendships
   end

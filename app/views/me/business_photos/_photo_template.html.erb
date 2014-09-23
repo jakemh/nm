@@ -1,0 +1,29 @@
+<div class="photo">
+  <div id="fileupload" class="main__photo files fileupload-buttonbar"  data-toggle="modal-gallery" data-target="#modal-gallery">
+   
+      <table  style="background: red" class="table table-striped"><tbody class="files"></tbody>
+      </table>
+  </div>
+  <div class="js-photo__form">
+    <div class="button__form--accept"></div>
+  <%= yield :photo_form %>
+  </div>
+</div>
+  <script>
+    var fileUploadErrors = {
+    maxFileSize: 'File is too big',
+    minFileSize: 'File is too small',
+    acceptFileTypes: 'Filetype not allowed',
+    maxNumberOfFiles: 'Max number of files exceeded',
+    uploadedBytes: 'Uploaded bytes exceed file size',
+    emptyResult: 'Empty file upload result'
+    };
+  </script>
+  <!-- The template to display files available for upload -->
+  <script id="template-upload" type="text/x-tmpl">
+    
+  </script>
+  <!-- The template to display files available for download -->
+  <script id="template-download" type="text/x-tmpl">
+    
+  </script>

@@ -1,5 +1,5 @@
 class Connection < ActiveRecord::Base
-  belongs_to :user
+  # belongs_to :user
   validates :connect_to_id, :uniqueness => {:scope => [:user_id, :type]}
 
   def pending?

@@ -23,3 +23,5 @@
 //= require judge
 //= require registration
 //= require select2
+//= require jquery-fileupload
+//= require me/photos

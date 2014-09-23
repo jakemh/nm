@@ -1,3 +1,38 @@
-// Place all the styles related to the me/photos controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.photo{
+  width: 270px;
+  height: 450px;
+  margin: 20px auto 0 auto;
+}
+
+.main__photo{
+  text-align: center;
+  height: 65%;
+  background: white;
+  overflow: hidden;
+  width: 100%;
+  background: image-url("nm_camera.png") no-repeat center center; 
+  background-color: white;
+  $mult: .65px;
+  background-size: 192*$mult 142*$mult;
+  margin-bottom: 15px;
+}
+
+.button__form--full{
+  width: 100% !important;
+}
+
+.file-upload {
+  position: relative;
+}
+
+.file-upload  input.upload {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 0;
+  padding: 0;
+  font-size: 20px;
+  cursor: pointer;
+  opacity: 0;
+  filter: alpha(opacity=0);
+}

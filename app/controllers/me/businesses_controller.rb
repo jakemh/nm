@@ -20,15 +20,15 @@ class Me::BusinessesController < MeController
   def create
     w = whitelist
     tags = w.delete(:tags_attributes)
-    @business = current_user.businesses.build w
-
+    @business = Business.new whitelist
+    # @business = current_user.businesses.build w
       if @business.save
-
+        current_user.ownerships.create(:connect_to_id => @business.id)
         tags["0"]["name"].split(",").each do |tag|
           @business.tags << Tag.new(:name => tag)
         end 
         flash[:notice] = "Business has been successfully saved."
-        redirect_to [:me, :businesses]
+        redirect_to [:new, :me, @business, :photo]
       else
 
         flash[:error] = "Error. Business was not saved successfully."
@@ -37,6 +37,22 @@ class Me::BusinessesController < MeController
 
       end
     
+  end
+
+  def update
+    @business = current_user.businesses.find(params[:id])
+
+    if @business.update_attributes(whitelist)
+      # redirect_to [:me, @business]
+      flash[:notice] = "Business has been successfully updated."
+      redirect_to root_path
+    else
+
+      flash[:error] = "Error. Business was not successfully updated. Alert Justin!"
+      redirect_to root_path
+
+      # render :action => 'new', :layout => 'signup_bar'
+    end
   end
 
   def destroy
@@ -62,6 +78,7 @@ class Me::BusinessesController < MeController
         :address, 
         :zip,
         :description,
+        :profile_photo_id,
         tags_attributes: [:name]
       )
     end

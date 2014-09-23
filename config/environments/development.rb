@@ -8,8 +8,8 @@ Rails.application.configure do
     :storage => :s3,
     :s3_credentials => {
       :bucket => 'nextmission-test',
-      :access_key_id => 'AKIAJ7SZVYO5WM4RLGYQ',
-      :secret_access_key => '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'
+      :access_key_id => 'AKIAJZJUEZJ23Q6UGSQQ',
+      :secret_access_key => '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'
     }
   }
 

@@ -1,0 +1,7 @@
+$(".main__photo").empty()
+$("<%= escape_javascript(image_tag @photo.image.url(:medium)) %>").appendTo(".main__photo")
+$(".button__form--accept").empty()
+
+$("<%= escape_javascript(render partial: 'approval_form' ) %>").appendTo(".button__form--accept")
+$(".text__button_form").html("UPLOAD NEW")
+$(".file-upload.button__form").addClass("button__form--gray")

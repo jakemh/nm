@@ -1,4 +1,6 @@
 class Me::PhotosController < ApplicationController
+
+  
   def index
   end
 

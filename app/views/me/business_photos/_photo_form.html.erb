@@ -1,0 +1,9 @@
+<%= form_for([:me, @business, @photo], :html => { :multipart => true, :id => "form-imageupload"  }) do |f| %>
+   
+    <div class="file-upload button__form button__form--full">
+      <%= f.file_field :image, :class => "upload " %>
+      <div class="text__button_form">UPLOAD FILE FROM COMPUTER
+      </div>
+    </div>
+   
+  <% end %>
