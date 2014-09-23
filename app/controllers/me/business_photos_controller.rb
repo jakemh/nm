@@ -17,12 +17,14 @@ class Me::BusinessPhotosController < ApplicationController
     @business = current_user.businesses.find(params[:business_id])
     @photo = @business.photos.build whitelist
     if @photo.save
+      logger.error("photo was saved")
+
       respond_to do |format|
         format.js
       end
       # render :json => {:files =>{:photo => @photo.image.url(:medium)}}
     else
-
+      logger.error("test")
     end
   end
 
