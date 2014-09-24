@@ -15,6 +15,16 @@ class EmailsController < ApplicationController
     end
   end
 
+  def destroy
+    @email = Email.find(params[:id])
+    if @email.destroy
+        flash[:notice] = "Email was deleted"
+        redirect_to_back # This redirects to the show action, where the flash will be displayed
+      else
+        flash[:error] = "Something went wrong. Please tell Justin!"
+        redirect_to_back
+    end
+  end
 
   private
     def whitelist

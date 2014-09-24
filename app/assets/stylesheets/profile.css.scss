@@ -115,11 +115,10 @@ ul.alert-dropdown {
         width: 225px;
     }
 
-    .side-nav li a:hover,
-    .side-nav li a:focus {
+    .side-nav li:not(.active) a:hover,
+    .side-nav li:not(.active) a:focus  {
         outline: none;
-        background-color: whitesmoke !important;
-    }
+        background-color: whitesmoke !important;    }
 }
 
 .side-nav>li>ul {

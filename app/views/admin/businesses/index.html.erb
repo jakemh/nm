@@ -1,0 +1,29 @@
+<div class="table-responsive">
+  <table class="table table-condensed table__admin">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Zip</th>
+        <th>Date</th>
+        <th>Owners</th>
+        <th>Connections</th>
+        <th></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @businesses.each do |business| %>
+        <tr>
+          <td><%= business.id %></td>
+          <td><%= business.name %></td>
+          <td><%= business.zip %></td>
+          <td><%= business.created_at.to_formatted_s(:short)  %></td>
+          <td><%=   %></td>
+          <td><%=   %></td>
+          <td><%= button_to 'Delete', [:admin, business], method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger"%></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

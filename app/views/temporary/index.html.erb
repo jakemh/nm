@@ -1,12 +1,13 @@
 <!-- <div class="top__temp">
  -->  
-  <% if !flash.empty? %>
-    <div class="flash">
-      <%= flash[:notice] %>
-      <%= flash[:error] %>
-    </div>
-  <% end %>
+  
   <div class="top__temp">
+    <% if !flash.empty? %>
+      <div class="flash">
+        <%= flash[:notice] %>
+        <%= flash[:error] %>
+      </div>
+    <% end %>
     <div class="container-fluid">
       <div class="row">
         <div class="col-sm-2">

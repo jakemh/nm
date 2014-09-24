@@ -1,0 +1,23 @@
+<div class="table-responsive">
+  <table class="table table-condensed table__admin">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Email</th>
+        <th>Date</th>
+        <th></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @emails.each do |email| %>
+        <tr>
+          <td><%= email.id %></td>
+          <td><%= email.email %></td>
+          <td><%= email.created_at %></td>
+          <td><%= button_to 'Delete', email, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger"%></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

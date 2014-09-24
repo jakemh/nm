@@ -4,12 +4,14 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_filter :authenticate
 
+  # check_authorization :unless => :devise_controller?
+  # check_authorization :unless => :temporary_controller?
 
   protected
     def authenticate
       if !current_user
         authenticate_or_request_with_http_basic do |username, password|
-          username == "mvp" && password == "nextmission2014"
+          username == "mvp" && password == "nextmission"
         end
       end
     end
@@ -22,4 +24,9 @@ class ApplicationController < ActionController::Base
       end
     end
 
+  rescue_from CanCan::AccessDenied do |exception|
+    p "ERROR: ", exception.message
+    flash[:error] = exception.message
+    redirect_to root_url, :alert => "You are not authorized"
+  end
 end

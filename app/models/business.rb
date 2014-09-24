@@ -7,6 +7,8 @@ class Business < ActiveRecord::Base
   validates :zip, :presence => true
   # validates :website, :presence => true
   validates :name, :presence => true
+  validates :name, :uniqueness => true
+
   # validates :address, :presence => true
   # validates :city, :presence => true
   # validates :state, :presence => true

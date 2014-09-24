@@ -2,7 +2,8 @@ class User < ActiveRecord::Base
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
-
+  has_many :assignments
+  has_many :roles, :through => :assignments
   has_many :ownerships
   has_many :businesses, :through => :ownerships, :source => :connect_to
   has_many :connections
@@ -12,7 +13,6 @@ class User < ActiveRecord::Base
   # has_many :businesses, :through => :business_connections, :source => :connect_to
   has_many :inverse_friendships, :class_name => "Friendship", :foreign_key => "friend_id"
   has_many :inverse_friends, :through => :inverse_friendships, :source => :user
-  has_many :roles
   has_many :posts
   has_many :user_posts
   has_many :business_posts, :through => :businesses, :source => :posts
@@ -43,6 +43,15 @@ class User < ActiveRecord::Base
 
   def pending_friends
     self.inverse_friends.where("connections.user_id not in (?)", self.friends.pluck(:id).join(''))
+  end
+
+  def role
+    role = self.roles.first
+    self.roles.first.name if role
+  end
+
+  def role?(role)
+    return self.roles.pluck(:name).include? role
   end
 
 end

@@ -1,11 +1,18 @@
 Rails.application.routes.draw do
 
+  namespace :admin do
+  get 'emails/index'
+  end
+
+  namespace :admin do
+  get 'emails/show'
+  end
 
   mount Judge::Engine => '/judge'
   resource :business
-  resource :emails
+  resources :emails
   # devise_for :users, :controllers => {registrations: 'landing'}
-  devise_for :users, :controllers => {registrations: 'registration'}
+  devise_for :users, :controllers => {registrations: 'registration', sessions: 'sessions'}
 
   root to: 'temporary#index'
 
@@ -16,6 +23,11 @@ Rails.application.routes.draw do
     get 'registration/selection', :to => "registration#selection", :as => :selection
   
 
+  resource :admin,:controller => :admin, :module => :admin do 
+    resources :users, :only => [:index, :show, :destroy]
+    resources :businesses,  :only => [:index, :show, :destroy]
+    resources :emails, :only => [:index, :show, :destroy]
+  end
   # get 'me', :to => "user_profile#index", :as => :user_profile
   namespace :me do
     resources :posts

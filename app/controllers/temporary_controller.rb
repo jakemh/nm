@@ -1,4 +1,5 @@
 class TemporaryController < ApplicationController
+  skip_authorization_check
   def index
     @email = Email.new
   end

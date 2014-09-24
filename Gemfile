@@ -35,7 +35,7 @@ gem 'simple_form'
 gem 'judge-simple_form'
 gem 'paperclip'
 gem 'aws-sdk'
-gem "jquery-fileupload-rails"
+gem 'jquery-fileupload-rails'
 
 group :production do
   gem 'puma'
