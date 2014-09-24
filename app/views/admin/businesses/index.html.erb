@@ -7,7 +7,7 @@
         <th>Zip</th>
         <th>Date</th>
         <th>Owners</th>
-        <th>Connections</th>
+        <th>Photo</th>
         <th></th>
       </tr>
     </thead>
@@ -20,7 +20,7 @@
           <td><%= business.zip %></td>
           <td><%= business.created_at.to_formatted_s(:short)  %></td>
           <td><%=   %></td>
-          <td><%=   %></td>
+          <td><%=image_tag business.thumb%></td>
           <td><%= button_to 'Delete', [:admin, business], method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger"%></td>
         </tr>
       <% end %>

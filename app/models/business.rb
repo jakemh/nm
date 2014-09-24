@@ -27,6 +27,12 @@ class Business < ActiveRecord::Base
     end
   end
 
+  def thumb
+    if profile_photo
+      profile_photo.image.url(:thumb)
+    end
+  end
+
 
   def self.types
     ["type1", "type2", "type3"]
