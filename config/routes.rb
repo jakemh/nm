@@ -1,12 +1,6 @@
 Rails.application.routes.draw do
-
-  namespace :admin do
-  get 'emails/index'
-  end
-
-  namespace :admin do
-  get 'emails/show'
-  end
+ 
+  get 'errors/routing'
 
   mount Judge::Engine => '/judge'
   resource :business
@@ -33,7 +27,7 @@ Rails.application.routes.draw do
     resources :posts
   end
 
-  resources :users
+  # resources :users
   resource :me, :controller => :users, :module => :me do
     resources :posts, :type => "UserPost"
     resources :connections 
@@ -43,7 +37,9 @@ Rails.application.routes.draw do
     end
     resources :friendships
   end
-  end
+
+  match '*a', :to => 'errors#routing', via: :get
+end
   # root :to => "landing#index"
   # post 'landing/index', :to => "landing#create"
 

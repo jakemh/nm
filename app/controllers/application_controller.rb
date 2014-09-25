@@ -25,8 +25,14 @@ class ApplicationController < ActionController::Base
     end
 
   rescue_from CanCan::AccessDenied do |exception|
-    p "ERROR: ", exception.message
-    flash[:error] = exception.message
-    redirect_to root_url, :alert => "You are not authorized"
+    redirect_to root_url, :alert => exception.message
+  end
+
+  rescue_from ActionController::RoutingError do |exception|
+    redirect_to root_url, :alert => exception.message
+  end
+
+  def render_404()
+    redirect_to root_url, :alert => "Sorry! Page does not exist"
   end
 end

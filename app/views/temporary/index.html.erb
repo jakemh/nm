@@ -8,7 +8,7 @@
         <%= flash[:error] %>
         <%= flash[:alert] %>
       </div>
-    <% end %>
+    <% end %>`
     <div class="container-fluid">
       <div class="row">
         <div class="col-sm-2">
@@ -50,11 +50,13 @@
         <% end %>
       </div>
     </div>
-    <div class="bottom-bar__temp">
-      <%= fa_icon 'chevron-down' %>
-    </div>
+    <a href="#info" class="nav-link">
+      <div class="bottom-bar__temp">
+        <%= fa_icon 'chevron-down' %>
+      </div>
+    </a>
   </div>
-  <div class="bottom__temp">
+  <div id="info" class="bottom__temp">
     <div class="container-fluid container-bottom__temp">
       <div class="row">
         <div class="col-sm-6">
