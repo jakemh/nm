@@ -1,44 +1,43 @@
-class Me::BusinessPhotosController < ApplicationController
-  layout "signup_bar"
-
-
-  def index
+class Me::BusinessPhotosController < Me::PhotosController
+  
+  protected
+  def entity
+    current_user.businesses.find(params[:business_id])
   end
+  
 
-  def show
-  end
+  # def index
+  # end
 
-  def new
-    @business = Business.find params[:business_id]
-    @photo = Photo.new
-  end
+  # def show
+  # end
 
-  def create
-    @business = current_user.businesses.find(params[:business_id])
-    @photo = @business.photos.build whitelist
-    if @photo.save
-      Rails.logger.info "Year: #{Time.now.year}"
+  # # def new
+  # #   @business = entity
+  # #   @photo = Photo.new
+  # # end
 
-      respond_to do |format|
-        format.js
-      end
-      # render :json => {:files =>{:photo => @photo.image.url(:medium)}}
-    else
-      Rails.logger.info "Error"
-    end
-  end
+  # # def create
+  # #   @business = entity
+  # #   @photo = @business.photos.build whitelist
+  # #   if @photo.save
 
-  def edit
-  end
+  # #     respond_to do |format|
+  # #       format.js
+  # #     end
+  # #     # render :json => {:files =>{:photo => @photo.image.url(:medium)}}
+  # #   else
+  # #   end
+  # # end
 
-  def update
-  end
+  # def edit
+  # end
 
-  def destroy
-  end
+  # def update
+  # end
 
-  private
-  def whitelist
-    params.require(:photo).permit(:image)
-  end
+  # def destroy
+  # end
+
+ 
 end

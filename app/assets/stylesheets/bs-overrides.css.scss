@@ -1,0 +1,26 @@
+@import "bootstrap-sass-official/assets/stylesheets/bootstrap";
+@import "nm_root";
+
+.navbar-inverse{
+  background: $gray-color !important;
+  color: white !important;
+  height: $top-bar-height !important;
+}
+
+.navbar-inverse a{
+  font-family: 'lato', Helvetica, Arial, sans-serif !important;
+  color: white;
+}
+
+.side-nav{
+  height: 100% !important;
+  position: static;
+}
+
+// .nav li a{
+//   padding: none !important
+// }
+
+// .navbar-nav.side-nav > li {
+//   float: none;
+// }

@@ -10,11 +10,19 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
+
+
+
  *= require_tree .
  *= require_self
- *= require bootstrap/dist/css/bootstrap
  *= require jquery.tagsinput/jquery.tagsinput.css
  *= require font-awesome
  *= require select2
 
  */
+ 
+ @import "bootstrap-sass-official/assets/stylesheets/bootstrap-sprockets";
+
+
+ @import "bootstrap-sass-official/assets/stylesheets/bootstrap";
+ @import "bs-overrides"

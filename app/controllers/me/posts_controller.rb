@@ -11,8 +11,8 @@ class Me::PostsController < MeController
   end
 
   def create
-
-  end
+    @user = current_user
+    redirect_to user_feed_path(@user)  end
 
   def update
   end

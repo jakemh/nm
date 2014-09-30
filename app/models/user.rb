@@ -1,10 +1,11 @@
 class User < ActiveRecord::Base
-
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
+  include Profile
+
   has_many :assignments
   has_many :roles, :through => :assignments
-  has_many :ownerships
+  has_many :ownerships, dependent: :destroy
   has_many :businesses, :through => :ownerships, :source => :connect_to
   has_many :connections
   has_many :friendships
@@ -14,7 +15,7 @@ class User < ActiveRecord::Base
   has_many :inverse_friendships, :class_name => "Friendship", :foreign_key => "friend_id"
   has_many :inverse_friends, :through => :inverse_friendships, :source => :user
   has_many :posts
-  has_many :user_posts
+  has_many :user_posts, dependent: :destroy
   has_many :business_posts, :through => :businesses, :source => :posts
 
   devise :database_authenticatable, :registerable,
@@ -24,10 +25,10 @@ class User < ActiveRecord::Base
   validates :is_veteran, :acceptance => {:accept => true}
 
   # validates :email, :presence => true
-  validates :password, :presence => true
-  validates :last_name, :presence => true
-  validates :first_name, :presence => true
-  validates :zip, :presence => true
+  validates :password, :presence => true, :on => :create
+  validates :last_name, :presence => true, :on => :create
+  validates :first_name, :presence => true, :on => :create
+  validates :zip, :presence => true, :on => :create
 
   def is_veteran_accepted?
     self.errors[:is_veteran].length == 0

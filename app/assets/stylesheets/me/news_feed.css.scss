@@ -1,0 +1,85 @@
+@import "nm_root";
+
+.feed{
+  width: 98%;
+
+}
+.feed__entry{
+  // text-align: center;
+  // margin: 0 auto;
+  position: relative;
+  height: 100px;
+  background: white;
+  overflow: auto;
+
+  margin-top: 20px;
+}
+
+.feed__entry-select{
+  
+margin: auto;
+  display: inline-block;
+  // width: 15%;
+}
+.feed__content{
+  overflow: auto;
+}
+.feed__content-title{
+  width: 15%;
+  float: left;
+  // background: green;
+}
+
+.feed__content-body{
+  // background: red;
+} 
+
+.feed__entry-inner{
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  display: inline-block
+}
+.feed__entry-inner--right{
+  width: 12%;
+  position: relative;
+  // background: red;
+}
+
+.feed__entry-inner--right input{
+  position: absolute;
+}
+.feed__select-title{
+  position: absolute;
+  top: 20%;
+}
+.feed__entry-inner--middle{
+  width: 85%;
+}
+
+.feed__entry-inner--left{
+  width: 10%;
+  // background: green;
+}
+
+.feed__contents{
+  width: 100%;
+}
+.feed__content{
+  width: 100%;
+  background: white;
+  padding: 15px;
+  margin: 15px 0;
+
+}
+
+.feed__entry-input{
+  display: inline-block;
+    width: 80%;
+    height: 100%;
+    margin: auto;
+    border: none;
+    background: $lightest-gray-color;
+    outline: none;
+    resize: none;
+}

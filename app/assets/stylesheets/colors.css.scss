@@ -1,8 +1,27 @@
 $orange-color: rgba(255, 118, 24, 1);
-$gray-color: #333333;
-$light-gray-color: #4d4d4d;
+$gray-color: rgba(51, 51, 51, 1);
+$light-gray-color: rgba(77, 77, 77, 1);
+$lighter-gray-color: rgba(222, 222, 222, 1);
+$lightest-gray-color: rgba(245, 245, 245, 1);
+
 $black-color: rgba(0,0,0,1);
 $red-color: #990000;
+// $dark-gray-color: 
+
 @function orange-color($a){
   @return rgba(255, 118, 24, $a);
 }
+
+@function gray-color($a){
+  @return rgba(51, 51, 51, $a);
+}
+
+@function light-gray-color($a){
+  @return rgba(77, 77, 77, $a);
+}
+
+
+@function white-color($a){
+  @return rgba(255, 255, 255, $a);
+}
+

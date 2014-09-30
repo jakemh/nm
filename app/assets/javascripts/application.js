@@ -11,10 +11,10 @@
 // about supported directives.
 //
 //= require jquery
+//= require bootstrap-sass-official/assets/javascripts/bootstrap-sprockets
+//= require bootstrap-sass-official/assets/javascripts/bootstrap
 //= require jquery_ujs
 //= require turbolinks
-//= require bootstrap
-//= require bootstrap/dist/js/bootstrap
 //= require jquery.tagsinput/jquery.tagsinput.js
 //= require landing
 //= require me/businesses
@@ -25,3 +25,4 @@
 //= require select2
 //= require jquery-fileupload
 //= require me/photos
+//= require me/news_feed

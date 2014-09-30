@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
  
+  namespace :me do
+  get 'news_feed/index'
+  end
+
   get 'errors/routing'
 
   mount Judge::Engine => '/judge'
@@ -28,8 +32,10 @@ Rails.application.routes.draw do
   end
 
   # resources :users
-  resource :me, :controller => :users, :module => :me do
+  resource :me, :controller => :users, :module => :me, :as => :user do
+    resources :photos, :controller => :user_photos
     resources :posts, :type => "UserPost"
+    resources :feed , :controller => :news_feed
     resources :connections 
     resources :businesses do
       resources :business_posts
@@ -38,7 +44,9 @@ Rails.application.routes.draw do
     resources :friendships
   end
 
-  match '*a', :to => 'errors#routing', via: :get
+  if Rails.env.production?
+    match '*a', :to => 'errors#routing', via: :get
+  end
 end
   # root :to => "landing#index"
   # post 'landing/index', :to => "landing#create"

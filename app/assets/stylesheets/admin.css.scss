@@ -4,3 +4,12 @@
 .table__admin td{
   line-height: 2em !important;
 }
+
+.table__admin{
+
+}
+
+.table__admin tr:last-child td:first-child {
+  
+    border-radius:10px !important;
+}

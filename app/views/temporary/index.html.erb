@@ -23,16 +23,7 @@
         </div>
       </div>
     </div>
-    <% if false %>
-      <div class="container-fluid">
-        <div class="row">
-          <div class="col-sm-2">
-          </div>
-          <div class="col-sm-3 col-sm-offset-3">
-          </div>
-        </div>
-      </div>
-    <% end %>
+ 
     <div class="container-fluid">
       <div class="row">
         <%= form_for(@email, :html => {:class => 'form__temp'}) do |f| %>
@@ -56,57 +47,47 @@
       </div>
     </a>
   </div>
-  <div id="info" class="bottom__temp">
+  <div id="info" class="nav-link bottom__temp">
     <div class="container-fluid container-bottom__temp">
-      <div class="row">
-        <div class="col-sm-6">
-          <div class="info__bottom-temp">
-            <div class="title__info-bottom-temp">
-              LEARN
+
+        <% LANDING['sections'].each_with_index do |info, i| %>
+          <div class="row">
+
+            <div class="col-sm-6">
+              <% if i.even? %>
+                <div class="info__bottom-temp">
+                  <div class="title__info-bottom-temp">
+                    <%= info["title"] %>
+                  </div>
+                  <div class="body__info-bottom-temp">
+                    <%= info["body"] %>
+                  </div>
+                </div>
+              <% end %>
             </div>
-            <div class="body__info-bottom-temp">
-              Online modules and lessons designed to help you quickly learn how to start and grow a business.
-            </div>
-          </div>
-        </div>
-        <div class="col-sm-6">
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-sm-6">
-        </div>
-        <div class="col-sm-6">
-          <div class="info__bottom-temp">
-            <div class="title__info-bottom-temp">
-              Do
-            </div>
-            <div class="body__info-bottom-temp">
-              Find discounts on services to help launch and grow your business. Start now.
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-sm-6">
-          <div class="info__bottom-temp">
-            <div class="title__info-bottom-temp">
-              Grow
-            </div>
-            <div class="body__info-bottom-temp">
-              Millions of veterans already own business and millions more want to learn now. Let's do business together.
+            <div class="col-sm-6">
+              <% if i.odd? %>
+                <div class="info__bottom-temp">
+                  <div class="title__info-bottom-temp">
+                    <%= info["title"] %>
+                  </div>
+                  <div class="body__info-bottom-temp">
+                    <%= info["body"] %>
+                  </div>
+                </div>
+              <% end %>
             </div>
           </div>
-        </div>
-        <div class="col-sm-6">
-        </div>
-      </div>
+        <% end %>
+  
       <div class="about__temp">
         <div class="info__bottom-temp">
           <div class="title__info-bottom-temp">
-            ABOUT US
+            <%= LANDING["about"]["title"] %>
           </div>
           <div class="body__info-bottom-temp">
-            Founded by two combat veterans, NextMission is a technology company promoting veteran to veteran business. The NextMission web platform connects the millions of existing veteran entrepreneurs to future veteran entrepreneurs, creating new growth and business opportunities.
+            <%= LANDING["about"]["body"] %>
+
           </div>
         </div>
       </div>

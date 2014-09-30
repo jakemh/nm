@@ -1,7 +1,12 @@
 @import "colors";
 @import "fonts";
 
+$top-bar-height: 70px;
 @mixin main-logo($mult){
   width: 405*$mult;
   height: 158*$mult;
 }
+
+$left-bar-width: 200px;
+
+$top-bar-offset: 80px;

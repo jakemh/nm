@@ -1,6 +1,11 @@
-<%= content_for :app do %>
-    <%= render 'layouts/profile_content' %>
-    <!-- /#wrapper -->
-<% end %>
 
-<%= render :template => 'layouts/application' %>
+<%= content_for :app do %>
+    <%= content_for :profile_content do %>
+    <% end %>
+
+    <%= render :partial => 'layouts/profile_content', 
+        :locals => {:side => "user-side", :right_bar => true} 
+      %>
+    <!-- /#wrapper -->
+  <% end %>
+  <%= render :template => 'layouts/application' %>

@@ -10,6 +10,8 @@ module NextMission
   class Application < Rails::Application
    
     config.assets.paths << Rails.root.join('vendor', 'assets', 'bower_components')
+    config.assets.paths << Rails.root.join("vendor","assets","bower_components","bootstrap-sass-official","assets","fonts")
+
     config.to_prepare do
 
       # Devise::SessionsController.skip_before_filter :authenticate_user!

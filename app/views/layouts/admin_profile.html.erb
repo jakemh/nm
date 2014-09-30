@@ -1,6 +1,9 @@
 <%= content_for :app do %>
-    <%= render 'layouts/admin_profile_content' %>
+
+    <%= render :partial => 'layouts/profile_content', :locals => {
+      :side => "admin-side",
+      :right_bar => false
+    } %>
     <!-- /#wrapper -->
 <% end %>
-
 <%= render :template => 'layouts/application' %>

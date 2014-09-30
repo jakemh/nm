@@ -1,4 +1,5 @@
 class Me::PhotosController < ApplicationController
+  layout "signup_bar"
 
   
   def index
@@ -8,9 +9,22 @@ class Me::PhotosController < ApplicationController
   end
 
   def new
+    @entity = entity
+    @photo = Photo.new
   end
 
-  def credit
+  def create
+    @user = current_user
+    @entity = entity
+    @photo = default_entity.photos.build whitelist
+    if @photo.save
+
+      respond_to do |format|
+        format.js 
+      end
+      # render :json => {:files =>{:photo => @photo.image.url(:medium)}}
+    else
+    end
   end
 
   def edit
@@ -21,4 +35,21 @@ class Me::PhotosController < ApplicationController
 
   def destroy
   end
+
+  #override
+  protected
+  def default_entity
+    entity ||= current_user
+  end
+
+  def entity
+    nil
+  end
+
+  private
+  def whitelist
+    params.require(:photo).permit(:image)
+  end
+
+
 end

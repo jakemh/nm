@@ -1,0 +1,228 @@
+@import "nm_root";
+
+body{
+    background: $lighter-gray-color !important;
+
+}
+
+
+
+
+.outer__profile{
+    overflow: auto;
+    height: 100%;
+    width: 1200px;
+    // margin-top: $top-bar-height ;
+}
+
+.container__profile{
+  margin-top: $top-bar-offset;
+  overflow: auto;
+
+}
+
+.outer__profile .container__profile{
+    // margin-top: $top-bar-height;
+    // margin-top: $top-bar-height;
+    display: inline-block;
+    height: 100%;
+    // margin-right:10px;
+}
+
+
+.container__profile--left{
+   
+
+    width:  $left-bar-width;
+    float: left;
+}
+
+.container__profile--full{
+
+    padding: 20px;
+    // margin-top: 80px !important;
+
+    background: white;
+}
+.container__profile--middle{
+ 
+
+    width: 750px;
+    // background: white;
+    background: auto;
+
+}
+
+.container__profile--right{
+    // border: 1px dashed black;
+    border-radius: 5px;
+    width: 200px;
+    background: white;
+
+}
+
+.sidebar{
+    height: 100%;
+    width: 100px;
+}
+.page-wrapper{
+    margin-top: 80px;
+    margin-left: 200px;
+    margin-right: 10px;
+    background: white;
+}
+
+.logo--small img{
+    $mult: .35px;
+    @include main-logo($mult);
+    margin-top: 5px;
+}
+
+.side-nav-inverse li a{
+    letter-spacing: 0em;
+    // background: rgb(200, 200, 200)  !important;
+    background: $lighter-gray-color  !important;
+        color: black!important;
+        font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
+    font-size: 16px;
+}
+.side-nav-inverse li{
+    padding-left: 10px;
+
+}
+.side-nav-inverse{
+    padding: 15px;
+  background: $lighter-gray-color !important;
+}
+#wrapper {
+    padding-left: 0;
+}
+
+#page-wrapper {
+    width: 100%;
+    margin: 15px !important;
+    // background-color: #fff;
+}
+
+.huge {
+    font-size: 50px;
+    line-height: normal;
+}
+
+@media(min-width:768px) {
+    #wrapper {
+    }
+
+    #page-wrapper {
+        padding: 10px;
+    }
+}
+
+/* Top Navigation */
+
+.top-nav {
+    padding: 0 15px;
+    color: rgb(248, 248, 248);
+
+}
+
+.top-nav>li {
+    display: inline-block;
+    float: left;
+}
+
+.top-nav>li>a {
+    padding-top: 15px;
+    padding-bottom: 15px;
+    line-height: 20px;
+    color: #999;
+}
+
+.top-nav>li>a:hover,
+.top-nav>li>a:focus,
+.top-nav>.open>a,
+.top-nav>.open>a:hover,
+.top-nav>.open>a:focus {
+}
+
+.top-nav>.open>.dropdown-menu {
+    float: left;
+    position: absolute;
+    margin-top: 0;
+    border: 1px solid rgba(0,0,0,.15);
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    background-color: #fff;
+    -webkit-box-shadow: 0 6px 12px rgba(0,0,0,.175);
+    box-shadow: 0 6px 12px rgba(0,0,0,.175);
+}
+
+.top-nav>.open>.dropdown-menu>li>a {
+    white-space: normal;
+}
+
+ul.message-dropdown {
+    padding: 0;
+    max-height: 250px;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+li.message-preview {
+    width: 275px;
+    border-bottom: 1px solid rgba(0,0,0,.15);
+}
+
+li.message-preview>a {
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+li.message-footer {
+    margin: 5px 0;
+}
+
+ul.alert-dropdown {
+    width: 200px;
+}
+
+/* Side Navigation */
+
+@media(min-width:768px) {
+    .side-nav {
+        background-color: rgb(248, 248, 248);
+        position: fixed;
+        top: 70px;
+        width: 200px;
+        // margin-left: -225px;
+        border: none;
+        border-radius: 0;
+        overflow-y: auto;
+    }
+
+    .side-nav>li>a {
+        // width: 200px;
+    }
+
+    .side-nav li:not(.active) a:hover,
+    .side-nav li:not(.active) a:focus  {
+        outline: none;
+        background-color: whitesmoke !important;    }
+}
+
+.side-nav>li>ul {
+    padding: 0;
+}
+
+.side-nav>li>ul>li>a {
+    display: block;
+    padding: 10px 15px 10px 38px;
+    text-decoration: none;
+    color: #999;
+}
+
+.side-nav>li>ul>li>a:hover {
+    color: #fff;
+}
+
+/* Flot Chart Containers */
