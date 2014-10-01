@@ -50,6 +50,7 @@ group :development, :test do
   gem 'thin'
   gem 'byebug'
   gem 'htmlbeautifier'
+  gem 'hirb'
 end
 
 group :development do

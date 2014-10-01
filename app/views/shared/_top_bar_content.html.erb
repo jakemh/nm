@@ -10,18 +10,20 @@
         <div class="logo--small">
           <%= image_tag 'logo_nm.png' %>
         </div>
+
+
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      
-      <form class="navbar-form navbar-right" role="search">
+        <form class="navbar-form navbar-left" role="search">
         <div class="form-group">
-          <input type="text" class="form-control" placeholder="Search">
+          <input type="text" class="form-control top__search js-top-search" placeholder="Search">
         </div>
       </form>
+    
       <ul class="nav navbar-nav navbar-right">
-        <li><%= link_to("#{current_user.first_name}'s profile", user_path) if current_user %></li>
+        <li><%= link_to("#{current_user.name}", user_path) if current_user %></li>
         
        <li><%= link_to("Sign in", new_user_session_path) if !current_user%></li>
        <li><%= link_to("Sign Up", new_user_registration_path) if !current_user%></li>

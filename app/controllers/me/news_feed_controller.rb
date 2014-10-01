@@ -1,4 +1,4 @@
-class Me::NewsFeedController < ApplicationController
+class Me::NewsFeedController < MeController
   
   layout "profile"
   

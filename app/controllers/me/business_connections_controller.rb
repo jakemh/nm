@@ -1,2 +1,2 @@
-class Me::BusinessConnectionsController < ApplicationController
+class Me::BusinessConnectionsController < Me::ConnectionsController
 end

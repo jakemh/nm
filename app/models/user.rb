@@ -12,7 +12,10 @@ class User < ActiveRecord::Base
   has_many :business_connections
   has_many :friends, :through => :friendships, :source => :connect_to
   # has_many :businesses, :through => :business_connections, :source => :connect_to
-  has_many :inverse_friendships, :class_name => "Friendship", :foreign_key => "friend_id"
+  # has_many :inverse_connections, :class_name => "Connection", :foreign_key => "connect_to_id", conditions:
+  has_many :inverse_friendships, :class_name => "Friendship", :foreign_key => "connect_to_id"
+  has_many :inverse_business_connections, :class_name => "BusinessConnection", :foreign_key => "connect_to_id"
+
   has_many :inverse_friends, :through => :inverse_friendships, :source => :user
   has_many :posts
   has_many :user_posts, dependent: :destroy
@@ -36,6 +39,14 @@ class User < ActiveRecord::Base
 
   def name
     "#{self.first_name} #{self.last_name}"
+  end
+
+  def inverse_connections
+    (self.inverse_friendships + self.inverse_business_connections).sort_by{|e| e.created_at}
+  end
+
+  def following
+    self.connections.where.not(type: 'Ownership')
   end
 
   def follow(entity)

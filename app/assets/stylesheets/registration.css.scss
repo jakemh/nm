@@ -192,8 +192,12 @@ select{
   background: $gray-color;
   padding: 20px;
   margin-top: 150px;
-  color: $red-color;
+  // color: $red-color;
   min-height: 500px;
+}
+
+.body__reg .error{
+  color: $red-color;
 }
 
 .button-mandatory__form-reg{

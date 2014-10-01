@@ -12,6 +12,10 @@ class Post < ActiveRecord::Base
     end
   end
 
+  def entity_name
+    entity.name if entity
+  end
+
   def entity_id
     if entity
       entity.id

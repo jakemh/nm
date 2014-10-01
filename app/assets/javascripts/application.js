@@ -26,3 +26,5 @@
 //= require jquery-fileupload
 //= require me/photos
 //= require me/news_feed
+//= require user_profile
+

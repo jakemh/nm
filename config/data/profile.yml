@@ -1,12 +1,12 @@
 user-side:
   - title: News Feed
-    path: user_feed_path
+    path: user_feed_index_path
 
   - title: Message Center
-    path:
+    path: 
 
   - title: Followers
-    path:
+    path: user_connections_path
 
   - title: Business Directory
     path:

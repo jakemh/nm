@@ -16,9 +16,27 @@
   position: static;
 }
 
-// .nav li a{
-//   padding: none !important
-// }
+.side-nav li{
+  // padding: none !important
+  width: 100% !important;
+}
+
+.side-nav li a{
+  // padding: none !important
+  width: 100% !important;
+}
+.navbar-right{
+  line-height: 2em;
+}
+.navbar-right li a{
+  line-height: 3em;
+
+  color: white !important;
+}
+
+.navbar-left{
+  padding: 5px 50px;
+}
 
 // .navbar-nav.side-nav > li {
 //   float: none;

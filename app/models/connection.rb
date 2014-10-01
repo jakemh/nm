@@ -1,6 +1,22 @@
 class Connection < ActiveRecord::Base
-  # belongs_to :user
-  validates :connect_to_id, :uniqueness => {:scope => [:user_id, :type]}
+  belongs_to :user
+  belongs_to :business
+
+  def thumb
+    entity.thumb if entity
+  end
+
+  def entity
+    self.business || self.user
+  end
+
+  def entity_type
+    if ["BusinessConnection", "Ownership"].include? self.type
+      Business
+    else 
+      User
+    end
+  end
 
   def pending?
     !has_corresponding_inverse

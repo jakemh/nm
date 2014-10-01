@@ -3,8 +3,12 @@ class Me::ConnectionsController < MeController
 
   def index
     @user = current_user
+    @followers = @user.inverse_connections.map{|f| [f.entity_type.find_by_id(f.connect_to_id), f]}.compact
+    @following = @user.following.map{|f| [f.entity_type.find_by_id(f.connect_to_id), f]}.compact
+    # @business_connections = @user.business_connections 
   end
 
+  
   def create
     @connection = current_user.connections.build(whitelist)
      if @connection.save

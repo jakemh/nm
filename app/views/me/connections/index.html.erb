@@ -1,4 +1,53 @@
-<h2>Friends</h2>
+<div class="feed">
+  <h4><%= "Followers" if @followers.count > 0 %></h4>
+  <% @followers.each do |entity, connection| %>
+    <div class="feed__content connect">
+      <div class="feed__content-title">
+        <div>
+          <%= image_tag entity.thumb %>
+        </div>
+      </div>
+      <div class="feed__content-body">
+        <div>
+          <b><%= entity.name %></b>
+        </div>
+        <div>
+          <%= entity.class.name %>
+        </div>
+      </div>
+      <div class="connect__right">
+        <%= button_to 'Remove', [:user,connection], method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger"%>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+<div class="feed">
+ <h4> <%= "Following" if @following.count > 0 %></h4>
+
+  <% @following.each do |entity, connection| %>
+    <div class="feed__content connect">
+      <div class="feed__content-title">
+        <div>
+          <%= image_tag entity.thumb %>
+        </div>
+      </div>
+      <div class="feed__content-body">
+        <div>
+          <b><%= entity.name %></b>
+        </div>
+        <div>
+          <%= entity.class.name %>
+        </div>
+      </div>
+      <div class="connect__right">
+        <%= button_to 'Remove', [:user,connection], method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger"%>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+<% if false %>
 <ul>
   <% for friendship in @user.friendships %>
     <li>
@@ -18,3 +67,5 @@
     <%= link_to "Approve", me_friendships_path(:friend_id => user), :method => :post %>
   <% end %>
 </ul>
+
+<% end %>

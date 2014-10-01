@@ -16,7 +16,7 @@ module Profile
 
    def thumb
      if profile_photo
-       profile_photo.image.url(:thumb)
+       profile_photo.image.url(:square)
      end
    end
   # def self.included(base)

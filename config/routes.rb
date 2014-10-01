@@ -41,6 +41,8 @@ Rails.application.routes.draw do
     resources :feed , :controller => :news_feed
     resources :connections 
     resources :friendships
+    resources :ownerships 
+
     resources :business_connections
     resources :businesses do
       # resources :business_posts

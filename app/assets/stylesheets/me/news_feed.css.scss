@@ -4,20 +4,34 @@
   width: 98%;
 
 }
+
+
+.feed img{
+  width: 120px;
+  height: 120px;
+}
 .feed__entry{
+  // padding: 15px;
   // text-align: center;
   // margin: 0 auto;
   position: relative;
-  height: 100px;
+  height: 120px;
   background: white;
   overflow: auto;
 
   margin-top: 20px;
 }
 
+.feed__content-top{
+  padding: 5px;
+  color: $light-gray-color;
+}
 .feed__entry-select{
-  
-margin: auto;
+  padding: 0 10px;
+  float: left;
+  margin: auto;
+  margin-top: 15px;
+
   display: inline-block;
   // width: 15%;
 }
@@ -25,7 +39,7 @@ margin: auto;
   overflow: auto;
 }
 .feed__content-title{
-  width: 15%;
+  width: 150px;
   float: left;
   // background: green;
 }
@@ -35,10 +49,10 @@ margin: auto;
 } 
 
 .feed__entry-inner{
-  width: 100%;
+  // width: 100%;
   height: 100%;
   overflow: auto;
-  display: inline-block
+  // display: inline-block
 }
 .feed__entry-inner--right{
   width: 12%;
@@ -56,11 +70,14 @@ margin: auto;
   top: 20%;
 }
 .feed__entry-inner--middle{
-  width: 85%;
+  overflow: auto;
+
 }
 
 .feed__entry-inner--left{
-  width: 10%;
+  overflow: auto;
+  width: 15%;
+  float: left;
   // background: green;
 }
 
@@ -74,11 +91,21 @@ margin: auto;
   margin: 15px 0;
 
 }
-
-.feed__entry-input{
+.feed__form-bottom{
+  padding: 0 10px;
+}
+.feed__form-send{
+  // overflow: auto;
+  text-align: right;
   display: inline-block;
-    width: 80%;
+  float: right;
+  width: 100px;
+}
+.feed__entry-input{
+  // display: inline-block;
+    width: 100%;
     height: 100%;
+    padding: 5px 5px 0px 5px;
     margin: auto;
     border: none;
     background: $lightest-gray-color;

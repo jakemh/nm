@@ -1,39 +1,42 @@
 <div class="feed">
-<div class="feed__entry">
-  <div class="feed__entry-inner feed__entry-inner--left">
-    <%= image_helper(current_user) %>
-  </div>
-  <div class="feed__entry-inner feed__entry-inner--middle">
-
-  <%= form_for [current_user, @entity, @post].compact, :html => {:id => "js-post-form"} do |f| %>
-
-    <%= f.text_area :content, :placeholder => "Enter a message", :rows => 5, :class => "feed__entry-input" %>
-    <span class="feed__select-title">Select account
-    <%= select_tag :type_array, options_for_select(@select), {:class => "feed__entry-select"} %>
-  </span>
-    <%= f.submit "Send" %>
-  <% end %>
-</div>
- <!--  <div class="feed__entry-inner feed__entry-inner--right">
+  <div class="feed__entry">
+    <div class="feed__entry-inner feed__entry-inner--left">
+      <%= image_helper(current_user) %>
+    </div>
+    <div class="feed__entry-inner feed__entry-inner--middle">
+      <%= form_for [current_user, @entity, @post].compact, :html => {:id => "js-post-form"} do |f| %>
+        <div>
+          <%= f.text_area :content, :placeholder => "Enter a message", :rows => 3, :class => "feed__entry-input" %>
+        </div>
+        <div class="feed__form-bottom">
+          <%= select_tag :type_array, options_for_select(@select), {:class => "feed__entry-select"}%> 
+          <div class="feed__form-send">
+            <%= f.submit "Send", :class => "button__form" %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+    <!--  <div class="feed__entry-inner feed__entry-inner--right">
     
 
   </div> -->
-</div> 
-
-<!-- <div class="contents__feed"> -->
+  </div>
+  <!-- <div class="contents__feed"> -->
   <% @posts.each do |post| %>
     <div class="feed__content">
       <div class="feed__content-title">
         <div>
-        <%= image_tag post.thumb %>
+          <%= image_tag post.thumb %>
+        </div>
+        <div>
+          <%= follow_link(current_user, post.entity) %>
+        </div>
       </div>
-    <div>
-        <%= follow_link(current_user, post.entity) %>
-      </div>
+      <div class="feed__content-top">
+        <%= "#{post.entity_name} on #{post.created_at.in_time_zone("Eastern Time (US & Canada)").strftime('%b %e, %l:%M %p') }" %>
       </div>
       <div class="feed__content-body">
         <%= post.content %>
-
       </div>
     </div>
   <% end %>
