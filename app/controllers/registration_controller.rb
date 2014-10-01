@@ -13,6 +13,6 @@ class RegistrationController < Devise::RegistrationsController
    end
 
    def after_sign_up_path_for(resource)
-    new_me_business_url
+    new_user_business_url
    end
 end

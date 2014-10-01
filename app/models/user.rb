@@ -38,6 +38,28 @@ class User < ActiveRecord::Base
     "#{self.first_name} #{self.last_name}"
   end
 
+  def follow(entity)
+    if entity.class.name == "Business"
+      self.connections.create(:connect_to_id => entity.id, :type => "BusinessConnection")
+    elsif entity.class.name == "User"
+      self.connections.create(:connect_to_id => entity.id, :type => "Friendship")
+
+    end
+  end
+
+  def has_connection?(entity)
+    if entity == self
+      "true"
+    else
+      if entity.class.name == "Business"
+        self.connections.where(:type => ["BusinessConnection", "Ownership"], :connect_to_id => entity.id).length > 0
+      elsif entity.class.name == "User"
+        self.connections.where(:type => ["Friendship", "Ownership"], :connect_to_id => entity.id).length > 0
+
+      end
+    end
+  end
+
   def all_posts
     (self.posts + self.business_posts).sort_by{|p| p.created_at}.reverse
   end

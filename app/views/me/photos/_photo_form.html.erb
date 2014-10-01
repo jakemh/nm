@@ -1,4 +1,4 @@
-<%= form_for([current_user, @entity, @photo].compact, :html => { :multipart => true, :id => "form-imageupload"  }) do |f| %>
+<%= form_for([:user, @entity, @photo].compact, :html => { :multipart => true, :id => "form-imageupload"  }) do |f| %>
    
     <div class="file-upload button__form button__form--full">
       <%= f.file_field :image, :class => "upload " %>

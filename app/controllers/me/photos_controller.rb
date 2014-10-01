@@ -39,7 +39,7 @@ class Me::PhotosController < ApplicationController
   #override
   protected
   def default_entity
-    entity ||= current_user
+    entity || current_user
   end
 
   def entity

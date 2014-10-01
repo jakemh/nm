@@ -35,4 +35,8 @@ class ApplicationController < ActionController::Base
   def render_404()
     redirect_to root_url, :alert => "Sorry! Page does not exist"
   end
+
+  # def after_sign_in_path_for(resource)
+  #    redirect_to
+  #  end
 end

@@ -1,4 +1,4 @@
-<%= simple_form_for([:me, @business], layout: :horizontal, label_col: "col-sm-3", control_col: "col-sm-8", html: {class: "form-inline form__reg"}) do |f| %>
+<%= simple_form_for([current_user, @business], layout: :horizontal, label_col: "col-sm-3", control_col: "col-sm-8", html: {class: "form-inline form__reg"}) do |f| %>
   <div class="container-fluid no-space">
     <div class="row no-space">
       <div class="col-sm-6 no-space">

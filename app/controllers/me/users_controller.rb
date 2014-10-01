@@ -7,7 +7,7 @@ class Me::UsersController < MeController
 
   def show
     @user = current_user
-    redirect_to user_feed_path(@user)
+    redirect_to me_news_feed_index_path
   end
 
   def update

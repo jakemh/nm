@@ -1,2 +1,2 @@
-class Me::UserPostsController < ApplicationController
+class Me::UserPostsController < Me::PostsController
 end

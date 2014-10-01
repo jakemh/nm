@@ -29,20 +29,28 @@ Rails.application.routes.draw do
   # get 'me', :to => "user_profile#index", :as => :user_profile
   namespace :me do
     resources :posts
+    resources :business_connections
+    resources :connections
   end
 
   # resources :users
   resource :me, :controller => :users, :module => :me, :as => :user do
     resources :photos, :controller => :user_photos
-    resources :posts, :type => "UserPost"
+    # resources :posts, :type => "UserPost"
+    resources :posts, :controller => :user_posts
     resources :feed , :controller => :news_feed
     resources :connections 
+    resources :friendships
+    resources :business_connections
     resources :businesses do
-      resources :business_posts
+      # resources :business_posts
+      resources :posts, :controller => :business_posts
       resources :photos, :controller => :business_photos
     end
-    resources :friendships
   end
+
+  
+ 
 
   if Rails.env.production?
     match '*a', :to => 'errors#routing', via: :get

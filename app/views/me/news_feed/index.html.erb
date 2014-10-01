@@ -5,11 +5,11 @@
   </div>
   <div class="feed__entry-inner feed__entry-inner--middle">
 
-  <%= form_for [:me, Post.new] do |f| %>
-  
+  <%= form_for [current_user, @entity, @post].compact, :html => {:id => "js-post-form"} do |f| %>
+
     <%= f.text_area :content, :placeholder => "Enter a message", :rows => 5, :class => "feed__entry-input" %>
     <span class="feed__select-title">Select account
-    <%= select_tag :test, options_for_select(@select), {:class => "feed__entry-select"} %>
+    <%= select_tag :type_array, options_for_select(@select), {:class => "feed__entry-select"} %>
   </span>
     <%= f.submit "Send" %>
   <% end %>
@@ -24,7 +24,12 @@
   <% @posts.each do |post| %>
     <div class="feed__content">
       <div class="feed__content-title">
+        <div>
         <%= image_tag post.thumb %>
+      </div>
+    <div>
+        <%= follow_link(current_user, post.entity) %>
+      </div>
       </div>
       <div class="feed__content-body">
         <%= post.content %>

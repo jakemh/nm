@@ -3,7 +3,18 @@ ready = ->
 
   $(".feed__entry-select").change ->
     # alert $(@).val()
-    img = JSON.parse($(@).val())[2]
+    value = JSON.parse($(@).val())
+    idVal = value[1]
+    img = value[2]
+    objType = value[0]
+    action = null
+    if objType == "Business"
+      action = "/me/businesses/" + idVal + "/posts"
+    else if objType == "User"
+      action = "me/posts"
+
+    $("#js-post-form").attr("action", action);
+    alert $("#js-post-form").attr("action")
     # alert $(".feed__entry-inner--left img").attr("src")
     $(".feed__entry-inner--left img").attr("src",img)
 $(document).ready ready

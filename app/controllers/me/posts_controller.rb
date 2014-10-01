@@ -7,13 +7,26 @@ class Me::PostsController < MeController
   end
 
   def new
-    Post.new
+    @entity = entity
+    @post = Post.new
   end
 
   def create
     @user = current_user
-    redirect_to :back
+    @entity = entity
+    p "XXXDEFAULTXXX: ", default_entity
+
+    @post = default_entity.posts.build whitelist
+
+    if @post.save
+      redirect_to :back
+    end
   end
+  # def create
+  #   @user = current_user
+
+  #   redirect_to :back
+  # end
 
   def update
   end
@@ -23,9 +36,24 @@ class Me::PostsController < MeController
 
   def destroy
   end
+  #override
+  protected
+  def default_entity
+
+    entity || current_user
+  end
+
+  def entity
+
+    nil
+  end
 
   private
-  def whitelist(type)
-    params.require(type.underscore).permit(:content)
+  def whitelist
+    params.require(:post).permit(:content)
+  end
+
+  def type_array
+    JSON.parse(params.permit(:type_array)[:type_array])
   end
 end
