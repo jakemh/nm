@@ -16,11 +16,11 @@ class Me::UsersController < MeController
     if @user.update_attributes(whitelist)
       # redirect_to [:me, @business]
       flash[:notice] = "Your account has been successfully updated."
-      redirect_to root_path
+      redirect_to user_path
     else
 
       flash[:error] = "Error. Your account was not successfully updated. Alert Justin!"
-      redirect_to root_path
+      redirect_to user_path
 
       # render :action => 'new', :layout => 'signup_bar'
     end

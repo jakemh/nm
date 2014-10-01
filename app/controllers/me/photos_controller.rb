@@ -14,6 +14,9 @@ class Me::PhotosController < ApplicationController
   end
 
   def create
+    if path
+      @path = path
+    end
     @user = current_user
     @entity = entity
     @photo = default_entity.photos.build whitelist

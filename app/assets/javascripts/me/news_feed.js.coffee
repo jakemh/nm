@@ -14,7 +14,6 @@ ready = ->
       action = "me/posts"
 
     $("#js-post-form").attr("action", action);
-    alert $("#js-post-form").attr("action")
     # alert $(".feed__entry-inner--left img").attr("src")
     $(".feed__entry-inner--left img").attr("src",img)
 $(document).ready ready

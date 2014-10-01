@@ -9,4 +9,12 @@ module Me::NewsFeedHelper
       end
     end
   end
+
+
+  def image_helper(user)
+    if user.thumb
+      image_tag current_user.thumb
+    else link_to "Add photo", new_user_photo_path
+    end
+  end
 end
