@@ -26,7 +26,7 @@
     <div class="feed__content">
       <div class="feed__content-title">
         <div>
-          <%= image_tag post.thumb %>
+          <%= thumb(post.entity, class: "thumb") if post.entity%>
         </div>
         <div>
           <%= follow_link(current_user, post.entity) %>

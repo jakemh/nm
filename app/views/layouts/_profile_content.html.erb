@@ -3,8 +3,8 @@
   <%= render 'shared/top_bar_content' %>
 </nav>
 <%= content_tag :div, :class => ("outer__profile" if right_bar) do %>
-  <div class="outer__profile">
-    <div class="container__profile container__profile--left">
+<!--   <div class="outer__profile">
+ -->    <div class="container__profile container__profile--left">
       <div class="sidebar">
         <ul class="nav navbar-nav side-nav side-nav-inverse">
           <% PROFILE[side].each do |bar| %>
@@ -27,5 +27,5 @@
         <%= yield %>
       </div>
     <% end %>
-  </div>
-  <% end %>
+<!--   </div>
+ -->  <% end %>

@@ -22,7 +22,7 @@
           <td><%= user.created_at.to_formatted_s(:short)  %></td>
           <td><%=   %></td>
           <td><%=   %></td>
-          <td><%=image_tag user.small_thumb%></td>
+          <td><%= thumb(user, class: "thumb-small")%></td>
           <td><%= button_to 'Delete', [:admin, user], method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger"%></td>
         </tr>
       <% end %>

@@ -17,6 +17,7 @@ module Profile
   def small_thumb
     if profile_photo
       profile_photo.image.url(:thumb)
+    else
     end
   end
 
