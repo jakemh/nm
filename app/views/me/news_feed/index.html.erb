@@ -2,46 +2,95 @@
   <div class="feed__entry">
     <div class="feed__entry-inner feed__entry-inner--left">
       <%= thumb(current_user, class: "thumb"){|t| image_tag t} %>
-      </div>
+    </div>
     <div class="feed__entry-inner feed__entry-inner--middle">
       <div class="feed__entry-inner-title js-form-name">
         <%= current_user.name %>
       </div>
       <%= form_for [current_user, @entity, @post].compact, :html => {:id => "js-post-form"} do |f| %>
         <div class="feed__entry-inner-main">
-
           <%= f.text_area :content, :placeholder => "Enter a message", :rows => 3, :class => "feed__entry-input" %>
         </div>
         <div class="feed__form-bottom">
-          <%= select_tag :type_array, options_for_select(@select), {:class => "feed__entry-select"}%> 
+          <%= select_tag :type_array, options_for_select(@select), {:class => "feed__entry-select"}%>
           <div class="feed__form-send">
             <%= f.submit "Send", :class => "feed__button button__form ", :style => "margin-top: 0 !important" %>
           </div>
         </div>
       <% end %>
     </div>
-    <!--  <div class="feed__entry-inner feed__entry-inner--right">
-    
-
-  </div> -->
   </div>
   <!-- <div class="contents__feed"> -->
   <% @posts.each do |post| %>
-    <div class="feed__content">
-      <div class="feed__content-title">
-        <div>
-          <%= thumb(post.entity, class: "thumb"){|t| image_tag t} if post.entity%>
+    <div class="feed__content-outer">
+      <div class="feed__content">
+        <div class="feed__content-title">
+          <div>
+            <%= thumb(post.entity, class: "thumb"){|t| image_tag t} if post.entity%>
+          </div>
+          <div>
+            <%= follow_link(current_user, post.entity) %>
+          </div>
         </div>
-        <div>
-          <%= follow_link(current_user, post.entity) %>
+        <div class="feed__content-top">
+          <%= "#{post.entity_name} on #{post.created_at.in_time_zone("Eastern Time (US & Canada)").strftime('%b %e, %l:%M %p') }" %>
         </div>
+        <div class="feed__content-body">
+          <%= post.content %>
+        </div>
+        <div class="feed__content-corner">
+          <%= link_to "Comment", nil, :class => "js-feed-comment" %>
+        </div>
+        
       </div>
-      <div class="feed__content-top">
-        <%= "#{post.entity_name} on #{post.created_at.in_time_zone("Eastern Time (US & Canada)").strftime('%b %e, %l:%M %p') }" %>
+      <div class="feed__comment-outer">
+        <div class="feed__comment-content feed__comment-input">
+          <div class="feed__entry feed__entry--comment">
+            <div class="feed__entry-inner feed__entry-inner--left">
+              <%= thumb(current_user, class: "thumb-small"){|t| image_tag t} %>
+            </div>
+            <div class="feed__entry-inner feed__entry-inner--middle">
+              <%= form_for [current_user, @entity, @post].compact, :html => {:id => "js-post-form-response"} do |f| %>
+                <div class="feed__entry-inner-main">
+                  <%= f.hidden_field :type, :value => "Response" %>
+                  <%= f.hidden_field :parent_id, :value => post.id %>
+                  <%= f.text_area :content, :placeholder => "Enter a message", :rows => 2, :class => "feed__entry-input feed__entry-input--comment" %>
+                </div>
+                <div class="feed__form-bottom">
+                  <%= select_tag :type_array, options_for_select(@select), {:class => "feed__entry-select"}%>
+                  <div class="feed__form-send">
+                    <%= f.submit "Send", :class => "feed__button button__form ", :style => "margin-top: 0 !important" %>
+                  </div>
+                </div>
+              <% end %>
+            </div>
+          </div>
+        </div>
+        <% post.responses.each do |response| %>
+          <div class="feed__comment-content">
+            <div class="feed__content feed__content--comment">
+                   <div class="feed__content-title">
+                     <div>
+                       <%= thumb(response.entity, class: "thumb-small"){|t| image_tag t} if response.entity%>
+                     </div>
+                     <div>
+                       <%= follow_link(current_user, response.entity) %>
+                     </div>
+                   </div>
+                   <div class="feed__content-top">
+                     <%= "#{post.entity_name} on #{post.created_at.in_time_zone("Eastern Time (US & Canada)").strftime('%b %e, %l:%M %p') }" %>
+                   </div>
+                   <div class="feed__content-body">
+                     <%= response.content %>
+                   </div>
+
+                   
+                 </div>
+          </div>
+        <% end %>
+        
       </div>
-      <div class="feed__content-body">
-        <%= post.content %>
-      </div>
+
     </div>
   <% end %>
 </div>

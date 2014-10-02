@@ -14,8 +14,6 @@ class Me::PostsController < MeController
   def create
     @user = current_user
     @entity = entity
-    p "XXXDEFAULTXXX: ", default_entity
-
     @post = default_entity.posts.build whitelist
 
     if @post.save
@@ -44,13 +42,12 @@ class Me::PostsController < MeController
   end
 
   def entity
-
     nil
   end
 
   private
   def whitelist
-    params.require(:post).permit(:content)
+    params.require(:post).permit(:content, :parent_id, :type)
   end
 
   def type_array

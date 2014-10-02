@@ -3,11 +3,18 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
   before_filter :authenticate
+  after_filter :track_action
 
   # check_authorization :unless => :devise_controller?
   # check_authorization :unless => :temporary_controller?
 
   protected
+
+   
+
+   def track_action
+     ahoy.track "Processed #{controller_name}##{action_name}", request.filtered_parameters
+   end
     def authenticate
       if !current_user
         authenticate_or_request_with_http_basic do |username, password|

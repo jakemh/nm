@@ -23,7 +23,7 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0',          group: :doc
 
 # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
-gem 'figaro'
+gem 'figaro' 
 gem 'foreman'
 gem 'devise'
 gem 'therubyracer'
@@ -36,6 +36,8 @@ gem 'judge-simple_form'
 gem 'paperclip'
 gem 'aws-sdk'
 gem 'jquery-fileupload-rails'
+gem 'ahoy_matey'
+gem 'activeuuid', '>= 0.5.0'
 
 group :production do
   gem 'puma'

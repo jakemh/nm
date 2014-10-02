@@ -1,5 +1,7 @@
 ready = undefined
 ready = ->
+  ahoy.trackClicks();
+
   $('.feed__content').linkify({}, ->
     );
   $(".feed__entry-select").select2();
@@ -17,10 +19,17 @@ ready = ->
     else if objType == "User"
       action = "me/posts"
 
-    $("#js-post-form").attr("action", action);
+    $("#js-post-form, #js-post-form-response").attr("action", action);
     # alert $(".feed__entry-inner--left img").attr("src")
     $(".feed__entry-inner--left img").attr("src",img)
     $(".js-form-name").html(name)
+
+  $(".js-feed-comment").on("click", (e) ->
+    e.preventDefault()
+    commentElement = $(@).closest(".feed__content-outer").find(".feed__comment-input")
+    commentElement.slideDown()
+
+    )
 $(document).ready ready
 $(document).on "page:load", ready
 

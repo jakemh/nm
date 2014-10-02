@@ -1,8 +1,4 @@
 Rails.application.routes.draw do
- 
-  namespace :me do
-  get 'news_feed/index'
-  end
 
   get 'errors/routing'
 
@@ -38,6 +34,7 @@ Rails.application.routes.draw do
     resources :photos, :controller => :user_photos
     # resources :posts, :type => "UserPost"
     resources :posts, :controller => :user_posts
+    resources :responses
     resources :feed , :controller => :news_feed
     resources :connections 
     resources :friendships

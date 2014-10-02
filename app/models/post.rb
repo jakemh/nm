@@ -1,9 +1,14 @@
 class Post < ActiveRecord::Base
   belongs_to :user
   belongs_to :business
-
+  has_many :responses, :class_name => "Response", :foreign_key => "parent_id"
+  
   def entity
     self.user || self.business
+  end
+
+  def add_response(opt)
+    Response.create(opt.merge({:parent_id => self.id}))
   end
 
   def entity_type

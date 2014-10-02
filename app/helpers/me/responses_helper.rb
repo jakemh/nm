@@ -1,0 +1,2 @@
+module Me::ResponsesHelper
+end

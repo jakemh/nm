@@ -19,6 +19,7 @@
 //= require jQuery-linkify/src/linkified
 //= require turbolinks
 //= require jquery.tagsinput/jquery.tagsinput.js
+//= require ahoy
 //= require landing
 //= require me/businesses
 //= require underscore
