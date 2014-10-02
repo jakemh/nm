@@ -1,6 +1,7 @@
 ready = undefined
 ready = ->
-  $('.feed__content').linkify();
+  $('.feed__content').linkify({}, ->
+    );
   $(".feed__entry-select").select2();
   $(".feed__entry-select").change ->
     # alert $(@).val()
@@ -10,6 +11,7 @@ ready = ->
     objType = value[0]
     name = value[3]
     action = null
+
     if objType == "Business"
       action = "/me/businesses/" + idVal + "/posts"
     else if objType == "User"

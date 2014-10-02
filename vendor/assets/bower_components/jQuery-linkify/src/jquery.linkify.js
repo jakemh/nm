@@ -1,5 +1,5 @@
 // Plugin definition
-$.fn.linkify = function (options) {
+$.fn.linkify = function (options, callback) {
 	return this.each(function () {
 
 		var linkified;
@@ -20,6 +20,9 @@ $.fn.linkify = function (options) {
 			);
 
 		}
+		// console.log("TEST")
+
+		
 	});
 };
 

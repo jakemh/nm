@@ -165,12 +165,10 @@ Linkified.emailLinkMatch = /(<[a-z]+ href=\")(http:\/\/)([a-zA-Z0-9\+_\-]+(?:\.[
 	@return	{String} html
 */
 Linkified.linkify = function (text, options) {
-
 	var attr,
 		settings,
 		linkClasses,
 		linkReplace = [];
-
 	if (this.constructor === Linkified && this.settings) {
 
 		// Called from an instance of Linkified
@@ -231,9 +229,17 @@ Linkified.linkify = function (text, options) {
 	}
 
 	// Finish off
-	linkReplace.push('>$2$3$4$5$6$7</' + settings.tagName + '>$8');
 
+	linkReplace.push('>$2$3$4$5$6$7</' + settings.tagName + '>$8');
 	// Create the link
+	var replace;
+ 	if (replace = text.match(Linkified.linkMatch)){
+ 		console.log(replace)
+
+ 		replace = replace[0].replace(Linkified.linkMatch, linkReplace.join(' '))
+ 		console.log(replace)
+ 	}
+
 	text = text.replace(Linkified.linkMatch, linkReplace.join(' '));
 
 	// The previous line added `http://` to emails. Replace that with `mailto:`
