@@ -33,6 +33,7 @@
   padding: 0 10px;
   float: left;
   margin: auto;
+  width: 150px;
   margin-top: 7px;
 
   display: inline-block;
@@ -103,6 +104,7 @@
 }
 .feed__form-bottom{
   padding: 0 10px;
+  margin-top: 5px;
 }
 .feed__form-send{
   // overflow: auto;
@@ -115,7 +117,7 @@
   // display: inline-block;
     width: 100%;
     height: 100%;
-    padding: 5px 5px 5px 5px;
+    padding: 5px 5px 0px 5px;
     margin: auto;
     border: none;
     background: $lightest-gray-color;
