@@ -7,6 +7,6 @@ class Me::NewsFeedController < MeController
     # @posts = current_user.posts.select post_attrs
     @posts = Post.all.select(post_attrs).sort_by{|p| p.created_at }.reverse
     @post = Post.new
-    @select = [["User Account", ["User", current_user.id, current_user.thumb || "null"]]] + current_user.businesses.collect{|b|[b.name,["Business", b.id, b.thumb || "null"]]}
+    @select = [["User Account", ["User", current_user.id, current_user.thumb || view_context.image_path("default_person.png"), current_user.name]]] + current_user.businesses.collect{|b|[b.name,["Business", b.id, b.thumb || view_context.image_path("default_business.png"), b.name]]}
   end
 end

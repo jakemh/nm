@@ -7,6 +7,7 @@ ready = ->
     idVal = value[1]
     img = value[2]
     objType = value[0]
+    name = value[3]
     action = null
     if objType == "Business"
       action = "/me/businesses/" + idVal + "/posts"
@@ -16,6 +17,7 @@ ready = ->
     $("#js-post-form").attr("action", action);
     # alert $(".feed__entry-inner--left img").attr("src")
     $(".feed__entry-inner--left img").attr("src",img)
+    $(".js-form-name").html(name)
 $(document).ready ready
 $(document).on "page:load", ready
 

@@ -15,13 +15,16 @@
   // text-align: center;
   // margin: 0 auto;
   position: relative;
-  height: 120px;
+  height: 150px;
   background: white;
   overflow: auto;
-
+  padding: 15px;
   margin-top: 20px;
 }
 
+.feed__button{
+  margin: 0 !important;
+}
 .feed__content-top{
   padding: 5px;
   color: $light-gray-color;
@@ -30,7 +33,7 @@
   padding: 0 10px;
   float: left;
   margin: auto;
-  margin-top: 15px;
+  margin-top: 7px;
 
   display: inline-block;
   // width: 15%;
@@ -76,7 +79,7 @@
 
 .feed__entry-inner--left{
   overflow: auto;
-  width: 15%;
+  // width: 15%;
   float: left;
   // background: green;
 }
@@ -90,6 +93,13 @@
   padding: 15px;
   margin: 15px 0;
 
+}
+.feed__entry-inner-title{
+  margin-left: 15px;
+}
+
+.feed__entry-inner-main{
+  margin-left: 15px;
 }
 .feed__form-bottom{
   padding: 0 10px;
@@ -105,7 +115,7 @@
   // display: inline-block;
     width: 100%;
     height: 100%;
-    padding: 5px 5px 0px 5px;
+    padding: 5px 5px 5px 5px;
     margin: auto;
     border: none;
     background: $lightest-gray-color;
