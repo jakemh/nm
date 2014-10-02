@@ -1,4 +1,12 @@
 <div class="main__login">
+
+  <% if !flash.empty? %>
+    <div class="flash">
+      <%= content_tag(:div, flash[:error], :id => "flash_error") if flash[:error] %>
+       <%= content_tag(:div, flash[:notice], :id => "flash_notice") if flash[:notice] %>
+       <%= content_tag(:div, flash[:alert], :id => "flash_alert") if flash[:alert] %>
+    </div>
+  <% end %>
 <%= simple_form_for(:user, :url => user_session_path,html: {class: "form__main-login"}
         ) do |f| %>
    <%= f.input :email, label: false, placeholder: "EMAIL" %>
