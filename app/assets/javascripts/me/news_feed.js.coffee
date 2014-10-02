@@ -1,5 +1,6 @@
 ready = undefined
 ready = ->
+  $('.feed__content').linkify();
   $(".feed__entry-select").select2();
   $(".feed__entry-select").change ->
     # alert $(@).val()

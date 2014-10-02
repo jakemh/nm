@@ -11,9 +11,12 @@
 // about supported directives.
 //
 //= require jquery
+
 //= require bootstrap-sass-official/assets/javascripts/bootstrap-sprockets
 //= require bootstrap-sass-official/assets/javascripts/bootstrap
 //= require jquery_ujs
+//= require jQuery-linkify/src/jquery.linkify
+//= require jQuery-linkify/src/linkified
 //= require turbolinks
 //= require jquery.tagsinput/jquery.tagsinput.js
 //= require landing
