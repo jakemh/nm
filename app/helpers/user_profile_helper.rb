@@ -15,14 +15,17 @@ module UserProfileHelper
 
   def thumb(entity, opt={})
     content_tag :div, :class => opt[:class] do
+      path = nil
       if entity.profile_photo
-          image_tag entity.thumb
+          path = entity.thumb
       else
           if entity.class.name == "Business"
-            image_tag "default_business.png"
-          else image_tag "default_user.png"
+            path = "default_business.png"
+          else 
+            path = "default_person.png"
           end
       end
+      yield path if block_given?
     end
   end
   
