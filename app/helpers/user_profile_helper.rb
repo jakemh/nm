@@ -1,3 +1,4 @@
+
 module UserProfileHelper
   def active_class(path)
     if path
