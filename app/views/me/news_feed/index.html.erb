@@ -78,7 +78,7 @@
                      </div>
                    </div>
                    <div class="feed__content-top">
-                     <%= "#{post.entity_name} on #{post.created_at.in_time_zone("Eastern Time (US & Canada)").strftime('%b %e, %l:%M %p') }" %>
+                     <%= "#{response.entity_name} on #{response.created_at.in_time_zone("Eastern Time (US & Canada)").strftime('%b %e, %l:%M %p') }" %>
                    </div>
                    <div class="feed__content-body">
                      <%= response.content %>
