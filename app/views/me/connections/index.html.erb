@@ -29,7 +29,7 @@
     <div class="feed__content connect">
       <div class="feed__content-title">
         <div>
-          <%= image_tag entity.thumb %>
+          <td><%= thumb(entity, class: "thumb"){|t| image_tag t} %></td>
         </div>
       </div>
       <div class="feed__content-body">
