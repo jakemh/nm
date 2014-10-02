@@ -25,10 +25,8 @@
       </form>
     
       <ul class="nav navbar-nav navbar-right">
-        <li><%= link_to("#{current_user.name}", user_path) if current_user %></li>
-        
-       <li><%= link_to("Sign in", new_user_session_path) if !current_user%></li>
-       <li><%= link_to("Sign Up", new_user_registration_path) if !current_user%></li>
+        <li><%= link_to("#{current_user.name}", user_path) %></li>
+       <li><%= link_to "Add business", new_user_business_path %></li>
         <li>  <%= link_to('Logout', destroy_user_session_path, :method => :delete) if current_user %> </li>
       </ul>
     </div><!-- /.navbar-collapse -->

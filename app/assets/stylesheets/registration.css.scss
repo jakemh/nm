@@ -183,7 +183,10 @@ select{
 .button__form--gray{
   background: $light-gray-color !important;
 }
-
+.button__form--small{
+  width: 35%;
+  margin: 0 auto;
+}
 .check-container__form-reg{
   margin-top: 10px;
 }
