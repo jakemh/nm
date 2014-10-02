@@ -1,8 +1,8 @@
 <div class="feed">
   <div class="feed__entry">
     <div class="feed__entry-inner feed__entry-inner--left">
-      <%= image_helper(current_user) %>
-    </div>
+      <%= thumb(current_user, class: "thumb"){|t| image_tag t} %>
+      </div>
     <div class="feed__entry-inner feed__entry-inner--middle">
       <%= form_for [current_user, @entity, @post].compact, :html => {:id => "js-post-form"} do |f| %>
         <div>
