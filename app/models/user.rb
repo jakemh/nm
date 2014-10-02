@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
   has_many :roles, :through => :assignments
   has_many :ownerships, dependent: :destroy
   has_many :businesses, :through => :ownerships, :source => :connect_to
-  has_many :connections
+  has_many :connections, dependent: :destroy
   has_many :friendships
   has_many :business_connections
   has_many :friends, :through => :friendships, :source => :connect_to
@@ -17,7 +17,7 @@ class User < ActiveRecord::Base
   has_many :inverse_business_connections, :class_name => "BusinessConnection", :foreign_key => "connect_to_id"
 
   has_many :inverse_friends, :through => :inverse_friendships, :source => :user
-  has_many :posts
+  has_many :posts, dependent: :destroy
   has_many :user_posts, dependent: :destroy
   has_many :business_posts, :through => :businesses, :source => :posts
 
