@@ -55,7 +55,7 @@
 .feed__entry-inner{
   // width: 100%;
   height: 100%;
-  overflow: auto;
+  overflow: hidden !important;
   // display: inline-block
 }
 .feed__entry-inner--right{
