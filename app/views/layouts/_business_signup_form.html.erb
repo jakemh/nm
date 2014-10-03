@@ -9,6 +9,8 @@
 
        %>
       </div>
+      <%= f.error :name, class: "error" %>
+
       <div class="col-sm-6 no-space">
         <%= f.input :website, label: false,
          placeholder: "BUSINESS WEBSITE*",  
@@ -48,6 +50,8 @@
            input_html: { class: 'input__form-bus input__form-bus--half' },
            wrapper_html: {class: "padding__form wrapper__form-bus"}
          %>
+         <%= f.error :zip, class: "error" %>
+
       </div>
     </div>
   </div>

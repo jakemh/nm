@@ -66,21 +66,21 @@ class Me::BusinessesController < MeController
   end
 
 
-  protected
-    def whitelist
-      params.require(:business).permit(
-        :name, 
-        :address, 
-        :website, 
-        :industry,
-        :city, 
-        :state, 
-        :address, 
-        :zip,
-        :description,
-        :profile_photo_id,
-        tags_attributes: [:name]
-      )
-    end
+  private
+  def whitelist
+    params.require(:business).permit(
+      :name, 
+      :address, 
+      :website, 
+      :industry,
+      :city, 
+      :state, 
+      :address, 
+      :zip,
+      :description,
+      :profile_photo_id,
+      tags_attributes: [:name]
+    )
+  end
 
 end

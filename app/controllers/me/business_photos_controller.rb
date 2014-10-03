@@ -1,6 +1,6 @@
 class Me::BusinessPhotosController < Me::PhotosController
   
-  protected
+  private
   def entity
     current_user.businesses.find(params[:business_id])
   end

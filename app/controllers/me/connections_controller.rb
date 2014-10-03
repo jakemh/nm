@@ -37,8 +37,8 @@ class Me::ConnectionsController < MeController
   def show
   end
 
-  protected
-    def whitelist
-      params.permit(:connect_to_id, :type)
-    end
+  private
+  def whitelist
+    params.permit(:connect_to_id, :type)
+  end
 end

@@ -1,0 +1,25 @@
+<div class="aud">
+  <div class="aud__business">
+  </div>
+  <div class="aud__members">
+    <% @interacted_with.each_slice(2) do |entities| %>
+      <% entities.each_with_index do |e, i| %>
+        <%= content_tag :div, class: "aud__member " + (i.even? ? "aud__member--left" : "aud__member--right") do %>
+          <div class="feed__content feed__content--comment">
+            <%= render layout: "me/shared/feed_entry", :locals => {
+                  entity: e.entity,
+                  created_at: e.created_at,
+                  opt: {}
+            } do %>
+              <ul class="aud__list">
+                <li><%= e.entity.name %></li>
+                <li><%= e.entity.address %></li>
+                <li><%= e.entity.email %></li>
+              </ul>
+            <% end %>
+          </div>
+        <% end %>
+      <% end %>
+    <% end %>
+  </div>
+</div>

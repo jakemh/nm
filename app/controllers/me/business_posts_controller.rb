@@ -7,7 +7,7 @@ class Me::BusinessPostsController < Me::PostsController
   #   end
   # end
 
-  protected
+  private
   def entity
     id = type_array[1]
     current_user.businesses.find(id)

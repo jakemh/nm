@@ -45,6 +45,10 @@ class User < ActiveRecord::Base
     (self.inverse_friendships + self.inverse_business_connections).sort_by{|e| e.created_at}
   end
 
+  def followers
+    self.inverse_connections
+  end
+
   def following
     self.connections.where.not(type: 'Ownership')
   end
@@ -56,6 +60,10 @@ class User < ActiveRecord::Base
       self.connections.create(:connect_to_id => entity.id, :type => "Friendship")
 
     end
+  end
+
+  def interacted_with
+    (followers + following).sort_by{|e| e.created_at}
   end
 
   def has_connection?(entity)
@@ -88,4 +96,7 @@ class User < ActiveRecord::Base
     return self.roles.pluck(:name).include? role
   end
 
+  def address
+    self.zip
+  end
 end

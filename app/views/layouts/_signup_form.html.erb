@@ -1,3 +1,4 @@
+
 <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), layout: :horizontal, label_col: "col-sm-3", control_col: "col-sm-8", html: {class: "form__reg"}) do |f| %>
   <%= devise_error_messages! if false %>
   <%= f.input :email, label: false,
@@ -6,16 +7,24 @@
           wrapper_html: {class: "padding__form nowrap"},
            :validate => true,
            :error_html => {:class => "error__form"} %>
+  <%= f.error :email, class: "error" %>
+
   <%= f.input :first_name, label: false, placeholder: "FIRST NAME*",
             input_html: { class: 'input__form-reg' },
             wrapper_html: {class: "padding__form nowrap"} %>
+  <%= f.error :first_name, class: "error" %>
+
   <%= f.input :last_name,  label: false, placeholder: "LAST NAME*",  
           input_html: { class: 'input__form-reg' },
             wrapper_html: {class: "padding__form nowrap"} %>
+  <%= f.error :last_name, class: "error" %>
+
   <%= f.input :zip,  label: false, 
           placeholder: "ZIP*",  
           input_html: { class: 'input__form-reg' },
           wrapper_html: {class: "padding__form nowrap"} %>
+  <%= f.error :zip, class: "error" %>
+
   <div class="check-container__form-reg">
     <div class="checkboxFive">
       <%= f.input_field  :is_veteran, as: :boolean, 
@@ -31,16 +40,22 @@
       I certify that I am a veteran of the US Armed Forces*
     </div>
   </div>
+  <%= f.error :is_veteran, class: "error" %>
+
   <%= f.input :password, 
             autocomplete: "off",  label: false, 
             placeholder: "PASSWORD*",  
             input_html: { class: 'input__form-reg' },
             wrapper_html: {class: "padding__form nowrap"} %>
+  <%= f.error :password, class: "error" %>
+
   <%= f.input :password, 
           autocomplete: "off",  label: false, 
           placeholder: "RETYPE PASSWORD*",  
           input_html: { class: 'input__form-reg' },
             wrapper_html: {class: "padding__form nowrap"} %>
+  <%= f.error :password, class: "error" %>
+
   <%= f.submit "CREATE ACCOUNT", :class => "input__form-reg button__form"  %>
   <div class="button-mandatory__form-reg">
     * fields are mandatory

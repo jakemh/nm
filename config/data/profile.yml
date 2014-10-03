@@ -8,6 +8,9 @@ user-side:
   - title: Followers
     path: user_connections_path
 
+  - title: Audience
+    path: user_audience_index_path
+
   - title: Business Directory
     path:
 

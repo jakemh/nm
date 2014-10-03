@@ -2,7 +2,6 @@
 
 .feed{
   width: 98%;
-
 }
 
 
@@ -82,7 +81,8 @@
   right: 15px;
 }
 .feed__content-title{
-  width: 150px;
+  // width: 150px;
+  margin-right: 15px;
   float: left;
   // background: green;
 }
@@ -149,9 +149,29 @@
   width: 100px;
 }
 
-.feed__entry-input--comment{
+// .feed__entry-input--comment{
+//   background: white !important;
+// }
+
+.feed__entry--comment .feed__entry-input{
   background: white !important;
 }
+
+.feed__entry--comment .thumb img, .feed__content--comment .thumb img{
+  height: 80px;
+  width: 80px;
+
+}
+
+.feed__content--comment .feed__content-corner{
+  display: none;
+}
+
+.feed__entry--comment .feed__entry-inner-title{
+  display: none;
+}
+
+
 .feed__entry-input{
   // display: inline-block;
     width: 100%;

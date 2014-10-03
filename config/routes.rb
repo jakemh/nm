@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  namespace :me do
+  get 'audience/index'
+  end
+
   get 'errors/routing'
 
   mount Judge::Engine => '/judge'
@@ -35,7 +39,8 @@ Rails.application.routes.draw do
     # resources :posts, :type => "UserPost"
     resources :posts, :controller => :user_posts
     resources :responses
-    resources :feed , :controller => :news_feed
+    resources :feed, :controller => :news_feed
+    resources :audience
     resources :connections 
     resources :friendships
     resources :ownerships 
