@@ -39,6 +39,14 @@ class ApplicationController < ActionController::Base
     redirect_to root_url, :alert => exception.message
   end
 
+  # rescue_from Exception do |exception|
+  #   if Rails.env.production?
+  #     redirect_to root_url, :alert => "SORRY! Something went wrong"
+  #   else
+  #     byebug
+  #   end
+  # end
+
   def render_404()
     redirect_to root_url, :alert => "Sorry! Page does not exist"
   end

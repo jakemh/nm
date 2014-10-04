@@ -1,13 +1,13 @@
   <div class="feed__content-title">
     <div>
-      <%= thumb(entity, class: "thumb"){|t| image_tag t} if entity %>
+      <%= thumb(connection_entity, class: "thumb"){|t| image_tag t} if connection_entity %>
     </div>
-    <div>
-      <%= follow_link(current_user, entity) %>
+    <div class="feed_content-follow">
+      <%= follow_link(current_entity, connection_entity) %>
     </div>
   </div>
   <div class="feed__content-top">
-    <%= "#{(entity.name) if entity} on #{created_at.in_time_zone("Eastern Time (US & Canada)").strftime('%b %e, %l:%M %p') }" %>
+    <%= "#{(connection_entity.name) if connection_entity} on #{created_at.in_time_zone("Eastern Time (US & Canada)").strftime('%b %e, %l:%M %p') }" %>
   </div>
   <div class="feed__content-body">
     <%= yield %>

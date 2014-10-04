@@ -1,6 +1,7 @@
 class Connection < ActiveRecord::Base
   belongs_to :user
   belongs_to :business
+  attr_accessor :is_inverse
 
   def thumb
     entity.thumb if entity
@@ -11,12 +12,28 @@ class Connection < ActiveRecord::Base
   end
 
   def entity_type
-    if ["BusinessConnection", "Ownership"].include? self.type
+    if ["BusinessConnection", "Ownership", "BusinessFriendship"].include? self.type
       Business
     else 
       User
     end
   end
+
+  def connected_to_entity_type
+    if ["BusinessConnection", "Ownership", "BusinessFriendship"].include? self.type
+      Business
+    else 
+      User
+    end
+  end
+
+  def connection_entity
+    if self.is_inverse
+      entity_type.find(self.user_id)
+    else
+      entity_type.find(self.connect_to_id)
+    end
+  end 
 
   def pending?
     !has_corresponding_inverse

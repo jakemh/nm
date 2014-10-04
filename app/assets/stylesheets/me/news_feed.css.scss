@@ -21,6 +21,11 @@
   margin-top: 20px;
 }
 
+.feed_content-follow{
+  margin-top: 2px;
+  text-align: center;
+}
+
 .feed__entry--comment{
   height: 110px;
   background: whitesmoke;
@@ -84,6 +89,8 @@
   // width: 150px;
   margin-right: 15px;
   float: left;
+  height: 100%;
+  clear: both;
   // background: green;
 }
 

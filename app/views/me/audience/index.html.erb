@@ -1,22 +1,42 @@
 <div class="aud">
-  <div class="aud__business">
+  <div class="feed__entry">
+    <div style="float:right">
+      <%= render partial: "me/shared/entity_select" %>
+    </div>
+    <%= render layout: "me/shared/feed_input", :locals => {
+        entity: @entity,
+        opt: {}
+      } do %>
+      <%= render partial: "me/audience/business" %>
+    <% end %>
   </div>
   <div class="aud__members">
     <% @interacted_with.each_slice(2) do |entities| %>
       <% entities.each_with_index do |e, i| %>
-        <%= content_tag :div, class: "aud__member " + (i.even? ? "aud__member--left" : "aud__member--right") do %>
+        <%= content_tag :div, class: "aud__member connect " + (i.even? ? "aud__member--left" : "aud__member--right") do %>
           <div class="feed__content feed__content--comment">
+            <%# begin %>
             <%= render layout: "me/shared/feed_entry", :locals => {
-                  entity: e.entity,
+                  current_entity: current_user,
+                  connection_entity: e.connection_entity,
                   created_at: e.created_at,
                   opt: {}
             } do %>
+
               <ul class="aud__list">
-                <li><%= e.entity.name %></li>
-                <li><%= e.entity.address %></li>
-                <li><%= e.entity.email %></li>
+                <li><%= e.connection_entity.address %></li>
+                <li><%= e.connection_entity.contact %></li>
+                <li><%= e.is_inverse ? "Follower" : "Following" %>
+                </li>
+                <li>
+                  <b><%= pluralize(e.connection_entity.followers.count, "follower") %>
+                  </b>
+                </li>
               </ul>
             <% end %>
+            <% #rescue %>
+              <% #byebug %>
+            <%# end %>
           </div>
         <% end %>
       <% end %>

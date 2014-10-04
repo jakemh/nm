@@ -1,25 +1,34 @@
+
 <div class="feed">
   <div class="feed__entry">
-    <%= render partial: "me/shared/feed_input", :locals => {
+    <%= render layout: "me/shared/feed_input", :locals => {
+      entity: @default_entity,
       opt: {}
-    } %>
+    } do %>
+      <%= render partial: "me/news_feed/form", locals: {opt: {}} %>
+    <% end %>
+
   </div>
   <!-- <div class="contents__feed"> -->
   <% @posts.each do |post| %>
     <div class="feed__content-outer">
       <div class="feed__content">
         <%= render layout: "me/shared/feed_entry", :locals => {
-          entity: post.entity,
+          current_entity: current_user,
+          connection_entity: post.entity,
           created_at: post.created_at,
           opt: {}
         } do %>
           <%= post.content %>
+      
         <% end %>
       </div>
-      <div class="feed__comment-outer">
+      <div class="feed__commen %>t-outer">
         <div class="feed__comment-content feed__comment-input">
           <div class="feed__entry feed__entry--comment">
             <%= render partial: "me/shared/feed_input", :locals => {
+              entity: @default_entity,
+
               opt: {
                 rows: 2, 
                 id: "js-post-form-response",
@@ -33,7 +42,8 @@
           <div class="feed__comment-content">
             <div class="feed__content feed__content--comment">
               <%= render layout: "me/shared/feed_entry", :locals => {
-                entity: response.entity,
+                current_entity: current_user,
+                connection_entity: response.entity,
                 created_at: post.created_at,
                 opt: {}
               } do %>

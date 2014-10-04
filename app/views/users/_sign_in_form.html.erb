@@ -1,0 +1,6 @@
+<%= simple_form_for(:user, :url => user_session_path,html: {class: "form__login"}
+        ) do |f| %>
+  <%= f.input :email, label: false, placeholder: "EMAIL" %>
+  <%= f.input :password, autocomplete: "off", label: false, placeholder: "PASSWORD" %>
+  <%= f.submit "Log in", :class=> "button__login" %>
+<% end %>

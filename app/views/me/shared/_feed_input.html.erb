@@ -1,23 +1,9 @@
   <div class="feed__entry-inner feed__entry-inner--left">
-    <%= thumb(current_user, class: "thumb"){|t| image_tag t} %>
+    <%= thumb(entity, class: "thumb"){|t| image_tag t} %>
   </div>
   <div class="feed__entry-inner feed__entry-inner--middle">
     <div class="feed__entry-inner-title js-form-name">
-      <%= current_user.name %>
+      <%= entity.name %>
     </div>
-    <%= form_for [current_user, @entity, @post].compact, :html => {
-      :id => (opt[:id] || "js-post-form")
-      } do |f| %>
-      <div class="feed__entry-inner-main">
-        <%= f.hidden_field :parent_id, :value => (opt[:parent_id] || nil ) %>
-        <%= f.hidden_field :type, :value => (opt[:type] || nil) %>
-        <%= f.text_area :content, :placeholder => "Enter a message", :rows => (opt[:rows] || 3), :class => "feed__entry-input" %>
-      </div>
-      <div class="feed__form-bottom">
-        <%= select_tag :type_array, options_for_select(@select), {:class => "feed__entry-select"}%>
-        <div class="feed__form-send">
-          <%= f.submit "Send", :class => "feed__button button__form ", :style => "margin-top: 0 !important" %>
-        </div>
-      </div>
-    <% end %>
+    <%= yield %>
   </div>

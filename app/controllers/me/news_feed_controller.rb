@@ -5,9 +5,9 @@ class Me::NewsFeedController < MeController
   def index
     post_attrs = [:content, :user_id, :business_id, :type, :created_at]
     # @posts = current_user.posts.select post_attrs
-    @posts = Post.includes(:responses).all.where(:type => nil)
+    @posts = Post.includes(:responses).all.where(type: [nil, ""])
     .sort_by{|p| p.created_at }.reverse
-
+    @default_entity = current_user
     # .select(post_attrs)
     @post = Post.new
     @select = [
