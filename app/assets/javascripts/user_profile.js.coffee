@@ -4,7 +4,6 @@
 ready = undefined
 ready = ->
   $(".js-top-search").on("click", ->
-    # alert "TEST"
     $(@).animate({width: "250px"})
 
     )

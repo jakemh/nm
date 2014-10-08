@@ -1,5 +1,6 @@
 <div class="aud">
-  <div class="feed__entry">
+      
+  <div class="feed__entry ">
     <div style="float:right">
       <%= render partial: "me/shared/entity_select" %>
     </div>
@@ -7,36 +8,49 @@
         entity: @entity,
         opt: {}
       } do %>
-      <%= render partial: "me/audience/business" %>
+      <% form_for :audience do |f| %>
+        <div class="js-aud__business">
+          <%= render partial: "me/audience/business" %>
+        </div>
+      <% end %>
     <% end %>
   </div>
   <div class="aud__members">
+    <div class="aud__members-select">
+      <%= label_tag :filter, "Filter by:", :class => "aud__entry-label" %>
+      <%= select_tag :audience_filter, options_for_select(audience_filter_options), :class => "aud__entry-select" %>
+
+      <%= label_tag :sort, "Sort by:", {:class => "aud__entry-label"} %>
+      <%= select_tag :audience_sort, options_for_select(audience_sort_options), {:class => "aud__entry-select"} %>
+    </div>
+         <script type="text/x-handlebars" data-template-name="audience">
+            TEST: {{testing}}   
+      </script> 
     <% @interacted_with.each_slice(2) do |entities| %>
       <% entities.each_with_index do |e, i| %>
-        <%= content_tag :div, class: "aud__member connect " + (i.even? ? "aud__member--left" : "aud__member--right") do %>
+        <%= content_tag :div, class: "aud__member connect " + aud_member_class_type(i) do %>
           <div class="feed__content feed__content--comment">
-            <%# begin %>
             <%= render layout: "me/shared/feed_entry", :locals => {
                   current_entity: current_user,
                   connection_entity: e.connection_entity,
                   created_at: e.created_at,
                   opt: {}
             } do %>
-
+            
               <ul class="aud__list">
                 <li><%= e.connection_entity.address %></li>
                 <li><%= e.connection_entity.contact %></li>
-                <li><%= e.is_inverse ? "Follower" : "Following" %>
+                <li><%= follower_type(e.is_inverse) %>
                 </li>
                 <li>
-                  <b><%= pluralize(e.connection_entity.followers.count, "follower") %>
+                  <b><%= follower_count(e.connection_entity) %>
                   </b>
+                </li>
+                <li>
+                   
                 </li>
               </ul>
             <% end %>
-            <% #rescue %>
-              <% #byebug %>
-            <%# end %>
           </div>
         <% end %>
       <% end %>

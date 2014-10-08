@@ -7,7 +7,7 @@
     </div>
   </div>
   <div class="feed__content-top">
-    <%= "#{(connection_entity.name) if connection_entity} on #{created_at.in_time_zone("Eastern Time (US & Canada)").strftime('%b %e, %l:%M %p') }" %>
+    <%= "#{(connection_entity.name) if connection_entity} on #{formatted_date(created_at) }" %>
   </div>
   <div class="feed__content-body">
     <%= yield %>

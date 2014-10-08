@@ -1,12 +1,25 @@
 Rails.application.routes.draw do
+  namespace :me do
+  get 'ember/index'
+  end
 
+  class FormatTest
+    attr_accessor :mime_type
+
+    def initialize(format)
+      @mime_type = Mime::Type.lookup_by_extension(format)
+    end
+
+    def matches?(request)
+      request.format == mime_type
+    end
+  end
   namespace :me do
   get 'audience/index'
   end
 
   get 'errors/routing'
 
-  mount Judge::Engine => '/judge'
   resource :business
   resources :emails
   # devise_for :users, :controllers => {registrations: 'landing'}
@@ -40,6 +53,11 @@ Rails.application.routes.draw do
     resources :posts, :controller => :user_posts
     resources :responses
     resources :feed, :controller => :news_feed
+    # resources :feed, :controller => :news_feed, :constraints => FormatTest.new(:json)
+    # resources :feed, :to => "ember#index", :constraints => FormatTest.new(:html)
+
+    # resources :audience, :constraints => FormatTest.new(:json)
+    # resources :audience, :to => "ember#index", :constraints => FormatTest.new(:html)
     resources :audience
     resources :connections 
     resources :friendships
@@ -53,12 +71,11 @@ Rails.application.routes.draw do
     end
   end
 
-  
- 
-
   if Rails.env.production?
     match '*a', :to => 'errors#routing', via: :get
   end
+
+  
 end
   # root :to => "landing#index"
   # post 'landing/index', :to => "landing#create"

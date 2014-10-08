@@ -2,8 +2,6 @@ module Me::NewsFeedHelper
   # DEFAULT_PHOTO = 
   def follow_link(user, entity)
     if entity != user && entity
-      puts "ENTITY: ", entity.inspect
-      puts "USER: ", user.inspect
 
       connection = user.connection_with(entity)
       p "CONNECTION: ", connection.inspect

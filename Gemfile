@@ -38,6 +38,10 @@ gem 'aws-sdk'
 gem 'jquery-fileupload-rails'
 gem 'ahoy_matey'
 gem 'activeuuid', '>= 0.5.0'
+gem 'paloma'
+gem 'ember-rails'
+gem 'ember-source'
+gem 'exception_notification'
 
 group :production do
   gem 'puma'

@@ -1,0 +1,13 @@
+<%= content_for :app do %>
+  <%= render :layout => 'layouts/profile_content', 
+        :locals => {:side => "user-side", :right_bar => true} do %>
+    <%= yield %>
+    <div id="nm-root">
+      <script type="text/x-handlebars" data-template-name="application">
+        {{outlet}}
+      </script>
+    </div>
+  <% end %>
+  <!-- /#wrapper -->
+<% end %>
+<%= render :template => 'layouts/application' %>

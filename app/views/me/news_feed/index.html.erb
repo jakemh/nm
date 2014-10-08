@@ -26,16 +26,20 @@
       <div class="feed__commen %>t-outer">
         <div class="feed__comment-content feed__comment-input">
           <div class="feed__entry feed__entry--comment">
-            <%= render partial: "me/shared/feed_input", :locals => {
+            <%= render layout: "me/shared/feed_input", :locals => {
               entity: @default_entity,
 
-              opt: {
-                rows: 2, 
-                id: "js-post-form-response",
-                type: "Response",
-                parent_id: post.id
+              opt: {}
+            } do %>
+              <%= render partial: "me/news_feed/form", locals: {
+                opt: {
+                  rows: 2, 
+                  id: "js-post-form-response",
+                  type: "Response",
+                  parent_id: post.id
               }
             } %>
+            <% end %>
           </div>
         </div>
         <% post.responses.each do |response| %>

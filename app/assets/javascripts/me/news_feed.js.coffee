@@ -28,8 +28,8 @@ ready = ->
     e.preventDefault()
     commentElement = $(@).closest(".feed__content-outer").find(".feed__comment-input")
     commentElement.slideDown()
-
     )
+  
 $(document).ready ready
 $(document).on "page:load", ready
 

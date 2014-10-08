@@ -31,15 +31,12 @@ class Business < ActiveRecord::Base
   accepts_nested_attributes_for :tags, :photos
   def connection_with(entity)
     if entity.class.name == "Business"
-      self.connections.where(:type => ["UserConnection"])
+      self.connections.where(:type => [INTRA_CONNECTION])
     elsif entity.class.name == "User"
-      self.connections.where(:type => ["BusinessFriendship"])
+      self.connections.where(:type => [INTER_CONNECTION])
     end
   end
 
-  def self.same_to_same_connection
-    "BusinessFriendship"
-  end
 
   def self.industries
     ["Accounting", "Advertising & Marketing", "Arts", "Banking", "Biotech & Pharmaceuticals", "Business/Personal Coaching", "Economy", "Education", "Energy & Utilities", "Entrepreneur", "Fashion", "Finance", "Health Care", "Health & Wellness", "Hospitality & Tourism", "Human Resources", "International", "Law", "Manufacturing", "Management", "Marketing", "Media & Entertainment", "Nonprofits", "Politics", "Publishing", "Professional Services", "Real Estate", "Restaurants", "Retail & Apparel", "Small Business", "Social Media", "Sports & Fitness", "Startups", "Technology - All areas", "Telecommunications", "Transportation", "Wall Street"]
