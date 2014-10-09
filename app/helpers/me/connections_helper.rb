@@ -10,4 +10,8 @@ module Me::ConnectionsHelper
   def aud_member_class_type(index)
     (index.even? ? "aud__member--left" : "aud__member--right")
   end
+
+  def connection_link(connection)
+    connection.kind_of?(Business) ? business_path(connection) : user_prof_path(connection)
+  end
 end

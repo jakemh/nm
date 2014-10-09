@@ -1,7 +1,6 @@
+
 Rails.application.routes.draw do
-  namespace :me do
-  get 'ember/index'
-  end
+
 
   class FormatTest
     attr_accessor :mime_type
@@ -14,13 +13,9 @@ Rails.application.routes.draw do
       request.format == mime_type
     end
   end
-  namespace :me do
-  get 'audience/index'
-  end
-
-  get 'errors/routing'
-
-  resource :business
+ 
+  resources :businesses
+  resources :users, :as => "user_prof"
   resources :emails
   # devise_for :users, :controllers => {registrations: 'landing'}
   devise_for :users, :controllers => {registrations: 'registration', sessions: 'sessions'}
@@ -35,7 +30,7 @@ Rails.application.routes.draw do
   
 
   resource :admin,:controller => :admin, :module => :admin do 
-    resources :users, :only => [:index, :show, :destroy]
+    resources :users, :onlyf => [:index, :show, :destroy]
     resources :businesses,  :only => [:index, :show, :destroy]
     resources :emails, :only => [:index, :show, :destroy]
   end
@@ -47,7 +42,7 @@ Rails.application.routes.draw do
   end
 
   # resources :users
-  resource :me, :controller => :users, :module => :me, :as => :user do
+  resource :me, :controller => :users, :module => :me, :as => :user, :except => [:show] do
     resources :photos, :controller => :user_photos
     # resources :posts, :type => "UserPost"
     resources :posts, :controller => :user_posts

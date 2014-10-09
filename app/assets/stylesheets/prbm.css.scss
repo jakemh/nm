@@ -11,7 +11,7 @@ body{
 .outer__profile{
     overflow: auto;
     height: 100%;
-    width: 1200px;
+    width: 1350px;
     // margin-top: $top-bar-height ;
 }
 
@@ -56,9 +56,10 @@ body{
 .container__profile--right{
     // border: 1px dashed black;
     border-radius: 5px;
-    width: 200px;
-    background: white;
-
+    width: 350px;
+    // background: white;
+    overflow-x: hidden;
+    overflow-y: scroll;
 }
 
 .sidebar{

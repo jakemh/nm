@@ -36,8 +36,8 @@ $(document).on "page:load", ->
 
 
 # for more details see: http://emberjs.com/guides/application/
-window.NextMission = Ember.Application.create(
-  rootElement: '#nm-root'
-  LOG_TRANSITIONS: true
-  )
+# window.NextMission = Ember.Application.create(
+#   rootElement: '#nm-root'
+#   LOG_TRANSITIONS: true
+#   )
 

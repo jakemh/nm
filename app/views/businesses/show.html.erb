@@ -1,0 +1,18 @@
+<div class="bus-prof">
+  <div class="bus-prof__cover-photo"> 
+    cover photo
+    <div class="bus-prof__follow">
+      <%= follow_button(current_user, @entity, :class =>  "button__form button__login", :style => "width: auto !important") %>
+    </div>
+  </div>
+
+  <div class="bus-prof__info"> 
+    <%= @entity.description %>
+  </div>
+  <% if !@posts.empty? %>
+    <%= render :partial => "me/posts/list" %>
+  <% else %>
+    This guy doesn't have any posts yet!
+  <% end %>
+
+</div>

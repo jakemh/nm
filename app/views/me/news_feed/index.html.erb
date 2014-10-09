@@ -10,54 +10,6 @@
 
   </div>
   <!-- <div class="contents__feed"> -->
-  <% @posts.each do |post| %>
-    <div class="feed__content-outer">
-      <div class="feed__content">
-        <%= render layout: "me/shared/feed_entry", :locals => {
-          current_entity: current_user,
-          connection_entity: post.entity,
-          created_at: post.created_at,
-          opt: {}
-        } do %>
-          <%= post.content %>
-      
-        <% end %>
-      </div>
-      <div class="feed__commen %>t-outer">
-        <div class="feed__comment-content feed__comment-input">
-          <div class="feed__entry feed__entry--comment">
-            <%= render layout: "me/shared/feed_input", :locals => {
-              entity: @default_entity,
-
-              opt: {}
-            } do %>
-              <%= render partial: "me/news_feed/form", locals: {
-                opt: {
-                  rows: 2, 
-                  id: "js-post-form-response",
-                  type: "Response",
-                  parent_id: post.id
-              }
-            } %>
-            <% end %>
-          </div>
-        </div>
-        <% post.responses.each do |response| %>
-          <div class="feed__comment-content">
-            <div class="feed__content feed__content--comment">
-              <%= render layout: "me/shared/feed_entry", :locals => {
-                current_entity: current_user,
-                connection_entity: response.entity,
-                created_at: post.created_at,
-                opt: {}
-              } do %>
-                <%= response.content %>
-              <% end %>
-            </div>
-          </div>
-        <% end %>
-      </div>
-    </div>
-  <% end %>
+  <%= render :partial => "me/posts/list" %>
 </div>
 <!-- </div> -->

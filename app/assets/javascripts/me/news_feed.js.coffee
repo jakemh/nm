@@ -23,7 +23,7 @@ ready = ->
     # alert $(".feed__entry-inner--left img").attr("src")
     $(".feed__entry-inner--left img").attr("src",img)
     $(".js-form-name").html(name)
-
+    
   $(".js-feed-comment").on("click", (e) ->
     e.preventDefault()
     commentElement = $(@).closest(".feed__content-outer").find(".feed__comment-input")

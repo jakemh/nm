@@ -7,7 +7,7 @@
     </div>
   </div>
   <div class="feed__content-top">
-    <%= "#{(connection_entity.name) if connection_entity} on #{formatted_date(created_at) }" %>
+    <%= "#{(link_to(connection_entity.name, connection_link(connection_entity))) if connection_entity} on #{formatted_date(created_at) }".html_safe %>
   </div>
   <div class="feed__content-body">
     <%= yield %>

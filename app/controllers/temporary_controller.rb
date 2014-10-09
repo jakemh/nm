@@ -3,7 +3,9 @@ class TemporaryController < ApplicationController
   def index
     @email = Email.new
     if current_user
-      redirect_to user_feed_index_path
+      if Rails.env.production?
+        redirect_to user_feed_index_path
+      end
     end
   end
 
