@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  layout "external_profile"  
+  layout "external_profile_user"  
   include FeedConcern
 
   def index

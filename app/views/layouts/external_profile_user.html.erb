@@ -1,0 +1,14 @@
+
+<%= content_for :app do %>
+  <%= content_for :right_bar do %>
+    <%= render 'profile/right_bar_user' %>
+  <% end %>
+
+    <%= render :layout => 'layouts/profile_content', 
+        :locals => {:side => "user-side", :right_bar => true} do %>
+      <%= yield %>
+    <% end %>
+    <!-- /#wrapper -->
+  <% end %>
+
+  <%= render :template => 'layouts/application' %>

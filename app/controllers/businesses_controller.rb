@@ -1,7 +1,7 @@
 class BusinessesController < ApplicationController
   include FeedConcern
 
-  layout "external_profile"
+  layout "external_profile_business"
   def index
   end
 
