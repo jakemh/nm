@@ -2,7 +2,7 @@ class Me::UsersController < MeController
   layout "profile"
   
   def index
-    redirect_to user_feed
+    redirect_to user_feed_index_path
   end
 
   def show

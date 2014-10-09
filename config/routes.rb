@@ -13,21 +13,20 @@ Rails.application.routes.draw do
       request.format == mime_type
     end
   end
+ devise_for :users, :controllers => {registrations: 'registration', sessions: 'sessions'}
+
+ devise_scope :user do
+   
+   get '/alpha', :to => "landing#index"
+   post 'landing/index', :to => "landing#add_email"
+   get 'registration/selection', :to => "registration#selection", :as => :selection
  
   resources :businesses
   resources :users, :as => "user_prof"
   resources :emails
   # devise_for :users, :controllers => {registrations: 'landing'}
-  devise_for :users, :controllers => {registrations: 'registration', sessions: 'sessions'}
 
   root to: 'temporary#index'
-
-  devise_scope :user do
-    
-    get '/alpha', :to => "landing#index"
-    post 'landing/index', :to => "landing#add_email"
-    get 'registration/selection', :to => "registration#selection", :as => :selection
-  
 
   resource :admin,:controller => :admin, :module => :admin do 
     resources :users, :onlyf => [:index, :show, :destroy]
@@ -35,7 +34,10 @@ Rails.application.routes.draw do
     resources :emails, :only => [:index, :show, :destroy]
   end
   # get 'me', :to => "user_profile#index", :as => :user_profile
+  get '/me', :to => 'me/users#index'
+
   namespace :me do
+
     resources :posts
     resources :business_connections
     resources :connections
