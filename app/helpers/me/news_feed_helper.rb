@@ -28,7 +28,7 @@ module Me::NewsFeedHelper
       elsif connection.first.type == "Ownership"
         "My Business"
       else
-        button_to "Remove", [:user, connection.first], {method: :delete}.merge(opt)
+        button_to "Remove", [:me, connection.first], {method: :delete}.merge(opt)
       end
     end
   end

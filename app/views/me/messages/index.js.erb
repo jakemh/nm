@@ -1,0 +1,2 @@
+$(".js-messages").empty()
+$("<%= escape_javascript(render partial: 'me/messages/msg_main' ) %>").appendTo(".js-messages")

@@ -1,16 +1,40 @@
 ready = undefined
 ready = ->
+
+  $(".msg__entity-select").select2()
   $(".js-msg__button").on("click", (e) ->
     e.preventDefault()
     $("#js-msg__modal").modal()
 
     )
 
+
   $('.feed__content').linkify({}, ->
     );
   $(".feed__entry-select").select2();
+
+  $(".msg__entity-select").change ->
+    value = JSON.parse($(@).val())
+    objType = value[0]
+    idVal = value[1]
+    data = null
+    if objType == "Business"
+      data = {business_id: idVal}
+    else if objType == "User"
+      data = {user_id: idVal}
+
+    $.ajax(
+      type: "get"
+      async: true
+      data: jQuery.param(data)
+      dataType: "script"
+      beforeSend: (xhr) ->
+        xhr.setRequestHeader "X-CSRF-Token", $("meta[name=\"csrf-token\"]").attr("content")
+    ).fail((error) ->
+    ).success ->
+    
+
   $(".feed__entry-select").change ->
-    alert $(@).val()
     value = JSON.parse($(@).val())
     idVal = value[1]
     img = value[2]
