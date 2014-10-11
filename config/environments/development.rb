@@ -3,7 +3,7 @@ Hirb.enable({:width => 120, :height => 500})
 
 Rails.application.configure do
 
-  config.ember.variant = :development
+  # config.ember.variant = :development
   #config.ember.variant = :development
   # Settings specified here will take precedence over those in config/application.rb.
 
