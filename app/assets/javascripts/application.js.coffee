@@ -20,6 +20,8 @@
 #= require handlebars
 
 #= require_self
+#= require paloma
+
 #= require messages
 #= require user_profile
 #= require me/photos
@@ -27,7 +29,6 @@
 #= require me/businesses
 #= require me/audience
 
-#= require paloma
 
 $(document).on "page:load", ->
   Paloma.executeHook()
