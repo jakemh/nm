@@ -1,4 +1,4 @@
-<%= form_for [current_user, @entity, @post].compact, :html => {
+<%= form_for [:me, @post], :html => {
       :id => (opt[:id] || "js-post-form")
       } do |f| %>
       <div class="feed__entry-inner-main">
@@ -7,10 +7,10 @@
         <%= f.text_area :content, :placeholder => "Enter a message", :rows => (opt[:rows] || 3), :class => "feed__entry-input" %>
       </div>
       <div class="feed__form-bottom">
-              <%= render "me/shared/entity_select" %>
-              <div class="feed__form-send">
-                <%= f.submit "Send", :class => "feed__button button__form ", :style => "margin-top: 0 !important" %>
-              </div>
-            </div>
-     
+        <%= render "me/shared/entity_select" %>
+        <div class="feed__form-send">
+          <%= f.submit "Send", :class => "feed__button button__form ", :style => "margin-top: 0 !important" %>
+        </div>
+      </div>
+
     <% end %>

@@ -1,24 +1,19 @@
 user-side:
   - title: News Feed
-    path: user_feed_index_path
+    path: me_feed_index_path
 
   - title: Message Center
-    path: 
+    path: me_messages_path
 
   - title: Followers
-    path: user_connections_path
+    path: me_connections_path
 
   - title: Audience
-    path: user_audience_index_path
+    path: me_audience_index_path
 
   - title: Business Directory
-    path:
+    path: businesses_path
 
-  - title: Learning Center
-    path:
-
-  - title: Buy From Vets
-    path:
 
 
 admin-side:

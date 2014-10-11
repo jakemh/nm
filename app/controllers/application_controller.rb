@@ -36,7 +36,9 @@ class ApplicationController < ActionController::Base
   end
 
   rescue_from ActionController::RoutingError do |exception|
-    redirect_to root_url, :alert => exception.message
+    if Rails.env.production?
+      redirect_to root_url, :alert => exception.message
+    end
   end
 
   # rescue_from Exception do |exception|
@@ -48,7 +50,9 @@ class ApplicationController < ActionController::Base
   # end
 
   def render_404()
-    redirect_to root_url, :alert => "Sorry! Page does not exist"
+    if Rails.env.production?
+      redirect_to root_url, :alert => "Sorry! Page does not exist"
+    end
   end
 
   # def after_sign_in_path_for(resource)

@@ -12,6 +12,6 @@ module Me::ConnectionsHelper
   end
 
   def connection_link(connection)
-    connection.kind_of?(Business) ? business_path(connection) : user_prof_path(connection)
+    # connection.kind_of?(Business) ? business_path(connection) : user_prof_path(connection)
   end
 end

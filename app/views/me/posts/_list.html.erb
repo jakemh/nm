@@ -1,4 +1,4 @@
-<% @posts.each do |post| %>
+<% posts.each do |post| %>
   <div class="feed__content-outer">
     <div class="feed__content">
       <%= render layout: "me/shared/feed_entry", :locals => {
@@ -21,7 +21,7 @@
             <%= render partial: "me/news_feed/form", locals: {
                 opt: {
                   rows: 2, 
-                  id: "js-post-form-response",
+                  id: opt[:response_id] || "js-post-form-response",
                   type: "Response",
                   parent_id: post.id
               }

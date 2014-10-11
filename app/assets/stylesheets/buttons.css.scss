@@ -1,0 +1,29 @@
+@import "nm_root";
+
+.button{
+
+}
+
+.button__btn{
+  border: none;
+  outline: none;
+  display: relative;
+  // width: 60%;
+  display: block;
+  font-family: 'helvetica', sans-serif !important;
+  font-weight: 100;
+  color: white !important;
+  text-align: center;
+  margin: 10px auto !important;
+  letter-spacing: .1em;
+  padding: 7px !important;
+}
+
+.button__btn--orange{
+  background: $orange-color;
+
+}
+
+.button__btn--gray{
+  background: $gray-color;
+}

@@ -14,7 +14,8 @@ class Me::PostsController < MeController
   def create
     @user = current_user
     @entity = entity
-    @post = default_entity.posts.build whitelist
+    # @post = default_entity.posts.build whitelist
+    @post = entity.posts.build whitelist
 
     if @post.save
       redirect_to :back
@@ -36,13 +37,18 @@ class Me::PostsController < MeController
   end
   #override
   protected
-  def default_entity
+  # def default_entity
 
-    entity || current_user
-  end
+  #   entity || current_user
+  # end
 
   def entity
-    nil
+    type = type_array[0]
+    id = type_array[1]
+    if type == "Business"
+      return current_user.businesses.find(id)
+    else return current_user
+    end
   end
 
   private

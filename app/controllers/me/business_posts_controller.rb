@@ -10,6 +10,7 @@ class Me::BusinessPostsController < Me::PostsController
   private
   def entity
     id = type_array[1]
+    p "****"
     current_user.businesses.find(id)
 
   end

@@ -4,7 +4,8 @@ class Business < ActiveRecord::Base
 
   include Profile
   include Interaction
-
+  include Messaging
+  # has_many :received_messages, -> { where(:to_entity => "Business") }, class_name: "Message", foreign_key: :to_id
   has_many :ownerships, foreign_key: :connect_to_id
   has_many :business_friendships
   has_many :business_connections
@@ -25,10 +26,10 @@ class Business < ActiveRecord::Base
   # validates :address, :presence => true
   # validates :city, :presence => true
   # validates :state, :presence => true
-  # validates :industry, :presence => true
-
+  # validates :industry, :presence => trues
 
   accepts_nested_attributes_for :tags, :photos
+  
   def connection_with(entity)
     if entity.class.name == "Business"
       self.connections.where(:type => [INTRA_CONNECTION])

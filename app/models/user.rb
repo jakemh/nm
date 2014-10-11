@@ -6,20 +6,25 @@ class User < ActiveRecord::Base
 
 
   include Profile
+
+  include Messaging
+
   include Interaction 
-
-
+  # has_many :received_messages, -> { where(:to_entity => "User") }, class_name: "Message", foreign_key: :to_id
   has_many :intra_connections, class_name: INTRA_CONNECTION 
   has_many :inter_connections, class_name: INTER_CONNECTION
   has_many :inverse_intra_connections, class_name: INTRA_CONNECTION, foreign_key: :connect_to_id
   has_many :inverse_inter_connections, class_name: INTER_CONNECTION, foreign_key: :connect_to_id
-  
+  # has_many :received_messages, -> { where(:to_entity => "User") }, class_name: "Message", foreign_key: :to_id
+  # has_many :message_recipients
+  # has_many :received_messages, class_name: "Message", foreign_key: 
   has_many :assignments
   has_many :roles, :through => :assignments
   has_many :ownerships, dependent: :destroy
   has_many :businesses, :through => :ownerships, :source => :connect_to
   has_many :friendships
   has_many :business_connections
+  # scope :business_associations, -> { where(published: true) }
   has_many :friends, :through => :friendships, :source => :connect_to
   # has_many :businesses, :through => :business_connections, :source => :connect_to
   # has_many :inverse_connections, :class_name => "Connection", :foreign_key => "connect_to_id", conditions:
@@ -42,6 +47,10 @@ class User < ActiveRecord::Base
   validates :last_name, :presence => true, :on => :create
   validates :first_name, :presence => true, :on => :create
   validates :zip, :presence => true, :on => :create
+
+  def business_associations
+    self.connections.where(:type => ["BusinessConnection", "Ownership"])
+  end
 
   def is_veteran_accepted?
     self.errors[:is_veteran].length == 0

@@ -11,7 +11,7 @@ module Me::NewsFeedHelper
       elsif connection.first.type == "Ownership"
         "My Business"
       else
-        link_to "Remove", [:user, connection.first], method: :delete
+        link_to "Remove", [:me, connection.first], method: :delete
       end
     end
   end

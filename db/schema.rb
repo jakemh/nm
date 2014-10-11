@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141004001640) do
+ActiveRecord::Schema.define(version: 20141011200132) do
 
   create_table "ahoy_events", force: true do |t|
     t.uuid     "visit_id"
@@ -78,6 +78,32 @@ ActiveRecord::Schema.define(version: 20141004001640) do
     t.boolean  "pending"
   end
 
+  create_table "message_polies", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "business_id"
+    t.text     "subject"
+    t.text     "content"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "message_recipients", force: true do |t|
+    t.integer  "message_id"
+    t.integer  "user_id"
+    t.integer  "business_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "messages", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "business_id"
+    t.text     "subject"
+    t.text     "content"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "ownerships", force: true do |t|
     t.integer  "user_id"
     t.integer  "business_id"
@@ -105,6 +131,7 @@ ActiveRecord::Schema.define(version: 20141004001640) do
     t.datetime "updated_at"
     t.string   "type"
     t.integer  "parent_id"
+    t.text     "subject"
   end
 
   create_table "roles", force: true do |t|

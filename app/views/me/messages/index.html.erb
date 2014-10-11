@@ -1,0 +1,24 @@
+<h4>Received Messages</h4>
+<div class="feed">
+
+  <!-- <div class="contents__feed"> -->
+  <%= render :partial => "me/posts/list",  locals: {
+        posts: @received_messages,
+        opt: 
+        {response_id: "js-msg-response-comment",
+        }
+      } %>
+</div>
+
+<h4>Sent Messages</h4>
+<div class="feed">
+
+  <!-- <div class="contents__feed"> -->
+  <%= render :partial => "me/posts/list",  locals: {
+        posts: @sent_messages,
+        opt: 
+        {response_id: "js-msg-response-comment",
+        }
+      } %>
+</div>
+<!-- </div> -->

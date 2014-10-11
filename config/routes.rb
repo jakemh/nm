@@ -1,6 +1,19 @@
 
 Rails.application.routes.draw do
 
+  get 'messages/index'
+
+  get 'messages/show'
+
+  get 'messages/new'
+
+  get 'messages/create'
+
+  get 'messages/edit'
+
+  get 'messages/update'
+
+  get 'messages/destroy'
 
   class FormatTest
     attr_accessor :mime_type
@@ -16,20 +29,25 @@ Rails.application.routes.draw do
  devise_for :users, :controllers => {registrations: 'registration', sessions: 'sessions'}
 
  devise_scope :user do
-   
+  
    get '/alpha', :to => "landing#index"
    post 'landing/index', :to => "landing#add_email"
    get 'registration/selection', :to => "registration#selection", :as => :selection
  
-  resources :businesses
-  resources :users, :as => "user_prof"
+  resources :businesses do
+    resources :messages, :controller => :business_messages
+  end
+
+  resources :users do
+    resources :messages, :controller => :user_messages
+  end
   resources :emails
   # devise_for :users, :controllers => {registrations: 'landing'}
 
   root to: 'temporary#index'
 
   resource :admin,:controller => :admin, :module => :admin do 
-    resources :users, :onlyf => [:index, :show, :destroy]
+    resources :users, :only => [:index, :show, :destroy]
     resources :businesses,  :only => [:index, :show, :destroy]
     resources :emails, :only => [:index, :show, :destroy]
   end
@@ -44,8 +62,12 @@ Rails.application.routes.draw do
   end
 
   # resources :users
-  resource :me, :controller => :users, :module => :me, :as => :user, :except => [:show] do
+  resource :me, :controller => :users, :module => :me do
+    # resources :messages, :controller => :messages
+
     resources :photos, :controller => :user_photos
+    resources :messages, only: [:index, :create]
+
     # resources :posts, :type => "UserPost"
     resources :posts, :controller => :user_posts
     resources :responses
@@ -64,6 +86,8 @@ Rails.application.routes.draw do
     resources :businesses do
       # resources :business_posts
       resources :posts, :controller => :business_posts
+      # resources :messages
+
       resources :photos, :controller => :business_photos
     end
   end

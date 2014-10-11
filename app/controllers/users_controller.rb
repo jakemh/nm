@@ -7,6 +7,7 @@ class UsersController < ApplicationController
   end
 
   def show
+    @message = Message.new
     @post = Post.new
     #refactor this name
     @select = select_array

@@ -9,6 +9,8 @@
 #= require ahoy
 #= require landing
 #= require underscore
+#= require gmaps/google
+
 #= require json2
 #= require judge
 #= require registration
@@ -16,11 +18,9 @@
 #= require jquery-fileupload
 
 #= require handlebars
-#= require ember
-#= require ember-data
-#= require_self
-#= require next_mission
 
+#= require_self
+#= require messages
 #= require user_profile
 #= require me/photos
 #= require me/news_feed
