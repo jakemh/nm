@@ -36,6 +36,10 @@ Rails.application.routes.draw do
     resources :users, :only => [:index, :show, :destroy]
     resources :businesses,  :only => [:index, :show, :destroy]
     resources :emails, :only => [:index, :show, :destroy]
+    resources :posts, :only => [:index, :show, :destroy]
+    resources :responses, :only => [:index, :show, :destroy], :controller => :posts
+    resources :messages, :only => [:index, :show, :destroy], :controller => :posts
+
   end
   # get 'me', :to => "user_profile#index", :as => :user_profile
   get '/me', :to => 'me/users#index'

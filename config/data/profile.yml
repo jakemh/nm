@@ -25,3 +25,7 @@ admin-side:
 
   - title: Businesses
     path: admin_businesses_path
+
+  - title: Posts
+    path: admin_posts_path
+
