@@ -8,13 +8,6 @@ module FeedConcern
     before_filter :build_select_array
   end
 
-  # def build_sorted_messages(messages)
-  #   post_attrs = [:content, :user_id, :business_id, :type, :created_at]
-  #   # @posts = current_user.posts.select post_attrs
-  #   @sorted_parent_posts = messages.includes(:responses).all.where(parent_id: nil)
-  #   .sort_by{|p| p.created_at }.reverse
-  # end
-
   def build_sorted_posts(posts)
     post_attrs = [:content, :user_id, :business_id, :type, :created_at]
     # @posts = current_user.posts.select post_attrs
