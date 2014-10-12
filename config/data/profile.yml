@@ -1,18 +1,23 @@
 user-side:
   - title: News Feed
     path: me_feed_index_path
+    badge: me_feed_badge
 
   - title: Message Center
     path: me_messages_path
+    badge: me_message_badge
 
   - title: Followers
     path: me_connections_path
+    badge: me_connections_badge
 
   - title: Audience
     path: me_audience_index_path
+    badge: me_audience_badge
 
   - title: Business Directory
     path: businesses_path
+    badge: business_badge
 
 
 

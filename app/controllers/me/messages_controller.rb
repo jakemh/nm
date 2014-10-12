@@ -3,6 +3,7 @@ class Me::MessagesController < Me::PostsController
   layout "profile"
 
   def index
+    current_user.message_recipients.mark_as_read! :all, :for => current_user
     @business_entity = current_user.businesses.find(params[:business_id]) if params[:business_id]
     @default_entity = @business_entity || current_user
     @received_messages = build_sorted_posts(@default_entity.received_messages)

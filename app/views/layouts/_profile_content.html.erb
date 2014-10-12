@@ -11,7 +11,10 @@
         <% PROFILE[side].each do |bar| %>
           <%= content_tag "li", 
           :class => active_class(send_or_nil(bar["path"], current_user)) do %>
-            <%= link_to bar["title"], send_or_nil(bar["path"]) %>
+            <%= link_to send_or_nil(bar["path"]) do %>  
+            <%= bar["title"] %>
+            <%= show_badge(quant_from_method(bar["badge"].intern)) %>
+            <% end %>
           <% end %>
         <% end %>
       </ul>

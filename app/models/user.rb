@@ -4,7 +4,8 @@ class User < ActiveRecord::Base
   INTRA_CONNECTION = "Friendship"
   INTER_CONNECTION = "BusinessConnection"
 
-
+  acts_as_reader
+  
   include Profile
 
   include Messaging

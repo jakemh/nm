@@ -44,6 +44,7 @@ gem 'faye'
 # gem 'ember-source'
 gem 'exception_notification'
 gem 'gmaps4rails'
+gem 'unread'
 
 group :production do
   gem 'puma'
