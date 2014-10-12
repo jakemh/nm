@@ -8,7 +8,7 @@ module ProfileHelper
   end
 
   def quant_from_hash(key)
-    badges[key]
+    badges[key.intern]
   end
 
   def quant_from_method(method)
