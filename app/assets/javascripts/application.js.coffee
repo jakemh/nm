@@ -17,7 +17,6 @@
 #= require select2
 #= require jquery-fileupload
 
-#= require handlebars
 
 #= require_self
 #= require paloma
