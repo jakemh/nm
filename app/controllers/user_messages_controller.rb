@@ -2,10 +2,11 @@ class UserMessagesController < MessagesController
 
   def create
     super
-    puts "TEST**:", @to
     user = User.find(params[:user_id])
-  
-    # user.send_message_to([@to], )
+     m = @from.send_message_to([user], whitelist)
+     if m.save
+       redirect_to [:me, :messages]
+     end
   end
 
 end
