@@ -19,7 +19,6 @@
     <% end %>
   </div>
 </div>
-
 <!-- Modal -->
 <div class="modal fade" id="js-msg__modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog">
@@ -30,11 +29,11 @@
       </div>
       <div class="modal-body">
         <div class="feed__entry-inner feed__entry-inner--left">
-          <%= thumb(@default_entity, class: "thumb"){|t| image_tag t} %>
+          <%= thumb(@current_user, class: "thumb"){|t| image_tag t} %>
         </div>
         <div class="feed__entry-inner feed__entry-inner--middle">
           <div class="feed__entry-inner-title js-form-name">
-            <%= @default_entity.name %>
+            <%= @current_user.name %>
           </div>
           <%= form_for [@default_entity, Message.new], :html => {
                        

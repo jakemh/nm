@@ -1,20 +1,6 @@
 
 Rails.application.routes.draw do
 
-  get 'messages/index'
-
-  get 'messages/show'
-
-  get 'messages/new'
-
-  get 'messages/create'
-
-  get 'messages/edit'
-
-  get 'messages/update'
-
-  get 'messages/destroy'
-
   class FormatTest
     attr_accessor :mime_type
 

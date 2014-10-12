@@ -14,7 +14,7 @@ class UsersController < ApplicationController
     user = User.find(params[:id])
     # @entity = user
     @default_entity = user
-    @posts = build_sorted_posts(user.posts)
+    @posts = build_sorted_posts(user.posts.where(type: [nil, ""]))
 
   end
 end

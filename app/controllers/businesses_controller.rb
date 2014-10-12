@@ -16,7 +16,7 @@ class BusinessesController < ApplicationController
     business = Business.find(params[:id])
     @entity = business
     @default_entity = business
-    @posts = build_sorted_posts(business.posts)
+    @posts = build_sorted_posts(business.posts.where(type: [nil, ""]))
 
   end
 end
