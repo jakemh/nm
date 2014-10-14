@@ -10,7 +10,7 @@ Bundler.require(*Rails.groups)
 module NextMission
   class Application < Rails::Application
     #to prevent deadlocks with faye
-    config.middleware.delete Rack::Lock
+    # config.middleware.delete Rack::Lock
     # config.middleware.use FayeRails::Middleware, mount: '/faye', :timeout => 25
     config.assets.paths << Rails.root.join('vendor', 'assets', 'bower_components')
     config.assets.paths << Rails.root.join("vendor","assets","bower_components","bootstrap-sass-official","assets","fonts")
