@@ -1,5 +1,26 @@
 ready = undefined
 ready = ->
+  source = null
+
+  # if !!window.EventSource
+  #   source = new EventSource('/me/send_data')
+
+  # # Result to xhr polling :(
+  # source.addEventListener "message", ((e) ->
+  #   console.log e.data
+  # ), false
+  # source.addEventListener "open", ((e) ->
+
+  # # Connection was opened.
+  # ), false
+  # source.addEventListener "error", ((e) ->
+  #   e.readyState is EventSource.CLOSED
+
+  # # Connection was closed.
+  # ), false
+  # MessagesController = Paloma.controller('Messages');
+
+  # MeMessagesController = Paloma.controller('Me/Messages');
 
   $(".msg__entity-select").select2()
   $(".js-msg__button").on("click", (e) ->
@@ -11,7 +32,7 @@ ready = ->
 
   $('.feed__content').linkify({}, ->
     );
-  $(".feed__entry-select").select2();
+  # $(".feed__entry-select").select2();
 
   $(".msg__entity-select").change ->
     value = JSON.parse($(@).val())
@@ -25,13 +46,17 @@ ready = ->
 
     $.ajax(
       type: "get"
+      url: "/me/messages"
       async: true
       data: jQuery.param(data)
       dataType: "script"
       beforeSend: (xhr) ->
         xhr.setRequestHeader "X-CSRF-Token", $("meta[name=\"csrf-token\"]").attr("content")
     ).fail((error) ->
+      console.log JSON.stringify error
     ).success ->
+      # alert "me/msg SUC"
+
     
 
   $(".feed__entry-select").change ->

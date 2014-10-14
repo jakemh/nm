@@ -1,10 +1,11 @@
 ready = undefined
 ready = ->
   ahoy.trackClicks();
+  # NewsFeedController = Paloma.controller('Me/NewsFeed');
 
   $('.feed__content').linkify({}, ->
     );
-  # $(".feed__entry-select").select2();
+  $(".feed__entry-select").select2();
   $(".feed__entry-select").change ->
     # alert $(@).val()
     value = JSON.parse($(@).val())
@@ -13,11 +14,12 @@ ready = ->
     objType = value[0]
     name = value[3]
     action = null
+    url: "/me/feed"
 
     if objType == "Business"
       action = "/me/businesses/" + idVal + "/posts"
     else if objType == "User"
-      action = "me/posts"
+      action = "posts"
 
     $("#js-post-form, #js-post-form-response").attr("action", action);
     # alert $(".feed__entry-inner--left img").attr("src")

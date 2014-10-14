@@ -7,7 +7,7 @@ class SessionsController < Devise::SessionsController
 
    protected
    def after_sign_in_path_for(resource)
-     user_path #your path
+     me_path #your path
    end
    # def configure_permitted_parameters
    #   devise_parameter_sanitizer.for(:sign_up) << [:first_name, :last_name, :zip, :is_veteran]

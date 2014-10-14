@@ -7,10 +7,9 @@ class User < ActiveRecord::Base
   acts_as_reader
   
   include Profile
-
   include Messaging
-
   include Interaction 
+  
   # has_many :received_messages, -> { where(:to_entity => "User") }, class_name: "Message", foreign_key: :to_id
   has_many :intra_connections, class_name: INTRA_CONNECTION 
   has_many :inter_connections, class_name: INTER_CONNECTION

@@ -24,6 +24,10 @@ Rails.application.routes.draw do
     resources :messages, :controller => :business_messages
   end
 
+  namespace :me do
+    get '/send_data' => 'messages#send_data'
+  end
+
   resources :users do
     resources :messages, :controller => :user_messages
   end

@@ -1,5 +1,6 @@
 class Me::PostsController < MeController
-  
+  include ActionController::Live
+
   def index
   end
 

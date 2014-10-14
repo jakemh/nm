@@ -1,4 +1,4 @@
-<%= simple_form_for([current_user, @business], layout: :horizontal, label_col: "col-sm-3", control_col: "col-sm-8", html: {class: "form-inline form__reg"}) do |f| %>
+<%= simple_form_for([:me, @business], layout: :horizontal, label_col: "col-sm-3", control_col: "col-sm-8", html: {class: "form-inline form__reg"}) do |f| %>
   <div class="container-fluid no-space">
     <div class="row no-space">
       <div class="col-sm-6 no-space">
@@ -10,7 +10,6 @@
        %>
       </div>
       <%= f.error :name, class: "error" %>
-
       <div class="col-sm-6 no-space">
         <%= f.input :website, label: false,
          placeholder: "BUSINESS WEBSITE*",  
@@ -50,8 +49,7 @@
            input_html: { class: 'input__form-bus input__form-bus--half' },
            wrapper_html: {class: "padding__form wrapper__form-bus"}
          %>
-         <%= f.error :zip, class: "error" %>
-
+        <%= f.error :zip, class: "error" %>
       </div>
     </div>
   </div>
@@ -67,7 +65,7 @@
   %>
       </div>
       <div class="col-sm-6 no-space">
-          <%= f.input :industry, 
+        <%= f.input :industry, 
           collection: Business.industries.collect.with_index{|item, i| [item, i]},
           label: false,
     prompt: "BUSINESS INDUSTRY",  
@@ -80,17 +78,16 @@
   <div class="container-fluid no-space">
     <div class="row no-space">
       <div class="col-sm-12 no-space">
-  <%= f.simple_fields_for :tags, Tag.new do |t| %>
-      <%= t.input :name, :label => "Tags", 
+        <%= f.simple_fields_for :tags, Tag.new do |t| %>
+          <%= t.input :name, :label => "Tags", 
           :id => "js-business-tags",
           input_html: { class: "input__form-bus tag-input__form-bus", 
             id: 'js-business-tags' },
           label: false,
            wrapper_html: {class: "padding__form wrapper__form-bus"}
    %>
-    <% end %>
-  </div></div></div>
-
+        <% end %>
+      </div></div></div>
   <% grid_helper(12) do %>
     <%= f.input :description, type: :text, label: false,
     placeholder: "ENTER A SHORT PROFESSIONAL DESCRIPTION OF BUSINESS AND PRODUCTS/SERVICES OFFERED",  
@@ -99,7 +96,7 @@
   %>
   <% end %>
   <%= f.submit "CREATE BUSINESS PROFILE", :class => "button__form"  %>
-  <%= link_to "SKIP", user_path, :class => "button__form button__form--small button__form--gray", method: :get  %>
+  <%= link_to "SKIP", me_path, :class => "button__form button__form--small button__form--gray", method: :get  %>
   <div class="button-mandatory__form-reg">
     * fields are mandatory
   </div>

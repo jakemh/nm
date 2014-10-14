@@ -1,0 +1,2 @@
+module MessageObserverHelper
+end

@@ -1,4 +1,5 @@
 #= require jquery
+
 #= require bootstrap-sass-official/assets/javascripts/bootstrap-sprockets
 #= require bootstrap-sass-official/assets/javascripts/bootstrap
 #= require jquery_ujs
@@ -19,20 +20,12 @@
 
 
 #= require_self
-#= require paloma
-
 #= require messages
 #= require user_profile
 #= require me/photos
 #= require me/news_feed
 #= require me/businesses
 #= require me/audience
-
-
-$(document).on "page:load", ->
-  Paloma.executeHook()
-  Paloma.engine.start()
-  return
 
 
 # for more details see: http://emberjs.com/guides/application/

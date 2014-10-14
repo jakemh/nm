@@ -1,5 +1,5 @@
 class Me::NewsFeedController < MeController
-  
+
   layout "profile"
   include FeedConcern
   def index

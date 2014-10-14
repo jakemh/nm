@@ -120,6 +120,9 @@ GEM
       multi_json (>= 1.0.0)
       rack (>= 1.0.0)
       websocket-driver (>= 0.3.0)
+    faye-rails (2.0.0)
+      eventmachine (~> 1.0.0)
+      faye (~> 1.0.1)
     faye-websocket (0.7.5)
       eventmachine (>= 0.12.0)
       websocket-driver (>= 0.3.5)
@@ -172,8 +175,6 @@ GEM
     nokogiri (1.6.3.1)
       mini_portile (= 0.6.0)
     orm_adapter (0.5.0)
-    paloma (4.1.1)
-      jquery-rails
     paperclip (4.2.0)
       activemodel (>= 3.0.0)
       activesupport (>= 3.0.0)
@@ -301,7 +302,7 @@ DEPENDENCIES
   devise
   exception_notification
   factory_girl_rails
-  faye
+  faye-rails
   figaro
   font-awesome-rails
   foreman
@@ -313,7 +314,6 @@ DEPENDENCIES
   jquery-rails
   judge-simple_form
   less-rails
-  paloma
   paperclip
   pg
   puma
