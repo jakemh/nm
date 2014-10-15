@@ -22,14 +22,14 @@
   </div>
 
   <% if right_bar %>
-    <div class="container__profile container__profile--middle" style="overflow: auto">
+    <div class="container__profile container__profile--middle">
       <%= yield %>
     </div>
-    <div class="container__profile container__profile--right" style="overflow: auto">
+    <div class="container__profile container__profile--right" >
       <%= yield :right_bar %>
     </div>
   <% else %>
-    <div class="container__profile container__profile--full" style="overflow: auto">
+    <div class="container__profile container__profile--full">
       <%= yield %>
     </div>
   <% end %>

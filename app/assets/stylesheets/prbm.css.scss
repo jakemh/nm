@@ -19,7 +19,7 @@ body{
   margin-top: $top-bar-offset;
   // overflow: auto;
   height: 100%;
-  overflow: hidden !important;
+  // overflow: hidden !important;
 }
 
 .outer__profile .container__profile{
@@ -33,6 +33,7 @@ body{
 
 .container__profile--left{
    
+    overflow: hidden;
 
     width:  $left-bar-width;
     float: left;
@@ -61,6 +62,8 @@ body{
     // background: white;
     overflow-x: hidden;
     overflow-y: scroll;
+    overflow: hidden;
+
 }
 
 .sidebar{
