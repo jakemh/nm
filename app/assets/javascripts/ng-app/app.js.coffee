@@ -1,4 +1,4 @@
-angular.module("NM", [
+window.App = angular.module("NM", [
   "ngRoute"
   "templates"
 ]).config ($routeProvider, $locationProvider) ->
