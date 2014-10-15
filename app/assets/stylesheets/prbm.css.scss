@@ -9,7 +9,7 @@ body{
 
 
 .outer__profile{
-    overflow: auto;
+    overflow: hidden !important;
     height: 100%;
     width: 1350px;
     // margin-top: $top-bar-height ;
@@ -17,7 +17,7 @@ body{
 
 .container__profile{
   margin-top: $top-bar-offset;
-  // overflow: auto;
+  overflow: auto;
   height: 100%;
   // overflow: hidden !important;
 }
@@ -33,7 +33,7 @@ body{
 
 .container__profile--left{
    
-    overflow: hidden;
+    // overflow: hidden;
 
     width:  $left-bar-width;
     float: left;
@@ -62,7 +62,7 @@ body{
     // background: white;
     overflow-x: hidden;
     overflow-y: scroll;
-    overflow: hidden;
+    // overflow: hidden;
 
 }
 
