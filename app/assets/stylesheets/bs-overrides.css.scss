@@ -6,6 +6,15 @@
   height: $top-bar-height !important;
 }
 
+.tt-dropdown-menu{
+  padding: 15px;
+  background: white;
+  width: 100%;
+}
+
+.tt-dropdown-menu *{
+  color: black !important;
+}
 .navbar-inverse a{
   font-family: 'lato', Helvetica, Arial, sans-serif !important;
   color: white;

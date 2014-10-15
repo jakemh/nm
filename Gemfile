@@ -44,7 +44,9 @@ gem 'faye-rails'
 gem 'exception_notification'
 gem 'gmaps4rails'
 gem 'unread'
-
+gem 'angular-rails-templates'
+# gem 'elasticsearch-rails'
+gem 'searchkick'
 group :production do
   gem 'puma'
   gem 'pg'

@@ -1,6 +1,8 @@
 
 Rails.application.routes.draw do
 
+  get 'angular/index'
+
   class FormatTest
     attr_accessor :mime_type
 
@@ -12,8 +14,12 @@ Rails.application.routes.draw do
       request.format == mime_type
     end
   end
- devise_for :users, :controllers => {registrations: 'registration', sessions: 'sessions'}
 
+  get 'search', to: 'search#index', as: :search
+  get 'auto_complete', to: 'me#autocomplete', as: :autocomplete
+
+  devise_for :users, :controllers => {registrations: 'registration', sessions: 'sessions'}
+ # get 'me/*path' => 'angular#index'
  devise_scope :user do
   
    get '/alpha', :to => "landing#index"

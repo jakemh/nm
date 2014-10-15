@@ -1,9 +1,12 @@
 class User < ActiveRecord::Base
+  searchkick text_start: [:first_name, :last_name, :email, :zip]
+  User.reindex
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   INTRA_CONNECTION = "Friendship"
   INTER_CONNECTION = "BusinessConnection"
-
+  # searchkick
+  # User.reindex
   acts_as_reader
   
   include Profile

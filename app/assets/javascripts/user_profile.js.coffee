@@ -3,8 +3,9 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 ready = undefined
 ready = ->
-  $(".js-top-search").on("click", ->
-    $(@).animate({width: "250px"})
+  $("#query").on("click", ->
+    box = $(@).closest(".twitter-typeahead").find(".js-top-search")
+    box.animate({width: "300px"})
 
     )
 $(document).ready ready

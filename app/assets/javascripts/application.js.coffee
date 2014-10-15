@@ -1,3 +1,6 @@
+#= require angular/angular.js
+#= require angular-route/angular-route
+#= require angular-rails-templates
 #= require jquery
 
 #= require bootstrap-sass-official/assets/javascripts/bootstrap-sprockets
@@ -5,8 +8,8 @@
 #= require jquery_ujs
 #= require jQuery-linkify/src/linkified
 #= require jQuery-linkify/src/jquery.linkify
-#= require turbolinks
 #= require jquery.tagsinput/jquery.tagsinput.js
+
 #= require ahoy
 #= require landing
 #= require underscore
@@ -17,11 +20,15 @@
 #= require registration
 #= require select2
 #= require jquery-fileupload
-
+#= require typeahead/dist/bloodhound
+#= require typeahead/dist/typeahead.jquery
+#= require typeahead/dist/typeahead.bundle
 
 #= require_self
+#=require next_mission
 #= require messages
 #= require user_profile
+#= require me
 #= require me/photos
 #= require me/news_feed
 #= require me/businesses

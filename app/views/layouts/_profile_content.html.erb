@@ -2,10 +2,10 @@
 <nav class="navbar navbar-default navbar-inverse navbar-fixed-top" role="navigation">
   <%= render 'shared/top_bar_content' %>
 </nav>
-<div>
+<div style="overflow: auto; height: 100%">
 <%= content_tag :div, :class => ("outer__profile" if right_bar) do %>
 
-  <div class="container__profile container__profile--left">
+  <div class="container__profile container__profile--left" style="overflow: auto">
     <div class="sidebar">
       <ul class="nav navbar-nav side-nav side-nav-inverse">
         <% PROFILE[side].each do |bar| %>
@@ -22,14 +22,14 @@
   </div>
 
   <% if right_bar %>
-    <div class="container__profile container__profile--middle">
+    <div class="container__profile container__profile--middle" style="overflow: auto">
       <%= yield %>
     </div>
-    <div class="container__profile container__profile--right">
+    <div class="container__profile container__profile--right" style="overflow: auto">
       <%= yield :right_bar %>
     </div>
   <% else %>
-    <div class="container__profile container__profile--full">
+    <div class="container__profile container__profile--full" style="overflow: auto">
       <%= yield %>
     </div>
   <% end %>
