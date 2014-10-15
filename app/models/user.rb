@@ -1,5 +1,7 @@
 class User < ActiveRecord::Base
-  searchkick text_start: [:first_name, :last_name, :email, :zip]
+  searchkick text_start: [:first_name, :last_name, :email, :zip], 
+  word_start: [:first_name, :last_name]
+
   User.reindex
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
