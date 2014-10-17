@@ -1,10 +1,15 @@
 class BusinessesController < ApplicationController
   layout "external_profile_business"
   include FeedConcern
-
+  include ProfileConcern
 
   def index
-    @random_businesses = Business.where.not(:id => [User.first.connections.where(:type => ["BusinessConnection", "Ownership"]).pluck(:id)]).order("RANDOM()").limit(3)
+    @businesses = Business.where.not(:id => [User.first.connections.where(:type => ["BusinessConnection", "Ownership"]).pluck(:id)]).order("RANDOM()").limit(3)
+    respond_to do |format|
+      format.html
+      format.json {render json: @businesses}
+    end
+    # render json: @businesses
   end
 
   def show

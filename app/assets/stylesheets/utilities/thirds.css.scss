@@ -9,9 +9,16 @@
   display: inline-block;
   // height: 150px;
   width: 31%;
+  overflow: hidden;
   // background: white;
   // margin: 25px;
   // clear: both;
+
+}
+
+.thirds__box img{ 
+  height: 100%;
+  // width: 100%;
 
 }
 

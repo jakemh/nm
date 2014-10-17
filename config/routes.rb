@@ -1,6 +1,20 @@
 
 Rails.application.routes.draw do
 
+  get 'user_search/index'
+
+  get 'business_search/index'
+
+  get 'search/index'
+
+  get 'messages/index'
+
+  get 'messages/show'
+
+  get 'posts/index'
+
+  get 'posts/show'
+
   get 'angular/index'
 
   class FormatTest
@@ -15,6 +29,10 @@ Rails.application.routes.draw do
     end
   end
 
+  #API for angular
+  resources :messages
+  resources :posts
+  
   get 'search', to: 'search#index', as: :search
   get 'auto_complete', to: 'me#autocomplete', as: :autocomplete
 

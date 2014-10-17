@@ -1,13 +1,18 @@
-<div class="bus">
-  <div class="thirds bus__top">
-    <div class="thirds__box bus__rand">
+<div ng-controller="BusinessController">
+  <div class="bus">
+    <div class="thirds bus__top">
 
+      <div class="thirds__box bus__rand" ng-repeat="business in businesses" ng-click="randomClick(business)">
+        <div class="bus__rand-title">
+          {{business.name}}
+        </div>
+        <img ng-src={{business.thumb}}></img>
+      </div>
     </div>
-    <div class="thirds__box bus__rand">
-
-    </div>
-    <div class="thirds__box bus__rand">
-
+    <div class="bus__search">
+      <form ng-submit="submit()">
+        <input type="text" ng-model="text" name="text" />
+      </form>
     </div>
   </div>
 </div>

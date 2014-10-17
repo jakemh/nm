@@ -4,6 +4,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_filter :authenticate
   after_filter :track_action
+  serialization_scope :view_context
 
   # check_authorization :unless => :devise_controller?
   # check_authorization :unless => :temporary_controller?

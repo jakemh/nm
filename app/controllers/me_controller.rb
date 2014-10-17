@@ -12,7 +12,16 @@ class MeController < ApplicationController
       {industry: :text_start},
       {business_type: :text_start}
     ]
-    render json: Business.search(params["q"],  fields: search_fields, index_name: [Business.searchkick_index.name, User.searchkick_index.name]).map {|e| {"name" => view_context.link_to(e.name, e)}}
+    render json: Business.search(
+      params["q"],  
+      fields: 
+        search_fields, 
+      index_name: 
+        [Business.searchkick_index.name, User.searchkick_index.name])
+        .map {|e| {
+          "name" => e.name,
+          "url" => view_context.url_for(e)}
+        }.to_json
   end
 
   # layout 'layouts/profile'

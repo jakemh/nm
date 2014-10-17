@@ -15,10 +15,16 @@ ready = ->
       d
   )
   engine.initialize()
-  $vartypeahead.typeahead {minLength: 1, highlight: true},
-    displayKey: "name"
-    source: engine.ttAdapter()
 
+  $vartypeahead.typeahead {minLength: 1, highlight: true},
+    # displayKey: "name"
+    source: engine.ttAdapter()
+    templates:
+      suggestion: _.template('<a href="<%=url%>"><%=name%></a>')
+  
+  
+
+    
 $(document).ready ready
 $(document).on "page:load", ready
 

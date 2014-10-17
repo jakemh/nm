@@ -1,6 +1,8 @@
 #= require angular/angular.js
 #= require angular-route/angular-route
 #= require angular-rails-templates
+#= require angularjs/rails/resource
+
 #= require jquery
 
 #= require bootstrap-sass-official/assets/javascripts/bootstrap-sprockets
@@ -25,7 +27,7 @@
 #= require typeahead/dist/typeahead.bundle
 
 #= require_self
-#=require next_mission
+#= require next_mission
 #= require messages
 #= require user_profile
 #= require me
@@ -40,4 +42,25 @@
 #   rootElement: '#nm-root'
 #   LOG_TRANSITIONS: true
 #   )
+
+handler = Gmaps.build("Google")
+handler.buildMap
+  provider: {}
+  internal:
+    id: "map"
+, ->
+  markers = handler.addMarkers([
+    lat: 0
+    lng: 0
+    picture:
+      url: "https://addons.cdn.mozilla.net/img/uploads/addon_icons/13/13028-64.png"
+      width: 36
+      height: 36
+
+    infowindow: "hello!"
+  ])
+  handler.bounds.extendWith markers
+  handler.fitMapToBounds()
+  return
+
 
