@@ -13,6 +13,23 @@
   height: 150px;
   margin: 5px;
   text-align: center;
+  cursor: pointer;
 }
 
+.bus__search{
+  width: 250px;
+  margin: 15px;
+}
 
+.bus__item{
+  height: 65px;
+  margin: 5px;
+  width: 100%;
+  background: white;
+  padding: 2px;
+}
+
+.bus__item img{
+  float: left;
+  height: 100%;
+}

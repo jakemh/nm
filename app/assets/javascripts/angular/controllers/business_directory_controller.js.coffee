@@ -3,13 +3,13 @@ angular.module("NM").controller "BusinessController", [
   "Business"
   ($scope, Business) ->
     $scope.businesses = []
-    $scope.searching = []
-    $scope.engine = 
-
-      new Bloodhound(
+    $scope.businessList = []
+    $scope.query = null
+    $scope.searching = false
+    $scope.engine = new Bloodhound(
          name: "typeaheads"
          remote:
-           url: "/auto_complete?q=%QUERY"
+           url: "/business_search/index?q=%QUERY"
 
          datumTokenizer: (d) ->
            d
@@ -20,10 +20,7 @@ angular.module("NM").controller "BusinessController", [
     $scope.randomClick = (bus)->
       # alert JSON.stringify bus
       window.location.href = bus.uri
-
-    # engine.get "a", (suggestions) ->
-    #   for suggestion in suggestions
-    #     alert JSON.stringify suggestion
+    $scope.engine.initialize()
     Business.query().then ((results) ->
       $scope.businesses = results["businesses"]
       # alert JSON.stringify results["businesses"]
@@ -32,7 +29,13 @@ angular.module("NM").controller "BusinessController", [
     ), (error) ->
       
       $scope.searching = false
-      return
+   
+
+    $scope.submit = () ->
+      $scope.engine.get $scope.query, (suggestions) ->
+        $scope.businessList = suggestions[0]
+        # alert JSON.stringify $scope.businessList
+        $scope.$apply()
 #
     #
      #Find a single book and update it

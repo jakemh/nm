@@ -22,7 +22,7 @@ ready = ->
     templates:
       suggestion: _.template('<a href="<%=url%>"><%=name%></a>')
   
-  
+ 
 
     
 $(document).ready ready
