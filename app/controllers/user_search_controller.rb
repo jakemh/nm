@@ -1,4 +1,4 @@
-class UserSearchController < ApplicationController
+class UserSearchController < SearchController
   def index
   end
 end

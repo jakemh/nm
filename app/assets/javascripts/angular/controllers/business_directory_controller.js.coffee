@@ -1,15 +1,21 @@
-angular.module("NM").controller "BusinessController", [
+angular.module("NM").controller "BusinessDirectoryController", [
   "$scope"
   "Business"
-  ($scope, Business) ->
+  "User"
+  "Entity"
+  ($scope, Business, User, Entity) ->
     $scope.businesses = []
     $scope.businessList = []
+    $scope.peopleList = []
+    # $scope.displayList = $scope.businessList.concat($scope.peopleList)
     $scope.query = null
     $scope.searching = false
+    $scope.personFilter = false
+    $scope.businessFilter = true
     $scope.engine = new Bloodhound(
-         name: "typeaheads"
+         name: "businessSearch"
          remote:
-           url: "/business_search/index?q=%QUERY"
+           url: "/search/index?q=%QUERY"
 
          datumTokenizer: (d) ->
            d
@@ -17,6 +23,35 @@ angular.module("NM").controller "BusinessController", [
          queryTokenizer: (d) ->
            d
        )
+  
+
+    $scope.$watch "query", ->
+      if $scope.query
+        $scope.submit()
+
+    # $scope.$watch "personFilter", ->
+    #     User.query().then ((results) ->
+    #       $scope.personList = results["users"]
+    #       # alert JSON.stringify results["businesses"]
+    #       $scope.searching = false
+    #       return
+    #     ), (error) ->
+
+    $scope.$watch "businessFilter", ->
+      # $scope.$apply()
+
+
+    $scope.alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+    $scope.alphabet.split()
+    $scope.letterClick = (letter) -> 
+        Entity.query({first_letter: letter}, null, null).then ((results) ->
+          $scope.displayList = results["entities"]
+          # alert JSON.stringify results["businesses"]
+          $scope.searching = false
+          return
+        ), (error) ->
+      
+             # $scope.businessList = 
     $scope.randomClick = (bus)->
       # alert JSON.stringify bus
       window.location.href = bus.uri
@@ -33,7 +68,7 @@ angular.module("NM").controller "BusinessController", [
 
     $scope.submit = () ->
       $scope.engine.get $scope.query, (suggestions) ->
-        $scope.businessList = suggestions[0]
+        $scope.displayList = suggestions[0]
         # alert JSON.stringify $scope.businessList
         $scope.$apply()
 #
@@ -52,3 +87,13 @@ angular.module("NM").controller "BusinessController", [
       #isbn: "0-553-81957-7"
     #).create()
 ]
+
+angular.module("NM").filter "entityFilter", ->
+  (entities, personFilter, businessFilter) ->
+    if entities
+      entities.filter (entity) ->
+        return personFilter if entity.type == "User"
+        return businessFilter if entity.type == "Business"
+
+
+

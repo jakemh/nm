@@ -1,6 +1,14 @@
 
 Rails.application.routes.draw do
 
+  get 'locations/index'
+
+  get 'locations/show'
+
+  get 'entities/index'
+
+  get 'entities/show'
+
   get 'user_search/index'
 
   get 'business_search/index'
@@ -48,6 +56,8 @@ Rails.application.routes.draw do
     resources :messages, :controller => :business_messages
   end
 
+  resources :entities
+  
   namespace :me do
     get '/send_data' => 'messages#send_data'
   end

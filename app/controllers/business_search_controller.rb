@@ -1,22 +1,9 @@
-class BusinessSearchController < ApplicationController
-  def index
-    search_fields = [
-      {name: :text_start},
-      {first_name: :text_start},
-      {last_name: :text_start},
-      {description: :text_start},
-      {website: :text_start},
-      {zip: :text_start},
-      {industry: :text_start},
-      {business_type: :text_start}
-    ]
+class BusinessSearchController < SearchController
+  
 
+  def index
+    
     # Business.search_kick.name
-    @businesses = Business.search(
-          params["q"],  
-          fields: 
-            search_fields
-          )
-    render json: @businesses.map{|b| b}
+    render json: formatted_search_results(Business, params["q"])
   end
 end

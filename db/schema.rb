@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141012024955) do
+ActiveRecord::Schema.define(version: 20141020210512) do
 
   create_table "ahoy_events", force: true do |t|
     t.uuid     "visit_id"
@@ -44,13 +44,13 @@ ActiveRecord::Schema.define(version: 20141012024955) do
     t.string   "address"
     t.string   "city"
     t.string   "state"
-    t.integer  "zip"
     t.string   "business_type"
     t.string   "industry"
     t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "profile_photo_id"
+    t.string   "zip"
   end
 
   create_table "connections", force: true do |t|
@@ -76,6 +76,15 @@ ActiveRecord::Schema.define(version: 20141012024955) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "pending"
+  end
+
+  create_table "locations", force: true do |t|
+    t.decimal  "longitude"
+    t.decimal  "latitude"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "locatable_type"
+    t.integer  "locatable_id"
   end
 
   create_table "message_polies", force: true do |t|

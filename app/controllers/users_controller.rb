@@ -4,6 +4,10 @@ class UsersController < ApplicationController
 
   def index
     @users = User.where("users.id != ?", current_user.id)
+    respond_to do |format|
+      format.html
+      format.json {render json: @users}
+    end
   end
 
   def show

@@ -359,6 +359,7 @@ DEPENDENCIES
   figaro
   font-awesome-rails
   foreman
+  geocoder
   gmaps4rails
   google-api-client
   hirb

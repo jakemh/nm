@@ -4,7 +4,16 @@ class BusinessesController < ApplicationController
   include ProfileConcern
 
   def index
-    @businesses = Business.where.not(:id => [User.first.connections.where(:type => ["BusinessConnection", "Ownership"]).pluck(:id)]).order("RANDOM()").limit(3)
+    @businesses = if params[:first_letter]
+      Business.by_first_letter(params[:first_letter])
+    else
+      Business.random(3)
+    end
+
+    @h = Gmaps4rails.build_markers(@businesses) do |b, m|
+      marker.lat b.locations.last.latitude
+      marker.lng b.locations.last.longitude
+    end
     respond_to do |format|
       format.html
       format.json {render json: @businesses}

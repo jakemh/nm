@@ -14,7 +14,10 @@ module NextMission
     # config.middleware.use FayeRails::Middleware, mount: '/faye', :timeout => 25
     config.assets.paths << Rails.root.join('vendor', 'assets', 'bower_components')
     config.assets.paths << Rails.root.join("vendor","assets","bower_components","bootstrap-sass-official","assets","fonts")
-
+    config.assets.precompile += [
+      '*.html',
+      '*/*.html'
+    ]
     config.to_prepare do
 
       # Devise::SessionsController.skip_before_filter :authenticate_user!

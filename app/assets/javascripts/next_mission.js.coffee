@@ -2,4 +2,4 @@
 #= require_tree ./angular/models
 #= require_tree ./angular/controllers
 
-#= require_tree ./templates
+#= require_tree ../templates

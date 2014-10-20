@@ -19,6 +19,7 @@ body{
   margin-top: $top-bar-offset;
   overflow: auto;
   height: 100%;
+  overflow-x: hidden;
   // overflow: hidden !important;
 }
 
