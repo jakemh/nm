@@ -9,4 +9,8 @@ module Search
   def add_location
     self.locations.create
   end
+
+  def location
+    self.locations.last
+  end
 end

@@ -79,8 +79,8 @@ ActiveRecord::Schema.define(version: 20141020210512) do
   end
 
   create_table "locations", force: true do |t|
-    t.decimal  "longitude"
     t.decimal  "latitude"
+    t.decimal  "longitude"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "locatable_type"

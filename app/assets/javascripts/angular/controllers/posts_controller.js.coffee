@@ -5,14 +5,6 @@ angular.module("NM").controller "PostController", [
     $scope.posts = []
     $scope.searching = []
 
-    $scope.testFunction = ->
-      Post.query(id: 1).then ((results) ->
-        $scope.posts = results
-        $scope.searching = false
-        return
-      ), (error) ->
-        $scope.searching = false
-        return
 
     $scope.addPost = (data) ->
       new Post(

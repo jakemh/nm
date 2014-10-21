@@ -9,6 +9,15 @@ angular.module("NM").controller "BusinessDirectoryController", [
     $scope.peopleList = []
     # $scope.displayList = $scope.businessList.concat($scope.peopleList)
     $scope.query = null
+    $scope.mapObj = new GMaps
+      div: '#map',
+      lat: 35
+      lng: -122
+      zoom: 2
+
+    $scope.addMarker = (marker)->
+      $scope.mapObj.addMarker(marker)
+            
     $scope.searching = false
     $scope.personFilter = false
     $scope.businessFilter = true
@@ -23,11 +32,26 @@ angular.module("NM").controller "BusinessDirectoryController", [
          queryTokenizer: (d) ->
            d
        )
-  
+    
+    $scope.$watch "businesses + displayList", ->
+      busCoords = $scope.mapToMarker($scope.businesses)
+      displayCoords = $scope.mapToMarker($scope.displayList)
+      markerArray = []
+      markerArray = markerArray.concat(busCoords)
+      markerArray = markerArray.concat(displayCoords)
+      for marker in markerArray
+        $scope.addMarker(marker)
 
     $scope.$watch "query", ->
       if $scope.query
         $scope.submit()
+
+    $scope.mapToMarker = (array) ->
+      _.map array, (item)->
+        lat: item.latitude || null
+        lng: item.longitude || null
+        click: ->
+          $scope.visitProfile(item.uri)
 
     # $scope.$watch "personFilter", ->
     #     User.query().then ((results) ->
@@ -40,6 +64,8 @@ angular.module("NM").controller "BusinessDirectoryController", [
     $scope.$watch "businessFilter", ->
       # $scope.$apply()
 
+    $scope.visitProfile = (uri)->
+      window.location.href = uri
 
     $scope.alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
     $scope.alphabet.split()
@@ -94,6 +120,3 @@ angular.module("NM").filter "entityFilter", ->
       entities.filter (entity) ->
         return personFilter if entity.type == "User"
         return businessFilter if entity.type == "Business"
-
-
-

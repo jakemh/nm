@@ -1,29 +1,6 @@
 
 Rails.application.routes.draw do
 
-  get 'locations/index'
-
-  get 'locations/show'
-
-  get 'entities/index'
-
-  get 'entities/show'
-
-  get 'user_search/index'
-
-  get 'business_search/index'
-
-  get 'search/index'
-
-  get 'messages/index'
-
-  get 'messages/show'
-
-  get 'posts/index'
-
-  get 'posts/show'
-
-  get 'angular/index'
 
   class FormatTest
     attr_accessor :mime_type
@@ -40,7 +17,8 @@ Rails.application.routes.draw do
   #API for angular
   resources :messages
   resources :posts
-  
+
+
   get 'search', to: 'search#index', as: :search
   get 'auto_complete', to: 'me#autocomplete', as: :autocomplete
 
@@ -60,6 +38,8 @@ Rails.application.routes.draw do
   
   namespace :me do
     get '/send_data' => 'messages#send_data'
+    resources :following
+    resources :followers
   end
 
   resources :users do

@@ -2,7 +2,7 @@
   <div class="bus">
     <div class="thirds bus__top">
 
-      <div class="thirds__box bus__rand" ng-repeat="business in businesses" ng-click="randomClick(business)">
+      <div class="thirds__box bus__rand utils__hover--orange" ng-repeat="business in businesses" ng-click="randomClick(business)">
         <div class="bus__rand-title">
           {{business.name}}
         </div>
@@ -35,7 +35,7 @@
     </div> -->
     <div class="bus__list">
       <div ng-repeat="business in displayList | entityFilter:personFilter:businessFilter">
-        <div class="bus__item">
+        <div class="bus__item utils__hover--orange" ng-click="openProfile(business.uri)">
           <img ng-src={{business.thumb}}></img>
           {{business.name}}
         </div>

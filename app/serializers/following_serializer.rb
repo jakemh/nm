@@ -1,0 +1,3 @@
+class FollowingSerializer < UserSerializer
+  
+end

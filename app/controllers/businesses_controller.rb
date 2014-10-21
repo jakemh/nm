@@ -9,11 +9,7 @@ class BusinessesController < ApplicationController
     else
       Business.random(3)
     end
-
-    @h = Gmaps4rails.build_markers(@businesses) do |b, m|
-      marker.lat b.locations.last.latitude
-      marker.lng b.locations.last.longitude
-    end
+    
     respond_to do |format|
       format.html
       format.json {render json: @businesses}
