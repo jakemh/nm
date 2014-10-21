@@ -11,14 +11,19 @@ class UsersController < ApplicationController
   end
 
   def show
-    @message = Message.new
-    @post = Post.new
-    #refactor this name
-    @select = select_array
-    user = User.find(params[:id])
-    # @entity = user
-    @default_entity = user
-    @posts = build_sorted_posts(user.posts.where(type: [nil, ""]))
-
+    
+    respond_to do |format|
+      format.html do 
+        @message = Message.new
+        @post = Post.new
+        #refactor this name
+        @select = select_array
+        user = User.find(params[:id])
+        # @entity = user
+        @default_entity = user
+        @posts = build_sorted_posts(user.posts.where(type: [nil, ""]))
+      end
+      format.json {render json: User.find(params[:id])}
+    end
   end
 end

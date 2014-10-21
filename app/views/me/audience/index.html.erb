@@ -1,4 +1,4 @@
-<div class="aud">
+<div class="aud" ng-controller="AudienceController">
       
   <div class="feed__entry ">
     <div style="float:right">
@@ -15,45 +15,51 @@
       <% end %>
     <% end %>
   </div>
-  <div class="aud__members">
-    <div class="aud__members-select">
-      <%= label_tag :filter, "Filter by:", :class => "aud__entry-label" %>
-      <%= select_tag :audience_filter, options_for_select(audience_filter_options), :class => "aud__entry-select" %>
 
-      <%= label_tag :sort, "Sort by:", {:class => "aud__entry-label"} %>
-      <%= select_tag :audience_sort, options_for_select(audience_sort_options), {:class => "aud__entry-select"} %>
-    </div>
-         <script type="text/x-handlebars" data-template-name="audience">
-            TEST: {{testing}}   
-      </script> 
-    <% @interacted_with.each_slice(2) do |entities| %>
-      <% entities.each_with_index do |e, i| %>
-        <%= content_tag :div, class: "aud__member connect " + aud_member_class_type(i) do %>
-          <div class="feed__content feed__content--comment">
-            <%= render layout: "me/shared/feed_entry", :locals => {
-                  current_entity: current_user,
-                  connection_entity: e.connection_entity,
-                  created_at: e.created_at,
-                  opt: {}
-            } do %>
-            
-              <ul class="aud__list">
-                <li><%= e.connection_entity.address %></li>
-                <li><%= e.connection_entity.contact %></li>
-                <li><%= follower_type(e.is_inverse) %>
-                </li>
-                <li>
-                  <b><%= follower_count(e.connection_entity) %>
-                  </b>
-                </li>
-                <li>
-                   
-                </li>
-              </ul>
-            <% end %>
-          </div>
+
+  <div ng-repeat="entity in displayList" ng-click="randomClick(business)">
+    <div class="aud__member">{{entity.name}}</div>
+  </div>
+
+  <% if false %>
+    <div class="aud__members">
+      <div class="aud__members-select">
+        <%= label_tag :filter, "Filter by:", :class => "aud__entry-label" %>
+        <%= select_tag :audience_filter, options_for_select(audience_filter_options), :class => "aud__entry-select" %>
+
+        <%= label_tag :sort, "Sort by:", {:class => "aud__entry-label"} %>
+        <%= select_tag :audience_sort, options_for_select(audience_sort_options), {:class => "aud__entry-select"} %>
+      </div>
+      
+      <% @interacted_with.each_slice(2) do |entities| %>
+        <% entities.each_with_index do |e, i| %>
+          <%= content_tag :div, class: "aud__member connect " + aud_member_class_type(i) do %>
+            <div class="feed__content feed__content--comment">
+              <%= render layout: "me/shared/feed_entry", :locals => {
+                    current_entity: current_user,
+                    connection_entity: e.connection_entity,
+                    created_at: e.created_at,
+                    opt: {}
+              } do %>
+              
+                <ul class="aud__list">
+                  <li><%= e.connection_entity.address %></li>
+                  <li><%= e.connection_entity.contact %></li>
+                  <li><%= follower_type(e.is_inverse) %>
+                  </li>
+                  <li>
+                    <b><%= follower_count(e.connection_entity) %>
+                    </b>
+                  </li>
+                  <li>
+                     
+                  </li>
+                </ul>
+              <% end %>
+            </div>
+          <% end %>
         <% end %>
       <% end %>
-    <% end %>
-  </div>
+    </div>
+  <% end %>
 </div>

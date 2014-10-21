@@ -14,7 +14,7 @@ angular.module("NM").controller "BusinessDirectoryController", [
       lat: 35
       lng: -122
       zoom: 2
-
+      
     $scope.addMarker = (marker)->
       $scope.mapObj.addMarker(marker)
             

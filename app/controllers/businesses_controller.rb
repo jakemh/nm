@@ -18,15 +18,21 @@ class BusinessesController < ApplicationController
   end
 
   def show
-    @message = Message.new
-    @post = Post.new
+    
+    respond_to do |format|
+      format.html do 
+        @message = Message.new
+        @post = Post.new
 
-    #refactor this name
-    @select = select_array
-    business = Business.find(params[:id])
-    @entity = business
-    @default_entity = business
-    @posts = build_sorted_posts(business.posts.where(type: [nil, ""]))
+        #refactor this name
+        @select = select_array
+        business = Business.find(params[:id])
+        @entity = business
+        @default_entity = business
+        @posts = build_sorted_posts(business.posts.where(type: [nil, ""]))
+      end
+      format.json {render json: Business.find(params[:id])}
+    end
 
   end
 end

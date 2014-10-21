@@ -2,8 +2,10 @@ angular.module("NM").factory "Follower", [
   "railsResourceFactory"
   (railsResourceFactory) ->
     return railsResourceFactory(
-      url: "/followers"
+      url: "/me/followers"
       name: "follower"
       
     )
+
+
 ]
