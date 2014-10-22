@@ -27,6 +27,10 @@ class Connection < ActiveRecord::Base
     end
   end
 
+  # def connection_entity_inverse
+  #   entity_type.find(self.user_id)
+  # end
+
   def connection_entity
     if self.is_inverse
       entity_type.find(self.user_id)

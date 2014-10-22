@@ -18,7 +18,8 @@ class BusinessesController < ApplicationController
   end
 
   def show
-    
+    @distance = params[:distance]
+
     respond_to do |format|
       format.html do 
         @message = Message.new

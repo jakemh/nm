@@ -3,6 +3,7 @@ class UsersController < ApplicationController
   include FeedConcern
 
   def index
+    @distance = params[:distance]
     @users = User.where("users.id != ?", current_user.id)
     respond_to do |format|
       format.html
@@ -11,7 +12,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    
+    @distance = params["distance"]
     respond_to do |format|
       format.html do 
         @message = Message.new

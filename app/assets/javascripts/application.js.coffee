@@ -20,6 +20,7 @@
 #= require judge
 #= require registration
 #= require select2
+#= require angular-ui-select/dist/select
 #= require jquery-fileupload
 #= require typeahead/dist/bloodhound
 #= require typeahead/dist/typeahead.jquery

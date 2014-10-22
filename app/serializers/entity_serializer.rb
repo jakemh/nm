@@ -1,6 +1,6 @@
 class EntitySerializer < ActiveModel::Serializer
   include ProfileConcern
-  attributes :id, :name, :address, :thumb, :uri, :type, :latitude, :longitude
+  attributes :id, :created_at, :name, :address, :thumb, :uri, :type, :latitude, :longitude, :distance
 
   def thumb
     thumb_path(object)
@@ -20,5 +20,11 @@ class EntitySerializer < ActiveModel::Serializer
 
   def longitude
     object.location.longitude
+  end
+
+  def distance
+    if scope.params[:distance] == 'true'
+      object.location.distance_from([scope.current_user.location.latitude, scope.current_user.location.longitude])
+     end
   end
 end

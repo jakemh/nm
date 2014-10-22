@@ -19,7 +19,8 @@
     "select2" : "3.5.1",
     "jQuery-linkify": "",
     "typeahead.js": "",
-    "gmaps": ""
+    "gmaps": "",
+    "angular-ui-select": ""
 
   }
 }

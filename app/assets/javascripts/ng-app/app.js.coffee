@@ -2,6 +2,7 @@ window.App = angular.module("NM", [
   "ngRoute"
   "templates"
   "rails"
+  "ui.select"
 ]).config ($routeProvider, $locationProvider) ->
   $routeProvider.when "/",
     templateUrl: "home.html"

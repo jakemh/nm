@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+  geocoded_by :zip
   searchkick text_start: [:first_name, :last_name, :email, :zip], 
   word_start: [:first_name, :last_name]
 

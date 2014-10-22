@@ -16,10 +16,30 @@
     <% end %>
   </div>
 
+  <% if true %>
+    <ui-select ng-model="sortOptions.selected">
+      <ui-select-match placeholder="Select or search a country in the list...">{{$select.selected.name}}
+    </ui-select-match>
+          <ui-select-choices repeat="item in sortOptions">
+            
+          </ui-select-choices>
 
-  <div ng-repeat="entity in displayList" ng-click="randomClick(business)">
-    <div class="aud__member">{{entity.name}}</div>
-  </div>
+    </ui-select>
+    <!-- <select
+      ng-init="sortVal = sortVal"
+      ng-model="sortVal"
+      ng-name="sortVal"
+      ng-options="item.name for item in sortOptions">
+    </select> -->
+    <div ng-repeat="entity in displayList | orderBy:sortVal.name">
+      <div class="audng__member">
+        {{entity.name}}
+        {{entity.distance}}
+        {{entity.added}}
+
+      </div>
+    </div>
+  <% end %>
 
   <% if false %>
     <div class="aud__members">
