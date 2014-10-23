@@ -20,7 +20,7 @@
     "jQuery-linkify": "",
     "typeahead.js": "",
     "gmaps": "",
-    "angular-ui-select": ""
-
+    "angular-ui-select": "",
+    "angular-sanitize": ""
   }
 }

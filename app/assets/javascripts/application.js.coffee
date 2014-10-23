@@ -2,7 +2,7 @@
 #= require angular-route/angular-route
 #= require angular-rails-templates
 #= require angularjs/rails/resource
-
+#= require angular-sanitize/angular-sanitize
 #= require jquery
 
 #= require bootstrap-sass-official/assets/javascripts/bootstrap-sprockets

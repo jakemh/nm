@@ -1,24 +1,45 @@
-# app.factory('UserService', function() {
-#   return {
-#       user: 
-#   };
-# });
-
 angular.module("NM").controller "AudienceController", [
   "$scope"
+  "$sce"
   "Follower"
   "User"
   "Business"
   "Entity"
-  ($scope, Follower, User, Business, Entity) ->
+  "AuthService"
+  ($scope, $sce, Follower, User, Business, Entity, AuthService) ->
+    $scope.init = () ->
+      AuthService.user().then (user)->
+        $scope.currentUser = user
+
+    $scope.init()
+    $scope.trustAsHtml = (value)-> 
+      return $sce.trustAsHtml(value);
+
+    # alert JSON.stringify AuthService.data()
+    
+
+    
+    # $scope.currentUser = AuthService.user
+
+    $scope.$watch 'currentUser', ->
+      if $scope.currentUser
+        $scope.userBusinesses = $scope.currentUser.businesses
+        # $scope.$apply()
+
+    $scope.$watch 'userBusinesses', ->
+      if $scope.currentUser
+        $scope.entityOptions = _.map [$scope.currentUser].concat($scope.userBusinesses), (item, i) ->
+          name: item.name
+          thumb: item.thumb
+          id: i
+        $scope.currentEntity.selected = $scope.entityOptions[0]
 
     $scope.followers = []
-    # $scope.users = []
-    # $scope.businesses = []
-    # $scope.entities = []
-
+    $scope.currentUser = null
+    $scope.userBusinesses = null
+    $scope.currentEntity = {}
+    $scope.entityOptions = null
     $scope.displayList = []
-    # $scope.hash = {}
     $scope.sortOptions = [
       {name: "added", id: 1}
       {name: "distance", id: 2}
@@ -33,37 +54,17 @@ angular.module("NM").controller "AudienceController", [
         distance: item.entity().distance
         added: item.createdAt
       
-      alert JSON.stringify $scope.displayList
-
     Follower.query({distance: true}).then ((results) ->
       $scope.followers = results
-      # alert JSON.stringify results[0].entity()
-      # alert JSON.stringify results[0].user
-      # alert JSON.stringify results
-      
-
-      # $scope.$watch 'sortVal', ->
-      #   $scope.sort = $scope.sortVal.name
-      #   alert JSON.stringify $scope.sortVal
-        # alert JSON.stringify $scope.displayList
-      #   # alert JSON.stringify $scope.hash
-      #   _.sortBy $scope.displayList, (item) ->
-          # alert item.
-          # alert JSON.stringify $scope.hash[item.toString()]
-          # connection = $scope.followers[]]
-          # alert JSON.stringify connection
-     
-
-
-      
-        
+   
        
-        
       # $scope.watch "users + business"
       $scope.searching = false
       return
     ), (error) ->
       
       $scope.searching = false
+
+    
 ]
 

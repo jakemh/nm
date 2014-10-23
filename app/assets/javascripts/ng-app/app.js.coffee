@@ -3,7 +3,11 @@ window.App = angular.module("NM", [
   "templates"
   "rails"
   "ui.select"
+  "ngSanitize"
+  
 ]).config ($routeProvider, $locationProvider) ->
+
+
   $routeProvider.when "/",
     templateUrl: "home.html"
     controller: "HomeCtrl"
@@ -12,21 +16,16 @@ window.App = angular.module("NM", [
     templateUrl: "alphaBusiness.html"
     controller: "BusinessDirectoryController"
 
+  .when "/me/audience",
+    # templateUrl: "alphaBusiness.html"
+    controller: "AudienceController"
+    templateUrl: "alphaBusiness.html"
+    resolve:
+      'currentUserx': "TEST"
+       
   $locationProvider.html5Mode true
   return
 
   $(document).on('ready page:load', ->
     angular.bootstrap(document, ['NM'])
   )
-
-  # phonecatApp.config [
-  #   "$routeProvider"
-  #   ($routeProvider) ->
-  #     $routeProvider.when("/phones",
-  #       templateUrl: "partials/phone-list.html"
-  #       controller: "PhoneListCtrl"
-  #     ).when("/phones/:phoneId",
-  #       templateUrl: "partials/phone-detail.html"
-  #       controller: "PhoneDetailCtrl"
-  #     ).otherwise redirectTo: "/phones"
-  # ]

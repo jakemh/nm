@@ -24,7 +24,10 @@ class UsersController < ApplicationController
         @default_entity = user
         @posts = build_sorted_posts(user.posts.where(type: [nil, ""]))
       end
-      format.json {render json: User.find(params[:id])}
+      format.json  do 
+        @user = params[:id] == "current" ? current_user : User.find(params[:id])
+        render json: @user
+      end
     end
   end
 end
