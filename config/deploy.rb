@@ -5,9 +5,11 @@ set :application, 'NextMission'
 set :repo_url, "git@github.com:nextmission/nextmission-core.git"
 # set :repository,  "/Users/jh/Developer/NextMission/.git"
 # set :local_repository, "/Users/jh/Developer/NextMission/.git"
-set :deploy_to, '/home/nm/www/'
+# set :deploy_to, '/home/nm/www/'
+set :deploy_to, '/home/jake/repos/nextmission-core'
 set :deploy_via, :copy
-set :puma_pid, '/home/oli/www/shared/tmp/pids/puma.pid'
+set :puma_pid, '/home/jake/repos/nextmission-core/shared/tmp/pids/puma.pid'
+# set :puma_pid, '/home/oli/www/shared/tmp/pids/puma.pid'
 set :branch, "angular"
 # Default branch is :master
 # ask :branch, proc { `git rev-parse --abbrev-ref HEAD`.chomp }.call
@@ -41,11 +43,14 @@ set :branch, "angular"
 
 namespace :deploy do
   def root
-    "/home/nm/www/shared"
+    # "/home/nm/www/shared"
+    '/home/jake/repos/nextmission-core/shared'
   end
 
   def working_directory
-    "/home/nm/www/current"
+
+    # "/home/nm/www/current"
+    '/home/jake/repos/nextmission-core/current'
   end
 
   def puma_pid
