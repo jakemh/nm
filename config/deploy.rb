@@ -8,7 +8,7 @@ set :repo_url, "git@github.com:nextmission/nextmission-core.git"
 set :deploy_to, '/home/nm/www/'
 set :deploy_via, :copy
 set :puma_pid, '/home/oli/www/shared/tmp/pids/puma.pid'
-
+set :branch, "angular"
 # Default branch is :master
 # ask :branch, proc { `git rev-parse --abbrev-ref HEAD`.chomp }.call
 
