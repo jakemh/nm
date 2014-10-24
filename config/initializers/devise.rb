@@ -4,7 +4,7 @@ Devise.setup do |config|
   # The secret key used by Devise. Devise uses this key to generate
   # random tokens. Changing this key will render invalid all existing
   # confirmation, reset password and unlock tokens in the database.
-  # config.secret_key = 'be9a8866e388f0d00514a9f0558b0e737f7f068f3ed6594089a2b49aad5aaf8c282333463642ee1d9a753fc8c7c7c5d384ec8d8b938b426ee7a2c8da80320ccb'
+  config.secret_key = 'be9a8866e388f0d00514a9f0558b0e737f7f068f3ed6594089a2b49aad5aaf8c282333463642ee1d9a753fc8c7c7c5d384ec8d8b938b426ee7a2c8da80320ccb'
 
   # ==> Mailer Configuration
   # Configure the e-mail address which will be shown in Devise::Mailer,
@@ -226,8 +226,8 @@ Devise.setup do |config|
   # The default HTTP method used to sign out a resource. Default is :delete.
   config.sign_out_via = :delete
   # config.secret_key = ENV["SECRET_KEY_BASE"]
-  config.secret_key = '029b2e5c2c74a4ee2e95b62ad3e6aa0eac333978179d8e6357ca1e058d5a84b3ca2d7c89f7c48e6ac3c8be4f33b8abf51e97989f4aee88a276a73b387d45008c'
-  config.secret_key_base = '029b2e5c2c74a4ee2e95b62ad3e6aa0eac333978179d8e6357ca1e058d5a84b3ca2d7c89f7c48e6ac3c8be4f33b8abf51e97989f4aee88a276a73b387d45008c'
+  # config.secret_key = '029b2e5c2c74a4ee2e95b62ad3e6aa0eac333978179d8e6357ca1e058d5a84b3ca2d7c89f7c48e6ac3c8be4f33b8abf51e97989f4aee88a276a73b387d45008c'
+  # config.secret_key_base = '029b2e5c2c74a4ee2e95b62ad3e6aa0eac333978179d8e6357ca1e058d5a84b3ca2d7c89f7c48e6ac3c8be4f33b8abf51e97989f4aee88a276a73b387d45008c'
 
   # ==> OmniAuth
   # Add a new OmniAuth provider. Check the wiki for more information on setting
