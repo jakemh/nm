@@ -227,6 +227,7 @@ Devise.setup do |config|
   config.sign_out_via = :delete
   # config.secret_key = ENV["SECRET_KEY_BASE"]
   config.secret_key = '029b2e5c2c74a4ee2e95b62ad3e6aa0eac333978179d8e6357ca1e058d5a84b3ca2d7c89f7c48e6ac3c8be4f33b8abf51e97989f4aee88a276a73b387d45008c'
+  config.secret_key_base = '029b2e5c2c74a4ee2e95b62ad3e6aa0eac333978179d8e6357ca1e058d5a84b3ca2d7c89f7c48e6ac3c8be4f33b8abf51e97989f4aee88a276a73b387d45008c'
 
   # ==> OmniAuth
   # Add a new OmniAuth provider. Check the wiki for more information on setting
