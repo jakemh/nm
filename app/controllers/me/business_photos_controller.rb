@@ -6,7 +6,7 @@ class Me::BusinessPhotosController < Me::PhotosController
   end
 
   def path
-    [:user, entity]
+    [:me, entity]
   end
  
 end
