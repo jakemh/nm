@@ -1,10 +1,13 @@
 class FollowerSerializer < ActiveModel::Serializer
   attributes :id, :created_at, :user_id, :business_id, :connect_to_id, :type, 
-  :entity_type, :connected_to_entity_type
+  :entity_type, :connected_to_entity_type, :follow_uri
   # , :connection_entity
   # , :connection_type
   has_one :user
   has_one :business
+  def follow_uri
+    # follow_link(object, 
+  end
 
   def entity_type
     object.entity_type.to_s

@@ -2,8 +2,8 @@
   <% if true %>
     <div class="feed__entry ">
       <div style="float:right">
-        <ui-select ng-model="currentEntity.selected">
-          <ui-select-match placeholder="Sort by">
+        <ui-select ng-model="currentEntitySelection.selected">
+          <ui-select-match placeholder="Current Entity">
             {{$select.selected.name}}
           </ui-select-match>
           <ui-select-choices repeat="item in entityOptions">
@@ -13,7 +13,7 @@
       </div>
       <div class="feed__entry-inner feed__entry-inner--left">
         <div class="thumb">
-          <img ng-src="{{currentEntity.selected.thumb}}" >
+          <img ng-src="{{currentEntitySelection.selected.thumb}}" >
         </div>
        <!-- thumb -->
       </div>
@@ -45,15 +45,16 @@
   <% if true %>
   <div class="row">
     <div class="col-sm-6">
-      <ui-select ng-model="sortVal.selected">
-        <ui-select-match placeholder="Sort by">
+      <ui-select ng-model="filterVal.selected">
+        <ui-select-match placeholder="Filter by">
           {{$select.selected.name}}
         </ui-select-match>
-        <ui-select-choices repeat="item in sortOptions">
+        <ui-select-choices group-by="filterGroup" repeat="item in filterOptions">
           <div ng-bind-html="trustAsHtml(item.name)">{{item.name}}</div>
         </ui-select-choices>
       </ui-select>
     </div>
+
     <div class="col-sm-6">
       <ui-select ng-model="sortVal.selected">
         <ui-select-match placeholder="Sort by">
@@ -65,17 +66,23 @@
       </ui-select>
     </div>
   </div>
+
     <!-- <select
       ng-init="sortVal = sortVal"
       ng-model="sortVal"
       ng-name="sortVal"
       ng-options="item.name for item in sortOptions">
     </select> -->
-    <div ng-repeat="entity in displayList | orderBy:sortVal.selected.name">
-      <div class="audng__member">
-        {{entity.name}}
-        {{entity.distance}}
-        {{entity.added}}
+    <div class="aud__members">
+
+      <div ng-repeat="entity in displayList | orderBy:sortVal.selected.name | audienceFilter:filterVal.selected">
+        <div class="aud__member connect {{audMemberClass($index)}}">
+          <div class="feed__content feed__content--comment">
+            <ng-include src="'feed_content.html'">
+            </ng-include>
+            
+          </div>
+        </div>
       </div>
     </div>
   <% end %>

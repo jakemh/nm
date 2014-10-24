@@ -1,0 +1,23 @@
+<!-- {{entity.name}}
+{{entity.distance}}
+{{entity.added}}
+ -->
+<div class="feed__content-title">
+  <div>
+    <div class="thumb">
+      <img ng-src="{{entity.thumb}}">
+    </div>
+  </div>
+  <div class="feed_content-follow">
+   FOLLOW LINK
+  </div>
+</div>
+<div class="feed__content-top">
+  <a ng-href="{{entity.profile}}">{{entity.name}}</a>
+</div>
+<div class="feed__content-body">
+  <div ng-include="feedContentPartial"></div>
+</div>
+<div class="feed__content-corner">
+  <%= link_to "Comment", nil, :class => "js-feed-comment" %>
+</div>

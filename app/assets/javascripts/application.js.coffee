@@ -15,6 +15,7 @@
 #= require ahoy
 #= require landing
 #= require underscore
+#= require underscore_mixins
 #= require gmaps/gmaps
 #= require json2
 #= require judge
