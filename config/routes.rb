@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   resources :messages
   resources :posts
 
+  mount Monologue::Engine, at: '/blog' # or whatever path, be it "/blog" or "/monologue"
 
   get 'search', to: 'search#index', as: :search
   get 'auto_complete', to: 'me#autocomplete', as: :autocomplete

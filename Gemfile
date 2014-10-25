@@ -52,6 +52,9 @@ gem 'active_model_serializers', '~> 0.8.1'
 gem 'searchkick'
 gem 'alphabetical_paginate'
 
+gem 'monologue', github: 'jipiboily/monologue'
+
+
 group :production do
   gem 'puma'
   gem 'pg'

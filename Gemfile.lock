@@ -1,3 +1,17 @@
+GIT
+  remote: git://github.com/jipiboily/monologue.git
+  revision: a9f7c2636d66e261c5f5d2cf2ed6d154f57c2cdd
+  specs:
+    monologue (0.4.1)
+      bcrypt (~> 3.1.7)
+      ckeditor (~> 4.0.11)
+      coffee-rails (~> 4.0.0)
+      jquery-rails
+      rails (>= 4.0.4)
+      sass-rails (~> 4.0.0)
+      select2-rails (~> 3.2)
+      truncate_html
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -81,6 +95,9 @@ GEM
     capistrano-rvm (0.1.1)
       capistrano (~> 3.0)
       sshkit (~> 1.2)
+    ckeditor (4.0.11)
+      mime-types
+      orm_adapter (~> 0.5.0)
     climate_control (0.0.3)
       activesupport (>= 3.0)
     cocaine (0.5.4)
@@ -277,6 +294,8 @@ GEM
       activemodel
       elasticsearch (>= 1)
       hashie
+    select2-rails (3.5.9.1)
+      thor (~> 0.14)
     signet (0.5.1)
       addressable (>= 2.2.3)
       faraday (>= 0.9.0.rc5)
@@ -316,6 +335,7 @@ GEM
     treetop (1.4.15)
       polyglot
       polyglot (>= 0.3.1)
+    truncate_html (0.9.3)
     turbolinks (2.3.0)
       coffee-rails
     tzinfo (1.2.2)
@@ -367,6 +387,7 @@ DEPENDENCIES
   jquery-rails
   judge-simple_form
   less-rails
+  monologue!
   paperclip
   pg
   puma
