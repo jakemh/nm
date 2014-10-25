@@ -14,6 +14,9 @@ module NextMission
     # config.middleware.use FayeRails::Middleware, mount: '/faye', :timeout => 25
     config.assets.paths << Rails.root.join('vendor', 'assets', 'bower_components')
     config.assets.paths << Rails.root.join("vendor","assets","bower_components","bootstrap-sass-official","assets","fonts")
+    config.autoload_paths += %W(#{config.root}/app/models/ckeditor)
+    config.assets.precompile += Ckeditor.assets
+    config.assets.precompile += %w(ckeditor/*)
     config.assets.precompile += [
       '*.html',
       '*/*.html'
