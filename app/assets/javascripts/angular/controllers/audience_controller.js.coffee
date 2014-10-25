@@ -22,13 +22,7 @@ angular.module("NM").controller "AudienceController", [
 
     $scope.trustAsHtml = (value) -> 
       return $sce.trustAsHtml(value);
-
-    # alert JSON.stringify AuthService.data()
-    
-
-    
-    # $scope.currentUser = AuthService.user
-
+      
     $scope.$watch 'currentUser', ->
       if $scope.currentUser
         $scope.userBusinesses = $scope.currentUser.businesses
@@ -102,7 +96,7 @@ angular.module("NM").controller "AudienceController", [
             entity_id: ent.id
           }).then ((results) ->
             $scope.followers = results
-            alert JSON.stringify $scope.followers
+            # alert JSON.stringify $scope.followers
             # $scope.watch "users + business"
             $scope.searching = false
             return
