@@ -8,7 +8,7 @@ module UserProfileHelper
 
   def send_or_nil(path, *args)
     if path
-      send(path, args)
+      send(path, args, :target => "_self")
     else nil
     end
   end
