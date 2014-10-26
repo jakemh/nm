@@ -35,25 +35,30 @@ class Me::MessagesController < Me::PostsController
     # end
 
    
-
-    current_user.message_recipients.mark_as_read! :all, :for => current_user
-    @business_entity = current_user.businesses.find(params[:business_id]) if params[:business_id]
-    @default_entity = @business_entity || current_user
-    @received_messages = build_sorted_posts(@default_entity.received_messages)
-    @sent_messages = build_sorted_posts(@default_entity.sent_messages)
-
     @post = Message.new
-    @select = select_array
+    @default_entity = current_user
+    render json: current_user.sent_messages
 
-    respond_to do |format|
-      format.html
+    # @received_messages = build_sorted_posts(@default_entity.received_messages)
+    # @sent_messages = build_sorted_posts(@default_entity.sent_messages)
+    # current_user.message_recipients.mark_as_read! :all, :for => current_user
+    # @business_entity = current_user.businesses.find(params[:business_id]) if params[:business_id]
+    # @default_entity = @business_entity || current_user
+    # @received_messages = build_sorted_posts(@default_entity.received_messages)
+    # @sent_messages = build_sorted_posts(@default_entity.sent_messages)
 
-      #prevent paloma from executing
-      format.js
-      # format.js { render :file => "me/messages/index.js.erb" }
+    # @post = Message.new
+    # @select = select_array
+
+    # respond_to do |format|
+    #   format.html
+
+    #   #prevent paloma from executing
+    #   format.js
+    #   # format.js { render :file => "me/messages/index.js.erb" }
 
 
-    end
+    # end
   end
   private
   def whitelist

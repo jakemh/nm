@@ -1,7 +1,22 @@
-<%= select_tag :type_array, options_for_select(@select), {:class => "msg__entity-select"}%>
+<div ng-controller="MessagesController">
+  <div ng-include="'feed_head_outer.html'"></div>
 
-<div class="js-messages">
+  <div ng-repeat="entity in messages">
+    <div class="feed__content-outer">
+      <div class="feed__content">
+        <ng-include src="'feed_content.html'"></ng-include>
 
-  <%= render partial: "me/messages/msg_main", locals: {} %>
-  
+      </div>
+    </div>
+  </div>
+
+  <% if false %>
+    <div class="js-messages">
+
+      <%= render partial: "me/messages/msg_main", locals: {} %>
+      
+    </div>
+  <% end %>
+
+
 </div>

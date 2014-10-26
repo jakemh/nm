@@ -1,48 +1,6 @@
 <div class="aud" ng-controller="AudienceController">
-  <% if true %>
-    <div class="feed__entry ">
-      <div style="float:right">
-        <ui-select ng-model="currentEntitySelection.selected">
-          <ui-select-match placeholder="Current Entity">
-            {{$select.selected.name}}
-          </ui-select-match>
-          <ui-select-choices repeat="item in entityOptions">
-            <div ng-bind-html="trustAsHtml(item.name)">{{item.name}}</div>
-          </ui-select-choices>
-        </ui-select>
-      </div>
-      <div class="feed__entry-inner feed__entry-inner--left">
-        <div class="thumb">
-          <img ng-src="{{currentEntitySelection.selected.thumb}}" >
-        </div>
-       <!-- thumb -->
-      </div>
-      <div class="feed__entry-inner feed__entry-inner--middle">
-        <div class="feed__entry-inner-title js-form-name">
-          <!-- name -->
-        </div>
-        <%= yield %>
-      </div>
-    </div>
-  <% end %>
-  <% if false %>
-    <div class="feed__entry ">
-      <div style="float:right">
-        <%= render partial: "me/shared/entity_select" %>
-      </div>
-      <%= render layout: "me/shared/feed_input", :locals => {
-          entity: @entity,
-          opt: {}
-        } do %>
-        <% form_for :audience do |f| %>
-          <div class="js-aud__business">
-            <%= render partial: "me/audience/business" %>
-          </div>
-        <% end %>
-      <% end %>
-    </div>
-  <% end %>
-  <% if true %>
+    <div ng-include="'feed_head_outer.html'"></div>
+  
   <div class="row">
     <div class="col-sm-6">
       <ui-select ng-model="filterVal.selected">
@@ -67,60 +25,15 @@
     </div>
   </div>
 
-    <!-- <select
-      ng-init="sortVal = sortVal"
-      ng-model="sortVal"
-      ng-name="sortVal"
-      ng-options="item.name for item in sortOptions">
-    </select> -->
     <div class="aud__members">
 
       <div ng-repeat="entity in displayList | orderBy:sortVal.selected.name | audienceFilter:filterVal.selected">
         <div class="aud__member connect {{audMemberClass($index)}}">
           <div class="feed__content feed__content--comment">
-            <ng-include src="'feed_content.html'">
-            </ng-include>
+            <ng-include src="'feed_content.html'"></ng-include>
             
           </div>
         </div>
       </div>
     </div>
-  <% end %>
-  <% if false %>
-    <div class="aud__members">
-      <div class="aud__members-select">
-        <%= label_tag :filter, "Filter by:", :class => "aud__entry-label" %>
-        <%= select_tag :audience_filter, options_for_select(audience_filter_options), :class => "aud__entry-select" %>
-        <%= label_tag :sort, "Sort by:", {:class => "aud__entry-label"} %>
-        <%= select_tag :audience_sort, options_for_select(audience_sort_options), {:class => "aud__entry-select"} %>
-      </div>
-      <% @interacted_with.each_slice(2) do |entities| %>
-        <% entities.each_with_index do |e, i| %>
-          <%= content_tag :div, class: "aud__member connect " + aud_member_class_type(i) do %>
-            <div class="feed__content feed__content--comment">
-              <%= render layout: "me/shared/feed_entry", :locals => {
-                    current_entity: current_user,
-                    connection_entity: e.connection_entity,
-                    created_at: e.created_at,
-                    opt: {}
-              } do %>
-                <ul class="aud__list">
-                  <li><%= e.connection_entity.address %></li>
-                  <li><%= e.connection_entity.contact %></li>
-                  <li><%= follower_type(e.is_inverse) %>
-                  </li>
-                  <li>
-                    <b><%= follower_count(e.connection_entity) %>
-                    </b>
-                  </li>
-                  <li>
-                  </li>
-                </ul>
-              <% end %>
-            </div>
-          <% end %>
-        <% end %>
-      <% end %>
-    </div>
-  <% end %>
 </div>

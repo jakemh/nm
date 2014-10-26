@@ -1,10 +1,15 @@
 <div ng-controller="PostController">
   <!-- <button ng-click="testFunction()">CLICK</button> -->
   <div class="feed">
+
+    <% if true %>
+      <div ng-include="'feed_head_outer.html'"></div>
+    <% end %>
     
+    <% if false %>
+
     <div class="feed__entry">
 
-      
       <% if true %>
         <%= render layout: "me/shared/feed_input", :locals => {
           entity: @default_entity,
@@ -13,13 +18,16 @@
           <%= render partial: "me/news_feed/form", locals: {opt: {}} %>
         <% end %>
 
-      </div>
-      <!-- <div class="contents__feed"> -->
-      <%= render :partial => "me/posts/list", locals: {
-        posts: @posts,
-        opt: {}
-      } %>
-    <% end %>
+        </div>
+        <!-- <div class="contents__feed"> -->
+        <%= render :partial => "me/posts/list", locals: {
+          posts: @posts,
+          opt: {}
+        } %>
+      <% end %>
+  <% end %>
+
   </div>
+
 <!-- </div> -->
 </div>

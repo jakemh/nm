@@ -4,7 +4,7 @@ class EntitySerializer < ActiveModel::Serializer
 
   has_many :followers
   has_many :following
-
+  has_many :messages
 
   # def followers
   #   object.

@@ -4,7 +4,7 @@ window.App = angular.module("NM", [
   "rails"
   "ui.select"
   "ngSanitize"
-  
+  'ngResource'
 ]).config ($routeProvider, $locationProvider) ->
 
 

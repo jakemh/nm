@@ -1,11 +1,14 @@
 angular.module("NM").controller "PostController", [
   "$scope"
+  "Utilities"
   "Post"
-  ($scope, Post) ->
+  "AuthService"
+  ($scope,  Utilities,  Post, AuthService) ->
     $scope.posts = []
     $scope.searching = []
-
-
+    $scope.AuthService = AuthService
+    $scope.Utilities = Utilities
+    
     $scope.addPost = (data) ->
       new Post(
         content: data.content

@@ -21,6 +21,7 @@
     "typeahead.js": "",
     "gmaps": "",
     "angular-ui-select": "",
-    "angular-sanitize": ""
+    "angular-sanitize": "",
+    "angular-resource": "
   }
 }
