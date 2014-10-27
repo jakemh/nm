@@ -16,11 +16,11 @@ module FeedConcern
   end
 
   def build_select_array
-    @select_array = [
-      ["User Account", 
-        ["User", current_user.id, current_user.thumb || view_context.image_path("default_person.png"), current_user.name]]] + 
-        current_user.businesses.collect{|b|[b.name,["Business", b.id, b.thumb || view_context.image_path("default_business.png"), b.name]
-      ]}
+    # @select_array = [
+    #   ["User Account", 
+    #     ["User", current_user.id, current_user.thumb || view_context.image_path("default_person.png"), current_user.name]]] + 
+    #     current_user.businesses.collect{|b|[b.name,["Business", b.id, b.thumb || view_context.image_path("default_business.png"), b.name]
+    #   ]}
   end
 
 end

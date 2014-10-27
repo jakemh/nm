@@ -18,7 +18,7 @@ class UsersController < ApplicationController
         @message = Message.new
         @post = Post.new
         #refactor this name
-        @select = select_array
+        # @select = select_array
         user = User.find(params[:id])
         # @entity = user
         @default_entity = user
