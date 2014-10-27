@@ -7,7 +7,7 @@ class BusinessesController < ApplicationController
     @businesses = if params[:first_letter]
       Business.by_first_letter(params[:first_letter])
     else
-      Business.random(3)
+      Business.random(current_user, 3)
     end
     
     respond_to do |format|

@@ -52,8 +52,13 @@ class Business < ActiveRecord::Base
     Business.where("name like ?", "#{letter}%")
   end
 
-  def self.random(quant)
-    Business.where.not(:id => [User.first.connections.where(:type => ["BusinessConnection", "Ownership"]).pluck(:id)]).order("RANDOM()").limit(quant)
+  def self.random(current_user, quant)
+
+    if current_user.connections.count > 0
+      Business.where.not(:id => [current_user.connections.where(:type => ["BusinessConnection", "Ownership"]).pluck(:id)]).order("RANDOM()").limit(quant)
+    else 
+      Business.order("RANDOM()").limit(quant)
+    end
   end
 
   def self.industries
