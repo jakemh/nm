@@ -11,15 +11,15 @@ window.App = angular.module("NM", [
   $httpProvider.defaults.headers.common['X-CSRF-Token'] = $('meta[name=csrf-token]').attr('content')
   RestangularProvider.setRequestSuffix('.json');
 
-  # RestangularProvider.addResponseInterceptor (data, operation, what, url, response, deferred) ->
-  #   extractedData = null  
-  #   extractedData = data
-  #   if (operation == "getList")
-  #     console.log("TEST: " + JSON.stringify(data))
-  #     key = Object.keys(data)[0];
-  #     extractedData = data[key]
+  RestangularProvider.addResponseInterceptor (data, operation, what, url, response, deferred) ->
+    extractedData = null  
+    extractedData = data
+    if (operation == "getList")
+      console.log("TEST: " + JSON.stringify(data))
+      key = Object.keys(data)[0];
+      extractedData = data[key]
     
-  #   return extractedData;
+    return extractedData;
       
 
   $routeProvider.when "/",
