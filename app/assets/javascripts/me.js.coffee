@@ -7,7 +7,8 @@ ready = ->
     name: "typeaheads"
     remote:
       url: "/auto_complete?q=%QUERY"
-
+      filter: (response) ->
+        response.me 
     datumTokenizer: (d) ->
       d
 
@@ -20,7 +21,7 @@ ready = ->
     # displayKey: "name"
     source: engine.ttAdapter()
     templates:
-      suggestion: _.template('<a href="<%=url%>"><%=name%></a>')
+      suggestion: _.template('<a href="<%=uri%>"><%=name%></a>')
   
  
 
