@@ -21,8 +21,9 @@ angular.module("NM").factory "User", [
         if model.user.received_messages_ids > 0
           Restangular.several("me/received_messages", model.user.received_message_ids).getList()
         else $$q.when([])
+
       model.posts = ->
-        if model.user.received_messages_ids > 0
+        if model.user.post_ids > 0
           Restangular.several("me/posts", model.user.post_ids).getList()
         else $q.when([])
 

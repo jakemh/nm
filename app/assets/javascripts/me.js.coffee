@@ -9,6 +9,7 @@ ready = ->
       url: "/auto_complete?q=%QUERY"
       filter: (response) ->
         response.me 
+        
     datumTokenizer: (d) ->
       d
 
