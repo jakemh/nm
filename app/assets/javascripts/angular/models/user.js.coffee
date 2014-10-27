@@ -1,22 +1,30 @@
 angular.module("NM").factory "User", [
+  "$q"
   "Restangular"
-  (Restangular) ->
+  ($q, Restangular) ->
     Restangular.extendModel "users", (model) ->
       model.businesses = ->
-        Restangular.several("businesses", model.user.business_ids).getList()
-
+        if model.user.business_ids > 0
+          Restangular.several("businesses", model.user.business_ids).getList()
+        else $q.when([])
       # model.messages = ->
       #   Restangular.several("me/messages", model.user.sent_message_ids).getList()
 
-      model.sentMessages = ->
-        Restangular.several("me/sent_messages", model.user.sent_message_ids).getList()
+      model.sentMmessages = ->
+        if model.user.sent_message_ids > 0
+
+          Restangular.several("me/sent_messages", model.user.sent_message_ids).getList()
+        else $q.when([])
 
 
       model.receivedMessages = ->
-        Restangular.several("me/received_messages", model.user.received_message_ids).getList()
-
+        if model.user.received_messages_ids > 0
+          Restangular.several("me/received_messages", model.user.received_message_ids).getList()
+        else $$q.when([])
       model.posts = ->
-        Restangular.several("me/posts", model.user.post_ids).getList()
+        if model.user.received_messages_ids > 0
+          Restangular.several("me/posts", model.user.post_ids).getList()
+        else $q.when([])
 
       return model
 ]
