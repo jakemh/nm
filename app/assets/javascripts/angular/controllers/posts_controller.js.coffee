@@ -18,6 +18,7 @@ angular.module("NM").controller "PostController", [
         $scope.posts = $scope.posts.concat(response)
       # Restangular.all('me/posts').post(post)
     $scope.$watch 'posts', ->
+
       if $scope.posts
         $scope.displayList = []
         for post in $scope.posts
@@ -42,6 +43,8 @@ angular.module("NM").controller "PostController", [
       if AuthService.currentUser
         # $scope.displayList = []
         AuthService.currentUser.posts().then (posts) ->
+          # alert JSON.stringify posts
+
           $scope.posts = posts
           
 
