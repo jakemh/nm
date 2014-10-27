@@ -25,12 +25,13 @@ class Me::PostsController < MeController
 
   def create
     @user = current_user
-    @entity = entity
+    # @entity = @user
     # @post = default_entity.posts.build whitelist
-    @post = entity.posts.build whitelist
+    @post = @user.posts.build whitelist
 
     if @post.save
-      redirect_to :back
+      # redirect_to :back
+      render json: @post.to_json
     end
   end
   # def create
@@ -54,14 +55,14 @@ class Me::PostsController < MeController
   #   entity || current_user
   # end
 
-  def entity
-    type = type_array[0]
-    id = type_array[1]
-    if type == "Business"
-      return current_user.businesses.find(id)
-    else return current_user
-    end
-  end
+  # def entity
+  #   type = type_array[0]
+  #   id = type_array[1]
+  #   if type == "Business"
+  #     return current_user.businesses.find(id)
+  #   else return current_user
+  #   end
+  # end
 
   private
   def whitelist
@@ -69,6 +70,6 @@ class Me::PostsController < MeController
   end
 
   def type_array
-    JSON.parse(params.permit(:type_array)[:type_array])
+    # JSON.parse(params.permit(:type_array)[:type_array])
   end
 end

@@ -7,8 +7,8 @@ window.App = angular.module("NM", [
   "ngResource"
   "restangular"
   
-]).config ($routeProvider, $locationProvider, RestangularProvider) ->
-
+]).config ($routeProvider, $locationProvider, $httpProvider, RestangularProvider) ->
+  $httpProvider.defaults.headers.common['X-CSRF-Token'] = $('meta[name=csrf-token]').attr('content')
   RestangularProvider.setRequestSuffix('.json');
 
   RestangularProvider.addResponseInterceptor (data, operation, what, url, response, deferred) ->

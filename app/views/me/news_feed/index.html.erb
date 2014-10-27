@@ -1,11 +1,11 @@
 <div ng-controller="PostController">
   <div class="feed">
-    
+
     <% if true %>
       <div ng-include="'feed_head_outer.html'"></div>
     <% end %>
     
-    <div ng-repeat="entity in displayList | orderBy:'id'">
+    <div ng-repeat="entity in displayList | orderBy:'id': true">
       <div class="feed__content-outer">
         <div class="feed__content">
 

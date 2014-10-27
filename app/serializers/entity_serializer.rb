@@ -5,6 +5,7 @@ class EntitySerializer < ActiveModel::Serializer
   has_many :followers, embed: :ids
   has_many :following, embed: :ids
   has_many :sent_messages, embed: :ids
+  has_many :received_messages, embed: :ids
 
   # def followers
   #   object.

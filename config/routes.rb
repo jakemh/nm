@@ -2,6 +2,22 @@
 Rails.application.routes.draw do
 
 
+  namespace :me do
+  get 'received_messages/index'
+  end
+
+  namespace :me do
+  get 'received_messages/show'
+  end
+
+  namespace :me do
+  get 'sent_messages/index'
+  end
+
+  namespace :me do
+  get 'sent_messages/show'
+  end
+
   class FormatTest
     attr_accessor :mime_type
 
@@ -16,9 +32,10 @@ Rails.application.routes.draw do
 
   #API for angular
   resources :messages
+ 
   resources :posts
 
-  mount Monologue::Engine, at: '/blog' # or whatever path, be it "/blog" or "/monologue"
+  # mount Monologue::Engine, at: '/blog' # or whatever path, be it "/blog" or "/monologue"
 
   get 'search', to: 'search#index', as: :search
   get 'auto_complete', to: 'me#autocomplete', as: :autocomplete
@@ -41,7 +58,9 @@ Rails.application.routes.draw do
     get '/send_data' => 'messages#send_data'
     resources :following
     resources :followers
-    resources :messages
+    # resources :messages
+    resources :sent_messages
+    resources :received_messages
   end
 
   resources :users do

@@ -4,7 +4,9 @@ angular.module("NM").controller "MessagesController", [
   "AuthService"
   "Restangular"
   ($scope,  Utilities, AuthService, Restangular) ->
-    $scope.messages = []
+    # $scope.messages = []
+    $scope.sentMessages = []
+    $scope.receivedMessage = []
     $scope.searching = []
     $scope.AuthService = AuthService
     $scope.Utilities = Utilities
@@ -12,11 +14,16 @@ angular.module("NM").controller "MessagesController", [
 
     $scope.$watch 'AuthService.currentUser', ->
       if AuthService.currentUser
+        AuthService.currentUser.sentMessages().then (sent) ->
+          $scope.sentMessages = sent
+
+        AuthService.currentUser.receivedMessages().then (received) ->
+          $scope.receivedMessages = received
         # alert JSON.stringify AuthService.currentUser
 
-        AuthService.currentUser.messages().then (messages)->
-          messages[0].entity().then (entity)->
-            alert JSON.stringify entity
+        # AuthService.currentUser.messages().then (messages)->
+          # messages[0].entity().then (entity)->
+            # alert JSON.stringify entity
           # messages[0].entity()
       # if AuthService.currentUser
         # AuthService.currentUser.test()

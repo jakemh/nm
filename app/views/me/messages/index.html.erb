@@ -1,7 +1,17 @@
 <div ng-controller="MessagesController">
   <div ng-include="'feed_head_outer.html'"></div>
 
-  <div ng-repeat="entity in messages">
+  <h3>Sent Messages</h3>
+  <div ng-repeat="entity in sentMessages">
+    <div class="feed__content-outer">
+      <div class="feed__content">
+        <ng-include src="'feed_content.html'"></ng-include>
+
+      </div>
+    </div>
+  </div>
+  <h3>ReceivedMessages</h3>
+  <div ng-repeat="entity in receivedMessages">
     <div class="feed__content-outer">
       <div class="feed__content">
         <ng-include src="'feed_content.html'"></ng-include>
