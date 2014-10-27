@@ -16,7 +16,6 @@ angular.module("NM").controller "ApplicationController", [
 
     $scope.init = () ->
       AuthService.user().then (user)->
-        console.log("TEST: " + JSON.stringify(user))
         AuthService.currentUser = user
 
     $scope.init()
@@ -34,9 +33,9 @@ angular.module("NM").controller "ApplicationController", [
 
     $scope.$watch 'AuthService.currentEntitySelection.selected', ->
       ent = AuthService.currentEntitySelection.selected
-      if ent
-        Restangular.all("me/followers").getList({entity_id: ent.id, entity_type: ent.type}).then (followers)->
-          AuthService.currentFollowers = followers 
+      # if ent
+        # Restangular.all("me/followers").getList({entity_id: ent.id, entity_type: ent.type}).then (followers)->
+          # AuthService.currentFollowers = followers 
       # if ent
       #   Follower.query({
       #       distance: true,
