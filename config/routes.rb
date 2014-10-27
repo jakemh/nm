@@ -41,6 +41,7 @@ Rails.application.routes.draw do
     get '/send_data' => 'messages#send_data'
     resources :following
     resources :followers
+    resources :messages
   end
 
   resources :users do

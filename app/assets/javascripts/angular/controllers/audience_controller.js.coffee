@@ -1,13 +1,10 @@
 angular.module("NM").controller "AudienceController", [
   "$scope"
-  "$sce"
+  "$q"
   "Utilities"
-  "Follower"
-  "User"
-  "Business"
-  "Entity"
+  "Restangular"
   "AuthService"
-  ($scope, $sce, Utilities, Follower, User, Business, Entity, AuthService) ->
+  ($scope, $q, Utilities, Restangular, AuthService) ->
     $scope.Utilities = Utilities
     $scope.feedContentPartial = "feed_body_audience.html"
     $scope.AuthService = AuthService
@@ -16,25 +13,6 @@ angular.module("NM").controller "AudienceController", [
         return "aud__member--left" 
       else return "aud__member--right"
 
-    # $scope.trustAsHtml = (value) -> 
-    #   return $sce.trustAsHtml(value);
-      
-    
-
-    $scope.$watch 'AuthService.userBusinesses', ->
-      if AuthService.currentUser
-        # $scope.entityOptions = _.map [$scope.currentUser].concat($scope.userBusinesses), (item, i) ->
-        #   name: item.name
-        #   thumb: item.thumb
-        #   id: i
-        AuthService.entityOptions = [AuthService.currentUser].concat(AuthService.userBusinesses)
-        AuthService.currentEntitySelection.selected = AuthService.entityOptions[0]
-
-    # $scope.followers = []
-    # $scope.currentUser = null
-    # $scope.userBusinesses = null
-    # $scope.currentEntitySelection = {}
-    # $scope.entityOptions = null
     $scope.displayList = []
     $scope.sortOptions = [
       {name: "added", id: 1}
@@ -66,20 +44,37 @@ angular.module("NM").controller "AudienceController", [
     $scope.filterVal.selected = $scope.filterOptions[0]
 
     $scope.$watch 'AuthService.currentFollowers', ->
-      if AuthService.currentFollowers.length > 0
-        $scope.displayList = _.map  AuthService.currentFollowers, (item)-> 
-          # alert JSON.stringify item
-          name: item.entity().name
-          distance: item.entity().distance
-          added: item.createdAt
-          thumb: item.entity().thumb
-          profile: item.entity().uri
-          type: item.type
-          entityType: item.entity().type
+        # $q.all(AuthService.currentFollowers)
+        $scope.displayList = []
+        for f in AuthService.currentFollowers
+          f.entity().then (e) ->
+            key = Object.keys(e)[0];
+            entity = e[key]
+            # alert JSON.stringify entity
+            $scope.displayList.push(
+                name: entity.name
+                distance: entity.distance
+                added: f.created_at
+                thumb: entity.thumb
+                profile: entity.uri
+                type: f.type
+                entityType: entity.type
+              )
+        # $scope.displayList = _.map  AuthService.currentFollowers, (item)-> 
+     
+        #   item.entity.then (e)->
+        #     name: item.entity()
+        #     distance: item.entity().distance
+        #     added: item.createdAt
+        #     thumb: item.entity().thumb
+        #     profile: item.entity().uri
+        #     type: item.type
+        #     entityType: item.entity().type
 
     # $scope.watch 'currentEntitySelection', ->
 
 ]
+
 App.filter "slice", ->
   (arr, start, end) ->
     (arr or []).slice start, end

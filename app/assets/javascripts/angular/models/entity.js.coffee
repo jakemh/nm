@@ -1,9 +1,10 @@
 angular.module("NM").factory "Entity", [
-  "railsResourceFactory"
-  (railsResourceFactory) ->
-    return railsResourceFactory(
-      url: "/entities"
-      name: "entity"
-      
-    )
+  "Restangular"
+  (Restangular) ->
+    Restangular.extendModel "entities", (model) ->
+  
+      model.messages = ->
+        Restangular.several("messages", model.entity.sent_message_ids).getList()
+
+      return model
 ]

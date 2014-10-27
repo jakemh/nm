@@ -32,7 +32,18 @@ class BusinessesController < ApplicationController
         @default_entity = business
         @posts = build_sorted_posts(business.posts.where(type: [nil, ""]))
       end
-      format.json {render json: Business.find(params[:id])}
+      format.json do 
+        ids = params[:id].split(",")
+        @businesses = if ids.length == 1
+          # current_user.businesses.find(params[:id].split(","))
+          Business.find(ids[0])
+        elsif ids.length > 1
+          Business.find(ids)
+        else current_user.businesses
+        end
+
+        render json: @businesses
+      end
     end
 
   end

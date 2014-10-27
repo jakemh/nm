@@ -1,19 +1,12 @@
 angular.module("NM").factory "User", [
-  "railsResourceFactory"
-  "railsSerializer"
+  "Restangular"
+  (Restangular) ->
+    Restangular.extendModel "users", (model) ->
+      model.businesses = ->
+        Restangular.several("businesses", model.user.business_ids).getList()
 
-  (railsResourceFactory, railsSerializer) ->
-    return railsResourceFactory(
-      url: "/users"
-      name: "user"
-      
-      serializer: railsSerializer ->
-        @resource "followers", "Follower"
-      serializer: railsSerializer ->
-        @resource "followers", "Follower"
-      serializer: railsSerializer ->
-        @resource "businesses", "Business"
-      serializer: railsSerializer ->
-        @resource "messages", "Message"
-    )
+      model.messages = ->
+        Restangular.several("me/messages", model.user.sent_message_ids).getList()
+
+      return model
 ]

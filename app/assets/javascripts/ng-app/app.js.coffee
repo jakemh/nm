@@ -4,9 +4,22 @@ window.App = angular.module("NM", [
   "rails"
   "ui.select"
   "ngSanitize"
-  'ngResource'
-]).config ($routeProvider, $locationProvider) ->
+  "ngResource"
+  "restangular"
+  
+]).config ($routeProvider, $locationProvider, RestangularProvider) ->
 
+  RestangularProvider.setRequestSuffix('.json');
+
+  RestangularProvider.addResponseInterceptor (data, operation, what, url, response, deferred) ->
+    extractedData = null  
+    extractedData = data
+    if (operation == "getList")
+      key = Object.keys(data)[0];
+      extractedData = data[key]
+    
+    return extractedData;
+      
 
   $routeProvider.when "/",
     templateUrl: "home.html"

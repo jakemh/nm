@@ -2,6 +2,10 @@
 #= require angular-route/angular-route
 #= require angular-rails-templates
 #= require angularjs/rails/resource
+#= require angular-resource/angular-resource
+
+#= require angularjs/rails/resource
+#= require restangular/dist/restangular
 #= require angular-sanitize/angular-sanitize
 #= require jquery
 

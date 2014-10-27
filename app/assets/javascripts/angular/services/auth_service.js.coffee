@@ -1,6 +1,6 @@
 App.factory "AuthService", [
-  "User"
-  (User) ->
+  "Restangular"
+  (Restangular) ->
     currentUser: null
     userBusinesses: []
     currentEntitySelection: {}
@@ -8,7 +8,7 @@ App.factory "AuthService", [
     entityOptions: []
     currentFollowers: []
     user: () ->
-      User.get({id: "current"})
+      Restangular.one('users', "current").get()
 
 
 

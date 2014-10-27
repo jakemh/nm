@@ -3,7 +3,8 @@ angular.module("NM").controller "BusinessDirectoryController", [
   "Business"
   "User"
   "Entity"
-  ($scope, Business, User, Entity) ->
+  "Restangular"
+  ($scope, Business, User, Entity, Restangular) ->
     $scope.businesses = []
     $scope.businessList = []
     $scope.peopleList = []
@@ -70,27 +71,32 @@ angular.module("NM").controller "BusinessDirectoryController", [
     $scope.alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
     $scope.alphabet.split()
     $scope.letterClick = (letter) -> 
-        Entity.query({first_letter: letter}, null, null).then ((results) ->
-          $scope.displayList = results["entities"]
-          # alert JSON.stringify results["businesses"]
-          $scope.searching = false
-          return
-        ), (error) ->
+        # Entity.query({first_letter: letter}, null, null).then ((results) ->
+        #   $scope.displayList = results["entities"]
+        #   # alert JSON.stringify results["businesses"]
+        #   $scope.searching = false
+        #   return
+        # ), (error) ->
+        Restangular.all("entities").getList({first_letter: letter}).then (entities)->
+          $scope.displayList = entities
       
              # $scope.businessList = 
     $scope.randomClick = (bus)->
       # alert JSON.stringify bus
       window.location.href = bus.uri
     $scope.engine.initialize()
-    Business.query().then ((results) ->
-      $scope.businesses = results["businesses"]
-      # alert JSON.stringify results["businesses"]
-      $scope.searching = false
-      return
-    ), (error) ->
+    # Business.query().then ((results) ->
+    #   $scope.businesses = results["businesses"]
+    #   # alert JSON.stringify results["businesses"]
+    #   $scope.searching = false
+    #   return
+    # ), (error) ->
       
-      $scope.searching = false
+    #   $scope.searching = false
    
+    Restangular.all("businesses").getList().then (businesses)->
+      $scope.businesses = businesses
+
 
     $scope.submit = () ->
       $scope.engine.get $scope.query, (suggestions) ->

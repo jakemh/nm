@@ -1,9 +1,9 @@
 angular.module("NM").controller "MessagesController", [
   "$scope"
   "Utilities"
-  "Message"
   "AuthService"
-  ($scope,  Utilities,  Message, AuthService) ->
+  "Restangular"
+  ($scope,  Utilities, AuthService, Restangular) ->
     $scope.messages = []
     $scope.searching = []
     $scope.AuthService = AuthService
@@ -12,14 +12,28 @@ angular.module("NM").controller "MessagesController", [
 
     $scope.$watch 'AuthService.currentUser', ->
       if AuthService.currentUser
-        Message.query({userId: currentUser.id}).then ((results) ->
-          # $scope.displayList = results["entities"]
-          # alert JSON.stringify results["businesses"]
-          # $scope.searching = false
-          alert JSON.stringify results
-          return
-        ), (error) ->
+        # alert JSON.stringify AuthService.currentUser
+
+        AuthService.currentUser.messages().then (messages)->
+          messages[0].entity().then (entity)->
+            alert JSON.stringify entity
+          # messages[0].entity()
+      # if AuthService.currentUser
+        # AuthService.currentUser.test()
+        # AuthService.currentUser.messages().then (m)->
+        #   alert JSON.stringify m[0]
+        #   m[0].test()
+        # AuthService.currentUser.messages().then (m)->
+          # messages = m["messages"]
+          # alert JSON.stringify messages[0]
+
+        # Message.query({userId: AuthService.currentUser.id}).then ((results) ->
+        #   # $scope.displayList = results["entities"]
+        #   alert JSON.stringify results[0].user
+        #   # $scope.searching = false
+        #   return
+        # ), (error) ->
         
-        $scope.messages = AuthService.currentUser.messages
-        alert JSON.stringify AuthService.currentUser.messages
+        # $scope.messages = AuthService.currentUser.messages
+        # alert JSON.stringify AuthService.currentUser.messages
 ]

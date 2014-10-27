@@ -14,6 +14,20 @@ class MessagesController < ApplicationController
     @from = from_type.constantize.find(from_id)
   end
 
+  def show
+    @entity = if params[:entity_type] == "User"
+      current_user
+    elsif params[:entity_type] == "Business"
+      current_user.businesses.find(params[:business_id])
+    end
+    @sent_messages = if params[:id]
+      current_user.sent_messages.find(params[:id].split(","))
+    else current_user.sent_messages
+    end
+    render json: @sent_messages
+
+  end
+  
   def edit
   end
 

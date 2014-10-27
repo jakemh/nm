@@ -1,3 +1,3 @@
 class UserSerializer < EntitySerializer
-  has_many :businesses
+  has_many :businesses, embed: :ids
 end

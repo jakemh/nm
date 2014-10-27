@@ -8,7 +8,7 @@
           {{$select.selected.name}}
         </ui-select-match>
         <ui-select-choices group-by="filterGroup" repeat="item in filterOptions">
-          <div ng-bind-html="trustAsHtml(item.name)">{{item.name}}</div>
+          <div ng-bind-html="Utilities.trustAsHtml(item.name)">{{item.name}}</div>
         </ui-select-choices>
       </ui-select>
     </div>
@@ -19,7 +19,7 @@
           {{$select.selected.name}}
         </ui-select-match>
         <ui-select-choices repeat="item in sortOptions">
-          <div ng-bind-html="trustAsHtml(item.name)">{{item.name}}</div>
+          <div ng-bind-html="Utilities.trustAsHtml(item.name)">{{item.name}}</div>
         </ui-select-choices>
       </ui-select>
     </div>
