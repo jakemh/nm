@@ -20,10 +20,10 @@ class Me::ReceivedMessagesController < ApplicationController
       current_user.businesses.find(params[:business_id])
     end
     @received_messages = if params[:id]
-      current_user.sent_messages.find(params[:id].split(","))
+      current_user.received_messages.find(params[:id].split(","))
     else current_user.received_messages
     end
-    render json: @sent_messages
+    render json: @received_messages
   end
 
   private
