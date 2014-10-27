@@ -15,6 +15,7 @@ window.App = angular.module("NM", [
     extractedData = null  
     extractedData = data
     if (operation == "getList")
+      alert JSON.stringify 
       key = Object.keys(data)[0];
       extractedData = data[key]
     
