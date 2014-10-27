@@ -11,7 +11,7 @@ angular.module("NM").controller "ApplicationController", [
   "AuthService"
   "Restangular"
 
-  ($scope, User, SentMessage, Follower, Business, Entity, Following, Post, AuthService, Restangular) ->
+  ($scope, User, SentMessage, ReceivedMessage, Follower, Business, Entity, Following, Post, AuthService, Restangular) ->
     $scope.AuthService = AuthService
 
     $scope.init = () ->
