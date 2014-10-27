@@ -38,7 +38,7 @@ class User < ActiveRecord::Base
   has_many :inverse_business_connections, :class_name => "BusinessConnection", :foreign_key => "connect_to_id"
 
   has_many :inverse_friends, :through => :inverse_friendships, :source => :user
-  has_many :posts, dependent: :destroy
+  has_many :posts,  dependent: :destroy
   has_many :user_posts, dependent: :destroy
   has_many :business_posts, :through => :businesses, :source => :posts
 
@@ -56,6 +56,10 @@ class User < ActiveRecord::Base
 
   def business_associations
     self.connections.where(:type => ["BusinessConnection", "Ownership"])
+  end
+
+  def all_posts
+    -> { where(:to_entity => "Business") }
   end
 
   def self.by_first_letter(letter)

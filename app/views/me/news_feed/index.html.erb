@@ -1,33 +1,33 @@
 <div ng-controller="PostController">
-  <!-- <button ng-click="testFunction()">CLICK</button> -->
   <div class="feed">
-
+    
     <% if true %>
       <div ng-include="'feed_head_outer.html'"></div>
     <% end %>
     
-    <% if false %>
+    <div ng-repeat="entity in displayList | orderBy:'id'">
+      <div class="feed__content-outer">
+        <div class="feed__content">
 
-    <div class="feed__entry">
-
-      <% if true %>
-        <%= render layout: "me/shared/feed_input", :locals => {
-          entity: @default_entity,
-          opt: {}
-        } do %>
-          <%= render partial: "me/news_feed/form", locals: {opt: {}} %>
-        <% end %>
-
+          <div class="feed__content-title">
+            <div class="thumb">
+              <img ng-src="{{entity.thumb}}" >
+            </div>
+            <div class="feed_content-follow">
+              FOLLOW LINK
+            </div>
+          </div>
+          <div class="feed__content-top">
+            {{entity.name}}
+          </div>
+          <div class="feed__content-body">
+            {{entity.content}}
+          </div>
+          <div class="feed__content-corner">
+            COMMENT
+          </div>
         </div>
-        <!-- <div class="contents__feed"> -->
-        <%= render :partial => "me/posts/list", locals: {
-          posts: @posts,
-          opt: {}
-        } %>
-      <% end %>
-  <% end %>
-
+      </div>
+    </div>
   </div>
-
-<!-- </div> -->
 </div>

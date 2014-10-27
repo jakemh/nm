@@ -52,14 +52,14 @@ angular.module("NM").controller "AudienceController", [
             entity = e[key]
             # alert JSON.stringify entity
             $scope.displayList.push(
-                name: entity.name
-                distance: entity.distance
-                added: f.created_at
-                thumb: entity.thumb
-                profile: entity.uri
-                type: f.type
-                entityType: entity.type
-              )
+              name: entity.name
+              distance: entity.distance
+              added: f.created_at
+              thumb: entity.thumb
+              profile: entity.uri
+              type: f.type
+              entityType: entity.type
+            )
         # $scope.displayList = _.map  AuthService.currentFollowers, (item)-> 
      
         #   item.entity.then (e)->

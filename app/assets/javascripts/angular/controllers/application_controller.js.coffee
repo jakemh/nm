@@ -6,15 +6,17 @@ angular.module("NM").controller "ApplicationController", [
   "Business"
   "Entity"
   "Following"
+  "Post"
   "AuthService"
   "Restangular"
 
-  ($scope, User, Message, Follower, Business, Entity, Following, AuthService, Restangular) ->
+  ($scope, User, Message, Follower, Business, Entity, Following, Post, AuthService, Restangular) ->
     $scope.AuthService = AuthService
 
     $scope.init = () ->
       AuthService.user().then (user)->
         AuthService.currentUser = user
+
     $scope.init()
 
     $scope.$watch 'AuthService.currentUser', ->
@@ -27,11 +29,12 @@ angular.module("NM").controller "ApplicationController", [
       if AuthService.userBusinesses && AuthService.currentUser
         AuthService.entityOptions = [AuthService.currentUser.user].concat(AuthService.userBusinesses)
         AuthService.currentEntitySelection.selected = AuthService.entityOptions[0]
-        
+
     $scope.$watch 'AuthService.currentEntitySelection.selected', ->
       ent = AuthService.currentEntitySelection.selected
-      Restangular.all("me/followers").getList({entity_id: ent.id, entity_type: ent.type}).then (followers)->
-        AuthService.currentFollowers = followers 
+      if ent
+        Restangular.all("me/followers").getList({entity_id: ent.id, entity_type: ent.type}).then (followers)->
+          AuthService.currentFollowers = followers 
       # if ent
       #   Follower.query({
       #       distance: true,

@@ -8,5 +8,8 @@ angular.module("NM").factory "User", [
       model.messages = ->
         Restangular.several("me/messages", model.user.sent_message_ids).getList()
 
+      model.posts = ->
+        Restangular.several("me/posts", model.user.post_ids).getList()
+
       return model
 ]

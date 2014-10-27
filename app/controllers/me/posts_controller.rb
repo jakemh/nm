@@ -1,11 +1,22 @@
 class Me::PostsController < MeController
   include ActionController::Live
+  include FeedConcern
+
+  # def index
+  # end
+
+  # def show
+  # end
 
   def index
+    # render json: build_sorted_posts(Post.all.where(type: [nil, ""]))
+    render json: Post.all.where(type: [nil, ""])
   end
 
   def show
+    render json: Post.where(:id => params[:id].split(","), type: [nil, ""])
   end
+  
 
   def new
     @entity = entity
