@@ -24,8 +24,9 @@
 
 
 angular.module("NM").factory "Follower", [
+  "$q"
   "Restangular"
-  (Restangular) ->
+  ($q, Restangular) ->
     Restangular.extendModel "me/followers", (model) ->
   
      model.entity = ->

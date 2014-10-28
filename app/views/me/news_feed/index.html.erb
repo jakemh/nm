@@ -24,7 +24,28 @@
             {{entity.content}}
           </div>
           <div class="feed__content-corner">
-            COMMENT
+            <a ng-click="expand = !expand" href="#">Comment</a>
+            <div class="slide" ng-show="expand">
+               <form class="new_post ng-pristine ng-valid">
+                   <div class="feed__entry-inner-main">
+                     <!-- <input id="post_parent_id" name="post[parent_id]" type="hidden"> -->
+                     <!-- <input id="post_type" name="post[type]" type="hidden"> -->
+                     <textarea 
+                       class="feed__entry-input" 
+                       id="post_content" 
+                       placeholder="Enter a message" 
+                       rows="3"
+                       ng-model="newPost.content"
+                     ></textarea>
+                   </div>
+                   <div class="feed__form-bottom">
+
+                     <div class="feed__form-send">
+                       <button class="feed__button button__form " name="commit" style="margin-top: 0 !important" ng-click="sendPost(newPost)">Post</button>
+                     </div>
+                   </div>
+               </form>
+            </div>
           </div>
         </div>
       </div>

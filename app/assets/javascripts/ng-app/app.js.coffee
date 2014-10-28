@@ -6,17 +6,23 @@ window.App = angular.module("NM", [
   "ngSanitize"
   "ngResource"
   "restangular"
+  "ngAnimate"
   
 ]).config ($routeProvider, $locationProvider, $httpProvider, RestangularProvider) ->
   $httpProvider.defaults.headers.common['X-CSRF-Token'] = $('meta[name=csrf-token]').attr('content')
   RestangularProvider.setRequestSuffix('.json');
+  # RestangularProvider.addRequestInterceptor (element, operation, what, url) ->
 
   RestangularProvider.addResponseInterceptor (data, operation, what, url, response, deferred) ->
-    extractedData = null  
-    extractedData = data
+    # console.log "Data: " + JSON.stringify(data) + " Operation: " + operation + " What: " + what + " URL: " + url + " Response: " + JSON.stringify(response) + " Deferred: " + JSON.stringify(deferred)
+    key = Object.keys(data)[0];
+    extractedData = data  
+
+    if key == "user" || key == "business"
+      extractedData = data[key]
+
     if (operation == "getList")
-      console.log("TEST: " + JSON.stringify(data))
-      key = Object.keys(data)[0];
+      # console.log("TEST: " + JSON.stringify(data))
       extractedData = data[key]
     
     return extractedData;

@@ -1,13 +1,13 @@
+#= require jquery
 #= require angular/angular.js
 #= require angular-route/angular-route
 #= require angular-rails-templates
 #= require angularjs/rails/resource
 #= require angular-resource/angular-resource
-
+#= require angular-animate/angular-animate
 #= require angularjs/rails/resource
 #= require restangular/dist/restangular
 #= require angular-sanitize/angular-sanitize
-#= require jquery
 
 #= require bootstrap-sass-official/assets/javascripts/bootstrap-sprockets
 #= require bootstrap-sass-official/assets/javascripts/bootstrap

@@ -17,6 +17,7 @@ angular.module("NM").controller "ApplicationController", [
     $scope.init = () ->
       AuthService.user().then (user)->
         AuthService.currentUser = user
+        alert JSON.stringify user
 
     $scope.init()
 
@@ -25,7 +26,7 @@ angular.module("NM").controller "ApplicationController", [
         AuthService.currentUser.businesses().then (businesses)->
 
           # alert JSON.stringify businesses
-          AuthService.entityOptions = [AuthService.currentUser.user]
+          AuthService.entityOptions = [AuthService.currentUser]
           AuthService.userBusinesses = businesses
         # $scope.$apply()
 
@@ -37,7 +38,7 @@ angular.module("NM").controller "ApplicationController", [
     $scope.$watch 'AuthService.currentEntitySelection.selected', ->
       ent = AuthService.currentEntitySelection.selected
       if ent
-        Restangular.all("me/followers").getList({entity_id: ent.id, entity_type: ent.type}).then (followers)->
+        ent.followers().then (followers)->
           AuthService.currentFollowers = followers 
       # if ent
       #   Follower.query({

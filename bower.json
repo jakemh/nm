@@ -23,6 +23,7 @@
     "angular-ui-select": "",
     "angular-sanitize": "",
     "angular-resource": "",
-    "restangular": ""
+    "restangular": "",
+    "angular-animate": ""
   }
 }

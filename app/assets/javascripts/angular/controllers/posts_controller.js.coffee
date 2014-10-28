@@ -1,3 +1,14 @@
+angular.module("NM").animation ".slide", ->
+  NG_HIDE_CLASS = "ng-hide"
+  beforeAddClass: (element, className, done) ->
+    element.slideUp done  if className is NG_HIDE_CLASS
+    return
+
+  removeClass: (element, className, done) ->
+    element.hide().slideDown done  if className is NG_HIDE_CLASS
+    return
+
+
 angular.module("NM").controller "PostController", [
   "$scope"
   "Utilities"
@@ -25,8 +36,8 @@ angular.module("NM").controller "PostController", [
           do (post) ->
             # alert post.entity() + " XXX " + JSON.stringify post
             post.entity().then (e)->
-              key = Object.keys(e)[0];
-              entity = e[key]
+              # key = Object.keys(e)[0];
+              entity = e
               
               $scope.displayList.push
                 id: post.id
