@@ -10,7 +10,7 @@ angular.module("NM").factory "Post", [
         # else 
         #   alert JSON.stringify model
       model.responses = ->
-        Resangular.several("me/posts", model.response_ids)
+        Restangular.several("me/responses", model.response_ids).getList()
 
       return model
       # model.messages = ->

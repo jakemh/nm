@@ -36,19 +36,21 @@ angular.module("NM").controller "PostController", [
           do (post) ->
             # alert post.entity() + " XXX " + JSON.stringify post
             post.entity().then (e)->
+              post.responses().then (r) ->
               # key = Object.keys(e)[0];
-              entity = e
-              
-              $scope.displayList.push
-                id: post.id
-                name: entity.name
-                # distance: entity.distance
-                added: post.created_at
-                thumb: entity.thumb
-                content: post.content
-                profile: entity.uri
-                type: post.type
-                entityType: entity.type
+                entity = e
+                
+                $scope.displayList.push
+                  id: post.id
+                  name: entity.name
+                  responses: r
+                  # distance: entity.distance
+                  added: post.created_at
+                  thumb: entity.thumb
+                  content: post.content
+                  profile: entity.uri
+                  type: post.type
+                  entityType: entity.type
 
     $scope.$watch 'AuthService.currentEntitySelection.selected', ->
       if AuthService.currentUser

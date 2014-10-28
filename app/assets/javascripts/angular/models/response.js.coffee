@@ -9,7 +9,9 @@ angular.module("NM").factory "Response", [
           Restangular.one("businesses", model.business_id).get()
 
       model.responses = ->
-        Restangular.several("me/responses", model.response_ids)
+        if model.response_ids.length > 1
+          Restangular.several("me/responses", model.response_ids)
+        else $q.when([])
 
       return model
       # model.messages = ->
