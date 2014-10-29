@@ -30,6 +30,7 @@ class Me::PostsController < MeController
     @post = @user.posts.build whitelist
 
     if @post.save
+      sleep 10
       # redirect_to :back
       render json: @post.to_json
     end

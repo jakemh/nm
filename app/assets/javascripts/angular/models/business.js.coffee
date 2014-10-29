@@ -1,6 +1,7 @@
 angular.module("NM").factory "Business", [
+  "$q"
   "Restangular"
-  (Restangular) ->
+  ($q, Restangular) ->
     Restangular.extendModel "businesses", (model) ->
       
       model.sentMessages = ->

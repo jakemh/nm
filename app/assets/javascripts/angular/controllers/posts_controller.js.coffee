@@ -35,7 +35,7 @@ angular.module("NM").controller "PostController", [
       Restangular.all('me/posts').post(post).then (response)->
         # $scope.posts = $scope.posts.concat(response)
         AuthService.currentUser.posts().then (posts) ->
-          # alert JSON.stringify posts
+          console.log "POSTS: " + JSON.stringify posts
 
           $scope.posts = posts
       # Restangular.all('me/posts').post(post)
