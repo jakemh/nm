@@ -18,7 +18,6 @@ angular.module("NM").controller "ApplicationController", [
     $scope.init = () ->
       AuthService.user().then (user)->
         AuthService.currentUser = user
-        alert JSON.stringify user
 
     $scope.init()
 
