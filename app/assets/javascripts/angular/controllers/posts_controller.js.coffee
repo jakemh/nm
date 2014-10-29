@@ -21,6 +21,8 @@ angular.module("NM").controller "PostController", [
     $scope.AuthService = AuthService
     $scope.Utilities = Utilities
     $scope.feedHeadBody = "feed_head_form.html"
+    $scope.feedCornerPartial = "feed_body_comment.html"
+
     $scope.newPost = {}
     # Restangular.all('me/posts').post({content: "XYZ"})
 
@@ -36,14 +38,29 @@ angular.module("NM").controller "PostController", [
           do (post) ->
             # alert post.entity() + " XXX " + JSON.stringify post
             post.entity().then (e)->
-              post.responses().then (r) ->
+              post.responses().then (responses) ->
+                responseList = []
+
+                for response in responses
+                  do (response) ->
+                    response.entity().then (rE) ->
+                      responseList.push
+                        id: response.id
+                        name: rE.name
+                        # distance: entity.distance
+                        added: response.created_at
+                        thumb: rE.thumb
+                        content: response.content
+                        profile: rE.uri
+                        type: response.type
+                        entityType: rE.type
               # key = Object.keys(e)[0];
                 entity = e
                 
                 $scope.displayList.push
                   id: post.id
                   name: entity.name
-                  responses: r
+                  responses: responseList
                   # distance: entity.distance
                   added: post.created_at
                   thumb: entity.thumb

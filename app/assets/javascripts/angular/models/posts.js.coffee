@@ -1,6 +1,7 @@
 angular.module("NM").factory "Post", [
+  "$q"
   "Restangular"
-  (Restangular) ->
+  ($q, Restangular) ->
     Restangular.extendModel "me/posts", (model) ->
       model.entity = ->
         if model.user_id
@@ -10,7 +11,9 @@ angular.module("NM").factory "Post", [
         # else 
         #   alert JSON.stringify model
       model.responses = ->
-        Restangular.several("me/responses", model.response_ids).getList()
+        if model.response_ids.length > 0
+          Restangular.several("me/responses", model.response_ids).getList()
+        else $q.when([])
 
       return model
       # model.messages = ->

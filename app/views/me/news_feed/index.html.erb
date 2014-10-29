@@ -4,59 +4,6 @@
       <div ng-include="'feed_head_outer.html'"></div>
     <% end %>
     <div ng-repeat="entity in displayList | orderBy:'id': true">
-      <div class="feed__content-outer">
-        <div class="feed__content">
-          <div class="feed__content-title">
-            <div class="thumb">
-              <img ng-src="{{entity.thumb}}" >
-            </div>
-            <div class="feed_content-follow">
-              FOLLOW LINK
-            </div>
-          </div>
-          <div class="feed__content-top">
-            {{entity.name}}
-          </div>
-          <div class="feed__content-body">
-            {{entity.content}}
-          </div>
-          <div class="feed__content-corner">
-            <a ng-click="expand = !expand" href="#">Comment</a>
-            <div class="slide" ng-show="expand">
-              <form class="new_post ng-pristine ng-valid">
-                <div class="feed__entry-inner-main">
-                  <!-- <input id="post_parent_id" name="post[parent_id]" type="hidden"> -->
-                  <!-- <input id="post_type" name="post[type]" type="hidden"> -->
-                  <textarea 
-                       class="feed__entry-input" 
-                       id="post_content" 
-                       placeholder="Enter a message" 
-                       rows="3"
-                       ng-model="newPost.content"
-                     ></textarea>
-                </div>
-                <div class="feed__form-bottom">
-                  <div class="feed__form-send">
-                    <button class="feed__button button__form " name="commit" style="margin-top: 0 !important" ng-click="sendPost(newPost)">Post</button>
-                  </div>
-                </div>
-              </form>
-            </div>
-          </div>
-        </div>
-        <!--  -->
-        <div ng-repeat="entity in displayList.responses | orderBy:'id': true">
-          <div class="feed__comment-content">
-            <div class="feed__content feed__content--comment">
-              
-            </div>
-          </div>
-        </dvi>
-        <!--  -->
-      </div>
-
-     
-
-    </div>  <!-- /entity in displayList-->
+      <div ng-include="'feed_content.html'"></div>
   </div>
 </div>

@@ -1,18 +1,38 @@
-<div class="feed__content-title">
-  <div>
-    <div class="thumb">
-      <img ng-src="{{entity.thumb}}">
+<div class="feed__content-outer">
+  <div class="feed__content">
+    <div class="feed__content-title">
+      <div class="thumb">
+        <img ng-src="{{entity.thumb}}" >
+      </div>
+      <div class="feed_content-follow">
+        FOLLOW LINK
+      </div>
+    </div>
+    <div class="feed__content-top">
+      {{entity.name}}
+    </div>
+    <div class="feed__content-body">
+      {{entity.content}}
+    </div>
+    <div class="feed__content-corner">
+     <div ng-include="feedRightCorner"></div>
+
+    </div>
+    <div class="feed__entry-inner feed__entry-inner--left">
+      {{entity.thumb}}
+    </div>
+ 
+    <div class="feed__entry-inner feed__entry-inner--middle">
+      <div class="feed__entry-inner-title js-form-name">
+        {{entity.name}}
+      </div>
+      YIELD?
     </div>
   </div>
-  <div class="feed_content-follow">
-   FOLLOW LINK
+
+  <!--  -->
+  <div class="feed__comment-container">
+    <div ng-include="feedCornerPartial"></div>
+  <!--  -->
   </div>
-</div>
-<div class="feed__content-top">
-  <a ng-href="{{entity.profile}}">{{entity.name}}</a>
-</div>
-<div class="feed__content-body">
-  <div ng-include="feedContentPartial"></div>
-</div>
-<div class="feed__content-corner">
 </div>
