@@ -8,7 +8,6 @@ angular.module("NM").animation ".slide", ->
     element.hide().slideDown done  if className is NG_HIDE_CLASS
     return
 
-
 angular.module("NM").controller "PostController", [
   "$scope"
   "Utilities"
@@ -30,14 +29,29 @@ angular.module("NM").controller "PostController", [
     $scope.commentHeadOuterInit = (newPost, entity) ->
       # newPost = entity.newPost
       newPost.type = 'Response'
-      newPost.parentId = entity.id
+      newPost.parent_id = entity.id
 
     $scope.sendPost = (post)->
       Restangular.all('me/posts').post(post).then (response)->
-        $scope.posts = $scope.posts.concat(response)
+        # $scope.posts = $scope.posts.concat(response)
+        AuthService.currentUser.posts().then (posts) ->
+          # alert JSON.stringify posts
+
+          $scope.posts = posts
       # Restangular.all('me/posts').post(post)
 
     $scope.$watch 'posts', ->
+      $scope.buildPostDisplay()
+
+    $scope.$watch 'AuthService.currentUser', ->
+      if AuthService.currentUser
+        # $scope.displayList = []
+        AuthService.currentUser.posts().then (posts) ->
+          # alert JSON.stringify posts
+
+          $scope.posts = posts
+          
+    $scope.buildPostDisplay = ->
 
       if $scope.posts
         $scope.displayList = []
@@ -80,14 +94,4 @@ angular.module("NM").controller "PostController", [
                   profile: entity.uri
                   type: post.type
                   entityType: entity.type
-
-    $scope.$watch 'AuthService.currentUser', ->
-      if AuthService.currentUser
-        # $scope.displayList = []
-        AuthService.currentUser.posts().then (posts) ->
-          # alert JSON.stringify posts
-
-          $scope.posts = posts
-          
-
 ]

@@ -1,5 +1,4 @@
 <div ng-controller="PostController">
-	{{newPostMain}}
   <div class="feed">
  	<div ng-include="'feed_head_outer.html'" ng-init="newPost = newPostMain; newPost.type = 'Post'; newPost.parentId = null" ></div>
     <div ng-repeat="entity in displayList | orderBy:'id': true">

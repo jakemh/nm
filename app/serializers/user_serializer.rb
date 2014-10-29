@@ -4,7 +4,7 @@ class UserSerializer < EntitySerializer
 
 
   def posts
-    Post.all.where(type: [nil, ""])
+    Post.all.where(type: [nil, "", "Post"])
   end
 
 end

@@ -10,11 +10,11 @@ class Me::PostsController < MeController
 
   def index
     # render json: build_sorted_posts(Post.all.where(type: [nil, ""]))
-    render json: Post.all.where(type: [nil, ""])
+    render json: Post.all.where(type: [nil, "", "Post"])
   end
 
   def show
-    render json: Post.where(:id => params[:id].split(","), type: [nil, ""])
+    render json: Post.where(:id => params[:id].split(","), type: [nil, "", "Post"])
   end
   
 

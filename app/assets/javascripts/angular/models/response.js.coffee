@@ -12,10 +12,10 @@ angular.module("NM").factory "Response", [
       model.parent = ->
         Restangular.one("me/posts", model.post_id)
 
-      model.responses = ->
-        if model.response_ids.length > 1
-          Restangular.several("me/responses", model.response_ids)
-        else $q.when([])
+      # model.responses = ->
+      #   if model.response_ids.length > 1
+      #     Restangular.several("me/responses", model.response_ids)
+      #   else $q.when([])
 
       return model
       # model.messages = ->
