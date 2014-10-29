@@ -1,9 +1,9 @@
 <div ng-controller="PostController">
+	{{newPostMain}}
   <div class="feed">
-    <% if true %>
-      <div ng-include="'feed_head_outer.html'"></div>
-    <% end %>
+ 	<div ng-include="'feed_head_outer.html'" ng-init="newPost = newPostMain; newPost.type = 'Post'; newPost.parentId = null" ></div>
     <div ng-repeat="entity in displayList | orderBy:'id': true">
       <div ng-include="'feed_content.html'"></div>
   </div>
+
 </div>

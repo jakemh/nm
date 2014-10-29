@@ -1,7 +1,7 @@
 <form class="new_post ng-pristine ng-valid">
     <div class="feed__entry-inner-main">
-      <!-- <input id="post_parent_id" name="post[parent_id]" type="hidden"> -->
-      <!-- <input id="post_type" name="post[type]" type="hidden"> -->
+      <input ng-model="newPost.parent_id" type="hidden">
+      <input ng-model="newPost.type" type="hidden">
       <textarea 
         class="feed__entry-input" 
         id="post_content" 
@@ -16,4 +16,4 @@
         <button class="feed__button button__form " name="commit" style="margin-top: 0 !important" ng-click="sendPost(newPost)">Post</button>
       </div>
     </div>
-</form>
+</form>f

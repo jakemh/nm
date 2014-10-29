@@ -15,23 +15,19 @@
       {{entity.content}}
     </div>
     <div class="feed__content-corner">
-     <div ng-include="feedRightCorner"></div>
+      <a ng-click="expand = !expand" href="#">Comment</a>
+     <!-- <div ng-include="feedContentPartial"></div> -->
 
-    </div>
-    <div class="feed__entry-inner feed__entry-inner--left">
-      {{entity.thumb}}
-    </div>
- 
-    <div class="feed__entry-inner feed__entry-inner--middle">
-      <div class="feed__entry-inner-title js-form-name">
-        {{entity.name}}
-      </div>
-      YIELD?
     </div>
   </div>
-
   <!--  -->
-  <div class="feed__comment-container">
+  <div class="feed__comment-container" style="width: 98%; float: right">
+    <div class="feed__content feed__content--comment slide"  ng-show="expand ">
+      <div class="feed__comment-container">
+        <!-- <div ng-init="newPost = entity.newPost; newPost.type = 'Response'; newPost.parentId = entity.id" ng-include="'feed_head_outer.html'"></div> -->
+        <div ng-init="newPost = entity.newPost; commentHeadOuterInit(newPost, entity)" ng-include="'feed_head_outer.html'"></div>
+      </div>
+    </div>
     <div ng-include="feedCornerPartial"></div>
   <!--  -->
   </div>

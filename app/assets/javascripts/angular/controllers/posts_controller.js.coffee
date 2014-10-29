@@ -23,13 +23,20 @@ angular.module("NM").controller "PostController", [
     $scope.feedHeadBody = "feed_head_form.html"
     $scope.feedCornerPartial = "feed_body_comment.html"
 
-    $scope.newPost = {}
+    $scope.newPostMain = {}
+    $scope.newPostBody = {}
     # Restangular.all('me/posts').post({content: "XYZ"})
+
+    $scope.commentHeadOuterInit = (newPost, entity) ->
+      # newPost = entity.newPost
+      newPost.type = 'Response'
+      newPost.parentId = entity.id
 
     $scope.sendPost = (post)->
       Restangular.all('me/posts').post(post).then (response)->
         $scope.posts = $scope.posts.concat(response)
       # Restangular.all('me/posts').post(post)
+
     $scope.$watch 'posts', ->
 
       if $scope.posts
@@ -43,9 +50,12 @@ angular.module("NM").controller "PostController", [
 
                 for response in responses
                   do (response) ->
+                    console.log JSON.stringify response
                     response.entity().then (rE) ->
                       responseList.push
                         id: response.id
+                        newPost: {}
+                        parentId: response.parent_id
                         name: rE.name
                         # distance: entity.distance
                         added: response.created_at
@@ -59,6 +69,8 @@ angular.module("NM").controller "PostController", [
                 
                 $scope.displayList.push
                   id: post.id
+                  newPost: {}
+                  parentId: null
                   name: entity.name
                   responses: responseList
                   # distance: entity.distance
@@ -69,7 +81,7 @@ angular.module("NM").controller "PostController", [
                   type: post.type
                   entityType: entity.type
 
-    $scope.$watch 'AuthService.currentEntitySelection.selected', ->
+    $scope.$watch 'AuthService.currentUser', ->
       if AuthService.currentUser
         # $scope.displayList = []
         AuthService.currentUser.posts().then (posts) ->
