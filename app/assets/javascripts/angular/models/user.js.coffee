@@ -24,9 +24,10 @@ angular.module("NM").factory "User", [
         else $q.when([])
 
       model.posts = ->
-        if model.post_ids.length > 0
-          Restangular.several("me/posts", model.post_ids).getList()
-        else $q.when([])
+        # if model.post_ids.length > 0
+        #   Restangular.several("me/posts", model.post_ids).getList()
+        # else $q.when([])
+        Restangular.all("me/posts").getList()
 
       model.followers = ->
         if model.follower_ids.length > 0

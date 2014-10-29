@@ -24,13 +24,21 @@ class Me::PostsController < MeController
   end
 
   def create
-    @user = current_user
+    # @user = current_user
+
+    @entity = if params[:entity_type] == "User"
+      current_user
+    elsif params[:entity_type] == "Business"
+      current_user.businesses.find(params[:entity_id])
+    end
+
+    # if params[:entity_type]
+
     # @entity = @user
     # @post = default_entity.posts.build whitelist
-    @post = @user.posts.build whitelist
+    @post = @entity.posts.build whitelist
 
     if @post.save
-      sleep 10
       # redirect_to :back
       render json: @post.to_json
     end
@@ -67,7 +75,7 @@ class Me::PostsController < MeController
 
   private
   def whitelist
-    params.require(:post).permit(:content, :parent_id, :type)
+    params.require(:post).permit(:content, :parent_id, :type, :entity_type, :entity_id)
   end
 
   def type_array

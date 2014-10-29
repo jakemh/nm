@@ -27,6 +27,8 @@ angular.module("NM").controller "ApplicationController", [
 
           # alert JSON.stringify businesses
           AuthService.entityOptions = [AuthService.currentUser]
+          AuthService.currentEntitySelection.selected = AuthService.entityOptions[0]
+
           AuthService.userBusinesses = businesses
         # $scope.$apply()
 

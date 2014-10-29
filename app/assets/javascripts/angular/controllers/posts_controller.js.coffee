@@ -21,21 +21,37 @@ angular.module("NM").controller "PostController", [
     $scope.Utilities = Utilities
     $scope.feedHeadBody = "feed_head_form.html"
     $scope.feedCornerPartial = "feed_body_comment.html"
-
+    $scope.currentSelected = AuthService.currentEntitySelection.selected
     $scope.newPostMain = {}
     $scope.newPostBody = {}
     # Restangular.all('me/posts').post({content: "XYZ"})
+    $scope.headOuterInit = (newPost, entity) ->
+      # newPost = entity.newPost
+      newPost.type = 'Post'
+      # alert JSON.stringify AuthService.currentUser
+      # newPost.selected = AuthService.currentEntitySelection.selected
+      # newPost.selectedEntity =  AuthService.currentEntitySelection.selected.id
+      # newPost.entity_type = AuthService.currentEntitySelection.selected.type
+      # newPost.entity_id = AuthService.currentEntitySelection.selected.id
+      # newPost.entity_type = AuthService.currentEntitySelection.selected.type
 
     $scope.commentHeadOuterInit = (newPost, entity) ->
       # newPost = entity.newPost
       newPost.type = 'Response'
       newPost.parent_id = entity.id
+      # newPost.entity_id = AuthService.currentEntitySelection.selected.id
+      # newPost.entity_type = AuthService.currentEntitySelection.selected.type
 
     $scope.sendPost = (post)->
+      entityAttrs = 
+          entity_id: AuthService.currentEntitySelection.selected.id
+          entity_type: AuthService.currentEntitySelection.selected.type
+
+      post = angular.extend({}, post, entityAttrs)
       Restangular.all('me/posts').post(post).then (response)->
         # $scope.posts = $scope.posts.concat(response)
         AuthService.currentUser.posts().then (posts) ->
-          console.log "POSTS: " + JSON.stringify posts
+          # console.log "POSTS: " + JSON.stringify posts
 
           $scope.posts = posts
       # Restangular.all('me/posts').post(post)
