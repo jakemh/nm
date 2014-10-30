@@ -1,25 +1,12 @@
 angular.module("NM").factory "Post", [
   "$q"
-  "UsersCache"
-  "BusinessesCache"
+  "MessageBase"
   "Restangular"
-  ($q, UsersCache, BusinessesCache, Restangular) ->
+  ($q, MessageBase, Restangular) ->
+    # alert JSON.stringify Message
     Restangular.extendModel "me/posts", (model) ->
       model.entity = ->
-        if model.user_id
-          cached = UsersCache.cache.get(model.user_id)
-          if !cached
-            # alert "NOT CACHED: " + JSON.stringify model
-            Restangular.one("users", model.user_id).get()
-          else 
-            # alert "CACHED"
-            $q.when(cached)
-        else if model.business_id
-          cached = BusinessesCache.cache.get(model.business_id)
-          if !cached
-            Restangular.one("businesses", model.business_id).get()
-          else 
-            $q.when(cached)
+        MessageBase.entity(model)
 
       model.responses = ->
         if model.response_ids.length > 0

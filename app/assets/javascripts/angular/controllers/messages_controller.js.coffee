@@ -2,15 +2,57 @@ angular.module("NM").controller "MessagesController", [
   "$scope"
   "Utilities"
   "AuthService"
+  "MessagesDisplay"
   "Restangular"
-  ($scope,  Utilities, AuthService, Restangular) ->
+  ($scope,  Utilities, AuthService, MessagesDisplay, Restangular) ->
     # $scope.messages = []
     $scope.sentMessages = []
     $scope.receivedMessage = []
+    $scope.sentMessagesDisplay = []
+    $scope.receivedMessagesDisplay = []
     $scope.searching = []
     $scope.AuthService = AuthService
     $scope.Utilities = Utilities
     $scope.displayMessages = []
+    $scope.newMessage = {}
+    $scope.feedHeadBody = "feed_head_form.html"
+
+    $scope.feedCornerPartial = "feed_body_comment.html"
+
+    # $scope.headOuterInit = (newPost, entity) ->
+    #   newPost.type = ''
+
+    $sentMessageInit = (newPost)->
+      newPost.type = "SentMessage"
+
+    $receivedMessageInit = (newPost)->
+      newPost.type = "ReceivedMessage"
+
+    $scope.sendPost = (postObj, postSubmit)->
+      selectedEntity = AuthService.currentEntitySelection.selected
+      entityAttrs = 
+        entity_id: selectedEntity.id
+        entity_type: selectedEntity.type
+        from_id: selectedEntity.id
+        from_type: selectedEntity.type
+        to_id: postObj.entityId
+        to_type: postObj.entityType
+
+      postSubmit = angular.extend({}, postSubmit, entityAttrs)
+      route = selectedEntity.message_route
+      Restangular.all(route).post(postSubmit).then (response)->
+        # $scope.posts = $scope.posts.concat(response)
+        AuthService.currentUser.sentMessages().then (sentMessages) ->
+          # console.log "POSTS: " + JSON.stringify posts
+
+          $scope.sentMessages = sentMessages
+
+    $scope.$watch 'sentMessages', ->
+      MessagesDisplay.buildMessageDisplay($scope.sentMessagesDisplay, $scope.sentMessages)
+
+    $scope.$watch 'receivedMessages', ->
+      MessagesDisplay.buildMessageDisplay($scope.receivedMessagesDisplay, $scope.receivedMessages)
+
 
     $scope.$watch 'AuthService.currentEntitySelection.selected', ->
       if AuthService.currentEntitySelection.selected
@@ -19,28 +61,7 @@ angular.module("NM").controller "MessagesController", [
 
         AuthService.currentEntitySelection.selected.receivedMessages().then (received) ->
           $scope.receivedMessages = received
-        # alert JSON.stringify AuthService.currentUser
 
-        # AuthService.currentUser.messages().then (messages)->
-          # messages[0].entity().then (entity)->
-            # alert JSON.stringify entity
-          # messages[0].entity()
-      # if AuthService.currentUser
-        # AuthService.currentUser.test()
-        # AuthService.currentUser.messages().then (m)->
-        #   alert JSON.stringify m[0]
-        #   m[0].test()
-        # AuthService.currentUser.messages().then (m)->
-          # messages = m["messages"]
-          # alert JSON.stringify messages[0]
-
-        # Message.query({userId: AuthService.currentUser.id}).then ((results) ->
-        #   # $scope.displayList = results["entities"]
-        #   alert JSON.stringify results[0].user
-        #   # $scope.searching = false
-        #   return
-        # ), (error) ->
-        
-        # $scope.messages = AuthService.currentUser.messages
-        # alert JSON.stringify AuthService.currentUser.messages
+    
+      
 ]

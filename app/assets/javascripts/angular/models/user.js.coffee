@@ -1,8 +1,10 @@
 angular.module("NM").factory "User", [
   "$q"
   "Restangular"
-  ($q, Restangular) ->
-    Restangular.extendModel "users", (model) ->
+  "Entity"
+  ($q, Restangular, Entity) ->
+
+    Restangular.extendModel "users", (model) =>
       model.businesses = ->
         if model.business_ids.length > 1
           Restangular.several("businesses", model.business_ids).getList()
@@ -19,11 +21,11 @@ angular.module("NM").factory "User", [
 
 
       model.receivedMessages = ->
-        if model.received_messages_ids.length > 0
+        if model.received_message_ids.length > 0
           Restangular.several("me/received_messages", model.received_message_ids).getList()
         else $q.when([])
 
-      model.posts = ->
+      model.posts = =>
         # if model.post_ids.length > 0
         #   Restangular.several("me/posts", model.post_ids).getList()
         # else $q.when([])

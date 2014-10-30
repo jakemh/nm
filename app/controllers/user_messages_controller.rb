@@ -1,11 +1,11 @@
 class UserMessagesController < MessagesController
 
   def create
-    super
-    user = User.find(params[:user_id])
-     m = @from.send_message_to([user], whitelist)
+    # user = User.find(params[:user_id])
+     m = from_entity.send_message_to([to_entity], post)
      if m.save
-       redirect_to [:me, :messages]
+       # redirect_to [:me, :messages]
+       render json: m
      end
   end
 

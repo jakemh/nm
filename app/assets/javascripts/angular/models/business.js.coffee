@@ -10,7 +10,7 @@ angular.module("NM").factory "Business", [
         else $q.when([])
 
       model.receivedMessages = ->
-        if model.received_messages_ids.length > 0
+        if model.received_message_ids.length > 0
           Restangular.several("me/received_messages", model.received_message_ids).getList()
         else $$q.when([])
 

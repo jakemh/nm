@@ -1,5 +1,5 @@
 require 'hirb'
-Hirb.enable({:width => 120, :height => 500})
+# Hirb.enable({:width => 120, :height => 500})
 
 Rails.application.configure do
 

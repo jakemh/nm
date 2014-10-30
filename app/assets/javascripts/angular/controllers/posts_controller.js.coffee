@@ -14,9 +14,10 @@ angular.module("NM").controller "PostController", [
   "UsersCache"
   "BusinessesCache"
   "Utilities"
+  "MessagesDisplay"
   "Restangular"
   "AuthService"
-  ($scope, $q, UsersCache, BusinessesCache, Utilities, Restangular, AuthService) ->
+  ($scope, $q, UsersCache, BusinessesCache, Utilities, MessagesDisplay,  Restangular, AuthService) ->
     # $scope.postsCache = $cacheFactory('me/posts');
 
     $scope.posts = []
@@ -32,15 +33,8 @@ angular.module("NM").controller "PostController", [
 
     # Restangular.all('me/posts').post({content: "XYZ"})
     $scope.headOuterInit = (newPost, entity) ->
-      # newPost = entity.newPost
       newPost.type = 'Post'
-      # alert JSON.stringify AuthService.currentUser
-      # newPost.selected = AuthService.currentEntitySelection.selected
-      # newPost.selectedEntity =  AuthService.currentEntitySelection.selected.id
-      # newPost.entity_type = AuthService.currentEntitySelection.selected.type
-      # newPost.entity_id = AuthService.currentEntitySelection.selected.id
-      # newPost.entity_type = AuthService.currentEntitySelection.selected.type
-
+      #
     $scope.commentHeadOuterInit = (newPost, entity) ->
       # newPost = entity.newPost
       newPost.type = 'Response'
@@ -48,13 +42,14 @@ angular.module("NM").controller "PostController", [
       # newPost.entity_id = AuthService.currentEntitySelection.selected.id
       # newPost.entity_type = AuthService.currentEntitySelection.selected.type
 
-    $scope.sendPost = (post)->
+    $scope.sendPost = (postObj, postSubmit)->
+      alert JSON.stringify postObj
       entityAttrs = 
           entity_id: AuthService.currentEntitySelection.selected.id
           entity_type: AuthService.currentEntitySelection.selected.type
 
-      post = angular.extend({}, post, entityAttrs)
-      Restangular.all('me/posts').post(post).then (response)->
+      postSubmit = angular.extend({}, postSubmit, entityAttrs)
+      Restangular.all('me/posts').post(postSubmit).then (response)->
         # $scope.posts = $scope.posts.concat(response)
         AuthService.currentUser.posts().then (posts) ->
           # console.log "POSTS: " + JSON.stringify posts
@@ -63,7 +58,7 @@ angular.module("NM").controller "PostController", [
       # Restangular.all('me/posts').post(post)
 
     $scope.$watch 'posts', ->
-      $scope.buildPostDisplay()
+      MessagesDisplay.buildMessageDisplay($scope.displayList, $scope.posts)
 
     $scope.$watch 'AuthService.currentUser', ->
       if AuthService.currentUser
@@ -89,46 +84,5 @@ angular.module("NM").controller "PostController", [
 
       return deferred.promise
 
-    $scope.buildPostDisplay = ->
-
-      if $scope.posts
-        $scope.displayList = []
-        for post in $scope.posts
-          do (post) ->
-            # alert post.entity() + " XXX " + JSON.stringify post
-            post.entity().then (e)->
-              post.responses().then (responses) ->
-                responseList = []
-
-                for response in responses
-                  do (response) ->
-                    response.entity().then (rE) ->
-                      responseList.push
-                        id: response.id
-                        newPost: {}
-                        parentId: response.parent_id
-                        name: rE.name
-                        # distance: entity.distance
-                        added: response.created_at
-                        thumb: rE.thumb
-                        content: response.content
-                        profile: rE.uri
-                        type: response.type
-                        entityType: rE.type
-              # key = Object.keys(e)[0];
-                entity = e
-                
-                $scope.displayList.push
-                  id: post.id
-                  newPost: {}
-                  parentId: null
-                  name: entity.name
-                  responses: responseList
-                  # distance: entity.distance
-                  added: post.created_at
-                  thumb: entity.thumb
-                  content: post.content
-                  profile: entity.uri
-                  type: post.type
-                  entityType: entity.type
+    
 ]
