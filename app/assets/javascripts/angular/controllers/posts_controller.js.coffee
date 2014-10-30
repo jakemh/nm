@@ -10,10 +10,15 @@ angular.module("NM").animation ".slide", ->
 
 angular.module("NM").controller "PostController", [
   "$scope"
+  "$q"
+  "UsersCache"
+  "BusinessesCache"
   "Utilities"
   "Restangular"
   "AuthService"
-  ($scope,  Utilities, Restangular, AuthService) ->
+  ($scope, $q, UsersCache, BusinessesCache, Utilities, Restangular, AuthService) ->
+    # $scope.postsCache = $cacheFactory('me/posts');
+
     $scope.posts = []
     $scope.displayList = []
     $scope.searching = []
@@ -24,6 +29,7 @@ angular.module("NM").controller "PostController", [
     $scope.currentSelected = AuthService.currentEntitySelection.selected
     $scope.newPostMain = {}
     $scope.newPostBody = {}
+
     # Restangular.all('me/posts').post({content: "XYZ"})
     $scope.headOuterInit = (newPost, entity) ->
       # newPost = entity.newPost
@@ -62,11 +68,30 @@ angular.module("NM").controller "PostController", [
     $scope.$watch 'AuthService.currentUser', ->
       if AuthService.currentUser
         # $scope.displayList = []
-        AuthService.currentUser.posts().then (posts) ->
-          # alert JSON.stringify posts
+        $scope.buildAssociationCache().then () ->
+          AuthService.currentUser.posts().then (posts) ->
+            # alert JSON.stringify posts
 
-          $scope.posts = posts
-          
+            # Cache.cache.put(post.id, post);
+            $scope.posts = posts
+    
+    $scope.buildAssociationCache = ->
+      deferred = $q.defer();
+      # alert JSON.stringify  AuthService.currentUser.user_post_associations
+      Restangular.several('users', AuthService.currentUser.user_post_associations).getList().then (asses)->
+        for ass in asses
+          # alert JSON.stringify ass
+          UsersCache.cache.put(ass.id, ass)
+
+        Restangular.several('businesses', AuthService.currentUser.business_post_associations).getList().then (asses)->
+          for ass in asses
+            # alert JSON.stringify ass
+            BusinessesCache.cache.put(ass.id, ass)
+          deferred.resolve(asses)
+      
+
+      return deferred.promise
+
     $scope.buildPostDisplay = ->
 
       if $scope.posts
@@ -80,7 +105,6 @@ angular.module("NM").controller "PostController", [
 
                 for response in responses
                   do (response) ->
-                    console.log JSON.stringify response
                     response.entity().then (rE) ->
                       responseList.push
                         id: response.id

@@ -1,21 +1,24 @@
 angular.module("NM").factory "Response", [
   "$q"
+  "UsersCache"
+  "BusinessesCache"
   "Restangular"
-  ($q, Restangular) ->
+  ($q, UsersCache, BusinessesCache, Restangular) ->
     Restangular.extendModel "me/responses", (model) ->
       model.entity = ->
         if model.user_id
-          Restangular.one("users", model.user_id).get()
+          cached = UsersCache.cache.get(model.user_id)
+          if !cached
+            Restangular.one("users", model.user_id).get()
+          else 
+            # alert "CACHED"
+            $q.when(cached)
         else if model.business_id
-          Restangular.one("businesses", model.business_id).get()
-
-      model.parent = ->
-        Restangular.one("me/posts", model.post_id)
-
-      # model.responses = ->
-      #   if model.response_ids.length > 1
-      #     Restangular.several("me/responses", model.response_ids)
-      #   else $q.when([])
+          cached = BusinessesCache.cache.get(model.business_id)
+          if !cached
+            Restangular.one("businesses", model.business_id).get()
+          else 
+            $q.when(cached)
 
       return model
       # model.messages = ->

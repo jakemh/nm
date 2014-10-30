@@ -75,7 +75,7 @@ class Me::PostsController < MeController
 
   private
   def whitelist
-    params.require(:post).permit(:content, :parent_id, :type, :entity_type, :entity_id)
+    params.require(:post).permit(:content, :parent_id, :type, :entity_type, )
   end
 
   def type_array

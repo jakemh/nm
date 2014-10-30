@@ -21,6 +21,9 @@ module Interaction
   # def inter_connection
   #   raise 'must override'
   # end
+  def entity
+    {entity_id: self.id, entity_type: self.class.name}
+  end
 
   def inverse_connections
     (self.inverse_intra_connections + self.inverse_inter_connections).each{|c| c.is_inverse = true}.sort_by{|e| e.created_at}
