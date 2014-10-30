@@ -9,6 +9,7 @@ angular.module("NM").controller "AudienceController", [
     $scope.feedContentPartial = "feed_body_audience.html"
     $scope.AuthService = AuthService
     $scope.audMemberClass = (index)->
+      console.log "INDEX: " + index
       if index % 2 == 0
         return "aud__member--left" 
       else return "aud__member--right"
@@ -47,31 +48,20 @@ angular.module("NM").controller "AudienceController", [
         # $q.all(AuthService.currentFollowers)
         $scope.displayList = []
         for f in AuthService.currentFollowers
-          f.entity().then (e) ->
-            key = Object.keys(e)[0];
-            entity = e[key]
-            # alert JSON.stringify entity
-            $scope.displayList.push(
-              name: entity.name
-              distance: entity.distance
-              added: f.created_at
-              thumb: entity.thumb
-              profile: entity.uri
-              type: f.type
-              entityType: entity.type
-            )
-        # $scope.displayList = _.map  AuthService.currentFollowers, (item)-> 
-     
-        #   item.entity.then (e)->
-        #     name: item.entity()
-        #     distance: item.entity().distance
-        #     added: item.createdAt
-        #     thumb: item.entity().thumb
-        #     profile: item.entity().uri
-        #     type: item.type
-        #     entityType: item.entity().type
+          do (f) -> 
+            f.entity().then (e) ->
+              entity = e
+              # alert JSON.stringify entity
+              $scope.displayList.push
+                name: entity.name
+                distance: entity.distance
+                added: f.created_at
+                thumb: entity.thumb
+                profile: entity.uri
+                type: f.type
+                entityType: entity.type
+            
 
-    # $scope.watch 'currentEntitySelection', ->
 
 ]
 

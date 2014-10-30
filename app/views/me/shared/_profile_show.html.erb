@@ -9,13 +9,15 @@
     </div>
   </div>
   <div class="feed">
-    <% if !@posts.empty? %>
-      <%= render :partial => "me/posts/list", locals: {
-            posts: @posts,
-            opt: {}
-          }%>
-    <% else %>
-      This guy doesn't have any posts yet!
+    <% if false %>
+      <% if !@posts.empty? %>
+        <%= render :partial => "me/posts/list", locals: {
+              posts: @posts,
+              opt: {}
+            }%>
+      <% else %>
+        This guy doesn't have any posts yet!
+      <% end %>
     <% end %>
   </div>
 </div>
@@ -35,17 +37,19 @@
           <div class="feed__entry-inner-title js-form-name">
             <%= @current_user.name %>
           </div>
-          <%= form_for [@default_entity, Message.new], :html => {
-                       
-                        } do |f| %>
-            <div class="feed__entry-inner-main">
-              <%= f.text_area :content, :placeholder => "Enter a message", :rows => (3), :class => "feed__entry-input" %>
-            </div>
-            <div class="feed__form-bottom">
-              <div class="feed__form-send">
-                <%= f.submit "Send", :class => "feed__button button__form ", :style => "margin-top: 0 !important" %>
+          <% if false %>
+            <%= form_for [@default_entity, Message.new], :html => {
+                         
+                          } do |f| %>
+              <div class="feed__entry-inner-main">
+                <%= f.text_area :content, :placeholder => "Enter a message", :rows => (3), :class => "feed__entry-input" %>
               </div>
-            </div>
+              <div class="feed__form-bottom">
+                <div class="feed__form-send">
+                  <%= f.submit "Send", :class => "feed__button button__form ", :style => "margin-top: 0 !important" %>
+                </div>
+              </div>
+            <% end %>
           <% end %>
         </div>
       </div>

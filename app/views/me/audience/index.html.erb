@@ -30,7 +30,8 @@
       <div ng-repeat="entity in displayList | orderBy:sortVal.selected.name | audienceFilter:filterVal.selected">
         <div class="aud__member connect {{audMemberClass($index)}}">
           <div class="feed__content feed__content--comment">
-            <ng-include src="'feed_content.html'"></ng-include>
+            <ng-include src="'feed_content.html'">          {{$index}}
+</ng-include>
             
           </div>
         </div>

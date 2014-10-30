@@ -12,12 +12,12 @@ angular.module("NM").controller "MessagesController", [
     $scope.Utilities = Utilities
     $scope.displayMessages = []
 
-    $scope.$watch 'AuthService.currentUser', ->
-      if AuthService.currentUser
-        AuthService.currentUser.sentMessages().then (sent) ->
+    $scope.$watch 'AuthService.currentEntitySelection.selected', ->
+      if AuthService.currentEntitySelection.selected
+        AuthService.currentEntitySelection.selected.sentMessages().then (sent) ->
           $scope.sentMessages = sent
 
-        AuthService.currentUser.receivedMessages().then (received) ->
+        AuthService.currentEntitySelection.selected.receivedMessages().then (received) ->
           $scope.receivedMessages = received
         # alert JSON.stringify AuthService.currentUser
 
