@@ -16,7 +16,6 @@
 #= require jQuery-linkify/src/jquery.linkify
 #= require jquery.tagsinput/jquery.tagsinput.js
 
-#= require ahoy
 #= require landing
 #= require underscore
 #= require underscore_mixins

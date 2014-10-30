@@ -70,9 +70,6 @@ angular.module("NM").controller "PostController", [
         # $scope.displayList = []
         $scope.buildAssociationCache().then () ->
           AuthService.currentUser.posts().then (posts) ->
-            # alert JSON.stringify posts
-
-            # Cache.cache.put(post.id, post);
             $scope.posts = posts
     
     $scope.buildAssociationCache = ->

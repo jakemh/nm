@@ -37,7 +37,7 @@ class Me::PostsController < MeController
     # @entity = @user
     # @post = default_entity.posts.build whitelist
     @post = @entity.posts.build whitelist
-
+    p "POST: ", @post
     if @post.save
       # redirect_to :back
       render json: @post.to_json
