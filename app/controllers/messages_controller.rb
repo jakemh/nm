@@ -1,5 +1,5 @@
 class MessagesController < ApplicationController
-  before_filter :set_from_entity, :set_to_entity
+  before_filter :set_from_entity, :set_to_entity, only: [:new, :create, :edit, :save]
 
   def index
   end
@@ -24,8 +24,9 @@ class MessagesController < ApplicationController
       current_user.businesses.find(params[:business_id])
     end
     @sent_messages = if params[:id]
-      current_user.sent_messages.find(params[:id].split(","))
-    else current_user.sent_messages
+      # current_user.sent_messages.find(params[:id].split(","))
+      MessageResponse.find(params[:id].split(","))
+    # else current_user.sent_messages
     end
     render json: @sent_messages
 
@@ -65,7 +66,7 @@ class MessagesController < ApplicationController
     end
 
     def post
-      {content: whitelist[:content]}
+      {content: whitelist[:content], :parent_id => whitelist[:parent_id], :type => whitelist[:type]}
     end
 
     def message_type
@@ -75,13 +76,14 @@ class MessagesController < ApplicationController
     end
 
     def whitelist
-      p "TYPE: ", message_type
       params.require(message_type).permit(
         :content, 
         :subject, 
         :from_id, 
         :from_type,
+        :parent_id,
         :to_id,
+        :type,
         :to_type
         )
     end

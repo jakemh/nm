@@ -28,18 +28,24 @@ angular.module("NM").controller "MessagesController", [
     $receivedMessageInit = (newPost)->
       newPost.type = "ReceivedMessage"
 
+
     $scope.sendPost = (postObj, postSubmit)->
       selectedEntity = AuthService.currentEntitySelection.selected
       entityAttrs = 
+        parent_id: postObj.id
         entity_id: selectedEntity.id
         entity_type: selectedEntity.type
         from_id: selectedEntity.id
         from_type: selectedEntity.type
         to_id: postObj.entityId
         to_type: postObj.entityType
+        type: "MessageResponse"
 
       postSubmit = angular.extend({}, postSubmit, entityAttrs)
+
+
       route = selectedEntity.message_route
+      # alert JSON.stringify postSubmit
       Restangular.all(route).post(postSubmit).then (response)->
         # $scope.posts = $scope.posts.concat(response)
         AuthService.currentUser.sentMessages().then (sentMessages) ->

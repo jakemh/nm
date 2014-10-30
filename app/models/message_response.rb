@@ -1,0 +1,2 @@
+class MessageResponse < Message
+end

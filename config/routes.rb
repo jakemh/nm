@@ -1,21 +1,8 @@
 
 Rails.application.routes.draw do
 
-
   namespace :me do
-  get 'received_messages/index'
-  end
-
-  namespace :me do
-  get 'received_messages/show'
-  end
-
-  namespace :me do
-  get 'sent_messages/index'
-  end
-
-  namespace :me do
-  get 'sent_messages/show'
+  get 'message_responses/show'
   end
 
   class FormatTest
@@ -32,7 +19,7 @@ Rails.application.routes.draw do
 
   #API for angular
   resources :messages
- 
+  
   resources :posts
 
   # mount Monologue::Engine, at: '/blog' # or whatever path, be it "/blog" or "/monologue"
@@ -61,6 +48,7 @@ Rails.application.routes.draw do
     # resources :messages
     resources :sent_messages
     resources :received_messages
+    resources :message_responses
   end
 
   resources :users do

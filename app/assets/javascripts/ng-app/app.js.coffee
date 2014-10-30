@@ -21,15 +21,20 @@ window.App = angular.module("NM", [
 
     if key == "user" || key == "business"
       extractedData = data[key]
+    
 
     if (operation == "getList")
+
       formattedData = data[key]
+
+      # alert JSON.stringify "APP.JS: " + formattedData
       if formattedData instanceof Array
         extractedData = formattedData
       else
         extractedData = [formattedData]  
     
       # alert "TEST: " + JSON.stringify extractedData
+      # alert "APP.JS: " + JSON.stringify extractedData
 
     return extractedData
       
