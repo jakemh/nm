@@ -68,7 +68,7 @@ angular.module("NM").controller "PostController", [
     $scope.$watch 'AuthService.currentUser', ->
       if AuthService.currentUser
         # $scope.displayList = []
-        # $scope.buildAssociationCache().then () ->
+        $scope.buildAssociationCache().then () ->
           AuthService.currentUser.posts().then (posts) ->
             # alert JSON.stringify posts
 
