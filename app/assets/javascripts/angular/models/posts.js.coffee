@@ -9,7 +9,7 @@ angular.module("NM").factory "Post", [
         if model.user_id
           cached = UsersCache.cache.get(model.user_id)
           if !cached
-            alert "NOT CACHED: " + JSON.stringify model
+            # alert "NOT CACHED: " + JSON.stringify model
             Restangular.one("users", model.user_id).get()
           else 
             # alert "CACHED"
