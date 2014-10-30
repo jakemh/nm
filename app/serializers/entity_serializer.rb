@@ -11,6 +11,10 @@ class EntitySerializer < ActiveModel::Serializer
   #   object.
   # end
 
+  def follow_uri
+    object.follow_uri
+  end
+
   def thumb
     thumb_path(object)
   end

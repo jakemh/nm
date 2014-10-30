@@ -14,6 +14,10 @@ module Interaction
     # has_many :inverse_inter_connections, class_name: :inter_connection, foreign_key: :connect_to_id
   end
 
+  def follow_uri
+  
+  end
+  
   # def intra_connection
   #   raise 'must override'
   # end
