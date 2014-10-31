@@ -43,7 +43,6 @@ angular.module("NM").controller "PostController", [
       # newPost.entity_type = AuthService.currentEntitySelection.selected.type
 
     $scope.sendPost = (postObj, postSubmit)->
-      alert JSON.stringify postObj
       entityAttrs = 
           entity_id: AuthService.currentEntitySelection.selected.id
           entity_type: AuthService.currentEntitySelection.selected.type
