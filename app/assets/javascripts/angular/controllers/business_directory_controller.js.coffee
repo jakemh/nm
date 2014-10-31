@@ -25,7 +25,7 @@ angular.module("NM").controller "BusinessDirectoryController", [
     $scope.engine = new Bloodhound(
          name: "businessSearch"
          remote:
-           url: "/search/index?q=%QUERY"
+           url: "/search?q=%QUERY"
 
          datumTokenizer: (d) ->
            d
