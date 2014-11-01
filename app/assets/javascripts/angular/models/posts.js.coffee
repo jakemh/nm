@@ -1,7 +1,9 @@
 angular.module("NM").factory "Post", [
+  
   "$q"
   "MessageBase"
   "Restangular"
+
   ($q, MessageBase, Restangular) ->
     # alert JSON.stringify Message
     Restangular.extendModel "me/posts", (model) ->

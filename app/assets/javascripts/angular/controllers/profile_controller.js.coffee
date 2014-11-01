@@ -24,7 +24,6 @@ angular.module("NM").controller "PrivateMessageController", [
 
 
       route = selectedEntity.message_route
-      alert JSON.stringify route
       Restangular.all(route).post(postSubmit).then (response)->
         # $scope.posts = $scope.posts.concat(response)
         AuthService.currentUser.sentMessages().then (sentMessages) ->
@@ -71,8 +70,6 @@ angular.module("NM").controller "ProfileController", [
     $scope.headOuterInit = (newPost, entity) ->
       newPost.type = 'Post'
     
-    $scope.test = ->
-      alert "TEST"
     $scope.privateMessageForm = "message_form.html"
 
     $scope.commentHeadOuterInit = (newPost, entity) ->
@@ -112,8 +109,8 @@ angular.module("NM").controller "ProfileController", [
           # alert JSON.stringify posts
 
     $scope.$watch 'posts', ->
-      MessagesDisplay.buildMessageDisplay($scope.displayList, $scope.posts)
-
+      MessagesDisplay.buildMessageDisplay(null, $scope.posts).then (list)->
+        $scope.displayList = list
     
       
 ]

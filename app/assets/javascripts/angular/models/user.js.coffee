@@ -41,5 +41,7 @@ angular.module("NM").factory "User", [
           Restangular.several("me/posts", model.personal_post_ids).getList()
         else $q.when([])
 
+      
+
       return model
 ]

@@ -2,7 +2,8 @@ class PostsController < ApplicationController
   include FeedConcern
 
   def index
-    render json: build_sorted_posts(Post.all.where(type: [nil, ""]))
+    render json: Post.all.where(type: [nil, ""])
+    # render json: build_sorted_posts(Post.all.where(type: [nil, ""]))
   end
 
   def show

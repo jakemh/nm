@@ -1,0 +1,27 @@
+<form class="new_post ng-pristine ng-valid">
+    <div class="feed__entry-inner-main">
+      <input ng-model="newPost.parent_id" type="hidden">
+      <input ng-model="newPost.type" type="hidden">
+      
+      <input 
+        class="feed__entry-input" 
+        id="post_content" 
+        placeholder="Enter a Subject" 
+        ng-model="newPost.subject"
+      ></input>
+
+      <textarea 
+        class="feed__entry-input" 
+        id="post_content" 
+        placeholder="Enter a message" 
+        rows="3"
+        ng-model="newPost.content"
+      ></textarea>
+    </div>
+    <!-- <div class="feed__form-bottom"> -->
+
+      <div class="feed__form-send" style="float:right">
+        <button class="feed__button button__form " name="commit" style="margin-top: 0 !important" ng-click="sendPost(entity, newPost)">Post</button>
+      </div>
+    <!-- </div> -->
+</form>
