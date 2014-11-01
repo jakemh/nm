@@ -1,13 +1,17 @@
 App.factory "MessagesDisplay", [
+  "$q"
   "Restangular"
-  (Restangular) ->
+  ($q, Restangular) ->
     buildMessageDisplay: (displayList, source) ->
+      deferred = $q.defer()
 
       if source
+        list = []
 
-        while displayList.length > 0 
-          displayList.pop()
+        # while displayList.length > 0 
+        #   displayList.pop()
         
+
         for post in source
           do (post) ->
             # alert post.entity() + " XXX " + JSON.stringify post
@@ -32,10 +36,9 @@ App.factory "MessagesDisplay", [
                         entityType: rE.type
                         entityId: rE.id
 
-              # key = Object.keys(e)[0];
                 entity = e
                 
-                displayList.push
+                list.push
                   id: post.id
                   newPost: {}
                   parentId: null
@@ -50,4 +53,8 @@ App.factory "MessagesDisplay", [
                   entityType: entity.type
                   entityId: entity.id
 
-]
+                if list.length == source.length
+                  deferred.resolve(list) 
+
+      return deferred.promise
+] 

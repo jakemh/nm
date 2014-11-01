@@ -1,5 +1,3 @@
-
-
 angular.module("NM").factory "ReceivedMessage", [
   "MessageBase"
   "Restangular"

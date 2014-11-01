@@ -21,6 +21,10 @@
   margin-top: 20px;
 }
 
+.feed--tall .feed__entry{
+  height: 250px;
+}
+
 .feed_content-follow{
   margin-top: 2px;
   text-align: center;
@@ -164,6 +168,10 @@
   background: white !important;
 }
 
+#js-msg__modal .modal-body{
+  max-height: 1000px;
+}
+
 .feed__entry--comment .thumb img, .feed__content--comment .thumb img{
   height: 80px;
   width: 80px;
@@ -188,7 +196,7 @@
     width: 100%;
     height: 100%;
     padding: 5px 5px 0px 10px;
-    margin: auto;
+    margin: 5px auto;
     border: none;
     background: $lightest-gray-color;
     outline: none;

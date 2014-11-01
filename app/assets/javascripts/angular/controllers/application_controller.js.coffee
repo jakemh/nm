@@ -43,19 +43,4 @@ angular.module("NM").controller "ApplicationController", [
       if ent
         ent.followers().then (followers)->
           AuthService.currentFollowers = followers 
-      # if ent
-      #   Follower.query({
-      #       distance: true,
-      #       entity_type: ent.type, 
-      #       entity_id: ent.id
-      #     }).then ((results) ->
-      #       AuthService.currentFollowers = results
-      #       # alert JSON.stringify $scope.followers
-      #       # $scope.watch "users + business"
-      #       $scope.searching = false
-      #       return
-      #     ), (error) ->
-            
-      #       $scope.searching = false
-
 ]

@@ -1,8 +1,9 @@
 <div ng-controller="PostController" ng-if="AuthService.currentEntitySelection.selected">
   <div class="feed">
- 	<div ng-include="'feed_head_outer.html'" ng-init="newPost = newPostMain; headOuterInit(newPost, entity)" ></div>
-    <div ng-repeat="entity in displayList | orderBy:'id': true">
+ 	  <div ng-if="displayList" ng-include="'feed_head_outer.html'" ng-init="newPost = newPostMain; headOuterInit(newPost, entity)" ></div>
+    <div  ng-repeat="entity in ::displayList | orderBy:'id': true">
       <div ng-include="'feed_content.html'"></div>
-  </div>
+  	</div>
 
+	</div>
 </div>

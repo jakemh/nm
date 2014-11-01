@@ -2,9 +2,16 @@ class UserSerializer < EntitySerializer
   attributes :user_post_associations, :business_post_associations, :message_route
   has_many :businesses, embed: :ids
   has_many :posts, embed: :ids
+  has_many :personal_posts, embed: :ids
+  # has_many :personal_posts
 
   def posts
     Post.all.where(type: [nil, "", "Post"])
+    # object.posts.where(type: [nil, "", "Post"])
+  end
+
+  def personal_posts
+    object.posts.where(type: [nil, "", "Post"])
   end
 
   def message_route

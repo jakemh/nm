@@ -7,6 +7,7 @@ window.App = angular.module("NM", [
   "ngResource"
   "restangular"
   "ngAnimate"
+  "pasvaz.bindonce"
   
 ]).config ($routeProvider, $locationProvider, $httpProvider, RestangularProvider) ->
   $httpProvider.defaults.headers.common['X-CSRF-Token'] = $('meta[name=csrf-token]').attr('content')
@@ -53,7 +54,11 @@ window.App = angular.module("NM", [
     templateUrl: "alphaBusiness.html"
     resolve:
       'currentUserx': "TEST"
-       
+
+
+  .when('/users/:id', 
+     {templateUrl: 'businessAlpha.html', controller: 'ProfileController'}
+   );
   $locationProvider.html5Mode true
   return
 

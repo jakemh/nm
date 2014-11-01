@@ -12,6 +12,14 @@
   width: 100%;
 }
 
+.modal-body {
+    max-height: 800px !important;
+}
+
+.modal-dialog{
+  max-height: 800px !important;
+}
+
 .tt-dropdown-menu *{
   color: black !important;
 }
