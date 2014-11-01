@@ -70,9 +70,9 @@ class MessagesController < ApplicationController
     end
 
     def message_type
-      # :user_message if params.has_key? :user_message
-      # :business_message if params.has_key? :business_message
-      :user_message
+      return :user_message if params.has_key? :user_message.to_s
+      return :business_message if params.has_key? :business_message.to_s
+      
     end
 
     def whitelist

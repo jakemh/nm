@@ -20,7 +20,7 @@ Rails.application.routes.draw do
   #API for angular
   resources :messages
   
-  # resources :posts
+  resources :posts
 
   # mount Monologue::Engine, at: '/blog' # or whatever path, be it "/blog" or "/monologue"
 

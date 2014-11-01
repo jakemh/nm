@@ -45,12 +45,13 @@ angular.module("NM").controller "PostController", [
       # newPost.entity_type = AuthService.currentEntitySelection.selected.type
 
     $scope.sendPost = (postObj, postSubmit)->
+      ent = AuthService.currentEntitySelection.selected
       entityAttrs = 
-          entity_id: AuthService.currentEntitySelection.selected.id
-          entity_type: AuthService.currentEntitySelection.selected.type
+          entity_id: ent.id
+          entity_type: ent.type
 
       postSubmit = angular.extend({}, postSubmit, entityAttrs)
-      Restangular.all('posts').post(postSubmit).then (response)->
+      ent.post("posts", postSubmit).then (response)->
         # $scope.posts = $scope.posts.concat(response)
         AuthService.currentUser.posts().then (posts) ->
           # console.log "POSTS: " + JSON.stringify posts

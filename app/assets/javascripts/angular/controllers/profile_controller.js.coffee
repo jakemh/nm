@@ -24,7 +24,7 @@ angular.module("NM").controller "PrivateMessageController", [
 
 
       route = selectedEntity.message_route
-      Restangular.all(route).post(postSubmit).then (response)->
+      selectedEntity.post("messages", postSubmit).then (response)->
         # $scope.posts = $scope.posts.concat(response)
         AuthService.currentUser.sentMessages().then (sentMessages) ->
           $("#js-msg__modal").modal('hide')
@@ -80,13 +80,14 @@ angular.module("NM").controller "ProfileController", [
       # newPost.entity_type = AuthService.currentEntitySelection.selected.type
 
     $scope.sendPost = (postObj, postSubmit)->
+      ent = AuthService.currentEntitySelection.selected
       entityAttrs = 
-          entity_id: AuthService.currentEntitySelection.selected.id
-          entity_type: AuthService.currentEntitySelection.selected.type
+          entity_id: ent.id
+          entity_type: ent.type
 
       postSubmit = angular.extend({}, postSubmit, entityAttrs)
 
-      Restangular.all('me/posts').post(postSubmit).then (response)->
+      ent.post("posts", postSubmit).then (response)->
         # $scope.posts = $scope.posts.concat(response)
         $scope.profileEntity.posts().then (posts)->
           $scope.posts = posts

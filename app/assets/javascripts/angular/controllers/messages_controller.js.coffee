@@ -54,11 +54,15 @@ angular.module("NM").controller "MessagesController", [
           $scope.sentMessages = sentMessages
 
     $scope.$watch 'sentMessages', ->
-      MessagesDisplay.buildMessageDisplay($scope.sentMessagesDisplay, $scope.sentMessages)
+      # MessagesDisplay.buildMessageDisplay($scope.sentMessagesDisplay, $scope.sentMessages)
+      MessagesDisplay.buildMessageDisplay(null, $scope.sentMessages).then (list)->
+        $scope.sentMessagesDisplay = list
+
 
     $scope.$watch 'receivedMessages', ->
-      MessagesDisplay.buildMessageDisplay($scope.receivedMessagesDisplay, $scope.receivedMessages)
-
+      # MessagesDisplay.buildMessageDisplay($scope.receivedMessagesDisplay, $scope.receivedMessages)
+      MessagesDisplay.buildMessageDisplay(null, $scope.receivedMessages).then (list)->
+        $scope.receivedMessagesDisplay = list
 
     $scope.$watch 'AuthService.currentEntitySelection.selected', ->
       if AuthService.currentEntitySelection.selected

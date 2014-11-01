@@ -20,7 +20,13 @@ angular.module("NM").factory "Business", [
         else $q.when([])
 
 
-      
+      model.posts = (params)->
+        # if model.post_ids.length > 0
+        #   Restangular.several("me/posts", model.post_ids).getList()
+        # else $q.when([])
+        model.getList("posts", params)
+        # model.several('posts',[2,3,4]).getList()
+        # Restangular.all("me/posts").getList()
 
 
       return model
