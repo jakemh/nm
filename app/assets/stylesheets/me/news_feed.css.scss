@@ -6,8 +6,8 @@
 
 
 .feed img{
-  width: 120px;
-  height: 120px;
+  width: 100px;
+  height: 100px;
 }
 .feed__entry{
   // padding: 15px;
@@ -31,7 +31,7 @@
 }
 
 .feed__entry--comment{
-  height: 110px;
+  height: 100px;
   background: whitesmoke;
   margin-top: 0;
 }
@@ -52,7 +52,7 @@
 }
 
 .feed__button{
-  margin: 0 !important;
+  margin: !important;
 }
 .feed__content-top{
   padding: 5px;
@@ -78,6 +78,7 @@
 
 .feed__content--comment{
   background: whitesmoke;
+  padding: 0 5px;
 }
 .feed__content-outer{
   margin: 15px 0;
@@ -196,7 +197,7 @@
     width: 100%;
     height: 100%;
     padding: 5px 5px 0px 10px;
-    margin: 5px auto;
+    margin: 2px auto;
     border: none;
     background: $lightest-gray-color;
     outline: none;
