@@ -25,7 +25,7 @@ class Me::PostsController < MeController
 
   def create
     # @user = current_user
-
+    
     @entity = if params[:entity_type] == "User"
       current_user
     elsif params[:entity_type] == "Business"
@@ -37,7 +37,7 @@ class Me::PostsController < MeController
     # @entity = @user
     # @post = default_entity.posts.build whitelist
     @post = @entity.posts.build whitelist
-    p 
+
     if @post.save
       # redirect_to :back
       render json: @post.to_json
