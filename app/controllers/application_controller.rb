@@ -5,13 +5,19 @@ class ApplicationController < ActionController::Base
   before_filter :authenticate
   after_filter :track_action
   serialization_scope :view_context
-
+  attr_accessor :entity
   # check_authorization :unless => :devise_controller?
   # check_authorization :unless => :temporary_controller?
 
   protected
+    def entity
+      @entity ||= set_entity
+    end
 
-   
+    def display_all_posts
+      true
+    end
+
 
    def track_action
      # ahoy.track "Processed #{controller_name}##{action_name}", request.filtered_parameters
@@ -56,6 +62,17 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  private
+
+  def set_entity
+   if params[:business_id]
+     @entity = Business.find(params[:business_id])
+   elsif params[:user_id]
+     @entity = User.find(params[:user_id]) 
+    else raise "Applicable entity not found!"
+
+    end
+  end
   # def after_sign_in_path_for(resource)
   #    redirect_to
   #  end

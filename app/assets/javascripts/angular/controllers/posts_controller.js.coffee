@@ -16,6 +16,7 @@ angular.module("NM").controller "PostController", [
   "MessagesDisplay"
   "Restangular"
   "AuthService"
+
   ($scope, $q, CacheService, Utilities, MessagesDisplay,  Restangular, AuthService) ->
     # $scope.postsCache = $cacheFactory('me/posts');
     $scope.posts = []
@@ -49,7 +50,7 @@ angular.module("NM").controller "PostController", [
           entity_type: AuthService.currentEntitySelection.selected.type
 
       postSubmit = angular.extend({}, postSubmit, entityAttrs)
-      Restangular.all('me/posts').post(postSubmit).then (response)->
+      Restangular.all('posts').post(postSubmit).then (response)->
         # $scope.posts = $scope.posts.concat(response)
         AuthService.currentUser.posts().then (posts) ->
           # console.log "POSTS: " + JSON.stringify posts
@@ -60,7 +61,6 @@ angular.module("NM").controller "PostController", [
       MessagesDisplay.buildMessageDisplay(null, $scope.posts).then (list)->
 
         $scope.displayList = list
-        console.log "TEST: " + JSON.stringify list
       # MessagesDisplay.buildMessageDisplay($scope.displayList, $scope.posts)
 
     $scope.$watch 'AuthService.currentUser', ->
@@ -72,7 +72,7 @@ angular.module("NM").controller "PostController", [
           businesses: AuthService.currentUser.business_post_associations
 
         CacheService.cacheModelsForLists(cacheHash).then ()->
-          AuthService.currentUser.posts().then (posts) ->
+          AuthService.currentUser.posts(all: true).then (posts) ->
             $scope.posts = posts
     
     # $scope.buildAssociationCache = ->

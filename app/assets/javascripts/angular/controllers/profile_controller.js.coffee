@@ -85,9 +85,10 @@ angular.module("NM").controller "ProfileController", [
           entity_type: AuthService.currentEntitySelection.selected.type
 
       postSubmit = angular.extend({}, postSubmit, entityAttrs)
+
       Restangular.all('me/posts').post(postSubmit).then (response)->
         # $scope.posts = $scope.posts.concat(response)
-        $scope.profileEntity.personalPosts().then (posts)->
+        $scope.profileEntity.posts().then (posts)->
           $scope.posts = posts
         # AuthService.currentUser.posts().then (posts) ->
         #   # console.log "POSTS: " + JSON.stringify posts
@@ -104,12 +105,13 @@ angular.module("NM").controller "ProfileController", [
 
     $scope.$watch 'profileEntity', ->
       if $scope.profileEntity
-        $scope.profileEntity.personalPosts().then (posts)->
+        $scope.profileEntity.posts().then (posts)->
           $scope.posts = posts
           # alert JSON.stringify posts
 
     $scope.$watch 'posts', ->
       MessagesDisplay.buildMessageDisplay(null, $scope.posts).then (list)->
+        # alert JSON.stringify list 
         $scope.displayList = list
     
       

@@ -20,7 +20,7 @@ Rails.application.routes.draw do
   #API for angular
   resources :messages
   
-  resources :posts
+  # resources :posts
 
   # mount Monologue::Engine, at: '/blog' # or whatever path, be it "/blog" or "/monologue"
 
@@ -37,6 +37,7 @@ Rails.application.routes.draw do
  
   resources :businesses do
     resources :messages, :controller => :business_messages
+    resources :posts
   end
 
   resources :entities
@@ -53,6 +54,7 @@ Rails.application.routes.draw do
 
   resources :users do
     resources :messages, :controller => :user_messages
+    resources :posts
   end
   resources :emails
   # devise_for :users, :controllers => {registrations: 'landing'}

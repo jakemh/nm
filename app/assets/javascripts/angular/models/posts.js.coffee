@@ -6,7 +6,8 @@ angular.module("NM").factory "Post", [
 
   ($q, MessageBase, Restangular) ->
     # alert JSON.stringify Message
-    Restangular.extendModel "me/posts", (model) ->
+    Restangular.extendModel "posts", (model) ->
+
       model.entity = ->
         MessageBase.entity(model)
 

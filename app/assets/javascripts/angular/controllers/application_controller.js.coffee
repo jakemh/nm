@@ -19,7 +19,7 @@ angular.module("NM").controller "ApplicationController", [
     $scope.init = () ->
       AuthService.user().then (user)->
         AuthService.currentUser = user
-
+        
     $scope.init()
 
     $scope.$watch 'AuthService.currentUser', ->
