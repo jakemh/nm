@@ -60,6 +60,7 @@ angular.module("NM").controller "PostController", [
       MessagesDisplay.buildMessageDisplay(null, $scope.posts).then (list)->
 
         $scope.displayList = list
+        console.log "TEST: " + list
       # MessagesDisplay.buildMessageDisplay($scope.displayList, $scope.posts)
 
     $scope.$watch 'AuthService.currentUser', ->

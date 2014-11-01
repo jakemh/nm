@@ -16,7 +16,6 @@ window.App = angular.module("NM", [
   # RestangularProvider.setDefaultHttpFields({cache: true});
 
   RestangularProvider.addResponseInterceptor (data, operation, what, url, response, deferred) ->
-    console.log "Data: " + JSON.stringify(data) + " Operation: " + operation + " What: " + what + " URL: " + url + " Response: " + JSON.stringify(response) + " Deferred: " + JSON.stringify(deferred)
     key = Object.keys(data)[0];
     extractedData = data  
 
