@@ -9,8 +9,8 @@ angular.module("NM").factory "Post", [
     # alert JSON.stringify Message
     Restangular.extendModel "posts", (model) ->
 
-      model.entity = ->
-        MessageBase.entity(model)
+      model.entity = (params)->
+        MessageBase.entity(model, params)
         # RestangularPlus.one()
 
       model.responses = ->

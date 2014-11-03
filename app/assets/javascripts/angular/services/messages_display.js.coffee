@@ -12,17 +12,18 @@ App.factory "MessagesDisplay", [
         # while displayList.length > 0 
         #   displayList.pop()
         
+        current = AuthService.currentEntitySelection.selected
 
         for post in source
           do (post) ->
             # alert post.entity() + " XXX " + JSON.stringify post
-            post.entity().then (e)->
+            post.entity({current_type: current.type, current_id: current.id}).then (e)->
               post.responses().then (responses) ->
                 responseList = []
 
                 for response in responses
                   do (response) ->
-                    response.entity().then (rE) ->
+                    response.entity({current_type: current.type, current_id: current.id}).then (rE) ->
                       responseList.push
                         id: response.id
                         newPost: {}

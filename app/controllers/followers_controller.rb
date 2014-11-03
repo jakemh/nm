@@ -6,7 +6,11 @@ class FollowersController < ApplicationController
   end
  
  def create
-   @connection = entity.connections.build(whitelist)
+    type = Connection.connection_type(entity.class.name, whitelist[:type])
+    
+   @connection = entity.connections.build({
+      :connect_to_id => whitelist[:connect_to_id],
+      :type => type})
     if @connection.save
       flash[:notice] = "Added #{params[:type]}"
       redirect_to_back root_url
@@ -35,6 +39,6 @@ class FollowersController < ApplicationController
 
  private
  def whitelist
-   params.permit(:connect_to_id, :type)
+   params.require(:follower).permit(:connect_to_id, :type)
  end
 end

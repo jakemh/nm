@@ -43,12 +43,14 @@ class Connection < ActiveRecord::Base
     !has_corresponding_inverse
   end
 
-  def self.connection_type(entity)
-    if entity.class.name == "Business"
-      "BusinessConnection"
-    elsif entity.class.name == "User"
-      "Friendship"
-    end
+  def self.connection_type(current_type, entity_type)
+    if current_type == "User"
+      return "BusinessConnection" if entity_type == "Business"
+      return "Friendship" if entity_type == "User"
+    elsif current_type == "Business"
+      return "BusinessConnection" if entity_type == "User"
+      return "BusinessFriendship" if entity_type == "Business"
+    end 
   end
 
   def has_corresponding_inverse

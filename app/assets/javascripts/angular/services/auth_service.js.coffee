@@ -20,7 +20,10 @@ App.factory "AuthService", [
 
     followerHandle: (entity)->
       cur =  @currentEntitySelection.selected
-      Restangular.all('followers').post(entity,)
+      cur.post 'followers',
+        connect_to_id: entity.id
+        type: entity.entityType
+
 
     followerType: (other) ->
       cur =  @currentEntitySelection.selected

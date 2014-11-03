@@ -1,17 +1,35 @@
 module Me::NewsFeedHelper
   # DEFAULT_PHOTO = 
-  def follow_link(user, entity, opt={})
+  # def follow_link(user, entity, opt={})
+  #   if entity != user && entity
+
+  #     connection = user.connection_with(entity)
+  #     p "CONNECTION: ", connection.inspect
+
+  #     if !connection || connection.length == 0
+  #       link_to "Follow", me_connections_path(:connect_to_id => entity, :type => Connection.connection_type(entity)), :method => :post 
+  #     elsif connection.first.type == "Ownership"
+  #       "My Business"
+  #     else
+  #       link_to "Remove", [:me, connection.first], method: :delete
+  #     end
+  #   end
+  # end
+
+  def follow_link(current, other, opt={})
     if entity != user && entity
 
-      connection = user.connection_with(entity)
+      connection = current.connection_with(other)
       p "CONNECTION: ", connection.inspect
 
       if !connection || connection.length == 0
-        link_to "Follow", me_connections_path(:connect_to_id => entity, :type => Connection.connection_type(entity)), :method => :post 
+        "FOLLOW"
+        # link_to "Follow", me_connections_path(:connect_to_id => entity, :type => Connection.connection_type(entity)), :method => :post 
       elsif connection.first.type == "Ownership"
         "My Business"
       else
-        link_to "Remove", [:me, connection.first], method: :delete
+        "REMOVE"
+        # link_to "Remove", [:me, connection.first], method: :delete
       end
     end
   end
