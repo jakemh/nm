@@ -20,7 +20,7 @@ class EntitySerializer < ActiveModel::Serializer
   def follower_uri_type
     if scope.params[:current_type] && scope.params[:current_id]
       other = scope.params[:current_type].constantize.find(scope.params[:current_id])
-      follow_link(object, other)
+      scope.follow_link(object, other)
     else nil
     end
   end

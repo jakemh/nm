@@ -17,18 +17,18 @@ module Me::NewsFeedHelper
   # end
 
   def follow_link(current, other, opt={})
-    if entity != user && entity
+    if current != other && current
 
       connection = current.connection_with(other)
       p "CONNECTION: ", connection.inspect
 
       if !connection || connection.length == 0
-        "FOLLOW"
+       return 1
         # link_to "Follow", me_connections_path(:connect_to_id => entity, :type => Connection.connection_type(entity)), :method => :post 
       elsif connection.first.type == "Ownership"
-        "My Business"
+       return 0
       else
-        "REMOVE"
+        return -1
         # link_to "Remove", [:me, connection.first], method: :delete
       end
     end

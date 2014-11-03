@@ -18,23 +18,42 @@ App.factory "AuthService", [
       else 
         null
 
-    followerHandle: (entity)->
+    followerHandle: (entity, callback)->
+      followerType = entity.followerUriType
       cur =  @currentEntitySelection.selected
-      cur.post 'followers',
+      params = 
         connect_to_id: entity.id
         type: entity.entityType
 
+      debugger
+      if followerType == "Follow"
+        cur.post('followers', params).then ()->
+          callback()
+          
+      else if followerType == "Remove"
+        cur.delete('followers', params).then ()->
+          callback()
 
-    followerType: (other) ->
-      cur =  @currentEntitySelection.selected
-      if other != cur
-        if cur.type == "User" && other.type == "Business"
-          "Business Connection"
-        else if cur.type == "User" && other.type == "User"
-          "User Friendship"
-        else if cur.type == "Business" && other.type == "Business"
-          "Business Friendship"
-        else if cur.type == "Business" && other.type == "User"
-          "Business Connection"
-      else "Yours"
+
+
+    followerType: (entity) ->
+      followStatus = entity.follower_uri_type
+      if followStatus == 0
+        null
+      else if followStatus == 1
+        "Follow"
+      else if followStatus == -1
+        "Remove "
+
+      # cur =  @currentEntitySelection.selected
+      # if other != cur
+      #   if cur.type == "User" && other.type == "Business"
+      #     "Business Connection"
+      #   else if cur.type == "User" && other.type == "User"
+      #     "User Friendship"
+      #   else if cur.type == "Business" && other.type == "Business"
+      #     "Business Friendship"
+      #   else if cur.type == "Business" && other.type == "User"
+      #     "Business Connection"
+      # else "Yours"
 ]

@@ -44,6 +44,10 @@ angular.module("NM").controller "PostController", [
       # newPost.entity_id = AuthService.currentEntitySelection.selected.id
       # newPost.entity_type = AuthService.currentEntitySelection.selected.type
 
+    $scope.followerCallback = ->
+      AuthService.currentUser.posts("all": true).then (posts) ->
+        $scope.posts = posts
+      
     $scope.sendPost = (postObj, postSubmit)->
       ent = AuthService.currentEntitySelection.selected
       entityAttrs = 
@@ -65,6 +69,8 @@ angular.module("NM").controller "PostController", [
       # MessagesDisplay.buildMessageDisplay($scope.displayList, $scope.posts)
 
     $scope.$watch 'AuthService.currentEntitySelection.selected', ->
+      current = AuthService.currentEntitySelection.selected
+
       if AuthService.currentUser
         # $scope.displayList = []
         # $scope.buildAssociationCache().then () ->
@@ -72,7 +78,7 @@ angular.module("NM").controller "PostController", [
           users: AuthService.currentUser.user_post_associations
           businesses: AuthService.currentUser.business_post_associations
 
-        CacheService.cacheModelsForLists(cacheHash).then ()->
+        CacheService.cacheModelsForLists(cacheHash,{current_type: current.type, current_id: current.id}).then ()->
           AuthService.currentUser.posts("all": true).then (posts) ->
             $scope.posts = posts
     
