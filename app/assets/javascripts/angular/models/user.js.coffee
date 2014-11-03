@@ -18,13 +18,13 @@ angular.module("NM").factory "User", [
       #   Restangular.several("me/messages", self.user.sent_message_ids).getList()
 
       self.sentMessages = ->
-          self.severalPlus("sent_messages").getList()
+          self.getListPlus("sent_messages", {all: true})
           # Restangular.severalPlus"sent_messages", self.sent_message_ids).getList()
           # Restangular.several("me/sent_messages", self.sent_message_ids).getList()
 
 
       self.receivedMessages = ->
-        self.severalPlus("received_messages").getList()
+        self.getListPlus("received_messages", {all: true})
           # Restangular.severalPlus(self, "received_messages", self.received_message_ids).getList()
       
       self.posts = (params)->

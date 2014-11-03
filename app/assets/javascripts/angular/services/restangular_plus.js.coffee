@@ -18,7 +18,7 @@ App.factory "RestangularPlus", [
       true
 
     severalPlus: (args) ->
-      @before(@checkIds, Restangular.several)(arguments[0], arguments[1])
+      @before(@trueTest, Restangular.several)(arguments[0], arguments[1])
 
     getListPlus: () ->
       @before(@trueTest, @getList)(arguments[0], arguments[1])

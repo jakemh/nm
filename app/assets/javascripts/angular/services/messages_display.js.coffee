@@ -30,6 +30,7 @@ App.factory "MessagesDisplay", [
                         name: rE.name
                         # distance: entity.distance
                         added: response.created_at
+                        uri: rE.uri
                         thumb: rE.thumb
                         content: response.content
                         profile: rE.uri
@@ -41,6 +42,7 @@ App.factory "MessagesDisplay", [
                 list.push
                   id: post.id
                   newPost: {}
+                  uri: entity.uri
                   parentId: null
                   name: entity.name
                   messageRoute: entity.message_route

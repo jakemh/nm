@@ -1,5 +1,4 @@
 class MessagesController < ApplicationController
-  before_filter :set_from_entity, only: [:new, :create, :edit, :save]
   before_filter :set_to_entity, only: [:new, :create, :edit, :save]
   before_filter :authenticate_entity, only: [:index, :show]
 
@@ -33,6 +32,16 @@ class MessagesController < ApplicationController
   #   render json: @sent_messages
 
   # end
+  def create
+    # user = User.find(params[:user_id])
+    
+     m = entity.send_message_to([to_entity], post)
+     if m.save
+       # redirect_to [:me, :messages]
+       render json: m
+     end
+  end
+
   
   def edit
   end
@@ -59,7 +68,7 @@ class MessagesController < ApplicationController
     # end
 
     def set_to_entity
-      _to_entity = whitelist[:to_type].constantize.find(whitelist[:to_id])
+      _to_entity = to_type.constantize.find(to_id)
       #currently we allow any user to sent PMs to any user
       @to_entity = _to_entity
     end
@@ -83,8 +92,16 @@ class MessagesController < ApplicationController
       
     end
 
+    def to_type
+      params[:to_type]
+    end
+
+    def to_id
+      params[:to_id]
+    end
+
     def whitelist
-      params.require(message_type).permit(
+      params.require(:message).permit(
         :content, 
         :subject, 
         :from_id, 
