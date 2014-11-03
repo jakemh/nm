@@ -1,5 +1,7 @@
 class MessagesController < ApplicationController
-  before_filter :set_from_entity, :set_to_entity, only: [:new, :create, :edit, :save]
+  before_filter :set_from_entity, only: [:new, :create, :edit, :save]
+  before_filter :set_to_entity, only: [:new, :create, :edit, :save]
+  before_filter :authenticate_entity, only: [:index, :show]
 
   def index
   end
@@ -17,20 +19,20 @@ class MessagesController < ApplicationController
     # @from = from_type.constantize.find(from_id)
   end
 
-  def show
-    @entity = if params[:entity_type] == "User"
-      current_user
-    elsif params[:entity_type] == "Business"
-      current_user.businesses.find(params[:business_id])
-    end
-    @sent_messages = if params[:id]
-      # current_user.sent_messages.find(params[:id].split(","))
-      MessageResponse.find(params[:id].split(","))
-    # else current_user.sent_messages
-    end
-    render json: @sent_messages
+  # def show
+  #   @entity = if params[:entity_type] == "User"
+  #     current_user
+  #   elsif params[:entity_type] == "Business"
+  #     current_user.businesses.find(params[:business_id])
+  #   end
+  #   @sent_messages = if params[:id]
+  #     # current_user.sent_messages.find(params[:id].split(","))
+  #     MessageResponse.find(params[:id].split(","))
+  #   # else current_user.sent_messages
+  #   end
+  #   render json: @sent_messages
 
-  end
+  # end
   
   def edit
   end
@@ -42,13 +44,19 @@ class MessagesController < ApplicationController
   end
 
    private
-    def set_from_entity
-      _from_entity = whitelist[:from_type].constantize.find(whitelist[:from_id])
-      if [current_user].append(current_user.businesses).include? _from_entity
-        @from_entity = _from_entity
-      else raise 'SUSPICIOUS FROM ENTITY!'
-      end
-    end
+   def authenticate_entity
+     return true if entity == current_user 
+     return true if current_user.businesses.include? entity
+     raise CanCan::AccessDenied
+   end
+
+    # def set_from_entity
+    #   _from_entity = whitelist[:from_type].constantize.find(whitelist[:from_id])
+    #   if [current_user].append(current_user.businesses).include? _from_entity
+    #     @from_entity = _from_entity
+    #   else raise 'SUSPICIOUS FROM ENTITY!'
+    #   end
+    # end
 
     def set_to_entity
       _to_entity = whitelist[:to_type].constantize.find(whitelist[:to_id])
@@ -57,9 +65,9 @@ class MessagesController < ApplicationController
     end
 
 
-    def from_entity
-      @from_entity
-    end
+    # def from_entity
+    #   @from_entity
+    # end
 
     def to_entity
       @to_entity

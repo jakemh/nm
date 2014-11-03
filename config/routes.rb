@@ -1,6 +1,18 @@
 
 Rails.application.routes.draw do
 
+  get 'message_responses/index'
+
+  get 'message_responses/create'
+
+  get 'received_messages/index'
+
+  get 'received_messages/show'
+
+  get 'sent_messages/index'
+
+  get 'sent_messages/show'
+
   namespace :me do
   get 'message_responses/show'
   end
@@ -19,7 +31,6 @@ Rails.application.routes.draw do
 
   #API for angular
   resources :messages
-  
   resources :posts
 
   # mount Monologue::Engine, at: '/blog' # or whatever path, be it "/blog" or "/monologue"
@@ -35,10 +46,10 @@ Rails.application.routes.draw do
    post 'landing/index', :to => "landing#add_email"
    get 'registration/selection', :to => "registration#selection", :as => :selection
  
-  resources :businesses do
-    resources :messages, :controller => :business_messages
-    resources :posts
-  end
+  # resources :businesses do
+  #   resources :messages, :controller => :business_messages
+  
+  # end
 
   resources :entities
   
@@ -52,10 +63,18 @@ Rails.application.routes.draw do
     resources :message_responses
   end
 
-  resources :users do
-    resources :messages, :controller => :user_messages
+  # resources :users do
+  #   # resources :messages, :controller => :user_messages
+  # end
+
+  resources :users, :businesses do
+    resources :messages
+    resources :sent_messages
+    resources :received_messages
+    resources :message_responses
     resources :posts
   end
+
   resources :emails
   # devise_for :users, :controllers => {registrations: 'landing'}
 

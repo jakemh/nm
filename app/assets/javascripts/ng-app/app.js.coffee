@@ -14,6 +14,21 @@ window.App = angular.module("NM", [
   RestangularProvider.setRequestSuffix('.json');
   # RestangularProvider.addRequestInterceptor (element, operation, what, url) ->
   # RestangularProvider.setDefaultHttpFields({cache: true});
+  RestangularProvider.addFullRequestInterceptor (element, operation, what, url, headers, params, httpConfig) ->
+    
+    # console.log JSON.stringify 
+    #   element: element
+    #   operation: operation
+    #   what: what
+    #   url: url
+    #   headers: headers
+    #   params: params
+    #   httpConfig: httpConfig
+
+    return element
+    # if operation == "getList"
+
+
 
   RestangularProvider.addResponseInterceptor (data, operation, what, url, response, deferred) ->
     key = Object.keys(data)[0];

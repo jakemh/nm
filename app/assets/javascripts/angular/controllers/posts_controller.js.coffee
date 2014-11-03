@@ -53,7 +53,7 @@ angular.module("NM").controller "PostController", [
       postSubmit = angular.extend({}, postSubmit, entityAttrs)
       ent.post("posts", postSubmit).then (response)->
         # $scope.posts = $scope.posts.concat(response)
-        AuthService.currentUser.posts().then (posts) ->
+        AuthService.currentUser.posts({all: true}).then (posts) ->
           # console.log "POSTS: " + JSON.stringify posts
           $scope.posts = posts
       # Restangular.all('me/posts').post(post)

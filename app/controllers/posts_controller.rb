@@ -4,15 +4,15 @@ class PostsController < ApplicationController
   def index
     @posts = 
       if display_all_posts && params[:all]
-        Post.all.where(type: [nil, "", "Post"])
-      else entity.posts.where(type: [nil, "", "Post"])
+        Post.all.includes(:responses, :user, :business).where(type: [nil, "", "Post"])
+      else entity.posts.includes(:responses, :user, :business).where(type: [nil, "", "Post"])
       end
 
     render json: @posts
   end
 
   def show
-    render json: entity.posts.where(:id => params[:id].split(","), type: [nil, "", "Post"])
+    render json: entity.includes(:responses).posts.where(:id => params[:id].split(","), type: [nil, "", "Post"])
   end
 
   def create

@@ -1,49 +1,53 @@
 angular.module("NM").factory "User", [
+
   "$q"
   "Restangular"
+  "RestangularPlus"
   "Entity"
-  ($q, Restangular, Entity) ->
 
-    Restangular.extendModel "users", (model) =>
-      model.businesses = ->
-        if model.business_ids.length > 1
-          Restangular.several("businesses", model.business_ids).getList()
-        else if model.business_ids.length == 1
-          Restangular.one("businesses", model.business_ids).get()
+  ($q, Restangular, RestangularPlus, Entity) ->
+    Restangular.extendModel "users", (self) =>
+      angular.extend self, RestangularPlus
+      self.businesses = ->
+        if self.business_ids.length > 1
+          Restangular.several("businesses", self.business_ids).getList()
+        else if self.business_ids.length == 1
+          Restangular.one("businesses", self.business_ids).get()
         else $q.when([])
-      # model.messages = ->
-      #   Restangular.several("me/messages", model.user.sent_message_ids).getList()
+      # self.messages = ->
+      #   Restangular.several("me/messages", self.user.sent_message_ids).getList()
 
-      model.sentMessages = ->
-        if model.sent_message_ids.length > 0
-          Restangular.several("me/sent_messages", model.sent_message_ids).getList()
-        else $q.when([])
+      self.sentMessages = ->
+          self.severalPlus("sent_messages").getList()
+          # Restangular.severalPlus"sent_messages", self.sent_message_ids).getList()
+          # Restangular.several("me/sent_messages", self.sent_message_ids).getList()
 
 
-      model.receivedMessages = ->
-        if model.received_message_ids.length > 0
-          Restangular.several("me/received_messages", model.received_message_ids).getList()
-        else $q.when([])
-
-      model.posts = (params)->
-        # if model.post_ids.length > 0
-        #   Restangular.several("me/posts", model.post_ids).getList()
+      self.receivedMessages = ->
+        self.severalPlus("received_messages").getList()
+          # Restangular.severalPlus(self, "received_messages", self.received_message_ids).getList()
+      
+      self.posts = (params)->
+        # if self.post_ids.length > 0
+        #   Restangular.several("me/posts", self.post_ids).getList()
         # else $q.when([])
-        model.getList("posts", params)
-        # model.several('posts',[2,3,4]).getList()
+        self.getListPlus("posts", params)
+        # self.several('posts',[2,3,4]).getList()
         # Restangular.all("me/posts").getList()
 
-      model.followers = ->
-        if model.follower_ids.length > 0
-          Restangular.all("me/followers").getList({entity_id: model.id, entity_type: model.type})
+      self.followers = ->
+        if self.follower_ids.length > 0
+          Restangular.all("me/followers").getList({entity_id: self.id, entity_type: self.type})
         else $q.when([])
 
-      model.personalPosts = ->
-        if model.personal_post_ids.length > 0
-          Restangular.several("me/posts", model.personal_post_ids).getList()
-        else $q.when([])
+      self.personalPosts = ->
+        self.severalPlus("posts").getList()
 
+        # if self.personal_post_ids.length > 0
+        #   Restangular.several("me/posts", self.personal_post_ids).getList()
+        # else $q.when([])
 
+      # self.several2()
 
-      return model
+      return self
 ]

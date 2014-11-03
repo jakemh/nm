@@ -2,14 +2,16 @@ angular.module("NM").factory "Post", [
   
   "$q"
   "MessageBase"
+  "RestangularPlus"
   "Restangular"
 
-  ($q, MessageBase, Restangular) ->
+  ($q, MessageBase, RestangularPlus, Restangular) ->
     # alert JSON.stringify Message
     Restangular.extendModel "posts", (model) ->
 
       model.entity = ->
         MessageBase.entity(model)
+        # RestangularPlus.one()
 
       model.responses = ->
         if model.response_ids.length > 0

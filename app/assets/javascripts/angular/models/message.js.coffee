@@ -3,7 +3,7 @@ angular.module("NM").factory "ReceivedMessage", [
   "Restangular"
 
   (MessageBase, Restangular) ->
-    Restangular.extendModel "me/received_messages", (model) ->
+    Restangular.extendModel "received_messages", (model) ->
         
       model.entity = ->
         MessageBase.entity(model)
@@ -24,14 +24,14 @@ angular.module("NM").factory "SentMessage", [
   "Restangular"
 
   ($q, MessageBase, Restangular) ->
-    Restangular.extendModel "me/sent_messages", (model) ->
+    Restangular.extendModel "sent_messages", (model) ->
       
       model.entity = ->
         MessageBase.entity(model)
 
       model.responses = ->
         if model.response_ids.length > 0
-          Restangular.several("me/message_responses", model.response_ids).getList()
+          Restangular.several("message_responses", model.response_ids).getList()
         else $q.when([])
 
       return model
@@ -45,14 +45,14 @@ angular.module("NM").factory "MessageResponse", [
   "Restangular"
 
   ($q, MessageBase, Restangular) ->
-    Restangular.extendModel "me/message_responses", (model) ->
+    Restangular.extendModel "message_responses", (model) ->
       
       model.entity = ->
         MessageBase.entity(model)
 
       model.responses = ->
         if model.response_ids.length > 0
-          Restangular.several("me/message_responses", model.response_ids).getList()
+          Restangular.several("message_responses", model.response_ids).getList()
         else $q.when([])
    
       return model

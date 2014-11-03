@@ -14,7 +14,7 @@ App.factory "CacheService", [
 
     cacheModelForList: (model, list)->
       deferred = $q.defer();
-      Restangular.several(model, list).getList().then (asses)=>
+      Restangular.several(model, _.uniq(list)).getList().then (asses)=>
         for ass in asses
           # alert JSON.stringify @modelsToCache()
 
@@ -26,14 +26,14 @@ App.factory "CacheService", [
 
     cacheUsersForList: (list)->
       deferred = $q.defer();
-      @cacheModelForList("users", source).then (cached)->
+      @cacheModelForList("users", _.uniq(source)).then (cached)->
         deferred.resolve(cached)
 
       return deferred.promise
 
     cacheBusinessesForList: (list)->
       deferred = $q.defer();
-      @cacheModelForList("businesses", source).then (cached)->
+      @cacheModelForList("businesses", _.uniq(source)).then (cached)->
         deferred.resolve(cached)
       return deferred.promise
 
@@ -44,7 +44,7 @@ App.factory "CacheService", [
       for model in models
 
         list = hash[model]
-        promises.push(@cacheModelForList(model, list))
+        promises.push(@cacheModelForList(model, _.uniq(list)))
 
       return $q.all(promises)
 

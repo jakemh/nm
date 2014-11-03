@@ -46,9 +46,9 @@ angular.module("NM").controller "MessagesController", [
 
       route = selectedEntity.message_route
       # alert JSON.stringify postSubmit
-      Restangular.all(route).post(postSubmit).then (response)->
+      selectedEntity.all("messages").post(postSubmit).then (response)->
         # $scope.posts = $scope.posts.concat(response)
-        AuthService.currentUser.sentMessages().then (sentMessages) ->
+        selectedEntity.sentMessages().then (sentMessages) ->
           # console.log "POSTS: " + JSON.stringify posts
 
           $scope.sentMessages = sentMessages

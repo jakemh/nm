@@ -1,5 +1,8 @@
 class UserSerializer < EntitySerializer
   attributes :user_post_associations, :business_post_associations, :message_route
+
+  # :response_post_associations,
+
   has_many :businesses, embed: :ids
   has_many :posts, embed: :ids
   has_many :personal_posts, embed: :ids
@@ -24,6 +27,9 @@ class UserSerializer < EntitySerializer
 
   def business_post_associations
   	posts.select{|p| p.business_id}.map{|p| p.business_id}
-
   end
+
+  # def business_post_associations
+  #   posts.select{|p| p.response_}.map{|p| p.business_id}
+  # end
 end
