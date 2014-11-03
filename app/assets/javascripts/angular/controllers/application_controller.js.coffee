@@ -43,4 +43,6 @@ angular.module("NM").controller "ApplicationController", [
       if ent
         ent.followers().then (followers)->
           AuthService.currentFollowers = followers 
+          alert JSON.stringify followers
+
 ]

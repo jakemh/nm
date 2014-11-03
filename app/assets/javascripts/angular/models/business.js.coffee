@@ -4,20 +4,22 @@ angular.module("NM").factory "Business", [
   ($q, Restangular) ->
     Restangular.extendModel "businesses", (model) ->
       
-      model.sentMessages = ->
-        if model.sent_message_ids.length > 0
-          Restangular.several("me/sent_messages", model.sent_message_ids).getList()
-        else $q.when([])
+      self.sentMessages = ->
+          self.getListPlus("sent_messages", {all: true})
+          # Restangular.severalPlus"sent_messages", self.sent_message_ids).getList()
+          # Restangular.several("me/sent_messages", self.sent_message_ids).getList()
 
-      model.receivedMessages = ->
-        if model.received_message_ids.length > 0
-          Restangular.several("me/received_messages", model.received_message_ids).getList()
-        else $$q.when([])
 
-      model.followers = ->
-        if model.follower_ids.length > 0
-          Restangular.all("me/followers").getList({entity_id: model.id, entity_type: model.type})
-        else $q.when([])
+      self.receivedMessages = ->
+        self.getListPlus("received_messages", {all: true})
+          # Restangular.severalPlus(self, "received_messages", self.received_message_ids).getList()
+      
+      
+      self.followers = ->
+          self.getListPlus("followers", {entity_id: self.id, entity_type: self.type})
+
+      self.personalPosts = ->
+        self.severalPlus("posts").getList()
 
 
       model.posts = (params)->

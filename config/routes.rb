@@ -1,6 +1,14 @@
 
 Rails.application.routes.draw do
 
+  get 'followers/index'
+
+  get 'followers/show'
+
+  get 'followers/create'
+
+  get 'followers/destroy'
+
   get 'message_responses/index'
 
   get 'message_responses/create'
@@ -73,6 +81,7 @@ Rails.application.routes.draw do
     resources :received_messages
     resources :message_responses
     resources :posts
+    resources :followers
   end
 
   resources :emails

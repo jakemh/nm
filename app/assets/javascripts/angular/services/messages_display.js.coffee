@@ -1,7 +1,8 @@
 App.factory "MessagesDisplay", [
   "$q"
   "Restangular"
-  ($q, Restangular) ->
+  "AuthService"
+  ($q, Restangular, AuthService) ->
     buildMessageDisplay: (displayList, source) ->
       deferred = $q.defer()
 
@@ -36,6 +37,8 @@ App.factory "MessagesDisplay", [
                         profile: rE.uri
                         entityType: rE.type
                         entityId: rE.id
+                        followerUri: AuthService.followerUri(rE)
+                        followerUriType: AuthService.followerType(rE)
 
                 entity = e
                 
@@ -54,6 +57,10 @@ App.factory "MessagesDisplay", [
                   profile: entity.uri
                   entityType: entity.type
                   entityId: entity.id
+                  followerUri: AuthService.followerUri(entity)
+                  followerUriType: AuthService.followerType(entity)
+
+
 
                 if list.length == source.length
                   deferred.resolve(list) 

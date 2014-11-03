@@ -64,7 +64,7 @@ angular.module("NM").controller "PostController", [
         $scope.displayList = list
       # MessagesDisplay.buildMessageDisplay($scope.displayList, $scope.posts)
 
-    $scope.$watch 'AuthService.currentUser', ->
+    $scope.$watch 'AuthService.currentEntitySelection.selected', ->
       if AuthService.currentUser
         # $scope.displayList = []
         # $scope.buildAssociationCache().then () ->

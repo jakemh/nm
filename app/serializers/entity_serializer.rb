@@ -1,6 +1,6 @@
 class EntitySerializer < ActiveModel::Serializer
   include ProfileConcern
-  attributes :id, :created_at, :name, :address, :thumb, :uri, :type, :latitude, :longitude, :distance, :follow_uri
+  attributes :id, :created_at, :name, :address, :thumb, :uri, :type, :latitude, :longitude, :distance, :follow_uri, :follower_uri_type
 
   has_many :followers, embed: :ids
   has_many :following, embed: :ids
@@ -12,9 +12,15 @@ class EntitySerializer < ActiveModel::Serializer
   # end
 
   def follow_uri
-    object.follow_uri
+    # object.follow_uri
+
+    
   end
 
+  def follower_uri_type
+
+  end
+  
   def thumb
     thumb_path(object)
   end

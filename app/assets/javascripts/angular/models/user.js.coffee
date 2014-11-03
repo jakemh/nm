@@ -37,9 +37,7 @@ angular.module("NM").factory "User", [
         # Restangular.all("me/posts").getList()
 
       self.followers = ->
-        if self.follower_ids.length > 0
-          Restangular.all("me/followers").getList({entity_id: self.id, entity_type: self.type})
-        else $q.when([])
+          self.getListPlus("followers", {entity_id: self.id, entity_type: self.type})
 
       self.personalPosts = ->
         self.severalPlus("posts").getList()

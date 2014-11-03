@@ -27,7 +27,7 @@ angular.module("NM").factory "Follower", [
   "$q"
   "Restangular"
   ($q, Restangular) ->
-    Restangular.extendModel "me/followers", (model) ->
+    Restangular.extendModel "followers", (model) ->
   
      model.entity = ->
        if model.user_id

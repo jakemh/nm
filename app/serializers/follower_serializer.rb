@@ -3,8 +3,8 @@ class FollowerSerializer < ActiveModel::Serializer
   :entity_type, :connected_to_entity_type, :follow_uri
   # , :connection_entity
   # , :connection_type
-  has_one :user
-  has_one :business
+  has_one :user, embed: :id
+  has_one :business, embed: :id
   def follow_uri
     # follow_link(object, 
   end
