@@ -31,6 +31,7 @@ angular.module("NM").factory "User", [
         # if self.post_ids.length > 0
         #   Restangular.several("me/posts", self.post_ids).getList()
         # else $q.when([])
+        # self.getList("posts", {"all": true})
         self.getListPlus("posts", params)
         # self.several('posts',[2,3,4]).getList()
         # Restangular.all("me/posts").getList()

@@ -73,7 +73,7 @@ angular.module("NM").controller "PostController", [
           businesses: AuthService.currentUser.business_post_associations
 
         CacheService.cacheModelsForLists(cacheHash).then ()->
-          AuthService.currentUser.posts(all: true).then (posts) ->
+          AuthService.currentUser.posts("all": true).then (posts) ->
             $scope.posts = posts
     
     # $scope.buildAssociationCache = ->

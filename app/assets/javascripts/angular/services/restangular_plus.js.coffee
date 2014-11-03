@@ -1,47 +1,27 @@
-# App.factory "RestangularPlus", [
-#   "Restangular"
-#   (Restangular) ->
-#     extended = angular.extend(Restangular, {})
-#     extended.method = ->
-#       alert "TEST"
-#     # before: (before, fn, args) ->
-#     #   ->
-#     #     before.apply(this, args)
-#     #     fn.apply(this, args)
-
-#     # checkIds: (ids)->
-#     #   ids instanceof Array && ids.length > 0
-
-#     # several: (args) ->
-#     #   alert "TEST"
-#     #   before(checkIds, Restangular.several, args)
-
-
-#     return extended
-
-# ]
 
 App.factory "RestangularPlus", [
+  "$q"
   "Restangular"
-  (Restangular) ->
-    test: -> 
-      alert "TEST"
-
+  ($q, Restangular) ->
+    
     before: (before, fn) ->
-      ->
+      () ->
         if before.apply(this, arguments)
           fn.apply(this, arguments)
-        else $q.when([])
+        else 
+          $q.when([])
 
-    checkIds: (args)->
+    checkIds: (ids)->
       ids instanceof Array && ids.length > 0
 
+    trueTest: ()->
+      true
 
     severalPlus: (args) ->
-      @before(@checkIds, Restangular.several)(arguments)
+      @before(@checkIds, Restangular.several)(arguments[0], arguments[1])
 
     getListPlus: () ->
-      @before(@checkIds, this.getList)(arguments["0"])
+      @before(@trueTest, @getList)(arguments[0], arguments[1])
 ]
 
 # App.factory "RestangularPlus", [
