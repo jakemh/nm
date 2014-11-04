@@ -1,6 +1,6 @@
 class EntitySerializer < ActiveModel::Serializer
   include ProfileConcern
-  attributes :id, :created_at, :name
+  attributes :id, :created_at, :name, :website
   attributes :address, :city
   attributes :thumb, :uri, :type
   attributes :latitude, :longitude, :distance

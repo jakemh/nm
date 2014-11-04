@@ -20,6 +20,7 @@
     </div>
   </div>
 
+  <span ng-controller="ProfileController">
   <% if right_bar %>
     <div class="container__profile container__profile--middle">
       <%= yield %>
@@ -32,5 +33,5 @@
       <%= yield %>
     </div>
   <% end %>
-
+</div>
 <% end %>

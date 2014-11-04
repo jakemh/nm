@@ -1,15 +1,13 @@
-<div class="profile__right-box profile__right-box--large">
-  map
-</div>
+<div class="center-text">
+  <div class="profile__box-title">
+    {{profileEntity.first_name}}'s Businesses
+  </div>
 
-<div class="profile__right-box profile__right-box--small">
-  <h4> Companies </h4>
-
-    
-</div>
-
-<div class="profile__right-box profile__right-box--large">
-  <h4> Mentoring </h4>
-
-
+  <div class="bus__list">
+    <div ng-repeat="business in profileEntityBusinesses | orderBy:'name': false ">
+      <div ng-include="'business_item.html'"></div>
+   <!--  <div class="bus__none" ng-hide="displayList.length">
+      Find some more businesses!
+    </div> -->
+  </div>
 </div>

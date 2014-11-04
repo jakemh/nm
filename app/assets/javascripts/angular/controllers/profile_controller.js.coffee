@@ -62,8 +62,8 @@ angular.module("NM").controller "ProfileController", [
     $scope.location = $location
     $scope.displayList = []
     $scope.Utilities = Utilities
-
-    $scope.profileEntity
+    $scope.profileEntityBusinesses = []
+    $scope.profileEntity = null
     $scope.AuthService = AuthService
     $scope.newPostMain = {}
     $scope.feedHeadForm = "feed_head_form.html"
@@ -85,6 +85,10 @@ angular.module("NM").controller "ProfileController", [
           return true
         
       # else if profileEntity
+
+    $scope.loadBusinesses = () ->
+      $scope.profileEntity.businesses().then (businesses)->
+        $scope.profileEntityBusinesses = businesses
 
     $scope.headOuterInit = (newPost, entity) ->
       newPost.type = 'Post'
@@ -121,12 +125,15 @@ angular.module("NM").controller "ProfileController", [
       Restangular.one($scope.params[0], $scope.params[1]).get().then (entity)->
         # $scope.posts = $scope.posts.concat(response)
         $scope.profileEntity = entity
-          
+
 
     $scope.$watch 'profileEntity', ->
+
       if $scope.profileEntity
         $scope.profileEntity.posts().then (posts)->
           $scope.posts = posts
+        
+        $scope.loadBusinesses()
           # alert JSON.stringify posts
 
     $scope.$watch 'posts', ->

@@ -1,5 +1,5 @@
 class BusinessSerializer < EntitySerializer
-  attributes :website, :message_route
+  attributes :message_route
 
   def message_route
   	"businesses/#{object.id}/messages"  

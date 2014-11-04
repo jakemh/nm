@@ -1,8 +1,8 @@
 class UserSerializer < EntitySerializer
   attributes :user_post_associations, :business_post_associations, :message_route
-
+  attributes :about, :work
   # :response_post_associations,
-
+  attributes :first_name, :last_name
   has_many :businesses, embed: :ids
   has_many :posts, embed: :ids
   has_many :personal_posts, embed: :ids

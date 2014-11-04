@@ -1,4 +1,4 @@
-<div class="user-prof" ng-controller="ProfileController">
+<div class="user-prof" >
   <div class="user-prof__head thirds">
     <div class="user-prof__cover-photo thirds__box">
       <img ng-src="{{profileEntity.thumb}}">
@@ -19,10 +19,10 @@
     </div>
     
     <div class="user-prof__head-buttons thirds__box">
-      <button style="float: left" class="js-msg__button button__btn button__btn--gray button__btn--left">
+      <button style="float: left" class="js-msg__button button__btn button__btn--gray button__btn--left  profile__btn">
         Message
       </button>
-        <button  style="float: right" class="button__form button__login button__btn--right">Follow</button>
+        <button  style="float: right; text-transform: capitalize" class="button__form button__login button__btn--right profile__btn">Follow</button>
       </div>
     </div>
 
@@ -33,16 +33,24 @@
     <div class="bus-prof__follow">
       <button class="button__form button__login" style="width: auto !important">Follow</button>
     </div> -->
-  </div>
+  <!-- </div> -->
 
   <div class="user-prof__secondary">
     <div class="halves">
       <div class="halves__box">
-1
+        <p class="halves__box-row">About Me:</p>
+        <p>{{profileEntity.about}}</p>
+
+        <p class="halves__box-row">Skills:</p>
+        <p></p>
       </div>
 
       <div class="halves__box">
-2
+        <p class="halves__box-row">Where I work:</p>
+        <p>{{profileEntity.work}}</p>
+
+        <p class="halves__box-row">Website:</p>
+        <p>{{profileEntity.website}}</p>
       </div>
     </div> 
 
