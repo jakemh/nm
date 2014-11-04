@@ -42,6 +42,7 @@ App.factory "MessagesDisplay", [
                         entityId: rE.id
                         followerUri: AuthService.followerUri(rE)
                         followerUriType: AuthService.followerType(rE)
+                        followerCount: rE.follower_count
                         # followerUriType: rE.follower_uri_type
 
                 entity = e
@@ -65,6 +66,8 @@ App.factory "MessagesDisplay", [
                   entityId: entity.id
                   followerUri: AuthService.followerUri(entity)
                   followerUriType: AuthService.followerType(entity)
+                  followerCount: entity.follower_count
+
                   # followerUriType: entity.follower_uri_type
 
 

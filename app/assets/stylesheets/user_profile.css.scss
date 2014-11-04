@@ -5,23 +5,52 @@
 .user-prof__head{
   height: 200px;
   overflow: auto;
-
+  position: relative;
 
 	background: white;
 
 }
 
 .user-prof__head-content{
-  padding: 10px 10px 10px 300px;
+  padding: 20px;
+
+  // padding: 10px 10px 10px 300px;
 
 }
+
+.user-prof__location{
+  height: 100px;
+}
+
+.user-prof__head-buttons{
+  position: relative;
+  height: 100%;
+}
+
+.user-prof__head-buttons button{
+  position: absolute;
+  bottom: 10px;
+
+}
+.user-prof__secondary{
+    height: 180px;
+    overflow: auto;
+    background: white;
+    margin: 15px 0;
+}
+
+.user-prof__followers{
+  font-size: 1.5em;
+}
+
+
 .user-prof__name{
   // width: 100%;
   font-size: 1.8em;
 }
 
 .user-prof__cover-photo{
-  float: left;
+  // float: left;
 
   margin: auto;
   height: 100%;

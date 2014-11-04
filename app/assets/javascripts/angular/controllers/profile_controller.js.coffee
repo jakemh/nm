@@ -73,13 +73,12 @@ angular.module("NM").controller "ProfileController", [
 
     $scope.belongsToUser = ->
       #check if profile entity is user or one of user's businesses
-      
+
       if $scope.profileEntity && AuthService.userBusinesses.length > 0
         e = [$scope.profileEntity.id, $scope.profileEntity.type]
         a = _.map(AuthService.userBusinesses, (item) -> [item.id, item.type])
         c = [AuthService.currentUser.id, AuthService.currentUser.type]
         
-
         if angular.equals(e, c)
           return true
         else if _.where(a, e).length > 0

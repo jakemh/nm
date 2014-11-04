@@ -20,8 +20,6 @@ class EntitySerializer < ActiveModel::Serializer
 
   def follow_uri
     # object.follow_uri
-
-    
   end
 
   def follower_uri_type

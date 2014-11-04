@@ -9,6 +9,8 @@
   display: inline-block;
   // height: 150px;
   width: 31%;
+  height: 100%;
+
   overflow: hidden;
   // background: white;
   // margin: 25px;
@@ -22,14 +24,17 @@
 
 }
 
-.thirds__box--left{
-
+.halves{
+  position: relative;
+  margin: auto;
 }
 
-.thirds__box--mid{
 
-}
+.halves__box{
+  display: inline-block;
+  // height: 150px;
+  width: 48%;
+  height: 100%;
 
-.thirds__box--right{
-
+  overflow: hidden;
 }

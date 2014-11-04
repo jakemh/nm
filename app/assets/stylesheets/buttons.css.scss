@@ -27,3 +27,13 @@
 .button__btn--gray{
   background: $gray-color;
 }
+
+.button__btn--left{
+  // position: absolute;
+  left: 0
+}
+
+.button__btn--right{
+  // position: absolute;
+  right: 0
+}

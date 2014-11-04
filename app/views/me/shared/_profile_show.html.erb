@@ -1,10 +1,10 @@
 <div class="user-prof" ng-controller="ProfileController">
-  <div class="user-prof__head">
-    <div class="user-prof__cover-photo">
+  <div class="user-prof__head thirds">
+    <div class="user-prof__cover-photo thirds__box">
       <img ng-src="{{profileEntity.thumb}}">
     </div>
 
-    <div class="user-prof__head-content">
+    <div class="user-prof__head-content thirds__box">
       <div class="user-prof__name">
         {{profileEntity.name}}
       </div>
@@ -12,16 +12,42 @@
       <div class="user-prof__location">
         {{profileEntity.city}}
       </div>
+
+      <div class="user-prof__followers">
+        {{profileEntity.follower_count}} Followers
+      </div>
     </div>
     
+    <div class="user-prof__head-buttons thirds__box">
+      <button style="float: left" class="js-msg__button button__btn button__btn--gray button__btn--left">
+        Message
+      </button>
+        <button  style="float: right" class="button__form button__login button__btn--right">Follow</button>
+      </div>
+    </div>
+
   
-    <div style="" class="prof__message">
+<!--     <div style="" class="prof__message">
       <button class="js-msg__button button__btn button__btn--gray">Message</button>
     </div>
     <div class="bus-prof__follow">
       <button class="button__form button__login" style="width: auto !important">Follow</button>
-    </div>
+    </div> -->
   </div>
+
+  <div class="user-prof__secondary">
+    <div class="halves">
+      <div class="halves__box">
+1
+      </div>
+
+      <div class="halves__box">
+2
+      </div>
+    </div> 
+
+  </div>
+
   <div class="feed">
     <div ng-if="belongsToUser()" ng-include="'feed_head_outer.html'" ng-init="newPost = newPostMain; headOuterInit(newPost, entity); feedHeadBody = feedHeadForm"></div>
     <div ng-repeat="entity in displayList | orderBy:'id': true">
