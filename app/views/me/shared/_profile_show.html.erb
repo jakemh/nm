@@ -59,7 +59,9 @@
   <div class="feed">
     <div ng-if="belongsToUser()" ng-include="'feed_head_outer.html'" ng-init="newPost = newPostMain; headOuterInit(newPost, entity); feedHeadBody = feedHeadForm"></div>
     <div ng-repeat="entity in displayList | orderBy:'id': true">
-      <div ng-include="'feed_content.html'"></div>
+      <div class="feed--small">
+        <div ng-include="'feed_content.html'"></div>
+      </div>
     </div>
 
   </div>

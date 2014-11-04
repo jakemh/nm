@@ -47,10 +47,32 @@
   padding: 2px;
 }
 
-.bus__item-name{
+.bus__item-follow{
+  // position: absolute;
+  // left: 0;
+
+  // padding-left: 100px;
+}
+
+.bus__item-message{
+  // position: absolute;
+  // right: 0;
+  padding-left: 100px;
+
+}
+
+.bus__item-top{
   font-size: 1.4em;
   text-align: left;
+  width: 100%;
   margin-left: 100px;
+}
+
+.bus__item-bottom{
+  width: 100%;
+  // margin-top: 15px;
+  padding: 10px;
+  position: relative;
 }
 
 .bus__alph-letter{

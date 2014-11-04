@@ -1,6 +1,17 @@
  <div class="bus__item utils__hover--orange" ng-click="openProfile(business.uri)">
     <img ng-src={{business.thumb}}></img>
-    <div class="bus__item-name">
+    <div class="bus__item-top">
       {{business.name}}
+    </div>
+
+    <div class="bus__item-bottom">
+      <span class="bus__item-follow">
+        <a ng-click="" ng-href="#">follow</a>
+      </span>
+
+      <span class="bus__item-message">
+        <a ng-click="" ng-href="#">message</a>
+
+      </span>
     </div>
 </div>
