@@ -25,6 +25,7 @@ App.factory "MessagesDisplay", [
                   do (response) ->
                     response.entity({current_type: current.type, current_id: current.id}).then (rE) ->
                       responseList.push
+                        models: {entity: rE}
                         id: response.id
                         newPost: {}
                         parentId: response.parent_id
@@ -45,6 +46,7 @@ App.factory "MessagesDisplay", [
                 entity = e
                 
                 list.push
+                  models: {entity: entity}
                   id: post.id
                   newPost: {}
                   uri: entity.uri

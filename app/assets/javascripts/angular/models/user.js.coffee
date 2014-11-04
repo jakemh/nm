@@ -8,6 +8,7 @@ angular.module("NM").factory "User", [
   ($q, Restangular, RestangularPlus, Entity) ->
     Restangular.extendModel "users", (self) =>
       angular.extend self, RestangularPlus
+      
       self.businesses = ->
         if self.business_ids.length > 1
           Restangular.several("businesses", self.business_ids).getList()

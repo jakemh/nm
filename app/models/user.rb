@@ -87,6 +87,15 @@ class User < ActiveRecord::Base
     end
   end
 
+  def inverse_connection_with(entity)
+    if entity.class.name == "Business"
+      self.connections.where(:type => ["BusinessConnection", "Ownership"], :connect_to_id => entity.id)
+    elsif entity.class.name == "User"
+      self.connections.where(:type => ["Friendship"], :connect_to_id => entity.id)
+    end
+
+  end
+  
   def all_posts
     (self.posts + self.business_posts).sort_by{|p| p.created_at}.reverse
   end

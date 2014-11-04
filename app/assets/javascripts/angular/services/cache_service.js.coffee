@@ -4,6 +4,7 @@ App.factory "CacheService", [
   "UsersCache"
   "BusinessesCache"
   "Restangular"
+  
   ($cacheFactory, $q, UsersCache, BusinessesCache, Restangular) ->
 
     modelsToCache: ->

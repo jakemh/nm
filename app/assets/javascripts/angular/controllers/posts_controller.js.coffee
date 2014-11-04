@@ -46,6 +46,7 @@ angular.module("NM").controller "PostController", [
 
     $scope.followerCallback = ->
       AuthService.currentUser.posts("all": true).then (posts) ->
+        alert "TEST"
         $scope.posts = posts
       
     $scope.sendPost = (postObj, postSubmit)->
@@ -57,8 +58,7 @@ angular.module("NM").controller "PostController", [
       postSubmit = angular.extend({}, postSubmit, entityAttrs)
       ent.post("posts", postSubmit).then (response)->
         # $scope.posts = $scope.posts.concat(response)
-        AuthService.currentUser.posts({all: true}).then (posts) ->
-          # console.log "POSTS: " + JSON.stringify posts
+        AuthService.currentUser.posts("all": true).then (posts) ->
           $scope.posts = posts
       # Restangular.all('me/posts').post(post)
 

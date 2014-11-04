@@ -1,9 +1,10 @@
 angular.module("NM").factory "Business", [
   "$q"
   "Restangular"
-  ($q, Restangular) ->
+  "RestangularPlus"
+  ($q, Restangular, RestangularPlus) ->
     Restangular.extendModel "businesses", (model) ->
-      
+      angular.extend self, RestangularPlus
       self.sentMessages = ->
           self.getListPlus("sent_messages", {all: true})
           # Restangular.severalPlus"sent_messages", self.sent_message_ids).getList()

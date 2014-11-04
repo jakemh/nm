@@ -21,7 +21,7 @@ module Me::NewsFeedHelper
 
       connection = current.connection_with(other)
       p "CONNECTION: ", connection.inspect
-
+      
       if !connection || connection.length == 0
        return 1
         # link_to "Follow", me_connections_path(:connect_to_id => entity, :type => Connection.connection_type(entity)), :method => :post 

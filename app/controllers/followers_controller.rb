@@ -13,11 +13,16 @@ class FollowersController < ApplicationController
       :type => type})
     if @connection.save
       flash[:notice] = "Added #{params[:type]}"
-      redirect_to_back root_url
+      # redirect_to_back root_url
+      render json: @connection
     else
       flash[:error] = "Unable to add #{params[:type]}."
-      redirect_to_back
+      # redirect_to_back
+      render json: @connection
+
     end
+
+
  end
 
  def destroy

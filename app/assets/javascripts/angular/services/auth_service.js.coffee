@@ -22,17 +22,21 @@ App.factory "AuthService", [
       followerType = entity.followerUriType
       cur =  @currentEntitySelection.selected
       params = 
-        connect_to_id: entity.id
+        connect_to_id: entity.entityId
         type: entity.entityType
 
-      debugger
+      
       if followerType == "Follow"
         cur.post('followers', params).then ()->
+          entity.models.entity.removeFromCache()
           callback()
           
-      else if followerType == "Remove"
-        cur.delete('followers', params).then ()->
-          callback()
+      # else if followerType == "Remove"
+        # if entity.entityType == "User"
+        #   entity.entity.remove(params).then ()->
+        #     callback()
+        # cur.remove('followers', params).then ()->
+        #   callback()
 
 
 
@@ -43,7 +47,8 @@ App.factory "AuthService", [
       else if followStatus == 1
         "Follow"
       else if followStatus == -1
-        "Remove "
+        "Connected"
+        # "Remove"
 
       # cur =  @currentEntitySelection.selected
       # if other != cur
