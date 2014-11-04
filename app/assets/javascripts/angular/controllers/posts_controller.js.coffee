@@ -46,7 +46,6 @@ angular.module("NM").controller "PostController", [
 
     $scope.followerCallback = ->
       AuthService.currentUser.posts("all": true).then (posts) ->
-        alert "TEST"
         $scope.posts = posts
       
     $scope.sendPost = (postObj, postSubmit)->

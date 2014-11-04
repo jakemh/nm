@@ -6,7 +6,7 @@ App.factory "RestangularPlus", [
   ($q, CacheService, Restangular) ->
 
     removeFromCache: ()->
-      debugger
+      
       CacheService.modelsToCache()[this.route].cache.remove(this.id)
     
     before: (before, fn) ->

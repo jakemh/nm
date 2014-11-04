@@ -18,11 +18,17 @@
       </div>
     </div>
     
-    <div class="user-prof__head-buttons thirds__box">
-      <button style="float: left" class="js-msg__button button__btn button__btn--gray button__btn--left  profile__btn">
-        Message
-      </button>
-        <button  style="float: right; text-transform: capitalize" class="button__form button__login button__btn--right profile__btn">Follow</button>
+    <div  class="user-prof__head-buttons thirds__box">
+      <div ng-if="!belongsToUser()">
+        <button ng-click="MessageService.callModal('js-msg__modal'); MessageService.setMessageEntity(profileEntity)"
+        style="float: left" class="button__btn button__btn--gray button__btn--left  profile__btn">
+          Message
+        </button>
+          <button  ng-click="AuthService.followerHandler(profileEntity, followerCallbck)" style="float: right; text-transform: capitalize" class="button__form button__login button__btn--right profile__btn">Follow</button>
+        </div>
+        <div ng-if="belongsToUser()">
+          <button style="float: left" class="js-msg__button button__btn button__btn--gray button__btn--left  profile__btn">Edit Profile</button>
+        </div>
       </div>
     </div>
 

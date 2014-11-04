@@ -2,28 +2,26 @@ angular.module("NM").controller "PrivateMessageController", [
   "$scope"
   "AuthService"
   "Restangular"
+  "MessageService"
 
-  ($scope, AuthService, Restangular) ->
+  ($scope, AuthService, Restangular, MessageService) ->
     $scope.messageForm = "message_form.html"
     $scope.feedCornerPartial = "feed_body_comment.html"
     $scope.newPostMain = {}
-
-    
+   
 
     $scope.sendPost = (postObj, postSubmit)->
       selectedEntity = AuthService.currentEntitySelection.selected
       entityAttrs = 
-        parent_id: postObj.id
         entity_id: selectedEntity.id
         entity_type: selectedEntity.type
         from_id: selectedEntity.id
         from_type: selectedEntity.type
-        to_id: postObj.id
-        to_type: postObj.type
+        to_id: MessageService.messageEntity.id
+        to_type: MessageService.messageEntity.type
         type: "Message"
 
       postSubmit = angular.extend({}, postSubmit, entityAttrs)
-
 
       route = selectedEntity.message_route
       selectedEntity.post("messages", postSubmit).then (response)->
@@ -54,8 +52,9 @@ angular.module("NM").controller "ProfileController", [
   "Utilities"
   "AuthService"
   "MessagesDisplay"
+  "MessageService"
   "Restangular"
-  ($scope, $routeParams, $location, Utilities, AuthService, MessagesDisplay, Restangular) ->
+  ($scope, $routeParams, $location, Utilities, AuthService, MessagesDisplay, MessageService, Restangular) ->
     
     $scope.posts = []
     $scope.params = []
@@ -70,6 +69,9 @@ angular.module("NM").controller "ProfileController", [
     $scope.feedHeadBody = "feed_head_form.html"
     $scope.messageForm = "message_form.html"
     $scope.feedCornerPartial = "feed_body_comment.html"
+    $scope.MessageService = MessageService
+    $scope.followerCallback = ->
+
 
     $scope.belongsToUser = ->
       #check if profile entity is user or one of user's businesses

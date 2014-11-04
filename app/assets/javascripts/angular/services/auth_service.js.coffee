@@ -28,6 +28,7 @@ App.factory "AuthService", [
       
       if followerType == "Follow"
         cur.post('followers', params).then ()->
+          debugger
           entity.models.entity.removeFromCache()
           callback()
           
