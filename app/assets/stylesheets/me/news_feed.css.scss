@@ -38,9 +38,13 @@
 }
 
 .feed__entry--comment{
-  height: 100px;
   background: whitesmoke;
   margin-top: 0;
+}
+
+.feed__comment-content img{
+  height: 50px !important;
+  width: 50px !important;
 }
 
 .feed__comment-content{
