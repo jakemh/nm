@@ -27,6 +27,7 @@ App.factory "MessagesDisplay", [
                       responseList.push
                         models: {entity: rE}
                         id: response.id
+                        city: rE.city
                         newPost: {}
                         parentId: response.parent_id
                         messageRoute: rE.message_route
@@ -48,6 +49,7 @@ App.factory "MessagesDisplay", [
                 list.push
                   models: {entity: entity}
                   id: post.id
+                  city: entity.city
                   newPost: {}
                   uri: entity.uri
                   parentId: null

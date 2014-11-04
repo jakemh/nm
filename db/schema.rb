@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141025000963) do
+ActiveRecord::Schema.define(version: 20141104100240) do
 
   create_table "ahoy_events", force: true do |t|
     t.uuid     "visit_id"
@@ -219,6 +219,10 @@ ActiveRecord::Schema.define(version: 20141025000963) do
     t.integer  "zip"
     t.boolean  "is_veteran"
     t.integer  "profile_photo_id"
+    t.string   "city"
+    t.text     "work"
+    t.string   "website"
+    t.text     "about"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

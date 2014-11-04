@@ -1,6 +1,10 @@
 class EntitySerializer < ActiveModel::Serializer
   include ProfileConcern
-  attributes :id, :created_at, :name, :address, :thumb, :uri, :type, :latitude, :longitude, :distance, :follow_uri, :follower_uri_type
+  attributes :id, :created_at, :name
+  attributes :address, :city
+  attributes :thumb, :uri, :type
+  attributes :latitude, :longitude, :distance
+  attributes :follow_uri, :follower_uri_type, :follower_count
 
   has_many :followers, embed: :ids
   has_many :following, embed: :ids
@@ -10,6 +14,9 @@ class EntitySerializer < ActiveModel::Serializer
   # def followers
   #   object.
   # end
+  def follower_count
+    object.followers.count
+  end
 
   def follow_uri
     # object.follow_uri

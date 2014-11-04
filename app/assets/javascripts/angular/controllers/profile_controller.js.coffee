@@ -8,6 +8,8 @@ angular.module("NM").controller "PrivateMessageController", [
     $scope.feedCornerPartial = "feed_body_comment.html"
     $scope.newPostMain = {}
 
+    
+
     $scope.sendPost = (postObj, postSubmit)->
       selectedEntity = AuthService.currentEntitySelection.selected
       entityAttrs = 
@@ -59,6 +61,8 @@ angular.module("NM").controller "ProfileController", [
     $scope.params = []
     $scope.location = $location
     $scope.displayList = []
+    $scope.Utilities = Utilities
+
     $scope.profileEntity
     $scope.AuthService = AuthService
     $scope.newPostMain = {}
@@ -66,6 +70,22 @@ angular.module("NM").controller "ProfileController", [
     $scope.feedHeadBody = "feed_head_form.html"
     $scope.messageForm = "message_form.html"
     $scope.feedCornerPartial = "feed_body_comment.html"
+
+    $scope.belongsToUser = ->
+      #check if profile entity is user or one of user's businesses
+      
+      if $scope.profileEntity && AuthService.userBusinesses.length > 0
+        e = [$scope.profileEntity.id, $scope.profileEntity.type]
+        a = _.map(AuthService.userBusinesses, (item) -> [item.id, item.type])
+        c = [AuthService.currentUser.id, AuthService.currentUser.type]
+        
+
+        if angular.equals(e, c)
+          return true
+        else if _.where(a, e).length > 0
+          return true
+        
+      # else if profileEntity
 
     $scope.headOuterInit = (newPost, entity) ->
       newPost.type = 'Post'

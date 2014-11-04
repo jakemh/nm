@@ -1,12 +1,37 @@
 .user-prof{
   width: 98%;
 }
+
+.user-prof__head{
+  height: 200px;
+  overflow: auto;
+
+
+	background: white;
+
+}
+
+.user-prof__head-content{
+  padding: 10px 10px 10px 300px;
+
+}
+.user-prof__name{
+  // width: 100%;
+  font-size: 1.8em;
+}
+
 .user-prof__cover-photo{
+  float: left;
+
   margin: auto;
-  height: 250px;
-  background: white;
-  margin-bottom: 20px;
+  height: 100%;
+  padding: 20px;
   position: relative;
+}
+
+.user-prof__cover-photo img{
+	height: 100%;
+  // float: left;
 }
 
 .prof__message{

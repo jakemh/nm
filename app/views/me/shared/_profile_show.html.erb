@@ -1,15 +1,29 @@
 <div class="user-prof" ng-controller="ProfileController">
-  <div class="user-prof__cover-photo">
-    prof photo
+  <div class="user-prof__head">
+    <div class="user-prof__cover-photo">
+      <img ng-src="{{profileEntity.thumb}}">
+    </div>
+
+    <div class="user-prof__head-content">
+      <div class="user-prof__name">
+        {{profileEntity.name}}
+      </div>
+
+      <div class="user-prof__location">
+        {{profileEntity.city}}
+      </div>
+    </div>
+    
+  
     <div style="" class="prof__message">
-      <%= button_to "Message", nil, :class => "js-msg__button button__btn button__btn--gray" %>
+      <button class="js-msg__button button__btn button__btn--gray">Message</button>
     </div>
     <div class="bus-prof__follow">
-      <%= follow_button(current_user, @default_entity, :class =>  "button__form button__login", :style => "width: auto !important") %>
+      <button class="button__form button__login" style="width: auto !important">Follow</button>
     </div>
   </div>
   <div class="feed">
-    <div ng-include="'feed_head_outer.html'" ng-init="newPost = newPostMain; headOuterInit(newPost, entity); feedHeadBody = feedHeadForm"></div>
+    <div ng-if="belongsToUser()" ng-include="'feed_head_outer.html'" ng-init="newPost = newPostMain; headOuterInit(newPost, entity); feedHeadBody = feedHeadForm"></div>
     <div ng-repeat="entity in displayList | orderBy:'id': true">
       <div ng-include="'feed_content.html'"></div>
     </div>

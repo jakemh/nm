@@ -16,6 +16,8 @@ class User < ActiveRecord::Base
   include Messaging
   include Interaction 
   include Search
+
+  has_many :skills
   # has_many :received_messages, -> { where(:to_entity => "User") }, class_name: "Message", foreign_key: :to_id
   has_many :intra_connections, class_name: INTRA_CONNECTION 
   has_many :inter_connections, class_name: INTER_CONNECTION
