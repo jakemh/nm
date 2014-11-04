@@ -8,7 +8,7 @@ App.factory "RestangularPlus", [
     removeFromCache: ()->
       debugger
       CacheService.modelsToCache()[this.route].cache.remove(this.id)
-
+    
     before: (before, fn) ->
       () ->
         if before.apply(this, arguments)

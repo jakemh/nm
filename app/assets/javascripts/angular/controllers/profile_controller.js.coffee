@@ -88,6 +88,7 @@ angular.module("NM").controller "ProfileController", [
 
     $scope.loadBusinesses = () ->
       $scope.profileEntity.businesses().then (businesses)->
+        # alert JSON.stringify businesses
         $scope.profileEntityBusinesses = businesses
 
     $scope.headOuterInit = (newPost, entity) ->
@@ -132,7 +133,7 @@ angular.module("NM").controller "ProfileController", [
       if $scope.profileEntity
         $scope.profileEntity.posts().then (posts)->
           $scope.posts = posts
-        
+
         $scope.loadBusinesses()
           # alert JSON.stringify posts
 

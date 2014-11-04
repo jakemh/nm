@@ -10,11 +10,12 @@ angular.module("NM").factory "User", [
       angular.extend self, RestangularPlus
       
       self.businesses = ->
-        if self.business_ids.length > 1
-          Restangular.several("businesses", self.business_ids).getList()
-        else if self.business_ids.length == 1
-          Restangular.one("businesses", self.business_ids).get()
-        else $q.when([])
+        # if self.business_ids.length > 1
+        #   Restangular.several("businesses", self.business_ids).getList()
+        # else if self.business_ids.length == 1
+        #   Restangular.one("businesses", self.business_ids).get()
+        # else $q.when([])
+        self.getListPlus("businesses")
       # self.messages = ->
       #   Restangular.several("me/messages", self.user.sent_message_ids).getList()
 

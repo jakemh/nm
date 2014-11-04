@@ -1,6 +1,8 @@
 
 Rails.application.routes.draw do
 
+  get 'user_businesses/index'
+
   get 'following/index'
 
   get 'following/show'
@@ -82,6 +84,10 @@ Rails.application.routes.draw do
   # resources :users do
   #   # resources :messages, :controller => :user_messages
   # end
+
+  resources :users do 
+    resources :businesses, :controller => :user_businesses
+  end
 
   resources :users, :businesses do
     resources :messages
