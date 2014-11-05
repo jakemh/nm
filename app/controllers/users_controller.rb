@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
-  layout "external_profile_user"  
+  layout "external_profile_user" 
+  before_filter :authenticate_entity, only: [:new, :create, :edit, :save, :update]
   include FeedConcern
 
   def index
@@ -9,6 +10,20 @@ class UsersController < ApplicationController
       format.html
       format.json {render json: @users}
     end
+  end
+
+  def update
+    whitelist.delete_if { |key, value| value.blank? }
+    name = params[:name]
+    name_hash = {}
+    if !name.blank?
+      name_array = name.split("\s")
+      name_hash[:first_name] = name_array[0]
+      name_hash[:last_name] = name_array[1..-1].join("\s")
+    end
+
+    entity.update_attributes(whitelist.merge(name_hash))
+    render json: entity
   end
 
   def show
@@ -46,5 +61,15 @@ class UsersController < ApplicationController
       #   render json: @user
       # end
     end
+  end
+
+  private
+
+  def set_entity
+   @entity = User.find params[:id]
+  end
+
+  def whitelist
+    params.require(:user).permit(:name, :city, :about, :work, :website)
   end
 end

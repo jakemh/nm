@@ -8,6 +8,7 @@ window.App = angular.module("NM", [
   "restangular"
   "ngAnimate"
   "pasvaz.bindonce"
+  "xeditable"
   
 ]).config ($routeProvider, $locationProvider, $httpProvider, RestangularProvider) ->
   $httpProvider.defaults.headers.common['X-CSRF-Token'] = $('meta[name=csrf-token]').attr('content')
@@ -27,6 +28,7 @@ window.App = angular.module("NM", [
 
     return element
     # if operation == "getList"
+
 
 
 
@@ -76,6 +78,10 @@ window.App = angular.module("NM", [
   $locationProvider.html5Mode true
   return
 
-  $(document).on('ready page:load', ->
-    angular.bootstrap(document, ['NM'])
-  )
+  # $(document).on('ready page:load', ->
+  #   angular.bootstrap(document, ['NM'])
+  # )
+
+App.run (editableOptions) ->
+  editableOptions.theme = "bs3" # bootstrap3 theme. Can be also 'bs2', 'default'
+

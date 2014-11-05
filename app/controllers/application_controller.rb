@@ -29,6 +29,11 @@ class ApplicationController < ActionController::Base
         end
       end
     end
+    def authenticate_entity
+      return true if entity == current_user 
+      return true if current_user.businesses.include? entity
+      raise CanCan::AccessDenied
+    end
 
   def redirect_to_back(default = root_url)
       if !request.env["HTTP_REFERER"].blank? and request.env["HTTP_REFERER"] != request.env["REQUEST_URI"]

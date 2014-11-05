@@ -25,6 +25,8 @@
     "angular-resource": "",
     "restangular": "",
     "angular-animate": "",
-    "angular-bindonce": ""
+    "angular-bindonce": "",
+    "angular-moment": "",
+    "angular-xeditable": ""
   }
 }

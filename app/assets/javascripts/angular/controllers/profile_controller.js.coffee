@@ -1,3 +1,20 @@
+angular.module("NM").directive "editableToggle", ->
+  template: 
+    ''' 
+    <a href ng-if=true editable-text={{attr}}>  
+      {{attrEval || default}}
+    </a>
+    <span ng-if=false>{{attrEval}}</span>
+
+    '''
+
+  scope:
+    default: "@default"
+    attr: "@attr"
+    attrEval: "&attr"
+
+    toggle: "@toggle"
+
 angular.module("NM").controller "PrivateMessageController", [
   "$scope"
   "AuthService"
@@ -36,7 +53,7 @@ angular.module("NM").controller "PrivateMessageController", [
 
     #   postSubmit = angular.extend({}, postSubmit, entityAttrs)
     #   Restangular.all('me/posts').post(postSubmit).then (response)->
-    #     ("#js-msg__modal").modal('hide')
+    #     ("#js-msg__modabowel").modal('hide')
 
 
         # $scope.posts = $scope.posts.concat(response)
@@ -48,12 +65,13 @@ angular.module("NM").controller "ProfileController", [
   
   "$scope"
   "$routeParams"
-  '$location'
+  "$location"
   "Utilities"
   "AuthService"
   "MessagesDisplay"
   "MessageService"
   "Restangular"
+  
   ($scope, $routeParams, $location, Utilities, AuthService, MessagesDisplay, MessageService, Restangular) ->
     
     $scope.posts = []
@@ -70,6 +88,25 @@ angular.module("NM").controller "ProfileController", [
     $scope.messageForm = "message_form.html"
     $scope.feedCornerPartial = "feed_body_comment.html"
     $scope.MessageService = MessageService
+    $scope.isEditable = false
+    $scope.editProfileText = "Edit Profile"
+
+    $scope.updateAccount = () ->
+      $scope.profileEntity.put()
+
+    $scope.editProfile = ()->
+      if $scope.isEditable 
+        $scope.isEditable = false
+        $scope.editProfileText = "Edit Profile"
+        $scope.updateAccount()
+      else 
+        $scope.isEditable = true
+        $scope.editProfileText = "Done"
+
+    $scope.visitProfile = (uri) ->
+      # $location.path(uri);
+      window.location.href = uri
+
     $scope.followerCallback = ->
 
 

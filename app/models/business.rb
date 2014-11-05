@@ -73,4 +73,14 @@ class Business < ActiveRecord::Base
     self.website
   end
   
+  private
+
+  def set_entity
+   @entity = Business.find params[:id]
+  end
+
+  def whitelist
+    params.require(:business).permit(:name, :city, :about, :work, :website)
+  end
+
 end

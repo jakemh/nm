@@ -3,6 +3,9 @@
   margin: auto;
 }
 
+.thids div{
+  overflow: auto;
+}
 
 .thirds__box{
   // // float: left;
@@ -41,7 +44,10 @@
 }
 
 .halves__box-row{
-  height: 48%;
+  height: 45%;
 }
 
 
+.column-left{ float: left; width: 30%; }
+.column-right{ float: right; width: 30%; }
+.column-center{ display: inline-block; width: 30%; }

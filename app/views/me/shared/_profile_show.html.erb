@@ -1,16 +1,29 @@
-<div class="user-prof" >
+<div nf-if="profileEntity" class="user-prof" >
   <div class="user-prof__head thirds">
-    <div class="user-prof__cover-photo thirds__box">
+    <div class="user-prof__cover-photo column-left">
       <img ng-src="{{profileEntity.thumb}}">
     </div>
 
-    <div class="user-prof__head-content thirds__box">
-      <div class="user-prof__name">
-        {{profileEntity.name}}
+    <div class="user-prof__head-content column-middle" >
+      <div  class="user-prof__name">
+        <a href editable-text="profileEntity.name" ng-if="isEditable">  {{profileEntity.name || "Enter a name!"}}
+        </a>
+        <span ng-if="!isEditable">{{profileEntity.name}}</span>
+
+<!-- 
+        <editable-toggle default="Enter a name!" 
+          attr="profileEntity.name" 
+          attrEval="{{profileEntity.name}}" 
+          toggle="{{isEditable}}">
+      </editable-toggle> -->
+        <!-- <span ng-if="!isEditable">{{profileEntity.name}}</span> -->
       </div>
 
       <div class="user-prof__location">
-        {{profileEntity.city}}
+       <a href editable-text="profileEntity.city" ng-if="isEditable">   
+        {{profileEntity.city || "Enter a city!"}}
+       </a>
+        <span ng-if="!isEditable">{{profileEntity.city}}</span>
       </div>
 
       <div class="user-prof__followers">
@@ -18,45 +31,53 @@
       </div>
     </div>
     
-    <div  class="user-prof__head-buttons thirds__box">
+    <div  class="user-prof__head-buttons column-right">
       <div ng-if="!belongsToUser()">
         <button ng-click="MessageService.callModal('js-msg__modal'); MessageService.setMessageEntity(profileEntity)"
         style="float: left" class="button__btn button__btn--gray button__btn--left  profile__btn">
           Message
         </button>
-          <button  ng-click="AuthService.followerHandler(profileEntity, followerCallbck)" style="float: right; text-transform: capitalize" class="button__form button__login button__btn--right profile__btn">Follow</button>
+          <button  ng-click="AuthService.followerHandler(profileEntity, followerCallbck)" style="float: right; text-transform: capitalize" class="button__form button__login button__btn--right profile__btn">{{$scope.followButtonText}}</button>
         </div>
         <div ng-if="belongsToUser()">
-          <button style="float: left" class="js-msg__button button__btn button__btn--gray button__btn--left  profile__btn">Edit Profile</button>
+          <button ng-click="editProfile()" style="float: left" class="js-msg__button button__btn button__btn--gray button__btn--left  profile__btn">{{editProfileText}}</button>
         </div>
       </div>
     </div>
 
-  
-<!--     <div style="" class="prof__message">
-      <button class="js-msg__button button__btn button__btn--gray">Message</button>
-    </div>
-    <div class="bus-prof__follow">
-      <button class="button__form button__login" style="width: auto !important">Follow</button>
-    </div> -->
-  <!-- </div> -->
-
   <div class="user-prof__secondary">
     <div class="halves">
       <div class="halves__box">
-        <p class="halves__box-row">About Me:</p>
-        <p>{{profileEntity.about}}</p>
-
+        <div class="halves__box-row">
+          <p >About Me:</p>
+          <p>
+            <a href editable-text="profileEntity.about" ng-if="isEditable">   
+             {{profileEntity.about || "Write about yourself"}}
+            </a>
+             <span ng-if="!isEditable">{{profileEntity.about}}</span>
+          </p>
+        </div>
         <p class="halves__box-row">Skills:</p>
         <p></p>
       </div>
 
       <div class="halves__box">
-        <p class="halves__box-row">Where I work:</p>
-        <p>{{profileEntity.work}}</p>
-
-        <p class="halves__box-row">Website:</p>
-        <p>{{profileEntity.website}}</p>
+        <div class="halves__box-row">
+          <p>Where I work:</p>
+          <p>
+            <a href editable-text="profileEntity.work" ng-if="isEditable">   
+             {{profileEntity.work || "Where do you work?"}}
+            </a>
+             <span ng-if="!isEditable">{{profileEntity.work}}</span>
+          </p>
+       </div>
+        <p class="">Website:</p>
+        <p>
+          <a href editable-text="profileEntity.website" ng-if="isEditable">   
+           {{profileEntity.website || "Enter your website!"}}
+          </a>
+           <span ng-if="!isEditable">{{profileEntity.website}}</span>
+        </p>
       </div>
     </div> 
 

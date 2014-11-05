@@ -9,6 +9,9 @@
 #= require restangular/dist/restangular
 #= require angular-sanitize/angular-sanitize
 #= require angular-bindonce/bindonce
+#= require angular-xeditable/dist/js/xeditable
+#= require moment/moment.js
+#= require angular-bindonce/bindonce
 #= require bootstrap-sass-official/assets/javascripts/bootstrap-sprockets
 #= require bootstrap-sass-official/assets/javascripts/bootstrap
 #= require jquery_ujs
