@@ -18,9 +18,24 @@ App.factory "AuthService", [
       else 
         null
 
+    followerHandle2: (entity, isFollowing, callback)->
+      followerType = entity.follower_uri_type
+      # cur =  @currentEntitySelection.selected
+      cur = @currentUser
+      params = 
+        connect_to_id: entity.id
+        type: entity.type
+
+      
+      if !isFollowing
+        cur.post('followers', params).then ()->
+          entity.removeFromCache()
+          callback()
+          
     followerHandle: (entity, callback)->
       followerType = entity.followerUriType
-      cur =  @currentEntitySelection.selected
+      # cur =  @currentEntitySelection.selected
+      cur = @currentUser
       params = 
         connect_to_id: entity.entityId
         type: entity.entityType
@@ -28,7 +43,6 @@ App.factory "AuthService", [
       
       if followerType == "Follow"
         cur.post('followers', params).then ()->
-          debugger
           entity.models.entity.removeFromCache()
           callback()
           

@@ -90,6 +90,8 @@ angular.module("NM").controller "ProfileController", [
     $scope.MessageService = MessageService
     $scope.isEditable = false
     $scope.editProfileText = "Edit Profile"
+    $scope.followButtonText = "Follow"
+    $scope.isFollowing = false
 
     $scope.updateAccount = () ->
       $scope.profileEntity.put()
@@ -108,7 +110,15 @@ angular.module("NM").controller "ProfileController", [
       window.location.href = uri
 
     $scope.followerCallback = ->
-
+      $scope.params = _.compact($scope.location.path().split("/"))
+      current = AuthService.currentUser
+      params = {current_type: current.type, current_id: current.id}
+      Restangular.one($scope.params[0], $scope.params[1]).get(params).then (entity)->
+        # $scope.posts = $scope.posts.concat(response)
+        $scope.profileEntity = entity
+        if entity.follower_uri_type == -1
+          $scope.isFollowing = true
+        else $scope.isFollowing = false
 
     $scope.belongsToUser = ->
       #check if profile entity is user or one of user's businesses
@@ -159,13 +169,19 @@ angular.module("NM").controller "ProfileController", [
 
         #   $scope.posts = posts
 
-    $scope.$watch 'location', ->
-      $scope.params = _.compact($scope.location.path().split("/"))
-
-      Restangular.one($scope.params[0], $scope.params[1]).get().then (entity)->
-        # $scope.posts = $scope.posts.concat(response)
-        $scope.profileEntity = entity
-
+    $scope.$watch 'AuthService.currentUser', ->
+      if AuthService.currentUser
+        $scope.params = _.compact($scope.location.path().split("/"))
+        current = AuthService.currentUser
+        params = {current_type: current.type, current_id: current.id}
+        Restangular.one($scope.params[0], $scope.params[1]).get(params).then (entity)->
+          # $scope.posts = $scope.posts.concat(response)
+          $scope.profileEntity = entity
+          # $scope.isFollowing = entity.follower_uri_type == -1 ? false : true
+          # alert JSON.stringify entity.follower_uri_type 
+          if entity.follower_uri_type == -1
+            $scope.isFollowing = true
+          else $scope.isFollowing = false
 
     $scope.$watch 'profileEntity', ->
 
