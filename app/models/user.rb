@@ -55,7 +55,8 @@ class User < ActiveRecord::Base
   validates :last_name, :presence => true, :on => :create
   validates :first_name, :presence => true, :on => :create
   validates :zip, :presence => true, :on => :create
-
+  accepts_nested_attributes_for :skills
+  
   def business_associations
     self.connections.where(:type => ["BusinessConnection", "Ownership"])
   end

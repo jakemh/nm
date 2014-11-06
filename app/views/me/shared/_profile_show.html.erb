@@ -62,7 +62,12 @@
             <tags-input ng-hide="!isEditable" ng-model="profileEntity.skills" display-property="name"></tags-input>
           </div>
           <!-- <span ng-if="!isEditable">SKILLZ</span> -->
-          {{profileEntity.skills}}
+          <div>
+          <span class="profile__skill" ng-repeat="skill in profileEntity.skills">
+            {{skill.name}}
+           <!-- <span class="profile__skill">{{skill.name}}</span> -->
+          </span>
+        </div>
       </div>
 
       <div class="halves__box">

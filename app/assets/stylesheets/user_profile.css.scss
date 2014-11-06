@@ -1,3 +1,5 @@
+@import "nm_root";
+
 .user-prof{
   width: 98%;
 }
@@ -21,6 +23,12 @@
 .user-prof__location{
   height: 100px;
   padding: 15px;
+}
+
+.profile__skill{
+  background: $light-gray-color;
+  padding: 7px;
+  border-radius: 15px;
 }
 
 .user-prof__head-buttons{
