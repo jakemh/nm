@@ -10,6 +10,7 @@
 #= require angular-sanitize/angular-sanitize
 #= require angular-bindonce/bindonce
 #= require angular-xeditable/dist/js/xeditable
+#= require ng-tags-input/ng-tags-input
 #= require moment/moment.js
 #= require angular-bindonce/bindonce
 #= require bootstrap-sass-official/assets/javascripts/bootstrap-sprockets

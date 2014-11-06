@@ -2,6 +2,8 @@
 Rails.application.routes.draw do
 
 
+  get 'skills/index'
+
   namespace :me do
   get 'message_responses/show'
   end

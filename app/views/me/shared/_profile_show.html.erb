@@ -1,4 +1,4 @@
-<div ng-if="profileEntity" class="user-prof" >
+<div ng-if="AuthService.currentUser" ng-init="init()" class="user-prof" >
   <div class="user-prof__head thirds">
     <div class="user-prof__cover-photo column-left">
       <img ng-src="{{profileEntity.thumb}}">
@@ -57,8 +57,12 @@
              <span ng-if="!isEditable">{{profileEntity.about}}</span>
           </p>
         </div>
-        <p class="halves__box-row">Skills:</p>
-        <p></p>
+        <p>Skills:</p>
+          <div ng-if="profileEntity">
+            <tags-input ng-hide="!isEditable" ng-model="profileEntity.skills"></tags-input>
+          </div>
+          <!-- <span ng-if="!isEditable">SKILLZ</span> -->
+          {{profileEntity.skills}}
       </div>
 
       <div class="halves__box">

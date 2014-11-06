@@ -16,13 +16,15 @@ class UsersController < ApplicationController
     whitelist.delete_if { |key, value| value.blank? }
     name = params[:name]
     name_hash = {}
+    skills =  params[:skills].map{|i| { :name => i["text"] } }
     if !name.blank?
       name_array = name.split("\s")
       name_hash[:first_name] = name_array[0]
       name_hash[:last_name] = name_array[1..-1].join("\s")
     end
-
     entity.update_attributes(whitelist.merge(name_hash))
+    entity.skills.build skills
+    entity.save
     render json: entity
   end
 

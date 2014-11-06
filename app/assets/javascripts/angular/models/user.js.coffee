@@ -12,6 +12,11 @@ angular.module("NM").factory "User", [
 
       self.businesses = ->
         self.getListPlus("businesses")
- 
+      
+      self.getSkills = ->
+        self.getListPlus("skills")
+      
+      self.skills = []
+
       return self
 ]

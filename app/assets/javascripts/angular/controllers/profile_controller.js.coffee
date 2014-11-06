@@ -92,7 +92,9 @@ angular.module("NM").controller "ProfileController", [
     $scope.editProfileText = "Edit Profile"
     $scope.followButtonText = "Follow"
     $scope.isFollowing = false
-    
+
+    # $scope.skills = []
+
     $scope.init = () ->
       if AuthService.currentUser
         $scope.params = _.compact($scope.location.path().split("/"))
@@ -190,7 +192,7 @@ angular.module("NM").controller "ProfileController", [
       if $scope.profileEntity
         $scope.profileEntity.posts().then (posts)->
           $scope.posts = posts
-
+        $scope.profileEntity.skills = []
         $scope.loadBusinesses()
           # alert JSON.stringify posts
 
