@@ -10,6 +10,7 @@ window.App = angular.module("NM", [
   "pasvaz.bindonce"
   "xeditable"
   "ngTagsInput"
+  "angularMoment"
   
 ]).config ($routeProvider, $locationProvider, $httpProvider, RestangularProvider) ->
   $httpProvider.defaults.headers.common['X-CSRF-Token'] = $('meta[name=csrf-token]').attr('content')

@@ -12,6 +12,7 @@
 #= require angular-xeditable/dist/js/xeditable
 #= require ng-tags-input/ng-tags-input
 #= require moment/moment.js
+#= require angular-moment/angular-moment
 #= require angular-bindonce/bindonce
 #= require bootstrap-sass-official/assets/javascripts/bootstrap-sprockets
 #= require bootstrap-sass-official/assets/javascripts/bootstrap

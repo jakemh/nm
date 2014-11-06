@@ -20,13 +20,14 @@ App.factory "MessagesDisplay", [
             post.entity({current_type: current.type, current_id: current.id}).then (e)->
               post.responses().then (responses) ->
                 responseList = []
-
+                
                 for response in responses
                   do (response) ->
                     response.entity({current_type: current.type, current_id: current.id}).then (rE) ->
                       responseList.push
                         models: {entity: rE}
                         id: response.id
+                        timeStamp: moment(response.created_at)
                         city: rE.city
                         newPost: {}
                         parentId: response.parent_id
@@ -50,6 +51,7 @@ App.factory "MessagesDisplay", [
                 list.push
                   models: {entity: entity}
                   id: post.id
+                  timeStamp: moment(post.created_at)
                   city: entity.city
                   newPost: {}
                   uri: entity.uri

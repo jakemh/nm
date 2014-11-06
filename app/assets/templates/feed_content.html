@@ -16,7 +16,14 @@
       {{entity.content}}
     </div>
     <div class="feed__content-corner">
-      <a ng-click="expand = !expand" href="#">Comment</a>
+      <div class="row">
+        <div class="col-sm-7 feed__time">
+          <span am-time-ago="entity.timeStamp"></span>
+        </div>
+        <div class="col-sm-2 feed__comment-expand">
+          <a ng-click="expand = !expand" href="#">Comment</a>
+        </div>
+      </div>
      <!-- <div ng-include="feedContentPartial"></div> -->
     </div>
   </div>

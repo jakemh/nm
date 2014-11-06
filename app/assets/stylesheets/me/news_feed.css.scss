@@ -17,7 +17,7 @@
   height: 150px;
   background: white;
   overflow: auto;
-  padding: 15px;
+  padding: 10px;
   margin-top: 20px;
 }
 
@@ -88,7 +88,7 @@
   position: relative;
   width: 100%;
   background: white;
-  padding: 15px;
+  padding: 10px;
   overflow: auto;
 
 }
@@ -106,6 +106,7 @@
   position: absolute;
   bottom: 15px;
   right: 15px;
+  width: 250px;
 }
 .feed__content-title{
   // width: 150px;
@@ -188,6 +189,10 @@
   background: white !important;
 }
 
+.feed__time{
+  color: $light-gray-color;
+}
+
 #js-msg__modal .modal-body{
   max-height: 1000px;
 }
@@ -198,7 +203,7 @@
 
 }
 
-.feed__content--comment .feed__content-corner{
+.feed__content--comment .feed__comment-expand{
   display: none;
 }
 
