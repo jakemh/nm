@@ -2,9 +2,8 @@ angular.module("NM").controller "BusinessDirectoryController", [
   "$scope"
   "Business"
   "User"
-  "Entity"
   "Restangular"
-  ($scope, Business, User, Entity, Restangular) ->
+  ($scope, Business, User, Restangular) ->
     $scope.businesses = []
     $scope.businessList = []
     $scope.peopleList = []
