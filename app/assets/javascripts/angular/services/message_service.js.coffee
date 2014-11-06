@@ -9,7 +9,7 @@ App.factory "MessageService", [
     setMessageEntity: (entity)->
       @messageEntity = entity
 
-    callModal: (id)->
+    callModal: (id, $event)->
       $("#" + id).modal()
       return true
 

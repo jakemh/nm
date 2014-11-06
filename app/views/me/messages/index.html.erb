@@ -2,7 +2,7 @@
   <div ng-include="'feed_head_outer.html'"></div>
 
   <h3>Sent Messages</h3>
-  <div ng-repeat="entity in sentMessagesDisplay | orderBy:'id': true">
+  <div ng-repeat="entity in sentMessagesDisplay | orderBy:'id': true" ng-init="newPost = newMessage; sentMessagesInit(newPost)">
   
     <ng-include src="'feed_content.html'"></ng-include>
 

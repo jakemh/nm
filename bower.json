@@ -27,6 +27,7 @@
     "angular-animate": "",
     "angular-bindonce": "",
     "angular-moment": "",
-    "angular-xeditable": ""
+    "angular-xeditable": "",
+    "ng-tags-input": ""
   }
 }

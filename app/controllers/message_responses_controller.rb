@@ -1,5 +1,7 @@
 class MessageResponsesController < MessagesController
   def index
+    message_id = params[:sent_message_id] || params[:received_message_id]
+    render json: Message.find(message_id).responses
   end
 
   def show

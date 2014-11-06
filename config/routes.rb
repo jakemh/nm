@@ -1,35 +1,6 @@
 
 Rails.application.routes.draw do
 
-  get 'user_businesses/index'
-
-  get 'following/index'
-
-  get 'following/show'
-
-  get 'following/create'
-
-  get 'following/destroy'
-
-  get 'followers/index'
-
-  get 'followers/show'
-
-  get 'followers/create'
-
-  get 'followers/destroy'
-
-  get 'message_responses/index'
-
-  get 'message_responses/create'
-
-  get 'received_messages/index'
-
-  get 'received_messages/show'
-
-  get 'sent_messages/index'
-
-  get 'sent_messages/show'
 
   namespace :me do
   get 'message_responses/show'
@@ -91,9 +62,11 @@ Rails.application.routes.draw do
 
   resources :users, :businesses do
     resources :messages
-    resources :sent_messages
-    resources :received_messages
-    resources :message_responses
+    resources :sent_messages, :received_messages do 
+      resources :message_responses
+    end
+      
+
     resources :posts
     resources :followers
     resources :following

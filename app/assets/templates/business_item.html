@@ -1,8 +1,8 @@
  
- <div ng-click="visitProfile(business.uri)" class="bus__item utils__hover--orange">
+ <div  class="bus__item utils__hover--orange">
     <img ng-src={{business.thumb}}></img>
     <div class="bus__item-top">
-      {{business.name}}
+      <a ng-href="{{business.uri}}" target="_self">{{business.name}}</a>
     </div>
 
     <div class="bus__item-bottom">
@@ -11,7 +11,7 @@
       </span>
 
       <span class="bus__item-message">
-        <a ng-click="MessageService.callModal('js-msg__modal'); MessageService.setMessageEntity(business)" ng-href="#">message</a>
+        <a ng-click="MessageService.callModal('js-msg__modal', $event); MessageService.setMessageEntity(business)" ng-href="#">message</a>
 
       </span>
     </div>

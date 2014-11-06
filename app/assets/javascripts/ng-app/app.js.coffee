@@ -18,18 +18,13 @@ window.App = angular.module("NM", [
   RestangularProvider.addFullRequestInterceptor (element, operation, what, url, headers, params, httpConfig) ->
     
     # console.log JSON.stringify 
-    #   element: element
-    #   operation: operation
-    #   what: what
-    #   url: url
-    #   headers: headers
-    #   params: params
-    #   httpConfig: httpConfig
-
+ 
     return element
     # if operation == "getList"
 
 
+
+  RestangularProvider.setParentless(["businesses"]);
 
 
   RestangularProvider.addResponseInterceptor (data, operation, what, url, response, deferred) ->

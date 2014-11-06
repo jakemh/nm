@@ -92,6 +92,20 @@ angular.module("NM").controller "ProfileController", [
     $scope.editProfileText = "Edit Profile"
     $scope.followButtonText = "Follow"
     $scope.isFollowing = false
+    
+    $scope.init = () ->
+      if AuthService.currentUser
+        $scope.params = _.compact($scope.location.path().split("/"))
+        current = AuthService.currentUser
+        params = {current_type: current.type, current_id: current.id}
+        Restangular.one($scope.params[0], $scope.params[1]).get(params).then (entity)->
+          # $scope.posts = $scope.posts.concat(response)
+          $scope.profileEntity = entity
+          # $scope.isFollowing = entity.follower_uri_type == -1 ? false : true
+          # alert JSON.stringify entity.follower_uri_type 
+          if entity.follower_uri_type == -1
+            $scope.isFollowing = true
+          else $scope.isFollowing = false
 
     $scope.updateAccount = () ->
       $scope.profileEntity.put()
@@ -169,20 +183,8 @@ angular.module("NM").controller "ProfileController", [
 
         #   $scope.posts = posts
 
-    $scope.$watch 'AuthService.currentUser', ->
-      if AuthService.currentUser
-        $scope.params = _.compact($scope.location.path().split("/"))
-        current = AuthService.currentUser
-        params = {current_type: current.type, current_id: current.id}
-        Restangular.one($scope.params[0], $scope.params[1]).get(params).then (entity)->
-          # $scope.posts = $scope.posts.concat(response)
-          $scope.profileEntity = entity
-          # $scope.isFollowing = entity.follower_uri_type == -1 ? false : true
-          # alert JSON.stringify entity.follower_uri_type 
-          if entity.follower_uri_type == -1
-            $scope.isFollowing = true
-          else $scope.isFollowing = false
-
+    # $scope.$watch 'AuthService.currentUser', ->
+      
     $scope.$watch 'profileEntity', ->
 
       if $scope.profileEntity

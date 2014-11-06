@@ -1,4 +1,4 @@
-<div nf-if="profileEntity" class="user-prof" >
+<div ng-if="profileEntity" class="user-prof" >
   <div class="user-prof__head thirds">
     <div class="user-prof__cover-photo column-left">
       <img ng-src="{{profileEntity.thumb}}">
@@ -37,7 +37,7 @@
         style="float: left" class="button__btn button__btn--gray button__btn--left  profile__btn">
           Message
         </button>
-          <button ng-if="!isFollowing" ng-click="AuthService.followerHandle2(profileEntity, isFollowing, followerCallback)" style="float: right; text-transform: capitalize" class="button__form button__login button__btn--right profile__btn">{{followButtonText}}</button>
+          <button ng-if="!isFollowing" ng-click="AuthService.followerHandle2(profileEntity, isFollowing, followerCallbck)" style="float: right; text-transform: capitalize" class="button__form button__login button__btn--right profile__btn">{{followButtonText}}</button>
         </div>
         <div ng-if="belongsToUser()">
           <button ng-click="editProfile()" style="float: left" class="js-msg__button button__btn button__btn--gray button__btn--left  profile__btn">{{editProfileText}}</button>
