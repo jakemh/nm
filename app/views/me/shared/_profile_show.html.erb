@@ -63,7 +63,7 @@
           </div>
           <!-- <span ng-if="!isEditable">SKILLZ</span> -->
           <div>
-          <span class="profile__skill" ng-repeat="skill in profileEntity.skills">
+          <span ng-if="!isEditable" class="profile__skill" ng-repeat="skill in profileEntity.skills">
             {{skill.name}}
            <!-- <span class="profile__skill">{{skill.name}}</span> -->
           </span>
