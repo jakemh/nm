@@ -59,6 +59,7 @@ Rails.application.routes.draw do
   # end
 
   resources :users do 
+    resources :skills
     resources :businesses, :controller => :user_businesses
   end
 

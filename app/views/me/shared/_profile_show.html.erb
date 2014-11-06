@@ -59,7 +59,7 @@
         </div>
         <p>Skills:</p>
           <div ng-if="profileEntity">
-            <tags-input ng-hide="!isEditable" ng-model="profileEntity.skills"></tags-input>
+            <tags-input ng-hide="!isEditable" ng-model="profileEntity.skills" display-property="name"></tags-input>
           </div>
           <!-- <span ng-if="!isEditable">SKILLZ</span> -->
           {{profileEntity.skills}}

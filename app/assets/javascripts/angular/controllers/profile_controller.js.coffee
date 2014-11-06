@@ -103,6 +103,9 @@ angular.module("NM").controller "ProfileController", [
         Restangular.one($scope.params[0], $scope.params[1]).get(params).then (entity)->
           # $scope.posts = $scope.posts.concat(response)
           $scope.profileEntity = entity
+          $scope.profileEntity.getSkills().then (skills) -> 
+            $scope.profileEntity.skills = skills
+
           # $scope.isFollowing = entity.follower_uri_type == -1 ? false : true
           # alert JSON.stringify entity.follower_uri_type 
           if entity.follower_uri_type == -1
@@ -192,7 +195,6 @@ angular.module("NM").controller "ProfileController", [
       if $scope.profileEntity
         $scope.profileEntity.posts().then (posts)->
           $scope.posts = posts
-        $scope.profileEntity.skills = []
         $scope.loadBusinesses()
           # alert JSON.stringify posts
 
