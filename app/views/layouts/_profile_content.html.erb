@@ -3,7 +3,6 @@
   <%= render 'shared/top_bar_content' %>
 </nav>
 
-<div ng-include="'tab_bar.html'"></div>
 
 <%= content_tag :div, :class => ("outer__profile") do %>
   
@@ -26,6 +25,8 @@
   <span ng-controller="ProfileController">
   <% if right_bar %>
     <div class="container__profile container__profile--middle">
+      <div ng-include="'tab_bar.html'"></div>
+
       <%= yield %>
     </div>
     <div class="container__profile container__profile--right" >

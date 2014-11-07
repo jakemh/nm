@@ -9,6 +9,8 @@
 #= require restangular/dist/restangular
 #= require angular-sanitize/angular-sanitize
 #= require angular-bindonce/bindonce
+#= require angular-bootstrap/ui-bootstrap
+#= require angular-bootstrap/ui-bootstrap-tpls
 #= require angular-xeditable/dist/js/xeditable
 #= require ng-tags-input/ng-tags-input
 #= require moment/moment.js
