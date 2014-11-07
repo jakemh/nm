@@ -1,0 +1,129 @@
+<div ng-if="AuthService.currentUser" ng-init="init()" class="user-prof" >
+  <div class="user-prof__head thirds">
+    <div class="user-prof__cover-photo column-left">
+      <img ng-src="{{profileEntity.thumb}}">
+    </div>
+
+    <div class="user-prof__head-content column-middle" >
+      <div  class="user-prof__name">
+        <a href editable-text="profileEntity.name" ng-if="isEditable">  {{profileEntity.name || "Enter a name!"}}
+        </a>
+        <span ng-if="!isEditable">{{profileEntity.name}}</span>
+
+<!-- 
+        <editable-toggle default="Enter a name!" 
+          attr="profileEntity.name" 
+          attrEval="{{profileEntity.name}}" 
+          toggle="{{isEditable}}">
+      </editable-toggle> -->
+        <!-- <span ng-if="!isEditable">{{profileEntity.name}}</span> -->
+
+      </div>
+
+      <div class="user-prof__location">
+       <a href editable-text="profileEntity.city" ng-if="isEditable">   
+        {{profileEntity.city || "Enter a city!"}}
+       </a>
+        <span ng-if="!isEditable">{{profileEntity.city}}</span>
+      </div>
+
+      <div class="user-prof__followers">
+        {{profileEntity.follower_count}} Followers
+      </div>
+    </div>
+    
+    <div  class="user-prof__head-buttons column-right">
+      <div ng-if="!belongsToUser()">
+        <button ng-click="MessageService.callModal('js-msg__modal'); MessageService.setMessageEntity(profileEntity)"
+        style="float: left" class="button__btn button__btn--gray button__btn--left  profile__btn">
+          Message
+        </button>
+          <button ng-if="!isFollowing" ng-click="AuthService.followerHandle2(profileEntity, isFollowing, followerCallbck)" style="float: right; text-transform: capitalize" class="button__form button__login button__btn--right profile__btn">{{followButtonText}}</button>
+        </div>
+        <div ng-if="belongsToUser()">
+          <button ng-click="editProfile()" style="float: left" class="js-msg__button button__btn button__btn--gray button__btn--left  profile__btn">{{editProfileText}}</button>
+        </div>
+      </div>
+    </div>
+
+  <div class="user-prof__secondary">
+    <div class="halves">
+      <div class="halves__box">
+        <div class="halves__box-row">
+          <p >About Me:</p>
+          <p>
+            <a href editable-text="profileEntity.about" ng-if="isEditable">   
+             {{profileEntity.about || "Write about yourself"}}
+            </a>
+             <span ng-if="!isEditable">{{profileEntity.about}}</span>
+          </p>
+        </div>
+        <p>Skills:</p>
+          <div ng-if="profileEntity">
+            <tags-input ng-hide="!isEditable" ng-model="profileEntity.skills" display-property="name"></tags-input>
+          </div>
+          <!-- <span ng-if="!isEditable">SKILLZ</span> -->
+          <div>
+          <div class="profile__skill">
+            <div ng-if="!isEditable" class="profile__skill-item" ng-repeat="skill in profileEntity.skills">
+              {{skill.name}}
+             <!-- <span class="profile__skill">{{skill.name}}</span> -->
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="halves__box">
+        <div class="halves__box-row">
+          <p>Where I work:</p>
+          <p>
+            <a href editable-text="profileEntity.work" ng-if="isEditable">   
+             {{profileEntity.work || "Where do you work?"}}
+            </a>
+             <span ng-if="!isEditable">{{profileEntity.work}}</span>
+          </p>
+       </div>
+        <p class="">Website:</p>
+        <p>
+          <a href editable-text="profileEntity.website" ng-if="isEditable">   
+           {{profileEntity.website || "Enter your website!"}}
+          </a>
+           <span ng-if="!isEditable">{{profileEntity.website}}</span>
+        </p>
+      </div>
+    </div> 
+
+  </div>
+
+  <div class="feed">
+    <div ng-if="belongsToUser()" ng-include="'feed_head_outer.html'" ng-init="newPost = newPostMain; headOuterInit(newPost, entity); feedHeadBody = feedHeadForm"></div>
+    <div ng-repeat="entity in displayList | orderBy:'id': true">
+      <div class="feed--small">
+        <div ng-include="'feed_content.html'"></div>
+      </div>
+    </div>
+
+  </div>
+
+<!-- Modal -->
+  <div ng-controller="PrivateMessageController" ng-if="profileEntity" >
+    <div class="modal fade" id="js-msg__modal" tabindex="-1" role="dialog" aria-loabelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog" >
+        <div class="modal-content" >
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            <h4 class="modal-title" id="myModalLabel">Private Message</h4>
+          </div>
+          <div class="modal-body">
+            <div class="feed feed--tall">
+              <div ng-include="'feed_head_outer.html'" ng-init="newPost = newPostMain; headOuterInit(newPost); feedHeadBody = messageForm; entity = profileEntity"></div>
+            </div>
+          </div>
+        
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+

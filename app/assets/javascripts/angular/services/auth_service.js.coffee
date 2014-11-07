@@ -5,6 +5,8 @@ App.factory "AuthService", [
     userBusinesses: []
     currentEntitySelection: {}
     # entityOptions: []
+    # rightBarTemplate: "blank.html"
+
     entityOptions: []
     currentFollowers: []
     user: () ->

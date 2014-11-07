@@ -1,13 +1,17 @@
 
 <%= content_for :app do %>
-
+  <%= content_for :right_bar do %>
+    <div ng-include="SideBar.rightBarTemplate"></div>
+    <% if false %>
+      <%= render 'profile/right_bar_business' %>
+    <% end %>
+  <% end %>
     <%= render :layout => 'layouts/profile_content', 
         :locals => {:side => "user-side", :right_bar => true} do %>
-
-      <%= yield %>
+      <ng-view></ng-view> 
 
     <% end %>
-    <!-- /#wrapper -->
+    <!--#wrapper -->
   <% end %>
 
   <%= render :template => 'layouts/application' %>

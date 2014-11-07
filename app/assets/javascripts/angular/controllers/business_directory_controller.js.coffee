@@ -3,21 +3,42 @@ angular.module("NM").controller "BusinessDirectoryController", [
   "Business"
   "User"
   "Restangular"
-  ($scope, Business, User, Restangular) ->
+  "SideBar"
+  "$location"
+  ($scope, Business, User, Restangular, SideBar, $location) ->
+    $scope.SideBar = SideBar
+
+    SideBar.rightBarTemplate = "right_bar_business.html"        
     $scope.businesses = []
     $scope.businessList = []
+    $scope.SideBar = SideBar
+    $scope.mapLoaded = false
     $scope.peopleList = []
     # $scope.displayList = $scope.businessList.concat($scope.peopleList)
     $scope.query = null
-    $scope.mapObj = new GMaps
-      div: '#map',
-      lat: 35
-      lng: -122
-      zoom: 2
+    $scope.mapObj = null
+    # $scope.rightBarTemplate = "right_bar_business.html"        
+    SideBar.rightBarTemplate = "right_bar_business.html"        
+    
+    # $scope.loadMap()
+
+    $scope.init = ->
       
+
+
     $scope.addMarker = (marker)->
       $scope.mapObj.addMarker(marker)
-            
+    
+    $scope.$watch "SideBar.mapLoaded", ->
+      if SideBar.mapLoaded = true
+        $scope.mapObj = new GMaps
+          div: '#map'
+          lat: 35
+          lng: -122
+          zoom: 2
+        $scope.mapLoaded = true
+      SideBar.mapLoaded = false
+
     $scope.searching = false
     $scope.personFilter = false
     $scope.businessFilter = true
@@ -65,7 +86,8 @@ angular.module("NM").controller "BusinessDirectoryController", [
       # $scope.$apply()
 
     $scope.visitProfile = (uri)->
-      window.location.href = uri
+      # window.location.href = uri
+      $location.path( uri );
 
     $scope.alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
     $scope.alphabet.split()
@@ -82,7 +104,9 @@ angular.module("NM").controller "BusinessDirectoryController", [
              # $scope.businessList = 
     $scope.randomClick = (bus)->
       # alert JSON.stringify bus
-      window.location.href = bus.uri
+      $location.path( bus.uri );
+
+      # window.location.href = bus.uri
     $scope.engine.initialize()
     # Business.query().then ((results) ->
     #   $scope.businesses = results["businesses"]

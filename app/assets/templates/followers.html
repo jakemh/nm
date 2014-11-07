@@ -1,0 +1,40 @@
+<div class="aud" ng-controller="AudienceController">
+    <div ng-include="'feed_head_outer.html'"></div>
+  
+  <div class="row">
+    <div class="col-sm-6">
+      <ui-select ng-model="filterVal.selected">
+        <ui-select-match placeholder="Filter by">
+          {{$select.selected.name}}
+        </ui-select-match>
+        <ui-select-choices group-by="filterGroup" repeat="item in filterOptions">
+          <div ng-bind-html="Utilities.trustAsHtml(item.name)">{{item.name}}</div>
+        </ui-select-choices>
+      </ui-select>
+    </div>
+
+    <div class="col-sm-6">
+      <ui-select ng-model="sortVal.selected">
+        <ui-select-match placeholder="Sort by">
+          {{$select.selected.name}}
+        </ui-select-match>
+        <ui-select-choices repeat="item in sortOptions">
+          <div ng-bind-html="Utilities.trustAsHtml(item.name)">{{item.name}}</div>
+        </ui-select-choices>
+      </ui-select>
+    </div>
+  </div>
+
+    <div class="aud__members">
+
+      <div ng-repeat="entity in displayList | orderBy:sortVal.selected.name | audienceFilter:filterVal.selected">
+        <div class="aud__member connect {{audMemberClass($index)}}">
+          <div class="feed__content feed__content--comment">
+            <ng-include src="'feed_content.html'">          {{$index}}
+</ng-include>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+</div>

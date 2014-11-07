@@ -1,5 +1,5 @@
 class BusinessesController < ApplicationController
-  layout "external_profile_business"
+  layout "profile"
   include FeedConcern
   include ProfileConcern
 
@@ -10,10 +10,10 @@ class BusinessesController < ApplicationController
       Business.random(current_user, 3)
     end
     
-    respond_to do |format|
-      format.html
-      format.json {render json: @businesses}
-    end
+    # respond_to do |format|
+      # format.html
+    render json: @businesses
+    # end
     # render json: @businesses
   end
 

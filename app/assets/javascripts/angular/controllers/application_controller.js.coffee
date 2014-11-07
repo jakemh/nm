@@ -12,15 +12,22 @@ angular.module("NM").controller "ApplicationController", [
   "MessageResponse"
   "AuthService"
   "Restangular"
+  "SideBar"
 
-  ($scope, User, SentMessage, ReceivedMessage, Follower, Business, RestEntity, Following, Post, Response, MessageResponse, AuthService, Restangular) ->
+  ($scope, User, SentMessage, ReceivedMessage, Follower, Business, RestEntity, Following, Post, Response, MessageResponse, AuthService, Restangular, SideBar) ->
     $scope.AuthService = AuthService
+    $scope.SideBar = SideBar
 
+    $scope.sideBarLoaded = false
     $scope.init = () ->
       AuthService.user().then (user)->
         AuthService.currentUser = user
-        
+    
+    $scope.mapLoaded = ->
+      $scope.sideBarLoaded = true
+
     $scope.init()
+    $scope.rightBarTemplate = "right_bar_business.html"        
 
     $scope.$watch 'AuthService.currentUser', ->
       if AuthService.currentUser

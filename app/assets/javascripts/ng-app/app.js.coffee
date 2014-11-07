@@ -58,19 +58,29 @@ window.App = angular.module("NM", [
     controller: "HomeCtrl"
 
   .when "/businesses",
-    templateUrl: "alphaBusiness.html"
+    templateUrl: "business_directory.html"
     controller: "BusinessDirectoryController"
 
-  .when "/me/audience",
-    # templateUrl: "alphaBusiness.html"
-    controller: "AudienceController"
-    templateUrl: "alphaBusiness.html"
+  .when "/me/feed",
+    templateUrl: "feed.html"
+    # controller: "PostController"
     resolve:
-      'currentUserx': "TEST"
+      rightBarTemplate: ->
+        "blank.html"
+  .when "/users/:id",
+    templateUrl: "profile.html"
+  .when "/me/audience",
+    templateUrl: "audience.html"
+  .when "/messages",
+    templateUrl: "private_messages.html"
+  .when "/me/followers",
+    templateUrl: "followers.html"
+  .when "/businesses/:id",
+    templateUrl: "profile.html"
 
 
   .when('/users/:id', 
-     {templateUrl: 'businessAlpha.html', controller: 'ProfileController'}
+     {templateUrl: 'profile.html', controller: 'ProfileController'}
    );
   $locationProvider.html5Mode true
   return

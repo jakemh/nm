@@ -4,7 +4,7 @@ user-side:
     badge: me_feed_badge
 
   - title: Message Center
-    path: me_messages_path
+    path: messages_path
     badge: me_message_badge
 
   - title: Followers

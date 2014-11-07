@@ -16,8 +16,9 @@ angular.module("NM").controller "PostController", [
   "MessagesDisplay"
   "Restangular"
   "AuthService"
+  "SideBar"
 
-  ($scope, $q, CacheService, Utilities, MessagesDisplay,  Restangular, AuthService) ->
+  ($scope, $q, CacheService, Utilities, MessagesDisplay,  Restangular, AuthService, SideBar) ->
     # $scope.postsCache = $cacheFactory('me/posts');
     $scope.posts = []
     $scope.displayList = null
@@ -31,6 +32,8 @@ angular.module("NM").controller "PostController", [
     $scope.newPostBody = {}
     $scope.buildFeedList = false
     $scope.displayCommentForm = true
+    SideBar.rightBarTemplate = "blank.html"        
+
     # Restangular.all('me/posts').post({content: "XYZ"})
     $scope.headOuterInit = (newPost, entity) ->
       newPost.type = 'Post'
