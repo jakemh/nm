@@ -21,7 +21,7 @@ angular.module("NM").controller "PostController", [
   ($scope, $q, CacheService, Utilities, MessagesDisplay,  Restangular, AuthService, SideBar) ->
     # $scope.postsCache = $cacheFactory('me/posts');
     $scope.posts = []
-    $scope.displayList = null
+    $scope.displayList = []
     $scope.searching = [] 
     $scope.AuthService = AuthService
     $scope.Utilities = Utilities
@@ -62,13 +62,14 @@ angular.module("NM").controller "PostController", [
         # $scope.posts = $scope.posts.concat(response)
         AuthService.currentUser.posts("all": true).then (posts) ->
           $scope.posts = posts
+          MessagesDisplay.buildMessageDisplay(null, $scope.posts).then (list)->
+            $scope.displayList = list
       # Restangular.all('me/posts').post(post)
 
-    $scope.$watch 'posts', ->
-      MessagesDisplay.buildMessageDisplay(null, $scope.posts).then (list)->
+    # $scope.$watch 'posts', ->
+      # MessagesDisplay.buildMessageDisplay(null, $scope.posts).then (list)->
 
-        $scope.displayList = list
-      # MessagesDisplay.buildMessageDisplay($scope.displayList, $scope.posts)
+        # $scope.displayList = list
 
     $scope.$watch 'AuthService.currentUser', ->
       current = AuthService.currentEntitySelection.selected
@@ -83,7 +84,8 @@ angular.module("NM").controller "PostController", [
         CacheService.cacheModelsForLists(cacheHash,{current_type: current.type, current_id: current.id}).then ()->
           AuthService.currentUser.posts("all": true).then (posts) ->
             $scope.posts = posts
-    
+            MessagesDisplay.buildMessageDisplay2($scope.displayList, $scope.posts)
+
     # $scope.buildAssociationCache = ->
     #   deferred = $q.defer();
     #   # alert JSON.stringify  AuthService.currentUser.user_post_associations
