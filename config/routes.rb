@@ -15,12 +15,20 @@ Rails.application.routes.draw do
       request.format == mime_type
     end
   end
+
+ devise_scope :user do
+ 
+   get '/alpha', :to => "landing#index"
+   post 'landing/index', :to => "landing#add_email"
+   get 'registration/selection', :to => "registration#selection", :as => :selection
+ end
+
   get '/businesses/', :to => 'angular#index', :constraints => FormatTest.new(:html)
   get '/users/', :to => 'angular#index', :constraints => FormatTest.new(:html)
   get '/messages/', :to => 'angular#index', :constraints => FormatTest.new(:html)
 
   get '/businesses/*all', :to => 'angular#index', :constraints => FormatTest.new(:html)
-  get '/users/*all', :to => 'angular#index', :constraints => FormatTest.new(:html)
+  get '/users/:id', :to => 'angular#index', :constraints => [{ :id => /\d+/ }, FormatTest.new(:html)]
   get '/me/*all', :to => 'angular#index', :constraints => FormatTest.new(:html)
 
 
@@ -39,12 +47,7 @@ Rails.application.routes.draw do
 
   devise_for :users, :controllers => {registrations: 'registration', sessions: 'sessions'}
  # get 'me/*path' => 'angular#index'
-  devise_scope :user do
-  
-    get '/alpha', :to => "landing#index"
-    post 'landing/index', :to => "landing#add_email"
-    get 'registration/selection', :to => "registration#selection", :as => :selection
-  end
+
     resources :entities
     
     namespace :me do
