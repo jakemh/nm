@@ -23,35 +23,28 @@ App.factory "MessagesDisplay", [
                 responseList = []
                 
                 for response in responses
-                  ((response) ->
-                    setTimeout ((response) ->
-                    do (response) ->
-                      response.entity({current_type: current.type, current_id: current.id}).then (rE) ->
-                        responseList.push
-                          models: {entity: rE}
-                          id: response.id
-                          timeStamp: moment(response.created_at)
-                          city: rE.city
-                          newPost: {}
-                          parentId: response.parent_id
-                          messageRoute: rE.message_route
-                          name: rE.name
-                          # distance: entity.distance
-                          added: response.created_at
-                          uri: rE.uri
-                          thumb: rE.thumb
-                          content: response.content
-                          profile: rE.uri
-                          entityType: rE.type
-                          entityId: rE.id
-                          followerUri: AuthService.followerUri(rE)
-                          followerUriType: AuthService.followerType(rE)
-                          followerCount: rE.follower_count
-                    # code-here
-                    ), 0
-                    return
-                  ) i
-                  
+                  do (response) ->
+                    response.entity({current_type: current.type, current_id: current.id}).then (rE) ->
+                      responseList.push
+                        models: {entity: rE}
+                        id: response.id
+                        timeStamp: moment(response.created_at)
+                        city: rE.city
+                        newPost: {}
+                        parentId: response.parent_id
+                        messageRoute: rE.message_route
+                        name: rE.name
+                        # distance: entity.distance
+                        added: response.created_at
+                        uri: rE.uri
+                        thumb: rE.thumb
+                        content: response.content
+                        profile: rE.uri
+                        entityType: rE.type
+                        entityId: rE.id
+                        followerUri: AuthService.followerUri(rE)
+                        followerUriType: AuthService.followerType(rE)
+                        followerCount: rE.follower_count
                         # followerUriType: rE.follower_uri_type
 
                 entity = e
