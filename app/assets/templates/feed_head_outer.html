@@ -1,14 +1,4 @@
-<div class="feed__head">
-  <div style="float:right">
-    <ui-select ng-model="AuthService.currentEntitySelection.selected">
-      <ui-select-match placeholder="Current Entity">
-        {{$select.selected.name}}
-      </ui-select-match>
-      <ui-select-choices repeat="item in AuthService.entityOptions">
-        <div ng-bind-html="Utilities.trustAsHtml(item.name)">{{item.name}}</div>
-      </ui-select-choices>
-    </ui-select>
-  </div>
+<div class="feed__head">    
   <div class="feed__entry-inner feed__entry-inner--left">
     <div class="thumb">
       <img ng-src="{{AuthService.currentEntitySelection.selected.thumb}}" >

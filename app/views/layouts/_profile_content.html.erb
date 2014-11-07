@@ -2,8 +2,11 @@
 <nav class="navbar navbar-default navbar-inverse navbar-fixed-top" role="navigation">
   <%= render 'shared/top_bar_content' %>
 </nav>
-<%= content_tag :div, :class => ("outer__profile") do %>
 
+<div ng-include="'tab_bar.html'"></div>
+
+<%= content_tag :div, :class => ("outer__profile") do %>
+  
   <div class="container__profile container__profile--left" style="overflow: hidden">
     <div class="sidebar">
       <ul class="nav navbar-nav side-nav side-nav-inverse">

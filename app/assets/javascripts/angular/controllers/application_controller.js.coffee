@@ -13,10 +13,15 @@ angular.module("NM").controller "ApplicationController", [
   "AuthService"
   "Restangular"
   "SideBar"
+  "Utilities"
 
-  ($scope, User, SentMessage, ReceivedMessage, Follower, Business, RestEntity, Following, Post, Response, MessageResponse, AuthService, Restangular, SideBar) ->
+  ($scope, User, SentMessage, ReceivedMessage, Follower, Business, RestEntity, Following, Post, Response, MessageResponse, AuthService, Restangular, SideBar, Utilities) ->
+    $scope.Utilities = Utilities
     $scope.AuthService = AuthService
     $scope.SideBar = SideBar
+
+    $scope.tabItemClick = (entity)->
+      AuthService.currentEntitySelection.selected = entity
 
     $scope.sideBarLoaded = false
     $scope.init = () ->

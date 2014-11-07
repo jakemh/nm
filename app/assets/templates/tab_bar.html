@@ -1,0 +1,10 @@
+<div class="tab-bar">
+  <div 
+    class="tab-bar__item" 
+    ng-repeat="entity in AuthService.entityOptions"
+    ng-class="{'tab-bar__item--selected' : Utilities.entityCompare(entity, AuthService.currentEntitySelection.selected)}"
+    ng-click="tabItemClick(entity)"
+    >
+    {{entity.name}}
+  </div>
+</div>
