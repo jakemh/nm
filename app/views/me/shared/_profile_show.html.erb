@@ -17,6 +17,7 @@
           toggle="{{isEditable}}">
       </editable-toggle> -->
         <!-- <span ng-if="!isEditable">{{profileEntity.name}}</span> -->
+
       </div>
 
       <div class="user-prof__location">
@@ -63,10 +64,12 @@
           </div>
           <!-- <span ng-if="!isEditable">SKILLZ</span> -->
           <div>
-          <span ng-if="!isEditable" class="profile__skill" ng-repeat="skill in profileEntity.skills">
-            {{skill.name}}
-           <!-- <span class="profile__skill">{{skill.name}}</span> -->
-          </span>
+          <div class="profile__skill">
+            <div ng-if="!isEditable" class="profile__skill-item" ng-repeat="skill in profileEntity.skills">
+              {{skill.name}}
+             <!-- <span class="profile__skill">{{skill.name}}</span> -->
+            </div>
+          </div>
         </div>
       </div>
 
