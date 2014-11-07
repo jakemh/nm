@@ -90,9 +90,8 @@ angular.module("NM").controller "ProfileController", [
     $scope.MessageService = MessageService
     $scope.isEditable = false
     $scope.editProfileText = "Edit Profile"
-    $scope.followButtonText = "Follow"
     $scope.isFollowing = false
-
+    $scope.followButtonText = "Follow"
     # $scope.skills = []
 
     $scope.init = () ->
@@ -110,6 +109,8 @@ angular.module("NM").controller "ProfileController", [
           # alert JSON.stringify entity.follower_uri_type 
           if entity.follower_uri_type == -1
             $scope.isFollowing = true
+            $scope.followButtonText = "Following"
+
           else $scope.isFollowing = false
 
     $scope.updateAccount = () ->
@@ -137,6 +138,8 @@ angular.module("NM").controller "ProfileController", [
         $scope.profileEntity = entity
         if entity.follower_uri_type == -1
           $scope.isFollowing = true
+          $scope.followButtonText = "Following"
+
         else $scope.isFollowing = false
 
     $scope.belongsToUser = ->
