@@ -33,7 +33,7 @@
 }
 .feed__head{
   background: white;
-  padding: 15px;
+  padding: 5px;
 }
 
 .feed_content-follow{
@@ -49,6 +49,22 @@
 .feed__comment-content img{
   height: 50px !important;
   width: 50px !important;
+}
+
+.feed__input-row{
+  margin: auto;
+}
+
+.feed__input-item{
+  display: inline-block;
+}
+
+.feed__input-item--large{
+  width: 80%;
+}
+
+.feed__input-item--small{
+  width: 15%;
 }
 
 .feed__comment-content{
@@ -68,6 +84,13 @@
 
 .feed__button{
   margin: !important;
+}
+
+.feed__button--inline{
+  height: 100%;
+  outline: none;
+  background: $orange-color;
+
 }
 .feed__content-top{
   padding: 5px;

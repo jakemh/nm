@@ -80,7 +80,8 @@ namespace :deploy do
     on roles(:web) do
       within current_path do
           puts "RESTARTING PUMA"
-          execute "kill -s USR2 `cat #{puma_pid}`"
+          # execute "kill -s USR2 `cat #{puma_pid}`"
+          execute :bundle, "pumactl -P #{puma_pid} restart"
         end
     end
   end
