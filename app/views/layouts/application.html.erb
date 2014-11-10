@@ -20,7 +20,7 @@
   </head>
   <base href="/">
 
-  <body ng-app="NM" ng-controller="ApplicationController">
+  <body ng-app="NM" ng-controller="ApplicationController as appController">
 
    <% if content_for :app %>
     <%= yield(:app) %>

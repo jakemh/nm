@@ -19,6 +19,7 @@ angular.module("NM").controller "ApplicationController", [
     $scope.Utilities = Utilities
     $scope.AuthService = AuthService
     $scope.SideBar = SideBar
+    $scope.tabBarDisabled = true
 
     $scope.tabs = [
       { title:'Dynamic Title 1', content:'Dynamic content 1' },

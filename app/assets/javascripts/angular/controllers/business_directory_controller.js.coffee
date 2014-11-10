@@ -21,6 +21,7 @@ angular.module("NM").controller "BusinessDirectoryController", [
     SideBar.rightBarTemplate = "right_bar_business.html"        
     
     # $scope.loadMap()
+    SideBar.tabBarVisible = false 
 
     $scope.init = ->
       

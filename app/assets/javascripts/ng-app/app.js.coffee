@@ -64,11 +64,12 @@ window.App = angular.module("NM", [
     controller: "BusinessDirectoryController"
 
   .when "/me/feed",
+  # controller: "PostController"
+
     templateUrl: "feed.html"
-    # controller: "PostController"
-    resolve:
-      rightBarTemplate: ->
-        "blank.html"
+    # resolve: 
+    #   testing: ->
+    #     return "100"
   .when "/users/:id",
     templateUrl: "profile.html"
   .when "/me/audience",

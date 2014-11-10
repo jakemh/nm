@@ -33,15 +33,13 @@ angular.module("NM").controller "PostController", [
     $scope.newPostBody = {}
     $scope.buildFeedList = false
     $scope.displayCommentForm = true
-    SideBar.rightBarTemplate = "blank.html"     
-
+    SideBar.rightBarTemplate = "blank.html"  
+    SideBar.tabBarVisible = true 
+    # $scope.appController.tabBarDisabled = false
     # $scope.throttledLoadMore = _.throttle ->
     #     # alert JSON.stringify @
     #     $scope.loadMore()
     #   , 100
-
- 
-
 
 
     # Restangular.all('me/posts').post({content: "XYZ"})

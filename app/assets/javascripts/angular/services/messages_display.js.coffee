@@ -14,7 +14,6 @@ App.factory "MessagesDisplay", [
       messageRoute: entity.message_route
       name: entity.name
       responses: responseList
-      # distance: entity.distance
       added: post.created_at
       uri: entity.uri
       thumb: entity.thumb
@@ -27,29 +26,7 @@ App.factory "MessagesDisplay", [
       followerCount: entity.follower_count
 
 
-    buildEachPost: (displayList, post) ->
-      displayHash = (post, entity, responseList) ->
-        models: {entity: entity}
-        id: post.id
-        timeStamp: moment(post.created_at)
-        city: entity.city
-        newPost: {}
-        parentId: post.parent_id
-        messageRoute: entity.message_route
-        name: entity.name
-        responses: responseList
-        # distance: entity.distance
-        added: post.created_at
-        uri: entity.uri
-        thumb: entity.thumb
-        content: post.content
-        profile: entity.uri
-        entityType: entity.type
-        entityId: entity.id
-        followerUri: AuthService.followerUri(entity)
-        followerUriType: AuthService.followerType(entity)
-        followerCount: entity.follower_count
-
+    buildEachPost: (displayList, post, context) ->
       current = AuthService.currentEntitySelection.selected
       post.entity({current_type: current.type, current_id: current.id}).then (e)=>
         post.responses().then (responses) =>
@@ -58,11 +35,11 @@ App.factory "MessagesDisplay", [
           for response in responses
             do (response) =>
               response.entity({current_type: current.type, current_id: current.id}).then (rE) =>
-                responseList.push displayHash(response, rE)
+                responseList.push context.displayHash(response, rE)
 
           entity = e
           
-          displayList.push displayHash(post, entity, responseList)
+          displayList.push context.displayHash(post, entity, responseList)
       
     buildMessageDisplay2: (displayList, source) ->
       deferred = $q.defer()
@@ -71,11 +48,9 @@ App.factory "MessagesDisplay", [
 
         while displayList.length > 0 
           displayList.pop()
-        
-
+    
         for post in source
-          # do (post) =>
-            _.defer @buildEachPost, displayList, post
+            _.defer @buildEachPost, displayList, post, @
 
 
     buildMessageDisplay: (displayList, source) ->
