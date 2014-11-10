@@ -9,6 +9,8 @@ App.factory "AuthService", [
 
     entityOptions: []
     currentFollowers: []
+
+    # selected: @currentEntitySelection.selected
     user: () ->
       Restangular.one('users', "current").get()
 

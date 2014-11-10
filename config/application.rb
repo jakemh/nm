@@ -21,8 +21,9 @@ module NextMission
     ]
     config.to_prepare do
 
-      # Devise::SessionsController.skip_before_filter :authenticate_user!
-      TemporaryController.skip_before_filter :authenticate
+      Devise::SessionsController.skip_before_filter :authenticate_user!
+      TemporaryController.skip_before_filter :authenticate_user!
+      # TemporaryController.skip_before_filter :authenticate
     end
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers

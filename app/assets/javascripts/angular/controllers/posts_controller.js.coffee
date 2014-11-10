@@ -21,6 +21,7 @@ angular.module("NM").controller "PostController", [
   ($scope, $q, CacheService, Utilities, MessagesDisplay,  Restangular, AuthService, SideBar) ->
     # $scope.postsCache = $cacheFactory('me/posts');
     $scope.posts = []
+    $scope.postIntermediate = []
     $scope.displayList = []
     $scope.searching = [] 
     $scope.AuthService = AuthService
@@ -32,7 +33,16 @@ angular.module("NM").controller "PostController", [
     $scope.newPostBody = {}
     $scope.buildFeedList = false
     $scope.displayCommentForm = true
-    SideBar.rightBarTemplate = "blank.html"        
+    SideBar.rightBarTemplate = "blank.html"     
+
+    # $scope.throttledLoadMore = _.throttle ->
+    #     # alert JSON.stringify @
+    #     $scope.loadMore()
+    #   , 100
+
+ 
+
+
 
     # Restangular.all('me/posts').post({content: "XYZ"})
     $scope.headOuterInit = (newPost, entity) ->
@@ -86,6 +96,13 @@ angular.module("NM").controller "PostController", [
             $scope.posts = posts
             MessagesDisplay.buildMessageDisplay2($scope.displayList, $scope.posts)
 
+            # i = 0
+            # while i <= 20
+            #   $scope.postIntermediate.push $scope.posts[i]
+            #   i++
+            # MessagesDisplay.buildMessageDisplay2($scope.displayList, $scope.postIntermediate)
+            # MessagesDisplay.buildMessageDisplay(null, $scope.postIntermediate).then (list)->
+            #   $scope.displayList = list
     # $scope.buildAssociationCache = ->
     #   deferred = $q.defer();
     #   # alert JSON.stringify  AuthService.currentUser.user_post_associations

@@ -12,6 +12,7 @@ window.App = angular.module("NM", [
   "ngTagsInput"
   "angularMoment"
   "ui.bootstrap"
+  "infinite-scroll"
   
 ]).config ($routeProvider, $locationProvider, $httpProvider, RestangularProvider) ->
   $httpProvider.defaults.headers.common['X-CSRF-Token'] = $('meta[name=csrf-token]').attr('content')

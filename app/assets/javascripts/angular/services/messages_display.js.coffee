@@ -4,74 +4,78 @@ App.factory "MessagesDisplay", [
   "AuthService"
   ($q, Restangular, AuthService) ->
 
+    displayHash: (post, entity, responseList) ->
+      models: {entity: entity}
+      id: post.id
+      timeStamp: moment(post.created_at)
+      city: entity.city
+      newPost: {}
+      parentId: post.parent_id
+      messageRoute: entity.message_route
+      name: entity.name
+      responses: responseList
+      # distance: entity.distance
+      added: post.created_at
+      uri: entity.uri
+      thumb: entity.thumb
+      content: post.content
+      profile: entity.uri
+      entityType: entity.type
+      entityId: entity.id
+      followerUri: AuthService.followerUri(entity)
+      followerUriType: AuthService.followerType(entity)
+      followerCount: entity.follower_count
+
+
+    buildEachPost: (displayList, post) ->
+      displayHash = (post, entity, responseList) ->
+        models: {entity: entity}
+        id: post.id
+        timeStamp: moment(post.created_at)
+        city: entity.city
+        newPost: {}
+        parentId: post.parent_id
+        messageRoute: entity.message_route
+        name: entity.name
+        responses: responseList
+        # distance: entity.distance
+        added: post.created_at
+        uri: entity.uri
+        thumb: entity.thumb
+        content: post.content
+        profile: entity.uri
+        entityType: entity.type
+        entityId: entity.id
+        followerUri: AuthService.followerUri(entity)
+        followerUriType: AuthService.followerType(entity)
+        followerCount: entity.follower_count
+
+      current = AuthService.currentEntitySelection.selected
+      post.entity({current_type: current.type, current_id: current.id}).then (e)=>
+        post.responses().then (responses) =>
+          responseList = []
+          
+          for response in responses
+            do (response) =>
+              response.entity({current_type: current.type, current_id: current.id}).then (rE) =>
+                responseList.push displayHash(response, rE)
+
+          entity = e
+          
+          displayList.push displayHash(post, entity, responseList)
+      
     buildMessageDisplay2: (displayList, source) ->
       deferred = $q.defer()
-
       if source
         list = []
 
         while displayList.length > 0 
           displayList.pop()
         
-        current = AuthService.currentEntitySelection.selected
 
         for post in source
-          do (post) ->
-            # alert post.entity() + " XXX " + JSON.stringify post
-            post.entity({current_type: current.type, current_id: current.id}).then (e)->
-              post.responses().then (responses) ->
-                responseList = []
-                
-                for response in responses
-                  do (response) ->
-                    response.entity({current_type: current.type, current_id: current.id}).then (rE) ->
-                      responseList.push
-                        models: {entity: rE}
-                        id: response.id
-                        timeStamp: moment(response.created_at)
-                        city: rE.city
-                        newPost: {}
-                        parentId: response.parent_id
-                        messageRoute: rE.message_route
-                        name: rE.name
-                        # distance: entity.distance
-                        added: response.created_at
-                        uri: rE.uri
-                        thumb: rE.thumb
-                        content: response.content
-                        profile: rE.uri
-                        entityType: rE.type
-                        entityId: rE.id
-                        followerUri: AuthService.followerUri(rE)
-                        followerUriType: AuthService.followerType(rE)
-                        followerCount: rE.follower_count
-                        # followerUriType: rE.follower_uri_type
-
-                entity = e
-                
-                displayList.push
-                  models: {entity: entity}
-                  id: post.id
-                  timeStamp: moment(post.created_at)
-                  city: entity.city
-                  newPost: {}
-                  uri: entity.uri
-                  parentId: null
-                  name: entity.name
-                  messageRoute: entity.message_route
-                  responses: responseList
-                  # distance: entity.distance
-                  added: post.created_at
-                  thumb: entity.thumb
-                  content: post.content
-                  profile: entity.uri
-                  entityType: entity.type
-                  entityId: entity.id
-                  followerUri: AuthService.followerUri(entity)
-                  followerUriType: AuthService.followerType(entity)
-                  followerCount: entity.follower_count
-
-                  # followerUriType: entity.follower_uri_type
+          # do (post) =>
+            _.defer @buildEachPost, displayList, post
 
 
     buildMessageDisplay: (displayList, source) ->
@@ -86,60 +90,23 @@ App.factory "MessagesDisplay", [
         current = AuthService.currentEntitySelection.selected
 
         for post in source
-          do (post) ->
+          do (post) =>
             # alert post.entity() + " XXX " + JSON.stringify post
-            post.entity({current_type: current.type, current_id: current.id}).then (e)->
-              post.responses().then (responses) ->
+            post.entity({current_type: current.type, current_id: current.id}).then (e)=>
+              post.responses().then (responses) =>
                 responseList = []
                 
                 for response in responses
-                  do (response) ->
-                    response.entity({current_type: current.type, current_id: current.id}).then (rE) ->
-                      responseList.push
-                        models: {entity: rE}
-                        id: response.id
-                        timeStamp: moment(response.created_at)
-                        city: rE.city
-                        newPost: {}
-                        parentId: response.parent_id
-                        messageRoute: rE.message_route
-                        name: rE.name
-                        # distance: entity.distance
-                        added: response.created_at
-                        uri: rE.uri
-                        thumb: rE.thumb
-                        content: response.content
-                        profile: rE.uri
-                        entityType: rE.type
-                        entityId: rE.id
-                        followerUri: AuthService.followerUri(rE)
-                        followerUriType: AuthService.followerType(rE)
-                        followerCount: rE.follower_count
+                  do (response) =>
+                    response.entity({current_type: current.type, current_id: current.id}).then (rE) =>
+                      responseList.push @displayHash(response, rE)
+
                         # followerUriType: rE.follower_uri_type
 
                 entity = e
                 
-                list.push
-                  models: {entity: entity}
-                  id: post.id
-                  timeStamp: moment(post.created_at)
-                  city: entity.city
-                  newPost: {}
-                  uri: entity.uri
-                  parentId: null
-                  name: entity.name
-                  messageRoute: entity.message_route
-                  responses: responseList
-                  # distance: entity.distance
-                  added: post.created_at
-                  thumb: entity.thumb
-                  content: post.content
-                  profile: entity.uri
-                  entityType: entity.type
-                  entityId: entity.id
-                  followerUri: AuthService.followerUri(entity)
-                  followerUriType: AuthService.followerType(entity)
-                  followerCount: entity.follower_count
+                list.push @displayHash(post, entity, responseList)
+
 
                   # followerUriType: entity.follower_uri_type
 

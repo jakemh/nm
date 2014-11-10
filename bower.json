@@ -29,6 +29,7 @@
     "angular-bootstrap": "",
     "angular-moment": "",
     "angular-xeditable": "",
-    "ng-tags-input": ""
+    "ng-tags-input": "",
+    "ngInfiniteScroll": ""
   }
 }

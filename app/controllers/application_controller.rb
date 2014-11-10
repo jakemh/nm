@@ -2,10 +2,13 @@ class ApplicationController < ActionController::Base
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
-  before_filter :authenticate
+  before_action :authenticate
   after_filter :track_action
   serialization_scope :view_context
+  before_filter :authenticate_user!
+
   attr_accessor :entity
+
   # check_authorization :unless => :devise_controller?
   # check_authorization :unless => :temporary_controller?
 
@@ -29,6 +32,7 @@ class ApplicationController < ActionController::Base
         end
       end
     end
+
     def authenticate_entity
       return true if entity == current_user 
       return true if current_user.businesses.include? entity
