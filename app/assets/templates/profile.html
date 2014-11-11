@@ -9,15 +9,7 @@
         <a href editable-text="profileEntity.name" ng-if="isEditable">  {{profileEntity.name || "Enter a name!"}}
         </a>
         <span ng-if="!isEditable">{{profileEntity.name}}</span>
-
-<!-- 
-        <editable-toggle default="Enter a name!" 
-          attr="profileEntity.name" 
-          attrEval="{{profileEntity.name}}" 
-          toggle="{{isEditable}}">
-      </editable-toggle> -->
-        <!-- <span ng-if="!isEditable">{{profileEntity.name}}</span> -->
-
+        
       </div>
 
       <div class="user-prof__location">

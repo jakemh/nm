@@ -97,8 +97,10 @@ angular.module("NM").controller "ProfileController", [
     $scope.SideBar = SideBar
     SideBar.tabBarVisible = false
     SideBar.profileScope = $scope
+    # SideBar.tabBarDisabled = $scope.isEditable
     $scope.mapLoaded = false
     
+
     $scope.$watch "SideBar.mapLoaded", ->
       if SideBar.mapLoaded == true
 
@@ -149,6 +151,7 @@ angular.module("NM").controller "ProfileController", [
       $scope.profileEntity.put()
 
     $scope.editProfile = ()->
+
       if $scope.isEditable 
         $scope.isEditable = false
         $scope.editProfileText = "Edit Profile"
@@ -156,6 +159,9 @@ angular.module("NM").controller "ProfileController", [
       else 
         $scope.isEditable = true
         $scope.editProfileText = "Done"
+
+      SideBar.tabBarDisabled = $scope.isEditable
+
 
     $scope.visitProfile = (uri) ->
       # $location.path(uri);

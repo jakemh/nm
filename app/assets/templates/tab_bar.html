@@ -1,9 +1,10 @@
-<div class="tab-bar">
+<div ng-if="SideBar" class="tab-bar" ng-class="{'tab-bar--disabled': SideBar.tabBarDisabled == true}">
   <div
+    ng-disabled="SideBar.tabBarDisabled"
     class="tab-bar__item" 
     ng-repeat="entity in AuthService.entityOptions"
     ng-class="{'tab-bar__item--selected' : Utilities.entityCompare(entity, AuthService.currentEntitySelection.selected)}"
-    ng-click="tabItemClick(entity)"
+    ng-click="SideBar.tabBarDisabled || tabItemClick(entity)"
     >
     {{entity.name}}
   </div>

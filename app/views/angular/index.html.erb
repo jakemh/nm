@@ -3,7 +3,7 @@
 </nav>
 
 
-<%= content_tag :div, :class => ("outer__profile") do %>
+<div class="outer__profile">
   
   <div class="container__profile container__profile--left" style="overflow: hidden">
     <div class="sidebar">
@@ -30,16 +30,12 @@
         <div ng-switch-when="false">
           <div ng-include="'empty_tab_bar.html'"></div> 
         </div> 
-
       </div>
       <ng-view></ng-view> 
     </div>
     <div class="container__profile container__profile--right" >
       <div ng-include="SideBar.rightBarTemplate"></div>
     </div>
-   <!--  <div class="ontainer__profile container__profile--full">
-      <!-- yield -->
-    <!-- </div> -->
+  </span>
+  
 </div>
-
-<% end %>
