@@ -94,6 +94,7 @@ angular.module("NM").controller "ProfileController", [
     $scope.followButtonText = "Follow"
     $scope.SideBar = SideBar
     SideBar.tabBarVisible = false
+
     # $scope.skills = []
 
 
@@ -110,6 +111,12 @@ angular.module("NM").controller "ProfileController", [
             $scope.profileEntity.skills = skills
             $scope.yours = $scope.userOrBelongsToUser()
             SideBar.tabBarVisible = $scope.yours
+
+            if $scope.yours
+              SideBar.rightBarTemplate = "right_bar_profile_external.html"  
+            else SideBar.rightBarTemplate = "right_bar_profile_external.html"  
+ 
+
           # $scope.isFollowing = entity.follower_uri_type == -1 ? false : true
           # alert JSON.stringify entity.follower_uri_type 
           if entity.follower_uri_type == -1

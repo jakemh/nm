@@ -1,15 +1,13 @@
-<div class="profile__right-box profile__right-box--large">
-  <div style='width: 380px;'>
-    <div ng-init="SideBar.onMapLoad()" id="map" style='width: 380px; height: 400px;'>xxx</div>
+<div class="center-text">
+  <div class="profile__box-title">
+    {{profileEntity.first_name}}'s Businesses
   </div>
-</div>
 
-<div class="profile__right-box profile__right-box--small">
-  info
-</div>
-
-<div class="profile__right-box profile__right-box--large">
-  <h4> Reviews </h4>
-
-  reviews
+  <div class="bus__list">
+    <div ng-repeat="business in profileEntityBusinesses | orderBy:'name': false ">
+      <div ng-include="'business_item.html'"></div>
+   <!--  <div class="bus__none" ng-hide="displayList.length">
+      Find some more businesses!
+    </div> -->
+  </div>
 </div>

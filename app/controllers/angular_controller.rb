@@ -1,5 +1,5 @@
 class AngularController < ApplicationController
-  layout "profile"
+  # layout "profile"
   def index
   end
 end

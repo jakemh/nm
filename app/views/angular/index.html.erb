@@ -1,0 +1,45 @@
+<nav class="navbar navbar-default navbar-inverse navbar-fixed-top" role="navigation">
+  <%= render 'shared/top_bar_content' %>
+</nav>
+
+
+<%= content_tag :div, :class => ("outer__profile") do %>
+  
+  <div class="container__profile container__profile--left" style="overflow: hidden">
+    <div class="sidebar">
+      <ul class="nav navbar-nav side-nav side-nav-inverse">
+        <% PROFILE["user-side"].each do |bar| %>
+          <%= content_tag "li", 
+          :class => active_class(send_or_nil(bar["path"], current_user)) do %>
+            <%= link_to send_or_nil(bar["path"]) do %>  
+            <%= bar["title"] %>
+            <%= show_badge(quant_from_method(bar["badge"])) %>
+            <% end %>
+          <% end %>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+
+  <span ng-controller="ProfileController">
+    <div class="container__profile container__profile--middle">
+      <div class="tab_container"  ng-switch="SideBar.tabBarVisible">
+        <div ng-switch-when="true">
+          <div ng-include="'tab_bar.html'"></div> 
+        </div> 
+        <div ng-switch-when="false">
+          <div ng-include="'empty_tab_bar.html'"></div> 
+        </div> 
+
+      </div>
+      <ng-view></ng-view> 
+    </div>
+    <div class="container__profile container__profile--right" >
+      <div ng-include="SideBar.rightBarTemplate"></div>
+    </div>
+   <!--  <div class=" -->container__profile container__profile--full">
+      <!-- yield -->
+    <!-- </div> -->
+</div>
+
+<% end %>
