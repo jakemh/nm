@@ -18,8 +18,10 @@
     <div class="feed__content-corner">
       <div class="row">
         <div class="col-sm-7 feed__time">
-          <span am-time-ago="entity.timeStamp"></span>
-        </div>
+            <span ng-if="Utilities.exceedThreshold(entity.timeFromNow)">{{entity.timeStamp | amDateFormat:'MMMM Do'}}</span>
+            <span  ng-if="!Utilities.exceedThreshold(entity.timeFromNow)"
+             am-time-ago="entity.timeStamp">Test2</span>
+          </div>
         <div class="col-sm-2 feed__comment-expand">
           <a ng-click="expand = !expand" href="#">Comment</a>
         </div>

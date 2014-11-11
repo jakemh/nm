@@ -1,7 +1,9 @@
 <div class="aud" ng-controller="AudienceController">
-    <div ng-include="'feed_head_outer.html'"></div>
   
+  <div ng-include="'feed_head_outer.html'"></div>
+
   <div class="row">
+
     <div class="col-sm-6">
       <ui-select ng-model="filterVal.selected">
         <ui-select-match placeholder="Filter by">
@@ -25,16 +27,15 @@
     </div>
   </div>
 
-    <div class="aud__members">
-
-      <div ng-repeat="entity in displayList | orderBy:sortVal.selected.name | audienceFilter:filterVal.selected">
-        <div class="aud__member connect {{audMemberClass($index)}}">
-          <div class="feed__content feed__content--comment">
-            <ng-include src="'feed_content.html'">          {{$index}}
-</ng-include>
-            
-          </div>
+  <div class="aud__members">
+    <div ng-repeat="entity in displayList | orderBy:sortVal.selected.name | audienceFilter:filterVal.selected">
+      <div class="aud__member connect {{audMemberClass($index)}}">
+        <div class="feed__content feed__content--comment">
+          <ng-include src="'feed_content.html'"> {{$index}}
+          </ng-include>
         </div>
       </div>
     </div>
+  </div>
+
 </div>

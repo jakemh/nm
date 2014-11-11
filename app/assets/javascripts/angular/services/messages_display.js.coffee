@@ -2,7 +2,8 @@ App.factory "MessagesDisplay", [
   "$q"
   "Restangular"
   "AuthService"
-  ($q, Restangular, AuthService) ->
+  "Utilities"
+  ($q, Restangular, AuthService, Utilities) ->
 
     displayHash: (post, entity, responseList) ->
       models: {entity: entity}
@@ -12,6 +13,7 @@ App.factory "MessagesDisplay", [
       newPost: {}
       parentId: post.parent_id
       messageRoute: entity.message_route
+      timeFromNow: Utilities.timeDifference(moment(post.created_at))
       name: entity.name
       responses: responseList
       added: post.created_at

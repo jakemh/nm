@@ -94,13 +94,11 @@ namespace :deploy do
         execute "ln -sf #{root}/application.yml #{working_directory}/config/application.yml"
       end
     end
-
   end
 
   after :publishing, :restart_puma
   after :restart_puma, :finalize
-  after :publishing, :restart_puma
-  after :restart_puma, :finalize
+
   after :finalize, :clear_cache do
     on roles(:web), in: :groups, limit: 3, wait: 10 do
       # Here we can do anything such as:

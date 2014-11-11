@@ -4,7 +4,19 @@ App.factory "Utilities", [
       trustAsHtml: (value) ->
         return $sce.trustAsHtml(value);
 
+      timeAgoThreshhold: -604800000
+
       testing: true
+
+      timeDifference: (t) ->
+        t.diff(moment())
+
+
+      exceedThreshold: (timeAgo)->
+        if timeAgo < @timeAgoThreshhold
+          true
+        else false
+
       entityCompare: (e1, e2)->
         
         e1F = [e1.id, e1.type]
