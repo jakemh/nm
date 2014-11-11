@@ -4,10 +4,25 @@ angular.module("NM").controller "AudienceController", [
   "Utilities"
   "Restangular"
   "AuthService"
-  ($scope, $q, Utilities, Restangular, AuthService) ->
+  "SideBar"
+  ($scope, $q, Utilities, Restangular, AuthService, SideBar) ->
     $scope.Utilities = Utilities
     $scope.feedContentPartial = "feed_body_audience.html"
     $scope.AuthService = AuthService
+    $scope.SideBar = SideBar
+    SideBar.rightBarTemplate = "right_bar_business.html"        
+    
+    # $scope.loadMap()
+    SideBar.tabBarVisible = true 
+    $scope.$watch "SideBar.mapLoaded", ->
+      if SideBar.mapLoaded == true
+        $scope.mapObj = new GMaps
+          div: '#map'
+          lat: 35
+          lng: -122
+          zoom: 2
+        $scope.mapLoaded = true
+      SideBar.mapLoaded = false
     $scope.audMemberClass = (index)->
       console.log "INDEX: " + index
       if index % 2 == 0

@@ -15,7 +15,7 @@ angular.module("NM").controller "MessagesController", [
     $scope.Utilities = Utilities
     $scope.displayMessages = []
     $scope.newMessage = {}
-    $scope.feedHeadBody = "feed_head_form.html"
+    # $scope.feedHeadBody = "feed_head_form.html"
 
     $scope.feedCornerPartial = "feed_body_comment.html"
 

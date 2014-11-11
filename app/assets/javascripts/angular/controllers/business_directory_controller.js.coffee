@@ -5,9 +5,10 @@ angular.module("NM").controller "BusinessDirectoryController", [
   "Restangular"
   "SideBar"
   "$location"
+  
   ($scope, Business, User, Restangular, SideBar, $location) ->
+    
     $scope.SideBar = SideBar
-
     SideBar.rightBarTemplate = "right_bar_business.html"        
     $scope.businesses = []
     $scope.businessList = []
@@ -24,8 +25,7 @@ angular.module("NM").controller "BusinessDirectoryController", [
     SideBar.tabBarVisible = false 
 
     $scope.init = ->
-      
-
+    
 
     $scope.addMarker = (marker)->
       $scope.mapObj.addMarker(marker)
