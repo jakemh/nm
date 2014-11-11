@@ -34,7 +34,8 @@ Rails.application.routes.draw do
     get '/users/:id', :to => 'angular#index', :constraints => FormatTest.new(:html)
   end
   
-  get '/me/*all', :to => 'angular#index', :constraints => FormatTest.new(:html)
+  get '/me/feed', :to => 'angular#index', :constraints => FormatTest.new(:html)
+  get '/me/messages', :to => 'angular#index', :constraints => FormatTest.new(:html)
 
 
   namespace :me do

@@ -30,7 +30,7 @@
         <li></li>
  -->  
         <li><a ng-href="{{AuthService.currentEntitySelection.selected.uri}}">{{AuthService.currentEntitySelection.selected.name}}</a></li>
-       <li><%= link_to "Add business", new_me_business_path %></li>
+       <li><%= link_to "Add business", new_me_business_path, :target => "_self" %></li>
         <li>  <%= link_to('Logout', destroy_user_session_path, :method => :delete) if current_user %> </li>
       </ul>
     </div><!-- /.navbar-collapse -->
