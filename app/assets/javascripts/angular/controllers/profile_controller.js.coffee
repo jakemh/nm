@@ -94,7 +94,7 @@ angular.module("NM").controller "ProfileController", [
     $scope.followButtonText = "Follow"
     $scope.SideBar = SideBar
     SideBar.tabBarVisible = false
-
+    SideBar.profileScope = $scope
     # $scope.skills = []
 
 
@@ -111,9 +111,9 @@ angular.module("NM").controller "ProfileController", [
             $scope.profileEntity.skills = skills
             $scope.yours = $scope.userOrBelongsToUser()
             SideBar.tabBarVisible = $scope.yours
-
+            SideBar.profileEntity = $scope.profileEntity
             if $scope.yours
-              SideBar.rightBarTemplate = "right_bar_profile_external.html"  
+              SideBar.rightBarTemplate = "right_bar_profile_internal.html"  
             else SideBar.rightBarTemplate = "right_bar_profile_external.html"  
  
 

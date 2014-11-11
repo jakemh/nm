@@ -1,13 +1,16 @@
+
+<div ng-if="SideBar.profileScope.profileEntity" class="profile__right-box">
 <div class="center-text">
   <div class="profile__box-title">
-    {{profileEntity.first_name}}'s Businesses
+    {{SideBar.profileScope.profileEntity.first_name}}'s Businesses
   </div>
 
   <div class="bus__list">
-    <div ng-repeat="business in profileEntityBusinesses | orderBy:'name': false ">
+    <div ng-repeat="business in SideBar.profileScope.profileEntityBusinesses | orderBy:'name': false ">
       <div ng-include="'business_item.html'"></div>
    <!--  <div class="bus__none" ng-hide="displayList.length">
       Find some more businesses!
     </div> -->
   </div>
+</div>
 </div>
