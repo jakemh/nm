@@ -24,11 +24,16 @@ Rails.application.routes.draw do
  end
 
   get '/businesses/', :to => 'angular#index', :constraints => FormatTest.new(:html)
+
   get '/users/', :to => 'angular#index', :constraints => FormatTest.new(:html)
   get '/messages/', :to => 'angular#index', :constraints => FormatTest.new(:html)
 
   get '/businesses/*all', :to => 'angular#index', :constraints => FormatTest.new(:html)
-  get '/users/:id', :to => 'angular#index', :constraints => [{ :id => /\d+/ }, FormatTest.new(:html)]
+
+  constraints(id: /\d+/) do
+    get '/users/:id', :to => 'angular#index', :constraints => FormatTest.new(:html)
+  end
+  
   get '/me/*all', :to => 'angular#index', :constraints => FormatTest.new(:html)
 
 

@@ -67,9 +67,9 @@ window.App = angular.module("NM", [
   # controller: "PostController"
 
     templateUrl: "feed.html"
-    # resolve: 
-    #   testing: ->
-    #     return "100"
+    resolve: 
+      testing: ->
+        return "100"
   .when "/users/:id",
     templateUrl: "profile.html"
   .when "/me/audience",

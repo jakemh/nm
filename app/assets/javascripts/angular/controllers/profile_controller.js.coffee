@@ -71,8 +71,8 @@ angular.module("NM").controller "ProfileController", [
   "MessagesDisplay"
   "MessageService"
   "Restangular"
-  
-  ($scope, $routeParams, $location, Utilities, AuthService, MessagesDisplay, MessageService, Restangular) ->
+  "SideBar"
+  ($scope, $routeParams, $location, Utilities, AuthService, MessagesDisplay, MessageService, Restangular, SideBar) ->
     
     $scope.posts = []
     $scope.params = []
@@ -92,9 +92,13 @@ angular.module("NM").controller "ProfileController", [
     $scope.editProfileText = "Edit Profile"
     $scope.isFollowing = false
     $scope.followButtonText = "Follow"
+    $scope.SideBar = SideBar
+    SideBar.tabBarVisible = false
     # $scope.skills = []
 
+
     $scope.init = () ->
+     
       if AuthService.currentUser
         $scope.params = _.compact($scope.location.path().split("/"))
         current = AuthService.currentUser
@@ -104,12 +108,13 @@ angular.module("NM").controller "ProfileController", [
           $scope.profileEntity = entity
           $scope.profileEntity.getSkills().then (skills) -> 
             $scope.profileEntity.skills = skills
-
+            $scope.yours = $scope.userOrBelongsToUser()
+            SideBar.tabBarVisible = $scope.yours
           # $scope.isFollowing = entity.follower_uri_type == -1 ? false : true
           # alert JSON.stringify entity.follower_uri_type 
           if entity.follower_uri_type == -1
             $scope.isFollowing = true
-            $scope.followButtonText = "Following"
+            $scope.followButtonText = "Following "
 
           else $scope.isFollowing = false
 
@@ -142,6 +147,8 @@ angular.module("NM").controller "ProfileController", [
 
         else $scope.isFollowing = false
 
+ 
+
     $scope.belongsToUser = ->
       #check if profile entity is user or one of user's businesses
 
@@ -154,8 +161,16 @@ angular.module("NM").controller "ProfileController", [
           return true
         else if _.where(a, e).length > 0
           return true
+      return false
         
       # else if profileEntity
+    $scope.userOrBelongsToUser = ->
+      if Utilities.entityCompare(AuthService.currentUser, $scope.profileEntity)
+        return true
+      else if $scope.belongsToUser($scope.profileEntit)
+        return true
+      else return false
+
 
     $scope.loadBusinesses = () ->
       $scope.profileEntity.businesses().then (businesses)->
