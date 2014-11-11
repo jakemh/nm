@@ -72,6 +72,7 @@ window.App = angular.module("NM", [
         return "100"
   .when "/users/:id",
     templateUrl: "profile.html"
+    controller: "ProfileController"
   .when "/me/audience",
     templateUrl: "audience.html"
   .when "/messages",
@@ -80,11 +81,13 @@ window.App = angular.module("NM", [
     templateUrl: "followers.html"
   .when "/businesses/:id",
     templateUrl: "profile.html"
+    controller: "ProfileController"
 
 
-  .when('/users/:id', 
-     {templateUrl: 'profile.html', controller: 'ProfileController'}
-   );
+
+  # .when('/users/:id', 
+  #    {templateUrl: 'profile.html', controller: 'ProfileController'}
+  #  );
   $locationProvider.html5Mode true
   return
 
