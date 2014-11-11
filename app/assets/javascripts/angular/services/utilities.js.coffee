@@ -4,7 +4,7 @@ App.factory "Utilities", [
       trustAsHtml: (value) ->
         return $sce.trustAsHtml(value);
 
-      timeAgoThreshhold: -604800000
+      timeAgoThreshhold: -259200000
 
       testing: true
 
