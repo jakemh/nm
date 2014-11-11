@@ -26,6 +26,8 @@ angular.module("NM").controller "PrivateMessageController", [
     $scope.feedCornerPartial = "feed_body_comment.html"
     $scope.newPostMain = {}
     
+    $scope.initRightBarExternal = ->
+      $scope.loadBusinesses()
 
     $scope.sendPost = (postObj, postSubmit)->
       selectedEntity = AuthService.currentEntitySelection.selected
@@ -95,9 +97,25 @@ angular.module("NM").controller "ProfileController", [
     $scope.SideBar = SideBar
     SideBar.tabBarVisible = false
     SideBar.profileScope = $scope
+    $scope.mapLoaded = false
+    
+    $scope.$watch "SideBar.mapLoaded", ->
+      if SideBar.mapLoaded == true
+
+        $scope.mapObj = new GMaps
+          div: '#map'
+          lat: 35
+          lng: -122
+          zoom: 2
+        $scope.mapLoaded = true
+      SideBar.mapLoaded = false
+
     # $scope.skills = []
 
-
+    $scope.initSecondaryBox = () ->
+      $scope.profileEntity.getSkills().then (skills) -> 
+        $scope.profileEntity.skills = skills
+                  
     $scope.init = () ->
      
       if AuthService.currentUser
@@ -107,15 +125,17 @@ angular.module("NM").controller "ProfileController", [
         Restangular.one($scope.params[0], $scope.params[1]).get(params).then (entity)->
           # $scope.posts = $scope.posts.concat(response)
           $scope.profileEntity = entity
-          $scope.profileEntity.getSkills().then (skills) -> 
-            $scope.profileEntity.skills = skills
-            $scope.yours = $scope.userOrBelongsToUser()
-            SideBar.tabBarVisible = $scope.yours
-            SideBar.profileEntity = $scope.profileEntity
+          $scope.yours = $scope.userOrBelongsToUser()
+          SideBar.tabBarVisible = $scope.yours
+          SideBar.profileEntity = $scope.profileEntity
+
+          if $scope.profileEntity.type == "User"
             if $scope.yours
               SideBar.rightBarTemplate = "right_bar_profile_internal.html"  
             else SideBar.rightBarTemplate = "right_bar_profile_external.html"  
- 
+          else if $scope.profileEntity.type == "Business" 
+            SideBar.rightBarTemplate = "right_bar_business.html"
+          
 
           # $scope.isFollowing = entity.follower_uri_type == -1 ? false : true
           # alert JSON.stringify entity.follower_uri_type 
@@ -224,7 +244,6 @@ angular.module("NM").controller "ProfileController", [
       if $scope.profileEntity
         $scope.profileEntity.posts().then (posts)->
           $scope.posts = posts
-        $scope.loadBusinesses()
           # alert JSON.stringify posts
 
     $scope.$watch 'posts', ->

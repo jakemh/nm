@@ -31,7 +31,7 @@ angular.module("NM").controller "BusinessDirectoryController", [
       $scope.mapObj.addMarker(marker)
     
     $scope.$watch "SideBar.mapLoaded", ->
-      if SideBar.mapLoaded = true
+      if SideBar.mapLoaded == true
         $scope.mapObj = new GMaps
           div: '#map'
           lat: 35

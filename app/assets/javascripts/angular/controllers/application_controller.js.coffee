@@ -34,11 +34,10 @@ angular.module("NM").controller "ApplicationController", [
       AuthService.user().then (user)->
         AuthService.currentUser = user
     
-    $scope.mapLoaded = ->
-      $scope.sideBarLoaded = true
+ 
 
     $scope.init()
-    $scope.rightBarTemplate = "right_bar_business.html"        
+    # $scope.rightBarTemplate = "right_bar_business.html"        
 
     $scope.$watch 'AuthService.currentUser', ->
       if AuthService.currentUser

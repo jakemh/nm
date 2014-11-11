@@ -1,5 +1,10 @@
 
-<div ng-if="SideBar.profileScope.profileEntity" class="profile__right-box">
+<div 
+ng-if="SideBar.profileScope.profileEntity" 
+class="profile__right-box"
+ng-init="initRightBarExternal()"
+>
+
 <div class="center-text">
   <div class="profile__box-title">
     {{SideBar.profileScope.profileEntity.first_name}}'s Businesses
