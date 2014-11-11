@@ -25,7 +25,7 @@ angular.module("NM").controller "PrivateMessageController", [
     $scope.messageForm = "message_form.html"
     $scope.feedCornerPartial = "feed_body_comment.html"
     $scope.newPostMain = {}
-   
+    
 
     $scope.sendPost = (postObj, postSubmit)->
       selectedEntity = AuthService.currentEntitySelection.selected
@@ -214,7 +214,11 @@ angular.module("NM").controller "ProfileController", [
         #   $scope.posts = posts
 
     # $scope.$watch 'AuthService.currentUser', ->
-      
+    $scope.$watch 'AuthService.currentEntitySelection.selected', ->
+      if $scope.yours
+        $location.path( AuthService.currentEntitySelection.selected.uri );
+
+
     $scope.$watch 'profileEntity', ->
 
       if $scope.profileEntity
