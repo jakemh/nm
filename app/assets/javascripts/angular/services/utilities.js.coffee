@@ -3,8 +3,9 @@ App.factory "Utilities", [
     ($sce) ->
       trustAsHtml: (value) ->
         return $sce.trustAsHtml(value);
-
-      timeAgoThreshhold: -259200000
+      millisecondsPerDay: 86400000
+      timeAgoThreshhold: ->
+        -3 * @millisecondsPerDay
 
       testing: true
 
@@ -13,7 +14,7 @@ App.factory "Utilities", [
 
 
       exceedThreshold: (timeAgo)->
-        if timeAgo < @timeAgoThreshhold
+        if timeAgo < @timeAgoThreshhold()
           true
         else false
 

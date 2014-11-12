@@ -25,9 +25,7 @@ angular.module("NM").controller "PrivateMessageController", [
     $scope.messageForm = "message_form.html"
     $scope.feedCornerPartial = "feed_body_comment.html"
     $scope.newPostMain = {}
-    
-    $scope.initRightBarExternal = ->
-      $scope.loadBusinesses()
+
 
     $scope.sendPost = (postObj, postSubmit)->
       selectedEntity = AuthService.currentEntitySelection.selected
@@ -113,6 +111,8 @@ angular.module("NM").controller "ProfileController", [
       SideBar.mapLoaded = false
 
     # $scope.skills = []
+    $scope.initRightBarExternal = ->
+      $scope.loadBusinesses()
 
     $scope.initSecondaryBox = () ->
       $scope.profileEntity.getSkills().then (skills) -> 
@@ -206,9 +206,10 @@ angular.module("NM").controller "ProfileController", [
 
 
     $scope.loadBusinesses = () ->
-      $scope.profileEntity.businesses().then (businesses)->
-        # alert JSON.stringify businesses
-        $scope.profileEntityBusinesses = businesses
+      if $scope.profileEntity.type == "User"
+        $scope.profileEntity.businesses().then (businesses)->
+          # alert JSON.stringify businesses
+          $scope.profileEntityBusinesses = businesses
 
     $scope.headOuterInit = (newPost, entity) ->
       newPost.type = 'Post'

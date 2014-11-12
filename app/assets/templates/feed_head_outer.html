@@ -1,13 +1,13 @@
-<div class="feed__head">    
+<div class="feed__head">
   <div class="feed__entry-inner feed__entry-inner--left">
     <div class="thumb">
-      <img ng-src="{{AuthService.currentEntitySelection.selected.thumb}}" >
+      <img ng-src="{{AuthService.currentEntitySelection.selected.thumb}}">
     </div>
   </div>
   <div class="feed__entry-inner feed__entry-inner--middle">
     <div class="feed__entry-inner-title js-form-name">
       {{AuthService.currentEntitySelection.selected.name}}
     </div>
-      <div ng-include="feedHeadBody"></div>
+    <div ng-include="feedHeadBody"></div>
   </div>
 </div>

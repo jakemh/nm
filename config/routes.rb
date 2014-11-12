@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
   get 'skills/index'
 
-  class FormatTest
+  class Format
     attr_accessor :mime_type
 
     def initialize(format)
@@ -16,26 +16,27 @@ Rails.application.routes.draw do
     end
   end
 
- devise_scope :user do
- 
-   get '/alpha', :to => "landing#index"
-   post 'landing/index', :to => "landing#add_email"
-   get 'registration/selection', :to => "registration#selection", :as => :selection
- end
-
-  get '/businesses/', :to => 'angular#index', :constraints => FormatTest.new(:html)
-
-  get '/users/', :to => 'angular#index', :constraints => FormatTest.new(:html)
-  get '/messages/', :to => 'angular#index', :constraints => FormatTest.new(:html)
-
-  get '/businesses/*all', :to => 'angular#index', :constraints => FormatTest.new(:html)
-
-  constraints(id: /\d+/) do
-    get '/users/:id', :to => 'angular#index', :constraints => FormatTest.new(:html)
+  devise_scope :user do
+    get '/alpha', :to => "landing#index"
+    post 'landing/index', :to => "landing#add_email"
+    get 'registration/selection', :to => "registration#selection", :as => :selection
   end
-  
-  get '/me/feed', :to => 'angular#index', :constraints => FormatTest.new(:html)
-  get '/me/messages', :to => 'angular#index', :constraints => FormatTest.new(:html)
+
+  constraints(Format.new(:html)) do
+
+    get '/businesses/', :to => 'angular#index'
+    get '/users/', :to => 'angular#index'
+    get '/messages/', :to => 'angular#index'
+    get '/businesses/*all', :to => 'angular#index'
+
+    constraints(id: /\d+/) do
+      get '/users/:id', :to => 'angular#index'
+    end
+
+    get '/me/feed', :to => 'angular#index'
+    get '/me/messages', :to => 'angular#index'
+  end
+
 
 
   namespace :me do
@@ -52,92 +53,83 @@ Rails.application.routes.draw do
   get 'auto_complete', to: 'me#autocomplete', as: :autocomplete
 
   devise_for :users, :controllers => {registrations: 'registration', sessions: 'sessions'}
- # get 'me/*path' => 'angular#index'
+  # get 'me/*path' => 'angular#index'
 
-    resources :entities
-    
-    namespace :me do
-      get '/send_data' => 'messages#send_data'
-      resources :following
-      resources :followers
-      resources :sent_messages
-      resources :received_messages
+  resources :entities
+
+  namespace :me do
+    get '/send_data' => 'messages#send_data'
+    resources :following
+    resources :followers
+    resources :sent_messages
+    resources :received_messages
+    resources :message_responses
+  end
+
+  resources :users do
+    resources :skills
+    resources :businesses, :controller => :user_businesses
+  end
+
+  resources :users, :businesses do
+    resources :messages
+    resources :sent_messages, :received_messages do
       resources :message_responses
     end
 
-    resources :users do 
-      resources :skills
-      resources :businesses, :controller => :user_businesses
+
+    resources :posts
+    resources :followers
+    resources :following
+  end
+
+  resources :emails
+
+  root to: 'temporary#index'
+
+  resource :admin,:controller => :admin, :module => :admin do
+    resources :users, :only => [:index, :show, :destroy]
+    resources :businesses,  :only => [:index, :show, :destroy]
+    resources :emails, :only => [:index, :show, :destroy]
+    resources :posts, :only => [:index, :show, :destroy]
+    resources :responses, :only => [:index, :show, :destroy], :controller => :posts
+    resources :messages, :only => [:index, :show, :destroy], :controller => :posts
+
+  end
+  get '/me', :to => 'me/users#index'
+
+  namespace :me do
+
+    resources :posts
+    resources :business_connections
+    resources :connections
+  end
+
+  # resources :users
+  resource :me, :controller => :users, :module => :me do
+    resources :photos, :controller => :user_photos
+    resources :messages, only: [:index, :create]
+    resources :posts, :controller => :user_posts
+    resources :responses
+    resources :feed, :controller => :news_feed
+    resources :audience
+    resources :connections
+    resources :friendships
+    resources :ownerships
+
+    resources :business_connections
+
+    resources :businesses do
+      resources :posts, :controller => :business_posts
+      resources :photos, :controller => :business_photos
     end
 
-    resources :users, :businesses do
-      resources :messages
-      resources :sent_messages, :received_messages do 
-        resources :message_responses
-      end
-        
+  end
 
-      resources :posts
-      resources :followers
-      resources :following
-    end
+  if Rails.env.production?
+    match '*a', :to => 'errors#routing', via: :get
+  end
 
-    resources :emails
-
-    root to: 'temporary#index'
-
-    resource :admin,:controller => :admin, :module => :admin do 
-      resources :users, :only => [:index, :show, :destroy]
-      resources :businesses,  :only => [:index, :show, :destroy]
-      resources :emails, :only => [:index, :show, :destroy]
-      resources :posts, :only => [:index, :show, :destroy]
-      resources :responses, :only => [:index, :show, :destroy], :controller => :posts
-      resources :messages, :only => [:index, :show, :destroy], :controller => :posts
-
-    end
-    get '/me', :to => 'me/users#index'
-
-    namespace :me do
-
-      resources :posts
-      resources :business_connections
-      resources :connections
-    end
-
-    # resources :users
-    resource :me, :controller => :users, :module => :me do
-      resources :photos, :controller => :user_photos
-      resources :messages, only: [:index, :create]
-      resources :posts, :controller => :user_posts
-      resources :responses
-      resources :feed, :controller => :news_feed
-      resources :audience
-      resources :connections 
-      resources :friendships
-      resources :ownerships 
-
-      resources :business_connections
-
-      resources :businesses do
-        resources :posts, :controller => :business_posts
-        resources :photos, :controller => :business_photos
-      end
-
-    end
-
-    if Rails.env.production?
-      match '*a', :to => 'errors#routing', via: :get
-    end
-
- 
-  # get '/courses/*all', :to => 'ember#index', :constraints => FormatTest.new(:html)
-  # get '/welcome/*all', :to => 'ember#index', :constraints => FormatTest.new(:html)
-  # get '/welcome', :to => 'ember#index', :constraints => FormatTest.new(:html)
-  # get '/me', :to => 'ember#index', :constraints => FormatTest.new(:html), :as => :my_page
-  # get '/me/*all', :to => 'ember#index', :constraints => FormatTest.new(:html)
-  # get '/home', :to => 'ember#index', :constraints => FormatTest.new(:html)
-  # get '/bugs', :to => 'ember#index', :constraints => FormatTest.new(:html)
-  
   # root :to => "landing#index"
   # post 'landing/index', :to => "landing#create"
 

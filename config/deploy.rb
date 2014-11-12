@@ -55,7 +55,7 @@ namespace :deploy do
 
   def puma_pid
     root + "/tmp/pids/puma.pid"
-  end 
+  end
 
   set :app_name, "NextMission"
 
@@ -71,18 +71,18 @@ namespace :deploy do
   task :start do
     on roles(:web) do
       within current_path do
-          execute :bundle, "exec puma -e production -S ~/puma -C config/puma.rb -b unix:///tmp/next_mission.sock"
-        end
+        execute :bundle, "exec puma -e production -S ~/puma -C config/puma.rb -b unix:///tmp/next_mission.sock"
+      end
     end
   end
 
   task :restart_puma do
     on roles(:web) do
       within current_path do
-          puts "RESTARTING PUMA"
-          # execute "kill -s USR2 `cat #{puma_pid}`"
-          execute :bundle, "exec pumactl -P #{puma_pid} phased-restart"
-        end
+        puts "RESTARTING PUMA"
+        # execute "kill -s USR2 `cat #{puma_pid}`"
+        execute :bundle, "exec pumactl -P #{puma_pid} phased-restart"
+      end
     end
   end
 
