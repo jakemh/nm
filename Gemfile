@@ -50,7 +50,6 @@ gem 'angularjs-rails-resource'
 gem 'active_model_serializers', '~> 0.8.1' 
 gem 'searchkick'
 gem 'alphabetical_paginate'
-gem 'capistrano_mailer'
 # gem 'monologue', github: 'jipiboily/monologue'
 
 
