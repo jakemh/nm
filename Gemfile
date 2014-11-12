@@ -24,7 +24,6 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 
 # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
 gem 'figaro' 
-gem 'foreman'
 gem 'devise'
 gem 'therubyracer'
 gem 'less-rails'
@@ -51,7 +50,7 @@ gem 'angularjs-rails-resource'
 gem 'active_model_serializers', '~> 0.8.1' 
 gem 'searchkick'
 gem 'alphabetical_paginate'
-
+gem 'capistrano_mailer'
 # gem 'monologue', github: 'jipiboily/monologue'
 
 

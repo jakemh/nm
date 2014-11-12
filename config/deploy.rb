@@ -1,5 +1,6 @@
 # config valid only for Capistrano 3.1
 lock '3.2.1'
+$:.unshift 'vendor/plugins/capistrano_mailer/lib'
 
 set :application, 'NextMission'
 set :repo_url, "git@github.com:nextmission/nextmission-core.git"
@@ -11,6 +12,7 @@ set :deploy_via, :copy
 set :puma_pid, '/home/jake/repos/nextmission-core/shared/tmp/pids/puma.pid'
 # set :puma_pid, '/home/oli/www/shared/tmp/pids/puma.pid'
 set :branch, "angular"
+
 # Default branch is :master
 # ask :branch, proc { `git rev-parse --abbrev-ref HEAD`.chomp }.call
 
@@ -40,6 +42,13 @@ set :branch, "angular"
 
 # Default value for keep_releases is 5
 # set :keep_releases, 5
+namespace :show do
+  desc "Mailer task"
+  task :me do
+    set :task_name, task_call_frames.first.task.fully_qualified_name
+    #puts "Running #{task_name} task"
+  end
+end
 
 namespace :deploy do
   def root
@@ -94,6 +103,12 @@ namespace :deploy do
         execute "ln -sf #{root}/application.yml #{working_directory}/config/application.yml"
       end
     end
+  end
+
+  desc "Send email notification of deployment"
+  task :notify, :roles => :app do
+    show.me  # this sets the task_name variable
+    mailer.send_notification_email(self)
   end
 
   after :publishing, :restart_puma

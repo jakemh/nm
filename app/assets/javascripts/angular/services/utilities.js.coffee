@@ -3,7 +3,9 @@ App.factory "Utilities", [
     ($sce) ->
       trustAsHtml: (value) ->
         return $sce.trustAsHtml(value);
+        
       millisecondsPerDay: 86400000
+
       timeAgoThreshhold: ->
         -3 * @millisecondsPerDay
 
