@@ -1,26 +1,33 @@
-<form class="new_post ng-pristine ng-valid">
+<form novalidate class="new_post ng-pristine ng-valid" name="entryForm">
+
     <div class="feed__entry-inner-main">
       <input ng-model="newPost.parent_id" type="hidden">
       <input ng-model="newPost.type" type="hidden">
       <div class="feed__input-row">
         <div class="feed__input-item feed__input-item--large">
           <textarea 
-            class="feed__entry-input" 
+            class="feed__entry-input left"
+            name="content" 
+            ng-class="{'feed__entry-input--error': entryForm.$invalid && entryForm.hasError}"
             id="post_content" 
             placeholder="Enter a message" 
             rows="3"
             ng-model="newPost.content"
+            ng-minlength="1"
+            ng-required="true"
           ></textarea>
         </div>
         <div class="feed__input-item feed__input-item--small">
-          <button class="feed__button button__btn feed__button--inline" name="commit" style="margin-top: 0 !important" ng-click="sendPost(entity, newPost)">
+          <button class="feed__button button__btn feed__button--inline left" name="commit" style="margin-top: 0 !important" ng-click="entryForm.$valid ? sendPost(entity, newPost) : entryForm.hasError = true">
             Post
           </button>
         </div>
       </div>
+  
+
     </div>
     <!-- <div class="feed__form-bottom"> -->
 
-       
+     
     <!-- </div> -->
 </form>
