@@ -3,6 +3,8 @@ class Post < ActiveRecord::Base
   include Messaging
   belongs_to :user
   belongs_to :business
+  validates :content, presence: true, allow_blank: false
+
   # has_many :message_recipients
   has_many :responses, :class_name => "Response", :foreign_key => "parent_id"
   
