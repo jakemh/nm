@@ -13,6 +13,14 @@ App.factory "MessageService", [
       $("#" + id).modal()
       return true
 
-    sendMessage: ()->
+    # sendMessage: ()->
+
+    submit: (model, entity, entryForm, callback) ->
+      if entryForm.$valid
+        entryForm.hasError = false;
+        callback(entity, model)
+        model.content = ""
+      else 
+        entryForm.hasError = true
 
 ]

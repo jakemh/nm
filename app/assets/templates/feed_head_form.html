@@ -18,7 +18,12 @@
           ></textarea>
         </div>
         <div class="feed__input-item feed__input-item--small">
-          <button class="feed__button button__btn feed__button--inline left" name="commit" style="margin-top: 0 !important" ng-click="entryForm.$valid ? sendPost(entity, newPost) : entryForm.hasError = true">
+          <button 
+          class="feed__button button__btn feed__button--inline left" 
+          name="commit" 
+          style="margin-top: 0 !important" 
+          ng-click="MessageService.submit(newPost, entity, entryForm, sendPost)"
+          >
             Post
           </button>
         </div>

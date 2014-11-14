@@ -17,10 +17,12 @@ angular.module("NM").controller "PostController", [
   "Restangular"
   "AuthService"
   "SideBar"
+  "MessageService"
 
-  ($scope, $q, CacheService, Utilities, MessagesDisplay,  Restangular, AuthService, SideBar) ->
+  ($scope, $q, CacheService, Utilities, MessagesDisplay,  Restangular, AuthService, SideBar, MessageService) ->
     # $scope.postsCache = $cacheFactory('me/posts');
     $scope.posts = []
+    $scope.MessageService = MessageService
     $scope.postIntermediate = []
     $scope.displayList = []
     $scope.searching = [] 
