@@ -1,7 +1,8 @@
 class TemporaryController < ApplicationController
   skip_authorization_check
   skip_before_action :authenticate
-  
+  skip_before_action :authenticate_user!
+
   def index
     @email = Email.new
     if current_user
