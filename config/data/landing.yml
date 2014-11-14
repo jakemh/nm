@@ -23,7 +23,7 @@ sections_old:
     body: |
       Millions of veterans already own business and millions more want to learn now. Let's do business together.
 
-about:
+about_old:
   title: "ABOUT US"
   body: |
     Founded by two combat veterans, 
@@ -34,3 +34,21 @@ about:
     entrepreneurs to future veteran 
     entrepreneurs, creating new growth 
     and business opportunities.
+
+
+about:
+  title: "ABOUT US"
+  justin: |
+    Justin was an intelligence officer in the Air Force from 2000-06. 
+    After the Air Force, he earned an MBA at MIT Sloan focusing on 
+    entrepreneurship and finance. Prior to Next Mission, Justin co-founded 
+    the automative technology company XL Hybrid, which recently was named 
+    Fast Company's #3 energy company in the world behind Tesla and GE. 
+    He is a veteran of the Iraq War.
+
+  daniel: |
+    Daniel is a USMC combat veteran who served in the Al Anbar province 
+    in Iraq from 2003-05. After honorably serving, he went on to hold high-level 
+    positions at MySpace (2005-08), Shutterfly and Funzio (acquired by GREE). 
+    Daniel is a technology leader skilled in building infrastructure to help
+    interner companies scale.

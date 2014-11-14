@@ -1,17 +1,54 @@
  <div class="container-fluid container-bottom__temp">
 
         <% LANDING['sections'].each_with_index do |info, i| %>
-          <span> <%= fa_icon info["icon"] %></span>
-          <span> <%= info["title"] %></span>
+          <div class="lnd__item">
+            <div class="lnd__item-title">
+              <span> <%= fa_icon info["icon"] %></span>
+              <span> <%= info["title"] %></span>
+            </div>
+
+            <div class="lnd__item-body">
+              <div class="row">
+                <div class="col-lg-6 col-sm-8 col-xs-12  center-block" style="float:none;">
+                  <%= info["body"] %>
+                </div>
+              </div>
+            </div>
+          </div>
         <% end %>
   
-      <div class="about__temp">
-        <div class="info__bottom-temp">
-          <div class="title__info-bottom-temp">
-            <%= LANDING["about"]["title"] %>
-          </div>
-          <div class="body__info-bottom-temp">
-            <%= LANDING["about"]["body"] %>
+      <div class="about__container">
+        <div class="about__title">
+          ABOUT US
+        </div>
+        <div class="container">
+
+          
+
+          <div class="row-centered container">
+
+            <div class="col-sm-5 about__item  center-block text-center">
+
+              <div class="about__item-image">
+                <%=image_tag 'default_person.png' %>
+              </div>
+
+              <div>
+                <%= LANDING["about"]["justin"] %>
+              </div>
+
+            </div>
+
+            <div class="col-sm-5 about__item  center-block text-center">
+
+              <div class="about__item-image">
+                <%=image_tag 'default_person.png' %>
+              </div>
+Z
+                <%= LANDING["about"]["daniel"] %>
+              </div>
+
+            </div>
 
           </div>
         </div>
