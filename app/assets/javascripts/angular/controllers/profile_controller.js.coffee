@@ -53,8 +53,14 @@ angular.module("NM").controller "ProfileController", [
 
     $scope.initSecondaryBox = () ->
       $scope.profileEntity.getSkills().then (skills) -> 
+
         $scope.profileEntity.skills = skills
-                  
+    
+    $scope.initSecondaryBoxBusiness = () ->
+      $scope.profileEntity.getTags().then (tags) -> 
+        $scope.profileEntity.tags = _.map tags, (item) -> item.tags
+
+
     $scope.init = () ->
      
       if AuthService.currentUser

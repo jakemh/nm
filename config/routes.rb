@@ -2,6 +2,8 @@
 Rails.application.routes.draw do
 
 
+  get 'tags/index'
+
   get 'skills/index'
 
   class Format
@@ -64,6 +66,10 @@ Rails.application.routes.draw do
     resources :sent_messages
     resources :received_messages
     resources :message_responses
+  end
+
+  resources :businesses do
+    resources :tags
   end
 
   resources :users do

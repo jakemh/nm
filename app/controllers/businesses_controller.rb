@@ -17,6 +17,18 @@ class BusinessesController < ApplicationController
     # render json: @businesses
   end
 
+  def update
+    whitelist.delete_if { |key, value| value.blank? }
+    name_hash = {}
+    tags = params.permit(tags: [:name])["tags"]
+    entity.update_attributes(whitelist)
+    entity.tags.destroy_all
+    # entity.skills.build(params.permit(skills: [:name]))
+    entity.tags.build(tags)
+    entity.save
+    render json: entity
+  end
+
   def show
     @distance = params[:distance]
 
@@ -47,4 +59,14 @@ class BusinessesController < ApplicationController
     end
 
   end
+
+ private
+
+ def set_entity
+  @entity = Business.find params[:id]
+ end
+
+ def whitelist
+   params.require(:business).permit(:name, :city, :about, :work, :website, :email, :phone)
+ end
 end

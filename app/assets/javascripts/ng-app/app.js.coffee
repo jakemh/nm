@@ -35,7 +35,7 @@ window.App = angular.module("NM", [
     key = Object.keys(data)[0];
     extractedData = data  
 
-    if key == "user" || key == "business"
+    if key == "user" || key == "business" || key == "tags"
       extractedData = data[key]
     
 
