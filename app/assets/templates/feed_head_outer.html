@@ -5,7 +5,7 @@
     </div>
   </div>
   <div class="feed__entry-inner feed__entry-inner--middle">
-    <div class="feed__entry-inner-title js-form-name">
+    <div ng-if="!titleDisabled" class="feed__entry-inner-title js-form-name">
       {{AuthService.currentEntitySelection.selected.name}}
     </div>
     <div ng-include="feedHeadBody"></div>

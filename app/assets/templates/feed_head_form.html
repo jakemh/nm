@@ -1,4 +1,9 @@
-<form novalidate class="new_post ng-pristine ng-valid" name="entryForm">
+<form 
+  ui-keypress="{13:'myFunc($event)'}" 
+  novalidate 
+  class="new_post ng-pristine ng-valid" 
+  name="entryForm"
+>
 
     <div class="feed__entry-inner-main">
       <input ng-model="newPost.parent_id" type="hidden">
@@ -8,13 +13,14 @@
           <textarea 
             class="feed__entry-input left"
             name="content" 
-            ng-class="{'feed__entry-input--error': entryForm.$invalid && entryForm.hasError}"
+            ng-class="{'feed__entry-input--error': entryForm.$invalid && entryForm.hasError && !entryForm.$pristine}"
             id="post_content" 
             placeholder="Enter a message" 
-            rows="3"
+            rows="{{rowsQuantity || 3}}"
             ng-model="newPost.content"
             ng-minlength="1"
             ng-required="true"
+            ng-keyup="$event.keyCode == 13 && submitOnEnter && MessageService.submit(newPost, entity, entryForm, sendPost)"
           ></textarea>
         </div>
         <div class="feed__input-item feed__input-item--small">

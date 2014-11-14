@@ -1,7 +1,7 @@
 <div ng-repeat="entity in entity.responses | orderBy:'id': true">
   <div class="feed__comment-content">
     <div class="feed__content feed__content--comment">
-       <div ng-include="'feed_content.html'">  </div>
+       <div ng-init="disableTitle=true; disableChildForm=true" ng-include="'feed_content.html'">  </div>
       </div>
     </div> 
   </div>

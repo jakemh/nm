@@ -31,6 +31,7 @@
 }
 
 .feed__content{
+  border-bottom: 1spx solid $lighter-gray-color;
   // height: 100px;
 }
 .feed--small .feed__entry{
@@ -47,9 +48,21 @@
   text-align: center;
 }
 
-.feed__entry--comment{
-  background: whitesmoke;
+.feed__comment-container .feed__head{
+  background: whitesmoke !important;
   margin-top: 0;
+}
+
+.feed__comment-container .feed__head textarea{
+  background: white;
+}
+
+.feed__comment-container .feed__input-item{
+  width: 100%;
+}
+
+.feed__comment-container button{
+  display: none;
 }
 
 .feed__comment-content img{
@@ -146,7 +159,10 @@
   // background: green;
 }
 
-
+.feed__comment-container .feed__head{
+  height: 60px;
+  overflow: hidden;
+}
 .feed__comment-container .feed__content-outer{
   margin: 0 !important;
 }
@@ -236,13 +252,28 @@
   display: none;
 }
 
-.feed__content--comment.slide{
-  display: none;
+.feed__content--comment .feed__input-row{
+  overflow: hidden; 
+  height: 50px;
 }
 
-.feed__entry--comment .feed__entry-inner-title{
-  display: none;
+.feed__content--comment textarea{
+  height: 3em;
+  overflow: none;
 }
+
+.feed__content--comment img{
+  height: 44px !important;
+  width: 44px !important;
+}
+
+// .feed__content--comment.slide{
+//   display: none;
+// }
+
+// .feed__entry--comment .feed__entry-inner-title{
+//   display: none;
+// }
 
 
 .feed__entry-input{
@@ -255,5 +286,6 @@
     background: $lightest-gray-color;
     outline: none;
     resize: none;
-    float: left;
 }
+
+.feed__entry-input--left{}
