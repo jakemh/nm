@@ -4,4 +4,4 @@ git commit -m "$1"
 git push origin angular
 
 cap production deploy
-echo "deploy completed" | mail -s "deploy completed\!" jakemh@gmail.com
+echo "deploy completed" | mail -s "deploy completed!" daniel.mcfarland@gmail.com
