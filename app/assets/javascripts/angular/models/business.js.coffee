@@ -8,6 +8,9 @@ angular.module("NM").factory "Business", [
       angular.extend self, RestangularPlus
       angular.extend self, RestEntity
 
+      self.owner = ->
+        Restangular.one("users", self.owner_id).get()
+
       self.getTags = ->
         self.getListPlus("tags")
       

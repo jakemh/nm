@@ -32,6 +32,7 @@ angular.module("NM").controller "ProfileController", [
     $scope.SideBar = SideBar
     SideBar.tabBarVisible = false
     SideBar.profileScope = $scope
+    $scope.businessOwner = null
     # SideBar.tabBarDisabled = $scope.isEditable
     $scope.mapLoaded = false
     
@@ -57,6 +58,8 @@ angular.module("NM").controller "ProfileController", [
         $scope.profileEntity.skills = skills
     
     $scope.initSecondaryBoxBusiness = () ->
+      $scope.profileEntity.owner().then (o)->
+        $scope.businessOwner = o
       $scope.profileEntity.getTags().then (tags) -> 
         $scope.profileEntity.tags = _.map tags, (item) -> item.tags
 
