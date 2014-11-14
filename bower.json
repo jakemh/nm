@@ -12,7 +12,7 @@
     "tests"
   ],
   "dependencies": {
-    "angular": "latest",
+    "angular-mocks": "1.3.2-build.3514+sha.d906ed3",
     "angular-route": "latest",
     "bootstrap-sass-official": "~3.2.0",
     "jquery.tagsinput": "1.3.2",

@@ -1,4 +1,18 @@
-sections:
+sections_old:
+  - title: LEARN
+    body: |
+      Next Mission is an online community for military veterans interested in entrepreneurship. Collectively, we can learn from each other's experience.
+    icon:  lightbulb
+  - title: DO
+    body: |
+      Tap the veteran network for answers to your business questions and learn best practices from experts. Start something now.
+    icon: line-chart
+  - title: GROW
+    body: |
+      Millions of veterans already own a business and millions more want to start one. Let's do business together.
+    icon: cogs
+
+sections_old:
   - title: LEARN
     body: |
       Online modules and lessons designed to help you quickly learn how to start and grow a business.

@@ -32,9 +32,9 @@
   </div>
   <!--  -->
   <div class="feed__comment-container" >  
-    <div ng-if="!disableChildForm" class="feed__content feed__content--comment"  ng-show="true">
+    <div ng-if="!disableChildForm" class="feed__content feed__content--comment slide"  ng-show="true">
       <div class="feed__comment-container">
-        <!-- <div ng-init="newPost = entity.newPost; newPost.type = 'Response'; newPost.parentId = entity.id" ng-include="'feed_head_outer.html'"></div> -->
+
         <div ng-if="true">
           <div ng-init="rowsQuantity=1; titleDisabled=true; submitOnEnter=true; newPost = entity.newPost; commentHeadOuterInit(newPost, entity)" ng-include="'feed_head_outer.html'">
           </div>
@@ -42,6 +42,5 @@
       </div>
     </div>
     <div ng-include="feedCornerPartial"></div>
-  <!--  -->
   </div>
 </div>

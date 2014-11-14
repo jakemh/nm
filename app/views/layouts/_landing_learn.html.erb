@@ -1,0 +1,44 @@
+ <div class="container-fluid container-bottom__temp">
+
+        <% LANDING['sections'].each_with_index do |info, i| %>
+          <div class="row">
+
+            <div class="col-sm-6">
+              <% if i.even? %>
+                <div class="info__bottom-temp">
+                  <div class="title__info-bottom-temp">
+                    <%= info["title"] %>
+                  </div>
+                  <div class="body__info-bottom-temp">
+                    <%= info["body"] %>
+                  </div>
+                </div>
+              <% end %>
+            </div>
+            <div class="col-sm-6">
+              <% if i.odd? %>
+                <div class="info__bottom-temp">
+                  <div class="title__info-bottom-temp">
+                    <%= info["title"] %>
+                  </div>
+                  <div class="body__info-bottom-temp">
+                    <%= info["body"] %>
+                  </div>
+                </div>
+              <% end %>
+            </div>
+          </div>
+        <% end %>
+  
+      <div class="about__temp">
+        <div class="info__bottom-temp">
+          <div class="title__info-bottom-temp">
+            <%= LANDING["about"]["title"] %>
+          </div>
+          <div class="body__info-bottom-temp">
+            <%= LANDING["about"]["body"] %>
+
+          </div>
+        </div>
+      </div>
+    </div>
