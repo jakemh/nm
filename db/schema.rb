@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141114112244) do
+ActiveRecord::Schema.define(version: 20141116010631) do
 
   create_table "ahoy_events", force: true do |t|
     t.uuid     "visit_id"
@@ -67,6 +67,16 @@ ActiveRecord::Schema.define(version: 20141114112244) do
 
   create_table "emails", force: true do |t|
     t.string   "email"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "flags", force: true do |t|
+    t.string   "flaggable_type"
+    t.integer  "flaggable_id"
+    t.integer  "user_id"
+    t.text     "description"
+    t.integer  "category"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

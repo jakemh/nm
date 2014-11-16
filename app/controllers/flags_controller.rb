@@ -10,7 +10,11 @@ class FlagsController < ApplicationController
   end
 
   def create
-    entity.flags.create whitelist.marge({:user_id => whitelist[:issued_by_user]})
+    flag = entity.flags.build whitelist.merge({:user_id => current_user.id})
+    if flag.save
+      render :json => {:status => true}
+    else render :json => {:status => false}
+    end
   end
 
   def edit
@@ -21,7 +25,11 @@ class FlagsController < ApplicationController
   end
 
   private
+  # def entity
+  #   params[:type].constantize.find(params[:id])
+  # end
+
   def whitelist
-    params.require(:flag).permit(:category, :description, :issued_by_user)
+    params.require(:flag).permit(:category, :description)
   end
 end

@@ -1,4 +1,4 @@
-module Entity
+module Directory
   extend ActiveSupport::Concern
 
 

@@ -21,11 +21,14 @@ App.factory "RestangularPlus", [
     trueTest: ()->
       true
 
+
     severalPlus: (args) ->
       @before(@trueTest, Restangular.several)(arguments[0], arguments[1])
 
     getListPlus: () ->
       @before(@trueTest, @getList)(arguments[0], arguments[1])
+
+    Restangular: Restangular
 ]
 
 # App.factory "RestangularPlus", [

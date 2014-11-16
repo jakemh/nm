@@ -18,6 +18,7 @@ class User < ActiveRecord::Base
   include Search
   include Entity
 
+  has_many :issued_flags
   has_many :skills
   # has_many :received_messages, -> { where(:to_entity => "User") }, class_name: "Message", foreign_key: :to_id
   has_many :intra_connections, class_name: INTRA_CONNECTION 

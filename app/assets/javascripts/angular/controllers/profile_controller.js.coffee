@@ -37,6 +37,9 @@ angular.module("NM").controller "ProfileController", [
     $scope.mapLoaded = false
     
 
+    $scope.flag = ->
+      $scope.profileEntity.flag() 
+
     $scope.$watch "SideBar.mapLoaded", ->
       if SideBar.mapLoaded == true
 
