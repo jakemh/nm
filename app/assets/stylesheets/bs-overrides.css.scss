@@ -12,6 +12,11 @@
   width: 100%;
 }
 
+.editable-controls{
+  position: absolute; 
+  z-index: 1000;
+}
+
 .modal-body {
     max-height: 800px !important;
 }

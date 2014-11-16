@@ -12,7 +12,8 @@ class Business < ActiveRecord::Base
   include Messaging
   include Directory
   include Search
-
+  include Entity
+  
   # has_many :received_messages, -> { where(:to_entity => "Business") }, class_name: "Message", foreign_key: :to_id
   has_many :ownerships, foreign_key: :connect_to_id
   has_many :business_friendships

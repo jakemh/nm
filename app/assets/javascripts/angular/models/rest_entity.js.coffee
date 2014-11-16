@@ -11,6 +11,9 @@ angular.module("NM").factory "RestEntity", [
     posts: (params) ->
       @getListPlus("posts", params)
 
+    flag: (params) ->
+      @getListPlus("flags", params)
+
     followers: () ->
       @getListPlus("followers")
 
