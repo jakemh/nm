@@ -162,11 +162,18 @@
   <!-- /ng-switch -->
 
   <div class="prof__flag">
-    <a ng-click="flag()" ng-href="#">
-      <i class="fa fa-flag"></i>
+    <div ng-switch="sentFlag">
+      <div ng-switch-when="false">
+        <a ng-click="flag()" ng-href="#">
+          <i class="fa fa-flag"></i>
 
-      Flag as inappropriate
-    </a>
+          Flag as inappropriate
+        </a>
+      </div>
+      <div ng-switch-when="true">
+        <i class="fa fa-check"></i> Flagged
+      </div>
+    </div>
   </div>
 
   <div class="feed">

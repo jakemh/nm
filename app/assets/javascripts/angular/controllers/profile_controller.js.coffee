@@ -35,10 +35,11 @@ angular.module("NM").controller "ProfileController", [
     $scope.businessOwner = null
     # SideBar.tabBarDisabled = $scope.isEditable
     $scope.mapLoaded = false
-    
+    $scope.sentFlag = false
 
     $scope.flag = ->
-      $scope.profileEntity.flag() 
+      $scope.profileEntity.flag().then (response)->
+        $scope.sentFlag = true
 
     $scope.$watch "SideBar.mapLoaded", ->
       if SideBar.mapLoaded == true
