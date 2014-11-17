@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  layout "external_profile_user" 
+  # layout "external_profile_user" 
   before_filter :authenticate_entity, only: [:new, :create, :edit, :save, :update]
   skip_before_action :authenticate
   include FeedConcern

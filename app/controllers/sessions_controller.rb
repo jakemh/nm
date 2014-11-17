@@ -1,10 +1,9 @@
+
 class SessionsController < Devise::SessionsController
   
-  layout 'signup_bar'
-
   
   # before_filter :configure_permitted_parameters, if: :devise_controller?
-
+  layout 'signup_bar'
    protected
    def after_sign_in_path_for(resource)
      me_path #your path
@@ -15,5 +14,6 @@ class SessionsController < Devise::SessionsController
 
    # def after_sign_up_path_for(resource)
    #  new_me_business_url
+   
    # end
 end
