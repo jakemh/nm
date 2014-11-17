@@ -4,19 +4,27 @@
 # is considered to be the first unless any hosts have the primary
 # property set.  Don't declare `role :all`, it's a meta role.
 
-role :app, 'beta.nextmission.us'
-role :web, 'beta.nextmission.us'
-role :db,  'beta.nextmission.us'
+BETA = false
 
-
+if BETA 
+  role :app, 'beta.nextmission.us'
+  role :web, 'beta.nextmission.us'
+  role :db,  'beta.nextmission.us'
+else 
+  role :app, 'nextmission.us'
+  role :web, 'nextmission.us'
+  role :db,  'nextmission.us'
+end
 # Extended Server Syntax
 # ======================
 # This can be used to drop a more detailed server definition into the
 # server list. The second argument is a, or duck-types, Hash and is
 # used to set extended properties on the server.
-
-server 'beta.nextmission.us', user: 'jake', roles: %w{web app}, my_property: :my_value
-
+if BETA
+  server 'beta.nextmission.us', user: 'jake', roles: %w{web app}, my_property: :my_value
+else 
+  server '.nextmission.us', user: 'jake', roles: %w{web app}, my_property: :my_value
+end
 
 # Custom SSH Options
 # ==================
