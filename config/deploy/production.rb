@@ -23,7 +23,7 @@ end
 if BETA
   server 'beta.nextmission.us', user: 'jake', roles: %w{web app}, my_property: :my_value
 else 
-  server '.nextmission.us', user: 'jake', roles: %w{web app}, my_property: :my_value
+  server 'nextmission.us', user: 'jake', roles: %w{web app}, my_property: :my_value
 end
 
 # Custom SSH Options
