@@ -1,5 +1,9 @@
 @import "nm_root";
 
+.lnd{
+
+}
+
 .email-form-landing{
   margin: 0 auto;
   width: 65%;
@@ -52,9 +56,18 @@
   font-family: "montserrat";
   text-align: center; 
   position: relative;
-  width: 12em;
   margin: 0 auto;
   font-size: 2em;
+  width: 300px;
+
+}
+
+.lnd__item-title i{
+  font-size: 2.5em;
+  margin: 0 20px;
+  position: absolute;
+  left: 0em;
+
 }
 
 .lnd__bottom-bar{
@@ -105,12 +118,7 @@
   height: 150px;
 }
 
-.lnd__item-title i{
-  font-size: 2.5em;
-  margin: 0 5%;
-  position: absolute;
-  left: 0;
-}
+
 
 .lnd__item-body{
   font-size: 1.4em;

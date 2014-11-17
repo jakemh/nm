@@ -1,10 +1,12 @@
- <div class="container-fluid container-bottom__temp">
+ <div class="container-fluid container-bottom__temp lnd">
 
         <% LANDING['sections'].each_with_index do |info, i| %>
           <div class="lnd__item">
-            <div  class="lnd__item-title">
-              <div  > <%= fa_icon info["icon"] %></div>
-              <div> <%= info["title"] %></div>
+            <div style="position: relative" class="lnd__item-title">
+              <span > 
+                <%= fa_icon info["icon"] %>
+                <%= info["title"] %>
+              </span>
             </div>
 
             <div class="lnd__item-body">
@@ -52,4 +54,4 @@
           </div>
         </div>
       </div>
-    </div>
+   <!--  </div> -->
