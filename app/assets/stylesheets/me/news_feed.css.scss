@@ -161,7 +161,7 @@
 
 .feed__comment-container .feed__head{
   height: 60px;
-  overflow: hidden;
+  // overflow: hidden;
 }
 .feed__comment-container .feed__content-outer{
   margin: 0 !important;
@@ -253,13 +253,12 @@
 }
 
 .feed__content--comment .feed__input-row{
-  overflow: hidden; 
+  // overflow: hidden; 
   height: 50px;
 }
 
 .feed__content--comment textarea{
   height: 3em;
-  overflow: none;
 }
 
 .feed__content--comment img{
