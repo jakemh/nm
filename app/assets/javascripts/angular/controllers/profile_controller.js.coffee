@@ -9,7 +9,8 @@ angular.module("NM").controller "ProfileController", [
   "MessageService"
   "Restangular"
   "SideBar"
-  ($scope, $routeParams, $location, Utilities, AuthService, MessagesDisplay, MessageService, Restangular, SideBar) ->
+  "MapService"
+  ($scope, $routeParams, $location, Utilities, AuthService, MessagesDisplay, MessageService, Restangular, SideBar, MapService) ->
     
     $scope.posts = []
     $scope.params = []
@@ -33,24 +34,14 @@ angular.module("NM").controller "ProfileController", [
     SideBar.tabBarVisible = false
     SideBar.profileScope = $scope
     $scope.businessOwner = null
+    $scope.MapService = MapService
     # SideBar.tabBarDisabled = $scope.isEditable
     $scope.mapLoaded = false
     $scope.sentFlag = false
 
     $scope.flag = ->
       $scope.profileEntity.flag().then (response)->
-        $scope.sentFlag = true
-
-    $scope.$watch "SideBar.mapLoaded", ->
-      if SideBar.mapLoaded == true
-
-        $scope.mapObj = new GMaps
-          div: '#map'
-          lat: 35
-          lng: -122
-          zoom: 2
-        $scope.mapLoaded = true
-      SideBar.mapLoaded = false
+        $scope.sentFlag = true  
 
     # $scope.skills = []
     $scope.initRightBarExternal = ->
@@ -87,7 +78,9 @@ angular.module("NM").controller "ProfileController", [
             else SideBar.rightBarTemplate = "right_bar_profile_external.html"  
           else if $scope.profileEntity.type == "Business" 
             SideBar.rightBarTemplate = "right_bar_business.html"
-          
+            if MapService.mapObj
+              MapService.resetMap(MapService.mapToMarker([$scope.profileEntity]))
+
 
           # $scope.isFollowing = entity.follower_uri_type == -1 ? false : true
           # alert JSON.stringify entity.follower_uri_type 
@@ -96,6 +89,9 @@ angular.module("NM").controller "ProfileController", [
             $scope.followButtonText = "Following "
 
           else $scope.isFollowing = false
+
+    $scope.$watch 'MapService.mapObj', ->
+      MapService.resetMap(MapService.mapToMarker([$scope.profileEntity]))
 
     $scope.updateAccount = () ->
       $scope.profileEntity.put()
