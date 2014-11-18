@@ -6,11 +6,11 @@ sections:
   - title: DO
     body: |
       Tap the veteran network for answers to your business questions and learn best practices from experts. Start something now.
-    icon: line-chart
+    icon: cogs
   - title: GROW
     body: |
       Millions of veterans already own a business and millions more want to start one. Let's do business together.
-    icon: cogs
+    icon: line-chart
 
 sections_old:
   - title: LEARN
