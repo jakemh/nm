@@ -4,9 +4,10 @@ angular.module("NM").controller "BusinessDirectoryController", [
   "User"
   "Restangular"
   "SideBar"
+  "MapService"
   "$location"
   
-  ($scope, Business, User, Restangular, SideBar, $location) ->
+  ($scope, Business, User, Restangular, SideBar, MapService, $location) ->
     
     $scope.SideBar = SideBar
     SideBar.rightBarTemplate = "right_bar_business.html"        
@@ -27,18 +28,19 @@ angular.module("NM").controller "BusinessDirectoryController", [
     $scope.init = ->
     
 
-    $scope.addMarker = (marker)->
-      $scope.mapObj.addMarker(marker)
+    # $scope.addMarker = (marker)->
+    #   $scope.mapObj.addMarker(marker)
     
-    $scope.$watch "SideBar.mapLoaded", ->
-      if SideBar.mapLoaded == true
-        $scope.mapObj = new GMaps
-          div: '#map'
-          lat: 35
-          lng: -122
-          zoom: 2
-        $scope.mapLoaded = true
-      SideBar.mapLoaded = false
+
+    # $scope.$watch "SideBar.mapLoaded", ->
+    #   if SideBar.mapLoaded == true
+    #     $scope.mapObj = new GMaps
+    #       div: '#map'
+    #       lat: 35
+    #       lng: -122
+    #       zoom: 2
+    #     $scope.mapLoaded = true
+    #   SideBar.mapLoaded = false
 
     $scope.searching = false
     $scope.personFilter = false
@@ -56,24 +58,24 @@ angular.module("NM").controller "BusinessDirectoryController", [
        )
     
     $scope.$watch "businesses + displayList", ->
-      busCoords = $scope.mapToMarker($scope.businesses)
-      displayCoords = $scope.mapToMarker($scope.displayList)
+      busCoords = MapService.mapToMarker($scope.businesses)
+      displayCoords = MapService.mapToMarker($scope.displayList)
       markerArray = []
       markerArray = markerArray.concat(busCoords)
       markerArray = markerArray.concat(displayCoords)
       for marker in markerArray
-        $scope.addMarker(marker)
+        MapService.map.addMarker(marker)
 
     $scope.$watch "query", ->
       if $scope.query
         $scope.submit()
 
-    $scope.mapToMarker = (array) ->
-      _.map array, (item)->
-        lat: item.latitude || null
-        lng: item.longitude || null
-        click: ->
-          $scope.visitProfile(item.uri)
+    # $scope.mapToMarker = (array) ->
+    #   _.map array, (item)->
+    #     lat: item.latitude || null
+    #     lng: item.longitude || null
+    #     click: ->
+    #       $scope.visitProfile(item.uri)
 
     # $scope.$watch "personFilter", ->
     #     User.query().then ((results) ->
