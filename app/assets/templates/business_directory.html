@@ -1,5 +1,5 @@
-<div ng-controller="BusinessDirectoryController">
-  <div class="bus">
+<div ng-if="MapService.mapObj" ng-controller="BusinessDirectoryController" ng-init="init()">
+  <div class="bus" >
     <div class="thirds bus__top">
 
       <div class="thirds__box bus__rand utils__hover--orange" ng-repeat="business in businesses" ng-click="randomClick(business)">

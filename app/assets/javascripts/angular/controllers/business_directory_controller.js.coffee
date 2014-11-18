@@ -21,12 +21,12 @@ angular.module("NM").controller "BusinessDirectoryController", [
     $scope.mapObj = null
     # $scope.rightBarTemplate = "right_bar_business.html"        
     SideBar.rightBarTemplate = "right_bar_business.html"        
-    
-    # $scope.loadMap()
+    $scope.MapService = MapService
+    # $scope.loadMap()  
     SideBar.tabBarVisible = false 
 
     $scope.init = ->
-    
+     
 
     # $scope.addMarker = (marker)->
     #   $scope.mapObj.addMarker(marker)
@@ -41,6 +41,13 @@ angular.module("NM").controller "BusinessDirectoryController", [
     #       zoom: 2
     #     $scope.mapLoaded = true
     #   SideBar.mapLoaded = false
+    $scope.setMarkerArray = ->
+      busCoords = MapService.mapToMarker($scope.businesses)
+      # displayCoords = MapService.mapToMarker($scope.displayList)
+      markerArray = []
+      markerArray = markerArray.concat(busCoords)
+      # markerArray = markerArray.concat(displayCoords)
+      # MapService.resetMap(markerArray)
 
     $scope.searching = false
     $scope.personFilter = false
@@ -57,14 +64,8 @@ angular.module("NM").controller "BusinessDirectoryController", [
            d
        )
     
-    $scope.$watch "businesses + displayList", ->
-      busCoords = MapService.mapToMarker($scope.businesses)
-      displayCoords = MapService.mapToMarker($scope.displayList)
-      markerArray = []
-      markerArray = markerArray.concat(busCoords)
-      markerArray = markerArray.concat(displayCoords)
-      for marker in markerArray
-        MapService.map.addMarker(marker)
+    # $scope.$watch "businesses + displayList", ->
+
 
     $scope.$watch "query", ->
       if $scope.query
@@ -103,7 +104,8 @@ angular.module("NM").controller "BusinessDirectoryController", [
         # ), (error) ->
         Restangular.all("entities").getList({first_letter: letter}).then (entities)->
           $scope.displayList = entities
-      
+          MapService.resetMap(MapService.mapToMarker($scope.displayList))
+
              # $scope.businessList = 
     $scope.randomClick = (bus)->
       # alert JSON.stringify bus
@@ -120,13 +122,15 @@ angular.module("NM").controller "BusinessDirectoryController", [
       
     #   $scope.searching = false
    
-    Restangular.all("businesses").getList().then (businesses)->
+    Restangular.all("businesses").getList().then (businesses)=>
       $scope.businesses = businesses
-
+      MapService.resetMap(MapService.mapToMarker($scope.businesses))
 
     $scope.submit = () ->
       $scope.engine.get $scope.query, (suggestions) ->
         $scope.displayList = suggestions[0]
+        MapService.resetMap(MapService.mapToMarker($scope.displayList))
+
         # alert JSON.stringify $scope.businessList
         $scope.$apply()
 #
