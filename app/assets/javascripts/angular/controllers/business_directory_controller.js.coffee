@@ -10,7 +10,7 @@ angular.module("NM").controller "BusinessDirectoryController", [
   ($scope, Business, User, Restangular, SideBar, MapService, $location) ->
     
     $scope.SideBar = SideBar
-    SideBar.rightBarTemplate = "right_bar_business.html"        
+    SideBar.rightBarTemplate = "right_bar_bus_dir.html"        
     $scope.businesses = []
     $scope.businessList = []
     $scope.SideBar = SideBar
@@ -20,7 +20,7 @@ angular.module("NM").controller "BusinessDirectoryController", [
     $scope.query = null
     $scope.mapObj = null
     # $scope.rightBarTemplate = "right_bar_business.html"        
-    SideBar.rightBarTemplate = "right_bar_business.html"        
+    # SideBar.rightBarTemplate = "right_bar_bus_dir.html"        
     $scope.MapService = MapService
     # $scope.loadMap()  
     SideBar.tabBarVisible = false 
