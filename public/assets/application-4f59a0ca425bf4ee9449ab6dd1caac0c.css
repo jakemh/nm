@@ -1070,19 +1070,6 @@ ul.alert-dropdown {
 
 /* centered columns styles */
 /* line 4, /Users/jh/Developer/NextMission/app/assets/stylesheets/registration.css.scss */
-.row-centered {
-  text-align: center;
-}
-
-/* line 7, /Users/jh/Developer/NextMission/app/assets/stylesheets/registration.css.scss */
-.col-centered {
-  display: inline-block;
-  float: none;
-  /* reset the text-align */
-  text-align: left;
-  /* inline-block space fix */
-  margin-right: -4px;
-}
 
 /* line 16, /Users/jh/Developer/NextMission/app/assets/stylesheets/registration.css.scss */
 .select__form {

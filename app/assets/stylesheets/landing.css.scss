@@ -26,6 +26,7 @@
 
 .about__container{
     margin-top: 50px;
+    text-align: center;
     font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", "Helvetica", Arial, "Lucida Grande", sans-serif !important;
   }
 
@@ -110,8 +111,10 @@
 }
 
 .about__item-image{
+  width: 150px;
   margin: 0 auto 30px auto;
 }
+
 .about__item-image img{
   width: 150px;
   height: 150px;
