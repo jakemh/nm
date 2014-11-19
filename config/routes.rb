@@ -37,7 +37,7 @@ Rails.application.routes.draw do
   end
 
   constraints(Format.new(:html)) do
-
+    get '/me/audience/', :to => 'angular#index'
     get '/businesses/', :to => 'angular#index'
     get '/users/', :to => 'angular#index'
     get '/messages/', :to => 'angular#index'
