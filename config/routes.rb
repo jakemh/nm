@@ -74,7 +74,7 @@ Rails.application.routes.draw do
   namespace :me do
     get '/send_data' => 'messages#send_data'
     resources :following
-    resources :followers
+    # resources :followers
     resources :sent_messages
     resources :received_messages
     resources :message_responses
