@@ -7,10 +7,6 @@ user-side:
     path: messages_path
     badge: me_message_badge
 
-  - title: Followers
-    path: me_connections_path
-    badge: me_connections_badge
-
   - title: Audience
     path: me_audience_index_path
     badge: me_audience_badge
