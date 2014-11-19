@@ -5,5 +5,5 @@ then COMMENT="$2"
 else COMMENT=`git rev-parse head`
 fi
 
-$COMMENT | xargs gh is $1 --comment
+echo $COMMENT | xargs gh is $1 --comment
 gh is $1 --close

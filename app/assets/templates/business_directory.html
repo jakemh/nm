@@ -37,7 +37,7 @@
       <div ng-repeat="business in displayList | orderBy:'name': false | entityFilter:personFilter:businessFilter">
        <div ng-include="'business_item.html'"></div>
       </div>
-      <div class="bus__none" ng-hide="displayList.length">
+      <div class="bus__none" ng-hide="(displayList | entityFilter:personFilter:businessFilter).length">
         Find some more businesses!
       </div>
     </div>
