@@ -1,0 +1,66 @@
+<div class="profile__secondary">
+
+  <div class="bus-prof__description">
+    <a href editable-text="profileEntity.description" ng-if="isEditable">   
+     {{profileEntity.description || "Add a description!"}}
+    </a>
+    <span ng-if="!isEditable">{{profileEntity.description}}</span>
+  </div>
+
+  <div class="thirds">
+
+    <div class="thirds__box">
+      <a href editable-text="profileEntity.address" ng-if="isEditable">   
+       {{profileEntity.address || "Enter an address"}}
+      </a>
+      <span ng-if="!isEditable">{{profileEntity.address}}</span>
+
+
+    </div>
+
+    <div class="thirds__box">
+
+      <ul class="bus-prof__list">
+        <li>
+          <a href editable-text="profileEntity.website" ng-if="isEditable">   
+                       {{profileEntity.website || "Enter your website!"}}
+                      </a>
+          <span ng-if="!isEditable">{{profileEntity.website}}</span>
+        </li>
+        <li>
+          <a href editable-text="profileEntity.email" ng-if="isEditable">   
+                       {{profileEntity.email || "Enter your email!"}}
+                      </a>
+          <span ng-if="!isEditable">{{profileEntity.email}}</span>
+        </li>
+        <li>
+          <a href editable-text="profileEntity.phone" ng-if="isEditable">   
+                       {{profileEntity.phone || "Enter your phone number!"}}
+                      </a>
+          <span ng-if="!isEditable">{{profileEntity.phone}}</span>
+        </li>
+
+
+      </ul>
+
+    </div>
+
+    <div class="thirds__box">
+
+      <p>Tags:</p>
+      <div ng-if="profileEntity">
+        <tags-input ng-hide="!isEditable" ng-model="profileEntity.tags" display-property="name"></tags-input>
+      </div>
+      <!-- <span ng-if="!isEditable">SKILLZ</span> -->
+      <div>
+        <div class="profile__skill">
+          <div ng-if="!isEditable" class="profile__skill-item" ng-repeat="tag in profileEntity.tags">
+            {{tag.name}}
+            <!-- <span class="profile__skill">{{skill.name}}</span> -->
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

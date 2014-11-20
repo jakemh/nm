@@ -2,6 +2,14 @@
   width: 100px;
 }
 
+.profile__head{
+  height: 200px;
+  position: relative;
+
+  background: white;
+  margin-bottom: 15px;
+}
+
 .profile__right-box{
   width: 100%;
   margin: 0 0 40px 20px;
@@ -30,4 +38,12 @@
 .prof__flag{
   width: 100%;
   text-align: right;
+}
+
+.profile__secondary{
+    min-height: 180px;
+    overflow: auto;
+    background: white;
+    margin: 15px 0;
+    padding: 15px;
 }
