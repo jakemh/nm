@@ -46,7 +46,7 @@ angular.module("NM").controller "ProfileController", [
       $scope.background = {'background-image': 'url({{'+message+'}})'}
       # $scope.profileEntity.cover_photo_url = message
       # scope.$apply();
-      alert JSON.stringify $scope.background
+      # alert JSON.stringify $scope.background
       # current = AuthService.currentUser
 
       # params = {current_type: current.type, current_id: current.id}

@@ -8,9 +8,10 @@
 
   background: white;
   margin-bottom: 15px;
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
+  // background-size: cover !important;
+  background-size: 100% !important;
+  background-repeat: no-repeat !important;
+  background-position: center !important;
 }
 
 .profile__head--white-text{
