@@ -2,22 +2,6 @@
 Rails.application.routes.draw do
 
 
-  get 'flags/index'
-
-  get 'flags/show'
-
-  get 'flags/new'
-
-  get 'flags/create'
-
-  get 'flags/edit'
-
-  get 'flags/update'
-
-  get 'tags/index'
-
-  get 'skills/index'
-
   class Format
     attr_accessor :mime_type
 
@@ -41,7 +25,9 @@ Rails.application.routes.draw do
     get '/businesses/', :to => 'angular#index'
     get '/users/', :to => 'angular#index'
     get '/messages/', :to => 'angular#index'
-    get '/businesses/*all', :to => 'angular#index'
+    # resource :businesses, :to => 'angular#index'
+    get '/businesses', :to => 'angular#index'
+    get '/businesses/:id', :to => 'angular#index'
 
     constraints(id: /\d+/) do
       get '/users/:id', :to => 'angular#index'
@@ -91,6 +77,7 @@ Rails.application.routes.draw do
 
   resources :users, :businesses do
     resources :messages
+    resources :photos
     resources :flags
     resources :sent_messages, :received_messages do
       resources :message_responses
@@ -126,7 +113,8 @@ Rails.application.routes.draw do
 
   # resources :users
   resource :me, :controller => :users, :module => :me do
-    resources :photos, :controller => :user_photos
+    # resources :photos, :controller => :user_photos
+    # resources :photos
     resources :messages, only: [:index, :create]
     resources :posts, :controller => :user_posts
     resources :responses

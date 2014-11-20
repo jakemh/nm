@@ -3,7 +3,7 @@ class Business < ActiveRecord::Base
   searchkick text_start: [:name, :address, :website, :city, :state, :zip, :business_type, :industry, :description],
   word_start: [:name, :description]
   # searchkick text_start: [:zip]
-  Business.reindex
+  # Business.reindex
   INTRA_CONNECTION = "BusinessFriendship"
   INTER_CONNECTION = "BusinessConnection"
   # acts_as_gmappable

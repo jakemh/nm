@@ -1,4 +1,7 @@
-<div class="profile__head thirds">
+<div class="profile__head thirds" ng-style="{'background-image': 'url({{ profileEntity.cover_photo_url }})'}">
+  <a ng-click="addCoverPhoto()" href ng-if="isEditable">   
+    Add cover photo
+   </a>
   <div class="user-prof__cover-photo column-left">
     <img ng-src="{{profileEntity.thumb}}">
   </div>

@@ -1,4 +1,4 @@
-class Me::PhotosController < ApplicationController
+class PhotosController < ApplicationController
   layout "signup_bar"
 
   
@@ -14,12 +14,14 @@ class Me::PhotosController < ApplicationController
   end
 
   def create
-    if path
-      @path = path
-    end
-    @user = current_user
-    @entity = entity
-    @photo = default_entity.photos.build whitelist
+    # if path
+    #   @path = path
+    # end
+    # @user = current_user
+    # @entity = entity
+
+    # @photo = default_entity.photos.build whitelist
+    @photo = entity.photos.build whitelist
     if @photo.save
 
       respond_to do |format|

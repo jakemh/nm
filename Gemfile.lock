@@ -197,6 +197,7 @@ GEM
     net-scp (1.2.1)
       net-ssh (>= 2.6.5)
     net-ssh (2.9.1)
+    ng-rails-csrf (0.1.0)
     nokogiri (1.6.3.1)
       mini_portile (= 0.6.0)
     orm_adapter (0.5.0)
@@ -349,6 +350,7 @@ DEPENDENCIES
   jquery-rails
   judge-simple_form
   less-rails
+  ng-rails-csrf
   paperclip
   pg
   puma

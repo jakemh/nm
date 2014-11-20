@@ -6,6 +6,8 @@
 #= require angular-resource/angular-resource
 #= require angular-animate/angular-animate
 #= require angularjs/rails/resource
+#= require ng-rails-csrf
+
 #= require restangular/dist/restangular
 #= require angular-sanitize/angular-sanitize
 #= require angular-bindonce/bindonce
@@ -23,7 +25,7 @@
 #= require jQuery-linkify/src/linkified
 #= require jQuery-linkify/src/jquery.linkify
 #= require jquery.tagsinput/jquery.tagsinput.js
-
+#= require ng-flow/dist/ng-flow-standalone
 #= require landing
 #= require underscore
 #= require underscore_mixins

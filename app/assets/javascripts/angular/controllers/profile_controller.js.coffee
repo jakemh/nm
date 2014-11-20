@@ -39,6 +39,14 @@ angular.module("NM").controller "ProfileController", [
     $scope.mapLoaded = false
     $scope.sentFlag = false
 
+    $scope.photoUploaded = (message)->
+      $("#js__cover-photo-modal").modal('hide')
+      alert message
+
+    $scope.addCoverPhoto = ->
+      $("#js__cover-photo-modal").modal()
+      return true
+
     $scope.flag = ->
       $scope.profileEntity.flag().then (response)->
         $scope.sentFlag = true  

@@ -1,0 +1,88 @@
+<div ng-if="AuthService.currentUser" ng-init="init()" class="user-prof">
+
+  <div ng-switch="profileEntity.type">
+
+    <div ng-switch-when="User" ng-init="initSecondaryBox()">
+      <div ng-include="'profiles/head_user.html'"></div>
+      <div ng-include="'profiles/secondary_user.html'"></div>
+    </div>
+
+    <div ng-switch-when="Business" ng-if="profileEntity.type=='Business'" ng-init="initSecondaryBoxBusiness()">
+
+     <div ng-include="'profiles/head_business.html'"></div>
+     <div ng-include="'profiles/secondary_business.html'"></div>
+
+    </div>
+  </div>
+  <!-- /ng-switch -->
+
+  <div class="prof__flag">
+    <div ng-switch="sentFlag">
+      <div ng-switch-when="false">
+        <a ng-click="flag()" ng-href="#">
+          <i class="fa fa-flag"></i>
+
+          Flag as inappropriate
+        </a>
+      </div>
+      <div ng-switch-when="true">
+        <i class="fa fa-check"></i> Flagged
+      </div>
+    </div>
+  </div>
+
+  <div class="feed">
+    <div ng-if="belongsToUser()" ng-include="'feed_head_outer.html'" ng-init="newPost = newPostMain; headOuterInit(newPost, entity); feedHeadBody = feedHeadForm"></div>
+    <div ng-repeat="entity in displayList | orderBy:'id': true">
+      <div class="feed--small">
+        <div ng-include="'feed_content.html'"></div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Modal -->
+  <div ng-controller="PrivateMessageController" ng-if="profileEntity">
+    <div class="modal fade" id="js-msg__modal" tabindex="-1" role="dialog" aria-loabelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">
+              <span aria-hidden="true">&times;</span>
+              <span class="sr-only">Close</span>
+            </button>
+            <h4 class="modal-title" id="myModalLabel">Private Message</h4>
+          </div>
+          <div class="modal-body">
+            <div class="feed feed--tall">
+              <div ng-include="'feed_head_outer.html'" ng-init="newPost = newPostMain; headOuterInit(newPost); feedHeadBody = messageForm; entity = profileEntity"></div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div> <!-- end modal -->
+
+  <!-- Modal -->
+  <div  ng-if="profileEntity">
+    <div  class="modal fade" id="js__cover-photo-modal" tabindex="-1" role="dialog" aria-loabelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content" style="width: 800px">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">
+              <span aria-hidden="true">&times;</span>
+              <span class="sr-only">Close</span>
+            </button>
+            <h4 class="modal-title" id="myModalLabel">Add Cover Photo</h4>
+          </div>
+          <div class="modal-body">
+          <div ng-include="'photo_upload.html'"></div>
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div> <!-- end modal -->
+</div>

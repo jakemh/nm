@@ -13,6 +13,8 @@ window.App = angular.module("NM", [
   "angularMoment"
   "ui.bootstrap"
   "infinite-scroll"
+  "flow"
+  "ng-rails-csrf"
   
 ]).config ($routeProvider, $locationProvider, $httpProvider, RestangularProvider) ->
   $httpProvider.defaults.headers.common['X-CSRF-Token'] = $('meta[name=csrf-token]').attr('content')
