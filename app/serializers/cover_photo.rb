@@ -1,0 +1,3 @@
+class CoverPhoto < Photo
+  
+end

@@ -14,6 +14,8 @@ class Business < ActiveRecord::Base
   include Search
   include Entity
   
+  has_many :cover_photos, :as => :imageable
+  has_one :cover_photo,  :as => :imageable
   # has_many :received_messages, -> { where(:to_entity => "Business") }, class_name: "Message", foreign_key: :to_id
   has_many :ownerships, foreign_key: :connect_to_id
   has_many :business_friendships
