@@ -16,7 +16,7 @@
   </div>
   <!-- /ng-switch -->
 
-  <div class="prof__flag">
+  <div ng-if="!belongsToUser()" class="prof__flag">
     <div ng-switch="sentFlag">
       <div ng-switch-when="false">
         <a ng-click="flag()" ng-href="#">
