@@ -8,6 +8,13 @@
 
   background: white;
   margin-bottom: 15px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.profile__head--white-text{
+  color: white;
 }
 
 .profile__right-box{

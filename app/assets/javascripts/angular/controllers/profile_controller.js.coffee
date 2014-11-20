@@ -39,9 +39,19 @@ angular.module("NM").controller "ProfileController", [
     $scope.mapLoaded = false
     $scope.sentFlag = false
 
+    $scope.background = "{'background-image': 'url({{ }})'}"
     $scope.photoUploaded = (message)->
       $("#js__cover-photo-modal").modal('hide')
-      alert message
+      # $scope.profileEntity.removeFromCache()
+      $scope.background = {'background-image': 'url({{'+message+'}})'}
+      # $scope.profileEntity.cover_photo_url = message
+      # scope.$apply();
+      alert JSON.stringify $scope.background
+      # current = AuthService.currentUser
+
+      # params = {current_type: current.type, current_id: current.id}
+      # Restangular.one($scope.params[0], $scope.params[1]).get(params).then (entity)->
+      #   $scope.profileEntity = entity
 
     $scope.addCoverPhoto = ->
       $("#js__cover-photo-modal").modal()

@@ -2,8 +2,8 @@ class BusinessSerializer < EntitySerializer
   attributes :message_route, :email, :phone, :owner_id, :cover_photo_url
 
   def cover_photo_url
-    if object.cover_photo
-      object.cover_photo.image.url(:medium)
+    if object.cover_photos.count > 0
+      object.cover_photos.last.image.url(:medium)
     else nil
     end
   end
