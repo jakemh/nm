@@ -48,7 +48,7 @@ App.factory "AuthService", [
       if followerType == "Follow"
         cur.post('followers', params).then ()->
           entity.models.entity.removeFromCache()
-          callback()
+          callback(entity)
           
       # else if followerType == "Remove"
         # if entity.entityType == "User"
@@ -66,7 +66,8 @@ App.factory "AuthService", [
       else if followStatus == 1
         "Follow"
       else if followStatus == -1
-        "Connected"
+        null
+        # "Connected"
         # "Remove"
 
       # cur =  @currentEntitySelection.selected
