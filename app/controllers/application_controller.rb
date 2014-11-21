@@ -26,11 +26,13 @@ class ApplicationController < ActionController::Base
      # ahoy.track "Processed #{controller_name}##{action_name}", request.filtered_parameters
    end
     def authenticate
-      if !current_user
-        authenticate_or_request_with_http_basic do |username, password|
-          username == "mvp" && password == "nextmission"
-        end
-      end
+      # if !current_user
+      #   authenticate_or_request_with_http_basic do |username, password|
+      #     username == "mvp" && password == "nextmission"
+      #   end
+      # end
+
+      true
     end
 
     def authenticate_entity
