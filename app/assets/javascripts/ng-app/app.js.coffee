@@ -57,11 +57,7 @@ window.App = angular.module("NM", [
     return extractedData
       
 
-  $routeProvider.when "/",
-    templateUrl: "home.html"
-    controller: "HomeCtrl"
-
-  .when "/businesses",
+  $routeProvider.when "/businesses",
     templateUrl: "business_directory.html"
     controller: "BusinessDirectoryController"
 

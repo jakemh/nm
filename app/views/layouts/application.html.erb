@@ -31,12 +31,14 @@
   </head>
   <base href="/">
 
-  <body ng-app="NM">
+ 
     <% if content_for?(:app) %>
-        <%= yield :app %>
+      <body ng-controller="ApplicationController as appController" ng-app="NM">
+          <%= yield :app %>
+      </body>
     <% else  %>
-      <%= yield %>
+      <body>
+        <%= yield %>
+      </body>
     <% end %>
-
-  </body>
 </html>
