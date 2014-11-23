@@ -13,7 +13,7 @@
 
 <div class="profile__right-title-row" style="height: 38px">
   <div class="nm__inline profile__right-title"> Rating: 4.8 </div>
-  <button ng-disabled="isFollowing" ng-click="" class="button__btn button__btn--right  button__btn--orange nm__inline">Review
+  <button ng-disabled="isFollowing" ng-click="SideBar.delegate.ReviewService.callModal()" class="button__btn button__btn--right  button__btn--orange nm__inline">Review
   </button>
 </div>
 
@@ -21,3 +21,4 @@
   info
 </div>
 
+<div ng-init="delegate=SideBar.delegate.ReviewService" ng-include="'modals/review_modal.html'"></div>

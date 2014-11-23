@@ -68,6 +68,7 @@ Rails.application.routes.draw do
 
   resources :businesses do
     resources :tags
+    resources :reviews
   end
 
   resources :users do

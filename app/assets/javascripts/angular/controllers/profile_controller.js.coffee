@@ -1,3 +1,5 @@
+"use strict";
+
 angular.module("NM").controller "ProfileController", [
   
   "$scope"
@@ -10,15 +12,21 @@ angular.module("NM").controller "ProfileController", [
   "Restangular"
   "SideBar"
   "MapService"
-  ($scope, $routeParams, $location, Utilities, AuthService, MessagesDisplay, MessageService, Restangular, SideBar, MapService) ->
+  "ReviewService"
+  "profileEntity"
+  ($scope, $routeParams, $location, Utilities, AuthService, MessagesDisplay, MessageService, Restangular, SideBar, MapService, ReviewService, profileEntity) ->
     
+    # alert my#FriendsHotel.hotelName( );
+    $scope.profileEntity = profileEntity
+    alert JSON.stringify $scope.profileEntity
+
     $scope.posts = []
     $scope.params = []
     $scope.location = $location
     $scope.displayList = []
     $scope.Utilities = Utilities
     $scope.profileEntityBusinesses = []
-    $scope.profileEntity = null
+    # $scope.profileEntity = null
     $scope.AuthService = AuthService
     $scope.newPostMain = {}
     $scope.feedHeadForm = "feed_head_form.html"
@@ -38,20 +46,13 @@ angular.module("NM").controller "ProfileController", [
     # SideBar.tabBarDisabled = $scope.isEditable
     $scope.mapLoaded = false
     $scope.sentFlag = false
+    $scope.ReviewService = ReviewService
+    SideBar.delegate["ReviewService"] = $scope.ReviewService
 
-    $scope.background = "{'background-image': 'url({{ }})'}"
+    ReviewService.entity = 
     $scope.photoUploaded = (message)->
       $("#js__cover-photo-modal").modal('hide')
-      # $scope.profileEntity.removeFromCache()
-      # $scope.background = {'background-image': 'url({{'+message+'}})'}
       $scope.profileEntity.cover_photo_url = message
-      # scope.$apply();
-      # alert JSON.stringify $scope.background
-      # current = AuthService.currentUser
-
-      # params = {current_type: current.type, current_id: current.id}
-      # Restangular.one($scope.params[0], $scope.params[1]).get(params).then (entity)->
-      #   $scope.profileEntity = entity
 
     $scope.addCoverPhoto = ->
       $("#js__cover-photo-modal").modal()
@@ -82,31 +83,31 @@ angular.module("NM").controller "ProfileController", [
       if AuthService.currentUser
         $scope.params = _.compact($scope.location.path().split("/"))
         current = AuthService.currentUser
-        params = {current_type: current.type, current_id: current.id}
-        Restangular.one($scope.params[0], $scope.params[1]).get(params).then (entity)->
+        # params = {current_type: current.type, current_id: current.id}
+        # Restangular.one($scope.params[0], $scope.params[1]).get(params).then (entity)->
           # $scope.posts = $scope.posts.concat(response)
-          $scope.profileEntity = entity
-          $scope.yours = $scope.userOrBelongsToUser()
-          SideBar.tabBarVisible = $scope.yours
-          SideBar.profileEntity = $scope.profileEntity
+          # $scope.profileEntity = entity
+        $scope.yours = $scope.userOrBelongsToUser()
+        SideBar.tabBarVisible = $scope.yours
+        SideBar.profileEntity = $scope.profileEntity
 
-          if $scope.profileEntity.type == "User"
-            if $scope.yours
-              SideBar.rightBarTemplate = "right_bar_profile_internal.html"  
-            else SideBar.rightBarTemplate = "right_bar_profile_external.html"  
-          else if $scope.profileEntity.type == "Business" 
-            SideBar.rightBarTemplate = "right_bar_business.html"
-            if MapService.mapObj
-              MapService.resetMap(MapService.mapToMarker([$scope.profileEntity]))
+        if $scope.profileEntity.type == "User"
+          if $scope.yours
+            SideBar.rightBarTemplate = "right_bar_profile_internal.html"  
+          else SideBar.rightBarTemplate = "right_bar_profile_external.html"  
+        else if $scope.profileEntity.type == "Business" 
+          SideBar.rightBarTemplate = "right_bar_business.html"
+          if MapService.mapObj
+            MapService.resetMap(MapService.mapToMarker([$scope.profileEntity]))
 
 
-          # $scope.isFollowing = entity.follower_uri_type == -1 ? false : true
-          # alert JSON.stringify entity.follower_uri_type 
-          if entity.follower_uri_type == -1
-            $scope.isFollowing = true
-            $scope.followButtonText = "Following "
+        # $scope.isFollowing = entity.follower_uri_type == -1 ? false : true
+        # alert JSON.stringify entity.follower_uri_type 
+        if entity.follower_uri_type == -1
+          $scope.isFollowing = true
+          $scope.followButtonText = "Following "
 
-          else $scope.isFollowing = false
+        else $scope.isFollowing = false
 
     $scope.$watch 'MapService.mapObj', ->
       MapService.resetMap(MapService.mapToMarker([$scope.profileEntity]))

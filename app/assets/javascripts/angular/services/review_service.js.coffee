@@ -1,3 +1,5 @@
+"use strict";
+
 App.factory "ReviewService", [
   "$q"
   "CacheService"
@@ -5,14 +7,16 @@ App.factory "ReviewService", [
   ($q, CacheService, Restangular) ->
     messageEntity: null
     
-    setMessageEntity: (entity)->
-      @messageEntity = entity
+    # setMessageEntity: (entity)->
+    #   @messageEntity = entity
 
-    callModal: (id, $event)->
-      $("#" + id).modal()
+    callModal: ()->
+      $("#js__business-review-modal").modal()
       return true
+    # # sendMessage: ()->
 
-    # sendMessage: ()->
+    # newPost:  
+    # entity: 
 
     submit: (model, entity, entryForm, callback) ->
       if entryForm.$valid

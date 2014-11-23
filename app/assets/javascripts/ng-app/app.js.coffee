@@ -1,3 +1,5 @@
+"use strict";
+
 window.App = angular.module("NM", [
   "ngRoute"
   "templates"
@@ -71,6 +73,12 @@ window.App = angular.module("NM", [
   .when "/users/:id",
     templateUrl: "profile.html"
     controller: "ProfileController"
+    resolve:
+          profileEntity: ($route, Restangular)->
+            id = $route.current.params.id
+            return Restangular.one('users', id).get().then (users) ->
+              return users
+
   .when "/me/audience",
     templateUrl: "audience.html"
   .when "/messages",
@@ -80,8 +88,11 @@ window.App = angular.module("NM", [
   .when "/businesses/:id",
     templateUrl: "profile.html"
     controller: "ProfileController"
-
-
+    resolve:
+      profileEntity: ($route, Restangular)->
+        id = $route.current.params.id
+        return Restangular.one('businesses', id).get().then (bus) ->
+          return bus
 
   # .when('/users/:id', 
   #    {templateUrl: 'profile.html', controller: 'ProfileController'}
