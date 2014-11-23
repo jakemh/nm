@@ -1,11 +1,15 @@
-<div ng-include="'right_bar_bus_dir.html'"></div>
-
-<div class="profile__right-box profile__right-box--small">
-  info
+<div class="profile__right-box profile__right-box--large">
+  <div class="nm__map nm__map--small">
+   <div ng-init="MapService.onMapDivLoad()" style="height: 100%; width: 100%" id="map">Google Map Container</div>
+    </div>
 </div>
-
 <div class="profile__right-box profile__right-box--large profile__rght-box--padding">
   <h4> {{SideBar.profileScope.profileEntity.name}}'s People </h4>
   <a ng-href="{{SideBar.profileScope.businessOwner.uri}}">
   {{SideBar.profileScope.businessOwner.name}}</a>
 </div>
+
+<div class="profile__right-box profile__right-box--small">
+  info
+</div>
+

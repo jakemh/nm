@@ -1,6 +1,7 @@
 @import "nm_root";
 .html, body{ 
   height: 100%;
+  width: 100%;
 }
 
 .table--white{
@@ -18,6 +19,16 @@
   height: 65px;
   width: 65px;
 
+}
+
+.nm__map{
+  width: 380px; 
+  height: 400px;
+}
+
+.nm__map--small{
+  width: 380px;
+  height: 200px;
 }
 
 .error{
