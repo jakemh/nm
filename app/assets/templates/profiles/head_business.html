@@ -1,7 +1,18 @@
-<div class="profile__head thirds" ng-style="{'background-image': 'url({{ profileEntity.cover_photo_url }})'}" ng-class="{'profile__head--white-text': profileEntity.cover_photo_url}">
-  <a ng-click="addCoverPhoto()" href ng-if="isEditable">   
-    Add cover photo
-   </a>
+<div class="profile__head thirds" style="background: white url('{{profileEntity.cover_photo_url}}');" ng-class="{'profile__head--white-text': profileEntity.cover_photo_url}">
+
+  <div class="top-right top-right--padding" ng-click="addCoverPhoto()" href ng-if="isEditable">
+    <div ng-switch="profileEntity.cover_photo_url" class="nm__link">
+      <div ng-switch-when="null" class="profile__head-link profile__head-link--no-cover">
+        <a> <i class="fa fa-upload"></i> Add cover photo</a>
+      </div>
+
+      <div ng-switch-default class="profile__head-link">
+        <i class="fa fa-pencil-square-o"></i> Change cover photo
+      </div>
+    </div>
+  </div>
+
+
   <div class="user-prof__cover-photo column-left">
     <img ng-src="{{profileEntity.thumb}}">
   </div>

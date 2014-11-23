@@ -43,8 +43,8 @@ angular.module("NM").controller "ProfileController", [
     $scope.photoUploaded = (message)->
       $("#js__cover-photo-modal").modal('hide')
       # $scope.profileEntity.removeFromCache()
-      $scope.background = {'background-image': 'url({{'+message+'}})'}
-      # $scope.profileEntity.cover_photo_url = message
+      # $scope.background = {'background-image': 'url({{'+message+'}})'}
+      $scope.profileEntity.cover_photo_url = message
       # scope.$apply();
       # alert JSON.stringify $scope.background
       # current = AuthService.currentUser
