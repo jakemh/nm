@@ -22,12 +22,14 @@
 }
 
 .nm__map{
-  width: 380px; 
+  width: 400px; 
   height: 400px;
 }
 
+.nm__inline{
+  display: inline-block;
+}
 .nm__map--small{
-  width: 380px;
   height: 200px;
 }
 
@@ -57,6 +59,10 @@
   left: 0;
   z-index: 15;
 
+}
+
+.nm__right{
+  float: right;
 }
 
 .top-right{

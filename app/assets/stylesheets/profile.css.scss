@@ -28,16 +28,28 @@
 }
 .profile__right-box{
   width: 100%;
-  margin: 0 0 40px 20px;
+  margin: 0 0 20px 0px;
   background: white;
   text-align: center;
 }
 
+.profile__right-button--right{
+  margin-left: 100px;
+}
 .profile__right-box--padding{
    padding: 15px;
 
 }
 
+.profile__right-title-row{
+  position: relative;
+  // padding: 5px;
+}
+
+.profile__right-title{
+  font-size: 1.7em;
+  margin-left: 15px;
+}
 .profile__right-box--large{
   height: 200px;
 

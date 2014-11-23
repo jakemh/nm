@@ -3,10 +3,18 @@
    <div ng-init="MapService.onMapDivLoad()" style="height: 100%; width: 100%" id="map">Google Map Container</div>
     </div>
 </div>
+
+
 <div class="profile__right-box profile__right-box--large profile__rght-box--padding">
   <h4> {{SideBar.profileScope.profileEntity.name}}'s People </h4>
   <a ng-href="{{SideBar.profileScope.businessOwner.uri}}">
   {{SideBar.profileScope.businessOwner.name}}</a>
+</div>
+
+<div class="profile__right-title-row" style="height: 38px">
+  <div class="nm__inline profile__right-title"> Rating: 4.8 </div>
+  <button ng-disabled="isFollowing" ng-click="" class="button__btn button__btn--right  button__btn--orange nm__inline">Review
+  </button>
 </div>
 
 <div class="profile__right-box profile__right-box--small">
