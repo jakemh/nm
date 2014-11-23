@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141120015818) do
+ActiveRecord::Schema.define(version: 20141123010218) do
 
   create_table "ahoy_events", force: true do |t|
     t.uuid     "visit_id"
@@ -200,6 +200,16 @@ ActiveRecord::Schema.define(version: 20141120015818) do
   end
 
   add_index "read_marks", ["user_id", "readable_type", "readable_id"], name: "index_read_marks_on_user_id_and_readable_type_and_readable_id"
+
+  create_table "reviews", force: true do |t|
+    t.string   "reviewable_type"
+    t.integer  "reviewable_id"
+    t.text     "subject"
+    t.text     "body"
+    t.integer  "score"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "roles", force: true do |t|
     t.string   "name"
