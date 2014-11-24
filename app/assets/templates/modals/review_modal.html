@@ -1,6 +1,8 @@
 <div class="modal fade" id="js__business-review-modal" tabindex="-1" role="dialog" aria-loabelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog">
-    <div class="modal-content" style="width: 800px">
+    <div class="modal-content modal__review">
+
+
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">
           <span aria-hidden="true">&times;</span>
@@ -9,10 +11,11 @@
         <h4 class="modal-title" id="myModalLabel">Add Review</h4>
       </div>
       <div class="modal-body">
+        <div style="text-align: center;" star-rating rating-value="delegate.review.score" max="5" on-rating-selected="delegate.rateFunction(rating)"></div>
         <div class="feed feed--tall">
-         <!--  <div ng-include="'feed_head_outer.html'" ng-init="newPost = newPostMain; headOuterInit(newPost); feedHeadBody = messageForm; entity = profileEntity">
+         <!--  <div ng-include8="'feed_head_outer.html'" ng-init="newPost = newPostMain; headOuterInit(newPost); feedHeadBody = messageForm; entity = profileEntity">
           </div> -->
-            <div ng-include="'message_form.html'" ng-init="newPost = delegate.newPost; entity = delegate.entity"></div>
+            <div ng-include="'forms/post/form.html'" ng-init="newPost = delegate.review; entity = delegate.entity; sendPost = delegate.sendPost"></div>
 
         </div>
       </div>  

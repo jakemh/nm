@@ -17,7 +17,9 @@ window.App = angular.module("NM", [
   "infinite-scroll"
   "flow"
   "ng-rails-csrf"
-  
+  "ngTouch"  
+
+  "vr.directives.slider"
 ]).config ($routeProvider, $locationProvider, $httpProvider, RestangularProvider) ->
   $httpProvider.defaults.headers.common['X-CSRF-Token'] = $('meta[name=csrf-token]').attr('content')
   RestangularProvider.setRequestSuffix('.json');

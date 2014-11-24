@@ -1,0 +1,22 @@
+<form 
+  ui-keypress="{13:'myFunc($event)'}" 
+  novalidate 
+  class="new_post ng-pristine ng-valid" 
+  name="entryForm"
+>
+
+  <div style="text-align: center" class="feed__entry-inner-main">
+    <input ng-model="newPost.type" type="hidden">
+    <div style="text-align: center" ng-init="rowsQuantity=8; placeHolder='Enter a Review'; buttonTitle='Review'" ng-include="'forms/post/content.html'"></div>
+
+
+    <div ng-include="'forms/post/button.html'">
+
+    </div>
+
+    </div>
+    <!-- <div class="feed__form-bottom"> -->
+
+     
+    <!-- </div> -->
+</form>

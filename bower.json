@@ -31,6 +31,11 @@
     "angular-xeditable": "",
     "ng-tags-input": "",
     "ngInfiniteScroll": "",
-    "ng-flow": "~2"
-  }
+    "ng-flow": "~2",
+    "venturocket-angular-slider": "",
+    "angular-touch": ""
+  },
+  "resolutions": {
+     "angular": "1.3.3"
+   }
 }

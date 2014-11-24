@@ -1,12 +1,3 @@
-# angular.module("NM").animation ".slide", ->
-#   # NG_HIDE_CLASS = "ng-hide"
-#   # beforeAddClass: (element, className, done) ->
-#   #   element.slideUp done  if className is NG_HIDE_CLASS
-#   #   return
-
-#   # removeClass: (element, className, done) ->
-#   #   element.hide().slideDown done  if className is NG_HIDE_CLASS
-#   #   return
 
 angular.module("NM").controller "PostController", [
   "$scope"
@@ -43,6 +34,7 @@ angular.module("NM").controller "PostController", [
     #     $scope.loadMore()
     #   , 100
 
+    
 
     # Restangular.all('me/posts').post({content: "XYZ"})
     $scope.headOuterInit = (newPost, entity) ->

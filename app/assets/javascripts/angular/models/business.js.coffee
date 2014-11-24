@@ -14,6 +14,9 @@ angular.module("NM").factory "Business", [
       self.getTags = ->
         self.getListPlus("tags")
       
+      self.review = (params) ->
+        @post('reviews', {score: params.score, content: params.content})
+
       self.tags = []
 
       return self

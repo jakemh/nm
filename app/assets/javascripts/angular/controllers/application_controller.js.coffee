@@ -10,14 +10,16 @@ angular.module("NM").controller "ApplicationController", [
   "Post"
   "Response"
   "MessageResponse"
+  "MessageService"
   "AuthService"
   "Restangular"
   "SideBar"
   "MapService"
   "Utilities"
 
-  ($scope, User, SentMessage, ReceivedMessage, Follower, Business, RestEntity, Following, Post, Response, MessageResponse, AuthService, Restangular, SideBar, MapService, Utilities) ->
+  ($scope, User, SentMessage, ReceivedMessage, Follower, Business, RestEntity, Following, Post, Response, MessageResponse, MessageService, AuthService, Restangular, SideBar, MapService, Utilities) ->
     $scope.Utilities = Utilities
+    $scope.MessageService = MessageService
     $scope.AuthService = AuthService
     $scope.SideBar = SideBar
     $scope.tabBarDisabled = true

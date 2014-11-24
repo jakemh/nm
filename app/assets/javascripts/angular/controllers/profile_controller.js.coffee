@@ -18,7 +18,6 @@ angular.module("NM").controller "ProfileController", [
     
     # alert my#FriendsHotel.hotelName( );
     $scope.profileEntity = profileEntity
-    alert JSON.stringify $scope.profileEntity
 
     $scope.posts = []
     $scope.params = []
@@ -47,9 +46,28 @@ angular.module("NM").controller "ProfileController", [
     $scope.mapLoaded = false
     $scope.sentFlag = false
     $scope.ReviewService = ReviewService
-    SideBar.delegate["ReviewService"] = $scope.ReviewService
+    $scope.reviewPost = {score: 0, content: ""}
+    SideBar.delegate.ReviewService = ReviewService
+    SideBar.delegate.rateFunction = ReviewService.rateFunction
+    SideBar.delegate.entity = profileEntity
+    SideBar.delegate.review = $scope.reviewPost
+    SideBar.delegate.sendPost = ReviewService.sendPost
+    ReviewService.entity = $scope.profileEntity
 
-    ReviewService.entity = 
+    $scope.sendReview = (postObj, postSubmit)->
+      ent = AuthService.currentEntitySelection.selected
+      entityAttrs = 
+          entity_id: ent.id
+          entity_type: ent.type
+
+      postSubmit = angular.extend({}, postSubmit, entityAttrs)
+      ent.post("reviews", postSubmit).then (response)->
+        # $scope.posts = $scope.posts.concat(response)
+        AuthService.currentUser.posts("all": true).then (posts) ->
+          $scope.posts = posts
+          MessagesDisplay.buildMessageDisplay(null, $scope.posts).then (list)->
+            $scope.displayList = list
+
     $scope.photoUploaded = (message)->
       $("#js__cover-photo-modal").modal('hide')
       $scope.profileEntity.cover_photo_url = message
@@ -61,6 +79,7 @@ angular.module("NM").controller "ProfileController", [
     $scope.flag = ->
       $scope.profileEntity.flag().then (response)->
         $scope.sentFlag = true  
+
 
     # $scope.skills = []
     $scope.initRightBarExternal = ->
@@ -103,7 +122,7 @@ angular.module("NM").controller "ProfileController", [
 
         # $scope.isFollowing = entity.follower_uri_type == -1 ? false : true
         # alert JSON.stringify entity.follower_uri_type 
-        if entity.follower_uri_type == -1
+        if $scope.profileEntity.follower_uri_type == -1
           $scope.isFollowing = true
           $scope.followButtonText = "Following "
 

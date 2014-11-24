@@ -1,0 +1,13 @@
+<textarea 
+  class="feed__entry-input"
+  name="content" 
+  ng-class="{'feed__entry-input--error': entryForm.$invalid && entryForm.hasError && !entryForm.$pristine}"
+  id="post_content" 
+  placeholder="{{placeHolder || 'Enter a message'}}"
+  rows="{{rowsQuantity || 3}}"
+  ng-model="newPost.content"
+  ng-minlength="1"
+  ng-required="true"
+  ng-keyup="$event.keyCode == 13 && submitOnEnter && MessageService.submit(newPost, entity, entryForm, sendPost)"
+
+></textarea>

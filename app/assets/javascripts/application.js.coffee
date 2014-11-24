@@ -14,6 +14,8 @@
 #= require angular-bootstrap/ui-bootstrap
 #= require angular-bootstrap/ui-bootstrap-tpls
 #= require angular-xeditable/dist/js/xeditable
+#= require angular-touch/angular-touch
+#= require venturocket-angular-slider/build/angular-slider
 #= require ngInfiniteScroll/build/ng-infinite-scroll
 #= require ng-tags-input/ng-tags-input
 #= require moment/moment.js

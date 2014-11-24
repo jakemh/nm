@@ -13,17 +13,30 @@ App.factory "ReviewService", [
     callModal: ()->
       $("#js__business-review-modal").modal()
       return true
+
+    hideModal: ()->
+      $("#js__business-review-modal").modal('hide')
+      return true
+
     # # sendMessage: ()->
 
-    # newPost:  
-    # entity: 
-
-    submit: (model, entity, entryForm, callback) ->
-      if entryForm.$valid
-        entryForm.hasError = false;
-        callback(entity, model)
-        model.content = ""
-      else 
-        entryForm.hasError = true
+    # newPost: {}
+    # entity: null
+    rateFunction: (rating) ->
+      # alert "Rating selected - " + rating
+      return
+    
+   
+    sendPost: (business, post)->
+      business.review(post).then (response) =>
+        $("#js__business-review-modal").modal('hide')
+    # submit: (model, entity, entryForm, callback) ->
+    #   alert JSON.stringify model
+    #   if entryForm.$valid
+    #     entryForm.hasError = false;
+    #     callback(entity, model)
+    #     model.content = ""
+    #   else 
+    #     entryForm.hasError = true
 
 ]
