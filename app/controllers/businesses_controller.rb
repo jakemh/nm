@@ -67,6 +67,6 @@ class BusinessesController < ApplicationController
  end
 
  def whitelist
-   params.require(:business).permit(:name, :city, :about, :work, :website, :email, :phone)
+   params.require(:business).permit(:name, :description, :city, :about, :work, :website, :email, :phone)
  end
 end
