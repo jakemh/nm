@@ -10,6 +10,9 @@ App.factory "ReviewService", [
     # setMessageEntity: (entity)->
     #   @messageEntity = entity
 
+    newReview: ()->
+      return {score: 0, content: ""}
+
     callModal: ()->
       $("#js__business-review-modal").modal()
       return true

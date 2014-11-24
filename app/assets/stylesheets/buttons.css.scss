@@ -19,6 +19,10 @@
   padding: 7px !important;
 }
 
+.button__btn--100{
+  width: 100px;
+}
+
 .button__btn--orange{
   background: $orange-color;
 
@@ -42,4 +46,11 @@
   position: absolute;
   // right: 15px;
   right: 0;
+}
+
+
+.button__btn--right--padding{
+  position: absolute;
+  // right: 15px;
+  right: 15px;
 }
