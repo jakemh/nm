@@ -8,6 +8,8 @@ angular.module("NM").controller "ApplicationController", [
   "RestEntity"
   "Following"
   "Post"
+  "Review"
+  "ReviewService"
   "Response"
   "MessageResponse"
   "MessageService"
@@ -17,18 +19,19 @@ angular.module("NM").controller "ApplicationController", [
   "MapService"
   "Utilities"
 
-  ($scope, User, SentMessage, ReceivedMessage, Follower, Business, RestEntity, Following, Post, Response, MessageResponse, MessageService, AuthService, Restangular, SideBar, MapService, Utilities) ->
+  ($scope, User, SentMessage, ReceivedMessage, Follower, Business, RestEntity, Following, Post, Review, ReviewService, Response, MessageResponse, MessageService, AuthService, Restangular, SideBar, MapService, Utilities) ->
     $scope.Utilities = Utilities
     $scope.MessageService = MessageService
     $scope.AuthService = AuthService
     $scope.SideBar = SideBar
     $scope.tabBarDisabled = true
     $scope.MapService = MapService
+    $scope.delegate = SideBar.delegate
     $scope.tabs = [
       { title:'Dynamic Title 1', content:'Dynamic content 1' },
       { title:'Dynamic Title 2', content:'Dynamic content 2', disabled: true }
     ];
-
+    $scope.ReviewService = ReviewService
     $scope.tabItemClick = (entity)->
       AuthService.currentEntitySelection.selected = entity
 

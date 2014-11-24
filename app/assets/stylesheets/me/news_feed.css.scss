@@ -244,10 +244,22 @@
   max-height: 1000px;
 }
 
-.feed__entry--comment .thumb img, .feed__content--comment .thumb img{
+.feed__entry--comment .thumb img, 
+.feed__content--comment .thumb img, 
+.thumb img{
   height: 80px;
   width: 80px;
 
+}
+
+.thumb--44 img{
+  height: 44px;
+  width: 44px;
+}
+
+.thumb--55 img{
+  height: 55px;
+  width: 55px;
 }
 
 .feed__content--comment .feed__comment-expand{
@@ -262,6 +274,8 @@
 .feed__content--comment textarea{
   height: 3em;
 }
+
+
 
 .feed__content--comment img{
   height: 44px !important;

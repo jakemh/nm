@@ -6,19 +6,38 @@
 
 
 <div class="profile__right-box profile__right-box--large profile__rght-box--padding">
-  <h4> {{SideBar.profileScope.profileEntity.name}}'s People </h4>
-  <a ng-href="{{SideBar.profileScope.businessOwner.uri}}">
-  {{SideBar.profileScope.businessOwner.name}}</a>
+  <h4> {{delegate.profile.profileEntity.name}}'s People </h4>
+  <a ng-href="{{delegate.profile.businessOwner.uri}}">
+  {{delegate.profile.businessOwner.name}}</a>
 </div>
 
 <div class="profile__right-title-row" style="height: 38px">
-  <div class="nm__inline profile__right-title"> Rating: 4.8 </div>
-  <button ng-disabled="isFollowing" ng-click="SideBar.delegate.ReviewService.callModal()" class="button__btn button__btn--right  button__btn--orange nm__inline">Review
+  <div class="nm__inline profile__right-title"> Rating: {{ReviewService.averageScore(delegate.profile.reviews)}} </div>
+  <button ng-disabled="isFollowing" ng-click="delegate.ReviewService.callModal()" class="button__btn button__btn--right  button__btn--orange nm__inline">Review
   </button>
 </div>
 
-<div class="profile__right-box profile__right-box--small">
-  info
+<div class="review profile__right-box profile__right-box--small">
+  
+  <div ng-repeat="review in delegate.profile.reviewList | orderBy:'id':true">
+    <div class="review__item">
+      {{review.score}}/5
+      <div class="review__item-thumb thumb thumb--44">
+        <img ng-src="{{review.reviewer.thumb}}">
+
+      </div>
+      <div class="review__item-main">
+        <div class="review__item-title">    
+          {{review.reviewer.name}}
+
+        </div>
+
+        <div class="review__item-content">
+          {{review.content}}
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
-<div ng-init="delegate=SideBar.delegate" ng-include="'modals/review_modal.html'"></div>
+<div ng-include="'modals/review_modal.html'"></div>

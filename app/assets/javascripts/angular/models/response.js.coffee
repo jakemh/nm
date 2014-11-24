@@ -5,6 +5,7 @@ angular.module("NM").factory "Response", [
   "Restangular"
   ($q, UsersCache, BusinessesCache, Restangular) ->
     Restangular.extendModel "me/responses", (model) ->
+      
       model.entity = ->
         if model.user_id
           cached = UsersCache.cache.get(model.user_id)

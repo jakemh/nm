@@ -49,6 +49,7 @@
 }
 
 .profile__right-title{
+  line-height: .6em;
   font-size: 1.7em;
   margin-left: 15px;
 }
@@ -58,7 +59,7 @@
 }
 
 .profile__right-box--small{
-  height: 150px;
+  min-height: 150px;
 }
 
 .profile__box-title{

@@ -11,6 +11,9 @@ angular.module("NM").factory "Business", [
       self.owner = ->
         Restangular.one("users", self.owner_id).get()
 
+      self.reviews = ->
+        self.getListPlus("reviews")
+
       self.getTags = ->
         self.getListPlus("tags")
       

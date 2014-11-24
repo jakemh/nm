@@ -1,3 +1,40 @@
-// Place all the styles related to the Reviews controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+@import "nm-base";
+
+.review{
+
+}
+
+.review__item{
+  min-height: 60px;
+  text-align: left;
+  margin: 4px;
+}
+
+.review__item-thumb{
+  float: left;
+  height: 100%;
+  width: 15%;
+}
+
+.review__item-thumb img{
+  height: auto !important;
+}
+
+.review__item-main{
+  width: 83%;
+  float: left;
+  height: 100%;
+  padding-left: 5px;
+}
+
+.review__item-content{
+  padding-bottom: 5px;
+}
+
+.review__item-title{
+  line-height: .9em;
+
+  padding-bottom: 5px;
+
+  font-size: 1.4em;
+}

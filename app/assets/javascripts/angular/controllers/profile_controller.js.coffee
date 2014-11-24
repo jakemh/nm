@@ -6,6 +6,7 @@ angular.module("NM").controller "ProfileController", [
   "$routeParams"
   "$location"
   "Utilities"
+  "Review"
   "AuthService"
   "MessagesDisplay"
   "MessageService"
@@ -13,8 +14,10 @@ angular.module("NM").controller "ProfileController", [
   "SideBar"
   "MapService"
   "ReviewService"
+  "ReviewDisplay"
   "profileEntity"
-  ($scope, $routeParams, $location, Utilities, AuthService, MessagesDisplay, MessageService, Restangular, SideBar, MapService, ReviewService, profileEntity) ->
+  
+  ($scope, $routeParams, $location, Utilities, Review, AuthService, MessagesDisplay, MessageService, Restangular, SideBar, MapService, ReviewService, ReviewDisplay, profileEntity) ->
     
     # alert my#FriendsHotel.hotelName( );
     $scope.profileEntity = profileEntity
@@ -27,6 +30,7 @@ angular.module("NM").controller "ProfileController", [
     $scope.profileEntityBusinesses = []
     # $scope.profileEntity = null
     $scope.AuthService = AuthService
+    $scope.reviewList = []
     $scope.newPostMain = {}
     $scope.feedHeadForm = "feed_head_form.html"
     $scope.feedHeadBody = "feed_head_form.html"
@@ -42,18 +46,23 @@ angular.module("NM").controller "ProfileController", [
     SideBar.profileScope = $scope
     $scope.businessOwner = null
     $scope.MapService = MapService
+    $scope.ReviewDisplay = ReviewDisplay
     # SideBar.tabBarDisabled = $scope.isEditable
     $scope.mapLoaded = false
     $scope.sentFlag = false
     $scope.ReviewService = ReviewService
     $scope.reviewPost = {score: 0, content: ""}
+    SideBar.delegate.profile = $scope
     SideBar.delegate.ReviewService = ReviewService
     SideBar.delegate.rateFunction = ReviewService.rateFunction
     SideBar.delegate.entity = profileEntity
     SideBar.delegate.review = $scope.reviewPost
     SideBar.delegate.sendPost = ReviewService.sendPost
-    ReviewService.entity = $scope.profileEntity
-
+    # ReviewService.entity = $scope.profileEntity
+    $scope.reviews = []
+    SideBar.delegate.reviews = $scope.reviews
+    SideBar.delegate.profileEntity = profileEntity
+    SideBar.delegate.businessOwner = $scope.businessOwner
     $scope.sendReview = (postObj, postSubmit)->
       ent = AuthService.currentEntitySelection.selected
       entityAttrs = 
@@ -80,7 +89,6 @@ angular.module("NM").controller "ProfileController", [
       $scope.profileEntity.flag().then (response)->
         $scope.sentFlag = true  
 
-
     # $scope.skills = []
     $scope.initRightBarExternal = ->
       $scope.loadBusinesses()
@@ -96,6 +104,10 @@ angular.module("NM").controller "ProfileController", [
       $scope.profileEntity.getTags().then (tags) -> 
         $scope.profileEntity.tags = _.map tags, (item) -> item.tags
 
+    $scope.buildReviewList = () ->
+      $scope.profileEntity.reviews().then (reviews)->
+        $scope.reviews = reviews
+        ReviewDisplay.buildReviewList($scope.reviews, $scope.reviewList)
 
     $scope.init = () ->
      
@@ -111,10 +123,15 @@ angular.module("NM").controller "ProfileController", [
         SideBar.profileEntity = $scope.profileEntity
 
         if $scope.profileEntity.type == "User"
+
           if $scope.yours
             SideBar.rightBarTemplate = "right_bar_profile_internal.html"  
           else SideBar.rightBarTemplate = "right_bar_profile_external.html"  
         else if $scope.profileEntity.type == "Business" 
+          $scope.buildReviewList()
+         
+
+
           SideBar.rightBarTemplate = "right_bar_business.html"
           if MapService.mapObj
             MapService.resetMap(MapService.mapToMarker([$scope.profileEntity]))

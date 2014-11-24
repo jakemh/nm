@@ -1,5 +1,7 @@
 class ReviewsController < ApplicationController
+  
   def index
+    render json: entity.reviews
   end
 
   def show

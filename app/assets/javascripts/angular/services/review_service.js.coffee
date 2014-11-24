@@ -4,6 +4,7 @@ App.factory "ReviewService", [
   "$q"
   "CacheService"
   "Restangular"
+  
   ($q, CacheService, Restangular) ->
     messageEntity: null
     
@@ -12,6 +13,16 @@ App.factory "ReviewService", [
 
     newReview: ()->
       return {score: 0, content: ""}
+
+    averageScore: (reviews)->
+      if reviews && reviews.length > 0
+        sum = 0
+        for review in reviews 
+          sum += review.score 
+
+        ave =  sum / (reviews.length + 1)
+        return Math.round(ave * 10) / 10
+      else return 0
 
     callModal: ()->
       $("#js__business-review-modal").modal()
