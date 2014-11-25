@@ -75,8 +75,6 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  private
-
   def set_entity
     p "SET ENTITY"
    if params[:business_id]

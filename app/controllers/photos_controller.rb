@@ -23,19 +23,19 @@ class PhotosController < ApplicationController
     # @entity = entity
 
     # @photo = default_entity.photos.build whitelist
-    entity = nil
-     p "SET ENTITY2"
-    if params[:business_id]
-       p params[:business_id]
-      entity =  Business.find(params[:business_id])
-      p "ENTITY B: ", @entity
-    elsif params[:user_id]
-      entity =  User.find(params[:user_id]) 
-      p "ENTITY U: ", @entity
+    # entity = nil
+    #  p "SET ENTITY2"
+    # if params[:business_id]
+    #    p params[:business_id]
+    #   entity =  Business.find(params[:business_id])
+    #   p "ENTITY B: ", @entity
+    # elsif params[:user_id]
+    #   entity =  User.find(params[:user_id]) 
+    #   p "ENTITY U: ", @entity
 
-     else raise "Applicable entity not found!"
+    #  else raise "Applicable entity not found!"
 
-     end
+    #  end
 
     @photo = entity.photos.build(image: whitelist[:file], type: whitelist[:type])
     
