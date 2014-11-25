@@ -7,14 +7,15 @@ class ApplicationController < ActionController::Base
   serialization_scope :view_context
   before_filter :authenticate_user!
 
-  attr_accessor :entity
+  # attr_accessor :entity
 
   # check_authorization :unless => :devise_controller?
   # check_authorization :unless => :temporary_controller?
 
   protected
     def entity
-      @entity ||= set_entity
+      # @entity ||= set_entity
+      set_entity
     end
 
     def display_all_posts
@@ -80,10 +81,10 @@ class ApplicationController < ActionController::Base
     p "SET ENTITY"
    if params[:business_id]
       p params[:business_id]
-     @entity = Business.find(params[:business_id])
+     return Business.find(params[:business_id])
      p "ENTITY: ", @entity
    elsif params[:user_id]
-     @entity = User.find(params[:user_id]) 
+     return  User.find(parames[:user_id]) 
     else raise "Applicable entity not found!"
 
     end
