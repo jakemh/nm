@@ -41,9 +41,8 @@ App.factory "AuthService", [
       # cur =  @currentEntitySelection.selected
       cur = @currentUser
       params = 
-        connect_to_id: entity.entityId
-        type: entity.entityType
-
+        connect_to_id: entity.id
+        type: entity.type
       
       if followerType == "Follow"
         cur.post('followers', params).then ()->

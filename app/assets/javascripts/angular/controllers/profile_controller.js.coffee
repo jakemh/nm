@@ -16,7 +16,7 @@ angular.module("NM").controller "ProfileController", [
   "ReviewService"
   "ReviewDisplay"
   "profileEntity"
-  
+
   ($scope, $routeParams, $location, Utilities, Review, AuthService, MessagesDisplay, MessageService, Restangular, SideBar, MapService, ReviewService, ReviewDisplay, profileEntity) ->
     
     # alert my#FriendsHotel.hotelName( );
@@ -174,12 +174,12 @@ angular.module("NM").controller "ProfileController", [
       params = {current_type: current.type, current_id: current.id}
       Restangular.one($scope.params[0], $scope.params[1]).get(params).then (entity)->
         # $scope.posts = $scope.posts.concat(response)
-        $scope.profileEntity = entity
         if entity.follower_uri_type == -1
           $scope.isFollowing = true
+          $scope.profileEntity.follower_count = entity.follower_count
           $scope.followButtonText = "Following"
+        else $scope.followButtonText = "Declined"
 
-        else $scope.isFollowing = false
 
  
 

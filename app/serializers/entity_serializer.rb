@@ -23,11 +23,15 @@ class EntitySerializer < ActiveModel::Serializer
   end
 
   def follower_uri_type
-    if scope.params[:current_type] && scope.params[:current_id]
-      other = scope.params[:current_type].constantize.find(scope.params[:current_id])
-      scope.follow_link(other, object)
-    else nil
-    end
+
+    other = 
+      if scope.params[:current_type] && scope.params[:current_id]
+        scope.params[:current_type].constantize.find(scope.params[:current_id])
+      else scope.current_user
+      end
+
+    return scope.follow_link(other, object)
+
   end
 
   # def inverse_follower_uri_type
