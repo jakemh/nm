@@ -77,8 +77,11 @@ class ApplicationController < ActionController::Base
   private
 
   def set_entity
+    p "SET ENTITY"
    if params[:business_id]
+      p params[:business_id]
      @entity = Business.find(params[:business_id])
+     p "ENTITY: ", @entity
    elsif params[:user_id]
      @entity = User.find(params[:user_id]) 
     else raise "Applicable entity not found!"
