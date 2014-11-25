@@ -84,7 +84,7 @@ class ApplicationController < ActionController::Base
      return Business.find(params[:business_id])
      p "ENTITY: ", @entity
    elsif params[:user_id]
-     return  User.find(parames[:user_id]) 
+     return  User.find(params[:user_id]) 
     else raise "Applicable entity not found!"
 
     end
