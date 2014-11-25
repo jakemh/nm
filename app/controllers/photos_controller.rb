@@ -1,5 +1,5 @@
 class PhotosController < ApplicationController
-  layout "signup_bar"
+  # layout "signup_bar"
   skip_before_filter :verify_authenticity_token
 
   
@@ -36,8 +36,8 @@ class PhotosController < ApplicationController
     #  else raise "Applicable entity not found!"
 
     #  end
-
-    @photo = entity.photos.build(image: whitelist[:file], type: whitelist[:type])
+    @entity = set_entity
+    @photo = @entity.photos.build(image: whitelist[:file], type: whitelist[:type])
     
     if @photo.save
 
@@ -57,16 +57,6 @@ class PhotosController < ApplicationController
 
   def destroy
   end
-
-  #override
-  # protected
-  # def default_entity
-  #   entity || current_user
-  # end
-
-  # def entity
-  #   nil
-  # end
 
   private
   def whitelist
