@@ -7,13 +7,13 @@
 BETA = false
 
 if BETA 
-  role :app, 'beta.nextmission.us'
-  role :web, 'beta.nextmission.us'
-  role :db,  'beta.nextmission.us'
+  role :app, 'beta.nextmission.com'
+  role :web, 'beta.nextmission.com'
+  role :db,  'beta.nextmission.com'
 else 
-  role :app, 'nextmission.us'
-  role :web, 'nextmission.us'
-  role :db,  'nextmission.us'
+  role :app, 'nextmission.com'
+  role :web, 'nextmission.com'
+  role :db,  'nextmission.com'
 end
 # Extended Server Syntax
 # ======================
@@ -21,9 +21,9 @@ end
 # server list. The second argument is a, or duck-types, Hash and is
 # used to set extended properties on the server.
 if BETA
-  server 'beta.nextmission.us', user: 'jake', roles: %w{web app}, my_property: :my_value
+  server 'beta.nextmission.com', user: 'jake', roles: %w{web app}, my_property: :my_value
 else 
-  server 'nextmission.us', user: 'jake', roles: %w{web app}, my_property: :my_value
+  server 'nextmission.com', user: 'jake', roles: %w{web app}, my_property: :my_value
 end
 
 # Custom SSH Options

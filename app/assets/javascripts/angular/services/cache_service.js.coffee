@@ -15,14 +15,15 @@ App.factory "CacheService", [
 
     cacheModelForList: (model, list, params)->
       deferred = $q.defer();
-      Restangular.several(model, _.uniq(list)).getList(params).then (asses)=>
-        for ass in asses
-          # alert JSON.stringify @modelsToCache()
+      if list.length > 0
+        Restangular.several(model, _.uniq(list)).getList(params).then (asses)=>
+          for ass in asses
+            # alert JSON.stringify @modelsToCache()
 
-          @modelsToCache()[model].cache.put(ass.id, ass)
+            @modelsToCache()[model].cache.put(ass.id, ass)
 
-        deferred.resolve(asses)
-
+          deferred.resolve(asses)
+      else deferred.resolve(null)
       return deferred.promise
 
     cacheUsersForList: (list, params)->

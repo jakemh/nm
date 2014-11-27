@@ -22,11 +22,11 @@ class UserSerializer < EntitySerializer
   end
 
   def user_post_associations
-  	posts.select{|p| p.user_id}.map{|p| p.user_id}
+  	Response.all.select{|p| p.user_id}.map{|p| p.user_id}
   end
 
   def business_post_associations
-  	posts.select{|p| p.business_id}.map{|p| p.business_id}
+  	Response.all.select{|p| p.business_id}.map{|p| p.business_id}
   end
 
   # def business_post_associations

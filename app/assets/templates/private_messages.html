@@ -1,6 +1,5 @@
 <div ng-controller="MessagesController" ng-init="newPost = newMessage;  sentMessageInit(newPost)">
-  <div ng-include="'feed_head_outer.html'"></div>
-
+  
   <h3>Sent Messages</h3>
   <div ng-repeat="entity in sentMessagesDisplay | orderBy:'id': true" ng-init="newPost = newMessage; sentMessagesInit(newPost)">
   
