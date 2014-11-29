@@ -122,7 +122,7 @@ angular.module("NM").controller "BusinessDirectoryController", [
       
     #   $scope.searching = false
    
-    Restangular.all("businesses").getList().then (businesses)=>
+    Restangular.all("businesses").getList({random: true}).then (businesses)=>
       $scope.businesses = businesses
       MapService.resetMap(MapService.mapToMarker($scope.businesses))
 
