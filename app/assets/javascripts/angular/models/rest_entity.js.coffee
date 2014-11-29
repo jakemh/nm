@@ -1,13 +1,29 @@
 angular.module("NM").factory "RestEntity", [
   "RestangularPlus"
   (RestangularPlus) ->	  
-	 
-    sentMessages: () ->
-      @getListPlus("sent_messages", {all: true})
 
-    receivedMessages: () ->
-      @getListPlus("received_messages", {all: true})
-   
+    sentMessages: (entity) ->
+      @getListPlus "sent_messages",
+        from_id: entity.id 
+        from_type: entity.type
+
+    receivedMessages: (entity) ->
+      @getListPlus "received_messages",
+        from_id: entity.id 
+        from_type: entity.type
+    
+    # sentMessages: (entity) ->
+    #   alert JSON.stringify 
+    #   @getList "sent_messages",
+    #     from_id: entity.id 
+    #     from_type: entity.type
+
+    # receivedMessages: (entity) ->
+    #   @getList "received_messages",
+    #     from_id: entity.id 
+    #     from_type: entity.type
+    
+
     posts: (params) ->
       @getListPlus("posts", params)
 
@@ -20,4 +36,7 @@ angular.module("NM").factory "RestEntity", [
 
     personalPosts: () ->
       @severalPlus("posts").getList()
+
+
+    # entityType: 
 ]

@@ -15,7 +15,11 @@
         <div class="feed feed--tall">
          <!--  <div ng-include8="'feed_head_outer.html'" ng-init="newPost = newPostMain; headOuterInit(newPost); feedHeadBody = messageForm; entity = profileEntity">
           </div> -->
-            <div ng-include="'forms/post/form.html'" ng-init="newPost = delegate.review; entity = delegate.entity; sendPost = delegate.sendPost"></div>
+            <div ng-include="'forms/post/form.html'" ng-init="
+            newPost = delegate.review; entity = delegate.entity; sendPost = delegate.sendPost;
+            rowsQuantity=8; placeHolder='Enter a Review'; buttonTitle='Review';
+            "
+            ></div>
 
         </div>
       </div>  

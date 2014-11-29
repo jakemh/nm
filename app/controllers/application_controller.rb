@@ -13,6 +13,8 @@ class ApplicationController < ActionController::Base
   # check_authorization :unless => :temporary_controller?
 
   protected
+ 
+
     def entity
       # @entity ||= set_entity
       set_entity

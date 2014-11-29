@@ -1,7 +1,8 @@
 class ReceivedMessagesController < MessagesController
 
   def index
-    render json: entity.received_messages
+    # byebug
+    render json: entity.received_messages.from_entity(@from_entity)
   end
 
   def show

@@ -81,7 +81,7 @@ Rails.application.routes.draw do
     resources :photos
     resources :flags
     resources :sent_messages, :received_messages do
-      resources :message_responses
+      # resources :message_responses
     end
 
 

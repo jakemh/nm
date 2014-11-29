@@ -6,8 +6,9 @@ class BusinessesController < ApplicationController
   def index
     @businesses = if params[:first_letter]
       Business.by_first_letter(params[:first_letter])
-    else
+    elsif params[:random]
       Business.random(current_user, 3)
+    else Business.all
     end
     
     # respond_to do |format|

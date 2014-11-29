@@ -5,12 +5,13 @@ class UsersController < ApplicationController
   include FeedConcern
 
   def index
-    @distance = params[:distance]
-    @users = User.where("users.id != ?", current_user.id)
-    respond_to do |format|
-      format.html
-      format.json {render json: @users}
-    end
+    render json: User.all
+    # @distance = params[:distance]
+    # @users = User.where("users.id != ?", current_user.id)
+    # respond_to do |format|
+    #   format.html
+    #   format.json {render json: @users}
+    # end
   end
 
   def update

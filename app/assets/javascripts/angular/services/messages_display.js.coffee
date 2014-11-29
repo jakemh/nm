@@ -28,22 +28,27 @@ App.factory "MessagesDisplay", [
       followerCount: entity.follower_count
 
 
-    buildEachPost: (displayList, post, context) ->
+    buildEachPost: (displayList, post, options, context) ->
       current = AuthService.currentEntitySelection.selected
       post.entity({current_type: current.type, current_id: current.id}).then (e)=>
-        post.responses().then (responses) =>
-          responseList = []
-          
-          for response in responses
-            do (response) =>
-              response.entity({current_type: current.type, current_id: current.id}).then (rE) =>
-                responseList.push context.displayHash(response, rE)
+        entity = e
+ 
+        if !(options && options.suppressResponses)
 
-          entity = e
-          
-          displayList.push context.displayHash(post, entity, responseList)
-      
-    buildMessageDisplay2: (displayList, source) ->
+          post.responses().then (responses) =>
+            responseList = []
+            
+            for response in responses
+              do (response) =>
+                response.entity({current_type: current.type, current_id: current.id}).then (rE) =>
+                  responseList.push context.displayHash(response, rE)
+
+            
+            displayList.push context.displayHash(post, entity, responseList)
+        else 
+          displayList.push context.displayHash(post, entity)
+
+    buildMessageDisplay2: (displayList, source, options) ->
       deferred = $q.defer()
       if source
         list = []
@@ -52,10 +57,10 @@ App.factory "MessagesDisplay", [
           displayList.pop()
     
         for post in source
-            _.defer @buildEachPost, displayList, post, @
+            _.defer @buildEachPost, displayList, post, options, @
 
 
-    buildMessageDisplay: (displayList, source) ->
+    buildMessageDisplay: (displayList, source, options) ->
       deferred = $q.defer()
 
       if source
@@ -70,18 +75,19 @@ App.factory "MessagesDisplay", [
           do (post) =>
             # alert post.entity() + " XXX " + JSON.stringify post
             post.entity({current_type: current.type, current_id: current.id}).then (e)=>
-              post.responses().then (responses) =>
-                responseList = []
-                
-                for response in responses
-                  do (response) =>
-                    response.entity({current_type: current.type, current_id: current.id}).then (rE) =>
-                      responseList.push @displayHash(response, rE)
+              if !(options && options.suppressResponses)
+                post.responses().then (responses) =>
+                  responseList = []
+                  
+                  for response in responses
+                    do (response) =>
+                      response.entity({current_type: current.type, current_id: current.id}).then (rE) =>
+                        responseList.push @displayHash(response, rE)
 
-                        # followerUriType: rE.follower_uri_type
+                          # followerUriType: rE.follower_uri_type
 
-                entity = e
-                
+                  entity = e
+                  
                 list.push @displayHash(post, entity, responseList)
 
 

@@ -1,6 +1,6 @@
-<div ng-controller="MessagesController" ng-init="newPost = newMessage;  sentMessageInit(newPost)">
-  
-  <h3>Sent Messages</h3>
+<div tyle="height: 100%; overflow: auto" ng-controller="MessagesController" ng-if="AuthService.currentEntitySelection.selected" ng-init="init()">
+
+  <!--  <h3>Sent Messages</h3>
   <div ng-repeat="entity in sentMessagesDisplay | orderBy:'id': true" ng-init="newPost = newMessage; sentMessagesInit(newPost)">
   
     <ng-include src="'feed_content.html'"></ng-include>
@@ -12,5 +12,45 @@
    
     <ng-include src="'feed_content.html'"></ng-include>
 
+  </div> -->
+  <div class="row" style="height: 100%; overflow: auto; margin: 0">
+    <div class="col-sm-6 no-padding no-margin" style="height: 100%; overflow: auto; padding: 0">
+      <ul class="nm__list" ng-repeat="entity in entityList">
+        <li ng-click="selectEntity(entity)" style="height: 55px;" class="nm__list-item" ng-class="{'nm__selected' : Utilities.entityCompare(entity, selectedEntity)}">
+          <div style="width: 50px; height: 50px;" class="left thumb--44">
+            <img ng-src="{{entity.thumb}}">
+          </div>
+          <div class="nm__item-name nm__bold">
+            {{entity.name}}
+          </div>
+        </li>
+      </ul>
+    </div>
+    <div class="col-sm-6 no-padding no-margin" style="padding: 0">
+      <div class="msg__form">
+        <div ng-init="
+            buttonTitle='Send';
+            placeHolder='Enter a message';
+            newPost={}
+            " ng-include="'forms/post/form.html'">
+        </div>
+      </div>
+
+      <ul class="nm__list" ng-repeat="msg in displayMessages">
+        <li  class="nm__list-item">
+          <div style="width: 50px; height: 50px;" class="left thumb--44">
+            <img ng-src="{{msg.thumb}}">
+          </div>
+          <div class="nm__item-name nm__bold">
+            {{msg.name}}
+          </div>
+          <div>
+            {{msg.content}}
+          </div>
+        </li>
+      </ul>
+    </div>
+
   </div>
+
 </div>

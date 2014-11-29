@@ -13,7 +13,45 @@
   height: 100%;
   max-height: 80px;
   max-width: 80px;
+}
 
+.nm__list{
+  font-family: helvetica;
+  list-style-type: none;
+  padding: 0;
+  margin: 0 1px; 
+  border-top: 1px solid $lighter-gray-color;
+
+  &:hover{
+    outline: 1px solid orange-color(.5);
+  }
+  // border: 1px solid $light-gray-color;
+}
+
+.no-padding{
+  padding: 0;
+}
+
+.no-margin{
+  margin: 0;
+}
+
+.nm__bold{
+  font-weight: bold;
+}
+.nm__item-name{
+  padding: 5px;
+}
+
+.nm__selected{
+  outline: 1px solid orange-color(1);
+}
+
+.nm__list-item{
+  background: white;
+  // height: 55px;
+  padding: 5px; 
+  margin: 0;
 }
 
 .thumb-small img{

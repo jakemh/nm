@@ -1,11 +1,14 @@
 class MessagesController < ApplicationController
   before_filter :set_to_entity, only: [:new, :create, :edit, :save, :update]
+  before_filter :set_from_entity, only: [:index]
   before_filter :authenticate_entity, only: [:index, :show]
 
   def index
+
   end
 
   def show
+
   end
 
   def new
@@ -73,10 +76,16 @@ class MessagesController < ApplicationController
       @to_entity = _to_entity
     end
 
+    def set_from_entity
+      _from_entity = from_type.constantize.find(from_id)
+      #currently we allow any user to sent PMs to any user
+      @from_entity = _from_entity
+    end
 
-    # def from_entity
-    #   @from_entity
-    # end
+
+    def from_entity
+      @from_entity
+    end
 
     def to_entity
       @to_entity
@@ -96,8 +105,18 @@ class MessagesController < ApplicationController
       params[:to_type]
     end
 
+
     def to_id
       params[:to_id]
+    end
+
+    def from_type
+      params[:from_type]
+    end
+
+    
+    def from_id
+      params[:from_id]
     end
 
     def whitelist
