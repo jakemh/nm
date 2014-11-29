@@ -5,7 +5,9 @@ angular.module("NM").controller "MessagesController", [
   "AuthService"
   "MessagesDisplay"
   "Restangular"
-  ($scope, $q,  Utilities, AuthService, MessagesDisplay, Restangular) ->
+  "SideBar"
+
+  ($scope, $q,  Utilities, AuthService, MessagesDisplay, Restangular, SideBar) ->
     # $scope.messages = []
     $scope.sentMessages = []
     $scope.receivedMessage = []
@@ -23,7 +25,7 @@ angular.module("NM").controller "MessagesController", [
     $scope.selectedEntity = null
 
     $scope.feedCornerPartial = "feed_body_comment.html"
-
+    $scope.SideBar = SideBar
     # $scope.headOuterInit = (newPost, entity) ->
     #   newPost.type = ''
     $scope.init = ->
@@ -145,6 +147,11 @@ angular.module("NM").controller "MessagesController", [
         # $scope.posts = $scope.posts.concat(response)
           # console.log "POSTS: " + JSON.stringify posts
 
+    $scope.$watch 'AuthService.currentEntitySelection.selected', ->
+      # MessagesDisplay.buildMessageDisplay($scope.sentMessagesDisplay, $scope.sentMessages)
+      $scope.getAllMessages($scope.selectedEntity).then (all)->
+        $scope.allMessages = all
+      # $scope.posts = $scope.post
 
     $scope.$watch 'allMessages', ->
       # MessagesDisplay.buildMessageDisplay($scope.sentMessagesDisplay, $scope.sentMessages)
