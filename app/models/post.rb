@@ -8,8 +8,8 @@ class Post < ActiveRecord::Base
   has_many :responses, :class_name => "Response", :foreign_key => "parent_id", dependent: :destroy
   def self.id_sym(type)
     h = {
-      "Business" => :business_id,
-      "User" => :user_id
+      "Business" => "business_id",
+      "User" => "user_id"
     }
     h[type]
   end
