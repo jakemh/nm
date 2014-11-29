@@ -2,7 +2,13 @@ class SentMessagesController < MessagesController
 
   def index
     # render json: entity.sent_messages.from_entity(@from_entity)
-    render json: entity.sent_messages.joins(:message_recipients).where('"message_recipients".?=?', Post.id_sym(@from_entity.class.name), @from_entity.id)
+    where_clause = 
+      if @from_entity.class.name == "User"
+        '"message_recipients"."user_id"'
+      elsif @from_entity.class.name == "Business"
+        '"message_recipients"."business_id"'
+      end
+    render json: entity.sent_messages.joins(:message_recipients).where("#{where_clause}=?", @from_entity.id)
 
   end
 
