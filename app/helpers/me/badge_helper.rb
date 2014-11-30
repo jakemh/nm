@@ -22,7 +22,7 @@ module Me::BadgeHelper
   end
 
   def me_message_badge
-    current_user.received_messages.unread_by(current_user).count
+    current_user.all_unread_messages.count
   end
 
   def me_connections_badge
