@@ -49,9 +49,21 @@ angular.module("NM").controller "MessagesController", [
 
     $scope.loadUnreadMessages = (entities)->
       AuthService.currentUser.receivedMessages(unread: true).then (msgs)->
+        currentEntity = AuthService.currentEntitySelection.selected
+
+        for e in entities
+          e.unreadMessages = []
+         
+
         for msg in msgs
-          entity = _.find entities, (item) -> item.id == msg.entity_id && item.type == msg.entity_type
-          entity.unreadMessages.push(msg)
+          entity = _.find entities, (ent) -> 
+            # debugger
+            ent.id == msg.entity_id && 
+            ent.type == msg.entity_type &&
+            (msg.to_entity_id == currentEntity.id &&
+            msg.to_entity_type == currentEntity.type)
+          if entity
+            entity.unreadMessages.push(msg)
 
     $scope.getSentMessages = (entity)->
       deferred = $q.defer();
@@ -160,9 +172,10 @@ angular.module("NM").controller "MessagesController", [
     $scope.$watch 'AuthService.currentEntitySelection.selected', ->
       # MessagesDisplay.buildMessageDisplay($scope.sentMessagesDisplay, $scope.sentMessages)
       $scope.allMessages = []
-
+      $scope.loadUnreadMessages($scope.entityList)
       $scope.getAllMessages($scope.selectedEntity).then (all)->
         $scope.allMessages = all
+
       # $scope.posts = $scope.post
 
     $scope.$watch 'allMessages', ->
