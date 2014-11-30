@@ -21,6 +21,7 @@ angular.module("NM").factory "Business", [
         @post('reviews', {score: params.score, content: params.content})
 
       self.tags = []
+      self.unreadMessages = []
 
       return self
 ]

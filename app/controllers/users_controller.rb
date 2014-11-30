@@ -5,7 +5,7 @@ class UsersController < ApplicationController
   include FeedConcern
 
   def index
-    render json: User.all
+    render json: User.includes(:connections).all
     # @distance = params[:distance]
     # @users = User.where("users.id != ?", current_user.id)
     # respond_to do |format|

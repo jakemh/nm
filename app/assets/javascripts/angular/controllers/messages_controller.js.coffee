@@ -1,3 +1,4 @@
+
 angular.module("NM").controller "MessagesController", [
   "$scope"
   "$q"
@@ -35,17 +36,26 @@ angular.module("NM").controller "MessagesController", [
         $scope.selectedEntity = entities[0]
         $scope.getAllMessages($scope.selectedEntity).then (all)->
           $scope.allMessages = all
-
+        $scope.loadUnreadMessages($scope.entityList)
 
       # $scope.entityList()
      
 
       # $scope.allMessages = $scope.sentMessages.concat $scope.receivedMessages
+    $scope.unreadQuantity = (entity)->
+      l = entity.unreadMessages.length
+      if l > 0 
+        return  l
 
+    $scope.loadUnreadMessages = (entities)->
+      AuthService.currentUser.receivedMessages(unread: true).then (msgs)->
+        for msg in msgs
+          entity = _.find entities, (item) -> item.id == msg.entity_id && item.type == msg.entity_type
+          entity.unreadMessages.push(msg)
 
     $scope.getSentMessages = (entity)->
       deferred = $q.defer();
-      AuthService.currentEntitySelection.selected.sentMessages(entity).then (sent) ->
+      AuthService.currentEntitySelection.selected.sentMessagesTo(entity).then (sent) ->
         # $scope.sentMessages = sent
         deferred.resolve(sent)
       return deferred.promise
@@ -54,7 +64,7 @@ angular.module("NM").controller "MessagesController", [
     $scope.getReceivedMessages = (entity)->
       deferred = $q.defer();
 
-      AuthService.currentEntitySelection.selected.receivedMessages(entity).then (received) ->
+      AuthService.currentEntitySelection.selected.receivedMessagesFrom(entity).then (received) ->
         # $scope.receivedMessages = received 
         deferred.resolve(received)
       return deferred.promise
@@ -149,6 +159,8 @@ angular.module("NM").controller "MessagesController", [
 
     $scope.$watch 'AuthService.currentEntitySelection.selected', ->
       # MessagesDisplay.buildMessageDisplay($scope.sentMessagesDisplay, $scope.sentMessages)
+      $scope.allMessages = []
+
       $scope.getAllMessages($scope.selectedEntity).then (all)->
         $scope.allMessages = all
       # $scope.posts = $scope.post

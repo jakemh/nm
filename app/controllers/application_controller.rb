@@ -11,15 +11,15 @@ class ApplicationController < ActionController::Base
 
   # check_authorization :unless => :devise_controller?
   # check_authorization :unless => :temporary_controller?
+  def entity
+    # @entity ||= set_entity
+    set_entity
+  end
 
   protected
  
 
-    def entity
-      # @entity ||= set_entity
-      set_entity
-    end
-
+  
     def display_all_posts
       true
     end

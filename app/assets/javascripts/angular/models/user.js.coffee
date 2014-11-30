@@ -15,8 +15,8 @@ angular.module("NM").factory "User", [
       
       self.getSkills = ->
         self.getListPlus("skills")
-      
-      self.skills = []
 
+      self.unreadMessages = []
+      self.skills = []
       return self
 ]

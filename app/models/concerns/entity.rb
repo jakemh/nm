@@ -3,7 +3,6 @@ module Entity
   included do
     has_many :flags, :as => :flaggable
     has_many :photos, :as => :imageable, :dependent => :destroy
-
   end
 
 end

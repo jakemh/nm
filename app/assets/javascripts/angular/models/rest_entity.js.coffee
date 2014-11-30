@@ -2,16 +2,25 @@ angular.module("NM").factory "RestEntity", [
   "RestangularPlus"
   (RestangularPlus) ->	  
 
-    sentMessages: (entity) ->
+    sentMessagesTo: (entity) ->
       @getListPlus "sent_messages",
         from_id: entity.id 
         from_type: entity.type
 
-    receivedMessages: (entity) ->
+    receivedMessagesFrom: (entity) ->
       @getListPlus "received_messages",
         from_id: entity.id 
         from_type: entity.type
     
+    sentMessages: (params) ->
+      @getListPlus "sent_messages",
+        params
+
+    receivedMessages: (params) ->
+      @getListPlus "received_messages",
+        params
+        
+
     # sentMessages: (entity) ->
     #   alert JSON.stringify 
     #   @getList "sent_messages",

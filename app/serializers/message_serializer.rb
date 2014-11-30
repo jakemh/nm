@@ -1,5 +1,5 @@
 class MessageSerializer < ResponseSerializer
-
+ 
 
 end
 

@@ -77,9 +77,12 @@ class MessagesController < ApplicationController
     end
 
     def set_from_entity
-      _from_entity = from_type.constantize.find(from_id)
-      #currently we allow any user to sent PMs to any user
-      @from_entity = _from_entity
+      if from_type
+        _from_entity = from_type.constantize.find(from_id)
+        #currently we allow any user to sent PMs to any user
+        @from_entity = _from_entity
+      else @from_entity = nil
+      end
     end
 
 

@@ -6,7 +6,7 @@ App.factory "MessagesDisplay", [
   ($q, Restangular, AuthService, Utilities) ->
 
     displayHash: (post, entity, responseList) ->
-      models: {entity: entity}
+      models: {entity: entity, post: post}
       id: post.id
       timeStamp: moment(post.created_at)
       city: entity.city
@@ -26,7 +26,7 @@ App.factory "MessagesDisplay", [
       followerUri: AuthService.followerUri(entity)
       followerUriType: AuthService.followerType(entity)
       followerCount: entity.follower_count
-
+    
 
     buildEachPost: (displayList, post, options, context) ->
       current = AuthService.currentEntitySelection.selected

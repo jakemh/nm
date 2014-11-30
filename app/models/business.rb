@@ -1,4 +1,6 @@
 class Business < ActiveRecord::Base
+  # acts_as_reader
+
   geocoded_by :zip
   searchkick text_start: [:name, :address, :website, :city, :state, :zip, :business_type, :industry, :description],
   word_start: [:name, :description]
@@ -13,7 +15,7 @@ class Business < ActiveRecord::Base
   include Directory
   include Search
   include Entity
-  
+
   has_many :reviews, :as => :reviewable
   has_many :cover_photos, :as => :imageable
   has_one :cover_photo,  :as => :imageable

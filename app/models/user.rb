@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+  acts_as_reader
+
   geocoded_by :zip
   searchkick text_start: [:first_name, :last_name, :email, :zip], 
   word_start: [:first_name, :last_name]
@@ -10,7 +12,6 @@ class User < ActiveRecord::Base
   INTER_CONNECTION = "BusinessConnection"
   # searchkick
   # User.reindex
-  acts_as_reader
   
   include Profile
   include Messaging
@@ -18,6 +19,7 @@ class User < ActiveRecord::Base
   include Search
   include Entity
 
+  has_many :business_received_messages, through: :businesses, source: :received_messages
   has_many :issued_flags
   has_many :skills
   # has_many :received_messages, -> { where(:to_entity => "User") }, class_name: "Message", foreign_key: :to_id
@@ -59,6 +61,37 @@ class User < ActiveRecord::Base
   validates :zip, :presence => true, :on => :create
   accepts_nested_attributes_for :skills
   
+  # def all_received_messages(from_entity)
+  #   all_received_messages = []
+  #   all_received_messages << self.received_messages.includes(:message_recipients).from_entity(from_entity)
+  #   all_received_messages << self.business_received_messages.includes(:message_recipients).from_entity(from_entity)
+  #   # self.businesses.each do |b|
+  #   #   all_received_messages << b.received_messages.includes(:message_recipients).from_entity(from_entity)
+  #   # end
+
+  #   return all_received_messages.flatten
+  # end
+
+  def all_unread_messages
+    all_received_messages = []
+    all_received_messages << self.received_messages.unread_by(self).each{|m|m.to_entity = self}
+    self.businesses.each do |b|
+      all_received_messages << b.received_messages.each{|m|m.to_entity = b}
+    end    
+    return all_received_messages.flatten
+  end
+
+  def all_received_messages(from_entity)
+    all_received_messages = []
+    all_received_messages << self.received_messages.includes(:message_recipients).from_entity(from_entity).each{|m|m.to_entity = self}
+    # all_received_messages << self.business_received_messages.includes(:message_recipients).from_entity(from_entity)
+    self.businesses.each do |b|
+      all_received_messages << b.received_messages.includes(:message_recipients).from_entity(from_entity).each{|m|m.to_entity = b}
+    end
+
+    return all_received_messages.flatten
+  end
+
   def business_associations
     self.connections.where(:type => ["BusinessConnection", "Ownership"])
   end

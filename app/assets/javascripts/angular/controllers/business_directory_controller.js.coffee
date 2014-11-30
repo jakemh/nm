@@ -156,3 +156,14 @@ angular.module("NM").filter "entityFilter", ->
       entities.filter (entity) ->
         return personFilter if entity.type == "User"
         return businessFilter if entity.type == "Business"
+
+angular.module("NM").filter "currentEntityFilter", ->
+  (displayMessages, currentEntity) ->
+    if displayMessages
+      displayMessages.filter (msg) ->
+        if msg.models.post.type == "ReceivedMessage"
+          return msg.models.post.to_entity_id == currentEntity.id &&
+            msg.models.post.to_entity_type == currentEntity.type
+        else return true
+
+        
