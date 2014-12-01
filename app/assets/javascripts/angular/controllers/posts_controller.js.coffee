@@ -58,7 +58,7 @@ angular.module("NM").controller "PostController", [
       ent = AuthService.currentEntitySelection.selected
       entityAttrs = 
           entity_id: ent.id
-          entity_type: ent.type
+          entity_type: ent.type 
 
       postSubmit = angular.extend({}, postSubmit, entityAttrs)
       ent.post("posts", postSubmit).then (response)->

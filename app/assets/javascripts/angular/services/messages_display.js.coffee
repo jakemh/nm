@@ -75,6 +75,8 @@ App.factory "MessagesDisplay", [
           do (post) =>
             # alert post.entity() + " XXX " + JSON.stringify post
             post.entity({current_type: current.type, current_id: current.id}).then (e)=>
+              entity = e
+
               if !(options && options.suppressResponses)
                 post.responses().then (responses) =>
                   responseList = []
@@ -83,20 +85,14 @@ App.factory "MessagesDisplay", [
                     do (response) =>
                       response.entity({current_type: current.type, current_id: current.id}).then (rE) =>
                         responseList.push @displayHash(response, rE)
+                        
+                  list.push @displayHash(post, entity, responseList)
+                  deferred.resolve(list) if list.length == source.length
 
-                          # followerUriType: rE.follower_uri_type
+              else 
+                list.push context.displayHash(post, entity)
 
-                  entity = e
-                  
-                list.push @displayHash(post, entity, responseList)
-
-
-                  # followerUriType: entity.follower_uri_type
-
-
-
-                if list.length == source.length
-                  deferred.resolve(list) 
+              
 
       return deferred.promise
 ] 

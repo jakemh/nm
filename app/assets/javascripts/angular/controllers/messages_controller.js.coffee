@@ -37,11 +37,12 @@ angular.module("NM").controller "MessagesController", [
       $scope.entityList().then (entities)->
         $scope.entityList = entities
         $scope.selectedEntity = entities[0]
+        MessageService.loadUnreadMessages(currentEntity).then (msgs)->
+          MessageService.buildEntityUnreadList($scope.entityList, msgs, currentEntity) 
+        
         $scope.getAllMessages($scope.selectedEntity).then (all)->
           $scope.allMessages = all
-          MessageService.loadUnreadMessages(currentEntity).then (msgs)->
-            MessageService.buildEntityUnreadList($scope.entityList, msgs, currentEntity) 
-     
+          
         # $scope.loadUnreadMessages($scope.entityList)
 
       # $scope.entityList()
@@ -54,7 +55,8 @@ angular.module("NM").controller "MessagesController", [
           MessageService.buildEntityUnreadList($scope.entityList, msgs, currentEntity)
           $scope.MessageService.unreadList = msgs
 
-        msg.models.post.unread = false           
+        msg.models.post.unread = false    
+
     $scope.unread = (msg)->
       msg.models.post.unread
       # $scope.allMessages = $scope.sentMessages.concat $scope.receivedMessages
