@@ -40,7 +40,8 @@ angular.module("NM").controller "MessagesController", [
 
       # $scope.entityList()
      
-
+    $scope.unread = (msg)->
+      msg.models.post.unread
       # $scope.allMessages = $scope.sentMessages.concat $scope.receivedMessages
     $scope.unreadQuantity = (entity)->
       l = entity.unreadMessages.length

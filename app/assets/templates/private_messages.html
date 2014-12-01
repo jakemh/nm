@@ -15,7 +15,7 @@
   </div> -->
   <div class="row" style="height: 100%; overflow: auto; margin: 0">
     <div class="col-sm-6 no-padding no-margin" style="height: 100%; overflow: auto; padding: 0">
-      <ul class="nm__list" ng-repeat="entity in entityList | orderBy:'unreadMessages.length': true">
+      <ul class="nm__list" ng-repeat="entity in entityList | orderBy:'unreadMessages.length':true">
         <li ng-click="selectEntity(entity)" style="height: 55px;" class="nm__list-item nm__list-item--unread" ng-class="{'nm__selected' : Utilities.entityCompare(entity, selectedEntity)}">
           <span class="badge pull-right">{{unreadQuantity(entity)}}</span>
           <div style="width: 50px; height: 50px;" class="left thumb--44">
@@ -38,7 +38,11 @@
       </div>
 
       <ul class="nm__list" ng-repeat="msg in displayMessages | orderBy:'id': true | currentEntityFilter: AuthService.currentEntitySelection.selected">
-        <li  class="nm__list-item">
+        <li 
+        class="nm__list-item"
+        ng-class="{'highlight' : unread(msg)}"
+        >
+          <!-- <div class="arrow"></div> -->
           <div style="width: 50px; height: 50px;" class="left thumb--44">
             <img ng-src="{{msg.thumb}}">
           </div>
