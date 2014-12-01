@@ -14,7 +14,10 @@ angular.module("NM").controller "LeftBarController", [
     $scope.init = () ->
       MessageService.loadUnreadMessages(AuthService.currentUser).then (unreadList)->
         $scope.MessageService.unreadList = unreadList
-        $scope.SideBar.messageCount = unreadList.length
+        # $scope.SideBar.messageCount = $scope.MessageService.unreadList.length
 
+
+    $scope.$watch 'MessageService.unreadList', ->
+      $scope.SideBar.messageCount = $scope.MessageService.unreadList.length
 
 ]

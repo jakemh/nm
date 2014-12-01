@@ -15,7 +15,7 @@ App.factory "MessageService", [
       return true
 
     # sendMessage: ()->
-
+ 
     buildEntityUnreadList: (entities, msgs, currentEntity)->
       for e in entities
         e.unreadMessages = []
@@ -33,10 +33,10 @@ App.factory "MessageService", [
 
     loadUnreadMessages: (entity)->
       deferred = $q.defer();
-
-      entity.receivedMessages(unread: true).then (msgs)->
+      entity.receivedMessages(unread: true).then (msgs)=>
         # currentEntity = AuthService.currentEntitySelection.selected
-        unreadList = msgs
+        # debugger
+        # @unreadList = msgs
         deferred.resolve(msgs)
 
         # $scope.SideBar.messageCount = $scope.unreadList.length
