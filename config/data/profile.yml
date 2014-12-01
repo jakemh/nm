@@ -6,7 +6,7 @@ user-side:
   - title: Message Center
     path: messages_path
     badge: me_message_badge
-    angular: messageCount
+    angular: showMessageCount
 
   - title: Audience
     path: me_audience_index_path

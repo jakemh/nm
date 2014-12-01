@@ -16,7 +16,7 @@
               <%= link_to send_or_nil(bar["path"]) do %>  
               <%= bar["title"] %>
               <% if bar["angular"] %>
-                <span class="badge pull-right">{{SideBar.<%=bar["angular"]%>}}</span>  
+                <span class="badge pull-right">{{SideBar.<%=bar["angular"]%>()}}</span>  
               <% else %>
                 <%= show_badge(quant_from_method(bar["badge"])) %>
               <% end %>

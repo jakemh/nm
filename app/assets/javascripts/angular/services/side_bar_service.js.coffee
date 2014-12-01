@@ -8,6 +8,11 @@ App.factory "SideBar", [
     tabBarDisabled: false
     messageCount: 0
     
+    showMessageCount: ->
+      if @messageCount > 0
+        return @messageCount 
+      else return null
+
     onMapLoad: ->
       @mapLoaded = true
       # @mapLoaded = false
