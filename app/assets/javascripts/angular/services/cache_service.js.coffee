@@ -10,8 +10,9 @@ App.factory "CacheService", [
     modelsToCache: ->
       users: UsersCache
       businesses: BusinessesCache
+      
       # posts: PostsCache
-      # messages: MessagesCache
+      messages: MessagesCache
 
     cacheModelForList: (model, list, params)->
       deferred = $q.defer();

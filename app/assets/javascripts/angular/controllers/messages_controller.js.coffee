@@ -39,7 +39,13 @@ angular.module("NM").controller "MessagesController", [
         $scope.loadUnreadMessages($scope.entityList)
 
       # $scope.entityList()
-     
+    
+    $scope.markAsRead = (msg)->
+      currentEntity = AuthService.currentEntitySelection.selected
+
+      currentEntity.one('received_messages', msg.id).get(read: true).then (newMsg)->
+        $scope.loadUnreadMessages($scope.entityList)
+        msg.models.post.unread = false           
     $scope.unread = (msg)->
       msg.models.post.unread
       # $scope.allMessages = $scope.sentMessages.concat $scope.receivedMessages
@@ -90,8 +96,10 @@ angular.module("NM").controller "MessagesController", [
       $q.all([$scope.getReceivedMessages(entity), $scope.getSentMessages(entity)]).then (all) ->
         # alert JSON.stringify all
         allMessages = []
+
         for array in all
           allMessages = allMessages.concat array
+
         deferred.resolve(allMessages)
       return deferred.promise
 

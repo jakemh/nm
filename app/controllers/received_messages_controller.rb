@@ -13,7 +13,21 @@ class ReceivedMessagesController < MessagesController
   end
 
   def show
-    render json: entity.received_messages.find(params[:id].split(","))
+    @received_message = entity.received_messages.find(params[:id])
+
+    if params[:read]
+      @received_message.mark_as_read! :for => current_user
+    end
+    render json: @received_message
+    # render json: entity.received_messages.find(params[:id].split(","))
   end
+
+  def update
+    @received_message = entity.received_messages.find(params[:id])
+    if params[:read]
+      @received_message.mark_as_read! :for => current_user
+    end
+  end
+  
 
 end
