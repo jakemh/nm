@@ -32,6 +32,8 @@ angular.module("NM").controller "MessagesController", [
     #   newPost.type = ''
     $scope.init = ->
       # $scope.buildUserList()
+      currentEntity = AuthService.currentEntitySelection.selected
+
       $scope.entityList().then (entities)->
         $scope.entityList = entities
         $scope.selectedEntity = entities[0]
