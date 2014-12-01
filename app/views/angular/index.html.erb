@@ -7,7 +7,7 @@
 
   <div class="outer__profile">
     
-    <div class="container__profile container__profile--left" style="overflow: hidden">
+    <div ng-controller="LeftBarController" ng-if="AuthService.currentUser" ng-init="init()" class="container__profile container__profile--left" style="overflow: hidden">
       <div class="sidebar">
         <ul class="nav navbar-nav side-nav side-nav-inverse">
           <% PROFILE["user-side"].each do |bar| %>
@@ -15,7 +15,11 @@
             :class => active_class(send_or_nil(bar["path"], current_user)) do %>
               <%= link_to send_or_nil(bar["path"]) do %>  
               <%= bar["title"] %>
-              <%= show_badge(quant_from_method(bar["badge"])) %>
+              <% if bar["angular"] %>
+                <span class="badge pull-right">{{SideBar.<%=bar["angular"]%>}}</span>  
+              <% else %>
+                <%= show_badge(quant_from_method(bar["badge"])) %>
+              <% end %>
               <% end %>
             <% end %>
           <% end %>

@@ -27,6 +27,7 @@ angular.module("NM").controller "ApplicationController", [
     $scope.tabBarDisabled = true
     $scope.MapService = MapService
     $scope.delegate = SideBar.delegate
+
     $scope.tabs = [
       { title:'Dynamic Title 1', content:'Dynamic content 1' },
       { title:'Dynamic Title 2', content:'Dynamic content 2', disabled: true }

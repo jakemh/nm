@@ -7,8 +7,8 @@ angular.module("NM").controller "MessagesController", [
   "MessagesDisplay"
   "Restangular"
   "SideBar"
-
-  ($scope, $q,  Utilities, AuthService, MessagesDisplay, Restangular, SideBar) ->
+  "MessageService"
+  ($scope, $q,  Utilities, AuthService, MessagesDisplay, Restangular, SideBar, MessageService) ->
     # $scope.messages = []
     $scope.sentMessages = []
     $scope.receivedMessage = []
@@ -20,6 +20,7 @@ angular.module("NM").controller "MessagesController", [
     $scope.displayMessages = []
     $scope.newMessage = {}
     # $scope.userList = []
+    $scope.unreadList = []
     $scope.entityList = []
     $scope.allMessages = []
     # $scope.feedHeadBody = "feed_head_form.html"
@@ -36,7 +37,9 @@ angular.module("NM").controller "MessagesController", [
         $scope.selectedEntity = entities[0]
         $scope.getAllMessages($scope.selectedEntity).then (all)->
           $scope.allMessages = all
-        $scope.loadUnreadMessages($scope.entityList)
+          MessageService.loadUnreadMessages(currentEntity).then (msgs)->
+            MessageService.buildEntityUnreadList($scope.entityList, msgs, currentEntity)      
+        # $scope.loadUnreadMessages($scope.entityList)
 
       # $scope.entityList()
     
@@ -44,33 +47,38 @@ angular.module("NM").controller "MessagesController", [
       currentEntity = AuthService.currentEntitySelection.selected
 
       currentEntity.one('received_messages', msg.id).get(read: true).then (newMsg)->
-        $scope.loadUnreadMessages($scope.entityList)
+        MessageService.loadUnreadMessages(currentEntity).then (msgs)->
+          MessageService.buildEntityUnreadList($scope.entityList, msgs, currentEntity)
+
         msg.models.post.unread = false           
     $scope.unread = (msg)->
       msg.models.post.unread
       # $scope.allMessages = $scope.sentMessages.concat $scope.receivedMessages
+    
     $scope.unreadQuantity = (entity)->
       l = entity.unreadMessages.length
       if l > 0 
         return  l
 
-    $scope.loadUnreadMessages = (entities)->
-      AuthService.currentUser.receivedMessages(unread: true).then (msgs)->
-        currentEntity = AuthService.currentEntitySelection.selected
-
-        for e in entities
-          e.unreadMessages = []
+    # $scope.loadUnreadMessages = (entities)->
+    #   AuthService.currentUser.receivedMessages(unread: true).then (msgs)->
+    #     currentEntity = AuthService.currentEntitySelection.selected
+    #     $scope.unreadList = msgs
+    #     $scope.SideBar.messageCount = $scope.unreadList.length
+    #     for e in entities
+    #       e.unreadMessages = []
          
 
-        for msg in msgs
-          entity = _.find entities, (ent) -> 
-            # debugger
-            ent.id == msg.entity_id && 
-            ent.type == msg.entity_type &&
-            (msg.to_entity_id == currentEntity.id &&
-            msg.to_entity_type == currentEntity.type)
-          if entity
-            entity.unreadMessages.push(msg)
+    #     for msg in msgs
+    #       entity = _.find entities, (ent) -> 
+    #         # debugger
+    #         ent.id == msg.entity_id && 
+    #         ent.type == msg.entity_type &&
+    #         (msg.to_entity_id == currentEntity.id &&
+    #         msg.to_entity_type == currentEntity.type)
+
+    #       if entity
+    #         entity.unreadMessages.push(msg)
 
     $scope.getSentMessages = (entity)->
       deferred = $q.defer();
@@ -179,11 +187,13 @@ angular.module("NM").controller "MessagesController", [
           # console.log "POSTS: " + JSON.stringify posts
 
     $scope.$watch 'AuthService.currentEntitySelection.selected', ->
+      currentEntity = AuthService.currentEntitySelection.selected
       # MessagesDisplay.buildMessageDisplay($scope.sentMessagesDisplay, $scope.sentMessages)
       $scope.allMessages = []
-      $scope.loadUnreadMessages($scope.entityList)
-      $scope.getAllMessages($scope.selectedEntity).then (all)->
-        $scope.allMessages = all
+      MessageService.loadUnreadMessages(currentEntity).then (msgs)->
+        MessageService.buildEntityUnreadList($scope.entityList, msgs, currentEntity)      
+        $scope.getAllMessages($scope.selectedEntity).then (all)->
+          $scope.allMessages = all
 
       # $scope.posts = $scope.post
 

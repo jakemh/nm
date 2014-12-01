@@ -7,6 +7,15 @@ App.factory "PostsCache", [
 
 ]
 
+App.factory "MessagesCache", [
+  "$cacheFactory"
+  "Restangular"
+  ($cacheFactory, Restangular) ->
+    cache: $cacheFactory('messages');
+
+
+]
+
 App.factory "UsersCache", [
   "$cacheFactory"
   "Restangular"

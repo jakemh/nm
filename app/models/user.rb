@@ -76,7 +76,7 @@ class User < ActiveRecord::Base
     all_received_messages = []
     all_received_messages << self.received_messages.unread_by(self).each{|m|m.to_entity = self}
     self.businesses.each do |b|
-      all_received_messages << b.received_messages.each{|m|m.to_entity = b}
+      all_received_messages << b.received_messages.unread_by(self).each{|m|m.to_entity = b}
     end    
     return all_received_messages.flatten
   end
