@@ -45,11 +45,11 @@ class Me::BusinessesController < MeController
     if @business.update_attributes(whitelist)
       # redirect_to [:me, @business]
       flash[:notice] = "Business has been successfully updated."
-      redirect_to user_path
+      redirect_to @business
     else
 
       flash[:error] = "Error. Business was not successfully updated. Alert Justin!"
-      redirect_to user_path
+      redirect_to @business
 
       # render :action => 'new', :layout => 'signup_bar'
     end

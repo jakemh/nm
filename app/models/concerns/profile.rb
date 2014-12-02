@@ -10,7 +10,7 @@ module Profile
 
 
   end
-
+  
   # def profile_photo
   #   if self.profile_photo_id
   #     self.photos.find_by_id(self.profile_photo_id)
@@ -21,6 +21,12 @@ module Profile
     if profile_photo
       profile_photo.image.url(:thumb)
     else
+    end
+  end
+
+  def profile_photo
+    if self.profile_photo_id
+      self.profile_photos.find self.profile_photo_id
     end
   end
 

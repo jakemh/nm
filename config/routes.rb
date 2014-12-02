@@ -37,7 +37,12 @@ Rails.application.routes.draw do
     get '/me/messages', :to => 'angular#index'
   end
 
-
+  namespace :static do 
+    resources :users, :businesses do
+       resources :photos
+       
+       end
+  end
 
   namespace :me do
     get 'message_responses/show'

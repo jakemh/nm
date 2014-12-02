@@ -11,7 +11,7 @@ class PhotosController < ApplicationController
   end
 
   def new
-    @entity = entity
+    @entity = set_entity
     @photo = Photo.new
   end
 
@@ -37,10 +37,11 @@ class PhotosController < ApplicationController
 
     #  end
     @entity = set_entity
-    @photo = @entity.photos.build(image: whitelist[:file], type: whitelist[:type])
+    @photo = build_photo(@entity)
+
     
     if @photo.save
-
+      byebug
       # respond_to do |format|
       #   format.js 
       # end
@@ -58,9 +59,14 @@ class PhotosController < ApplicationController
   def destroy
   end
 
-  private
+  protected
+
+  def build_photo(entity)
+    return entity.photos.build(image: whitelist[:file], type: whitelist[:type])
+  end
+  
   def whitelist
-    return params.require(:photo).permit(:image, :type) if params[:photo]
+    return params.require(:photo).permit(:file, :type) if params[:photo]
     return params.permit(:file, :type) if params[:file]
 
   end

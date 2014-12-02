@@ -1,7 +1,8 @@
-<%= form_for([:static,@entity, @photo], :html => { :multipart => true, :id => "form-imageupload"  }) do |f| %>
+<%= form_for([:static, @entity, @photo], :html => { :multipart => true, :id => "form-imageupload"  }) do |f| %>
     
     <div class="file-upload button__form button__form--full">
       <%= f.hidden_field :type, :value => "ProfilePhoto" %>
+      <%= f.hidden_field :angular, :value => false %>
 
       <%= f.file_field :file, :class => "upload " %>
       <div class="text__button_form">UPLOAD FILE FROM COMPUTER

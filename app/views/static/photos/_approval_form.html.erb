@@ -1,0 +1,5 @@
+  <%= form_for(@path || [:me, @entity].compact, :html => { :multipart => true }) do |f| %>
+     <%= f.hidden_field :profile_photo_id, :value => @photo.id %>
+     <%= f.submit "MAKE PROFILE PHOTO", :class => "button__form button__form--full" %>
+ 
+    <% end %>
