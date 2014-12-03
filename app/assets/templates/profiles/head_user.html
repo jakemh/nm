@@ -1,6 +1,8 @@
 <div class="profile__head thirds">
   <div ng-click="addProfilePhoto()"  ng-if="isEditable"class="profile__photo-edit">
-    <a href > <i class="fa fa-upload"> </i> Edit Profile Photo</a>
+    <div class="profile__head-link nm__link" style="font-size: 1em;">
+     <i class="fa fa-upload"> </i> Edit Profile Photo
+   </div>
   </div>
   <div class="profile__photo column-left">
     <img ng-src="{{profileEntity.thumb}}">

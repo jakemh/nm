@@ -3,7 +3,7 @@ module Search
 
   included do
     has_many :locations, :as => :locatable, :dependent => :destroy
-    after_save :add_location
+    after_save :add_location, :if => :zip_changed?
   end
 
   def add_location
@@ -13,4 +13,5 @@ module Search
   def location
     self.locations.last
   end
+
 end

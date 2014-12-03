@@ -18,6 +18,7 @@ class UsersController < ApplicationController
     whitelist.delete_if { |key, value| value.blank? }
     name = params[:name]
     name_hash = {}
+    @entity = entity
     skills = params.permit(skills: [:name])["skills"]
   
     if !name.blank?
@@ -25,11 +26,12 @@ class UsersController < ApplicationController
       name_hash[:first_name] = name_array[0]
       name_hash[:last_name] = name_array[1..-1].join("\s")
     end
-    entity.update_attributes(whitelist.merge(name_hash))
-    entity.skills.destroy_all
+    @entity.update_attributes(whitelist.merge(name_hash))
+    @entity.skills.destroy_all
     # entity.skills.build(params.permit(skills: [:name]))
-    entity.skills.build(skills)
-    entity.save
+    @entity.skills.build(skills)
+    @entity.save
+
     render json: entity
   end
 
