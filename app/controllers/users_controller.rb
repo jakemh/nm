@@ -16,23 +16,28 @@ class UsersController < ApplicationController
 
   def update
     whitelist.delete_if { |key, value| value.blank? }
+    @entity = entity
     name = params[:name]
     name_hash = {}
-    @entity = entity
-    skills = params.permit(skills: [:name])["skills"]
-  
+    new_skills = params.permit(skills: [:name])["skills"]
+    old_skills = @entity.skills.map{|s| {"name" => s.name} }  
+    deleted_skills = old_skills - new_skills
+    added_skills = new_skills - old_skills
+    deleted_entity_skills = @entity.skills.where(name: deleted_skills.map{ |ds| ds["name"]})
+    byebug
     if !name.blank?
       name_array = name.split("\s")
       name_hash[:first_name] = name_array[0]
       name_hash[:last_name] = name_array[1..-1].join("\s")
     end
-    @entity.update_attributes(whitelist.merge(name_hash))
-    @entity.skills.destroy_all
-    # entity.skills.build(params.permit(skills: [:name]))
-    @entity.skills.build(skills)
-    @entity.save
 
-    render json: entity
+    @entity.update_attributes(whitelist.merge(name_hash))
+    @entity.skills.destroy deleted_entity_skills
+    @entity.skills.build added_skills
+    # entity.skills.build(params.permit(skills: [:name]))
+    # @entity.skills.build(skills)
+    @entity.save
+    render json: @entity
   end
 
   def show
