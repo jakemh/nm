@@ -28,6 +28,8 @@ angular.module("NM").controller "MessagesController", [
 
     $scope.feedCornerPartial = "feed_body_comment.html"
     $scope.SideBar = SideBar
+    SideBar.rightBarTemplate = "blank.html"  
+
     # $scope.headOuterInit = (newPost, entity) ->
     #   newPost.type = ''
     $scope.init = ->

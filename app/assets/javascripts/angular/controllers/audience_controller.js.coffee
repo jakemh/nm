@@ -10,8 +10,9 @@ angular.module("NM").controller "AudienceController", [
     $scope.feedContentPartial = "feed_body_audience.html"
     $scope.AuthService = AuthService
     $scope.SideBar = SideBar
-    SideBar.rightBarTemplate = "right_bar_business.html"        
-    
+    # SideBar.rightBarTemplate = "right_bar_business.html"        
+    SideBar.rightBarTemplate = "blank.html"  
+
     # $scope.loadMap()
     SideBar.tabBarVisible = true 
     $scope.$watch "SideBar.mapLoaded", ->
