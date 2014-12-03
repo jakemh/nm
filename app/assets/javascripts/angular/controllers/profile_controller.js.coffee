@@ -77,9 +77,57 @@ angular.module("NM").controller "ProfileController", [
           MessagesDisplay.buildMessageDisplay(null, $scope.posts).then (list)->
             $scope.displayList = list
 
-    $scope.photoUploaded = (message)->
+    # $scope.photoUploaded = (message)->
+    #   $("#js__cover-photo-modal").modal('hide')
+    #   $scope.profileEntity.cover_photo_url = message
+
+    $scope.uploadedProfilePhotos = []
+    $scope.uploadedCoverPhotos = []
+
+    $scope.profilePhotoUploaded = (photo)->
+      # $scope.profileEntity.cover_photo_url = photo
+      # $scope.profileEntity.thumb = photo
+      # alert JSON.stringify {"TEST": [1,3,3]}
+      photo = JSON.parse photo
+      key = Object.keys(photo)[0];
+      $scope.uploadedProfilePhotos.push(photo[key])
+
+    $scope.approveProfilePhoto = (photo) ->
+      $scope.profileEntity.profile_photo_id = photo.id 
+      $scope.profileEntity.put().then (entity)->
+        $scope.profileEntity.thumb = entity.thumb
+      $("#js__profile-photo-modal").modal('hide')
+
+    $scope.approveCoverPhoto = (photo) ->
+      $scope.profileEntity.cover_photo_id = photo.id 
+      $scope.profileEntity.put().then (entity)->
+        $scope.profileEntity.cover_photo_url = entity.cover_photo_url
       $("#js__cover-photo-modal").modal('hide')
-      $scope.profileEntity.cover_photo_url = message
+
+    $scope.coverPhotoUploaded = (photo)->
+      photo = JSON.parse photo
+      key = Object.keys(photo)[0];
+      
+      $scope.uploadedCoverPhotos.push(photo[key])
+
+    $scope.coverPhotoModalInit = () ->
+      photoType: 'CoverPhoto'
+      message: "Upload cover photo here"
+      successCallback: $scope.coverPhotoUploaded
+      approval: $scope.approveCoverPhoto
+      photoArray: $scope.uploadedCoverPhotos
+
+    $scope.profilePhotoModalInit = () ->
+      photoType: 'ProfilePhoto'
+      message: "Upload profile photo here"
+      successCallback: $scope.profilePhotoUploaded
+      approval: $scope.approveProfilePhoto
+      photoArray: $scope.uploadedProfilePhotos
+
+
+    $scope.addProfilePhoto = ->
+      $("#js__profile-photo-modal").modal()
+      return true
 
     $scope.addCoverPhoto = ->
       $("#js__cover-photo-modal").modal()
@@ -223,6 +271,8 @@ angular.module("NM").controller "ProfileController", [
       newPost.parent_id = entity.id
       # newPost.entity_id = AuthService.currentEntitySelection.selected.id
       # newPost.entity_type = AuthService.currentEntitySelection.selected.type
+    $scope.uploadedPhotos = []
+
 
     $scope.sendPost = (postObj, postSubmit)->
       ent = AuthService.currentEntitySelection.selected

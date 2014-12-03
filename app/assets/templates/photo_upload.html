@@ -1,24 +1,27 @@
-<div flow-init="{target: profileEntity.uri+'/photos.json', testChunks:false, query:{type: 'CoverPhoto'}}"
+<div flow-init="{target: profileEntity.uri+'/photos.json', testChunks:false, query:{type: delegate.photoType}}"
      flow-files-submitted="$flow.upload()"
-     flow-file-success="photoUploaded($message)">
+     flow-file-success="delegate.successCallback($message)">
 
   <div flow-drop class="photo-up" 
   flow-drag-enter="class='photo-up photo-up--drag'"
   flow-drag-leave="style={}"
-  ng-class="class"
        >
 
-    Drag cover photo here
+    {{delegate.message}}
   </div>
   <input type="file" flow-btn/>
-  Input OR Other element as upload button
-  <span class="btn" flow-btn>Upload File</span>
 
-  <table>
-    <tr ng-repeat="file in $flow.files">
-        <td>{{$index+1}}</td>
-        <td>{{file.name}}</td>
-        <td>{{file.msg}}</td>
-    </tr>
-  </table>
+  <div class="thumb--100" ng-repeat="photo in delegate.photoArray">
+    <div class="row">
+      <div class="col-sm-6">
+        <img ng-src="{{photo.url}}">
+      </div>
+      <div class="left">
+        <button ng-click="delegate.approval(photo)" class="btn btn-primary">
+          Approve? 
+        </button>
+      </div>
+    </div>
+  </div>
+
 </div>

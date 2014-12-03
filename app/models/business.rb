@@ -44,7 +44,13 @@ class Business < ActiveRecord::Base
   # validates :industry, :presence => trues
 
   accepts_nested_attributes_for :tags, :photos
-  
+  def cover_photo
+    if self.cover_photo_id
+     
+      self.cover_photos.find self.cover_photo_id
+    end
+  end
+
   def connection_with(entity)
     if entity.class.name == "Business"
       self.connections.where(:type => [INTRA_CONNECTION], :connect_to_id => entity.id)

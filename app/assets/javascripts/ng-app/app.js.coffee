@@ -40,7 +40,7 @@ window.App = angular.module("NM", [
   RestangularProvider.addResponseInterceptor (data, operation, what, url, response, deferred) ->
     key = Object.keys(data)[0];
     extractedData = data  
-
+    # alert JSON.stringify data
     if key == "user" || key == "business" || key == "tags"
       extractedData = data[key]
     

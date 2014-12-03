@@ -7,6 +7,7 @@ module Entity
 
  def profile_photo
    if self.profile_photo_id
+    
      self.profile_photos.find self.profile_photo_id
    end
  end

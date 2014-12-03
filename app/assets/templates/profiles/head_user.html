@@ -1,41 +1,43 @@
 <div class="profile__head thirds">
-    <div class="user-prof__cover-photo column-left">
-      <img ng-src="{{profileEntity.thumb}}">
+  <div ng-click="addProfilePhoto()"  ng-if="isEditable"class="profile__photo-edit">
+    <a href > <i class="fa fa-upload"> </i> Edit Profile Photo</a>
+  </div>
+  <div class="profile__photo column-left">
+    <img ng-src="{{profileEntity.thumb}}">
+  </div>
+
+  <div class="user-prof__head-content column-middle">
+    <div class="user-prof__name">
+      <a href editable-text="profileEntity.name" ng-if="isEditable">  {{profileEntity.name || "Enter a name!"}}
+        </a>
+      <span ng-if="!isEditable">{{profileEntity.name}}</span>
+
     </div>
 
-    <div class="user-prof__head-content column-middle">
-      <div class="user-prof__name">
-        <a href editable-text="profileEntity.name" ng-if="isEditable">  {{profileEntity.name || "Enter a name!"}}
-        </a>
-        <span ng-if="!isEditable">{{profileEntity.name}}</span>
-
-      </div>
-
-      <div class="user-prof__location">
-        <a href editable-text="profileEntity.city" ng-if="isEditable">   
+    <div class="user-prof__location">
+      <a href editable-text="profileEntity.city" ng-if="isEditable">   
         {{profileEntity.city || "Enter a city!"}}
        </a>
-        <span ng-if="!isEditable">{{profileEntity.city}}</span>
-      </div>
-
-      <div class="user-prof__followers">
-        {{profileEntity.follower_count}} Followers
-      </div>
+      <span ng-if="!isEditable">{{profileEntity.city}}</span>
     </div>
 
-    <div class="user-prof__head-buttons column-right">
-      <div ng-if="!belongsToUser()">
-        <button ng-click="MessageService.callModal('js-msg__modal'); MessageService.setMessageEntity(profileEntity)" class="button__btn button__btn--gray button__btn--left button__btn--100">
-          Message
-        </button>
-        <button ng-disabled="isFollowing" ng-click="AuthService.followerHandle2(profileEntity, isFollowing, followerCallback)" style="float: right; text-transform: capitalize" class="button__btn  button__btn--right button__btn--right--padding button__btn--100" ng-class="{'button__btn--light-gray' : isFollowing, 'button__btn--orange' : !isFollowing}">{{followButtonText}}
-        </button>
-
-      </div>
-
-      <div ng-if="belongsToUser()">
-        <button ng-click="editProfile()" style="float: left" class="js-msg__button button__btn button__btn--gray button__btn--left  profile__btn">{{editProfileText}}</button>
-      </div>
+    <div class="user-prof__followers">
+      {{profileEntity.follower_count}} Followers
     </div>
   </div>
-  
+
+  <div class="user-prof__head-buttons column-right">
+    <div ng-if="!belongsToUser()">
+      <button ng-click="MessageService.callModal('js-msg__modal'); MessageService.setMessageEntity(profileEntity)" class="button__btn button__btn--gray button__btn--left button__btn--100">
+        Message
+      </button>
+      <button ng-disabled="isFollowing" ng-click="AuthService.followerHandle2(profileEntity, isFollowing, followerCallback)" style="float: right; text-transform: capitalize" class="button__btn  button__btn--right button__btn--right--padding button__btn--100" ng-class="{'button__btn--light-gray' : isFollowing, 'button__btn--orange' : !isFollowing}">{{followButtonText}}
+      </button>
+
+    </div>
+
+    <div ng-if="belongsToUser()">
+      <button ng-click="editProfile()" style="float: left" class="js-msg__button button__btn button__btn--gray button__btn--left  profile__btn">{{editProfileText}}</button>
+    </div>
+  </div>
+</div>

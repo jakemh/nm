@@ -1,4 +1,25 @@
 @import "nm-base";
+.profile__photo{
+  // float: left;
+
+  margin: auto;
+  height: 100%;
+  padding: 25px;
+  position: relative;
+}
+
+.profile__photo img{
+  height: 100%;
+  // float: left;
+}
+
+.profile__photo-edit{
+  top: 3px;
+  left: 25px;
+  font-size: 1.2em;
+  position: absolute;
+  z-index: 100;
+}
 
 .top__search{
   width: 100px;

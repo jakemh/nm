@@ -41,11 +41,10 @@ class PhotosController < ApplicationController
 
     
     if @photo.save
-      byebug
       # respond_to do |format|
       #   format.js 
       # end
-      render :json => @photo.image.url(:medium)
+      render :json => @photo
     else
     end
   end

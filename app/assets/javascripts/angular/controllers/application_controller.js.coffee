@@ -18,8 +18,10 @@ angular.module("NM").controller "ApplicationController", [
   "SideBar"
   "MapService"
   "Utilities"
+  "ProfilePhoto"
+  "CoverPhoto"
 
-  ($scope, User, SentMessage, ReceivedMessage, Follower, Business, RestEntity, Following, Post, Review, ReviewService, Response, MessageResponse, MessageService, AuthService, Restangular, SideBar, MapService, Utilities) ->
+  ($scope, User, SentMessage, ReceivedMessage, Follower, Business, RestEntity, Following, Post, Review, ReviewService, Response, MessageResponse, MessageService, AuthService, Restangular, SideBar, MapService, Utilities, ProfilePhoto, CoverPhoto) ->
     $scope.Utilities = Utilities
     $scope.MessageService = MessageService
     $scope.AuthService = AuthService
@@ -27,7 +29,7 @@ angular.module("NM").controller "ApplicationController", [
     $scope.tabBarDisabled = true
     $scope.MapService = MapService
     $scope.delegate = SideBar.delegate
-
+    
     $scope.tabs = [
       { title:'Dynamic Title 1', content:'Dynamic content 1' },
       { title:'Dynamic Title 2', content:'Dynamic content 2', disabled: true }

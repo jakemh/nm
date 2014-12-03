@@ -81,6 +81,6 @@ class UsersController < ApplicationController
   end
 
   def whitelist
-    params.require(:user).permit(:name, :city, :about, :work, :website)
+    params.require(:user).permit(:name, :city, :about, :work, :website, :profile_photo_id)
   end
 end
