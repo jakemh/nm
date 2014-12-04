@@ -10,7 +10,14 @@
       </div>
       <div class="modal-body">
         <div class="feed feed--tall">
-          <div ng-include="'feed_head_outer.html'" ng-init="newPost = newPostMain; headOuterInit(newPost); feedHeadBody = messageForm; entity = profileEntity"></div>
+          <div class="msg__form">
+            <div ng-init="
+                buttonTitle='Send';
+                placeHolder='Enter a message';
+                newPost={}
+                " ng-include="'forms/post/form.html'">
+            </div>
+          </div>
         </div>
       </div>
 
