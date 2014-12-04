@@ -71,8 +71,12 @@ App.factory "RestangularPlus", [
         Restangular.several(model, ids).getList(params).then (list) ->
 
           for entity in list
-            cache.put(entity.id, entity)
-            returnList.push(cache.get(entity.id))
+            addEntity = cache.get(entity.id)
+            if addEntity
+              returnList.push(addEntity)
+            else 
+              cache.put(entity.id, entity)
+              returnList.push(cache.get(entity.id))
 
           deferred.resolve(returnList)
 
@@ -101,8 +105,9 @@ App.factory "RestangularPlus", [
               returnList.push(cachedObject)
             else
               cache.put(entity.id, entity) 
-              returnList.push(entity)
-          else returnList.push(entity)
+              returnList.push(cache.get(entity.id))
+          else 
+            returnList.push(entity)
         deferred.resolve(returnList)
 
       return deferred.promise
@@ -126,7 +131,7 @@ App.factory "RestangularPlus", [
               returnList.push(cachedObject)
             else
               cache.put(entity.id, entity) 
-              returnList.push(entity)
+              returnList.push(cache.get(entity.id))
           
         deferred.resolve(returnList)
 
