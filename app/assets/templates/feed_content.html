@@ -14,10 +14,9 @@
     <div class="feed__content-top">
       <a ng-href="{{entity.uri}}">{{entity.name}}</a>
     </div>
-    <div class="feed__content-body">
-      <div ng-bind-html="entity.content | linky:'_blank'"></div>
+    <div linkify class="feed__content-body">
 
-      <!-- {{entity.content}} -->
+      {{entity.content}}
     </div>
     <div class="feed__content-corner">
       <div class="row">

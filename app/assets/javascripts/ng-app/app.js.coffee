@@ -18,6 +18,7 @@ window.App = angular.module("NM", [
   "flow"
   "ng-rails-csrf"
   "ngTouch"  
+  "linkify"
 
   "vr.directives.slider"
 ]).config ($routeProvider, $locationProvider, $httpProvider, RestangularProvider) ->
