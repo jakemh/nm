@@ -19,7 +19,7 @@ App.factory "MessageService", [
     buildEntityUnreadList: (entities, msgs, currentEntity)->
       for e in entities
         e.unreadMessages = []
-       
+ 
       for msg in msgs
         entity = _.find entities, (ent) -> 
           # debugger

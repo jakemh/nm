@@ -1,5 +1,7 @@
 <div tyle="height: 100%; overflow: auto" ng-controller="MessagesController" ng-if="AuthService.currentEntitySelection.selected" ng-init="init()">
-
+  <div ng-repeat="entity in AuthService.entityOptions">
+    {{entity.name}} : {{entity.unreadMessages}}
+  </div>
   <!--  <h3>Sent Messages</h3>
   <div ng-repeat="entity in sentMessagesDisplay | orderBy:'id': true" ng-init="newPost = newMessage; sentMessagesInit(newPost)">
   

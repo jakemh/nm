@@ -33,18 +33,19 @@ angular.module("NM").controller "ApplicationController", [
     $scope.tabs = [
       { title:'Dynamic Title 1', content:'Dynamic content 1' },
       { title:'Dynamic Title 2', content:'Dynamic content 2', disabled: true }
-    ];
+    ]
+
     $scope.ReviewService = ReviewService
+    
     $scope.tabItemClick = (entity)->
       AuthService.currentEntitySelection.selected = entity
 
     $scope.sideBarLoaded = false
+
     $scope.init = () ->
       AuthService.user().then (user)->
         AuthService.currentUser = user
-    
- 
-
+  
     $scope.init()
     # $scope.rightBarTemplate = "right_bar_business.html"        
 
@@ -52,7 +53,6 @@ angular.module("NM").controller "ApplicationController", [
       if AuthService.currentUser
         AuthService.currentUser.businesses().then (businesses)->
 
-          # alert JSON.stringify businesses
           AuthService.entityOptions = [AuthService.currentUser]
           AuthService.currentEntitySelection.selected = AuthService.entityOptions[0]
 

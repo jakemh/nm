@@ -24,6 +24,8 @@ angular.module("NM").factory "RestEntity", [
       @getListPlus("items")   
 
     items: []
+    unreadMessages: []
+
     # sentMessages: (entity) ->
     #   alert JSON.stringify 
     #   @getList "sent_messages",

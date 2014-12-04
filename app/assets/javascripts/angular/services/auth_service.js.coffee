@@ -1,6 +1,7 @@
 App.factory "AuthService", [
-  "Restangular"
-  (Restangular) ->
+  "RestangularPlus"
+
+  (RestangularPlus) ->
     currentUser: null
     userBusinesses: []
     currentEntitySelection: {}
@@ -12,8 +13,7 @@ App.factory "AuthService", [
 
     # selected: @currentEntitySelection.selected
     user: () ->
-      Restangular.one('users', "current").get()
-
+      RestangularPlus.getModel("users", "current")
 
     followerUri: (other)->
       cur =  @currentEntitySelection.selected
@@ -35,7 +35,7 @@ App.factory "AuthService", [
         cur.post('followers', params).then ()->
           entity.removeFromCache()
           callback()
-          
+           
     followerHandle: (entity, callback)->
       followerType = entity.followerUriType
       # cur =  @currentEntitySelection.selected

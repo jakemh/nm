@@ -11,12 +11,13 @@ angular.module("NM").factory "User", [
       angular.extend self, RestEntity
 
       self.businesses = ->
-        self.getListPlus("businesses")
-      
+        # self.getListPlus("businesses")
+        
+        self.severalPlus("businesses", self.business_ids)
+
       # self.getSkills = ->
       #   self.getListPlus("items")
 
-      self.unreadMessages = []
       # self.items = []
       return self
 ]

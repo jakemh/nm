@@ -8,7 +8,9 @@ angular.module("NM").controller "MessagesController", [
   "Restangular"
   "SideBar"
   "MessageService"
-  ($scope, $q,  Utilities, AuthService, MessagesDisplay, Restangular, SideBar, MessageService) ->
+  "RestangularPlus"
+  "UsersCache"
+  ($scope, $q,  Utilities, AuthService, MessagesDisplay, Restangular, SideBar, MessageService, RestangularPlus, UsersCache) ->
     # $scope.messages = []
     $scope.sentMessages = []
     $scope.receivedMessage = []
@@ -29,11 +31,14 @@ angular.module("NM").controller "MessagesController", [
     $scope.feedCornerPartial = "feed_body_comment.html"
     $scope.SideBar = SideBar
     SideBar.rightBarTemplate = "blank.html"  
+    
 
     # $scope.headOuterInit = (newPost, entity) ->
     #   newPost.type = ''
     $scope.init = ->
       # $scope.buildUserList()
+
+ 
       currentEntity = AuthService.currentEntitySelection.selected
 
       $scope.entityList().then (entities)->
@@ -133,22 +138,25 @@ angular.module("NM").controller "MessagesController", [
 
 
     $scope.userList = ->
-      deferred = $q.defer();
+      # deferred = $q.defer();
+      return RestangularPlus.getListPlus2("users")
+      # Restangular.all('users').getList().then (users) ->
+      #   # $scope.userList = users
+      #   deferred.resolve(users)
 
-      Restangular.all('users').getList().then (users) ->
-        # $scope.userList = users
-        deferred.resolve(users)
-      return deferred.promise
+      # return deferred.promise
 
         # $scope.selectedEntity = users[0]
 
     $scope.businessList = ->
-      deferred = $q.defer();
+      # deferred = $q.defer();
 
-      Restangular.all('businesses').getList().then (businesses) ->
-        # $scope.userList = users
-        deferred.resolve(businesses)
-      return deferred.promise
+      # Restangular.all('businesses').getList().then (businesses) ->
+      #   # $scope.userList = users
+      #   deferred.resolve(businesses)
+      # return deferred.promise
+      return RestangularPlus.getListPlus2("businesses")
+
 
         # alert Utilities.entityCompare()
     $scope.sentMessageInit = (newPost)->
