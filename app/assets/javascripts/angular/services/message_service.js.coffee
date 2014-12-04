@@ -15,21 +15,33 @@ App.factory "MessageService", [
       return true
 
     # sendMessage: ()->
- 
+    buildUserEntityUnreadList: (messages, userEntities)->
+      for e in userEntities
+        e.ownedUnreadMessages = []
+      for msg in messages 
+        for e in userEntities
+          if msg.to_entity_id == e.id && msg.to_entity_type == e.type
+            e.ownedUnreadMessages.push(msg)
+        
+      #   console.log  e.ownedUnreadMessages
+      # debugger
+      # for entity in userEntities
+
+
     buildEntityUnreadList: (entities, msgs, currentEntity)->
       for e in entities
         e.unreadMessages = []
- 
+        
       for msg in msgs
-        entity = _.find entities, (ent) -> 
+        assignToEntity = _.find entities, (e) -> 
           # debugger
-          ent.id == msg.entity_id && 
-          ent.type == msg.entity_type &&
+          e.id == msg.entity_id && 
+          e.type == msg.entity_type &&
           (msg.to_entity_id == currentEntity.id &&
           msg.to_entity_type == currentEntity.type)
 
-        if entity
-          entity.unreadMessages.push(msg)
+        if assignToEntity
+          assignToEntity.unreadMessages.push(msg)
 
     loadUnreadMessages: (entity)->
       deferred = $q.defer();

@@ -15,6 +15,9 @@ angular.module("NM").factory "User", [
         
         self.severalPlus("businesses", self.business_ids)
 
+      self.ownedUnreadMessages = []
+      self.items = []
+      self.unreadMessages = []
       # self.getSkills = ->
       #   self.getListPlus("items")
 
