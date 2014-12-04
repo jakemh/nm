@@ -1,7 +1,8 @@
 App.factory "AuthService", [
+  "$q"
   "RestangularPlus"
 
-  (RestangularPlus) ->
+  ($q, RestangularPlus) ->
     currentUser: null
     userBusinesses: []
     currentEntitySelection: {}
@@ -10,6 +11,7 @@ App.factory "AuthService", [
 
     entityOptions: []
     currentFollowers: []
+
 
     # selected: @currentEntitySelection.selected
     user: () ->
@@ -21,6 +23,18 @@ App.factory "AuthService", [
         
       else 
         null
+
+    ownedEntities: ->
+      deferred = $q.defer();
+      returnList = [@currentUser]
+      @currentUser.businesses().then (businesses)->
+        
+        for business in businesses
+          returnList.push(business)
+          
+        deferred.resolve(returnList)
+
+      return deferred.promise
 
     followerHandle2: (entity, isFollowing, callback)->
       followerType = entity.follower_uri_type

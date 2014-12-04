@@ -18,12 +18,14 @@ App.factory "MessageService", [
     buildUserEntityUnreadList: (messages, userEntities)->
       for e in userEntities
         e.ownedUnreadMessages = []
+        
       for msg in messages 
         for e in userEntities
           if msg.to_entity_id == e.id && msg.to_entity_type == e.type
             e.ownedUnreadMessages.push(msg)
-        
-      #   console.log  e.ownedUnreadMessages
+            console.log e.name
+            console.log  _.map(e.ownedUnreadMessages, (item)-> item.id)
+
       # debugger
       # for entity in userEntities
 

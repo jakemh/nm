@@ -2,12 +2,12 @@
   <div
     ng-disabled="SideBar.tabBarDisabled"
     class="tab-bar__item" 
-    ng-repeat="entity in AuthService.entityOptions"
+    ng-repeat="entity in ownedEntities"
     ng-class="{'tab-bar__item--selected' : Utilities.entityCompare(entity, AuthService.currentEntitySelection.selected)}"
     ng-click="SideBar.tabBarDisabled || tabItemClick(entity)"
     >
     {{entity.name}}
-    <span ng-show="entity.ownedUnreadMessages.length>0">
+    <span>
        ({{entity.ownedUnreadMessages.length}})
   </span>
   </div>

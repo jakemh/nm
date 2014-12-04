@@ -63,6 +63,7 @@ App.factory "RestangularPlus", [
 
         for id, i in ids
           cachedModel = cache.get(id)
+
           if cachedModel
             returnList.push(cachedModel)
             ids.splice(i, 1) if (i > -1) 
@@ -71,8 +72,8 @@ App.factory "RestangularPlus", [
 
           for entity in list
             cache.put(entity.id, entity)
-            returnList.push(entity)
-            
+            returnList.push(cache.get(entity.id))
+
           deferred.resolve(returnList)
 
         return deferred.promise

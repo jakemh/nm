@@ -29,14 +29,14 @@ angular.module("NM").controller "ApplicationController", [
     $scope.tabBarDisabled = true
     $scope.MapService = MapService
     $scope.delegate = SideBar.delegate
-    
+    $scope.ownedEntities = []
     $scope.tabs = [
       { title:'Dynamic Title 1', content:'Dynamic content 1' },
       { title:'Dynamic Title 2', content:'Dynamic content 2', disabled: true }
     ]
 
     $scope.ReviewService = ReviewService
-    
+
     $scope.tabItemClick = (entity)->
       AuthService.currentEntitySelection.selected = entity
 
@@ -45,8 +45,9 @@ angular.module("NM").controller "ApplicationController", [
     $scope.init = () ->
       AuthService.user().then (user)->
         AuthService.currentUser = user
+        AuthService.ownedEntities().then (entities) ->
+          $scope.ownedEntities = entities
   
-    $scope.init()
     # $scope.rightBarTemplate = "right_bar_business.html"        
 
     $scope.$watch 'AuthService.currentUser', ->
