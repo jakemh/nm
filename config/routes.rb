@@ -72,12 +72,15 @@ Rails.application.routes.draw do
   end
 
   resources :businesses do
-    resources :tags
+    # resources :tags
+    resources :items, :controller => :tags
     resources :reviews
   end
 
   resources :users do
-    resources :skills
+    # resources :skills
+    resources :items, :controller => :skills
+
     resources :businesses, :controller => :user_businesses
   end
 

@@ -25,6 +25,8 @@ class Business < ActiveRecord::Base
   has_many :business_connections
   has_many :users, :through => :ownerships
   has_many :tags, :as => :taggable
+  has_many :items, :class_name => "Tag", as: :taggable
+
   has_many :intra_connections, class_name: INTRA_CONNECTION 
   has_many :inter_connections, class_name: INTER_CONNECTION
   has_many :inverse_intra_connections, class_name: INTRA_CONNECTION, foreign_key: :connect_to_id

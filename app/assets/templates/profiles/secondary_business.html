@@ -49,13 +49,13 @@
 
       <p>Tags:</p>
       <div ng-if="profileEntity">
-        <tags-input ng-hide="!isEditable" ng-model="profileEntity.tags" display-property="name"></tags-input>
+        <tags-input ng-hide="!isEditable" ng-model="profileEntity.items" display-property="name"></tags-input>
       </div>
       <!-- <span ng-if="!isEditable">SKILLZ</span> -->
       <div>
         <div class="profile__skill">
-          <div ng-if="!isEditable" class="profile__skill-item" ng-repeat="tag in profileEntity.tags">
-            {{tag.name}}
+          <div ng-if="!isEditable" class="profile__skill-item" ng-repeat="item in profileEntity.items">
+            {{item.name}}
             <!-- <span class="profile__skill">{{skill.name}}</span> -->
           </div>
         </div>

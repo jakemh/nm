@@ -14,13 +14,13 @@ angular.module("NM").factory "Business", [
       self.reviews = ->
         self.getListPlus("reviews")
 
-      self.getTags = ->
-        self.getListPlus("tags")
+      # self.getItems = ->
+      #   self.getListPlus("items")
       
       self.review = (params) ->
         @post('reviews', {score: params.score, content: params.content})
 
-      self.tags = []
+      # self.items = []
       self.unreadMessages = []
 
       return self

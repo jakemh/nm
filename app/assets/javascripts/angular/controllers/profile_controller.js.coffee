@@ -137,20 +137,19 @@ angular.module("NM").controller "ProfileController", [
       $scope.profileEntity.flag().then (response)->
         $scope.sentFlag = true  
 
-    # $scope.skills = []
     $scope.initRightBarExternal = ->
       $scope.loadBusinesses()
 
     $scope.initSecondaryBox = () ->
-      $scope.profileEntity.getSkills().then (skills) -> 
+      $scope.profileEntity.getItems().then (items) -> 
 
-        $scope.profileEntity.skills = skills
+        $scope.profileEntity.items = items
     
     $scope.initSecondaryBoxBusiness = () ->
       $scope.profileEntity.owner().then (o)->
         $scope.businessOwner = o
-      $scope.profileEntity.getTags().then (tags) -> 
-        $scope.profileEntity.tags = _.map tags, (item) -> item.tags
+      $scope.profileEntity.getItems().then (items) -> 
+        $scope.profileEntity.items = items
 
     $scope.buildReviewList = () ->
       $scope.profileEntity.reviews().then (reviews)->

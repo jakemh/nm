@@ -1,4 +1,4 @@
-class BusinessesController < ApplicationController
+class BusinessesController < EntityController
   layout "profile"
   include FeedConcern
   include ProfileConcern
@@ -19,15 +19,19 @@ class BusinessesController < ApplicationController
   end
 
   def update
-    whitelist.delete_if { |key, value| value.blank? }
-    name_hash = {}
-    tags = params.permit(tags: [:name])["tags"]
-    entity.update_attributes(whitelist)
-    entity.tags.destroy_all
-    # entity.skills.build(params.permit(skills: [:name]))
-    entity.tags.build(tags)
-    entity.save
-    render json: entity
+    @entity = update_entity
+    render json: @entity
+
+    # whitelist.delete_if { |key, value| value.blank? }
+    # name_hash = {}
+    # @entity = entity
+    # tags = params.permit(tags: [:name])["tags"]
+    # @entity.update_attributes(whitelist)
+    # @entity.tags.destroy_all
+    # # entity.skills.build(params.permit(skills: [:name]))
+    # @entity.tags.build(tags)
+    # @entity.save
+    # render json: @entity
   end
 
   def show
