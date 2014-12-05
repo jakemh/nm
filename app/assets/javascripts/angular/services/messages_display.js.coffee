@@ -28,6 +28,12 @@ App.factory "MessagesDisplay", [
       followerCount: entity.follower_count
     
 
+    buildResponse: (responseList, current, context, response) ->
+      do (response) =>
+        response.entity({current_type: current.type, current_id: current.id}).then (rE) =>
+          responseList.push context.displayHash(response, rE)
+
+
     buildEachPost: (displayList, post, options, context) ->
       current = AuthService.currentEntitySelection.selected
       post.entity({current_type: current.type, current_id: current.id}).then (e)=>
@@ -39,11 +45,8 @@ App.factory "MessagesDisplay", [
 
             responseList = []
             
-            for response in responses
-              do (response) =>
-                response.entity({current_type: current.type, current_id: current.id}).then (rE) =>
-                  responseList.push context.displayHash(response, rE)
-
+            for response, i in responses
+             _.delay context.buildResponse, i*1, responseList, current, context, response
             
             displayList.push context.displayHash(post, entity, responseList)
         else 
