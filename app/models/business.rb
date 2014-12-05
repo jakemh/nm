@@ -63,7 +63,7 @@ class Business < ActiveRecord::Base
 
   def self.by_first_letter(letter)
     raise "Not a letter" unless letter.kind_of?(String) && letter.length == 1
-    Business.where("name like ?", "#{letter}%")
+    Business.where("LOWER(name) like ?", "#{letter.downcase}%")
   end
 
   def self.random(current_user, quant)

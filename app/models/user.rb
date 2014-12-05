@@ -103,7 +103,7 @@ class User < ActiveRecord::Base
 
   def self.by_first_letter(letter)
     raise "Not a letter" unless letter.kind_of?(String) && letter.length == 1
-    User.where("first_name like ? OR last_name like ?", "#{letter}%", "#{letter}%")
+    User.where("LOWER(first_name) like ? OR LOWER(last_name) like ?", "#{letter.downcase}%", "#{letter.downcase}%")
   end
 
   def is_veteran_accepted?
