@@ -47,5 +47,7 @@ App.factory "MapService", [
     resetMap: (markerArray)->
       @clear()
       for marker in markerArray
-        @mapObj.addMarker(marker)
+        
+        if marker.lat && marker.lng
+          @mapObj.addMarker(marker)
 ]

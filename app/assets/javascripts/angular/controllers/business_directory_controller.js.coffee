@@ -6,8 +6,9 @@ angular.module("NM").controller "BusinessDirectoryController", [
   "SideBar"
   "MapService"
   "$location"
+  "$filter"
   
-  ($scope, Business, User, Restangular, SideBar, MapService, $location) ->
+  ($scope, Business, User, Restangular, SideBar, MapService, $location, $filter) ->
     
     $scope.SideBar = SideBar
     # SideBar.rightBarTemplate = "right_bar_bus_dir.html"     
@@ -118,9 +119,11 @@ angular.module("NM").controller "BusinessDirectoryController", [
         #   $scope.searching = false
         #   return
         # ), (error) ->
+
         Restangular.all("entities").getList({first_letter: letter}).then (entities)->
           $scope.displayList = entities
-          MapService.resetMap(MapService.mapToMarker($scope.displayList))
+          addMarkers = $filter('entityFilter')($scope.displayList, $scope.personFilter, $scope.businessFilter);
+          MapService.resetMap(MapService.mapToMarker(addMarkers))
 
              # $scope.businessList = 
     $scope.randomClick = (bus)->
