@@ -36,6 +36,7 @@ App.factory "MessagesDisplay", [
         if !(options && options.suppressResponses)
 
           post.responses().then (responses) =>
+            
             responseList = []
             
             for response in responses

@@ -8,9 +8,10 @@ angular.module("NM").factory "ReceivedMessage", [
   ($q, MessageBase, Restangular, RestangularPlus) ->
     Restangular.extendModel "received_messages", (self) ->
       angular.extend self, RestangularPlus
-  
-      self.entity = ->
-        MessageBase.entity(self)
+      angular.extend self, MessageBase
+
+      # self.entity = ->
+      #   MessageBase.entity(self)
 
       self.responses = ->
         self.getListPlus("message_responses")
@@ -34,9 +35,10 @@ angular.module("NM").factory "SentMessage", [
   ($q, MessageBase, Restangular, RestangularPlus) ->
     Restangular.extendModel "sent_messages", (self) ->
       angular.extend self, RestangularPlus
-
-      self.entity = ->
-        MessageBase.entity(self)
+      angular.extend self, MessageBase
+      
+      # self.entity = ->
+      #   MessageBase.entity(self)
 
       self.responses = ->
         self.getListPlus("message_responses")
@@ -61,6 +63,7 @@ angular.module("NM").factory "MessageResponse", [
       angular.extend self, RestangularPlus
 
       self.entity = ->
+        debugger
         MessageBase.entity(self)
 
       self.responses = ->

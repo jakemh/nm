@@ -7,18 +7,19 @@ angular.module("NM").factory "Post", [
 
   ($q, MessageBase, RestangularPlus, Restangular) ->
     # alert JSON.stringify Message
-    Restangular.extendModel "posts", (model) ->
+    Restangular.extendModel "posts", (self) =>
+      angular.extend self, MessageBase
 
-      model.entity = (params)->
-        MessageBase.entity(model, params)
+      # model.entity = (params)->
+      #   MessageBase.entity(model, params)
         # RestangularPlus.one()
 
-      model.responses = ->
-        if model.response_ids.length > 0
-          Restangular.several("me/responses", model.response_ids).getList()
+      self.responses = ->
+        if self.response_ids.length > 0
+          Restangular.several("me/responses", self.response_ids).getList()
         else $q.when([])
 
-      return model
+      return self
       # model.messages = ->
       #   Restangular.several("messages", model.user.sent_message_ids).getList()
 
