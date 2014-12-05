@@ -36,7 +36,7 @@ App.factory "MessagesDisplay", [
         if !(options && options.suppressResponses)
 
           post.responses().then (responses) =>
-            
+
             responseList = []
             
             for response in responses
@@ -57,8 +57,16 @@ App.factory "MessagesDisplay", [
         while displayList.length > 0 
           displayList.pop()
     
-        for post in source
-            _.defer @buildEachPost, displayList, post, options, @
+        for post, i in source
+          # console.log "OK"
+          # setTimeout ->
+          #   console.log "OK"
+          # , i + 1
+
+          # _.delay -> 
+          #   console.log "OK"
+          # , 1000
+          _.delay @buildEachPost, i*1, displayList, post, options, @
 
 
     buildMessageDisplay: (displayList, source, options) ->

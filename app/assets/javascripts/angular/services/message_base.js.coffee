@@ -22,7 +22,7 @@ App.factory "MessageBase", [
       #     Restangular.one("businesses", model.business_id).get(params)
       #   else 
       #     $q.when(cached)
-
+      
       if this.user_id
         RestangularPlus.getModel('users', this.user_id, params)
       else if this.business_id
