@@ -69,6 +69,7 @@ angular.module("NM").controller "AudienceController", [
               entity = e
               # alert JSON.stringify entity
               $scope.displayList.push
+                models: {entity: entity}
                 name: entity.name
                 distance: entity.distance
                 added: f.created_at
