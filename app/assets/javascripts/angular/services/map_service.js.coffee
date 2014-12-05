@@ -3,18 +3,26 @@ App.factory "MapService", [
   ($q) ->
     mapObj: null
   
-    onMapDivLoad: ->
-      @init()
+    onMapDivLoad: (elem)->
+      @init(elem)
 
     initAfter: ->
 
-    init: ->
+    init: (elem)->
       @mapObj = new GMaps
-        div: '#map'
+        div: elem || '#map'
         lat: 35
         lng: -122
         zoom: 2
-  
+
+    initBusDir: ->
+      debugger
+      @mapObj = new GMaps
+        div: '#map-bus-dir'
+        lat: 35
+        lng: -122
+        zoom: 2
+
     add: (marker)->
       if @mapObj
         @mapObj.addMarker(marker)

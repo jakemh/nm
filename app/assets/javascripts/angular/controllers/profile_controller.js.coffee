@@ -83,7 +83,10 @@ angular.module("NM").controller "ProfileController", [
 
     $scope.uploadedProfilePhotos = []
     $scope.uploadedCoverPhotos = []
-
+    $scope.initMap = () -> 
+      setTimeout ->
+        $scope.MapService.mapObj.refresh()
+      , 100
     $scope.profilePhotoUploaded = (photo)->
       # $scope.profileEntity.cover_photo_url = photo
       # $scope.profileEntity.thumb = photo
@@ -192,8 +195,8 @@ angular.module("NM").controller "ProfileController", [
 
         else $scope.isFollowing = false
 
-    $scope.$watch 'MapService.mapObj', ->
-      MapService.resetMap(MapService.mapToMarker([$scope.profileEntity]))
+    # $scope.$watch 'MapService.mapObj', ->
+    #   MapService.resetMap(MapService.mapToMarker([$scope.profileEntity]))
 
     $scope.updateAccount = () ->
       $scope.profileEntity.put()

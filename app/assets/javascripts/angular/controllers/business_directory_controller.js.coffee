@@ -10,7 +10,9 @@ angular.module("NM").controller "BusinessDirectoryController", [
   ($scope, Business, User, Restangular, SideBar, MapService, $location) ->
     
     $scope.SideBar = SideBar
-    SideBar.rightBarTemplate = "right_bar_bus_dir.html"        
+    # SideBar.rightBarTemplate = "right_bar_bus_dir.html"     
+    SideBar.rightBarTemplate = "blank.html"        
+   
     $scope.businesses = []
     $scope.businessList = []
     $scope.SideBar = SideBar
@@ -25,8 +27,22 @@ angular.module("NM").controller "BusinessDirectoryController", [
     # $scope.loadMap()  
     SideBar.tabBarVisible = false 
 
+    $scope.hasMarkers = ->
+      if MapService.mapObj && MapService.mapObj.markers.length > 0
+        true 
+        setTimeout ->
+          MapService.mapObj.refresh()
+        , 1
+      else 
+        false 
+
+
+    # $scope.$watch 'MapService.mapObj.markers', ->
+    #   if $scope.MapService.mapObj
+    #     alert $scope.MapService.mapObj.markers.length
     $scope.init = ->
-     
+      if MapService.mapObj
+        MapService.mapObj.refresh()
 
     # $scope.addMarker = (marker)->
     #   $scope.mapObj.addMarker(marker)
@@ -124,7 +140,7 @@ angular.module("NM").controller "BusinessDirectoryController", [
    
     Restangular.all("businesses").getList({random: true}).then (businesses)=>
       $scope.businesses = businesses
-      MapService.resetMap(MapService.mapToMarker($scope.businesses))
+      # MapService.resetMap(MapService.mapToMarker($scope.businesses))
 
     $scope.submit = () ->
       $scope.engine.get $scope.query, (suggestions) ->
