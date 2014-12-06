@@ -11,6 +11,14 @@ class EntitySerializer < ActiveModel::Serializer
   has_many :sent_messages, embed: :ids
   has_many :received_messages, embed: :ids
 
+  def address
+    object.address.capitalize
+  end
+
+  def city
+    object.city.capitalize
+  end
+
   # def followers
   #   object.
   # end

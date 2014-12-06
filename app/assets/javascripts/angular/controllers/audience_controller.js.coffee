@@ -15,15 +15,16 @@ angular.module("NM").controller "AudienceController", [
 
     # $scope.loadMap()
     SideBar.tabBarVisible = true 
-    $scope.$watch "SideBar.mapLoaded", ->
-      if SideBar.mapLoaded == true
-        $scope.mapObj = new GMaps
-          div: '#map'
-          lat: 35
-          lng: -122
-          zoom: 2
-        $scope.mapLoaded = true
-      SideBar.mapLoaded = false
+    # $scope.$watch "SideBar.mapLoaded", ->
+    #   if SideBar.mapLoaded == true
+    #     $scope.mapObj = new GMaps
+    #       div: '#map'
+    #       lat: 35
+    #       lng: -122
+    #       zoom: 2
+    #     $scope.mapLoaded = true
+    #   SideBar.mapLoaded = false
+      
     $scope.audMemberClass = (index)->
       console.log "INDEX: " + index
       if index % 2 == 0

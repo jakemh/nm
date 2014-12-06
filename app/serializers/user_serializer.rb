@@ -7,6 +7,14 @@ class UserSerializer < EntitySerializer
   has_many :posts, embed: :ids
   has_many :personal_posts, embed: :ids
   # has_many :personal_posts
+  
+  def first_name
+    object.first_name.capitalize
+  end
+
+  def last_name
+    object.last_name.capitalize    
+  end
 
   def posts
     Post.all.where(type: [nil, "", "Post"])

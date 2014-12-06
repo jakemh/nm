@@ -19,6 +19,7 @@ class User < ActiveRecord::Base
   include Search
   include Entity
 
+
   has_many :business_received_messages, through: :businesses, source: :received_messages
   has_many :issued_flags
   has_many :skills
@@ -111,8 +112,10 @@ class User < ActiveRecord::Base
   end
 
   def name
-    "#{self.first_name} #{self.last_name}"
+    "#{self.first_name.capitalize} #{self.last_name.capitalize}"
   end
+
+
 
   def contact
     self.email
