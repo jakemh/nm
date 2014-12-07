@@ -31,9 +31,12 @@ App.factory "RestangularPlus", [
         return $q.when(cachedModel)
       else
         Restangular.one(modelName, id).get(params).then (model) ->
-          
-          cache.put(model.id, model)
-          deferred.resolve(cache.get(model.id))
+          cachedModel = cache.get(model.id)
+          if !cachedModel
+            cache.put(model.id, model)
+            cachedModel = cache.get(model.id)
+
+          deferred.resolve(cachedModel)
 
 
       return deferred.promise

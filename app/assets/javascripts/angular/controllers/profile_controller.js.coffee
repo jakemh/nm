@@ -97,15 +97,18 @@ angular.module("NM").controller "ProfileController", [
 
     $scope.approveProfilePhoto = (photo) ->
       $scope.profileEntity.profile_photo_id = photo.id 
+      debugger
       $scope.profileEntity.put().then (entity)->
         $scope.profileEntity.thumb = entity.thumb
       $("#js__profile-photo-modal").modal('hide')
+      return true
 
     $scope.approveCoverPhoto = (photo) ->
       $scope.profileEntity.cover_photo_id = photo.id 
       $scope.profileEntity.put().then (entity)->
         $scope.profileEntity.cover_photo_url = entity.cover_photo_url
       $("#js__cover-photo-modal").modal('hide')
+      return true
 
     $scope.coverPhotoUploaded = (photo)->
       photo = JSON.parse photo

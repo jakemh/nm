@@ -77,9 +77,9 @@ window.App = angular.module("NM", [
     templateUrl: "profile.html"
     controller: "ProfileController"
     resolve:
-          profileEntity: ($route, Restangular)->
+          profileEntity: ($route, RestangularPlus)->
             id = $route.current.params.id
-            return Restangular.one('users', id).get().then (users) ->
+            return RestangularPlus.getModel('users', id).then (users) ->
               return users
 
   .when "/me/audience",

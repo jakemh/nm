@@ -2,7 +2,7 @@
   <div class="feed__content">
     <div class="feed__content-title">
       <div class="thumb">
-        <img ng-src="{{entity.thumb}}">
+        <img ng-src="{{entity.models.entity.thumb}}">
       </div>
       <div class="feed_content-follow">
         <a ng-click="AuthService.followerHandle(entity, followerCallback)" href="#"><span ng-bind-html="entity.followerUriType"></span>
@@ -12,7 +12,7 @@
       </div>
     </div>
     <div class="feed__content-top">
-      <a ng-href="{{entity.uri}}">{{entity.name}}</a>
+      <a ng-href="{{entity.uri}}">{{entity.models.entity.name}}</a>
     </div>
     <div linkify class="feed__content-body">
 
@@ -23,7 +23,7 @@
         <div class="col-sm-7 feed__time">
             <span ng-if="Utilities.exceedThreshold(entity.timeFromNow)">{{entity.timeStamp | amDateFormat:'MMMM Do'}}</span>
             <span  ng-if="!Utilities.exceedThreshold(entity.timeFromNow)"
-             am-time-ago="entity.timeStamp">Test2</span>
+             am-time-ago="entity.timeStamp"></span>
           </div>
       <!--   <div  class="col-sm-2 feed__comment-expand">
           <a ng-click="expand = !expand" href="#">Comment</a>

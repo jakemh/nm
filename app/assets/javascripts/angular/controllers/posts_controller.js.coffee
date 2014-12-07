@@ -28,6 +28,7 @@ angular.module("NM").controller "PostController", [
     $scope.displayCommentForm = true
     SideBar.rightBarTemplate = "blank.html"  
     SideBar.tabBarVisible = true 
+    $scope.CacheService = CacheService
     # $scope.appController.tabBarDisabled = false
     # $scope.throttledLoadMore = _.throttle ->
     #     # alert JSON.stringify @
@@ -40,7 +41,8 @@ angular.module("NM").controller "PostController", [
     $scope.headOuterInit = (newPost, entity) ->
       newPost.type = 'Post'
     
-    $scope.commentClick = ()->
+    $scope.debugClick = ()->
+      debugger
 
     $scope.commentHeadOuterInit = (newPost, entity) ->
       # newPost = entity.newPost
@@ -80,11 +82,11 @@ angular.module("NM").controller "PostController", [
       if AuthService.currentUser
         # $scope.displayList = []
         # $scope.buildAssociationCache().then () ->
-        cacheHash = 
-          users: AuthService.currentUser.user_post_associations
-          businesses: AuthService.currentUser.business_post_associations
+        # cacheHash = 
+        #   users: AuthService.currentUser.user_post_associations
+        #   businesses: AuthService.currentUser.business_post_associations
 
-        CacheService.cacheModelsForLists(cacheHash,{current_type: current.type, current_id: current.id}).then ()->
+        # CacheService.cacheModelsForLists(cacheHash,{current_type: current.type, current_id: current.id}).then ()->
           AuthService.currentUser.posts("all": true).then (posts) ->
             $scope.posts = posts
             MessagesDisplay.buildMessageDisplay2($scope.displayList, $scope.posts)
