@@ -14,7 +14,7 @@ angular.module("NM").controller "LeftBarController", [
     $scope.init = () ->
       MessageService.loadUnreadMessages(AuthService.currentUser).then (unreadList)->
         $scope.MessageService.unreadList = unreadList
-        AuthService.ownedEntities().then (entities) ->
+        AuthService.currentUser.ownedEntities().then (entities) ->
           $scope.MessageService.buildUserEntityUnreadList(unreadList, entities)
         # $scope.SideBar.messageCount = $scope.MessageService.unreadList.length
 
