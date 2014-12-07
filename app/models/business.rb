@@ -38,7 +38,8 @@ class Business < ActiveRecord::Base
   has_many :intra_connections, class_name: INTRA_CONNECTION 
   has_many :inter_connections, class_name: INTER_CONNECTION
   has_many :inverse_intra_connections, class_name: INTRA_CONNECTION, foreign_key: :connect_to_id
-  has_many :inverse_inter_connections, class_name: INTER_CONNECTION, foreign_key: :connect_to_id 
+  has_many :inverse_inter_connections, -> { where(:business_id => nil) }, class_name: INTER_CONNECTION, foreign_key: :connect_to_id
+
   
   # has_many :business_posts, dependent: :destroy
   # has_many :posts, :source => :business_posts
