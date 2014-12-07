@@ -63,6 +63,7 @@ angular.module("NM").controller "ProfileController", [
     SideBar.delegate.reviews = $scope.reviews
     SideBar.delegate.profileEntity = profileEntity
     SideBar.delegate.businessOwner = $scope.businessOwner
+
     $scope.sendReview = (postObj, postSubmit)->
       ent = AuthService.currentEntitySelection.selected
       entityAttrs = 
@@ -97,7 +98,6 @@ angular.module("NM").controller "ProfileController", [
 
     $scope.approveProfilePhoto = (photo) ->
       $scope.profileEntity.profile_photo_id = photo.id 
-      debugger
       $scope.profileEntity.put().then (entity)->
         $scope.profileEntity.thumb = entity.thumb
       $("#js__profile-photo-modal").modal('hide')
@@ -163,9 +163,10 @@ angular.module("NM").controller "ProfileController", [
         ReviewDisplay.buildReviewList($scope.reviews, $scope.reviewList)
 
     $scope.init = () ->
-     
-      if AuthService.currentUser
-        $scope.params = _.compact($scope.location.path().split("/"))
+      $scope.profileEntity.posts().then (posts)->
+        $scope.posts = posts
+
+      # if AuthService.currentUser
         current = AuthService.currentUser
         # params = {current_type: current.type, current_id: current.id}
         # Restangular.one($scope.params[0], $scope.params[1]).get(params).then (entity)->
@@ -296,23 +297,22 @@ angular.module("NM").controller "ProfileController", [
 
         #   $scope.posts = posts
 
-    # $scope.$watch 'AuthService.currentUser', ->
-    $scope.$watch 'AuthService.currentEntitySelection.selected', ->
-      if $scope.yours
-        $location.path( AuthService.currentEntitySelection.selected.uri );
+    # # $scope.$watch 'AuthService.currentUser', ->
+    # $scope.$watch 'AuthService.currentEntitySelection.selected', ->
+    #   if $scope.yours
+    #     $location.path( AuthService.currentEntitySelection.selected.uri );
 
 
-    $scope.$watch 'profileEntity', ->
+    # $scope.$watchs 'profileEntity', ->
 
-      if $scope.profileEntity
-        $scope.profileEntity.posts().then (posts)->
-          $scope.posts = posts
+      
           # alert JSON.stringify posts
 
     $scope.$watch 'posts', ->
-      MessagesDisplay.buildMessageDisplay(null, $scope.posts).then (list)->
-        # alert JSON.stringify list 
-        $scope.displayList = list
-    
+
+        MessagesDisplay.buildMessageDisplay(null, $scope.posts).then (list)->
+          # alert JSON.stringify list 
+          $scope.displayList = list
+      
       
 ]

@@ -24,17 +24,17 @@ App.factory "AuthService", [
       else 
         null
 
-    ownedEntities: ->
-      deferred = $q.defer();
-      returnList = [@currentUser]
-      @currentUser.businesses().then (businesses)->
+    # ownedEntities: ->
+    #   deferred = $q.defer();
+    #   returnList = [@currentUser]
+    #   @currentUser.businesses().then (businesses)->
         
-        for business in businesses
-          returnList.push(business)
+    #     for business in businesses
+    #       returnList.push(business)
           
-        deferred.resolve(returnList)
+    #     deferred.resolve(returnList)
 
-      return deferred.promise
+    #   return deferred.promise
 
     followerHandle2: (entity, isFollowing, callback)->
       followerType = entity.follower_uri_type

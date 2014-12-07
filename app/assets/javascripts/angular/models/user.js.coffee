@@ -9,6 +9,18 @@ angular.module("NM").factory "User", [
     Restangular.extendModel "users", (self) =>
       angular.extend self, RestangularPlus
       angular.extend self, RestEntity
+      
+      self.ownedEntities = ->
+        deferred = $q.defer();
+        returnList = [self]
+        self.businesses().then (businesses)->
+          
+          for business in businesses
+            returnList.push(business)
+            
+          deferred.resolve(returnList)
+
+        return deferred.promise
 
       self.businesses = ->
         # self.getListPlus("businesses")
