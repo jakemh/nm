@@ -168,6 +168,7 @@ angular.module("NM").controller "ProfileController", [
         ReviewDisplay.buildReviewList($scope.reviews, $scope.reviewList)
 
     $scope.init = () ->
+
       $scope.profileEntity.posts().then (posts)->
         $scope.posts = posts
 
@@ -183,11 +184,13 @@ angular.module("NM").controller "ProfileController", [
         $scope.yours = belongs
         SideBar.tabBarVisible = $scope.yours
         SideBar.profileEntity = $scope.profileEntity
+        if $scope.yours
+          AuthService.currentEntitySelection.selected = $scope.profileEntity
 
         if $scope.profileEntity.type == "User"
 
           if $scope.yours
-            SideBar.rightBarTemplate = "right_bar_profile_internal.html"  
+            SideBar.rightBarTemplate = "right_bar_profile_internal.html" 
           else SideBar.rightBarTemplate = "right_bar_profile_external.html"  
         else if $scope.profileEntity.type == "Business" 
           $scope.buildReviewList()
