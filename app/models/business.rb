@@ -21,11 +21,19 @@ class Business < ActiveRecord::Base
   has_one :cover_photo,  :as => :imageable
   # has_many :received_messages, -> { where(:to_entity => "Business") }, class_name: "Message", foreign_key: :to_id
   has_many :ownerships, foreign_key: :connect_to_id
+  
   has_many :business_friendships
   has_many :business_connections
+
+  has_many :user_connections, :class_name => "BusinessConnection", :source => :connect_to
+  has_many :user_friends, through: :user_connections, :source => :connect_to
+  has_many :business_friends, through: :business_friendships, :source => :connect_to
+
+ 
   has_many :users, :through => :ownerships
   has_many :tags, :as => :taggable
   has_many :items, :class_name => "Tag", as: :taggable
+
 
   has_many :intra_connections, class_name: INTRA_CONNECTION 
   has_many :inter_connections, class_name: INTER_CONNECTION
@@ -46,6 +54,7 @@ class Business < ActiveRecord::Base
   # validates :industry, :presence => trues
 
   accepts_nested_attributes_for :tags, :photos
+
   def cover_photo
     if self.cover_photo_id
      

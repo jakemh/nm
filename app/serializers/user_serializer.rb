@@ -7,7 +7,28 @@ class UserSerializer < EntitySerializer
   has_many :posts, embed: :ids
   has_many :personal_posts, embed: :ids
   # has_many :personal_posts
-  
+  has_many :friendships, embed: :id
+  has_many :business_connections, embed: :id
+  has_many :friends, embed: :id
+  has_many :connected_businesses, embed: :id
+
+  def business_connections
+    object.connected_businesses
+  end
+
+  def user_connections
+    object.friends
+  end
+
+  # def friendships
+  #   object.friendships
+  # end
+
+  # def business_connections
+  #   object.business_connections
+
+  # end
+
   def first_name
     object.first_name.capitalize
   end

@@ -23,10 +23,10 @@ App.factory "MessageBase", [
       #   else 
       #     $q.when(cached)
       
-      if this.user_id
-        RestangularPlus.getModel('users', this.user_id, params)
-      else if this.business_id
-        RestangularPlus.getModel('businesses', this.business_id, params)
+      if @user_id
+        RestangularPlus.getModel('users', @user_id, params)
+      else if @business_id
+        RestangularPlus.getModel('businesses', @business_id, params)
 
     responses: (model, params) ->
       if model.response_ids.length > 0

@@ -51,10 +51,14 @@ angular.module("NM").controller "PostController", [
       # newPost.entity_id = AuthService.currentEntitySelection.selected.id
       # newPost.entity_type = AuthService.currentEntitySelection.selected.type
 
-    $scope.followerCallback = (entity)->
-      AuthService.currentUser.posts("all": true).then (posts) ->
+    $scope.followerCallback = (viewModel, entity)->
+      viewModel.followerFeedback = true
+      AuthService.currentEntitySelection.selected.pushFollowing(entity)
+      # AuthService.currentEntitySelection.selected.user_connection_ids.push(entity.id)
+      # debugger
+      # AuthService.currentUser.posts("all": true).then (posts) ->
         # $scope.posts = posts
-        entity.followerUriType = "<i class=\"fa fa-check\"></i>"
+        # entity.followerUriType = "<i class=\"fa fa-check\"></i>"
       
     $scope.sendPost = (postObj, postSubmit)->
       ent = AuthService.currentEntitySelection.selected

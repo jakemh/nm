@@ -32,6 +32,7 @@ class User < ActiveRecord::Base
   # has_many :received_messages, -> { where(:to_entity => "User") }, class_name: "Message", foreign_key: :to_id
   # has_many :message_recipients
   # has_many :received_messages, class_name: "Message", foreign_key: 
+    
   has_many :assignments
   has_many :roles, :through => :assignments
   has_many :ownerships, dependent: :destroy
@@ -40,6 +41,8 @@ class User < ActiveRecord::Base
   has_many :business_connections
   # scope :business_associations, -> { where(published: true) }
   has_many :friends, :through => :friendships, :source => :connect_to
+  has_many :connected_businesses, :through => :business_connections, :source => :connect_to
+
   # has_many :businesses, :through => :business_connections, :source => :connect_to
   # has_many :inverse_connections, :class_name => "Connection", :foreign_key => "connect_to_id", conditions:
   has_many :inverse_friendships, :class_name => "Friendship", :foreign_key => "connect_to_id"

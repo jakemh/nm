@@ -17,59 +17,43 @@ App.factory "AuthService", [
     user: () ->
       RestangularPlus.getModel("users", "current")
 
+    isFollowing: (entity, selectedEntity) ->
+      if entity.type == "Business"
+
+        if _.contains(selectedEntity.business_ids, entity.id)
+          return null # "YOU OWN THIS!!"
+        else if entity == selectedEntity 
+          return null #  "YOU!!"
+        else if _.contains(selectedEntity.business_connection_ids, entity.id)
+          return null #  "FOLLOWING"
+        else return "FOLLOW"
+
+      else if entity.type == "User"
+        if entity == selectedEntity 
+          return null #  "YOU!!"
+
+        else if _.contains(selectedEntity.user_connection_ids, entity.id)
+          return null #  "FOLLOWING"
+        else if selectedEntity.owner_id == entity.id 
+          return null #  "YOUR OWNER"
+        else return "FOLLOW"
+
     followerUri: (other)->
-      cur =  @currentEntitySelection.selected
+      cur = entity.currentEntitySelection.selected
       if cur != other
         
       else 
         null
 
-    # ownedEntities: ->
-    #   deferred = $q.defer();
-    #   returnList = [@currentUser]
-    #   @currentUser.businesses().then (businesses)->
-        
-    #     for business in businesses
-    #       returnList.push(business)
-          
-    #     deferred.resolve(returnList)
 
-    #   return deferred.promise
-
-    followerHandle2: (entity, isFollowing, callback)->
-      followerType = entity.follower_uri_type
-      # cur =  @currentEntitySelection.selected
-      cur = @currentUser
+    followerHandle: (viewModel, entity, callback)->
+      cur =  @currentEntitySelection.selected
       params = 
         connect_to_id: entity.id
         type: entity.type
 
-      
-      if !isFollowing
-        cur.post('followers', params).then ()->
-          entity.removeFromCache()
-          callback()
-           
-    followerHandle: (entity, callback)->
-      followerType = entity.followerUriType
-      # cur =  @currentEntitySelection.selected
-      cur = @currentUser
-      params = 
-        connect_to_id: entity.id
-        type: entity.type
-      
-      if followerType == "Follow"
-        cur.post('followers', params).then ()->
-          entity.models.entity.removeFromCache()
-          callback(entity)
-          
-      # else if followerType == "Remove"
-        # if entity.entityType == "User"
-        #   entity.entity.remove(params).then ()->
-        #     callback()
-        # cur.remove('followers', params).then ()->
-        #   callback()
-
+      cur.post('followers', params).then ()->
+        callback(viewModel, entity)
 
 
     followerType: (entity) ->
@@ -80,18 +64,5 @@ App.factory "AuthService", [
         "Follow"
       else if followStatus == -1
         null
-        # "Connected"
-        # "Remove"
-
-      # cur =  @currentEntitySelection.selected
-      # if other != cur
-      #   if cur.type == "User" && other.type == "Business"
-      #     "Business Connection"
-      #   else if cur.type == "User" && other.type == "User"
-      #     "User Friendship"
-      #   else if cur.type == "Business" && other.type == "Business"
-      #     "Business Friendship"
-      #   else if cur.type == "Business" && other.type == "User"
-      #     "Business Connection"
-      # else "Yours"
+     
 ]
