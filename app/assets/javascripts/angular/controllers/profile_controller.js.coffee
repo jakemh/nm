@@ -3,6 +3,7 @@
 angular.module("NM").controller "ProfileController", [
   
   "$scope"
+  "$q"
   "$routeParams"
   "$location"
   "Utilities"
@@ -17,7 +18,7 @@ angular.module("NM").controller "ProfileController", [
   "ReviewDisplay"
   "profileEntity"
 
-  ($scope, $routeParams, $location, Utilities, Review, AuthService, MessagesDisplay, MessageService, Restangular, SideBar, MapService, ReviewService, ReviewDisplay, profileEntity) ->
+  ($scope, $q, $routeParams, $location, Utilities, Review, AuthService, MessagesDisplay, MessageService, Restangular, SideBar, MapService, ReviewService, ReviewDisplay, profileEntity) ->
     
     # alert my#FriendsHotel.hotelName( );
     $scope.profileEntity = profileEntity
@@ -84,6 +85,10 @@ angular.module("NM").controller "ProfileController", [
 
     $scope.uploadedProfilePhotos = []
     $scope.uploadedCoverPhotos = []
+
+    $scope.tabItemClick = (entity)->
+      alert "TEST"
+
     $scope.initMap = () -> 
       setTimeout ->
         $scope.MapService.mapObj.refresh()
@@ -167,12 +172,15 @@ angular.module("NM").controller "ProfileController", [
         $scope.posts = posts
 
       # if AuthService.currentUser
-        current = AuthService.currentUser
-        # params = {current_type: current.type, current_id: current.id}
-        # Restangular.one($scope.params[0], $scope.params[1]).get(params).then (entity)->
-          # $scope.posts = $scope.posts.concat(response)
-          # $scope.profileEntity = entity
-        $scope.yours = $scope.userOrBelongsToUser()
+      current = AuthService.currentUser
+      # params = {current_type: current.type, current_id: current.id}
+      # Restangular.one($scope.params[0], $scope.params[1]).get(params).then (entity)->
+        # $scope.posts = $scope.posts.concat(response)
+        # $scope.profileEntity = entity
+
+      $scope.userOrBelongsToUser().then (belongs)->
+
+        $scope.yours = belongs
         SideBar.tabBarVisible = $scope.yours
         SideBar.profileEntity = $scope.profileEntity
 
@@ -234,30 +242,37 @@ angular.module("NM").controller "ProfileController", [
           $scope.followButtonText = "Following"
         else $scope.followButtonText = "Declined"
 
-
- 
-
     $scope.belongsToUser = ->
       #check if profile entity is user or one of user's businesses
+      deferred = $q.defer();
 
-      if $scope.profileEntity && AuthService.userBusinesses.length > 0
+      AuthService.currentUser.businesses().then (businesses)->
+        # if $scope.profileEntity && AuthService.userBusinesses.length > 0
         e = [$scope.profileEntity.id, $scope.profileEntity.type]
-        a = _.map(AuthService.userBusinesses, (item) -> [item.id, item.type])
+        a = _.map(businesses, (item) -> [item.id, item.type])
         c = [AuthService.currentUser.id, AuthService.currentUser.type]
         
         if angular.equals(e, c)
-          return true
+          deferred.resolve(true)
         else if _.where(a, e).length > 0
-          return true
-      return false
-        
+          deferred.resolve(true)
+        else deferred.resolve(false)
+      return deferred.promise
+
       # else if profileEntity
-    $scope.userOrBelongsToUser = ->
-      if Utilities.entityCompare(AuthService.currentUser, $scope.profileEntity)
-        return true
-      else if $scope.belongsToUser($scope.profileEntit)
-        return true
-      else return false
+    $scope.userOrBelongsToUser = ()->
+      deferred = $q.defer();
+      
+      $scope.belongsToUser($scope.profileEntity).then (doesBelong)->
+        if Utilities.entityCompare(AuthService.currentUser, $scope.profileEntity)
+          deferred.resolve(true)
+
+        else if doesBelong
+          deferred.resolve(doesBelong)
+        else 
+          deferred.resolve(false)
+      return deferred.promise
+
 
 
     $scope.loadBusinesses = () ->
@@ -298,9 +313,9 @@ angular.module("NM").controller "ProfileController", [
         #   $scope.posts = posts
 
     # # $scope.$watch 'AuthService.currentUser', ->
-    # $scope.$watch 'AuthService.currentEntitySelection.selected', ->
-    #   if $scope.yours
-    #     $location.path( AuthService.currentEntitySelection.selected.uri );
+    $scope.$watch 'AuthService.currentEntitySelection.selected', ->
+      if $scope.yours
+        $location.path( AuthService.currentEntitySelection.selected.uri );
 
 
     # $scope.$watchs 'profileEntity', ->

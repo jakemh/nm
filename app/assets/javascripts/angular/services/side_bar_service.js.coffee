@@ -8,6 +8,8 @@ App.factory "SideBar", [
     tabBarDisabled: false
     messageCount: 0
     
+    tabItemClick: (entity)->
+      
     showMessageCount: ->
       if @messageCount > 0
         return @messageCount 

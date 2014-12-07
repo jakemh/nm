@@ -77,10 +77,10 @@ window.App = angular.module("NM", [
     templateUrl: "profile.html"
     controller: "ProfileController"
     resolve:
-          profileEntity: ($route, RestangularPlus)->
-            id = $route.current.params.id
-            return RestangularPlus.getModel('users', id).then (users) ->
-              return users
+      profileEntity: ($route, RestangularPlus)->
+        id = $route.current.params.id
+        return RestangularPlus.getModel('users', id).then (users) ->
+          return users
 
   .when "/me/audience",
     templateUrl: "audience.html"
@@ -92,9 +92,9 @@ window.App = angular.module("NM", [
     templateUrl: "profile.html"
     controller: "ProfileController"
     resolve:
-      profileEntity: ($route, Restangular)->
+      profileEntity: ($route, RestangularPlus)->
         id = $route.current.params.id
-        return Restangular.one('businesses', id).get().then (bus) ->
+        return RestangularPlus.getModel('businesses', id).then (bus) ->
           return bus
 
   # .when('/users/:id', 

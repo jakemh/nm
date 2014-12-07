@@ -29,7 +29,7 @@
   </div>
 
   <div class="user-prof__head-buttons column-right">
-    <div ng-if="!belongsToUser()">
+    <div ng-if="!yours">
       <button ng-click="MessageService.callModal('js-msg__modal'); MessageService.setMessageEntity(profileEntity)" class="button__btn button__btn--gray button__btn--left button__btn--100">
         Message
       </button>
@@ -38,7 +38,7 @@
 
     </div>
 
-    <div ng-if="belongsToUser()">
+    <div ng-if="yours">
       <button ng-click="editProfile()" style="float: left" class="js-msg__button button__btn button__btn--gray button__btn--left  profile__btn">{{editProfileText}}</button>
     </div>
   </div>

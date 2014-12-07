@@ -57,7 +57,8 @@ App.factory "RestangularPlus", [
       #   else 
       #     $q.when(cached)
 
-    severalPlus: (model, ids, params) ->
+    severalPlus: (model, idList, params) ->
+      ids = angular.copy(idList);
       if ids.length > 0
         deferred = $q.defer();
 

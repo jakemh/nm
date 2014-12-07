@@ -16,7 +16,7 @@
   </div>
   <!-- /ng-switch -->
 
-  <div ng-if="!belongsToUser()" class="prof__flag">
+  <div ng-if="!yours" class="prof__flag">
     <div ng-switch="sentFlag">
       <div ng-switch-when="false">
         <a ng-click="flag()" ng-href="#">
@@ -32,7 +32,7 @@
   </div>
 
   <div class="feed">
-    <div ng-if="belongsToUser()" ng-include="'feed_head_outer.html'" ng-init="newPost = newPostMain; headOuterInit(newPost, entity); feedHeadBody = feedHeadForm"></div>
+    <div ng-if="yours" ng-include="'feed_head_outer.html'" ng-init="newPost = newPostMain; headOuterInit(newPost, entity); feedHeadBody = feedHeadForm"></div>
     <div ng-repeat="entity in displayList | orderBy:'id': true">
       <div class="feed--small">
         <div ng-include="'feed_content.html'"></div>
