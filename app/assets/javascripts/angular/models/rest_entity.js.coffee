@@ -31,9 +31,7 @@ angular.module("NM").factory "RestEntity", [
 
     canFollow: (userEntity) ->
       if @type == "Business"
-        if userEntity.type == "User"
-          return false #Can't follow users from businesses
-        else if _.contains(userEntity.business_ids, this.id)
+        if _.contains(userEntity.business_ids, this.id)
           return true #"YOU OWN THIS!!"
         else if this == userEntity 
           return false #return "YOU!!"
@@ -42,9 +40,10 @@ angular.module("NM").factory "RestEntity", [
         else true #return "FOLLOW [*]"
 
       else if @type == "User"
-        if this == userEntity   
+        if userEntity.type == "Business"
+          return false #Can't follow users from businesses
+        else if this == userEntity   
           return false #return "YOU!!"
-
         else if _.contains(userEntity.user_connection_ids, this.id)
           return true #return "FOLLOWING"
         else if userEntity.owner_id == this.id 
