@@ -53,6 +53,7 @@ class Business < ActiveRecord::Base
     end
   end
 
+  
   def connection_with(entity)
     if entity.class.name == "Business"
       self.connections.where(:type => [INTRA_CONNECTION], :connect_to_id => entity.id)

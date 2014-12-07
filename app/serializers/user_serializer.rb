@@ -15,7 +15,9 @@ class UserSerializer < EntitySerializer
   def last_name
     object.last_name.capitalize    
   end
-
+  def city
+    object.city.capitalize if object.city
+  end
   def posts
     Post.all.where(type: [nil, "", "Post"])
     # object.posts.where(type: [nil, "", "Post"])

@@ -19,6 +19,12 @@ class BusinessSerializer < EntitySerializer
     end
   end
 
+
+  def address
+    object.address.capitalize if object.address
+  end
+
+  
   def message_route
   	"businesses/#{object.id}/messages"  
   end
