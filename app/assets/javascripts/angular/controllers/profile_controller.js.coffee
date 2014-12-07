@@ -174,15 +174,13 @@ angular.module("NM").controller "ProfileController", [
 
       # if AuthService.currentUser
       current = AuthService.currentUser
-      # params = {current_type: current.type, current_id: current.id}
-      # Restangular.one($scope.params[0], $scope.params[1]).get(params).then (entity)->
-        # $scope.posts = $scope.posts.concat(response)
-        # $scope.profileEntity = entity
 
       $scope.userOrBelongsToUser().then (belongs)->
 
         $scope.yours = belongs
-        SideBar.tabBarVisible = $scope.yours
+        # SideBar.tabBarVisible = $scope.yours
+        SideBar.tabBarVisible = true
+
         SideBar.profileEntity = $scope.profileEntity
         if $scope.yours
           AuthService.currentEntitySelection.selected = $scope.profileEntity
@@ -194,9 +192,7 @@ angular.module("NM").controller "ProfileController", [
           else SideBar.rightBarTemplate = "right_bar_profile_external.html"  
         else if $scope.profileEntity.type == "Business" 
           $scope.buildReviewList()
-         
-
-
+    
           SideBar.rightBarTemplate = "right_bar_business.html"
           if MapService.mapObj
             MapService.resetMap(MapService.mapToMarker([$scope.profileEntity]))

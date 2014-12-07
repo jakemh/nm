@@ -8,7 +8,7 @@ class EntityController < ApplicationController
     def update_entity
       whitelist.delete_if { |key, value| value.blank? }
       @entity = entity
-      new_skills = params.permit(items: [:name])["items"]
+      new_skills = params.permit(items: [:name])["items"] || []
       old_skills = @entity.items.map{|s| {"name" => s.name} }  
       deleted_skills = old_skills - new_skills
       added_skills = new_skills - old_skills
