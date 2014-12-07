@@ -23,35 +23,56 @@ angular.module("NM").factory "RestEntity", [
     getItems: ->
       @getListPlus("items")   
 
+    addFollower: (entity)->
+
+
     pushFollowing: (entity)->
       if entity.type == "User"
         @user_connection_ids.push(entity.id)
       else if entity.type = "Business"
         @business_connection_ids.push(entity.id)
 
-    canFollow: (userEntity) ->
+    followerCount: () ->
+      this.follower_count
+
+
+    canBeFollowedBy: (userEntity) ->
+      if this == userEntity
+        return false #same entity
+
       if @type == "Business"
-        if _.contains(userEntity.business_ids, this.id)
-          return true #"YOU OWN THIS!!"
-        else if this == userEntity 
-          return false #return "YOU!!"
-        else if _.contains(userEntity.business_connection_ids, this.id)
-          return true #return "FOLLOWING"
-        else true #return "FOLLOW [*]"
+        return true #business can be followed by anythign but themselves
 
       else if @type == "User"
-        if userEntity.type == "Business"
-          return false #Can't follow users from businesses
-        else if this == userEntity   
-          return false #return "YOU!!"
-        else if _.contains(userEntity.user_connection_ids, this.id)
-          return true #return "FOLLOWING"
-        else if userEntity.owner_id == this.id 
-          return false #return "YOUR OWNER"
-        else true #return "FOLLOW [*]"
+        if userEntity.type == "User"
+          true #users can follow any user but themselves
+        else if userEntity.type == "Business"
+          return false #busines cannot follower user
+    
 
 
-    isFollowing: (userEntity) ->
+      # if @type == "Business"
+      #   if _.contains(userEntity.business_ids, this.id)
+      #     return true #"YOU OWN THIS!!"
+      #   else if this == userEntity 
+      #     return false #return "YOU!!"
+      #   else if _.contains(userEntity.business_connection_ids, this.id)
+      #     return true #return "FOLLOWING"
+      #   else true #return "FOLLOW [*]"
+
+      # else if @type == "User"
+      #   if userEntity.type == "Business"
+      #     return false #Can't follow users from businesses
+      #   else if this == userEntity   
+      #     return false #return "YOU!!"
+      #   else if _.contains(userEntity.user_connection_ids, this.id)
+      #     return true #return "FOLLOWING"
+      #   else if userEntity.owner_id == this.id 
+      #     return false #return "YOUR OWNER"
+      #   else true #return "FOLLOW [*]"
+
+
+    isFollowedBy: (userEntity) ->
       if @type == "Business"
         if _.contains(userEntity.business_connection_ids, this.id)
           return true

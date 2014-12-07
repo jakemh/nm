@@ -43,7 +43,7 @@ angular.module("NM").controller "PostController", [
     
     $scope.debugClick = ()->
       # debugger
-
+    
     $scope.commentHeadOuterInit = (newPost, entity) ->
       # newPost = entity.newPost
       newPost.type = 'Response'

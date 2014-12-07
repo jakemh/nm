@@ -45,16 +45,30 @@ App.factory "AuthService", [
       else 
         null
 
+   
+    messageFollowerHandle: (viewModel, entity, callback)->
+      @followerHandle(entity).then ()->
+        callback(viewModel, entity)
 
-    followerHandle: (viewModel, entity, callback)->
+    profileFollowerHandle: (entity, callback)->
+      @followerHandle(entity).then ()->
+        callback(entity, callback)
+
+    followerHandle: (entity)->
+      deferred = $q.defer();
+
       cur =  @currentEntitySelection.selected
       params = 
         connect_to_id: entity.id
         type: entity.type
 
-      cur.post('followers', params).then ()->
-        callback(viewModel, entity)
+      cur.post('followers', params).then (response)->
+        entity.follower_count += 1
+        deferred.resolve(response)
 
+      return deferred.promise
+
+  
 
     followerType: (entity) ->
       followStatus = entity.follower_uri_type

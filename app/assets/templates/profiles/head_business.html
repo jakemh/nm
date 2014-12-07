@@ -38,7 +38,7 @@
     </div>
 
     <div class="user-prof__followers">
-      {{profileEntity.follower_count}} Followers
+      {{profileEntity.followerCount()}} Followers
     </div>
   </div>
 
@@ -47,7 +47,17 @@
       <button ng-click="MessageService.callModal('js-msg__modal'); MessageService.setMessageEntity(profileEntity)" style="float: left" class="button__btn button__btn--gray button__btn--left button__btn--100">
         Message
       </button>
-      <button ng-disabled="isFollowing" ng-click="AuthService.followerHandle2(profileEntity, isFollowing, followerCallback)" class="button__btn  button__btn--right button__btn--right--padding button__btn--100" ng-class="{'button__btn--light-gray' : isFollowing, 'button__btn--orange' : !isFollowing}">{{followButtonText}}
+      <button ng-disabled="isFollowing(AuthService.currentEntitySelection.selected)" ng-click="AuthService.profileFollowerHandle(profileEntity, followerCallback)" class="button__btn  button__btn--right button__btn--right--padding button__btn--100" ng-class="{'button__btn--light-gray' : isFollowing(AuthService.currentEntitySelection.selected), 'button__btn--orange' : !isFollowing(AuthService.currentEntitySelection.selected)}">
+
+        <div ng-switch="isFollowing(AuthService.currentEntitySelection.selected)">
+          <div ng-switch-when="true">
+            Following
+          </div>
+
+          <div ng-switch-when="false">
+            Follow
+          </div>
+        </div>
       </button>
 
     </div>

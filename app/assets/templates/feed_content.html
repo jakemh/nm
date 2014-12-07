@@ -4,17 +4,17 @@
       <div class="thumb--80">
         <img ng-src="{{entity.models.entity.thumb}}">
       </div>
-      <div ng-if="entity.models.entity.canFollow(AuthService.currentEntitySelection.selected)" class="feed_content-follow">
+      <div ng-if="entity.models.entity.canBeFollowedBy(AuthService.currentEntitySelection.selected)" class="feed_content-follow">
        <!--  <a ng-click="AuthService.followerHandle(entity.models.entity, followerCallback)" href="#"><span ng-bind-html="entity.followerUriType"></span>
 
         </a> -->
-        <div ng-switch="entity.models.entity.isFollowing(AuthService.currentEntitySelection.selected)">
+        <div ng-switch="entity.models.entity.isFollowedBy(AuthService.currentEntitySelection.selected)">
           <div ng-switch-when="false">
-             <a ng-click="AuthService.followerHandle(entity, entity.models.entity, followerCallback)" href="#">
+             <a ng-click="AuthService.messageFollowerHandle(entity, entity.models.entity, followerCallback)" href="#">
               Follow
              </a>
           </div>  
-          <div ng-if="entity.followerFeedback && entity.models.entity.isFollowing(AuthService.currentEntitySelection.selected)">
+          <div ng-if="entity.followerFeedback && entity.models.entity.isFollowedBy(AuthService.currentEntitySelection.selected)">
             <i class="fa fa-check"></i> Added
           </div>
         </div>

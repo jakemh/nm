@@ -1,6 +1,6 @@
 class Friendship < SameToSame
   # validates :connect_to_id, :uniqueness => {:scope => [:user_id, :type]}
-  validates :connect_to_id, :uniqueness => {:scope => [:user_id]}
+  # validates :connect_to_id, :uniqueness => {:scope => [:user_id]}
   belongs_to :connect_to, :class_name => "User"
 
 
