@@ -1,4 +1,4 @@
-class UserSerializer < EntitySerializer
+ class UserSerializer < EntitySerializer
   attributes :user_post_associations, :business_post_associations, :message_route
   attributes :about, :work
   # :response_post_associations,
@@ -12,6 +12,9 @@ class UserSerializer < EntitySerializer
   has_many :friends, embed: :id
   has_many :connected_businesses, embed: :id
 
+  has_many :user_connections, embed: :ids
+  has_many :business_connections, embed: :ids
+  
   def business_connections
     object.connected_businesses
   end
