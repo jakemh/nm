@@ -109,6 +109,8 @@ angular.module("NM").factory "RestEntity", [
     followers: () ->
       @getListPlus("followers")
 
+    following: () ->
+      @getListPlus("following")
     personalPosts: () ->
       @severalPlus("posts").getList()
 

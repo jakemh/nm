@@ -26,14 +26,15 @@
 angular.module("NM").factory "Follower", [
   "$q"
   "Restangular"
-  ($q, Restangular) ->
+  "RestangularPlus"
+  ($q, Restangular, RestangularPlus) ->
     Restangular.extendModel "followers", (model) ->
   
      model.entity = ->
        if model.user_id
-         Restangular.one("users", model.user_id).get()
+         RestangularPlus.getModel("users", model.user_id)
        else if model.business_id
-         Restangular.one("businesses", model.business_id).get()
+         RestangularPlus.getModel("businesses", model.business_id)
 
       return model
 ]

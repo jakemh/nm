@@ -27,6 +27,16 @@
     </div>
   </div>
 
+  <div>
+    <input type="checkbox" ng-model="followerFilter" ng-checked="followerFilter" name="business-filter">
+    <label name="followers-filter">Followers</label>
+  </div>
+
+  <div>
+    <input type="checkbox" ng-model="followingFilter" ng-checked="followingFilter">
+    <label name="following-filter">Following</label>
+  </div>
+
   <div class="aud__members">
     <div ng-repeat="entity in displayList | orderBy:sortVal.selected.name | audienceFilter:filterVal.selected">
       <div class="aud__member connect {{audMemberClass($index)}}">

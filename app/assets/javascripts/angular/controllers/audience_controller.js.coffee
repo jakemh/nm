@@ -24,7 +24,10 @@ angular.module("NM").controller "AudienceController", [
     #       zoom: 2
     #     $scope.mapLoaded = true
     #   SideBar.mapLoaded = false
-      
+    
+    $scope.followerFilter = true
+    $scope.followingFilter = false
+    
     $scope.audMemberClass = (index)->
       console.log "INDEX: " + index
       if index % 2 == 0
@@ -40,7 +43,7 @@ angular.module("NM").controller "AudienceController", [
     ]
  
     $scope.filterOptions = [
-      {name: "All Followers", id: 0, group: "Main"}
+      {name: "Show All", id: 0, group: "Main"}
       {name: "Businesses Only", id: 1, group: "Main"}
       {name: "Industry1", id: 2, group: "Industry"}
       {name: "Industry2", id: 2, group: "Industry"}
