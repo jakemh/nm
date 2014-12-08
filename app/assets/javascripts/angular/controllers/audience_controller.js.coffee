@@ -40,7 +40,7 @@ angular.module("NM").controller "AudienceController", [
     ]
  
     $scope.filterOptions = [
-      {name: "Show All", id: 0, group: "Main"}
+      {name: "All Followers", id: 0, group: "Main"}
       {name: "Businesses Only", id: 1, group: "Main"}
       {name: "Industry1", id: 2, group: "Industry"}
       {name: "Industry2", id: 2, group: "Industry"}
