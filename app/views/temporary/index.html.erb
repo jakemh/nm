@@ -45,13 +45,45 @@
       </div>
     </a>
   </div>
+
   <div id="info" class="nav-link lnd__bottom">
     <%= render 'layouts/landing_learn_v2' %>
     <!-- fluid-container -->
-    <div class="lnd__bottom-bar">
-      <div class="lnd__bottom-bar-inner">
-      <div>
-      <!-- Next Mission -->
+
+  </div>
+
+  <div class="lnd__bottom-bar">
+    <div style="width: 100%; max-width: none; margin: 0" class="container">
+      <div style="height: 100%" class="row">
+        <div  class="lnd__legal col-sm-6">
+          <span id="js__legal-disclaimer">Legal Disclaimer</span>
+        </div>
+        <div class="col-sm-6 lnd__bottom-bar-inner">
+          <% if true %>
+            <%= image_tag "next_mission_text.png" %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div  class="modal fade" id="js__modal--legal-disclaimer" tabindex="-1" role="dialog" aria-loabelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header legal__modal-head">
+          <button type="button" class="close" data-dismiss="modal">
+            <span aria-hidden="true">&times;</span>
+            <span class="sr-only">Close</span>
+          </button>
+          <h4 class="modal-title" id="myModalLabel">
+          </h4>
+        </div>
+        <div class="legal__modal-body modal-body">
+        The contents of the Site, such as text, graphics, logos, audio clips, video, photographs, software, trademarks, and other information (Next Mission Proprietary Content) is, unless otherwise noted, the property of Next Mission, its affiliates or partners. The Next Mission Proprietary Content is protected by federal, state, and international copyright and trademark laws, or other proprietary rights. These rights are protected in all forms, media and technologies existing now or hereinafter developed.
+
+        </div>
+
+      </div>
     </div>
   </div>
 

@@ -70,37 +70,84 @@
 
 }
 
+.lnd__legal{
+  font-size: 1.2em;
+  font-weight: bold;
+  letter-spacing: 0em;
+  font-family: sans-serif;
+  line-height: 3.5em;
+}
+
+.legal__modal-head{
+  background: image-url("logo_nm_tm_black.png") no-repeat;
+  background-size: 80% 80%;
+  background-position: center;
+  // min-width: 500px;
+  min-height: 250px !important;
+
+}
+
+.legal__modal-body{
+  margin: 0 15%;
+  font-size: 1em;
+  text-align: justify;
+      text-justify: inter-word;
+}
+
 .lnd__bottom-bar{
   // position: absolute;
   bottom: 0;
   // color: $orange-color;
   background: black; 
-  height: 65px;
-  // margin-top: 100px;
+  min-height: 65px;
   color: $orange-color;
   // height: 50px;
   width: 100%;
-  text-transform: uppercase;
-  letter-spacing: .5em;
-  font-size: 3.5em;
+  // text-transform: uppercase;
+  // letter-spacing: .5em;
+  // font-size: 3.5em;
   // line-height: 3em;
-  text-align: right;
-  padding-right: 10px;
-  position: relative;
+  // text-align: right;
+  // padding-right: 10px;
+  text-align: left;
+  // position: relative;
   // background-repeat: no-repeat;
   // background-attachment: fixed;
 }
 
 .lnd__bottom-bar-inner{
-  position: absolute;
-  right: 15px;
-  width: 35%;
-  height: 100%;
-  background: black image-url("next_mission_text.png") no-repeat;
-  // background-size: 40% 40%;
-  background-size: contain;
-  background-position: right; 
 
+  // position: absolute;
+  // right: 15px;
+  // width: 35%;
+
+  line-height: 4.5em;
+  text-align: right;
+  height: 100%;
+  // background: black image-url("next_mission_text.png") no-repeat;
+  // background-size: 40% 40%;
+  background-size: cover;
+  // background-position: 50% 50%;
+
+  // background-position: bottom; 
+
+}
+
+.helper {
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+}
+
+
+.lnd__bottom-bar-inner img{
+  max-height:  100%;
+  // vertical-align: middle;
+
+  max-width: 80%;
+  // float: right;
+  // height: 100%;
+  // width: auto;
 }
 
 .about__title{

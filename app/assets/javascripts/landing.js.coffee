@@ -2,6 +2,10 @@ ready = undefined
 ready = ->
   email = null
 
+  $("#js__legal-disclaimer").on "click", ->
+    $("#js__modal--legal-disclaimer").modal()
+
+
   $("#email-submit").submit (e)->
     email = $("#email-field-landing").val()
     e.preventDefault()
