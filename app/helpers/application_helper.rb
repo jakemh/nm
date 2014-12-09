@@ -3,17 +3,29 @@ module ApplicationHelper
     date.in_time_zone("Eastern Time (US & Canada)").strftime('%b %e, %l:%M %p')
   end
 
-  def entity
-     p "SET ENTITY"
-    if params[:business_id]
-       p params[:business_id]
-      return Business.find(params[:business_id])
-      p "ENTITY: ", @entity
-    elsif params[:user_id]
-      return  User.find(params[:user_id]) 
-     else raise "Applicable entity not found!"
+  # def entity
+  #    p "SET ENTITY"
+  #   if params[:business_id]
+  #      p params[:business_id]
+  #     return Business.find(params[:business_id])
+  #     p "ENTITY: ", @entity
+  #   elsif params[:user_id]
+  #     return  User.find(params[:user_id]) 
+  #    else raise "Applicable entity not found!"
 
-     end
-  end
+  #    end
+  # end
   
+  # def parse_show_array(model)
+  #   models = []
+  #   ids = params[:id].split(",")
+  #   @models = if ids.length == 1
+  #     # current_user.businesses.find(params[:id].split(","))
+  #     model.find(ids[0])
+  #   elsif ids.length > 1
+  #     model.find(ids)
+  #   else current_user.businesses
+  #   end
+  #   return models
+  # end
 end

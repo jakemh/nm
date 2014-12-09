@@ -68,20 +68,12 @@ class BusinessesController < EntityController
   def show
     @distance = params[:distance]
 
-    ids = params[:id].split(",")
-    @businesses = if ids.length == 1
-      # current_user.businesses.find(params[:id].split(","))
-      Business.find(ids[0])
-    elsif ids.length > 1
-      Business.find(ids)
-    else current_user.businesses
-    end
-
+    @businesses = parse_show_array(Business)
     render json: @businesses
 
   end
 
-
+ 
  private
 
  def set_entity

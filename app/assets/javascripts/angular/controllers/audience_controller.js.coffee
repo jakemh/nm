@@ -28,11 +28,21 @@ angular.module("NM").controller "AudienceController", [
     $scope.followerFilter = true
     $scope.followingFilter = false
     
+    $scope.init = () ->
+      debugger
+      ent = AuthService.currentEntitySelection.selected
+      if ent
+        ent.followers().then (followers)->
+          AuthService.currentFollowers = followers 
+
     $scope.audMemberClass = (index)->
       console.log "INDEX: " + index
       if index % 2 == 0
         return "aud__member--left" 
       else return "aud__member--right"
+
+    $scope.displayList = () ->
+
 
     $scope.displayList = []
     $scope.sortOptions = [
@@ -45,15 +55,15 @@ angular.module("NM").controller "AudienceController", [
     $scope.filterOptions = [
       {name: "Show All", id: 0, group: "Main"}
       {name: "Businesses Only", id: 1, group: "Main"}
-      {name: "Industry1", id: 2, group: "Industry"}
-      {name: "Industry2", id: 2, group: "Industry"}
-      {name: "Industry3", id: 2, group: "Industry"}
-      {name: "Industry4", id: 2, group: "Industry"}
+      # {name: "Industry1", id: 2, group: "Industry"}
+      # {name: "Industry2", id: 2, group: "Industry"}
+      # {name: "Industry3", id: 2, group: "Industry"}
+      # {name: "Industry4", id: 2, group: "Industry"}
 
-      {name: "Type1", id: 3, group: "Type"}
-      {name: "Type2", id: 3, group: "Type"}
-      {name: "Type3", id: 3, group: "Type"}
-      {name: "Type4", id: 3, group: "Type"}
+      # {name: "Type1", id: 3, group: "Type"}
+      # {name: "Type2", id: 3, group: "Type"}
+      # {name: "Type3", id: 3, group: "Type"}
+      # {name: "Type4", id: 3, group: "Type"}
     ]
 
     $scope.filterGroup = (item)->

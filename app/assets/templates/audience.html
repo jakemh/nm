@@ -1,4 +1,4 @@
-<div class="aud" ng-controller="AudienceController">
+<div ng-if="AuthService.currentEntitySelection.selected" ng-controller="AudienceController" ng-init="init()">
 
   <!-- <div ng-include="'feed_head_outer.html'"></div> -->
 

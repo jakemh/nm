@@ -18,7 +18,20 @@ class ApplicationController < ActionController::Base
 
   protected
  
+  def parse_show_array(model)
 
+    models = []
+    ids = params[:id].split(",")
+    @models = if ids.length == 1
+      # current_user.businesses.find(params[:id].split(","))
+      model.find(ids[0])
+    elsif ids.length > 1
+      models = model.find(ids)
+    end
+    
+
+    return @models
+  end
   
     def display_all_posts
       true

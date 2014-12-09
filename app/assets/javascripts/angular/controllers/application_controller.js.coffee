@@ -70,10 +70,6 @@ angular.module("NM").controller "ApplicationController", [
     #     AuthService.entityOptions = AuthService.entityOptions.concat(AuthService.userBusinesses)
     #     AuthService.currentEntitySelection.selected = AuthService.entityOptions[0]
 
-    $scope.$watch 'AuthService.currentEntitySelection.selected', ->
-      ent = AuthService.currentEntitySelection.selected
-      if ent
-        ent.followers().then (followers)->
-          AuthService.currentFollowers = followers 
+     
 
 ]
