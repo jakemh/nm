@@ -79,6 +79,14 @@
   text-transform: uppercase;
 }
 
+.lnd__legal a{
+  color: $orange-color;
+
+  &:hover{
+    color: inherit;
+  }
+}
+
 .legal__modal-head{
   background: image-url("logo_nm_tm_black.png") no-repeat;
   background-size: 80% 80%;
