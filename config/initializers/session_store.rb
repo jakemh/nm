@@ -1,3 +1,3 @@
 # Be sure to restart your server when you modify this file.
 
-Rails.application.config.session_store :cookie_store, key: '_NextMission_session', domain: ".nextmission.com"
+Rails.application.config.session_store :cookie_store, key: '_NextMission_session2', domain: :all
