@@ -72,18 +72,20 @@ App.factory "RestangularPlus", [
             returnList.push(cachedModel)
             ids.splice(i, 1) if (i > -1) 
 
-        Restangular.several(model, ids).getList(params).then (list) ->
+        if ids.length > 0
 
-          for entity in list
-            addEntity = cache.get(entity.id)
-            if addEntity
-              returnList.push(addEntity)
-            else 
-              cache.put(entity.id, entity)
-              returnList.push(cache.get(entity.id))
+          Restangular.several(model, ids).getList(params).then (list) ->
 
-          deferred.resolve(returnList)
+            for entity in list
+              addEntity = cache.get(entity.id)
+              if addEntity
+                returnList.push(addEntity)
+              else 
+                cache.put(entity.id, entity)
+                returnList.push(cache.get(entity.id))
 
+            deferred.resolve(returnList)
+        else deferred.resolve(returnList)
         return deferred.promise
       else return $q.when([])
 
@@ -102,18 +104,19 @@ App.factory "RestangularPlus", [
             returnList.push(cachedModel)
             ids.splice(i, 1) if (i > -1) 
 
-        @several(model, ids).getList(params).then (list) ->
+        if ids.length > 0
+          @several(model, ids).getList(params).then (list) ->
 
-          for entity in list
-            addEntity = cache.get(entity.id)
-            if addEntity
-              returnList.push(addEntity)
-            else 
-              cache.put(entity.id, entity)
-              returnList.push(cache.get(entity.id))
+            for entity in list
+              addEntity = cache.get(entity.id)
+              if addEntity
+                returnList.push(addEntity)
+              else 
+                cache.put(entity.id, entity)
+                returnList.push(cache.get(entity.id))
 
-          deferred.resolve(returnList)
-
+            deferred.resolve(returnList)
+        else deferred.resolve(returnList)
         return deferred.promise
       else return $q.when([])
 

@@ -10,6 +10,13 @@ angular.module("NM").controller "AudienceController", [
     $scope.feedContentPartial = "feed_body_audience.html"
     $scope.AuthService = AuthService
     $scope.SideBar = SideBar
+    $scope.followersList = []
+    $scope.followingList = []
+
+    $scope.followersDisplay = []
+    $scope.followingDisplay = []
+
+    $scope.displayList = []
     # SideBar.rightBarTemplate = "right_bar_business.html"        
     SideBar.rightBarTemplate = "blank.html"  
 
@@ -29,6 +36,17 @@ angular.module("NM").controller "AudienceController", [
     $scope.followingFilter = false
 
     $scope.$watch "AuthService.currentEntitySelection.selected", ->
+      # console.log AuthService.currentEntitySelection.selected.follower_ids
+      while $scope.followingList.length > 0 || 
+          $scope.followersList.length > 0 ||
+          $scope.followersDisplay.length > 0 ||
+          $scope.followingDisplay.length > 0
+
+        $scope.followingList.pop()
+        $scope.followersList.pop()
+        $scope.followersDisplay.pop()
+        $scope.followingDisplay.pop()
+
       ent = AuthService.currentEntitySelection.selected
       $scope.getFollowing(ent)
       $scope.getFollowers(ent)
@@ -53,13 +71,7 @@ angular.module("NM").controller "AudienceController", [
         return "aud__member--left" 
       else return "aud__member--right"
 
-    $scope.followersList = []
-    $scope.followingList = []
-
-    $scope.followersDisplay = []
-    $scope.followingDisplay = []
-
-    $scope.displayList = []
+    
       # $scope.followersDisplayList.concat($scope.followingDisplayList)
 
     # $scope.$watch 'followerDisplay + followingDisplay', ->
@@ -102,6 +114,7 @@ angular.module("NM").controller "AudienceController", [
             f.entity().then (e) ->
               entity = e
               # alert JSON.stringify entity
+
               $scope.followersDisplay.push
                 models: {entity: entity, connection: f}
                 name: entity.name

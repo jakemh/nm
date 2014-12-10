@@ -107,6 +107,7 @@ angular.module("NM").factory "RestEntity", [
       # @getListPlus("flags", params).post(params)
 
     followers: () ->
+      console.log @follower_ids
       @severalPlus2("followers", @follower_ids)
 
     following: () ->
