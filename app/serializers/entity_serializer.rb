@@ -66,7 +66,8 @@ class EntitySerializer < ActiveModel::Serializer
   end
 
   def distance
-    if scope.params[:distance] == 'true'
+    if true
+    # if scope.params[:distance] == 'true'
       object.location.distance_from([scope.current_user.location.latitude, scope.current_user.location.longitude])
      end
   end
