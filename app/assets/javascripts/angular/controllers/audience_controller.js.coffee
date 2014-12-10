@@ -27,13 +27,25 @@ angular.module("NM").controller "AudienceController", [
     
     $scope.followerFilter = true
     $scope.followingFilter = false
-    
-    $scope.init = () ->
-      debugger
+
+    $scope.$watch "AuthService.currentEntitySelection.selected", ->
       ent = AuthService.currentEntitySelection.selected
-      if ent
-        ent.followers().then (followers)->
-          AuthService.currentFollowers = followers 
+      $scope.getFollowing(ent)
+      $scope.getFollowers(ent)
+
+    $scope.init = () ->
+      ent = AuthService.currentEntitySelection.selected
+
+      # $scope.getFollowing(ent)
+      # $scope.getFollowers(ent)
+
+    $scope.getFollowers = (ent)->
+      ent.followers().then (followers)->
+        $scope.followersList = followers
+
+    $scope.getFollowing = (ent)->
+      ent.following().then (following)->
+        $scope.followingList = following
 
     $scope.audMemberClass = (index)->
       console.log "INDEX: " + index
@@ -41,10 +53,18 @@ angular.module("NM").controller "AudienceController", [
         return "aud__member--left" 
       else return "aud__member--right"
 
-    $scope.displayList = () ->
+    $scope.followersList = []
+    $scope.followingList = []
 
+    $scope.followersDisplay = []
+    $scope.followingDisplay = []
 
     $scope.displayList = []
+      # $scope.followersDisplayList.concat($scope.followingDisplayList)
+
+    # $scope.$watch 'followerDisplay + followingDisplay', ->
+    #   $scope.displayList = $scope.followersDisplay.concat($scope.followingDisplay)
+
     $scope.sortOptions = [
       {name: "added", id: 1}
       {name: "distance", id: 2}
@@ -74,16 +94,37 @@ angular.module("NM").controller "AudienceController", [
     $scope.filterVal = {}
     $scope.filterVal.selected = $scope.filterOptions[0]
 
-    $scope.$watch 'AuthService.currentFollowers', ->
+    $scope.$watch 'followersList', ->
         # $q.all(AuthService.currentFollowers)
-        $scope.displayList = []
-        for f in AuthService.currentFollowers
+        $scope.followersDisplayList = []
+        for f in $scope.followersList
           do (f) -> 
             f.entity().then (e) ->
               entity = e
               # alert JSON.stringify entity
-              $scope.displayList.push
-                models: {entity: entity}
+              $scope.followersDisplay.push
+                models: {entity: entity, connection: f}
+                name: entity.name
+                distance: entity.distance
+                added: f.created_at
+                thumb: entity.thumb
+                profile: entity.uri
+                type: f.type
+                entityType: entity.type
+    
+    $scope.$watch 'followingList', ->
+        # $q.all(AuthService.currentFollowers)
+        $scope.followingDisplay = []
+        
+        for f in $scope.followingList
+          do (f) -> 
+            f.entity().then (e) ->
+              entity = e
+
+
+              # alert JSON.stringify entity
+              $scope.followingDisplay.push
+                models: {entity: entity, connection: f}
                 name: entity.name
                 distance: entity.distance
                 added: f.created_at
@@ -95,13 +136,27 @@ angular.module("NM").controller "AudienceController", [
 
 
 ]
+angular.module("NM").filter "audienceTypeFilter", ->
+  (displayEntities, currentEntity, followerFilter, followingFilter) ->
+    if displayEntities
+      displayEntities.filter (displayEntity) ->
+        connection = displayEntity.models.connection
+        if followerFilter
+          bool =  _.contains currentEntity.follower_ids, connection.id
+          return true if bool
+        if followingFilter
+          # console.log ["FOLLOWING", bool, connection.id, JSON.stringify currentEntity.following_ids]
+
+          return true if _.contains currentEntity.following_ids, connection.id
+
+        return false
 
 App.filter "slice", ->
   (arr, start, end) ->
     (arr or []).slice start, end
 
 
-angular.module("NM").filter "audienceFilter", ->
+angular.module("NM").filter "userBusinessFilter", ->
   (entities, filterVal) ->
     if entities
       entities.filter (entity) ->

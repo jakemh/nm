@@ -29,7 +29,7 @@
 
   <div>
     <input type="checkbox" ng-model="followerFilter" ng-checked="followerFilter" name="business-filter">
-    <label name="followers-filter">Followers</label>
+    <label name="followers-filter">FollowerLists</label>
   </div>
 
   <div>
@@ -38,7 +38,10 @@
   </div>
 
   <div class="aud__members">
-    <div ng-repeat="entity in displayList | orderBy:sortVal.selected.name | audienceFilter:filterVal.selected">
+    <div ng-repeat="entity in followersDisplay.concat(followingDisplay) 
+    | audienceTypeFilter:AuthService.currentEntitySelection.selected:followerFilter:followingFilter 
+    | orderBy:sortVal.selected.name 
+    | userBusinessFilter:filterVal.selected">
       <div class="aud__member connect {{audMemberClass($index)}}">
         <div style="height: 130px; background: white; padding: 15px;">
           <div style="width: 100px; height: 100px;" class="left thumb--100">

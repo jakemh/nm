@@ -3,15 +3,18 @@ App.factory "CacheService", [
   "$q"
   "UsersCache"
   "MessagesCache"
+  "FollowersCache"
+  "FollowingCache"
   "BusinessesCache"
   "Restangular"
   
-  ($cacheFactory, $q, UsersCache, MessagesCache, BusinessesCache, Restangular) ->
+  ($cacheFactory, $q, UsersCache, MessagesCache, BusinessesCache, FollowingCache, FollowersCache, Restangular) ->
 
     modelsToCache: ->
       users: UsersCache
       businesses: BusinessesCache
-
+      followers: FollowersCache
+      following: FollowingCache
       # posts: PostsCache
       messages: MessagesCache
 

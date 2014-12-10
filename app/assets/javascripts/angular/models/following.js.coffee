@@ -1,10 +1,14 @@
 angular.module("NM").factory "Following", [
   "Restangular"
-  (Restangular) ->
-    Restangular.extendModel "following", (model) ->
+  "RestangularPlus"
+  (Restangular, RestangularPlus) ->
+    Restangular.extendModel "following", (self) ->
   
-      # model.messages = ->
-      #   Restangular.several("following", model.user.sent_message_ids).getList()
+      self.entity = ->
+        if self.entity_type == "User"
+          RestangularPlus.getModel("users", self.connect_to_id)
+        else if self.entity_type == "Business"
+          RestangularPlus.getModel("businesses", self.connect_to_id)
 
-      return model
+      return self
 ]

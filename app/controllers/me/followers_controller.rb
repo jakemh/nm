@@ -12,5 +12,6 @@ class Me::FollowersController < ApplicationController
   end
 
   def show
+    byebug
   end
 end

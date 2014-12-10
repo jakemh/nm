@@ -1,3 +1,3 @@
-class FollowingSerializer < UserSerializer
+class FollowingSerializer < FollowerSerializer
   
 end

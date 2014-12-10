@@ -30,6 +30,22 @@ App.factory "BusinessesCache", [
   "Restangular"
   ($cacheFactory, Restangular) ->
     cache: $cacheFactory('businesses');
+  
+]
+
+App.factory "FollowersCache", [
+  "$cacheFactory"
+  "Restangular"
+  ($cacheFactory, Restangular) ->
+    cache: $cacheFactory('following');
+    
+
+]
+App.factory "FollowingCache", [
+  "$cacheFactory"
+  "Restangular"
+  ($cacheFactory, Restangular) ->
+    cache: $cacheFactory('followers');
     
 
 ]

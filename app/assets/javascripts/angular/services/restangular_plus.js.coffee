@@ -87,6 +87,35 @@ App.factory "RestangularPlus", [
         return deferred.promise
       else return $q.when([])
 
+    severalPlus2: (model, idList, params) ->
+      ids = angular.copy(idList);
+      if ids.length > 0
+        deferred = $q.defer();
+
+        cache = CacheService.modelsToCache()[model].cache
+        returnList = []
+
+        for id, i in ids
+          cachedModel = cache.get(id)
+
+          if cachedModel
+            returnList.push(cachedModel)
+            ids.splice(i, 1) if (i > -1) 
+
+        @several(model, ids).getList(params).then (list) ->
+
+          for entity in list
+            addEntity = cache.get(entity.id)
+            if addEntity
+              returnList.push(addEntity)
+            else 
+              cache.put(entity.id, entity)
+              returnList.push(cache.get(entity.id))
+
+          deferred.resolve(returnList)
+
+        return deferred.promise
+      else return $q.when([])
 
     # severalPlus: (args) ->
     #   @before(@trueTest, Restangular.several)(arguments[0], arguments[1])
