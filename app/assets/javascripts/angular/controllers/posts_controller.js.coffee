@@ -29,6 +29,7 @@ angular.module("NM").controller "PostController", [
     SideBar.rightBarTemplate = "blank.html"  
     SideBar.tabBarVisible = true 
     $scope.CacheService = CacheService
+    $scope.entities = $scope.displayList
     # $scope.appController.tabBarDisabled = false
     # $scope.throttledLoadMore = _.throttle ->
     #     # alert JSON.stringify @
@@ -60,19 +61,42 @@ angular.module("NM").controller "PostController", [
         # $scope.posts = posts
         # entity.followerUriType = "<i class=\"fa fa-check\"></i>"
       
-    $scope.sendPost = (postObj, postSubmit)->
+    $scope.sendPost = (postObj, postSubmit, responseList)->
       ent = AuthService.currentEntitySelection.selected
       entityAttrs = 
           entity_id: ent.id
           entity_type: ent.type 
 
       postSubmit = angular.extend({}, postSubmit, entityAttrs)
+      # ent.post("posts", postSubmit).then (response)->
+      #   # $scope.posts = $scope.posts.concat(response)
+      #   AuthService.currentUser.posts("all": true).then (posts) ->
+      #     $scope.posts = posts
+      #     MessagesDisplay.buildMessageDisplay(null, $scope.posts).then (list)->
+      #       $scope.displayList = list
+      # Restangular.all('me/posts').post(post)
+
+    # $scope.$watch 'posts', ->
+      # MessagesDisplay.buildMessageDisplay(null, $scope.posts).then (list)->
+
+        # $scope.displayList = list
       ent.post("posts", postSubmit).then (response)->
+
+        # alert JSON.stringify response
+        
+        if !responseList
+          formattedPost = MessagesDisplay.displayHash(response, AuthService.currentEntitySelection.selected, [])
+          $scope.displayList = $scope.displayList.concat formattedPost
+        else
+          formattedPost = MessagesDisplay.displayHash(response, AuthService.currentEntitySelection.selected)
+          responseList.push formattedPost
+
+
         # $scope.posts = $scope.posts.concat(response)
-        AuthService.currentUser.posts("all": true).then (posts) ->
-          $scope.posts = posts
-          MessagesDisplay.buildMessageDisplay(null, $scope.posts).then (list)->
-            $scope.displayList = list
+        # AuthService.currentUser.posts("all": true).then (posts) ->
+        #   $scope.posts = posts
+        #   MessagesDisplay.buildMessageDisplay(null, $scope.posts).then (list)->
+        #     $scope.displayList = list
       # Restangular.all('me/posts').post(post)
 
     # $scope.$watch 'posts', ->

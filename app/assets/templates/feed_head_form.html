@@ -20,7 +20,7 @@
             ng-model="newPost.content"
             ng-minlength="1"
             ng-required="true"
-            ng-keyup="$event.keyCode == 13 && submitOnEnter && MessageService.submit(newPost, entity, entryForm, sendPost)"
+            ng-keyup="$event.keyCode == 13 && submitOnEnter && MessageService.submit(newPost, entity, entryForm, sendPost, parentList)"
 
           ></textarea>
         </div>
@@ -29,7 +29,7 @@
           class="feed__button button__btn feed__button--inline left" 
           name="commit" 
           style="margin-top: 0 !important" 
-          ng-click="MessageService.submit(newPost, entity, entryForm, sendPost)"
+          ng-click="MessageService.submit(newPost, entity, entryForm, sendPost, parentList)"
           >
             Post
           </button>

@@ -57,11 +57,11 @@ App.factory "MessageService", [
         
 
       return deferred.promise
-
-    submit: (model, entity, entryForm, callback) ->
+    
+    submit: (model, entity, entryForm, callback, parentList) ->
       if entryForm.$valid
         entryForm.hasError = false;
-        callback(entity, model)
+        callback(entity, model, parentList)
         model.content = ""
       else 
         entryForm.hasError = true

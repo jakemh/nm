@@ -20,7 +20,8 @@ App.factory "ReviewService", [
         for review in reviews 
           sum += review.score 
 
-        ave =  sum / (reviews.length + 1)
+        ave = sum / (reviews.length + 1)
+
         return Math.round(ave * 10) / 10
       else return 0
 

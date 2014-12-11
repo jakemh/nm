@@ -47,7 +47,9 @@
       <div class="feed__comment-container">
 
         <div ng-if="true">
-          <div ng-init="rowsQuantity=1; titleDisabled=true; submitOnEnter=true; newPost = entity.newPost; commentHeadOuterInit(newPost, entity)" ng-include="'feed_head_outer.html'">
+          <div ng-init="
+          parentList=entity.responses;
+          rowsQuantity=1; titleDisabled=true; submitOnEnter=true; newPost = entity.newPost; commentHeadOuterInit(newPost, entity)" ng-include="'feed_head_outer.html'">
           </div>
         </div>
       </div>

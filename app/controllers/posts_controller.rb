@@ -12,15 +12,30 @@ class PostsController < ApplicationController
   end
 
   def show
-    render json: entity.includes(:responses).posts.where(:id => params[:id].split(","), type: [nil, "", "Post"])
+    render json: parse_show_array(Post)
+    # render json: entity.includes(:responses).posts.where(:id => params[:id].split(","), type: [nil, "", "Post"])
   end
 
   def create
   
     @post = entity.posts.build whitelist
-
+    id_key = nil
     if @post.save
-      render json: @post
+      json = PostSerializer.new(@post).to_json
+      # byebug
+
+      # if entity.class == User
+      #   id_key = :user_id
+      # elsif entity.class == business
+      #   id_key = :business_id
+
+      # end
+      # render json: {
+      #   :content => @post.content,
+      #   id_key => entity.id
+
+      # }
+      render json: @post, serialzer: PostSerializer
     end
   end
 

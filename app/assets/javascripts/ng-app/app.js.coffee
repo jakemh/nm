@@ -40,11 +40,12 @@ window.App = angular.module("NM", [
 
   RestangularProvider.addResponseInterceptor (data, operation, what, url, response, deferred) ->
     key = Object.keys(data)[0];
+
     extractedData = data  
     formattedData = extractedData[key]
     # console.log data
     # alert JSON.stringify data
-    if key == "user" || key == "business" || key == "tags"
+    if key == "user" || key == "business" || key == "tags" || key == "post" || key == "response"
       extractedData = data[key]
     
 
@@ -62,6 +63,8 @@ window.App = angular.module("NM", [
       # alert "TEST: " + JSON.stringify extractedData
       # alert "APP.JS: " + JSON.stringify extractedData
 
+    # debugger
+    
     return extractedData
       
 
