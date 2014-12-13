@@ -32,9 +32,15 @@ App.factory "MessageService", [
 
     buildEntityUnreadList: (entities, msgs, currentEntity)->
       for e in entities
-        e.unreadMessages = []
-        
+        # e.unreadMessages = []
+        while e.unreadMessages.length > 0
+          e.unreadMessages.pop()
+
       for msg in msgs
+        #assignToEntity returns entity if
+        #message was sent from him and 
+        #was sent to current selected entity
+
         assignToEntity = _.find entities, (e) -> 
           # debugger
           e.id == msg.entity_id && 
@@ -57,7 +63,7 @@ App.factory "MessageService", [
         
 
       return deferred.promise
-    
+
     submit: (model, entity, entryForm, callback, parentList) ->
       if entryForm.$valid
         entryForm.hasError = false;

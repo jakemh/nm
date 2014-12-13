@@ -1,4 +1,4 @@
-<div ng-if="AuthService.currentEntitySelection.selected" ng-controller="AudienceController" ng-init="init()">
+<div ng-if="AuthService.currentEntitySelection.selected" ng-init="init()">
 
   <!-- <div ng-include="'feed_head_outer.html'"></div> -->
 
@@ -38,7 +38,7 @@
   </div>
 
   <div class="aud__members">
-    <div ng-repeat="entity in followersDisplay.concat(followingDisplay) 
+    <div ng-repeat="entity in entityHash(current).allConnections()
     | audienceTypeFilter:AuthService.currentEntitySelection.selected:followerFilter:followingFilter 
     | orderBy:sortVal.selected.name 
     | userBusinessFilter:filterVal.selected">

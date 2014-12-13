@@ -32,23 +32,41 @@ angular.module("NM").controller "MessagesController", [
     $scope.SideBar = SideBar
     SideBar.rightBarTemplate = "blank.html"  
     
+    $scope.entityHash = () ->
+      deferred = $q.defer();
+
+      AuthService.user()
+        .then (user)->
+          return user.ownedEntities()
+        .then (entities) ->
+          hash = {}
+
+          for entity in entities
+            key = [entity.type, entity.id]
+            hash[key] = {}
+
+          deferred.resolve(hash)
+          
+      return deferred.promise
 
     # $scope.headOuterInit = (newPost, entity) ->
     #   newPost.type = ''
     $scope.init = ->
       # $scope.buildUserList()
 
- 
+      
       currentEntity = AuthService.currentEntitySelection.selected
-
+      $scope.getAllMessages(currentEntity).then (all)->
+        $scope.allMessages = all
+        
       $scope.entityList().then (entities)->
         $scope.entityList = entities
         $scope.selectedEntity = entities[0]
-        MessageService.loadUnreadMessages(currentEntity).then (msgs)->
-          MessageService.buildEntityUnreadList($scope.entityList, msgs, currentEntity) 
+        # MessageService.loadUnreadMessages(currentEntity).then (msgs)->
+        #   MessageService.buildEntityUnreadList($scope.entityList, msgs, currentEntity) 
         
-        $scope.getAllMessages($scope.selectedEntity).then (all)->
-          $scope.allMessages = all
+        # $scope.getAllMessages($scope.selectedEntity).then (all)->
+        #   $scope.allMessages = all
           
         # $scope.loadUnreadMessages($scope.entityList)
 
@@ -95,7 +113,7 @@ angular.module("NM").controller "MessagesController", [
 
     $scope.getSentMessages = (entity)->
       deferred = $q.defer();
-      AuthService.currentEntitySelection.selected.sentMessagesTo(entity).then (sent) ->
+      entity.sentMessages().then (sent) ->
         # $scope.sentMessages = sent
         deferred.resolve(sent)
       return deferred.promise
@@ -103,8 +121,7 @@ angular.module("NM").controller "MessagesController", [
 
     $scope.getReceivedMessages = (entity)->
       deferred = $q.defer();
-
-      AuthService.currentEntitySelection.selected.receivedMessagesFrom(entity).then (received) ->
+      entity.receivedMessages().then (received) ->
         # $scope.receivedMessages = received 
         deferred.resolve(received)
       return deferred.promise
@@ -112,6 +129,18 @@ angular.module("NM").controller "MessagesController", [
     $scope.getAllMessages = (entity) ->
       # $scope.getSentMessages()
       # $scope.getReceivedMessages()
+      # deferred = $q.defer();
+
+      # $q.all([$scope.getReceivedMessages(entity), $scope.getSentMessages(entity)]).then (all) ->
+      #   # alert JSON.stringify all
+      #   allMessages = []
+
+      #   for array in all
+      #     allMessages = allMessages.concat array
+
+      #   deferred.resolve(allMessages)
+      # return deferred.promise
+
       deferred = $q.defer();
 
       $q.all([$scope.getReceivedMessages(entity), $scope.getSentMessages(entity)]).then (all) ->
@@ -123,6 +152,7 @@ angular.module("NM").controller "MessagesController", [
 
         deferred.resolve(allMessages)
       return deferred.promise
+
 
     $scope.entityList = ->
       deferred = $q.defer();

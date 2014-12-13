@@ -1,5 +1,16 @@
 "use strict";
 
+class DisplayModel
+  constructor: (@entity) ->
+
+class AudienceDisplay extends DisplayModel
+
+  followersDisplay: []
+  followingDisplay: []
+  allConnections: ->
+    @followersDisplay.concat @followingDisplay()
+  
+  
 window.App = angular.module("NM", [
   "ngRoute"
   "templates"
@@ -19,7 +30,6 @@ window.App = angular.module("NM", [
   "ng-rails-csrf"
   "ngTouch"  
   "linkify"
-
   "vr.directives.slider"
 ]).config ($routeProvider, $locationProvider, $httpProvider, RestangularProvider) ->
   $httpProvider.defaults.headers.common['X-CSRF-Token'] = $('meta[name=csrf-token]').attr('content')
@@ -90,6 +100,12 @@ window.App = angular.module("NM", [
 
   .when "/me/audience",
     templateUrl: "audience.html"
+    controller: "AudienceController"
+    resolve: 
+      entityHash: ($route, AuthService, RestangularPlus)->
+        AuthService.entityHash(AudienceDisplay).then (h) ->
+          return h
+      
   .when "/messages",
     templateUrl: "private_messages.html"
   .when "/me/followers",

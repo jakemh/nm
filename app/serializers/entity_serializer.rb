@@ -10,11 +10,15 @@ class EntitySerializer < ActiveModel::Serializer
   has_many :following, embed: :ids
   has_many :sent_messages, embed: :ids
   has_many :received_messages, embed: :ids
- 
+  has_many :feed_posts, embed: :ids
 
   # def followers
   #   object.
   # end
+
+  def feed_posts
+    Post.all.includes(:responses, :user, :business).where(type: [nil, "", "Post"])
+  end
 
   def follower_count
     object.followers.count

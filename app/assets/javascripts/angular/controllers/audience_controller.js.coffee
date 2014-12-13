@@ -1,3 +1,5 @@
+
+
 angular.module("NM").controller "AudienceController", [
   "$scope"
   "$q"
@@ -5,7 +7,11 @@ angular.module("NM").controller "AudienceController", [
   "Restangular"
   "AuthService"
   "SideBar"
-  ($scope, $q, Utilities, Restangular, AuthService, SideBar) ->
+  "entityHash"
+  ($scope, $q, Utilities, Restangular, AuthService, SideBar, entityHash) ->
+
+    $scope.current = AuthService.currentEntitySelection.selected
+    $scope.entityHash = entityHash
     $scope.Utilities = Utilities
     $scope.feedContentPartial = "feed_body_audience.html"
     $scope.AuthService = AuthService
@@ -19,6 +25,7 @@ angular.module("NM").controller "AudienceController", [
     $scope.displayList = []
     # SideBar.rightBarTemplate = "right_bar_business.html"        
     SideBar.rightBarTemplate = "blank.html"  
+
 
     # $scope.loadMap()
     SideBar.tabBarVisible = true 
@@ -34,6 +41,18 @@ angular.module("NM").controller "AudienceController", [
     
     $scope.followerFilter = true
     $scope.followingFilter = false
+
+    # $scope.entityHash = () ->
+    #   AuthService.user()
+    #     .then (user)->
+    #       return user.ownedEntities()
+    #     .then (entities) ->
+    #       hash = {}
+
+    #       for entity in entities
+    #         key = [entity.type, entity.id]
+    #         hash[key] = {}
+    #       $q.when()
 
     $scope.$watch "AuthService.currentEntitySelection.selected", ->
       # console.log AuthService.currentEntitySelection.selected.follower_ids
@@ -53,7 +72,9 @@ angular.module("NM").controller "AudienceController", [
 
     $scope.init = () ->
       ent = AuthService.currentEntitySelection.selected
-
+      
+      entityHash(ent).followersDisplay.push
+        name: "TEST"
       # $scope.getFollowing(ent)
       # $scope.getFollowers(ent)
 

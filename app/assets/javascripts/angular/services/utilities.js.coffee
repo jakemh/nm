@@ -7,7 +7,8 @@ App.factory "Utilities", [
       millisecondsPerDay: 86400000
 
       timeAgoThreshhold: ->
-        -3 * @millisecondsPerDay
+        days = 3
+        -1 * days * @millisecondsPerDay
 
       testing: true
 

@@ -8,8 +8,9 @@ angular.module("NM").factory "User", [
   ($q, Restangular, RestangularPlus, RestEntity) ->
     Restangular.extendModel "users", (self) =>
       angular.extend self, RestangularPlus
-      angular.extend self, RestEntity
+      angular.extend self, new RestEntity()
       
+      debugger
       self.ownedEntities = ->
         deferred = $q.defer();
         returnList = [self]

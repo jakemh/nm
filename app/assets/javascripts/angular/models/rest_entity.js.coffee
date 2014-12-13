@@ -1,120 +1,95 @@
 angular.module("NM").factory "RestEntity", [
   "RestangularPlus"
   (RestangularPlus) ->	  
+      sentMessagesTo: (entity) ->
+        @getListPlus "sent_messages",
+          from_id: entity.id 
+          from_type: entity.type
 
-    sentMessagesTo: (entity) ->
-      @getListPlus "sent_messages",
-        from_id: entity.id 
-        from_type: entity.type
-
-    receivedMessagesFrom: (entity) ->
-      @getListPlus "received_messages",
-        from_id: entity.id 
-        from_type: entity.type
-    
-    sentMessages: (params) ->
-      @getListPlus "sent_messages",
-        params
-
-    receivedMessages: (params) ->
-      @getListPlus "received_messages",
-        params
+      receivedMessagesFrom: (entity) ->
+        @getListPlus "received_messages",
+          from_id: entity.id 
+          from_type: entity.type
       
-    getItems: ->
-      @getListPlus("items")   
+      # sentMessages: (params) ->
+      #   @getListPlus "sent_messages",
+      #     params
 
-    addFollower: (entity)->
+      # receivedMessages: (params) ->
+      #   @getListPlus "received_messages",
+      #     params
+        
 
+      sentMessages: (params) ->
+        @severalPlus2 "sent_messages",
+          @sent_message_ids, 
+          params
 
-    pushFollowing: (entity)->
-      if entity.type == "User"
-        @user_connection_ids.push(entity.id)
-      else if entity.type = "Business"
-        @business_connection_ids.push(entity.id)
+      receivedMessages: (params) ->
+        @severalPlus2 "received_messages",
+          @received_message_ids,
+          params
+      
+      receivedMessagesFrom: (entity, entityMessages) ->
+        entity.received
 
-    followerCount: () ->
-      this.follower_count
+      getItems: ->
+        @getListPlus("items")   
 
+      # addFollower: (entity)->
 
-    canBeFollowedBy: (userEntity) ->
-      if this == userEntity
-        return false #same entity
+      pushFollowing: (entity)->
+        if entity.type == "User"
+          @user_connection_ids.push(entity.id)
+        else if entity.type = "Business"
+          @business_connection_ids.push(entity.id)
 
-      if @type == "Business"
-        return true #business can be followed by anythign but themselves
+      followerCount: () ->
+        this.follower_count
 
-      else if @type == "User"
-        if userEntity.type == "User"
-          true #users can follow any user but themselves
-        else if userEntity.type == "Business"
-          return false #busines cannot follower user
-    
+      canBeFollowedBy: (userEntity) ->
+        if this == userEntity
+          return false #same entity
 
+        if @type == "Business"
+          return true #business can be followed by anythign but themselves
 
-      # if @type == "Business"
-      #   if _.contains(userEntity.business_ids, this.id)
-      #     return true #"YOU OWN THIS!!"
-      #   else if this == userEntity 
-      #     return false #return "YOU!!"
-      #   else if _.contains(userEntity.business_connection_ids, this.id)
-      #     return true #return "FOLLOWING"
-      #   else true #return "FOLLOW [*]"
-
-      # else if @type == "User"
-      #   if userEntity.type == "Business"
-      #     return false #Can't follow users from businesses
-      #   else if this == userEntity   
-      #     return false #return "YOU!!"
-      #   else if _.contains(userEntity.user_connection_ids, this.id)
-      #     return true #return "FOLLOWING"
-      #   else if userEntity.owner_id == this.id 
-      #     return false #return "YOUR OWNER"
-      #   else true #return "FOLLOW [*]"
+        else if @type == "User"
+          if userEntity.type == "User"
+            true #users can follow any user but themselves
+          else if userEntity.type == "Business"
+            return false #busines cannot follower user
 
 
-    isFollowedBy: (userEntity) ->
-      if @type == "Business"
-        if _.contains(userEntity.business_connection_ids, this.id)
-          return true
+      isFollowedBy: (userEntity) ->
+        if @type == "Business"
+          if _.contains(userEntity.business_connection_ids, this.id)
+            return true
+          else return false
+        else if @type == "User"
+          if _.contains(userEntity.user_connection_ids, this.id)
+            return true 
+          else return false
         else return false
-      else if @type == "User"
-        if _.contains(userEntity.user_connection_ids, this.id)
-          return true 
-        else return false
-      else return false
 
 
-    # ownedUnreadMessages: []
-    
+      posts: (params) ->
+        # @getListPlus("posts", params)
+        @severalPlus2("posts", @feed_post_ids)
 
-    # sentMessages: (entity) ->
-    #   alert JSON.stringify 
-    #   @getList "sent_messages",
-    #     from_id: entity.id 
-    #     from_type: entity.type
+      flag: (params) ->
+        @post('flags', params)
+        # @getListPlus("flags", params).post(params)
 
-    # receivedMessages: (entity) ->
-    #   @getList "received_messages",
-    #     from_id: entity.id 
-    #     from_type: entity.type
-    
+      followers: () ->
+        console.log @follower_ids
+        @severalPlus2("followers", @follower_ids)
 
-    posts: (params) ->
-      @getListPlus("posts", params)
+      following: () ->
+        @severalPlus2("following", @following_ids)
 
-    flag: (params) ->
-      @post('flags', params)
-      # @getListPlus("flags", params).post(params)
-
-    followers: () ->
-      console.log @follower_ids
-      @severalPlus2("followers", @follower_ids)
-
-    following: () ->
-      @severalPlus2("following", @following_ids)
-
-    personalPosts: () ->
-      @severalPlus("posts").getList()
+      personalPosts: () ->
+        @severalPlus("posts").getList()
 
 
     # entityType: 
