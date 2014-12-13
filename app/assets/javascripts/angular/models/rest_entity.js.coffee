@@ -7,7 +7,7 @@ angular.module("NM").factory "RestEntity", [
       unreadMessages: []
       following: []
       followers: []
-      
+
       sentMessagesTo: (entity) ->
         @getListPlus "sent_messages",
           from_id: entity.id 
@@ -88,11 +88,11 @@ angular.module("NM").factory "RestEntity", [
         @post('flags', params)
         # @getListPlus("flags", params).post(params)
 
-      followers: () ->
+      getFollowers: () ->
         console.log @follower_ids
         @severalPlus2("followers", @follower_ids)
 
-      following: () ->
+      getFollowing: () ->
         @severalPlus2("following", @following_ids)
 
       personalPosts: () ->

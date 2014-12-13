@@ -51,11 +51,11 @@ angular.module("NM").controller "AudienceController", [
       # $scope.getFollowers(ent)
 
     $scope.getFollowers = (ent)->
-      ent.followers().then (followers)->
+      ent.getFollowers().then (followers)->
         $scope.current.followers = followers
 
     $scope.getFollowing = (ent)->
-      ent.following().then (following)->
+      ent.getFollowing().then (following)->
         $scope.current.following = following
 
     $scope.audMemberClass = (index)->
