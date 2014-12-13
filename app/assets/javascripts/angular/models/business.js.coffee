@@ -6,7 +6,7 @@ angular.module("NM").factory "Business", [
   ($q, Restangular, RestangularPlus, RestEntity) ->
     Restangular.extendModel "businesses", (self) ->
       angular.extend self, RestangularPlus
-      angular.extend self, RestEntity
+      angular.extend self, angular.copy(RestEntity)
 
       self.owner = ->
         Restangular.one("users", self.owner_id).get()
@@ -23,9 +23,9 @@ angular.module("NM").factory "Business", [
       self.review = (params) ->
         @post('reviews', {score: params.score, content: params.content})
 
-      self.ownedUnreadMessages = []
-      self.items = []
-      self.unreadMessages = []
+      # self.ownedUnreadMessages = []
+      # self.items = []
+      # self.unreadMessages = []
 
       # self.items = []
       return self

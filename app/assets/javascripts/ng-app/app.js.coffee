@@ -8,7 +8,8 @@ class AudienceDisplay extends DisplayModel
   followersDisplay: []
   followingDisplay: []
   allConnections: ->
-    @followersDisplay.concat @followingDisplay()
+    
+    @followersDisplay.concat @followingDisplay
   
   
 window.App = angular.module("NM", [

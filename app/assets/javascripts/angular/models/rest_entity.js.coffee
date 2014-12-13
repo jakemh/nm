@@ -1,6 +1,13 @@
 angular.module("NM").factory "RestEntity", [
   "RestangularPlus"
-  (RestangularPlus) ->	  
+  (RestangularPlus) ->
+
+      ownedUnreadMessages: []
+      items: []
+      unreadMessages: []
+      following: []
+      followers: []
+      
       sentMessagesTo: (entity) ->
         @getListPlus "sent_messages",
           from_id: entity.id 

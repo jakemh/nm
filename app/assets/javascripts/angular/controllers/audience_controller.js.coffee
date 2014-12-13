@@ -18,6 +18,8 @@ angular.module("NM").controller "AudienceController", [
     $scope.SideBar = SideBar
     $scope.followersList = []
     $scope.followingList = []
+    $scope.currentDisplayEntity = () ->
+      entityHash($scope.current)
 
     $scope.followersDisplay = []
     $scope.followingDisplay = []
@@ -29,62 +31,32 @@ angular.module("NM").controller "AudienceController", [
 
     # $scope.loadMap()
     SideBar.tabBarVisible = true 
-    # $scope.$watch "SideBar.mapLoaded", ->
-    #   if SideBar.mapLoaded == true
-    #     $scope.mapObj = new GMaps
-    #       div: '#map'
-    #       lat: 35
-    #       lng: -122
-    #       zoom: 2
-    #     $scope.mapLoaded = true
-    #   SideBar.mapLoaded = false
+
     
     $scope.followerFilter = true
     $scope.followingFilter = false
 
-    # $scope.entityHash = () ->
-    #   AuthService.user()
-    #     .then (user)->
-    #       return user.ownedEntities()
-    #     .then (entities) ->
-    #       hash = {}
 
-    #       for entity in entities
-    #         key = [entity.type, entity.id]
-    #         hash[key] = {}
-    #       $q.when()
 
     $scope.$watch "AuthService.currentEntitySelection.selected", ->
-      # console.log AuthService.currentEntitySelection.selected.follower_ids
-      while $scope.followingList.length > 0 || 
-          $scope.followersList.length > 0 ||
-          $scope.followersDisplay.length > 0 ||
-          $scope.followingDisplay.length > 0
-
-        $scope.followingList.pop()
-        $scope.followersList.pop()
-        $scope.followersDisplay.pop()
-        $scope.followingDisplay.pop()
-
       ent = AuthService.currentEntitySelection.selected
       $scope.getFollowing(ent)
       $scope.getFollowers(ent)
 
     $scope.init = () ->
       ent = AuthService.currentEntitySelection.selected
-      
-      entityHash(ent).followersDisplay.push
-        name: "TEST"
+      # $scope.currentDisplayEntity()
+
       # $scope.getFollowing(ent)
       # $scope.getFollowers(ent)
 
     $scope.getFollowers = (ent)->
       ent.followers().then (followers)->
-        $scope.followersList = followers
+        $scope.current.followers = followers
 
     $scope.getFollowing = (ent)->
       ent.following().then (following)->
-        $scope.followingList = following
+        $scope.current.following = following
 
     $scope.audMemberClass = (index)->
       console.log "INDEX: " + index
@@ -127,46 +99,46 @@ angular.module("NM").controller "AudienceController", [
     $scope.filterVal = {}
     $scope.filterVal.selected = $scope.filterOptions[0]
 
-    $scope.$watch 'followersList', ->
+    $scope.$watch 'current.followers', ->
         # $q.all(AuthService.currentFollowers)
-        $scope.followersDisplayList = []
-        for f in $scope.followersList
-          do (f) -> 
-            f.entity().then (e) ->
-              entity = e
-              # alert JSON.stringify entity
+      $scope.currentDisplayEntity().followersDisplay = []
+      for f in $scope.current.followers
+        do (f) -> 
+          f.entity().then (e) ->
+            entity = e
+            # alert JSON.stringify entity
 
-              $scope.followersDisplay.push
-                models: {entity: entity, connection: f}
-                name: entity.name
-                distance: entity.distance
-                added: f.created_at
-                thumb: entity.thumb
-                profile: entity.uri
-                type: f.type
-                entityType: entity.type
-    
-    $scope.$watch 'followingList', ->
-        # $q.all(AuthService.currentFollowers)
-        $scope.followingDisplay = []
-        
-        for f in $scope.followingList
-          do (f) -> 
-            f.entity().then (e) ->
-              entity = e
+            $scope.currentDisplayEntity().followersDisplay.push
+              models: {entity: entity, connection: f}
+              name: entity.name
+              distance: entity.distance
+              added: f.created_at
+              thumb: entity.thumb
+              profile: entity.uri
+              type: f.type
+              entityType: entity.type
+  
+    $scope.$watch 'current.following', ->
+      # $q.all(AuthService.currentFollowers)
+      $scope.currentDisplayEntity().followingDisplay = []
+      
+      for f in $scope.current.following
+        do (f) -> 
+          f.entity().then (e) ->
+            entity = e
 
 
-              # alert JSON.stringify entity
-              $scope.followingDisplay.push
-                models: {entity: entity, connection: f}
-                name: entity.name
-                distance: entity.distance
-                added: f.created_at
-                thumb: entity.thumb
-                profile: entity.uri
-                type: f.type
-                entityType: entity.type
-            
+            # alert JSON.stringify entity
+            $scope.currentDisplayEntity().followingDisplay.push
+              models: {entity: entity, connection: f}
+              name: entity.name
+              distance: entity.distance
+              added: f.created_at
+              thumb: entity.thumb
+              profile: entity.uri
+              type: f.type
+              entityType: entity.type
+          
 
 
 ]
