@@ -63,7 +63,7 @@ angular.module("NM").factory "MessageResponse", [
       angular.extend self, RestangularPlus
 
       self.entity = ->
-        debugger
+  
         MessageBase.entity(self)
 
       self.responses = ->

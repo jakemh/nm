@@ -21,6 +21,7 @@ App.factory "MessagesDisplay", [
       thumb: entity.thumb
       content: post.content
       profile: entity.uri
+      unread: post.unread
       entityType: entity.type
       entityId: entity.id
       # followerUri: AuthService.followerUri(entity)

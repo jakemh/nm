@@ -7,6 +7,22 @@ App.factory "PostsCache", [
 
 ]
 
+App.factory "SentMessagesCache", [
+  "$cacheFactory"
+  "Restangular"
+  ($cacheFactory, Restangular) ->
+    cache: $cacheFactory('sent_messages');
+
+
+]
+
+App.factory "ReceivedMessagesCache", [
+  "$cacheFactory"
+  "Restangular"
+  ($cacheFactory, Restangular) ->
+    cache: $cacheFactory('received_messages');
+]
+
 App.factory "MessagesCache", [
   "$cacheFactory"
   "Restangular"

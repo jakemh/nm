@@ -1,7 +1,7 @@
 class MessagesController < ApplicationController
   before_filter :set_to_entity, only: [:new, :create, :edit, :save, :update]
   before_filter :set_from_entity, only: [:index]
-  before_filter :authenticate_entity, only: [:index, :show]
+  # before_filter :authenticate_entity, only: [:index, :show]
 
   def index
 

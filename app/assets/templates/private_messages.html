@@ -1,4 +1,4 @@
-<div tyle="height: 100%; overflow: auto" ng-controller="MessagesController" ng-if="AuthService.currentEntitySelection.selected" ng-init="init()">
+<div tyle="height: 100%; overflow: auto"  ng-if="AuthService.currentEntitySelection.selected">
   
   <!--  <h3>Sent Messages</h3>
   <div ng-repeat="entity in sentMessagesDisplay | orderBy:'id': true" ng-init="newPost = newMessage; sentMessagesInit(newPost)">
@@ -13,16 +13,16 @@
     <ng-include src="'feed_content.html'"></ng-include>
 
   </div> -->
-  <div class="row" style="height: 100%; overflow: auto; margin: 0">
+  <div  class="row" style="height: 100%; overflow: auto; margin: 0">
     <div class="col-sm-6 no-padding no-margin" style="height: 100%; overflow: auto; padding: 0">
-      <ul class="nm__list" ng-repeat="entity in entityList | orderBy:'unreadMessages.length':true">
-        <li ng-click="selectEntity(entity)" style="height: 55px;" class="nm__list-item nm__list-item--unread" ng-class="{'nm__selected' : Utilities.entityCompare(entity, selectedEntity)}">
-          <span class="badge pull-right">{{unreadQuantity(entity)}}</span>
+      <ul class="nm__list" ng-repeat="displayEntity in displayEnt().getEntitiesList() | orderBy:'id':true">
+        <li ng-click="selectEntity(displayEntity)" style="height: 55px;" class="nm__list-item nm__list-item--unread" ng-class="{'nm__selected' : Utilities.entityCompare(displayEntity.entity, selectedEntity.entity)}">
+          <span class="badge pull-right">{{unreadQuantity(displayEntity)}}</span>
           <div style="width: 50px; height: 50px;" class="left thumb--44">
-            <img ng-src="{{entity.thumb}}">
+            <img ng-src="{{displayEntity.entity.thumb}}">
           </div>
           <div class="nm__item-name nm__bold">
-            {{entity.name}}
+            {{displayEntity.entity.name}}
           </div>
         </li>
       </ul>
@@ -37,7 +37,7 @@
         </div>
       </div>
 
-      <ul class="nm__list" ng-repeat="msg in displayMessages | orderBy:'id': true | currentEntityFilter: AuthService.currentEntitySelection.selected">
+      <ul class="nm__list" ng-repeat="msg in selectedEntity.displayMessages | orderBy:'id': true">
         <li 
         class="nm__list-item"
         ng-class="{'highlight' : unread(msg)}"

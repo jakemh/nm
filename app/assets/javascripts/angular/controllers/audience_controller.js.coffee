@@ -12,15 +12,16 @@ angular.module("NM").controller "AudienceController", [
 
     $scope.current = AuthService.currentEntitySelection.selected
     $scope.entityHash = entityHash
+    $scope.currentDisplayEntity = () ->
+      entityHash($scope.current)
+
     $scope.Utilities = Utilities
     $scope.feedContentPartial = "feed_body_audience.html"
     $scope.AuthService = AuthService
     $scope.SideBar = SideBar
     $scope.followersList = []
     $scope.followingList = []
-    $scope.currentDisplayEntity = () ->
-      entityHash($scope.current)
-
+    
     $scope.followersDisplay = []
     $scope.followingDisplay = []
 

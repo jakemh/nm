@@ -1,5 +1,5 @@
 class ReceivedMessageSerializer < MessageSerializer
-  attributes :unread, :to_entity_id, :to_entity_type
+  attributes :unread, :to_entity_id, :to_entity_type, :type
 
   def unread
     object.unread?(scope.current_user)

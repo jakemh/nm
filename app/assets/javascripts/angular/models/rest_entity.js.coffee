@@ -33,6 +33,7 @@ angular.module("NM").factory "RestEntity", [
           params
 
       receivedMessages: (params) ->
+   
         @severalPlus2 "received_messages",
           @received_message_ids,
           params
@@ -97,6 +98,8 @@ angular.module("NM").factory "RestEntity", [
 
       personalPosts: () ->
         @severalPlus("posts").getList()
+
+      
 
 
     # entityType: 

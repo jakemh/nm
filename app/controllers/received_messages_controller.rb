@@ -13,12 +13,13 @@ class ReceivedMessagesController < MessagesController
   end
 
   def show
-    @received_message = entity.received_messages.find(params[:id])
+    @received_messages = parse_show_array(Message)
+    # @received_message = entity.received_messages.find(params[:id])
 
-    if params[:read]
-      @received_message.mark_as_read! :for => current_user
-    end
-    render json: @received_message
+    # if params[:read]
+    #   @received_message.mark_as_read! :for => current_user
+    # end
+    render json: @received_messages, each_serializer: ReceivedMessageSerializer
     # render json: entity.received_messages.find(params[:id].split(","))
   end
 
