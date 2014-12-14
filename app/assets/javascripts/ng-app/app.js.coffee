@@ -82,7 +82,7 @@ window.App = angular.module("NM", [
     formattedData = extractedData[key]
     # console.log data
     # alert JSON.stringify data
-    if key == "user" || key == "business" || key == "tags" || key == "post" || key == "response"
+    if key == "user" || key == "business" || key == "tags" || key == "post" || key == "response" || key == "message" || key == "received_message" || key == "sent_messages"
       extractedData = data[key]
     
 

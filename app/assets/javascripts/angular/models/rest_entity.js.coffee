@@ -26,6 +26,11 @@ angular.module("NM").factory "RestEntity", [
       #   @getListPlus "received_messages",
       #     params
         
+      addSentMessageId: (id) ->
+        @sent_message_ids.push id
+
+      addReceivedMessageId: (id) ->
+        @received_message_ids.push id
 
       sentMessages: (params) ->
         @severalPlus2 "sent_messages",
@@ -33,7 +38,7 @@ angular.module("NM").factory "RestEntity", [
           params
 
       receivedMessages: (params) ->
-   
+
         @severalPlus2 "received_messages",
           @received_message_ids,
           params

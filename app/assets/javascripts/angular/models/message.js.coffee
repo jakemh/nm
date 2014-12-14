@@ -25,6 +25,34 @@ angular.module("NM").factory "ReceivedMessage", [
      #   else $q.when([])
 ]
 
+angular.module("NM").factory "Message", [
+
+  "$q"
+  "MessageBase"
+  "Restangular"
+  "RestangularPlus"
+
+  ($q, MessageBase, Restangular, RestangularPlus) ->
+    Restangular.extendModel "messages", (self) ->
+      angular.extend self, RestangularPlus
+      angular.extend self, MessageBase
+
+      # self.entity = ->
+      #   MessageBase.entity(self)
+
+      self.responses = ->
+        self.getListPlus("message_responses")
+
+        # MessageBase.entity(self)
+
+      return self
+     # responses: (model) ->
+     #   if model.response_ids.length > 0
+     #     Restangular.several("me/message_responses", model.response_ids).getList()
+     #   else $q.when([])
+]
+
+
 angular.module("NM").factory "SentMessage", [
  
   "$q"

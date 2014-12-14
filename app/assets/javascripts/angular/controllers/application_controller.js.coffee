@@ -3,6 +3,7 @@ angular.module("NM").controller "ApplicationController", [
   "User"
   "SentMessage"
   "ReceivedMessage"
+  "Message"
   "Follower"
   "Business"
   "RestEntity"
@@ -21,7 +22,7 @@ angular.module("NM").controller "ApplicationController", [
   "ProfilePhoto"
   "CoverPhoto"
 
-  ($scope, User, SentMessage, ReceivedMessage, Follower, Business, RestEntity, Following, Post, Review, ReviewService, Response, MessageResponse, MessageService, AuthService, Restangular, SideBar, MapService, Utilities, ProfilePhoto, CoverPhoto) ->
+  ($scope, User, SentMessage, ReceivedMessage, Message, Follower, Business, RestEntity, Following, Post, Review, ReviewService, Response, MessageResponse, MessageService, AuthService, Restangular, SideBar, MapService, Utilities, ProfilePhoto, CoverPhoto) ->
     $scope.Utilities = Utilities
     $scope.MessageService = MessageService
     $scope.AuthService = AuthService

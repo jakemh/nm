@@ -41,7 +41,7 @@ class MessagesController < ApplicationController
      m = entity.send_message_to([to_entity], post)
      if m.save
        # redirect_to [:me, :messages]
-       render json: m
+       render json: m, serializer: SentMessagesSerializer
      end
   end
 
