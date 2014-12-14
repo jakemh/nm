@@ -2,7 +2,7 @@ class SentMessagesSerializer < MessageSerializer
   attributes :to_entity_id, :to_entity_type, :type
   attr_accessor :recipient
   def unread
-    object.unread?(scope.current_user)
+    false
     # object.to_entity.message_recipients.where(message_id: object.id).first.unread?(scope.current_user)
   end
 
