@@ -1,6 +1,6 @@
 class MessageSerializer < ResponseSerializer
   
-  attributes :unread, :to_entity_id, :to_entity_type,
+  attributes :to_entity_id, :to_entity_type,
 
 
   def to_entity_id

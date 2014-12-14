@@ -3,14 +3,11 @@ angular.module("NM").factory "RestEntity", [
   "$q"
   (RestangularPlus, $q) ->
 
-      ownedUnreadMessages: []
       items: []
       receivedMessages: []
       sentMessages: []
       allMessages: ->
         @receivedMessages.concat @sentMessages
-
-     
 
       unreadMessages: []
       following: []

@@ -60,7 +60,11 @@ angular.module("NM").controller "MessagesController", [
     $scope.markAsRead = (msg)->
       currentEntity = AuthService.currentEntitySelection.selected
       msg.models.post.unread = false
-      msg.models.post.put()
+      msg.models.post.put().then () ->
+        SideBar.allUnreadMessages(AuthService.currentUser).then (list) ->
+          SideBar.messageCount = list.length
+        SideBar.eachEntityUnreadMessages(AuthService.currentUser)
+
       # currentEntity.one('received_messages', msg.id).get(read: true).then (newMsg)->
       #   MessageService.loadUnreadMessages(currentEntity).then (msgs)->
       #     MessageService.buildEntityUnreadList($scope.entityList, msgs, currentEntity)
@@ -141,6 +145,8 @@ angular.module("NM").controller "MessagesController", [
       selectedEntity.post('messages', postSubmit).then (response)->
 
         #set sidebar count
+        SideBar.eachEntityUnreadMessages(AuthService.currentUser)
+
         SideBar.allUnreadMessages(AuthService.currentUser).then (list) ->
           SideBar.messageCount = list.length
         # $scope.getAllMessages(AuthService.currentEntitySelection.selected).then (all)->

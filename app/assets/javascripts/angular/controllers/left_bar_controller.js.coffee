@@ -15,6 +15,7 @@ angular.module("NM").controller "LeftBarController", [
       SideBar.allUnreadMessages(AuthService.currentUser).then (list) ->
         SideBar.messageCount = list.length
 
+      SideBar.eachEntityUnreadMessages(AuthService.currentUser)
 
       # AuthService.user()
       #   .then (user)->
