@@ -1,2 +1,0 @@
-module ReceivedMessagesHelper
-end

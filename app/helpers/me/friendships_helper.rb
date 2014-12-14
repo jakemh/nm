@@ -1,2 +1,0 @@
-module Me::FriendshipsHelper
-end

@@ -1,2 +1,0 @@
-module Me::UserPhotosHelper
-end
