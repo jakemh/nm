@@ -24,11 +24,23 @@ class ReceivedMessagesController < MessagesController
   end
 
   def update
-    @received_message = entity.received_messages.find(params[:id])
-    if params[:read]
+    @received_message = Message.find(params[:id])
+    # @received_message = entity.received_messages.find(params[:id])
+    if whitelist[:unread] == false
       @received_message.mark_as_read! :for => current_user
+    end
+
+    if @received_message.save
+      render json: @received_message
     end
   end
   
+
+  def whitelist
+    params.require(:received_message).permit(
+     :unread
+     )
+ end
+
 
 end

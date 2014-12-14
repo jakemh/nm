@@ -58,13 +58,14 @@ angular.module("NM").controller "MessagesController", [
     
     $scope.markAsRead = (msg)->
       currentEntity = AuthService.currentEntitySelection.selected
-
-      currentEntity.one('received_messages', msg.id).get(read: true).then (newMsg)->
-        MessageService.loadUnreadMessages(currentEntity).then (msgs)->
-          MessageService.buildEntityUnreadList($scope.entityList, msgs, currentEntity)
-          $scope.MessageService.unreadList = msgs
-          $scope.MessageService.buildUserEntityUnreadList(msgs, AuthService.entityOptions)
-        msg.models.post.unread = false    
+      msg.models.post.unread = false
+      msg.models.post.put()
+      # currentEntity.one('received_messages', msg.id).get(read: true).then (newMsg)->
+      #   MessageService.loadUnreadMessages(currentEntity).then (msgs)->
+      #     MessageService.buildEntityUnreadList($scope.entityList, msgs, currentEntity)
+      #     $scope.MessageService.unreadList = msgs
+      #     $scope.MessageService.buildUserEntityUnreadList(msgs, AuthService.entityOptions)
+      #   msg.models.post.unread = false    
 
     $scope.unread = (msg)->
       msg.models.post.unread
