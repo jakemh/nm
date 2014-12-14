@@ -22,25 +22,25 @@ App.factory "RestangularPlus", [
 
 
     getModel: (modelName, id, params) ->
+      if id
+        deferred = $q.defer();
+        cache = CacheService.modelsToCache()[modelName].cache
+        cachedModel = cache.get(id)
 
-      deferred = $q.defer();
-      cache = CacheService.modelsToCache()[modelName].cache
-      cachedModel = cache.get(id)
-
-      if cachedModel
-        return $q.when(cachedModel)
-      else
-        Restangular.one(modelName, id).get(params).then (model) ->
-          cachedModel = cache.get(model.id)
-          if !cachedModel
-            cache.put(model.id, model)
+        if cachedModel
+          return $q.when(cachedModel)
+        else
+          Restangular.one(modelName, id).get(params).then (model) ->
             cachedModel = cache.get(model.id)
+            if !cachedModel
+              cache.put(model.id, model)
+              cachedModel = cache.get(model.id)
 
-          deferred.resolve(cachedModel)
+            deferred.resolve(cachedModel)
 
 
-      return deferred.promise
-
+        return deferred.promise
+      else return $q.when(null)
 
       # if model.user_id
       #   cached = UsersCache.cache.get(model.user_id)

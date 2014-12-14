@@ -8,8 +8,8 @@
     ng-click="SideBar.tabBarDisabled || tabItemClick(entity)"
     >
     {{entity.name}}
-    <span ng-show="entity.ownedUnreadMessages.length>0">
-       ({{entity.ownedUnreadMessages.length}})
+    <span ng-show="entity.unreadMessages.length>0">
+       ({{entity.unreadMessages.length}})
   </span>
   </div>
 </div>

@@ -1,3 +1,5 @@
+
+
 App.factory "AuthService", [
   "$q"
   "RestangularPlus"
@@ -15,7 +17,9 @@ App.factory "AuthService", [
 
     # selected: @currentEntitySelection.selected
     user: () ->
-      RestangularPlus.getModel("users", "current")
+      if !@currentUser
+        RestangularPlus.getModel("users", "current")
+      else $q.when(@currentUser)
 
     isFollowing: (entity, selectedEntity) ->
       if entity.type == "Business"
@@ -45,7 +49,26 @@ App.factory "AuthService", [
       else 
         null
 
-   
+    entityHash: (DisplayModel) ->
+      deferred = $q.defer();
+
+      @user()
+        .then (user)->
+          return user.ownedEntities()
+        .then (entities) ->
+          hash = {}
+
+          for entity in entities
+            key = [entity.type, entity.id]
+
+            hash[key] = new DisplayModel(entity)
+
+          deferred.resolve (entity) ->
+            key = [entity.type, entity.id]
+            return hash[key]
+
+      return deferred.promise
+      
     messageFollowerHandle: (viewModel, entity, callback)->
       @followerHandle(entity).then ()->
         callback(viewModel, entity)

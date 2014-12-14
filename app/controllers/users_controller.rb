@@ -3,6 +3,7 @@ class UsersController < EntityController
   before_filter :authenticate_entity, only: [:new, :create, :edit, :save, :update]
   skip_before_action :authenticate
   include FeedConcern
+  include EntityConcern
 
   def index
     render json: User.includes(:connections).all

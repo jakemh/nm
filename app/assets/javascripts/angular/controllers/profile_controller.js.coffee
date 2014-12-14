@@ -21,8 +21,8 @@ angular.module("NM").controller "ProfileController", [
   ($scope, $q, $routeParams, $location, Utilities, Review, AuthService, MessagesDisplay, MessageService, Restangular, SideBar, MapService, ReviewService, ReviewDisplay, profileEntity) ->
     
     # alert my#FriendsHotel.hotelName( );
+    
     $scope.profileEntity = profileEntity
-
     $scope.posts = []
     $scope.params = []
     $scope.location = $location

@@ -1,3 +1,15 @@
+class MessageEntity
+  constructor: (@entity) ->
+    @messages = []
+    @unreadMessages = []
+    @displayMessages = []
+
+  addMessage: (msg) ->
+    @messages.push(msg)
+
+  lastMessage: () ->
+    # _.sortBy @messages, (m) -> m.id
+    @messages[@messages.length - 1]
 
 angular.module("NM").controller "MessagesController", [
   "$scope"
@@ -10,108 +22,74 @@ angular.module("NM").controller "MessagesController", [
   "MessageService"
   "RestangularPlus"
   "UsersCache"
-  ($scope, $q,  Utilities, AuthService, MessagesDisplay, Restangular, SideBar, MessageService, RestangularPlus, UsersCache) ->
+  "entityHash"
+  "$filter"
+
+  ($scope, $q,  Utilities, AuthService, MessagesDisplay, Restangular, SideBar, MessageService, RestangularPlus, UsersCache, entityHash, $filter) ->
     # $scope.messages = []
-    $scope.sentMessages = []
-    $scope.receivedMessage = []
-    $scope.sentMessagesDisplay = []
-    $scope.receivedMessagesDisplay = []
+    $scope.current = AuthService.currentEntitySelection.selected
+    $scope.entityHash = entityHash
+    $scope.displayEnt = () ->
+      entityHash(AuthService.currentEntitySelection.selected)
+
+    # $scope.sentMessages = []
+    # $scope.receivedMessage = []
+    # $scope.sentMessagesDisplay = []
+    # $scope.receivedMessagesDisplay = []
     $scope.searching = []
     $scope.AuthService = AuthService
     $scope.Utilities = Utilities
     $scope.displayMessages = []
     $scope.newMessage = {}
     # $scope.userList = []
-    $scope.unreadList = []
-    $scope.entityList = []
-    $scope.allMessages = []
+    # $scope.unreadList = []
+    # $scope.entityList = []
+    # $scope.allMessages = []
     # $scope.feedHeadBody = "feed_head_form.html"
     $scope.selectedEntity = null
 
     $scope.feedCornerPartial = "feed_body_comment.html"
     $scope.SideBar = SideBar
     SideBar.rightBarTemplate = "blank.html"  
-    
+  
 
     # $scope.headOuterInit = (newPost, entity) ->
     #   newPost.type = ''
-    $scope.init = ->
-      # $scope.buildUserList()
 
- 
-      currentEntity = AuthService.currentEntitySelection.selected
-
-      $scope.entityList().then (entities)->
-        $scope.entityList = entities
-        $scope.selectedEntity = entities[0]
-        MessageService.loadUnreadMessages(currentEntity).then (msgs)->
-          MessageService.buildEntityUnreadList($scope.entityList, msgs, currentEntity) 
-        
-        $scope.getAllMessages($scope.selectedEntity).then (all)->
-          $scope.allMessages = all
-          
-        # $scope.loadUnreadMessages($scope.entityList)
-
-      # $scope.entityList()
     
     $scope.markAsRead = (msg)->
       currentEntity = AuthService.currentEntitySelection.selected
+      msg.models.post.unread = false
+      msg.models.post.put().then () ->
+        SideBar.allUnreadMessages(AuthService.currentUser).then (list) ->
+          SideBar.messageCount = list.length
+        SideBar.eachEntityUnreadMessages(AuthService.currentUser)
 
-      currentEntity.one('received_messages', msg.id).get(read: true).then (newMsg)->
-        MessageService.loadUnreadMessages(currentEntity).then (msgs)->
-          MessageService.buildEntityUnreadList($scope.entityList, msgs, currentEntity)
-          $scope.MessageService.unreadList = msgs
-          $scope.MessageService.buildUserEntityUnreadList(msgs, AuthService.entityOptions)
-        msg.models.post.unread = false    
+      # currentEntity.one('received_messages', msg.id).get(read: true).then (newMsg)->
+      #   MessageService.loadUnreadMessages(currentEntity).then (msgs)->
+      #     MessageService.buildEntityUnreadList($scope.entityList, msgs, currentEntity)
+      #     $scope.MessageService.unreadList = msgs
+      #     $scope.MessageService.buildUserEntityUnreadList(msgs, AuthService.entityOptions)
+      #   msg.models.post.unread = false    
 
     $scope.unread = (msg)->
       msg.models.post.unread
       # $scope.allMessages = $scope.sentMessages.concat $scope.receivedMessages
     
     $scope.unreadQuantity = (entity)->
-      l = entity.unreadMessages.length
+
+      unreadList =  _.where entity.messages, {type: "ReceivedMessage", unread:  true}
+      l = unreadList.length
       if l > 0 
         return  l
 
-    # $scope.loadUnreadMessages = (entities)->
-    #   AuthService.currentUser.receivedMessages(unread: true).then (msgs)->
-    #     currentEntity = AuthService.currentEntitySelection.selected
-    #     $scope.unreadList = msgs
-    #     $scope.SideBar.messageCount = $scope.unreadList.length
-    #     for e in entities
-    #       e.unreadMessages = []
-         
-
-    #     for msg in msgs
-    #       entity = _.find entities, (ent) -> 
-    #         # debugger
-    #         ent.id == msg.entity_id && 
-    #         ent.type == msg.entity_type &&
-    #         (msg.to_entity_id == currentEntity.id &&
-    #         msg.to_entity_type == currentEntity.type)
-
-    #       if entity
-    #         entity.unreadMessages.push(msg)
-
     $scope.getSentMessages = (entity)->
-      deferred = $q.defer();
-      AuthService.currentEntitySelection.selected.sentMessagesTo(entity).then (sent) ->
-        # $scope.sentMessages = sent
-        deferred.resolve(sent)
-      return deferred.promise
-
+      entity.getSentMessages()
 
     $scope.getReceivedMessages = (entity)->
-      deferred = $q.defer();
-
-      AuthService.currentEntitySelection.selected.receivedMessagesFrom(entity).then (received) ->
-        # $scope.receivedMessages = received 
-        deferred.resolve(received)
-      return deferred.promise
+      entity.getReceivedMessages()
 
     $scope.getAllMessages = (entity) ->
-      # $scope.getSentMessages()
-      # $scope.getReceivedMessages()
       deferred = $q.defer();
 
       $q.all([$scope.getReceivedMessages(entity), $scope.getSentMessages(entity)]).then (all) ->
@@ -124,61 +102,29 @@ angular.module("NM").controller "MessagesController", [
         deferred.resolve(allMessages)
       return deferred.promise
 
-    $scope.entityList = ->
-      deferred = $q.defer();
-      $q.all([$scope.userList(), $scope.businessList()]).then (all)->
-        entityArray = [] 
-        for array in all
-
-          entityArray = entityArray.concat array
-        
-        deferred.resolve(entityArray)
-
-      return deferred.promise
-
-
-    $scope.userList = ->
-      # deferred = $q.defer();
-      return RestangularPlus.getListPlus2("users")
-      # Restangular.all('users').getList().then (users) ->
-      #   # $scope.userList = users
-      #   deferred.resolve(users)
-
-      # return deferred.promise
-
-        # $scope.selectedEntity = users[0]
-
-    $scope.businessList = ->
-      # deferred = $q.defer();
-
-      # Restangular.all('businesses').getList().then (businesses) ->
-      #   # $scope.userList = users
-      #   deferred.resolve(businesses)
-      # return deferred.promise
-      return RestangularPlus.getListPlus2("businesses")
-
 
         # alert Utilities.entityCompare()
     $scope.sentMessageInit = (newPost)->
       newPost.type = "SentMessage"
 
-    $scope.selectEntity = (entity)->
-      $scope.selectedEntity = entity
-      $scope.getAllMessages($scope.selectedEntity).then (all)->
-        $scope.allMessages = all
+    $scope.selectEntity = (displayEntity)->
+      $scope.selectedEntity = displayEntity
+      # $scope.getAllMessages($scope.selectedEntity).then (all)->
+      #   $scope.allMessages = all
 
     $scope.receivedMessageInit = (newPost)->
       newPost.type = "ReceivedMessage"
 
     $scope.sendPost = (postObj, postSubmit)->
+      
       selectedEntity = AuthService.currentEntitySelection.selected
       entityAttrs = 
         from_id: selectedEntity.id
         from_type: selectedEntity.type
         # to_id: postObj.entityId
         # to_type: postObj.entityType
-        to_id: $scope.selectedEntity.id
-        to_type: $scope.selectedEntity.type
+        to_id: $scope.selectedEntity.entity.id
+        to_type: $scope.selectedEntity.entity.type
         type: "Message"
 
       # entityAttrs = 
@@ -197,38 +143,65 @@ angular.module("NM").controller "MessagesController", [
       # route = selectedEntity.message_route
       # alert JSON.stringify postSubmit
       selectedEntity.post('messages', postSubmit).then (response)->
-        $scope.getAllMessages($scope.selectedEntity).then (all)->
-          $scope.allMessages = all
+
+        #set sidebar count
+        SideBar.eachEntityUnreadMessages(AuthService.currentUser)
+
+        SideBar.allUnreadMessages(AuthService.currentUser).then (list) ->
+          SideBar.messageCount = list.length
+        # $scope.getAllMessages(AuthService.currentEntitySelection.selected).then (all)->
+        selectedEntity.addSentMessageId(response.id)
+        response.toEntity().then (toEntity) ->
+          ownedEntity = entityHash(toEntity)
+          if ownedEntity
+            ownedEntity.entity.addReceivedMessageId(response.id)
+
+          $scope.selectedEntity.addMessage(response)
+          # $scope.selectedEntity.addMessage(response)
+          $scope.buildMessages(selectedEntity).then () ->
+            list = _.sortBy $scope.displayEnt().getEntitiesList(), (item) -> item.lastMessage().id
+            $scope.selectedEntity = list[list.length - 1]
+            # $scope.selectedEntity = $scope.displayEnt().getEntitiesList()[0]
+
+        # MessagesDisplay.buildMessageDisplay2($scope.selectedEntity.displayMessages, $scope.selectedEntity.messages, {suppressResponses: true})
+
+        # $scope.selectedEntity.addReceivedMessage(response.id)
+        # $scope.buildMessages(selectedEntity).then () ->
+
+
         # $scope.posts = $scope.posts.concat(response)
           # console.log "POSTS: " + JSON.stringify posts
 
+    $scope.buildMessages = (currentEntity)->
+      deferred = $q.defer();
+
+      $scope.getAllMessages(currentEntity).then (all)->
+        # $scope.allMessages = all
+        all = _.sortBy all, (m) -> m.id
+
+        $scope.displayEnt().allMessages = all
+        $q.all($scope.displayEnt().buildEntitiesList()).then (entities) ->
+          # debugger\
+          $scope.displayEnt().entitiesList = []
+          # console.log entities
+      
+
+          for entity in _.uniq entities
+            displaySubEnt = new MessageEntity(entity)
+            $scope.displayEnt().entitiesList.push(displaySubEnt)
+            MessageService.buildEntityMessageList(displaySubEnt, $scope.displayEnt().allMessages)
+            MessagesDisplay.buildMessageDisplay2(displaySubEnt.displayMessages, displaySubEnt.messages, {suppressResponses: true})
+
+          deferred.resolve(true)
+
+      return deferred.promise
+    
     $scope.$watch 'AuthService.currentEntitySelection.selected', ->
+    
       currentEntity = AuthService.currentEntitySelection.selected
-      # MessagesDisplay.buildMessageDisplay($scope.sentMessagesDisplay, $scope.sentMessages)
-      $scope.allMessages = []
-      MessageService.loadUnreadMessages(currentEntity).then (msgs)->
-        $scope.MessageService.unreadList = msgs
-
-        MessageService.buildEntityUnreadList($scope.entityList, msgs, currentEntity)      
-        $scope.getAllMessages($scope.selectedEntity).then (all)->
-          $scope.allMessages = all
-
-      # $scope.posts = $scope.post
-
-    $scope.$watch 'allMessages', ->
-      # MessagesDisplay.buildMessageDisplay($scope.sentMessagesDisplay, $scope.sentMessages)
-      MessagesDisplay.buildMessageDisplay2($scope.displayMessages, $scope.allMessages, {suppressResponses: true})
-
-
-
-    # $scope.$watch 'receivedMessages', ->
-    #   # MessagesDisplay.buildMessageDisplay($scope.receivedMessagesDisplay, $scope.receivedMessages)
-    #   MessagesDisplay.buildMessageDisplay(null, $scope.receivedMessages).then (list)->
-    #     $scope.receivedMessagesDisplay = list
-
-    # $scope.$watch 'AuthService.currentEntitySelection.selected', ->
-    #   if AuthService.currentEntitySelection.selected
-        
+      $scope.buildMessages(currentEntity).then () ->
+        list = _.sortBy $scope.displayEnt().getEntitiesList(), (item) -> item.lastMessage().id
+        $scope.selectedEntity = list[list.length - 1]
     
       
 ]

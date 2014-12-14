@@ -1,5 +1,42 @@
 "use strict";
 
+class DisplayModel
+  constructor: (@entity) ->
+
+
+class AudienceDisplay extends DisplayModel
+  constructor: (@entity) ->
+    @followersDisplay = []
+    @followingDisplay = []
+
+  allConnections: ->
+    
+    @followersDisplay.concat @followingDisplay
+
+
+
+class MessagesDisplay extends DisplayModel
+  constructor: (@entity) ->
+    @entitiesList = []
+    @allMessages = []
+
+  buildEntitiesList: ->
+    list = []
+    for m in @allMessages
+      if m.type == "ReceivedMessage"
+        list.push m.entity()
+      else if m.type == "SentMessage"
+        list.push m.toEntity()
+        
+    return list
+        # @entitiesList.push e
+
+  # @entitiesList: []
+
+  getEntitiesList: ->
+    _.uniq @entitiesList
+
+  
 window.App = angular.module("NM", [
   "ngRoute"
   "templates"
@@ -19,7 +56,6 @@ window.App = angular.module("NM", [
   "ng-rails-csrf"
   "ngTouch"  
   "linkify"
-
   "vr.directives.slider"
 ]).config ($routeProvider, $locationProvider, $httpProvider, RestangularProvider) ->
   $httpProvider.defaults.headers.common['X-CSRF-Token'] = $('meta[name=csrf-token]').attr('content')
@@ -39,13 +75,14 @@ window.App = angular.module("NM", [
 
 
   RestangularProvider.addResponseInterceptor (data, operation, what, url, response, deferred) ->
+    
     key = Object.keys(data)[0];
 
     extractedData = data  
     formattedData = extractedData[key]
     # console.log data
     # alert JSON.stringify data
-    if key == "user" || key == "business" || key == "tags" || key == "post" || key == "response"
+    if key == "user" || key == "business" || key == "tags" || key == "post" || key == "response" || key == "message" || key == "received_message" || key == "sent_messages"
       extractedData = data[key]
     
 
@@ -90,8 +127,19 @@ window.App = angular.module("NM", [
 
   .when "/me/audience",
     templateUrl: "audience.html"
+    controller: "AudienceController"
+    resolve: 
+      entityHash: ($route, AuthService, RestangularPlus)->
+        AuthService.entityHash(AudienceDisplay).then (h) ->
+          return h
+      
   .when "/messages",
     templateUrl: "private_messages.html"
+    controller: "MessagesController"
+    resolve: 
+      entityHash: ($route, AuthService, RestangularPlus)->
+        AuthService.entityHash(MessagesDisplay).then (h) ->
+          return h
   .when "/me/followers",
     templateUrl: "followers.html"
   .when "/businesses/:id",

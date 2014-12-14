@@ -28,6 +28,15 @@ App.factory "MessageBase", [
       else if @business_id
         RestangularPlus.getModel('businesses', @business_id, params)
 
+    fromEntity: (params) ->
+      @entity(params)
+
+    toEntity: (params) ->
+      if @to_entity_type == "User"
+        RestangularPlus.getModel('users', @to_entity_id, params)
+      else if @to_entity_type == "Business"
+        RestangularPlus.getModel('businesses', @to_entity_id, params)
+
     responses: (model, params) ->
       if model.response_ids.length > 0
         Restangular.several("me/responses", model.response_ids).getList(params)
