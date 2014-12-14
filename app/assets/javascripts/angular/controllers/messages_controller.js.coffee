@@ -22,7 +22,9 @@ angular.module("NM").controller "MessagesController", [
   "RestangularPlus"
   "UsersCache"
   "entityHash"
-  ($scope, $q,  Utilities, AuthService, MessagesDisplay, Restangular, SideBar, MessageService, RestangularPlus, UsersCache, entityHash) ->
+  "$filter"
+
+  ($scope, $q,  Utilities, AuthService, MessagesDisplay, Restangular, SideBar, MessageService, RestangularPlus, UsersCache, entityHash, $filter) ->
     # $scope.messages = []
     $scope.current = AuthService.currentEntitySelection.selected
     $scope.entityHash = entityHash
@@ -146,7 +148,9 @@ angular.module("NM").controller "MessagesController", [
           $scope.selectedEntity.addMessage(response)
           # $scope.selectedEntity.addMessage(response)
           $scope.buildMessages(selectedEntity).then () ->
-            $scope.selectedEntity = $scope.displayEnt().getEntitiesList()[0]
+            list = _.sortBy $scope.displayEnt().getEntitiesList(), (item) -> item.lastMessage().id
+            $scope.selectedEntity = list[list.length - 1]
+            # $scope.selectedEntity = $scope.displayEnt().getEntitiesList()[0]
 
         # MessagesDisplay.buildMessageDisplay2($scope.selectedEntity.displayMessages, $scope.selectedEntity.messages, {suppressResponses: true})
 
@@ -179,12 +183,13 @@ angular.module("NM").controller "MessagesController", [
           deferred.resolve(true)
 
       return deferred.promise
-          
+    
     $scope.$watch 'AuthService.currentEntitySelection.selected', ->
     
       currentEntity = AuthService.currentEntitySelection.selected
       $scope.buildMessages(currentEntity).then () ->
-        $scope.selectedEntity = $scope.displayEnt().getEntitiesList()[0]
+        list = _.sortBy $scope.displayEnt().getEntitiesList(), (item) -> item.lastMessage().id
+        $scope.selectedEntity = list[list.length - 1]
     
       
 ]

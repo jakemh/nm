@@ -41,6 +41,8 @@ App.factory "MessageService", [
           if displaySubEnt.entity.id == msg.to_entity_id && displaySubEnt.entity.type == msg.to_entity_type 
             displaySubEnt.messages.push msg
 
+      _.sortBy displaySubEnt.messages, (m) -> m.id
+
 
     # buidlEntityMessageList: (displayEntities, messages)->
     #   for dEntity in displayEntities
