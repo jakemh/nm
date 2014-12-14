@@ -8,6 +8,7 @@ class MessageEntity
     @messages.push(msg)
 
   lastMessage: () ->
+    # _.sortBy @messages, (m) -> m.id
     @messages[@messages.length - 1]
 
 angular.module("NM").controller "MessagesController", [
@@ -79,10 +80,10 @@ angular.module("NM").controller "MessagesController", [
         return  l
 
     $scope.getSentMessages = (entity)->
-      entity.sentMessages()
+      entity.getSentMessages()
 
     $scope.getReceivedMessages = (entity)->
-      entity.receivedMessages()
+      entity.getReceivedMessages()
 
     $scope.getAllMessages = (entity) ->
       deferred = $q.defer();
@@ -138,7 +139,10 @@ angular.module("NM").controller "MessagesController", [
       # route = selectedEntity.message_route
       # alert JSON.stringify postSubmit
       selectedEntity.post('messages', postSubmit).then (response)->
-        # debugger
+
+        #set sidebar count
+        SideBar.allUnreadMessages(AuthService.currentUser).then (list) ->
+          SideBar.messageCount = list.length
         # $scope.getAllMessages(AuthService.currentEntitySelection.selected).then (all)->
         selectedEntity.addSentMessageId(response.id)
         response.toEntity().then (toEntity) ->
@@ -167,6 +171,7 @@ angular.module("NM").controller "MessagesController", [
 
       $scope.getAllMessages(currentEntity).then (all)->
         # $scope.allMessages = all
+        all = _.sortBy all, (m) -> m.id
 
         $scope.displayEnt().allMessages = all
         $q.all($scope.displayEnt().buildEntitiesList()).then (entities) ->

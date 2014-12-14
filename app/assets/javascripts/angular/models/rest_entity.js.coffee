@@ -1,9 +1,17 @@
 angular.module("NM").factory "RestEntity", [
   "RestangularPlus"
-  (RestangularPlus) ->
+  "$q"
+  (RestangularPlus, $q) ->
 
       ownedUnreadMessages: []
       items: []
+      receivedMessages: []
+      sentMessages: []
+      allMessages: ->
+        @receivedMessages.concat @sentMessages
+
+     
+
       unreadMessages: []
       following: []
       followers: []
@@ -18,31 +26,43 @@ angular.module("NM").factory "RestEntity", [
           from_id: entity.id 
           from_type: entity.type
       
-      # sentMessages: (params) ->
-      #   @getListPlus "sent_messages",
-      #     params
+      buildSentMessages: (params) ->
+        @getSentMessages().then (msgs) =>
+          @sentMessages = msgs
 
-      # receivedMessages: (params) ->
-      #   @getListPlus "received_messages",
-      #     params
-        
+      buildReceivedMessages: (params) ->
+        @getReceivedMessages().then (msgs) =>
+          @receivedMessages = msgs
+
       addSentMessageId: (id) ->
         @sent_message_ids.push id
 
       addReceivedMessageId: (id) ->
         @received_message_ids.push id
 
-      sentMessages: (params) ->
+      getSentMessages: (params) ->
         @severalPlus2 "sent_messages",
           @sent_message_ids, 
           params
 
-      receivedMessages: (params) ->
+      getReceivedMessages: (params) ->
 
         @severalPlus2 "received_messages",
           @received_message_ids,
           params
       
+      getAllMessages: ->
+        # deferred = $q.defer();
+
+        $q.all([@getReceivedMessages(), @getSentMessages()]).then (all) ->
+          allMessages = []
+          for array in all
+            allMessages = allMessages.concat array
+
+          $q.when(allMessages)
+          # deferred.resolve(allMessages)
+          
+        # return deferred.promise
       receivedMessagesFrom: (entity, entityMessages) ->
         entity.received
 

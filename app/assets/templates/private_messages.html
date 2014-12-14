@@ -37,7 +37,7 @@
         </div>
       </div>
 
-      <ul class="nm__list" ng-repeat="msg in selectedEntity.displayMessages | orderBy:'id': true">
+      <ul class="nm__list" ng-repeat="msg in selectedEntity.displayMessages | orderBy:'models.post.id': true">
         <li 
         class="nm__list-item"
         ng-class="{'highlight' : unread(msg)}"
