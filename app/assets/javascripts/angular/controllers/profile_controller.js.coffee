@@ -65,9 +65,10 @@ angular.module("NM").controller "ProfileController", [
     $scope.reviews = []
     SideBar.delegate.reviews = $scope.reviews
     $scope.yours = null
+
     $scope.isYours = ->
       return $scope.yours
-      
+
     SideBar.delegate.isYours = $scope.isYours
     SideBar.delegate.profileEntity = profileEntity
     SideBar.delegate.businessOwner = $scope.businessOwner
@@ -104,10 +105,11 @@ angular.module("NM").controller "ProfileController", [
     $scope.tabItemClick = (entity)->
       alert "TEST"
 
-    $scope.initMap = () -> 
-      setTimeout ->
-        $scope.MapService.mapObj.refresh()
-      , 100
+    # $scope.initMap = () -> 
+    #   setTimeout ->
+    #     $scope.MapService.mapObj.refresh()
+    #   , 100
+
     $scope.profilePhotoUploaded = (photo)->
       # $scope.profileEntity.cover_photo_url = photo
       # $scope.profileEntity.thumb = photo
@@ -183,7 +185,7 @@ angular.module("NM").controller "ProfileController", [
         ReviewDisplay.buildReviewList($scope.profileEntity.reviews, $scope.reviewList)
 
     $scope.init = () ->
-
+      $scope.MapService.coordsArray = MapService.mapToMarker([profileEntity])
       $scope.profileEntity.posts().then (posts)->
         $scope.posts = posts
 
@@ -333,12 +335,6 @@ angular.module("NM").controller "ProfileController", [
     $scope.$watch 'AuthService.currentEntitySelection.selected', ->
       if $scope.yours
         $location.path( AuthService.currentEntitySelection.selected.uri );
-
-
-    # $scope.$watchs 'profileEntity', ->
-
-      
-          # alert JSON.stringify posts
 
     $scope.$watch 'posts', ->
 

@@ -124,6 +124,7 @@ angular.module("NM").controller "BusinessDirectoryController", [
           $scope.displayList = entities
           addMarkers = $filter('entityFilter')($scope.displayList, $scope.personFilter, $scope.businessFilter);
           MapService.resetMap(MapService.mapToMarker(addMarkers))
+          MapService.mapObj.fitZoom()
 
              # $scope.businessList = 
     $scope.randomClick = (bus)->

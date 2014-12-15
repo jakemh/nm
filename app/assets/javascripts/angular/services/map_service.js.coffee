@@ -7,6 +7,7 @@ App.factory "MapService", [
       @init(elem)
 
     initAfter: ->
+    coordsArray: []
 
     init: (elem)->
       @mapObj = new GMaps
@@ -14,6 +15,9 @@ App.factory "MapService", [
         lat: 35
         lng: -122
         zoom: 2
+
+      if @coordsArray.length > 0
+        resetMap(@coordsArray)
 
     initBusDir: ->
       debugger
@@ -50,4 +54,6 @@ App.factory "MapService", [
         
         if marker.lat && marker.lng
           @mapObj.addMarker(marker)
+      @mapObj.fitZoom()
+
 ]
