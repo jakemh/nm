@@ -53,10 +53,18 @@ class ApplicationController < ActionController::Base
       true
     end
 
-    def authenticate_entity
+    def user_or_belongs_to_user
       return true if entity == current_user 
       return true if current_user.businesses.include? entity
-      raise CanCan::AccessDenied
+      return false
+    end
+
+    def authenticate_entity
+      if user_or_belongs_to_user
+        return true
+      else
+        raise CanCan::AccessDenied
+      end
     end
 
   def redirect_to_back(default = root_url)

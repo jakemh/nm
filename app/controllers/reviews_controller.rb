@@ -14,10 +14,13 @@ class ReviewsController < ApplicationController
   end
 
   def create
-    review = entity.reviews.build whitelist.merge({:user_id => current_user.id})
+    if !user_or_belongs_to_user
+      review = entity.reviews.build whitelist.merge({:user_id => current_user.id})
 
-    if review.save
-      render json: review
+      if review.save
+        render json: review
+      end
+    else raise 'YOU CANNOT REVIEW YOUR OWN ENTITY!'
     end
   end
 

@@ -64,11 +64,14 @@ angular.module("NM").controller "ProfileController", [
     # ReviewService.entity = $scope.profileEntity
     $scope.reviews = []
     SideBar.delegate.reviews = $scope.reviews
+    $scope.yours = null
+    $scope.isYours = ->
+      return $scope.yours
+    SideBar.delegate.isYours = $scope.isYours
     SideBar.delegate.profileEntity = profileEntity
     SideBar.delegate.businessOwner = $scope.businessOwner
 
     $scope.sendReview = (business, post) ->
-
       ReviewService.sendPost(business, post).then (response) ->
         $scope.buildReviewList()
 
