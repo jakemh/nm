@@ -67,6 +67,7 @@ angular.module("NM").controller "ProfileController", [
     $scope.yours = null
     $scope.isYours = ->
       return $scope.yours
+      
     SideBar.delegate.isYours = $scope.isYours
     SideBar.delegate.profileEntity = profileEntity
     SideBar.delegate.businessOwner = $scope.businessOwner
