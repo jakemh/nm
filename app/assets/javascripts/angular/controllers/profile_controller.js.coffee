@@ -61,26 +61,34 @@ angular.module("NM").controller "ProfileController", [
     SideBar.delegate.rateFunction = ReviewService.rateFunction
     SideBar.delegate.entity = profileEntity
     SideBar.delegate.review = $scope.reviewPost
-    SideBar.delegate.sendPost = ReviewService.sendPost
     # ReviewService.entity = $scope.profileEntity
     $scope.reviews = []
     SideBar.delegate.reviews = $scope.reviews
     SideBar.delegate.profileEntity = profileEntity
     SideBar.delegate.businessOwner = $scope.businessOwner
 
-    $scope.sendReview = (postObj, postSubmit)->
-      ent = AuthService.currentEntitySelection.selected
-      entityAttrs = 
-          entity_id: ent.id
-          entity_type: ent.type
+    $scope.sendReview = (business, post) ->
 
-      postSubmit = angular.extend({}, postSubmit, entityAttrs)
-      ent.post("reviews", postSubmit).then (response)->
-        # $scope.posts = $scope.posts.concat(response)
-        AuthService.currentUser.posts("all": true).then (posts) ->
-          $scope.posts = posts
-          MessagesDisplay.buildMessageDisplay(null, $scope.posts).then (list)->
-            $scope.displayList = list
+      ReviewService.sendPost(business, post).then (response) ->
+        $scope.buildReviewList()
+
+    SideBar.delegate.sendPost = $scope.sendReview
+
+    # $scope.sendReview = (postObj, postSubmit)->
+    #   ent = AuthService.currentEntitySelection.selected
+    #   entityAttrs = 
+    #       entity_id: ent.id
+    #       entity_type: ent.type
+
+    #   postSubmit = angular.extend({}, postSubmit, entityAttrs)
+    #   ent.post("reviews", postSubmit).then (response)->
+    #     $scope.reviews = $scope.reviews.concat response
+    #     # $scope.posts = $scope.posts.concat(response)
+
+        # AuthService.currentUser.posts("all": true).then (posts) ->
+        #   $scope.posts = posts
+        #   MessagesDisplay.buildMessageDisplay(null, $scope.posts).then (list)->
+        #     $scope.displayList = list
 
     # $scope.photoUploaded = (message)->
     #   $("#js__cover-photo-modal").modal('hide')
@@ -166,9 +174,9 @@ angular.module("NM").controller "ProfileController", [
         $scope.profileEntity.items = items
 
     $scope.buildReviewList = () ->
-      $scope.profileEntity.reviews().then (reviews)->
-        $scope.reviews = reviews
-        ReviewDisplay.buildReviewList($scope.reviews, $scope.reviewList)
+      $scope.profileEntity.getReviews().then (reviews)->
+        $scope.profileEntity.reviews = reviews
+        ReviewDisplay.buildReviewList($scope.profileEntity.reviews, $scope.reviewList)
 
     $scope.init = () ->
 

@@ -7,6 +7,7 @@ class BusinessSerializer < EntitySerializer
   # has_many :user_connections, embed: :id
   has_many :user_connections, embed: :ids
   has_many :business_connections, embed: :ids
+  has_many :reviews, embed: :ids
   
   def business_connections
     object.business_friends

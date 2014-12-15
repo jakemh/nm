@@ -37,8 +37,13 @@ App.factory "UsersCache", [
   "Restangular"
   ($cacheFactory, Restangular) ->
     cache: $cacheFactory('users');
-    
+]
 
+App.factory "ReviewsCache", [
+  "$cacheFactory"
+  "Restangular"
+  ($cacheFactory, Restangular) ->
+    cache: $cacheFactory('reviews');
 ]
 
 App.factory "BusinessesCache", [
