@@ -15,6 +15,11 @@
   // max-width: 80px;
 }
 
+.nm__time{
+  color: $light-gray-color;
+
+}
+
 .nm__list{
   font-family: helvetica;
   list-style-type: none;
@@ -135,6 +140,13 @@
 .top-right{
   position: absolute;
   top: 0;
+  right: 0;
+  z-index: 15;
+}
+
+.bottom-right{
+  position: absolute;
+  bottom: 0;
   right: 0;
   z-index: 15;
 }

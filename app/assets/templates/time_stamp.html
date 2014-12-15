@@ -1,0 +1,2 @@
+<span ng-if="Utilities.exceedThreshold(message.timeFromNow)">{{message.timeStamp | amDateFormat:'MMMM Do'}}</span>
+<span ng-if="!Utilities.exceedThreshold(message.timeFromNow)" am-time-ago="message.timeStamp"></span>

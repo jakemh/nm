@@ -11,6 +11,10 @@ class MessageEntity
     # _.sortBy @messages, (m) -> m.id
     @messages[@messages.length - 1]
 
+  lastDisplayMessage: () ->
+    # _.sortBy @messages, (m) -> m.id
+    @displayMessages[@displayMessages.length - 1]
+    
 angular.module("NM").controller "MessagesController", [
   "$scope"
   "$q"
