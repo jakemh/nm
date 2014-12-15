@@ -15,12 +15,13 @@ App.factory "MapService", [
         lat: 35
         lng: -122
         zoom: 2
+        # maxZoom: 15
 
+      
       if @coordsArray.length > 0
-        resetMap(@coordsArray)
+        @resetMap(@coordsArray)
 
     initBusDir: ->
-      debugger
       @mapObj = new GMaps
         div: '#map-bus-dir'
         lat: 35
@@ -35,12 +36,13 @@ App.factory "MapService", [
         @add(marker)
 
     mapToMarker: (array) ->
-      _.map array, (item)->
+      returnArray = _.map array, (item)->
         lat: item.latitude || null
         lng: item.longitude || null
         click: ->
           # $scope.visitProfile(item.uri)
-
+      
+      return returnArray
     clear: ->
       if @mapObj
         @mapObj.removeMarkers()
@@ -50,10 +52,13 @@ App.factory "MapService", [
 
     resetMap: (markerArray)->
       @clear()
+
       for marker in markerArray
-        
         if marker.lat && marker.lng
           @mapObj.addMarker(marker)
+      @mapObj.setOptions({ maxZoom: 15 });
       @mapObj.fitZoom()
+      # @mapObj.setOptions({ maxZoom: null });
+
 
 ]

@@ -185,7 +185,11 @@ angular.module("NM").controller "ProfileController", [
         ReviewDisplay.buildReviewList($scope.profileEntity.reviews, $scope.reviewList)
 
     $scope.init = () ->
-      $scope.MapService.coordsArray = MapService.mapToMarker([profileEntity])
+      
+      if MapService.mapObj
+        MapService.resetMap(MapService.mapToMarker([profileEntity]))
+      else 
+        $scope.MapService.coordsArray = MapService.mapToMarker([profileEntity])
       $scope.profileEntity.posts().then (posts)->
         $scope.posts = posts
 
