@@ -112,19 +112,12 @@ angular.module("NM").controller "BusinessDirectoryController", [
 
     $scope.alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
     $scope.alphabet.split()
+    
     $scope.letterClick = (letter) -> 
-        # Entity.query({first_letter: letter}, null, null).then ((results) ->
-        #   $scope.displayList = results["entities"]
-        #   # alert JSON.stringify results["businesses"]
-        #   $scope.searching = false
-        #   return
-        # ), (error) ->
-
-        Restangular.all("entities").getList({first_letter: letter}).then (entities)->
-          $scope.displayList = entities
-          addMarkers = $filter('entityFilter')($scope.displayList, $scope.personFilter, $scope.businessFilter);
-          MapService.resetMap(MapService.mapToMarker(addMarkers))
-          MapService.mapObj.fitZoom()
+      Restangular.all("entities").getList({first_letter: letter}).then (entities)->
+        $scope.displayList = entities
+        addMarkers = $filter('entityFilter')($scope.displayList, $scope.personFilter, $scope.businessFilter);
+        MapService.resetMap(MapService.mapToMarker(addMarkers))
 
              # $scope.businessList = 
     $scope.randomClick = (bus)->

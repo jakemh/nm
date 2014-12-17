@@ -1,4 +1,8 @@
 <%= content_for :app do %>
+    <% content_for :top do %>
+       <%= render 'shared/top_bar_admin' %>
+
+    <% end %>
 
     <%= render :partial => 'layouts/profile_content', :locals => {
       :side => "admin-side",
