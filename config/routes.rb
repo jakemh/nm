@@ -117,6 +117,7 @@ Rails.application.routes.draw do
     resources :posts, :only => [:index, :show, :destroy]
     resources :responses, :only => [:index, :show, :destroy], :controller => :posts
     resources :messages, :only => [:index, :show, :destroy]
+    resources :message_responses, :controller => :messages
 
   end
   get '/me', :to => 'me/users#index'
