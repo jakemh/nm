@@ -36,13 +36,12 @@
 
   # end
   def name
-    "#{self.first_name + self.last_name}"
+    "#{first_name + " " + last_name}"
   end
-
 
   def first_name
     if object.first_name
-      object.first_name.capitalize
+      cap_first(object.first_name) 
     else 
       ""
     end
@@ -50,7 +49,7 @@
 
   def last_name
     if object.last_name
-      object.last_name.capitalize   
+      cap_first(object.last_name)   
     else 
       ""
     end

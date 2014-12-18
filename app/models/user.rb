@@ -117,7 +117,7 @@ class User < ActiveRecord::Base
   
   def name
     if self.first_name && self.last_name
-      "#{self.first_name + self.last_name}"
+      "#{self.first_name + " " + self.last_name}"
     else ""
     end
   end

@@ -3,6 +3,11 @@ module ApplicationHelper
     date.in_time_zone("Eastern Time (US & Canada)").strftime('%b %e, %l:%M %p')
   end
 
+  def cap_first(string)
+    s[0] = s[0].upcase
+    return string
+  end
+
   # def entity
   #    p "SET ENTITY"
   #   if params[:business_id]
