@@ -41,7 +41,7 @@
 
   def first_name
     if object.first_name
-      cap_first(object.first_name) 
+      scope.cap_first(object.first_name) 
     else 
       ""
     end
@@ -49,7 +49,7 @@
 
   def last_name
     if object.last_name
-      cap_first(object.last_name)   
+      scope.cap_first(object.last_name)   
     else 
       ""
     end

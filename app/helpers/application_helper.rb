@@ -4,7 +4,7 @@ module ApplicationHelper
   end
 
   def cap_first(string)
-    s[0] = s[0].upcase
+    string[0] = string[0].upcase
     return string
   end
 
