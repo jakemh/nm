@@ -1,0 +1,29 @@
+<div class="table-responsive">
+  <table class="table table-condensed table__admin">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Entity</th>
+        <th>Flagger</th>
+        <th>Date</th>
+        <th></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @flags.each do |flag| %>
+        <tr>
+          <td><%= flag.id %></td>
+          <td><%= link_to(flag.entity.name, [:admin, flag.entity])  %>
+
+            <%="(#{flag.entity.class.name[0]})" %></td>
+            <td><%= link_to(flag.flagger.name, [:admin, flag.flagger])  %></td>
+          <td><%= flag.created_at.to_formatted_s(:short)  %></td>
+          <td><%= button_to 'Delete', [:admin, flag], method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger" %></td>
+
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+

@@ -3,6 +3,18 @@ Rails.application.routes.draw do
 
 
   namespace :admin do
+  get 'flags/index'
+  end
+
+  namespace :admin do
+  get 'flags/show'
+  end
+
+  namespace :admin do
+  get 'flags/destroy'
+  end
+
+  namespace :admin do
   get 'messages/index'
   end
 
@@ -118,6 +130,8 @@ Rails.application.routes.draw do
     resources :responses, :only => [:index, :show, :destroy], :controller => :posts
     resources :messages, :only => [:index, :show, :destroy]
     resources :message_responses, :controller => :messages
+    resources :flags
+
 
   end
   get '/me', :to => 'me/users#index'

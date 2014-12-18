@@ -35,13 +35,25 @@
   #   object.business_connections
 
   # end
+  def name
+    "#{self.first_name + self.last_name}"
+  end
+
 
   def first_name
-    object.first_name.capitalize
+    if object.first_name
+      object.first_name.capitalize
+    else 
+      ""
+    end
   end
 
   def last_name
-    object.last_name.capitalize    
+    if object.last_name
+      object.last_name.capitalize   
+    else 
+      ""
+    end
   end
   def city
     object.city.capitalize if object.city

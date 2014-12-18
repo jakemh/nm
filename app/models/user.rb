@@ -114,11 +114,13 @@ class User < ActiveRecord::Base
     self.errors[:is_veteran].length == 0
   end
 
+  
   def name
-    "#{self.first_name.capitalize} #{self.last_name.capitalize}"
+    if self.first_name && self.last_name
+      "#{self.first_name + self.last_name}"
+    else ""
+    end
   end
-
-
 
   def contact
     self.email
