@@ -33,3 +33,6 @@ admin-side:
 
   - title: Messages 
     path: admin_messages_path
+
+  - title: Flags
+    path: admin_flags_path
