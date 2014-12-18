@@ -31,3 +31,5 @@ admin-side:
   - title: Posts
     path: admin_posts_path
 
+  -title: messages 
+   path: admin_messages_path
