@@ -1,0 +1,37 @@
+<div class="table-responsive">
+  <table class="table table-condensed table__admin">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>From</th>
+        <th>To</th>
+
+        <th>Content</th>
+        <th>Date</th>
+        <th></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @messages.each do |message| %>
+        <tr>
+          <td><%= message.id %></td>
+          <td><%= link_to(message.entity.name, [:admin, message.entity])  %>
+            <%="(#{message.entity.class.name[0]})" %>
+          </td>
+          <td>
+            <%= link_to(message.first_recipient.name, [:admin, message.entity])  %>
+            <%="(#{message.first_recipient.class.name[0]})" %>
+
+          </td>
+          <td style="max-width: 400px"><%= message.content %></td>
+          
+          <td><%= message.created_at.to_formatted_s(:short)  %> </td>
+          <td><%= button_to 'Delete', [:admin, message], method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger" %></td>
+
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+

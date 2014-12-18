@@ -2,6 +2,14 @@
 Rails.application.routes.draw do
 
 
+  namespace :admin do
+  get 'messages/index'
+  end
+
+  namespace :admin do
+  get 'messages/show'
+  end
+
   class Format
     attr_accessor :mime_type
 
@@ -108,7 +116,7 @@ Rails.application.routes.draw do
     resources :emails, :only => [:index, :show, :destroy]
     resources :posts, :only => [:index, :show, :destroy]
     resources :responses, :only => [:index, :show, :destroy], :controller => :posts
-    resources :messages, :only => [:index, :show, :destroy], :controller => :posts
+    resources :messages, :only => [:index, :show, :destroy]
 
   end
   get '/me', :to => 'me/users#index'

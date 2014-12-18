@@ -3,26 +3,27 @@
     <thead>
       <tr>
         <th>ID</th>
-        <th>Subject</th>
+        <th>Entity</th>
         <th>Content</th>
         <th>Date</th>
-        <th>Type</th>
         <th></th>
       </tr>
     </thead>
+
     <tbody>
       <% @posts.each do |post| %>
         <tr>
           <td><%= post.id %></td>
-          <td><%= post.subject %></td>
-          <td><%= post.content %></td>
+          <td><%= link_to(post.entity.name, [:admin, post.entity])  %>
+
+            <%="(#{post.entity.class.name[0]})" %></td>
+          <td style="max-width: 400px"><%= post.content%></td>
           <td><%= post.created_at.to_formatted_s(:short)  %></td>
-          <td><%= post.type %>
-          </td>
-          <td><%= button_to 'Delete', [:admin, post], method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger"%>
-          </td>
+          <td><%= button_to 'Delete', [:admin, post], method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger" %></td>
+
         </tr>
       <% end %>
     </tbody>
   </table>
 </div>
+

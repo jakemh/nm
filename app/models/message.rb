@@ -14,5 +14,8 @@ class Message < Post
   end
 
 
+  def first_recipient
+    self.message_recipients.first.entity
+  end
 
 end 
