@@ -36,6 +36,12 @@ module Profile
     end
   end
 
+  def medium_cover
+    if self.cover_photo && self.cover_photo.image
+      self.cover_photo.image.url :medium
+    end
+  end
+
   def thumb
     if profile_photo
       profile_photo.image.url(:square)

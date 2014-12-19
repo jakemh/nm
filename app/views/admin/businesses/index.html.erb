@@ -21,6 +21,8 @@
           <td><%= business.created_at.to_formatted_s(:short)  %></td>
           <td><%=   %></td>
           <td><%= thumb(business, class: "thumb-small"){|t| image_tag t} %></td>
+          <td><%= button_to 'View', [:admin, business], method: :get, :class => "btn btn-primary"%>
+          </td>
           <td><%= button_to 'Delete', [:admin, business], method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger"%></td>
         </tr>
       <% end %>

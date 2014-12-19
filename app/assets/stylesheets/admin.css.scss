@@ -17,3 +17,16 @@
 .admin__container{
   width: 75%;
 }
+
+.admin__cover{
+  height: 200px; 
+  width: 735px;
+  background-size: 100% !important;
+  background-repeat: no-repeat !important;
+  background-position: center !important;
+}
+
+.admin__cover img{
+  height: 100%;
+  width: 100%;
+}
