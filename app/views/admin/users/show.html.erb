@@ -1,2 +1,49 @@
-<h1>Admin::Users#show</h1>
-<p>Find me in app/views/admin/users/show.html.erb</p>
+  <div class="row">
+    <div class="col-md-5  ">
+      <A href="edit.html">Edit Profile</A>
+
+      <br>
+    </div>
+    <div class="col-sm-12">
+
+
+      <div class="panel panel-info">
+        <div class="panel-heading">
+          <h3 class="panel-title"><%= @user.name %></h3>
+        </div>
+        <div class="panel-body">
+          <div class="row">
+            <div class="col-md-3 col-lg-3 " align="center"> 
+                <%= image_tag @user.medium_photo%>
+            </div>
+
+            <div class=" col-md-9 col-lg-9 ">
+              <table class="table table-user-information">
+                <tbody>
+                 <% @attributes.each do |attribute| %>
+                 <tr>
+                    <td style="font-weight: bold"> <%= attribute.to_s.titleize %> </td>
+                    <td> <%= @user.send attribute %> </td>
+                </tr>
+                <% end %>
+                 
+
+                </tbody>
+              </table>
+
+              <a href="#" class="btn btn-primary">My Sales Performance</a>
+              <a href="#" class="btn btn-primary">Team Sales Performance</a>
+            </div>
+          </div>
+        </div>
+        <div class="panel-footer">
+          <a data-original-title="Broadcast Message" data-toggle="tooltip" type="button" class="btn btn-sm btn-primary"><i class="glyphicon glyphicon-envelope"></i></a>
+          <span class="pull-right">
+                            <a href="edit.html" data-original-title="Edit this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-warning"><i class="glyphicon glyphicon-edit"></i></a>
+                            <a data-original-title="Remove this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-danger"><i class="glyphicon glyphicon-remove"></i></a>
+                        </span>
+        </div>
+
+      </div>
+    </div>
+  </div>

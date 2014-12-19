@@ -24,6 +24,12 @@ module Profile
     end
   end
 
+  def medium_photo
+    if self.profile_photo && self.profile_photo.image
+      self.profile_photo.image.url :medium
+    end 
+  end
+
   def profile_photo
     if self.profile_photo_id
       self.profile_photos.find self.profile_photo_id

@@ -4,7 +4,12 @@
       <div ng-include="SideBar.rightBarTemplate"></div>
     <% end %>
       <%= render :layout => 'layouts/profile_content', 
-          :locals => {:side => "user-side", :right_bar => true} do %>
+          :locals => {
+            :side => "user-side", 
+            :right_bar => true,
+            :angular => true
+
+          } do %>
         <!-- <ng-view></ng-view>  -->
 
       <% end %>

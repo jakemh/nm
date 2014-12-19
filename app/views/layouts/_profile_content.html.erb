@@ -27,7 +27,12 @@
     </div>
   </div>
 
-  <span  ng-controller="ProfileController">
+  <% if angular %>
+    <span  ng-controller="ProfileController">
+  <% else %>
+    <span>
+  <% end %>
+
   <% if right_bar %>
     <div class="container__profile container__profile--middle">
       <div class="tab_container"  ng-switch="SideBar.tabBarVisible">

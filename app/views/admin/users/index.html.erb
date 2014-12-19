@@ -23,7 +23,10 @@
           <td><%=   %></td>
           <td><%=   %></td>
           <td><%= thumb(user, class: "thumb-small"){|t| image_tag t} %></td>
-          <td><%= button_to 'Delete', [:admin, user], method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger"%></td>
+          <td><%= button_to 'View', [:admin, user], method: :get, :class => "btn btn-primary"%>
+          </td>
+          <td><%= button_to 'Delete', [:admin, user], method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger"%>
+          </td>
         </tr>
       <% end %>
     </tbody>
