@@ -10,6 +10,7 @@ App.factory "MapService", [
     coordsArray: []
 
     init: (elem)->
+      @clear()
       @mapObj = new GMaps
         div: elem || '#map'
         lat: 35
@@ -44,11 +45,12 @@ App.factory "MapService", [
       
       return returnArray
     clear: ->
+      if @coordsArray.length > 0
+        while @coordsArray.length > 0
+          @coordsArray.pop()
+
       if @mapObj
         @mapObj.removeMarkers()
-      else 
-        @init()
-        @clear()
 
     resetMap: (markerArray)->
       @clear()
