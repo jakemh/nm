@@ -20,7 +20,7 @@
             <%="(#{message.entity.class.name[0]})" %>
           </td>
           <td>
-            <%= link_to(message.first_recipient.name, [:admin, message.entity])  %>
+            <%= link_to(message.first_recipient.name, [:admin, message.first_recipient])  %>
             <%="(#{message.first_recipient.class.name[0]})" %>
 
           </td>
