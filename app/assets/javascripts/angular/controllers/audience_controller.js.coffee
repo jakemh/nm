@@ -118,7 +118,12 @@ angular.module("NM").controller "AudienceController", [
               profile: entity.uri
               type: f.type
               entityType: entity.type
-  
+              isFollower: -> _.contains this.relationships, "Follower"
+              isFollowing: -> _.contains this.relationships, "Following"
+
+              relationships: ["Follower"]
+   
+
     $scope.$watch 'current.following', ->
       # $q.all(AuthService.currentFollowers)
       $scope.currentDisplayEntity().followingDisplay = []
@@ -128,8 +133,6 @@ angular.module("NM").controller "AudienceController", [
           f.entity().then (e) ->
             entity = e
 
-
-            # alert JSON.stringify entity
             $scope.currentDisplayEntity().followingDisplay.push
               models: {entity: entity, connection: f}
               name: entity.name
@@ -139,22 +142,30 @@ angular.module("NM").controller "AudienceController", [
               profile: entity.uri
               type: f.type
               entityType: entity.type
-          
+              isFollower: -> _.contains this.relationships, "Follower"
+              isFollowing: -> _.contains this.relationships, "Following"
 
-
+              relationships: ["Following"]
 ]
+
+
 angular.module("NM").filter "audienceTypeFilter", ->
   (displayEntities, currentEntity, followerFilter, followingFilter) ->
     if displayEntities
       displayEntities.filter (displayEntity) ->
         connection = displayEntity.models.connection
         if followerFilter
-          bool =  _.contains currentEntity.follower_ids, connection.id
-          return true if bool
-        if followingFilter
-          # console.log ["FOLLOWING", bool, connection.id, JSON.stringify currentEntity.following_ids]
+          # bool =  _.contains displayEntity.relationships, "Follower"
+          # displayEntity.relationships.push "Follower"
+          return displayEntity.isFollowing()
 
-          return true if _.contains currentEntity.following_ids, connection.id
+        if followingFilter
+          # bool =  _.contains displayEntity.relationships, "Following"
+
+          # console.log ["FOLLOWING", bool, connection.id, JSON.stringify currentEntity.following_ids]
+          # displayEntity.relationships.push "Following"
+          return displayEntity.isFollower()
+
 
         return false
 

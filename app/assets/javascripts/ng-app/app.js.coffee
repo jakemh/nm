@@ -9,10 +9,27 @@ class AudienceDisplay extends DisplayModel
     @followersDisplay = []
     @followingDisplay = []
 
-  allConnections: ->
-    
-    @followersDisplay.concat @followingDisplay
+  allConnections: ->  
+    # connections = @followersDisplay.concat @followingDisplay
 
+    connections = []
+
+    for follower in @followersDisplay
+      exists = _.find connections, (item) -> item.models.entity == follower.models.entity
+      if exists
+        exists.relationships.push "Follower"
+      else connections.push follower
+    
+    for following in @followingDisplay
+      exists = _.find connections, (item) -> item.models.entity == following.models.entity
+      if exists
+        exists.relationships.push "Following"
+      else connections.push following
+
+    return connections
+    # for connection in connections
+
+      # if _.contains @entity.follower_ids, connection.id
 
 
 class MessagesDisplay extends DisplayModel
