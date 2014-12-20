@@ -38,7 +38,7 @@
   </div>
 
   <div class="aud__members">
-    <div ng-repeat="entity in entityHash(current).allConnections()
+    <div ng-repeat="entity in currentDisplayEntity().allConnections
     | audienceTypeFilter:AuthService.currentEntitySelection.selected:followerFilter:followingFilter 
     | orderBy:sortVal.selected.name 
     | userBusinessFilter:filterVal.selected">

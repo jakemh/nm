@@ -123,7 +123,8 @@ angular.module("NM").controller "AudienceController", [
 
               relationships: ["Follower"]
    
-
+    $scope.$watch 'currentDisplayEntity().followingDisplay + currentDisplayEntity().followerDisplay', ->
+      $scope.currentDisplayEntity().buildAllConnections()
     $scope.$watch 'current.following', ->
       # $q.all(AuthService.currentFollowers)
       $scope.currentDisplayEntity().followingDisplay = []

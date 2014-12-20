@@ -8,8 +8,9 @@ class AudienceDisplay extends DisplayModel
   constructor: (@entity) ->
     @followersDisplay = []
     @followingDisplay = []
+    @allConnections = []
 
-  allConnections: ->  
+  buildAllConnections: ->  
     # connections = @followersDisplay.concat @followingDisplay
 
     connections = []
@@ -26,7 +27,8 @@ class AudienceDisplay extends DisplayModel
         exists.relationships.push "Following"
       else connections.push following
 
-    return connections
+    @allConnections = connections
+    return @allConnections
     # for connection in connections
 
       # if _.contains @entity.follower_ids, connection.id
