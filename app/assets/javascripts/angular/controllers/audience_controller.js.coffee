@@ -154,18 +154,18 @@ angular.module("NM").filter "audienceTypeFilter", ->
   (displayEntities, currentEntity, followerFilter, followingFilter) ->
     if displayEntities
       displayEntities.filter (displayEntity) ->
-        connection = displayEntity.models.connection
+
         if followerFilter
           # bool =  _.contains displayEntity.relationships, "Follower"
           # displayEntity.relationships.push "Follower"
-          return displayEntity.isFollowing()
+          return true if displayEntity.isFollowing()
 
         if followingFilter
           # bool =  _.contains displayEntity.relationships, "Following"
 
           # console.log ["FOLLOWING", bool, connection.id, JSON.stringify currentEntity.following_ids]
           # displayEntity.relationships.push "Following"
-          return displayEntity.isFollower()
+          return true if displayEntity.isFollower()
 
 
         return false
