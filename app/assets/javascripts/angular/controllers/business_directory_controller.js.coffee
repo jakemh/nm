@@ -7,8 +7,9 @@ angular.module("NM").controller "BusinessDirectoryController", [
   "MapService"
   "$location"
   "$filter"
+  "RestEntity"
   
-  ($scope, Business, User, Restangular, SideBar, MapService, $location, $filter) ->
+  ($scope, Business, User, Restangular, SideBar, MapService, $location, $filter, RestEntity) ->
     
     $scope.SideBar = SideBar
     # SideBar.rightBarTemplate = "right_bar_bus_dir.html"     
@@ -93,7 +94,6 @@ angular.module("NM").controller "BusinessDirectoryController", [
 
     $scope.visitProfile = (uri)->
       # window.location.href = uri
-      debugger
       $location.path( uri );
 
     $scope.alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
@@ -114,7 +114,11 @@ angular.module("NM").controller "BusinessDirectoryController", [
 
     $scope.submit = () ->
       $scope.engine.get $scope.query, (suggestions) ->
-        $scope.displayList = suggestions[0]
+        formattedSuggestions = []
+        for entity in suggestions[0]
+          
+          formattedSuggestions.push(angular.extend entity, angular.copy(RestEntity))
+        $scope.displayList = formattedSuggestions
         # MapService.resetMap(MapService.mapToMarker($scope.displayList))
         $scope.applyMarkers()
         $scope.$apply()
