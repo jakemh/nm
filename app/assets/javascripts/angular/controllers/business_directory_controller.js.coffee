@@ -45,7 +45,8 @@ angular.module("NM").controller "BusinessDirectoryController", [
       return hasMarkers
 
     $scope.init = ->
-
+      Restangular.all("businesses").getList({random: true}).then (businesses)=>
+        $scope.businesses = businesses
     # $scope.personFilter = false
     # $scope.businessFilter = true
 
@@ -107,8 +108,7 @@ angular.module("NM").controller "BusinessDirectoryController", [
 
   
   
-    Restangular.all("businesses").getList({random: true}).then (businesses)=>
-      $scope.businesses = businesses
+
       # MapService.resetMap(MapService.mapToMarker($scope.businesses))
 
     $scope.submit = () ->

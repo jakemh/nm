@@ -30,7 +30,7 @@ App.factory "MapService", [
         zoom: 2
 
       if @coordsArray.length > 0
-        @resetMap(@coordsArray)
+        @resetMap(@coordsArray, true)
 
     add: (marker)->
       if @mapObj

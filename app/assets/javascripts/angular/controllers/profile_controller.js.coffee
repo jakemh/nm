@@ -164,11 +164,16 @@ angular.module("NM").controller "ProfileController", [
         ReviewDisplay.buildReviewList($scope.profileEntity.reviews, $scope.reviewList)
 
     $scope.init = () ->
-      
-      if MapService.mapObj
-        MapService.resetMap(MapService.mapToMarker([profileEntity]), true)
-      else 
-        $scope.MapService.coordsArray = MapService.mapToMarker([profileEntity])
+      # MapService.mapObj = null
+      # if MapService.mapObj
+      #   MapService.init()
+      #   MapService.resetMap(MapService.mapToMarker([profileEntity]), true)
+      # else 
+      MapService.coordsArray = MapService.mapToMarker([profileEntity])
+
+      if MapService.mapObj && MapService.mapObj.el.id == "map"
+        
+        MapService.init()
 
       $scope.profileEntity.personalPosts().then (posts)->
         $scope.posts = posts
@@ -196,8 +201,8 @@ angular.module("NM").controller "ProfileController", [
           $scope.buildReviewList()
     
           SideBar.rightBarTemplate = "right_bar_business.html"
-          if MapService.mapObj
-            MapService.resetMap(MapService.mapToMarker([$scope.profileEntity]))
+          # if MapService.mapObj
+          #   MapService.resetMap(MapService.mapToMarker([$scope.profileEntity]))
 
 
         # $scope.isFollowing = entity.follower_uri_type == -1 ? false : true
