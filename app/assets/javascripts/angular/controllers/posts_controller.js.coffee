@@ -45,15 +45,15 @@ angular.module("NM").controller "PostController", [
             $scope.disableInfiniteLoad = false
 
     $scope.loadPosts = () ->
-      # $scope.disableInfiniteLoad = true
-      # l = $scope.displayList.length
-      # source = $scope.allPosts.slice(l, l+5)
+      $scope.disableInfiniteLoad = true
+      l = $scope.displayList.length
+      source = $scope.allPosts.slice(l, l+5)
 
-      # MessagesDisplay.buildMessageDisplay(source).then (list)->
-      #   for post in list
-      #     $scope.displayList.push post
+      MessagesDisplay.buildMessageDisplay(source).then (list)->
+        for post in list
+          $scope.displayList.push post
 
-      #   $scope.disableInfiniteLoad = false
+        $scope.disableInfiniteLoad = false
 
 
     
