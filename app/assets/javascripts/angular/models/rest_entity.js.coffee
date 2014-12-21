@@ -107,6 +107,10 @@ angular.module("NM").factory "RestEntity", [
         # @getListPlus("posts", params)
         @severalPlus2("posts", @feed_post_ids)
 
+      personalPosts: (params) ->
+        @severalPlus2("posts", @personal_post_ids)
+
+
       flag: (params) ->
         @post('flags', params)
         # @getListPlus("flags", params).post(params)
@@ -118,10 +122,7 @@ angular.module("NM").factory "RestEntity", [
       getFollowing: () ->
         @severalPlus2("following", @following_ids)
 
-      personalPosts: () ->
-        @severalPlus("posts").getList()
 
-      
 
 
     # entityType: 

@@ -6,7 +6,6 @@
   attributes :first_name, :last_name
   has_many :businesses, embed: :ids
   has_many :posts, embed: :ids
-  has_many :personal_posts, embed: :ids
   # has_many :personal_posts
   has_many :friendships, embed: :id
   has_many :business_connections, embed: :id
@@ -62,9 +61,7 @@
     # object.posts.where(type: [nil, "", "Post"])
   end
 
-  def personal_posts
-    object.posts.where(type: [nil, "", "Post"])
-  end
+
 
   def message_route
     "users/#{object.id}/messages"

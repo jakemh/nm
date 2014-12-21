@@ -78,27 +78,6 @@ angular.module("NM").controller "ProfileController", [
         $scope.buildReviewList()
 
     SideBar.delegate.sendPost = $scope.sendReview
-
-    # $scope.sendReview = (postObj, postSubmit)->
-    #   ent = AuthService.currentEntitySelection.selected
-    #   entityAttrs = 
-    #       entity_id: ent.id
-    #       entity_type: ent.type
-
-    #   postSubmit = angular.extend({}, postSubmit, entityAttrs)
-    #   ent.post("reviews", postSubmit).then (response)->
-    #     $scope.reviews = $scope.reviews.concat response
-    #     # $scope.posts = $scope.posts.concat(response)
-
-        # AuthService.currentUser.posts("all": true).then (posts) ->
-        #   $scope.posts = posts
-        #   MessagesDisplay.buildMessageDisplay(null, $scope.posts).then (list)->
-        #     $scope.displayList = list
-
-    # $scope.photoUploaded = (message)->
-    #   $("#js__cover-photo-modal").modal('hide')
-    #   $scope.profileEntity.cover_photo_url = message
-
     $scope.uploadedProfilePhotos = []
     $scope.uploadedCoverPhotos = []
 
@@ -191,7 +170,7 @@ angular.module("NM").controller "ProfileController", [
       else 
         $scope.MapService.coordsArray = MapService.mapToMarker([profileEntity])
 
-      $scope.profileEntity.posts().then (posts)->
+      $scope.profileEntity.personalPosts().then (posts)->
         $scope.posts = posts
 
       # if AuthService.currentUser
