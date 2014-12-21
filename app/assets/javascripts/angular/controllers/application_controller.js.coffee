@@ -6,6 +6,7 @@ angular.module("NM").controller "ApplicationController", [
   "Message"
   "Follower"
   "Business"
+  "Entity"
   "RestEntity"
   "Following"
   "Post"
@@ -21,8 +22,11 @@ angular.module("NM").controller "ApplicationController", [
   "Utilities"
   "ProfilePhoto"
   "CoverPhoto"
+  "$rootScope"
+  "$location"
 
-  ($scope, User, SentMessage, ReceivedMessage, Message, Follower, Business, RestEntity, Following, Post, Review, ReviewService, Response, MessageResponse, MessageService, AuthService, Restangular, SideBar, MapService, Utilities, ProfilePhoto, CoverPhoto) ->
+
+  ($scope, User, SentMessage, ReceivedMessage, Message, Follower, Business, Entity, RestEntity, Following, Post, Review, ReviewService, Response, MessageResponse, MessageService, AuthService, Restangular, SideBar, MapService, Utilities, ProfilePhoto, CoverPhoto, $rootScope, $location) ->
     $scope.Utilities = Utilities
     $scope.MessageService = MessageService
     $scope.AuthService = AuthService
@@ -37,6 +41,11 @@ angular.module("NM").controller "ApplicationController", [
     ]
 
     $scope.ReviewService = ReviewService
+
+    
+    $rootScope.visitProfile = (uri)->
+      # window.location.href = uri
+      $location.path( uri );
 
     $scope.tabItemClick = (entity)->
       AuthService.currentEntitySelection.selected = entity

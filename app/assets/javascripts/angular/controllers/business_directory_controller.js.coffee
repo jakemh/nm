@@ -93,6 +93,7 @@ angular.module("NM").controller "BusinessDirectoryController", [
 
     $scope.visitProfile = (uri)->
       # window.location.href = uri
+      debugger
       $location.path( uri );
 
     $scope.alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"

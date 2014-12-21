@@ -13,6 +13,12 @@ angular.module("NM").factory "RestEntity", [
       following: []
       followers: []
 
+      link: () ->
+        if @type == "Business"
+          return "businesses/#{@id}"
+        else if @type == "User"
+          return "users/#{@id}"
+          
       sentMessagesTo: (entity) ->
         @getListPlus "sent_messages",
           from_id: entity.id 

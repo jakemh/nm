@@ -28,6 +28,7 @@
 #= require jQuery-linkify/src/linkified
 #= require jQuery-linkify/src/jquery.linkify
 #= require jquery.tagsinput/jquery.tagsinput.js
+#= require ngFitText/src/ng-FitText
 #= require ng-flow/dist/ng-flow-standalone
 #= require landing
 #= require underscore
