@@ -9,6 +9,9 @@ App.factory "SideBar", [
     tabBarDisabled: false
     messageCount: 0
     
+    # profExternalInit: ->
+    #   delegate = SideBar.delegate
+      
     tabItemClick: (entity)->
       
     showMessageCount: ->

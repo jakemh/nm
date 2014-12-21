@@ -59,12 +59,14 @@ angular.module("NM").controller "ProfileController", [
     SideBar.delegate.profile = $scope
     SideBar.delegate.ReviewService = ReviewService
     SideBar.delegate.rateFunction = ReviewService.rateFunction
+    SideBar.delegate.userBusinesses = []
     SideBar.delegate.entity = profileEntity
     SideBar.delegate.review = $scope.reviewPost
     # ReviewService.entity = $scope.profileEntity
     $scope.reviews = []
     SideBar.delegate.reviews = $scope.reviews
     $scope.yours = null
+
 
     $scope.isYours = ->
       return $scope.yours
@@ -169,12 +171,7 @@ angular.module("NM").controller "ProfileController", [
       #   MapService.init()
       #   MapService.resetMap(MapService.mapToMarker([profileEntity]), true)
       # else 
-      MapService.coordsArray = MapService.mapToMarker([profileEntity])
-
-      if MapService.mapObj && MapService.mapObj.el.id == "map"
-        
-        MapService.init()
-
+    
       $scope.profileEntity.personalPosts().then (posts)->
         $scope.posts = posts
 
@@ -196,10 +193,19 @@ angular.module("NM").controller "ProfileController", [
 
           if $scope.yours
             SideBar.rightBarTemplate = "right_bar_profile_internal.html" 
-          else SideBar.rightBarTemplate = "right_bar_profile_external.html"  
+          else 
+            SideBar.rightBarTemplate = "right_bar_profile_external.html"  
+            profileEntity.businesses().then (businesses) ->
+              SideBar.delegate.userBusinesses = businesses
+
         else if $scope.profileEntity.type == "Business" 
           $scope.buildReviewList()
-    
+          MapService.coordsArray = MapService.mapToMarker([profileEntity])
+
+          if MapService.mapObj && MapService.mapObj.el.id == "map"
+            
+            MapService.init()
+
           SideBar.rightBarTemplate = "right_bar_business.html"
           # if MapService.mapObj
           #   MapService.resetMap(MapService.mapToMarker([$scope.profileEntity]))
