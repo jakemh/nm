@@ -45,6 +45,8 @@ angular.module("NM").controller "MessagesController", [
     $scope.Utilities = Utilities
     $scope.displayMessages = []
     $scope.newMessage = {}
+    SideBar.tabBarVisible = true 
+
     # $scope.userList = []
     # $scope.unreadList = []
     # $scope.entityList = []
