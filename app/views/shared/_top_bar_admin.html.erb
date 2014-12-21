@@ -8,9 +8,9 @@
         <span class="icon-bar"></span>
       </button>
         <div class="logo--small">
-          <a target="_self"  ng-href="me/feed">
+          <%= link_to root_path do %>
             <%= image_tag 'logo_nm.png' %>
-          </a>
+          <% end %>
         </div>
 
 
@@ -24,8 +24,7 @@
        <li></li>
 -->  
        <li>
-         <a target="_self" ng-href="{{AuthService.currentEntitySelection.selected.uri}}">{{AuthService.currentEntitySelection.selected.name}}
-         </a>
+         <%= link_to current_user.name, [current_user] %>
        </li>
       <li>
       </li>
