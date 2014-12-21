@@ -14,4 +14,8 @@ module Search
     self.locations.last
   end
 
+  def reindex
+    self.class.reindex
+  end
+
 end

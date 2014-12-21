@@ -5,7 +5,7 @@ class Admin::AdminController < ApplicationController
   def index
     #eg Flag -> @flags
     if model_type
-      models = model_type.all
+      models = model_type.all.sort_by{|e| e.id }.reverse
       instance_variable_set("@#{model_type.to_s.downcase.pluralize}", models)
     else 
       raise 'model type is undefined'

@@ -1,11 +1,11 @@
 class User < ActiveRecord::Base
   acts_as_reader
-
+  after_save :reindex
   geocoded_by :zip
   searchkick text_start: [:first_name, :last_name, :email, :zip], 
   word_start: [:first_name, :last_name]
 
-  User.reindex
+  # User.reindex
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   INTRA_CONNECTION = "Friendship"

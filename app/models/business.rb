@@ -1,6 +1,6 @@
 class Business < ActiveRecord::Base
   # acts_as_reader
-
+  after_save :reindex
   geocoded_by :zip
   searchkick text_start: [:name, :address, :website, :city, :state, :zip, :business_type, :industry, :description],
   word_start: [:name, :description]

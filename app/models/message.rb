@@ -15,7 +15,10 @@ class Message < Post
 
 
   def first_recipient
-    self.message_recipients.first.entity
+    if self.message_recipients.first
+      self.message_recipients.first.entity
+    else User.new
+    end
   end
 
 end 

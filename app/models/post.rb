@@ -15,7 +15,7 @@ class Post < ActiveRecord::Base
   end
   
   def entity
-    self.user || self.business
+    self.user || self.business || User.new
   end
 
   def add_response(opt)
