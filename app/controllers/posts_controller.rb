@@ -12,7 +12,7 @@ class PostsController < ApplicationController
   end
 
   def show
-    render json: parse_show_array(Post)
+    render json: parse_show_array(Post).sort_by{|p| p.id}
     # render json: entity.includes(:responses).posts.where(:id => params[:id].split(","), type: [nil, "", "Post"])
   end
 

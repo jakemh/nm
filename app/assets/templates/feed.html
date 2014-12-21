@@ -1,5 +1,5 @@
-<div ng-controller="PostController" ng-if="AuthService.currentEntitySelection.selected">
-  <div infinite-scroll="" infinite-scroll-distance="3" class="feed">
+<div ng-init="init()" ng-controller="PostController" ng-if="AuthService.currentEntitySelection.selected">
+  <div infinite-scroll="loadPosts()" infinite-scroll-distance="0" infinite-scroll="" infinite-scroll-disabled='disableInfiniteLoad'class="feed">
  	  <div ng-if="displayList" ng-include="'feed_head_outer.html'" ng-init="newPost = newPostMain; headOuterInit(newPost, entity)" ></div>
     <div  ng-repeat="entity in displayList | orderBy:'id': true">
       <div  ng-include="'feed_content.html'"></div>

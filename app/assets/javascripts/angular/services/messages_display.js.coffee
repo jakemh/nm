@@ -34,27 +34,25 @@ App.factory "MessagesDisplay", [
         response.entity({current_type: current.type, current_id: current.id}).then (rE) =>
           responseList.push context.displayHash(response, rE)
 
-
-    buildEachPost: (displayList, post, options, context) ->
+    buildEachPost: (displayList, post, options, context, callback) ->
       current = AuthService.currentEntitySelection.selected
       post.entity({current_type: current.type, current_id: current.id}).then (e)=>
         entity = e
  
         if !(options && options.suppressResponses)
-
           post.responses().then (responses) =>
-
             responseList = []
-            
             for response, i in responses
-             _.delay context.buildResponse, i*1, responseList, current, context, response
-            
+              _.delay context.buildResponse, i*1, responseList, current, context, response
             displayList.push context.displayHash(post, entity, responseList)
+            callback(i) if callback
         else 
           displayList.push context.displayHash(post, entity)
+          callback(i) if callback
 
-    buildMessageDisplay2: (displayList, source, options) ->
-      deferred = $q.defer()
+
+    buildMessageDisplay2: (displayList, source, options, callback) ->
+
       if source
         list = []
 
@@ -62,18 +60,19 @@ App.factory "MessagesDisplay", [
           displayList.pop()
     
         for post, i in source
-          # console.log "OK"
-          # setTimeout ->
-          #   console.log "OK"
-          # , i + 1
+          _.delay @buildEachPost, i*1, displayList, post, options, @, (j) ->
 
-          # _.delay -> 
-          #   console.log "OK"
-          # , 1000
-          _.delay @buildEachPost, i*1, displayList, post, options, @
+            callback(j) if callback
 
+    # buildMessageDisplayWithPromise: (displayList, source, options) ->
+    #   deferred = $q.defer()
+    #   @buildMessageDisplay2 displayList, source, options, (i) ->
+    #     # debugger
+    #     deferred.resolve(null) if source.length == displayList.length
 
-    buildMessageDisplay: (displayList, source, options) ->
+    #   return deferred.promise
+
+    buildMessageDisplay: (source, options) ->
       deferred = $q.defer()
 
       if source

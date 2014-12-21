@@ -13,6 +13,7 @@ angular.module("NM").controller "PostController", [
   ($scope, $q, CacheService, Utilities, MessagesDisplay,  Restangular, AuthService, SideBar, MessageService) ->
     # $scope.postsCache = $cacheFactory('me/posts');
     $scope.posts = []
+    $scope.allPosts = []
     $scope.MessageService = MessageService
     $scope.postIntermediate = []
     $scope.displayList = []
@@ -30,15 +31,33 @@ angular.module("NM").controller "PostController", [
     SideBar.tabBarVisible = true 
     $scope.CacheService = CacheService
     $scope.entities = $scope.displayList
-    # $scope.appController.tabBarDisabled = false
-    # $scope.throttledLoadMore = _.throttle ->
-    #     # alert JSON.stringify @
-    #     $scope.loadMore()
-    #   , 100
+    $scope.disableInfiniteLoad = true
+
+    $scope.initialLoadPosts = () ->
+      $scope.disableInfiniteLoad = true
+
+      AuthService.currentUser.posts("all": true).then (posts) ->
+        $scope.allPosts = posts
+        
+        source = $scope.allPosts.reverse().slice(0, 5)
+        MessagesDisplay.buildMessageDisplay2 $scope.displayList, source, {}, (i) ->
+          if source.length == $scope.displayList.length
+            $scope.disableInfiniteLoad = false
+
+    $scope.loadPosts = () ->
+      $scope.disableInfiniteLoad = true
+      l = $scope.displayList.length
+      source = $scope.allPosts.slice(l, l+5)
+
+      MessagesDisplay.buildMessageDisplay(source).then (list)->
+        for post in list
+          $scope.displayList.push post
+
+        $scope.disableInfiniteLoad = false
+
 
     
 
-    # Restangular.all('me/posts').post({content: "XYZ"})
     $scope.headOuterInit = (newPost, entity) ->
       newPost.type = 'Post'
     
@@ -46,20 +65,13 @@ angular.module("NM").controller "PostController", [
       # debugger
     
     $scope.commentHeadOuterInit = (newPost, entity) ->
-      # newPost = entity.newPost
       newPost.type = 'Response'
       newPost.parent_id = entity.id
-      # newPost.entity_id = AuthService.currentEntitySelection.selected.id
-      # newPost.entity_type = AuthService.currentEntitySelection.selected.type
-
+    
     $scope.followerCallback = (viewModel, entity)->
       viewModel.followerFeedback = true
       AuthService.currentEntitySelection.selected.pushFollowing(entity)
-      # AuthService.currentEntitySelection.selected.user_connection_ids.push(entity.id)
-      # debugger
-      # AuthService.currentUser.posts("all": true).then (posts) ->
-        # $scope.posts = posts
-        # entity.followerUriType = "<i class=\"fa fa-check\"></i>"
+   
       
     $scope.sendPost = (postObj, postSubmit, responseList)->
       ent = AuthService.currentEntitySelection.selected
@@ -68,18 +80,7 @@ angular.module("NM").controller "PostController", [
           entity_type: ent.type 
 
       postSubmit = angular.extend({}, postSubmit, entityAttrs)
-      # ent.post("posts", postSubmit).then (response)->
-      #   # $scope.posts = $scope.posts.concat(response)
-      #   AuthService.currentUser.posts("all": true).then (posts) ->
-      #     $scope.posts = posts
-      #     MessagesDisplay.buildMessageDisplay(null, $scope.posts).then (list)->
-      #       $scope.displayList = list
-      # Restangular.all('me/posts').post(post)
 
-    # $scope.$watch 'posts', ->
-      # MessagesDisplay.buildMessageDisplay(null, $scope.posts).then (list)->
-
-        # $scope.displayList = list
       ent.post("posts", postSubmit).then (response)->
 
         # alert JSON.stringify response
@@ -92,56 +93,13 @@ angular.module("NM").controller "PostController", [
           responseList.push formattedPost
 
 
-        # $scope.posts = $scope.posts.concat(response)
-        # AuthService.currentUser.posts("all": true).then (posts) ->
-        #   $scope.posts = posts
-        #   MessagesDisplay.buildMessageDisplay(null, $scope.posts).then (list)->
-        #     $scope.displayList = list
-      # Restangular.all('me/posts').post(post)
-
-    # $scope.$watch 'posts', ->
-      # MessagesDisplay.buildMessageDisplay(null, $scope.posts).then (list)->
-
-        # $scope.displayList = list
+    
 
     $scope.$watch 'AuthService.currentUser', ->
       current = AuthService.currentEntitySelection.selected
 
       if AuthService.currentUser
-        # $scope.displayList = []
-        # $scope.buildAssociationCache().then () ->
-        # cacheHash = 
-        #   users: AuthService.currentUser.user_post_associations
-        #   businesses: AuthService.currentUser.business_post_associations
-
-        # CacheService.cacheModelsForLists(cacheHash,{current_type: current.type, current_id: current.id}).then ()->
-          AuthService.currentUser.posts("all": true).then (posts) ->
-            $scope.posts = posts
-            MessagesDisplay.buildMessageDisplay2($scope.displayList, $scope.posts)
-
-            # i = 0
-            # while i <= 20
-            #   $scope.postIntermediate.push $scope.posts[i]
-            #   i++
-            # MessagesDisplay.buildMessageDisplay2($scope.displayList, $scope.postIntermediate)
-            # MessagesDisplay.buildMessageDisplay(null, $scope.postIntermediate).then (list)->
-            #   $scope.displayList = list
-    # $scope.buildAssociationCache = ->
-    #   deferred = $q.defer();
-    #   # alert JSON.stringify  AuthService.currentUser.user_post_associations
-    #   Restangular.several('users', AuthService.currentUser.user_post_associations).getList().then (asses)->
-    #     for ass in asses
-    #       # alert JSON.stringify ass
-    #       UsersCache.cache.put(ass.id, ass)
-
-    #     Restangular.several('businesses', AuthService.currentUser.business_post_associations).getList().then (asses)->
-    #       for ass in asses
-    #         # alert JSON.stringify ass
-    #         BusinessesCache.cache.put(ass.id, ass)
-    #       deferred.resolve(asses)
       
-
-    #   return deferred.promise
-
+          $scope.initialLoadPosts()
     
 ]

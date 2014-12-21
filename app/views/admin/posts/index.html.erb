@@ -5,6 +5,8 @@
         <th>ID</th>
         <th>Entity</th>
         <th>Content</th>
+        <th>Type</th>
+
         <th>Date</th>
         <th></th>
       </tr>
@@ -19,6 +21,7 @@
             <%="(#{post.entity.class.name[0]})" %></td>
           <td style="max-width: 400px"><%= post.content%></td>
           <td><%= post.created_at.to_formatted_s(:short)  %></td>
+          <td><%= post.type %>
           <td><%= button_to 'Delete', [:admin, post], method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger" %></td>
 
         </tr>
