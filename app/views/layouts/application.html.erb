@@ -34,7 +34,7 @@
  
     <% if content_for?(:app) %>
       <body ng-controller="ApplicationController as appController" ng-app="NM" ng-init="init()">
-          <%= yield :app %>
+        <%= yield :app %>
       </body>
     <% elsif content_for?(:admin) %>
       <body>

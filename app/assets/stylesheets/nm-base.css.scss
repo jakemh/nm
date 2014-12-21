@@ -24,11 +24,11 @@
   font-family: helvetica;
   list-style-type: none;
   padding: 0;
-  margin: 0 1px; 
+  margin: 1px 1px 1px 1px; 
   border-top: 1px solid $lighter-gray-color;
   cursor: pointer;
   &:hover{
-    border-top: 1px solid orange-color(.5);
+    // border-top: 1px solid orange-color(.5);
 
     outline: 1px solid orange-color(.5);
   }
