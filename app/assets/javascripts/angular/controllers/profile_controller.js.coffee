@@ -187,9 +187,10 @@ angular.module("NM").controller "ProfileController", [
     $scope.init = () ->
       
       if MapService.mapObj
-        MapService.resetMap(MapService.mapToMarker([profileEntity]))
+        MapService.resetMap(MapService.mapToMarker([profileEntity]), true)
       else 
         $scope.MapService.coordsArray = MapService.mapToMarker([profileEntity])
+
       $scope.profileEntity.posts().then (posts)->
         $scope.posts = posts
 
@@ -203,6 +204,7 @@ angular.module("NM").controller "ProfileController", [
         SideBar.tabBarVisible = true
 
         SideBar.profileEntity = $scope.profileEntity
+
         if $scope.yours
           AuthService.currentEntitySelection.selected = $scope.profileEntity
 
