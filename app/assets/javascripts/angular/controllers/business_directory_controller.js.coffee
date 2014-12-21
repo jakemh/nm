@@ -57,8 +57,6 @@ angular.module("NM").controller "BusinessDirectoryController", [
       $scope.applyMarkers()
     , true
 
-    
-
     $scope.setMarkerArray = ->
       busCoords = MapService.mapToMarker($scope.businesses)
       # displayCoords = MapService.mapToMarker($scope.displayList)
@@ -78,7 +76,8 @@ angular.module("NM").controller "BusinessDirectoryController", [
          queryTokenizer: (d) ->
            d
        )
-    
+    $scope.engine.initialize()
+
     # $scope.$watch "businesses + displayList", ->
 
 
@@ -106,10 +105,8 @@ angular.module("NM").controller "BusinessDirectoryController", [
     $scope.randomClick = (bus)->
       $location.path( bus.uri );
 
-      # window.location.href = bus.uri
-    $scope.engine.initialize()
   
-   
+  
     Restangular.all("businesses").getList({random: true}).then (businesses)=>
       $scope.businesses = businesses
       # MapService.resetMap(MapService.mapToMarker($scope.businesses))
@@ -117,8 +114,8 @@ angular.module("NM").controller "BusinessDirectoryController", [
     $scope.submit = () ->
       $scope.engine.get $scope.query, (suggestions) ->
         $scope.displayList = suggestions[0]
-        MapService.resetMap(MapService.mapToMarker($scope.displayList))
-
+        # MapService.resetMap(MapService.mapToMarker($scope.displayList))
+        $scope.applyMarkers()
         $scope.$apply()
 ]
 
