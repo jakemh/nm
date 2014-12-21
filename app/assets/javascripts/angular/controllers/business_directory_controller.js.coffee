@@ -19,6 +19,7 @@ angular.module("NM").controller "BusinessDirectoryController", [
     $scope.SideBar = SideBar
     $scope.mapLoaded = false
     $scope.peopleList = []
+    $scope.displayList = []
     # $scope.displayList = $scope.businessList.concat($scope.peopleList)
     $scope.query = null
     $scope.mapObj = null
@@ -28,36 +29,26 @@ angular.module("NM").controller "BusinessDirectoryController", [
     # $scope.loadMap()  
     SideBar.tabBarVisible = false 
 
-    $scope.hasMarkers = ->
-      if MapService.mapObj && MapService.mapObj.markers.length > 0
-        true 
+    $scope.applyMarkers = ->
+      addMarkers = $filter('entityFilter')($scope.displayList, $scope.personFilter, $scope.businessFilter);
+      hasMarkers = false
+
+      if MapService.mapObj && addMarkers.length > 0
+        hasMarkers = true 
         setTimeout ->
           MapService.mapObj.refresh()
+          MapService.resetMap(MapService.mapToMarker(addMarkers))
         , 1
       else 
-        false 
+        hasMarkers = false 
 
+      return hasMarkers
 
     # $scope.$watch 'MapService.mapObj.markers', ->
     #   if $scope.MapService.mapObj
     #     alert $scope.MapService.mapObj.markers.length
     $scope.init = ->
-      if MapService.mapObj
-        MapService.mapObj.refresh()
 
-    # $scope.addMarker = (marker)->
-    #   $scope.mapObj.addMarker(marker)
-    
-
-    # $scope.$watch "SideBar.mapLoaded", ->
-    #   if SideBar.mapLoaded == true
-    #     $scope.mapObj = new GMaps
-    #       div: '#map'
-    #       lat: 35
-    #       lng: -122
-    #       zoom: 2
-    #     $scope.mapLoaded = true
-    #   SideBar.mapLoaded = false
     $scope.setMarkerArray = ->
       busCoords = MapService.mapToMarker($scope.businesses)
       # displayCoords = MapService.mapToMarker($scope.displayList)
@@ -116,10 +107,8 @@ angular.module("NM").controller "BusinessDirectoryController", [
     $scope.letterClick = (letter) -> 
       Restangular.all("entities").getList({first_letter: letter}).then (entities)->
         $scope.displayList = entities
-        addMarkers = $filter('entityFilter')($scope.displayList, $scope.personFilter, $scope.businessFilter);
-        MapService.resetMap(MapService.mapToMarker(addMarkers))
+        $scope.applyMarkers()
 
-             # $scope.businessList = 
     $scope.randomClick = (bus)->
       # alert JSON.stringify bus
       $location.path( bus.uri );
@@ -146,21 +135,6 @@ angular.module("NM").controller "BusinessDirectoryController", [
 
         # alert JSON.stringify $scope.businessList
         $scope.$apply()
-#
-    #
-     #Find a single book and update it
-    #Book.get(1234).then (book) ->
-      #book.lastViewed = new Date()
-      #book.update()
-      #return
-#
-    #
-     # Create a book and save it
-    #new Book(
-      #title: "Gardens of the Moon"
-      #author: "Steven Erikson"
-      #isbn: "0-553-81957-7"
-    #).create()
 ]
 
 angular.module("NM").filter "entityFilter", ->

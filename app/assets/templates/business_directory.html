@@ -34,7 +34,7 @@
       <div ng-view class="view-frame"></div>
     </div> -->
     <!-- <div ng-switch="hasMarkers()"> -->
-    <div ng-hide="hasMarkers()==false" class="row">
+    <div ng-hide="(displayList | entityFilter:personFilter:businessFilter).length == 0" class="row">
       <div class="col-sm-6">
         <div class="nm__map--medium">
           <div ng-init="MapService.onMapDivLoad('#map-bus-dir')" style="height: 100%; width: 100%" id="map-bus-dir">
@@ -53,7 +53,7 @@
         </div>
       </div>
     </div>
-    <div ng-hide="hasMarkers()==true">
+    <div ng-hide="(displayList | entityFilter:personFilter:businessFilter).length < 0">
       <div class="bus__list">
         <div class="bus__none" ng-hide="(displayList | entityFilter:personFilter:businessFilter).length">
           Find some more businesses!

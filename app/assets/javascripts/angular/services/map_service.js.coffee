@@ -10,7 +10,7 @@ App.factory "MapService", [
     coordsArray: []
 
     init: (elem)->
-      @clear()
+      # @clear()
       @mapObj = new GMaps
         div: elem || '#map'
         lat: 35
@@ -44,6 +44,7 @@ App.factory "MapService", [
           # $scope.visitProfile(item.uri)
       
       return returnArray
+
     clear: ->
       if @coordsArray.length > 0
         while @coordsArray.length > 0
@@ -58,7 +59,10 @@ App.factory "MapService", [
       for marker in markerArray
         if marker.lat && marker.lng
           @mapObj.addMarker(marker)
+
       @mapObj.setOptions({ maxZoom: 15 });
+      @mapObj.refresh()
+
       @mapObj.fitZoom()
       # @mapObj.setOptions({ maxZoom: null });
 

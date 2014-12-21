@@ -1,7 +1,7 @@
 class Admin::AdminController < ApplicationController
   load_and_authorize_resource
-
   layout "admin_profile"
+
   def index
     #eg Flag -> @flags
     if model_type
