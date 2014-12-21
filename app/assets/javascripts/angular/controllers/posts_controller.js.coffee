@@ -37,9 +37,9 @@ angular.module("NM").controller "PostController", [
       $scope.disableInfiniteLoad = true
 
       AuthService.currentUser.posts("all": true).then (posts) ->
-        $scope.allPosts = posts
+        $scope.allPosts = posts.reverse()
         
-        source = $scope.allPosts.reverse().slice(0, 5)
+        source = $scope.allPosts.slice(0, 5)
         MessagesDisplay.buildMessageDisplay2 $scope.displayList, source, {}, (i) ->
           if source.length == $scope.displayList.length
             $scope.disableInfiniteLoad = false

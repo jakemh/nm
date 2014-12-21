@@ -48,7 +48,7 @@ App.factory "MessagesDisplay", [
             callback(i) if callback
         else 
           displayList.push context.displayHash(post, entity)
-          callback(i) if callback
+          callback() if callback
 
 
     buildMessageDisplay2: (displayList, source, options, callback) ->
