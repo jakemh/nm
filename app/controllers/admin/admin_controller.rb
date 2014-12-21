@@ -19,7 +19,7 @@ class Admin::AdminController < ApplicationController
   def destroy
     @model = model_type.find(params[:id])
     if @model.destroy
-        flash[:notice] = "#{MODEL.to_s} was deleted"
+        flash[:notice] = "#{@model.class.to_s} was deleted"
         redirect_to_back # This redirects to the show action, where the flash will be displayed
       else
         flash[:error] = "Something went wrong. Sorry!"
