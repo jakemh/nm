@@ -178,6 +178,8 @@ angular.module("NM").controller "ProfileController", [
       # if AuthService.currentUser
       current = AuthService.currentUser
 
+      if profileEntity == AuthService.currentUser
+        $scope.yours = true
       $scope.userOrBelongsToUser().then (belongs)->
 
         $scope.yours = belongs
@@ -334,9 +336,7 @@ angular.module("NM").controller "ProfileController", [
 
     $scope.$watch 'posts', ->
 
-        MessagesDisplay.buildMessageDisplay(null, $scope.posts).then (list)->
-          # alert JSON.stringify list 
-          $scope.displayList = list
+        MessagesDisplay.buildMessageDisplay2($scope.displayList, $scope.posts)
       
       
 ]
