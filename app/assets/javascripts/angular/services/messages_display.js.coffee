@@ -104,7 +104,5 @@ App.factory "MessagesDisplay", [
               else 
                 list.push context.displayHash(post, entity)
 
-              
-
       return deferred.promise
 ] 

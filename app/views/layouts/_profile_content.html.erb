@@ -10,10 +10,11 @@
     <div class="sidebar">
       <ul class="nav navbar-nav side-nav side-nav-inverse">
         <% PROFILE[side].each do |bar| %>
-          <%= content_tag "li", 
-          :class => active_class(send_or_nil(bar["path"], current_user)) do %>
+          <%= content_tag "li" do %>
+        
             <% @target = !bar["angular"] ? {:target => "_self"} : nil %>
-            <%= link_to send_or_nil(bar["path"]), {:target => "_self"} do %>  
+            <%= link_to send_or_nil(bar["path"]), {:target => "_self", :class => (current_page?(send(bar["path"])) ? "active" : nil)} do %>  
+            
             <%= bar["title"] %>
               <% if bar["angular"] %>
                 <span class="badge pull-right">SideBar.{{<%=bar["angular"]%>()}}</span>  
@@ -50,7 +51,7 @@
       <div ng-include="SideBar.rightBarTemplate"></div>
     </div>
   <% else %>
-    <div style="padding-top: 10px; margin-top: 80px; width: 75%" class="container__profile container__profile--full">
+    <div style="padding: 0; margin-top: 80px; width: 75%;" class="container__profile container__profile--full">
       <%= yield %>
     </div>
   <% end %>

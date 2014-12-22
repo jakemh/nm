@@ -4,11 +4,21 @@
 
     <% end %>
 
-    <%= render :partial => 'layouts/profile_content', :locals => {
+    <%= render :layout => 'layouts/profile_content', :locals => {
       :side => "admin-side",
       :right_bar => false,
       :angular => false
-    } %>
+    } do %>
+
+      <div style="border-radius: 0" class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title"><%= model_name(@model) %> </h3>
+        </div>
+        <div class="panel-body">
+          <%= yield %>
+        </div>
+      </div>
+    <% end %>
     <!-- /#wrapper -->
 <% end %>
 <%= render :template => 'layouts/application' %>

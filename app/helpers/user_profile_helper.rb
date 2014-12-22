@@ -3,6 +3,7 @@ module UserProfileHelper
   def active_class(path)
     if path
       "active" if current_page? path
+    else "FALSE"
     end
   end
 

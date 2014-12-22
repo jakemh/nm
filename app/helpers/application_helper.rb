@@ -8,6 +8,10 @@ module ApplicationHelper
     return string
   end
 
+  def model_name(model)
+    model.to_s.downcase.pluralize.titleize
+  end
+
   # def entity
   #    p "SET ENTITY"
   #   if params[:business_id]

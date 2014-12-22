@@ -43,6 +43,10 @@ angular.module("NM").controller "PostController", [
         MessagesDisplay.buildMessageDisplay2 $scope.displayList, source, {}, (i) ->
           if source.length == $scope.displayList.length
             $scope.disableInfiniteLoad = false
+        # MessagesDisplay.buildMessageDisplay(source).then (list) ->
+        #   $scope.displayList = list
+        #   $scope.disableInfiniteLoad = false
+
 
     $scope.loadPosts = () ->
       $scope.disableInfiniteLoad = true

@@ -13,7 +13,8 @@
           <% PROFILE["user-side"].each do |bar| %>
             <%= content_tag "li", 
             :class => active_class(send_or_nil(bar["path"], current_user)) do %>
-              <%= link_to send_or_nil(bar["path"]) do %>  
+            
+              <%= link_to send_or_nil(bar["path"]) do %> 
               <%= bar["title"] %>
               <% if bar["angular"] %>
                 <span class="badge pull-right">{{SideBar.<%=bar["angular"]%>()}}</span>  
