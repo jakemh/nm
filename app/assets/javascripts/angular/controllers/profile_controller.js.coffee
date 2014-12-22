@@ -62,6 +62,8 @@ angular.module("NM").controller "ProfileController", [
     SideBar.delegate.userBusinesses = []
     SideBar.delegate.entity = profileEntity
     SideBar.delegate.review = $scope.reviewPost
+    SideBar.delegate.validateStars = false
+
     # ReviewService.entity = $scope.profileEntity
     $scope.reviews = []
     SideBar.delegate.reviews = $scope.reviews
@@ -76,9 +78,13 @@ angular.module("NM").controller "ProfileController", [
     SideBar.delegate.businessOwner = $scope.businessOwner
 
     $scope.sendReview = (business, post) ->
-      ReviewService.sendPost(business, post).then (response) ->
-        $scope.buildReviewList()
+      if post.score > 0
+        ReviewService.sendPost(business, post).then (response) ->
+          $("#js__business-review-modal").modal('hide')
+          $scope.buildReviewList()
 
+      else 
+        SideBar.delegate.validateStars = true
     SideBar.delegate.sendPost = $scope.sendReview
     $scope.uploadedProfilePhotos = []
     $scope.uploadedCoverPhotos = []

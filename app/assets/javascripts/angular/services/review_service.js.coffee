@@ -45,7 +45,6 @@ App.factory "ReviewService", [
     sendPost: (business, post)->
       business.review(post).then (response) =>
         business.addReview(response)
-        $("#js__business-review-modal").modal('hide')
         $q.when(response)
     # submit: (model, entity, entryForm, callback) ->
     #   alert JSON.stringify model
