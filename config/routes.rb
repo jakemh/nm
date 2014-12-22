@@ -1,27 +1,6 @@
 
 Rails.application.routes.draw do
 
-
-  namespace :admin do
-  get 'flags/index'
-  end
-
-  namespace :admin do
-  get 'flags/show'
-  end
-
-  namespace :admin do
-  get 'flags/destroy'
-  end
-
-  namespace :admin do
-  get 'messages/index'
-  end
-
-  namespace :admin do
-  get 'messages/show'
-  end
-
   class Format
     attr_accessor :mime_type
 
@@ -131,6 +110,7 @@ Rails.application.routes.draw do
     resources :messages, :only => [:index, :show, :destroy]
     resources :message_responses, :controller => :messages
     resources :flags
+    resources :reviews
 
 
   end

@@ -36,3 +36,6 @@ admin-side:
 
   - title: Flags
     path: admin_flags_path
+
+  - title: Reviews
+    path: admin_reviews_path

@@ -1,0 +1,38 @@
+<div class="table-responsive">
+  <table class="table table-condensed table__admin">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Business</th>
+        <th>Reviewer</th>
+        <th>Score</th>
+        <th>Content</th>
+        <th>Date</th>
+        <th></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @reviews.each do |review| %>
+        <tr>
+          <td><%= review.id %></td>
+          <td>
+            <%= link_to(review.reviewable.name, [:admin, review.reviewable])  %>
+          </td>
+          <td><%= link_to(review.reviewer.name, [:admin, review.reviewer])  %>
+            <%="(#{review.reviewer.class.name[0]})" %>
+          </td>
+         
+          <td><%= review.score %></td>
+
+          <td style="max-width: 400px"><%= review.content %></td>
+          
+          <td><%= review.created_at.to_formatted_s(:short)  %> </td>
+          <td><%= button_to 'Delete', [:admin, review], method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger" %></td>
+
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+
