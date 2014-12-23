@@ -66,6 +66,10 @@ class EntitySerializer < ActiveModel::Serializer
     view_context.url_for(object)
   end
 
+  def city
+    scope.cap_first(object.city)
+  end
+
   def latitude
     object.location.latitude
   end

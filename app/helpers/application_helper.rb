@@ -4,7 +4,7 @@ module ApplicationHelper
   end
 
   def cap_first(string)
-    string[0] = string[0].upcase
+    string.gsub!(/^\s*\w|\s+\w/){|s| s.upcase}
     return string
   end
 
