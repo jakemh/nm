@@ -32,6 +32,23 @@
             </div>
           </div>
         </div>
+        <div style="margin: 5px">
+          <div style="display: inline-block">
+            <%= button_to "Make Admin", [:admin, @user, :assignments], 
+            {
+              method: :post, :class => "btn btn-success",
+               params: {
+                :classification => :admin
+              }
+
+          } %>
+          </div>
+          <div style="display: inline-block">
+
+            <%= button_to "Remove Admin", admin_user_assignment_path(@user, :admin), 
+            method: :delete, :class => "btn btn-danger" %>
+          </div>
+        </div>
         <div class="panel-footer">
           <a data-original-title="Broadcast Message" data-toggle="tooltip" type="button" class="btn btn-sm btn-primary"><i class="glyphicon glyphicon-envelope"></i></a>
           <span class="pull-right">

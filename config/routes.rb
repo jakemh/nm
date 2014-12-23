@@ -1,6 +1,8 @@
 
 Rails.application.routes.draw do
 
+ 
+
   class Format
     attr_accessor :mime_type
 
@@ -102,7 +104,9 @@ Rails.application.routes.draw do
   root to: 'temporary#index'
 
   resource :admin,:controller => :admin, :module => :admin do
-    resources :users, :only => [:index, :show, :destroy]
+    resources :users do
+      resources :assignments
+    end
     resources :businesses,  :only => [:index, :show, :destroy]
     resources :emails, :only => [:index, :show, :destroy]
     resources :posts, :only => [:index, :show, :destroy]

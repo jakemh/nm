@@ -86,6 +86,10 @@ class User < ActiveRecord::Base
     return all_received_messages.flatten
   end
 
+  def is_admin?
+    self.role? "Admin"
+  end
+
   def all_received_messages(from_entity)
     all_received_messages = []
     all_received_messages << self.received_messages.includes(:message_recipients).from_entity(from_entity).each{|m|m.to_entity = self}

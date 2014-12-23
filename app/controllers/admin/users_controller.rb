@@ -14,6 +14,7 @@ class Admin::UsersController < Admin::AdminController
       :work, 
       :website, 
       :about,
+      :is_admin?,
       :sign_in_count, 
       :current_sign_in_at, 
       :last_sign_in_at, 
@@ -22,10 +23,21 @@ class Admin::UsersController < Admin::AdminController
       :created_at, 
       :updated_at
     ] 
+    
+  end
+
+  def update
+
   end
 
   protected
+
     def model_type
       User
     end
+
+    def whitelist
+
+    end
+
 end
