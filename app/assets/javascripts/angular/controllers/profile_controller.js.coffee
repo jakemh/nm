@@ -46,7 +46,7 @@ angular.module("NM").controller "ProfileController", [
 
     $scope.followButtonText = "Follow"
     $scope.SideBar = SideBar
-    SideBar.tabBarVisible = false
+    SideBar.tabBarVisible = true
     SideBar.profileScope = $scope
     $scope.businessOwner = null
     $scope.MapService = MapService
@@ -69,6 +69,42 @@ angular.module("NM").controller "ProfileController", [
     SideBar.delegate.reviews = $scope.reviews
     $scope.yours = null
 
+    $scope.init = () ->
+    
+      $scope.profileEntity.personalPosts().then (posts)->
+        $scope.posts = posts
+
+      # if AuthService.currentUser
+      current = AuthService.currentUser
+
+      if profileEntity == AuthService.currentUser
+        $scope.yours = true
+      $scope.userOrBelongsToUser().then (belongs)->
+
+        $scope.yours = belongs
+
+        if $scope.yours
+          AuthService.currentEntitySelection.selected = $scope.profileEntity
+
+        if $scope.profileEntity.type == "User"
+
+          if $scope.yours
+            SideBar.rightBarTemplate = "right_bar_profile_internal.html" 
+          else 
+            SideBar.rightBarTemplate = "right_bar_profile_external.html"  
+            profileEntity.businesses().then (businesses) ->
+              SideBar.delegate.userBusinesses = businesses
+
+        else if $scope.profileEntity.type == "Business" 
+          $scope.buildReviewList()
+          MapService.coordsArray = MapService.mapToMarker([profileEntity])
+
+          if MapService.mapObj
+            MapService.mapObj.removeMarkers()
+            MapService.resetMap(MapService.coordsArray)
+
+          SideBar.rightBarTemplate = "right_bar_business.html"
+ 
 
     $scope.isYours = ->
       return $scope.yours
@@ -90,7 +126,6 @@ angular.module("NM").controller "ProfileController", [
     $scope.uploadedCoverPhotos = []
 
     $scope.tabItemClick = (entity)->
-      alert "TEST"
 
     # $scope.initMap = () -> 
     #   setTimeout ->
@@ -171,65 +206,7 @@ angular.module("NM").controller "ProfileController", [
         $scope.profileEntity.reviews = reviews
         ReviewDisplay.buildReviewList($scope.profileEntity.reviews, $scope.reviewList)
 
-    $scope.init = () ->
-      # MapService.mapObj = null
-      # if MapService.mapObj
-      #   MapService.init()
-      #   MapService.resetMap(MapService.mapToMarker([profileEntity]), true)
-      # else 
-    
-      $scope.profileEntity.personalPosts().then (posts)->
-        $scope.posts = posts
-
-      # if AuthService.currentUser
-      current = AuthService.currentUser
-
-      if profileEntity == AuthService.currentUser
-        $scope.yours = true
-      $scope.userOrBelongsToUser().then (belongs)->
-
-        $scope.yours = belongs
-        # SideBar.tabBarVisible = $scope.yours
-        SideBar.tabBarVisible = true
-
-        SideBar.profileEntity = $scope.profileEntity
-
-        if $scope.yours
-          AuthService.currentEntitySelection.selected = $scope.profileEntity
-
-        if $scope.profileEntity.type == "User"
-
-          if $scope.yours
-            SideBar.rightBarTemplate = "right_bar_profile_internal.html" 
-          else 
-            SideBar.rightBarTemplate = "right_bar_profile_external.html"  
-            profileEntity.businesses().then (businesses) ->
-              SideBar.delegate.userBusinesses = businesses
-
-        else if $scope.profileEntity.type == "Business" 
-          $scope.buildReviewList()
-          MapService.coordsArray = MapService.mapToMarker([profileEntity])
-
-          if MapService.mapObj && MapService.mapObj.el.id == "map"
-            
-            MapService.init()
-
-          SideBar.rightBarTemplate = "right_bar_business.html"
-          # if MapService.mapObj
-          #   MapService.resetMap(MapService.mapToMarker([$scope.profileEntity]))
-
-
-        # $scope.isFollowing = entity.follower_uri_type == -1 ? false : true
-        # alert JSON.stringify entity.follower_uri_type 
-        # if $scope.profileEntity.follower_uri_type == -1
-        #   $scope.isFollowing = true
-        #   $scope.followButtonText = "Following "
-
-        # else $scope.isFollowing = false
-
-    # $scope.$watch 'MapService.mapObj', ->
-    #   MapService.resetMap(MapService.mapToMarker([$scope.profileEntity]))
-
+   
     $scope.updateAccount = () ->
       $scope.profileEntity.put()
 

@@ -63,23 +63,5 @@ angular.module("NM").controller "ApplicationController", [
           $scope.ownedEntities = entities
           AuthService.entityOptions = $scope.ownedEntities
 
-    # $scope.rightBarTemplate = "right_bar_business.html"        
-
-    # $scope.$watch 'AuthService.currentUser', ->
-    #   if AuthService.currentUser
-    #     AuthService.currentUser.businesses().then (businesses)->
-
-    #       AuthService.entityOptions = [AuthService.currentUser]
-    #       AuthService.currentEntitySelection.selected = AuthService.entityOptions[0]
-
-    #       AuthService.userBusinesses = businesses
-        # $scope.$apply()
-
-    # $scope.$watch 'AuthService.userBusinesses', ->
-    #   if AuthService.userBusinesses && AuthService.currentUser
-    #     AuthService.entityOptions = AuthService.entityOptions.concat(AuthService.userBusinesses)
-    #     AuthService.currentEntitySelection.selected = AuthService.entityOptions[0]
-
-     
 
 ]

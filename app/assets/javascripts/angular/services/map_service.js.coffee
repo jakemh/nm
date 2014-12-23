@@ -13,24 +13,30 @@ App.factory "MapService", [
 
     init: (elem)->
       # @clear()
-      @mapObj = new GMaps
-        div: elem || '#map'
-        lat: 35
-        lng: -122
-        zoom: 2
-        # maxZoom: 15
 
+      if !@mapObj
+        @mapObj = new GMaps
+          div: elem || '#map'
+          lat: 35
+          lng: -122
+          zoom: 2
+          # maxZoom: 15
+      else 
+        mapNode = @mapObj.getDiv()
+        if mapNode != $("#map")
+          $('#map').replaceWith(mapNode);
       
       if @coordsArray.length > 0
         @resetMap(@coordsArray)
         
     initBusDir: ->
-      @mapObj = new GMaps
-        div: '#map-bus-dir'
-        lat: 35
-        lng: -122
-        zoom: 2
-
+      if !@mapObj
+        @mapObj = new GMaps
+          div: '#map'
+          lat: 35
+          lng: -122
+          zoom: 2
+      else @mapObj.div = '#map'
       if @coordsArray.length > 0
         @resetMap(@coordsArray, true)
 
