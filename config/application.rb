@@ -25,6 +25,19 @@ module NextMission
       TemporaryController.skip_before_filter :authenticate_user!
       # TemporaryController.skip_before_filter :authenticate
     end
+
+   config.action_mailer.delivery_method = :smtp
+   config.action_mailer.smtp_settings = {
+   :address              => "smtp.gmail.com",
+   :port                 => 587,
+   :domain               => "gmail.com",
+   :user_name            => "nextmissionnotifications",
+   :password             => ENV["capistrano_email_password"],
+   :authentication       => 'plain',
+   :enable_starttls_auto => true  }
+
+   config.action_mailer.perform_deliveries = true
+   config.action_mailer.raise_delivery_errors = true
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.

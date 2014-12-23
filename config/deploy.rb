@@ -111,16 +111,22 @@ namespace :deploy do
     end
   end
 
+  desc "Send deploy email"
+  task :email do
+    ActionMailer::Base.mail(to: "jh2706@nyu.edu", from: "nextmissionnotifications@gmail.com", :subject => "Deploy completed!", :body => "Nothing here yet").deliver!
+  end
+
   after :publishing, :restart_puma
   after :restart_puma, :finalize
-
-  after :finalize, :clear_cache do
+  after :finalize, :email
+  after :email, :clear_cache do
     on roles(:web), in: :groups, limit: 3, wait: 10 do
       # Here we can do anything such as:
       # within release_path do
       #   execute :rake, 'cache:clear'
       # end
     end
+
   end
 
 end

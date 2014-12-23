@@ -29,17 +29,6 @@ App.factory "MapService", [
       if @coordsArray.length > 0
         @resetMap(@coordsArray)
         
-    initBusDir: ->
-      if !@mapObj
-        @mapObj = new GMaps
-          div: '#map'
-          lat: 35
-          lng: -122
-          zoom: 2
-      else @mapObj.div = '#map'
-      if @coordsArray.length > 0
-        @resetMap(@coordsArray, true)
-
     add: (marker)->
       if @mapObj
         @mapObj.addMarker(marker)
@@ -74,17 +63,19 @@ App.factory "MapService", [
       
       return returnArray
 
-    clear: ->
+    clearCoordsArray: ->
       if @coordsArray.length > 0
         while @coordsArray.length > 0
           @coordsArray.pop()
 
+    clearMap: ->
       if @mapObj
         @mapObj.removeMarkers()
 
-    resetMap: (markerArray, clear)->
-      @clear() if clear
-
+    resetMap: (markerArray, clearCoordsArray)->
+      @clearCoordsArray() if clearCoordsArray
+      @clearMap()
+      
       for marker in markerArray
         if marker.lat && marker.lng
           @mapObj.addMarker(marker)

@@ -100,7 +100,6 @@ angular.module("NM").controller "ProfileController", [
           MapService.coordsArray = MapService.mapToMarker([profileEntity])
 
           if MapService.mapObj
-            MapService.mapObj.removeMarkers()
             MapService.resetMap(MapService.coordsArray)
 
           SideBar.rightBarTemplate = "right_bar_business.html"
