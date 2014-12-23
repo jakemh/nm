@@ -56,6 +56,17 @@ set :branch, "angular"
 # Default value for keep_releases is 5
 # set :keep_releases, 5
 
+namespace :test do
+
+  desc "Send deploy email"
+  task :email do
+    on roles(:web) do
+      ActionMailer::Base.mail(to: "jh2706@nyu.edu", from: "nextmissionnotifications@gmail.com", :subject => "Deploy completed!", :body => "Nothing here yet").deliver!
+    end
+  end
+end
+
+
 namespace :deploy do
   def root
     # "/home/nm/www/shared"
@@ -111,8 +122,8 @@ namespace :deploy do
     end
   end
 
-  desc "Send deploy email"
   task :email do
+    load 'config/environment.rb'
     ActionMailer::Base.mail(to: "jh2706@nyu.edu", from: "nextmissionnotifications@gmail.com", :subject => "Deploy completed!", :body => "Nothing here yet").deliver!
   end
 
