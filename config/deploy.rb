@@ -124,7 +124,7 @@ namespace :deploy do
 
   task :email do
     load 'config/environment.rb'
-    ActionMailer::Base.mail(to: "jh2706@nyu.edu", from: "nextmissionnotifications@gmail.com", :subject => "Deploy completed!", :body => "Nothing here yet").deliver!
+    ActionMailer::Base.mail(to: ["daniel.mcfarland@gmail.com", "jakemh@gmail.com"], from: "nextmissionnotifications@gmail.com", :subject => "Deploy completed!", :body => "Nothing here yet").deliver!
   end
 
   after :publishing, :restart_puma
