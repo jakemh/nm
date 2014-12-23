@@ -36,10 +36,7 @@
     <!-- <div ng-switch="hasMarkers()"> -->
     <div ng-hide="(displayList | entityFilter:filters.person:filters.business).length == 0" class="row">
       <div class="col-sm-6">
-        <div class="nm__map--medium">
-          <div ng-init="MapService.onMapDivLoad('#map')" style="height: 100%; width: 100%" id="map">
-            Google Map Container
-          </div>
+        <div ng-include="'map_template.html'" class="nm__map--medium">
         </div>
       </div>
       <div class="col-sm-6">
