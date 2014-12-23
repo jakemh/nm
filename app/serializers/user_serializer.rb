@@ -53,9 +53,7 @@
       ""
     end
   end
-  def city
-    object.city.capitalize if object.city
-  end
+
   def posts
     Post.all.where(type: [nil, "", "Post"])
     # object.posts.where(type: [nil, "", "Post"])
