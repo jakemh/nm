@@ -42,7 +42,7 @@
       </div>
         <ng-view></ng-view> 
       </div>
-      <div class="container__profile container__profile--right" >
+      <div ng-controller="RightBarController" class="container__profile container__profile--right" >
         <div ng-include="SideBar.rightBarTemplate"></div>
       </div>
     <!-- </span> -->

@@ -8,8 +8,8 @@ angular.module("NM").controller "BusinessDirectoryController", [
   "$location"
   "$filter"
   "RestEntity"
-  
-  ($scope, Business, User, Restangular, SideBar, MapService, $location, $filter, RestEntity) ->
+  "AuthService"
+  ($scope, Business, User, Restangular, SideBar, MapService, $location, $filter, RestEntity, AuthService) ->
     
     $scope.SideBar = SideBar
     # SideBar.rightBarTemplate = "right_bar_bus_dir.html"     
@@ -109,6 +109,10 @@ angular.module("NM").controller "BusinessDirectoryController", [
 
   
   
+    $scope.followerCallback = (entity)->
+      
+      current = AuthService.currentEntitySelection.selected
+      AuthService.currentEntitySelection.selected.pushFollowing(entity)
 
       # MapService.resetMap(MapService.mapToMarker($scope.businesses))
 

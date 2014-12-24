@@ -1,18 +1,33 @@
- 
- <div  class="bus__item utils__hover--orange">
-    <img ng-src={{business.thumb}}></img>
-    <div class="bus__item-top">
-      <a ng-href="{{business.uri}}">{{business.name}}</a>
+<div class="bus__item utils__hover--orange">
+  <img ng-src={{business.thumb}}></img>
+  <div class="bus__item-top">
+    <a ng-href="{{business.uri}}">{{business.name}}</a>
+  </div>
+
+  <div class="bus__item-bottom">
+    <div class="row">
+      <div class="col-sm-4">
+        <div ng-if="business.canBeFollowedBy(AuthService.currentEntitySelection.selected)" class="feed_content-follow">
+          <!--  <a ng-click="AuthService.followerHandle(entity.models.entity, followerCallback)" href="#"><span ng-bind-html="entity.followerUriType"></span>
+
+            </a> -->
+          <div ng-init="feedback=false" ng-switch="business.isFollowedBy(AuthService.currentEntitySelection.selected)">
+            <div ng-switch-when="false">
+              <a ng-click="AuthService.profileFollowerHandle(business, followerCallback); feedback=true" href="#">
+                  Follow
+                 </a>
+            </div>
+            <div ng-if="business.isFollowedBy(AuthService.currentEntitySelection.selected)">
+              <i class="fa fa-check"></i> Connected
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-4">
+        <a ng-click="MessageService.callModal('js-msg__modal', $event); MessageService.setMessageEntity(business)" ng-href="#">Message</a>
+
+      </div>
+
     </div>
-
-    <div class="bus__item-bottom">
-      <span class="bus__item-follow">
-        <a ng-click="" ng-href="#">follow</a>
-      </span>
-
-      <span class="bus__item-message">
-        <a ng-click="MessageService.callModal('js-msg__modal', $event); MessageService.setMessageEntity(business)" ng-href="#">message</a>
-
-      </span>
-    </div>
+  </div>
 </div>

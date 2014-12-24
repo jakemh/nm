@@ -76,7 +76,7 @@ App.factory "AuthService", [
     profileFollowerHandle: (entity, callback)->
       @followerHandle(entity).then ()->
         callback(entity, callback)
-
+        
     followerHandle: (entity)->
       deferred = $q.defer();
 
