@@ -20,7 +20,8 @@ class Me::BusinessesController < MeController
   def create
     w = whitelist
     tags = w.delete(:tags_attributes)
-    @business = Business.new whitelist
+    
+    @business = Business.new w
     # @business = current_user.businesses.build w
       if @business.save
         current_user.ownerships.create(:connect_to_id => @business.id)
