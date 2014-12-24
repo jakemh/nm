@@ -87,11 +87,13 @@ class Business < ActiveRecord::Base
   end
 
   def self.industries
-    ["Accounting", "Advertising & Marketing", "Arts", "Banking", "Biotech & Pharmaceuticals", "Business/Personal Coaching", "Economy", "Education", "Energy & Utilities", "Entrepreneur", "Fashion", "Finance", "Health Care", "Health & Wellness", "Hospitality & Tourism", "Human Resources", "International", "Law", "Manufacturing", "Management", "Marketing", "Media & Entertainment", "Nonprofits", "Politics", "Publishing", "Professional Services", "Real Estate", "Restaurants", "Retail & Apparel", "Small Business", "Social Media", "Sports & Fitness", "Startups", "Technology - All areas", "Telecommunications", "Transportation", "Wall Street"]
+    # ["Accounting", "Advertising & Marketing", "Arts", "Banking", "Biotech & Pharmaceuticals", "Business/Personal Coaching", "Economy", "Education", "Energy & Utilities", "Entrepreneur", "Fashion", "Finance", "Health Care", "Health & Wellness", "Hospitality & Tourism", "Human Resources", "International", "Law", "Manufacturing", "Management", "Marketing", "Media & Entertainment", "Nonprofits", "Politics", "Publishing", "Professional Services", "Real Estate", "Restaurants", "Retail & Apparel", "Small Business", "Social Media", "Sports & Fitness", "Startups", "Technology - All areas", "Telecommunications", "Transportation", "Wall Street"]
+    BUSINESS_TYPES.keys
+
   end
 
   def self.types
-    ["type1", "type2", "type3"]
+    BUSINESS_TYPES.inject([]){|array, (k,v)| array.concat v} 
   end
   
   def contact
