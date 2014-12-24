@@ -28,7 +28,8 @@ class Me::BusinessesController < MeController
           @business.tags << Tag.new(:name => tag)
         end 
         flash[:notice] = "Business has been successfully saved."
-        redirect_to [:new, @business, :photo]
+        # redirect_to [:new, @business, :photo]
+        redirect_to [current_user]
       else
 
         flash[:error] = "Error. Business was not saved successfully."
