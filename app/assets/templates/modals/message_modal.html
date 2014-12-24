@@ -1,4 +1,4 @@
-<div class="modal fade" id="js-msg__modal" tabindex="-1" role="dialog" aria-loabelledby="myModalLabel" aria-hidden="true">
+<div class="modal fade js-msg__modal"  tabindex="-1" role="dialog" aria-loabelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -14,7 +14,8 @@
             <div ng-init="
                 buttonTitle='Send';
                 placeHolder='Enter a message';
-                newPost={}
+                newPost={};
+                sendMessageObj=MessageService.initMessageModal(newPost, toEntity, null)
                 " ng-include="'forms/post/form.html'">
             </div>
           </div>

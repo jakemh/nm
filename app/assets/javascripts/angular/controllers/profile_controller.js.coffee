@@ -231,16 +231,6 @@ angular.module("NM").controller "ProfileController", [
       current = AuthService.currentEntitySelection.selected
       AuthService.currentEntitySelection.selected.pushFollowing(entity)
 
-      # $scope.params = _.compact($scope.location.path().split("/"))
-      # current = AuthService.currentUser
-      # params = {current_type: current.type, current_id: current.id}
-      # Restangular.one($scope.params[0], $scope.params[1]).get(params).then (entity)->
-      #   # $scope.posts = $scope.posts.concat(response)
-      #   if entity.follower_uri_type == -1
-      #     $scope.isFollowing = true
-      #     $scope.profileEntity.follower_count = entity.follower_count
-      #     $scope.followButtonText = "Following"
-      #   else $scope.followButtonText = "Declined"
 
     $scope.belongsToUser = ->
       #check if profile entity is user or one of user's businesses
@@ -296,6 +286,7 @@ angular.module("NM").controller "ProfileController", [
 
 
     $scope.sendPost = (postObj, postSubmit)->
+      debugger
       ent = AuthService.currentEntitySelection.selected
       entityAttrs = 
         entity_id: ent.id

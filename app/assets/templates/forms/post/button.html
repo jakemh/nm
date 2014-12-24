@@ -1,3 +1,10 @@
-<button class="feed__button button__btn button__btn--orange" name="commit" style=" width: 100px; margin: auto !important" ng-click="MessageService.submit(newPost, entity, entryForm, sendPost)">
+<!-- <button class="feed__button button__btn button__btn--orange" name="commit" style=" width: 100px; margin: auto !important" ng-click="MessageService.submit(newPost, entity, entryForm, sendPost)">
   {{buttonTitle || "Post"}}
 </button>
+
+ -->
+
+ <button class="feed__button button__btn button__btn--orange" name="commit" style=" width: 100px; margin: auto !important" ng-click="MessageService.submitHandler(sendMessageObj, entryForm)">
+  {{buttonTitle || "Post"}}
+</button>
+

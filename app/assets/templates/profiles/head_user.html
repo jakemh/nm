@@ -1,8 +1,11 @@
+<div class="modal-link-container">
+  <div ng-init="toEntity=profileEntity" ng-include="'modals/message_modal.html'">
+  </div>
 <div class="profile__head thirds">
-  <div ng-click="addProfilePhoto()"  ng-if="isEditable"class="profile__photo-edit">
+  <div ng-click="addProfilePhoto()" ng-if="isEditable" class="profile__photo-edit">
     <div class="profile__head-link nm__link" style="font-size: 1em;">
-     <i class="fa fa-upload"> </i> Edit Profile Photo
-   </div>
+      <i class="fa fa-upload"> </i> Edit Profile Photo
+    </div>
   </div>
   <div class="profile__photo column-left">
     <img ng-src="{{profileEntity.thumb}}">
@@ -30,9 +33,10 @@
 
   <div class="user-prof__head-buttons column-right">
     <div ng-if="!yours">
-      <button ng-click="MessageService.callModal('js-msg__modal'); MessageService.setMessageEntity(profileEntity)" class="button__btn button__btn--gray button__btn--left button__btn--100">
-        Message
-      </button>
+     
+        <button ng-click="MessageService.callModal('js-msg__modal', $event)" style="float: left" class="button__btn button__btn--gray button__btn--left button__btn--100">
+          Message
+        </button>
       <button ng-if="profileEntity.canBeFollowedBy(AuthService.currentEntitySelection.selected)" ng-disabled="isFollowing(AuthService.currentEntitySelection.selected)" ng-click="AuthService.profileFollowerHandle(profileEntity, followerCallback)" class="button__btn  button__btn--right button__btn--right--padding button__btn--100" ng-class="{'button__btn--light-gray' : isFollowing(AuthService.currentEntitySelection.selected), 'button__btn--orange' : !isFollowing(AuthService.currentEntitySelection.selected)}">
 
         <div ng-switch="isFollowing(AuthService.currentEntitySelection.selected)">
@@ -52,4 +56,5 @@
       <button ng-click="editProfile()" style="float: left" class="js-msg__button button__btn button__btn--gray button__btn--left  profile__btn">{{editProfileText}}</button>
     </div>
   </div>
+</div>
 </div>
