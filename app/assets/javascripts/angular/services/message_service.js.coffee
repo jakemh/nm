@@ -12,11 +12,6 @@ App.factory "MessageService", [
     class SendMessage
       constructor: (@messageObj, @toEntity, @callback) ->
 
-        # @messageObject = null
-        # @toEntity = null
-        # @fromEntity = AuthService.currentEntitySelection.selected
-        # @callback = null
-
     setMessageEntity: (entity)->
       @messageEntity = entity
 
@@ -25,7 +20,13 @@ App.factory "MessageService", [
       # @callModal('js-msg__modal')
       sm = new SendMessage(messageObj, toEntity, callback)
       return sm
-      
+    
+    initMessageForm: (messageObj, toEntity, callback) ->
+      # @setMessageEntity(entity)
+      # @callModal('js-msg__modal')
+      sm = new SendMessage(messageObj, toEntity, callback)
+      return sm
+
     callModal: (id, $event)->
       $($event.currentTarget).parents(".modal-link-container").find(".js-msg__modal").modal()
       return true
@@ -98,6 +99,7 @@ App.factory "MessageService", [
 
     sendMessage: (sendMessageObj) ->
       sm = sendMessageObj
+      
       currentEntity = AuthService.currentEntitySelection.selected
       toEntity = sm.toEntity
       
@@ -112,14 +114,16 @@ App.factory "MessageService", [
 
       postSubmit = angular.extend({}, sm.messageObj, entityAttrs)
       currentEntity.post('messages', postSubmit).then (response)->
+        sm.callback(response) if sm.callback
         $(".js-msg__modal").modal('hide')
 
 
-    submitHandler: (obj, entryForm) ->
+    submitHandler: (obj, entryForm, submit) ->
+      debugger
       if entryForm.$valid
         entryForm.hasError = false;
         # obj.callback(obj.entity, obj.model) if callback
-        @sendMessage(obj)
+        submit(obj)
         # model.content = ""
       else 
         obj.entryForm.hasError = true

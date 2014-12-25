@@ -10,9 +10,12 @@
     <div style="text-align: center" ng-include="'forms/post/content.html'"></div>
 
 
-    <div ng-include="'forms/post/button.html'">
+   <!--  <div ng-include="'forms/post/button.html'">
 
-    </div>
+    </div> -->
+     <button class="feed__button button__btn button__btn--orange" name="commit" style=" width: 100px; margin: auto !important" ng-click="validationHandler(object, entryForm, submitHandler)">
+      {{buttonTitle || "Post"}}
+    </button>
 
     </div>
     <!-- <div class="feed__form-bottom"> -->

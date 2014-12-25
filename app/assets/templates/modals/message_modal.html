@@ -15,7 +15,9 @@
                 buttonTitle='Send';
                 placeHolder='Enter a message';
                 newPost={};
-                sendMessageObj=MessageService.initMessageModal(newPost, toEntity, null)
+                object=MessageService.initMessageModal(newPost, toEntity, null);
+                validationHandler=MessageService.submitHandler;
+                submitHandler=MessageService.sendMessage
                 " ng-include="'forms/post/form.html'">
             </div>
           </div>

@@ -24,7 +24,10 @@
         <div ng-init="
             buttonTitle='Send';
             placeHolder='Enter a message';
-            newPost={}
+            newPost={};
+            object=newPost;
+            validationHandler=MessageService.submitHandler;
+            submitHandler=sendPost
             " ng-include="'forms/post/form.html'">
         </div>
       </div>

@@ -62,7 +62,9 @@ angular.module("NM").controller "MessagesController", [
     # $scope.headOuterInit = (newPost, entity) ->
     #   newPost.type = ''
 
-    
+    $scope.submitHandler = ->
+      MessageService.submit(newPost, entity, entryForm, sendPost)
+      
     $scope.markAsRead = (msg)->
       currentEntity = AuthService.currentEntitySelection.selected
       msg.models.post.unread = false
@@ -83,7 +85,6 @@ angular.module("NM").controller "MessagesController", [
       # $scope.allMessages = $scope.sentMessages.concat $scope.receivedMessages
     
     $scope.unreadQuantity = (entity)->
-
       unreadList =  _.where entity.messages, {type: "ReceivedMessage", unread:  true}
       l = unreadList.length
       if l > 0 
@@ -121,27 +122,35 @@ angular.module("NM").controller "MessagesController", [
     $scope.receivedMessageInit = (newPost)->
       newPost.type = "ReceivedMessage"
 
-    $scope.sendPost = (postObj, postSubmit)->
+    $scope.messageCallback = (response) ->
+      #set sidebar count
+      SideBar.eachEntityUnreadMessages(AuthService.currentUser)
+
+      SideBar.allUnreadMessages(AuthService.currentUser).then (list) ->
+        SideBar.messageCount = list.length
+      # $scope.getAllMessages(AuthService.currentEntitySelection.selected).then (all)->
+      selectedEntity.addSentMessageId(response.id)
+      response.toEntity().then (toEntity) ->
+        ownedEntity = entityHash(toEntity)
+        if ownedEntity
+          ownedEntity.entity.addReceivedMessageId(response.id)
+
+        $scope.selectedEntity.addMessage(response)
+        # $scope.selectedEntity.addMessage(response)
+        $scope.buildMessages(selectedEntity).then () ->
+          list = _.sortBy $scope.displayEnt().getEntitiesList(), (item) -> item.lastMessage().id
+          $scope.selectedEntity = list[list.length - 1]
+
+
+    $scope.sendPost = (postSubmit)->
       
       selectedEntity = AuthService.currentEntitySelection.selected
       entityAttrs = 
         from_id: selectedEntity.id
         from_type: selectedEntity.type
-        # to_id: postObj.entityId
-        # to_type: postObj.entityType
         to_id: $scope.selectedEntity.entity.id
         to_type: $scope.selectedEntity.entity.type
         type: "Message"
-
-      # entityAttrs = 
-      #   parent_id: postObj.id
-      #   entity_id: selectedEntity.id
-      #   entity_type: selectedEntity.type
-      #   from_id: selectedEntity.id 
-      #   from_type: selectedEntity.type
-      #   to_id: postObj.entityId
-      #   to_type: postObj.entityType
-      #   type: "MessageResponse"
 
       postSubmit = angular.extend({}, postSubmit, entityAttrs)
 
