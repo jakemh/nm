@@ -24,6 +24,7 @@ App.factory "MessagesDisplay", [
       unread: post.unread
       entityType: entity.type
       entityId: entity.id
+      points: post.getPoints()
       # followerUri: AuthService.followerUri(entity)
       # followerUriType: AuthService.followerType(entity)
       followerCount: entity.follower_count

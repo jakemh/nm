@@ -3,6 +3,14 @@ Rails.application.routes.draw do
 
  
 
+  namespace :admin do
+  get 'points/index'
+  end
+
+  namespace :admin do
+  get 'points/show'
+  end
+
   class Format
     attr_accessor :mime_type
 

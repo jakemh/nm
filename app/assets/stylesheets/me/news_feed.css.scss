@@ -140,6 +140,11 @@
   background: whitesmoke;
   padding: 0 5px;
 }
+
+.feed__content--comment .votes{
+  display: none;
+}
+
 .feed__content-outer{
   margin: 5px 0;
   height: 100%;
@@ -165,12 +170,30 @@
   // overflow: hidden;
 }
 
+.votes{
+  text-align: center;
+  line-height: 0em;
+}
+.votes__arrow{
+  font-size: 2.4em;
+}
+
 .feed__comment-container .feed__content-outer{
   margin: 0 !important;
 }
 .feed__content-body{
+  // display: inline-block;
+  width: 90%;
   // background: red;
 } 
+
+.feed__content-votes{
+  position: absolute;
+  right: 20px;
+  top: 40px;
+  z-index: 15;
+
+}
 
 .feed__entry-inner{
   // width: 100%;

@@ -28,6 +28,8 @@ App.factory "MessageBase", [
       else if @business_id
         RestangularPlus.getModel('businesses', @business_id, params)
 
+
+
     fromEntity: (params) ->
       @entity(params)
 

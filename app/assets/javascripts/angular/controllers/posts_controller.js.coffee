@@ -47,7 +47,11 @@ angular.module("NM").controller "PostController", [
         #   $scope.displayList = list
         #   $scope.disableInfiniteLoad = false
 
+    $scope.upVote = () ->
 
+    $scope.downVote = () ->
+
+      
     $scope.loadPosts = () ->
       $scope.disableInfiniteLoad = true
       l = $scope.displayList.length

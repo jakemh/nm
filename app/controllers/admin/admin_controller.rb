@@ -1,6 +1,7 @@
 class Admin::AdminController < ApplicationController
   load_and_authorize_resource
   layout "admin_profile"
+
   attr_accessor :model_name
 
   def index
@@ -15,7 +16,7 @@ class Admin::AdminController < ApplicationController
   end
 
   def show 
-    redirect_to [:admin, :emails]
+    redirect_to [:admin, :users]
   end
 
   def destroy

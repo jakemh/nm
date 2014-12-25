@@ -19,9 +19,6 @@ user-side:
 
 
 admin-side:
-  - title: Email
-    path: admin_emails_path
-
   - title: Users
     path: admin_users_path
 
@@ -39,3 +36,6 @@ admin-side:
 
   - title: Reviews
     path: admin_reviews_path
+
+- title: Points
+  path: admin_reviews_path

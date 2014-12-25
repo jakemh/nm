@@ -13,6 +13,8 @@ angular.module("NM").factory "Post", [
       # model.entity = (params)->
       #   MessageBase.entity(model, params)
         # RestangularPlus.one()
+      self.getPoints = () ->
+        self.points || 0
 
       self.responses = ->
         if self.response_ids.length > 0
