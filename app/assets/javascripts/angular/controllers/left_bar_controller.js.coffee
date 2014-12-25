@@ -33,6 +33,7 @@ angular.module("NM").controller "LeftBarController", [
 
 
     $scope.$watch 'MessageService.unreadList', ->
-      $scope.SideBar.messageCount = $scope.MessageService.unreadList.length
+      if $scope.MessageService.unreadList
+        $scope.SideBar.messageCount = $scope.MessageService.unreadList.length
 
 ]

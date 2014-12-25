@@ -119,7 +119,7 @@ App.factory "MessageService", [
 
 
     submitHandler: (obj, entryForm, submit) ->
-      debugger
+      
       if entryForm.$valid
         entryForm.hasError = false;
         # obj.callback(obj.entity, obj.model) if callback
