@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141124013711) do
+ActiveRecord::Schema.define(version: 20141225164510) do
 
   create_table "ahoy_events", force: true do |t|
     t.uuid     "visit_id"
@@ -181,6 +181,16 @@ ActiveRecord::Schema.define(version: 20141124013711) do
     t.string   "type"
   end
 
+  create_table "points", force: true do |t|
+    t.integer  "score"
+    t.integer  "user_id"
+    t.integer  "business_id"
+    t.string   "pointable_type"
+    t.integer  "pointable_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "posts", force: true do |t|
     t.integer  "user_id"
     t.integer  "business_id"
@@ -214,6 +224,15 @@ ActiveRecord::Schema.define(version: 20141124013711) do
 
   create_table "roles", force: true do |t|
     t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "scores", force: true do |t|
+    t.integer  "score"
+    t.string   "scoreable_type"
+    t.integer  "storeable_id"
+    t.integer  "total_votes"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

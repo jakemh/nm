@@ -3,7 +3,8 @@ class Post < ActiveRecord::Base
   belongs_to :user
   belongs_to :business
   validates :content, presence: true, allow_blank: false
-
+  has_many :points, :as => :pointable
+  has_one :score, :as => :scoreable
   # has_many :message_recipients
   has_many :responses, :class_name => "Response", :foreign_key => "parent_id", dependent: :destroy
   def self.id_sym(type)
