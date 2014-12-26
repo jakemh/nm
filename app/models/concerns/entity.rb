@@ -29,7 +29,7 @@ module Entity
   end
 
   def last_vote_for(object)
-    self.votes.where(:pointable_id => object.id, :pointable_type => object.type).last
+    self.votes.where(:pointable_id => object.id, :pointable_type => object.class.name).last
     # self.points.where(:)
   end
 

@@ -89,6 +89,10 @@ class User < ActiveRecord::Base
     [self] + self.businesses
   end
 
+  def owned_entity_last_votes(post)
+    return self.all_owned.inject([]){|list, entity| list << entity.last_vote_for(post); list}.compact
+  end
+
   def is_admin?
     self.role? "Admin"
   end

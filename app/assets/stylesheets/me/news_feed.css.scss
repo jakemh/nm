@@ -173,9 +173,15 @@
 .votes{
   text-align: center;
   line-height: 0em;
+
+}
+
+.votes__arrow::before{
+  // content: "FUCK"
 }
 .votes__arrow{
   font-size: 2.4em;
+  height: 1em;
 }
 
 .feed__comment-container .feed__content-outer{

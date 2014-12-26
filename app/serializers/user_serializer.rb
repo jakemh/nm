@@ -59,8 +59,6 @@
     # object.posts.where(type: [nil, "", "Post"])
   end
 
-
-
   def message_route
     "users/#{object.id}/messages"
   end

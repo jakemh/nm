@@ -11,7 +11,7 @@
     </div>
     {{entity.getPoints()}}
     <div class="votes__arrow">
-      <a ng-click="downVote(entity.models.post)" href="#"><i class="fa fa-sort-desc"></i></a>
+      <a  ng-hide="alreadyVoted(entity.models.post)"ng-click="downVote(entity.models.post)" href="#"><i class="fa fa-sort-desc"></i></a>
     </div>
 
   </div>
