@@ -3,6 +3,8 @@ Rails.application.routes.draw do
 
  
 
+  get 'points/create'
+
   namespace :admin do
   get 'points/index'
   end
@@ -93,6 +95,10 @@ Rails.application.routes.draw do
     resources :businesses, :controller => :user_businesses
   end
 
+  resources :posts do
+    resources :points, :controller => :post_points
+  end
+
   resources :users, :businesses do
     resources :messages
     resources :photos
@@ -100,6 +106,8 @@ Rails.application.routes.draw do
     resources :sent_messages, :received_messages do
       # resources :message_responses
     end
+
+
 
 
     resources :posts

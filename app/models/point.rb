@@ -6,6 +6,7 @@ class Point < ActiveRecord::Base
       User.find user_id
     elsif self.business_id
       Business.find business_id
+    end
   end
 
   def entity

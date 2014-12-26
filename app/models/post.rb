@@ -19,6 +19,10 @@ class Post < ActiveRecord::Base
     self.user || self.business || User.new
   end
 
+  def total_points
+    self.points.sum(:score)
+  end
+
   def add_response(opt)
     Response.create(opt.merge({:parent_id => self.id}))
   end

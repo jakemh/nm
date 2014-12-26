@@ -1,0 +1,2 @@
+module PostPointsHelper
+end

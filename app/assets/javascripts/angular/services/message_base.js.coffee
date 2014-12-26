@@ -28,8 +28,16 @@ App.factory "MessageBase", [
       else if @business_id
         RestangularPlus.getModel('businesses', @business_id, params)
 
+    getPoints: ->
+      @points || 0
 
+    addPoints: (incr) ->
+      
+      @points += incr
 
+    setPoints: (score) ->
+      @points = score
+      
     fromEntity: (params) ->
       @entity(params)
 

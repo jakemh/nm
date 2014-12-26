@@ -16,6 +16,14 @@ App.factory "AuthService", [
 
 
     # selected: @currentEntitySelection.selected
+    currentId: () ->
+      if @currentEntitySelection.selected.type == "Business"
+        {business_id: @currentEntitySelection.selected.id}
+      else if @currentEntitySelection.selected.type == "User"
+        {user_id: @currentEntitySelection.selected.id}
+        
+
+
     user: () ->
       if !@currentUser
         RestangularPlus.getModel("users", "current")

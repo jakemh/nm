@@ -92,7 +92,7 @@ window.App = angular.module("NM", [
 
 
 
-  RestangularProvider.setParentless(["businesses"]);
+  RestangularProvider.setParentless(["businesses", "posts"]);
 
 
   RestangularProvider.addResponseInterceptor (data, operation, what, url, response, deferred) ->

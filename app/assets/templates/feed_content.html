@@ -7,11 +7,11 @@
   </div>
   <div class="feed__content-votes votes">
     <div class="votes__arrow">
-      <a ng-click="" href="#"><i class="fa fa-sort-asc"></i></a>
+      <a ng-click="upVote(entity.models.post)" href="#"><i class="fa fa-sort-asc"></i></a>
     </div>
-    {{entity.points}}
+    {{entity.getPoints()}}
     <div class="votes__arrow">
-      <a ng-click="" href="#"><i class="fa fa-sort-desc"></i></a>
+      <a ng-click="downVote(entity.models.post)" href="#"><i class="fa fa-sort-desc"></i></a>
     </div>
 
   </div>
