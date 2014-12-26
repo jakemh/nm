@@ -10,7 +10,7 @@ class Point < ActiveRecord::Base
   end
 
   def entity
-    self.pointable
+    self.pointable || User.new
   end
 
 end

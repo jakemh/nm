@@ -131,6 +131,7 @@ Rails.application.routes.draw do
     resources :message_responses, :controller => :messages
     resources :flags
     resources :reviews
+    resources :points
 
 
   end

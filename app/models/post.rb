@@ -23,6 +23,10 @@ class Post < ActiveRecord::Base
     self.points.sum(:score)
   end
 
+  def last_vote_from_user
+    self.points.sum(:score)
+  end
+
   def add_response(opt)
     Response.create(opt.merge({:parent_id => self.id}))
   end

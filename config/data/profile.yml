@@ -36,6 +36,6 @@ admin-side:
 
   - title: Reviews
     path: admin_reviews_path
-    
+
   - title: Points
-    path: admin_reviews_path
+    path: admin_points_path

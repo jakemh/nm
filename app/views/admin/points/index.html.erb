@@ -1,2 +1,31 @@
-<h1>Admin::Points#index</h1>
-<p>Find me in app/views/admin/points/index.html.erb</p>
+<div class="table-responsive">
+  <table class="table table-condensed table__admin">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Associated Obj</th>
+        <th>Scorer</th>
+        <th>Value</th>
+        <th>Date</th>
+        <th></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @points.each do |point| %>
+        <tr>
+          <td><%= point.id %></td>
+          <td><%= link_to(point.pointable_id, [:admin, point.pointable])  %>
+            <%= "(#{point.pointable_type})" %>
+          </td>
+            <td><%= link_to(point.scorer.name, [:admin, point.scorer])  %></td>
+          <td><%= point.created_at.to_formatted_s(:short)  %></td>
+          <td><%= point.score %> </td>
+          <td><%= button_to 'Delete', [:admin, point], method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger" %></td>
+
+        </tr>
+      <% end %> </td>
+    </tbody>
+  </table>
+</div>
+

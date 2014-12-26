@@ -1,7 +1,6 @@
-class Admin::PointsController < ApplicationController
-  def index
-  end
-
-  def show
-  end
+class Admin::PointsController <  Admin::AdminController
+  protected
+    def model_type
+      Point
+    end
 end
