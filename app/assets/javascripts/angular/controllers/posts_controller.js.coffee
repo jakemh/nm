@@ -48,7 +48,7 @@ angular.module("NM").controller "PostController", [
         #   $scope.disableInfiniteLoad = false
 
     $scope.alreadyVoted = (post) ->
-      moment(post.last_vote_current_user).add(1, "hours").diff(moment()) > 0
+      moment(post.last_vote_current_user).add(1, "days").diff(moment()) > 0
 
     $scope.upVote = (post) ->
       post.addPoints(1)
