@@ -10,10 +10,12 @@ class PostSerializer < ActiveModel::Serializer
   end
 
   def last_vote_current_user
-    votes = scope.current_user.owned_entity_last_votes(object)
-    if votes.length > 0
-      return votes.sort_by{|v|v.created_at}.last.created_at
-    else return nil
+    if scope
+      votes = scope.current_user.owned_entity_last_votes(object)
+      if votes.length > 0
+        return votes.sort_by{|v|v.created_at}.last.created_at
+      else return nil
+      end
     end
   end
 
