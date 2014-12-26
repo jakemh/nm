@@ -6,6 +6,8 @@
         <th>Associated Obj</th>
         <th>Scorer</th>
         <th>Value</th>
+        <th>Score</th>
+        <th>Type</th>
         <th>Date</th>
         <th></th>
       </tr>
@@ -21,7 +23,8 @@
             <td><%= link_to(point.scorer.name, [:admin, point.scorer])  %></td>
           <td><%= point.created_at.to_formatted_s(:short)  %></td>
           <td><%= point.score %> </td>
-          <td><%= button_to 'Delete', [:admin, point], method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger" %></td>
+          <td><%= point.type %> </td>
+          <td><%= button_to 'Delete', [:admin, point.becomes(Point)], method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger" %></td>
 
         </tr>
       <% end %> </td>

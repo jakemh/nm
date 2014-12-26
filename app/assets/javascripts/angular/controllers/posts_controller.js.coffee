@@ -47,6 +47,9 @@ angular.module("NM").controller "PostController", [
         #   $scope.displayList = list
         #   $scope.disableInfiniteLoad = false
 
+    $scope.alreadyVoted = (post) ->
+      debugger 
+      
     $scope.upVote = (post) ->
       post.addPoints(1)
       post.post("points", angular.extend({}, {score: 1}, AuthService.currentId())).then (newPost) ->

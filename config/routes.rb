@@ -96,7 +96,7 @@ Rails.application.routes.draw do
   end
 
   resources :posts do
-    resources :points, :controller => :post_points
+    resources :points, :controller => :post_points, :type => "PostPoint"
   end
 
   resources :users, :businesses do

@@ -85,6 +85,9 @@ class User < ActiveRecord::Base
     end    
     return all_received_messages.flatten
   end
+  def all_owned
+    [self] + self.businesses
+  end
 
   def is_admin?
     self.role? "Admin"

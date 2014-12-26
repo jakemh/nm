@@ -53,6 +53,10 @@ class ApplicationController < ActionController::Base
       true
     end
 
+    def all_owned
+      current_user + current_user.businesses
+    end
+
     def user_or_belongs_to_user
       return true if entity == current_user 
       return true if current_user.businesses.include? entity
