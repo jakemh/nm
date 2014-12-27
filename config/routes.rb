@@ -1,16 +1,14 @@
 
 Rails.application.routes.draw do
 
- 
 
-  get 'points/create'
 
   namespace :admin do
-  get 'points/index'
-  end
-
-  namespace :admin do
-  get 'points/show'
+  namespace :alerts do
+    namespace :points do
+      get 'users/index'
+      end
+    end
   end
 
   class Format
@@ -131,12 +129,17 @@ Rails.application.routes.draw do
     resources :message_responses, :controller => :messages
     resources :flags
     resources :reviews
-    resources :points do 
-      
+    resource :alerts, :controller => :alerts, :module => :alerts do
+      namespace :points do 
+        resources :posts
+        resources :users
+      end
     end
-
+    
+    resources :points
 
   end
+  
   get '/me', :to => 'me/users#index'
 
   namespace :me do

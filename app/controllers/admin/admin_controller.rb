@@ -1,6 +1,7 @@
 class Admin::AdminController < ApplicationController
-  load_and_authorize_resource
-  layout "admin_profile"
+  
+  layout "admin_index"
+  authorize_resource
 
   attr_accessor :model_name
 
@@ -8,8 +9,9 @@ class Admin::AdminController < ApplicationController
     #eg Flag -> @flags
     # params[:reverse] = true
     @model = model_type
+
     if model_type
-      models = model_type.all.sort_by{|e| e.send(sort)}
+      models = model_type.all.sort_by{|e| e.send(sort) || ""}
       models.reverse! if reverse
       instance_variable_set("@#{model_type.to_s.downcase.pluralize}", models)
     else 
@@ -26,19 +28,23 @@ class Admin::AdminController < ApplicationController
     if @model.destroy
         flash[:notice] = "#{@model.class.to_s} was deleted"
         redirect_to_back # This redirects to the show action, where the flash will be displayed
-      elset
+      else
         flash[:error] = "Something went wrong. Sorry!"
         redirect_to_back
     end
   end
 
   protected
+    def models 
+
+    end
+
     def model_type
       nil
     end
 
     def model_name
-      byebug
+      
       @model_name ||= model_type.to_s.downcase.pluralize
     end
 

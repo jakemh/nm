@@ -1,0 +1,25 @@
+<%= content_for :admin do %>
+    <% content_for :top do %>
+       <%= render 'shared/top_bar_admin' %>
+
+    <% end %>
+
+    <%= render :layout => 'layouts/profile_content', :locals => {
+      :side => "admin-side",
+      :right_bar => false,
+      :angular => false
+    } do %>
+      <% if !flash.empty? %>
+        <div class="flash">
+          <%= flash[:notice] %>
+          <%= flash[:error] %>
+          <%= flash[:alert] %>
+        </div>
+      <% end %>
+      <div style="border-radius: 0" class="panel panel-default">
+        <%= yield %>
+      </div>
+    <% end %>
+    <!-- /#wrapper -->
+<% end %>
+<%= render :template => 'layouts/application' %>

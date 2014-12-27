@@ -39,3 +39,6 @@ admin-side:
 
   - title: Points
     path: admin_points_path
+
+  - title: Alerts
+    path: admin_alerts_path

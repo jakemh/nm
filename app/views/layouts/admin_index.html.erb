@@ -1,0 +1,13 @@
+ <%= render :layout => 'layouts/admin_profile' do %>
+  <div class="panel-heading">
+          <h3 class="panel-title">
+
+            <%= model_name(@model) %> 
+
+          </h3>
+        </div>
+        <div class="panel-body">
+          <%= yield %>
+        </div>
+
+<% end %>

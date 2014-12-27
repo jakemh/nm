@@ -1,0 +1,46 @@
+
+ <%= render :layout => 'layouts/admin_profile' do %>
+
+
+  <div class="panel-heading">
+          <h3 class="panel-title">
+
+            <ul class="nav nav-pills" role="tablist">
+              <li role="presentation" class="active"><a href="#">Points <span class="badge">0</span></a></li>
+              
+            </ul>
+
+          </h3>
+        </div>
+        
+        <div class="panel-body">
+         <div class="panel-heading">
+                 <h3 class="panel-title">
+
+                  <ul class="nav nav-pills" role="tablist">
+
+                  <li role="presentation">
+                    <!-- <a href="#">Posts 
+                      <span class=" badge"></span>
+                    </a> -->
+                    <%= link_to [:admin, :alerts, :points, :posts] do %>
+                      Posts <span class=" badge">1</span>
+                    <% end %>
+
+                  </li>
+
+                  <li role="presentation">
+                    <%= link_to "Users", [:admin, :alerts, :points, :users] %>
+                  </li>
+
+                </ul>
+                   
+
+                 </h3>
+               </div>
+               <div class="panel-body">
+                 <%= yield %>
+               </div>
+        </div>
+
+<% end %>

@@ -93,6 +93,19 @@ class User < ActiveRecord::Base
     return self.all_owned.inject([]){|list, entity| list << entity.last_vote_for(post); list}.compact
   end
 
+  def all_added_points
+    self.all_owned.inject(0){|sum, e| sum += e.votes.sum(:score)}
+  end
+
+  def all_up_votes
+    self.all_owned.inject(0){|sum, e| sum += e.votes.where("score > 0").count}
+  end
+
+  def all_down_votes
+    self.all_owned.inject(0){|sum, e| sum += e.votes.where("score < 0").count}
+
+  end
+
   def is_admin?
     self.role? "Admin"
   end

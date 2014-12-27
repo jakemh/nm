@@ -6,11 +6,12 @@ class Point < ActiveRecord::Base
       User.find user_id
     elsif self.business_id
       Business.find business_id
+    else User.new
     end
   end
 
   def entity
-    self.pointable || User.new
+    self.pointable
   end
 
 end

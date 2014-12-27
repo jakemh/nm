@@ -1,0 +1,30 @@
+<div class="table-responsive">
+  <table class="table table-condensed table__admin">
+    <thead>
+      <tr>
+        <th><%= link_to_sort "ID", :sort => :id %></th>
+        <th><%= link_to_sort "Email", :sort => :email %></th>
+        <th><%= link_to_sort "Name", :sort => :name %></th>
+        <th><%= link_to_sort "All Up Votes", :sort => :all_up_votes %> </th>
+        <th><%= link_to_sort "All Down Votes", :sort => :all_down_votes%> </th>
+        <th><%= link_to_sort "Total Added points", :sort => :all_added_points %> </th>
+
+        <th></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @users.each do |user| %>
+        <tr>
+          <td><%= user.id %></td>
+          <td><%= user.email %></td>
+          <td><%= user.name %></td>
+          <td><%= user.all_up_votes%></td>
+          <td><%= user.all_down_votes%></td>
+          <td><%= user.all_added_points%></td>
+
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
