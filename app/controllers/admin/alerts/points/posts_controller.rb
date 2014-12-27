@@ -1,4 +1,4 @@
-class Admin::Alerts::Points::PostsController < Admin::AlertsController  
+class Admin::Alerts::Points::PostsController < Admin::Alerts::AlertsController  
   DEFAULT_THRESHOLD = -10
   # layout "admin_alerts"
 
