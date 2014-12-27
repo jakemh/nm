@@ -11,6 +11,12 @@ module ApplicationHelper
     return string
   end
 
+  def link_to_sort(string, options)
+    reverse = params["reverse"] == "true" || params["reverse"] == true
+    
+    link_to(string, options.merge({:reverse => !reverse}))
+  end
+
   def model_name(model)
     model.to_s.downcase.pluralize.titleize
   end

@@ -2,12 +2,12 @@
   <table class="table table-condensed table__admin">
     <thead>
       <tr>
-        <th>ID</th>
-        <th>Business</th>
-        <th>Reviewer</th>
-        <th>Score</th>
-        <th>Content</th>
-        <th>Date</th>
+        <th><%= link_to_sort "ID", :sort => :id %></th>
+        <th><%= link_to_sort "Business", :sort => :reviewable %></th>
+        <th><%= link_to_sort "Reviewer", :sort => :reviewer %></th>
+        <th><%= link_to_sort "Score", :sort => :score %></th>
+        <th><%= link_to_sort "Content", :sort => :content %></th>
+        <th><%= link_to_sort "Date", :sort => :created_at  %></th>
         <th></th>
       </tr>
     </thead>

@@ -2,10 +2,10 @@
   <table class="table table-condensed table__admin">
     <thead>
       <tr>
-        <th>ID</th>
-        <th>Name</th>
-        <th>Zip</th>
-        <th>Date</th>
+        <th><%= link_to_sort "ID", :sort => :id %></th>
+        <th><%= link_to_sort "Name", :sort => :name %></th>
+        <th><%= link_to_sort "Zip", :sort => :zip %></th>
+        <th><%= link_to_sort "Date", :sort => :created_at  %></th>
         <th>Owners</th>
         <th>Photo</th>
         <th></th>

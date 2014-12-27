@@ -1,5 +1,9 @@
 class PostPoint < Point
-  # validate :valid_time_frame
+  validate :valid_score
+
+  def valid_score
+    self.score.abs == 1
+  end
 
   def self.valid_time_frame
     24.hours

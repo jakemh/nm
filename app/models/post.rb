@@ -7,6 +7,7 @@ class Post < ActiveRecord::Base
   has_one :score, :as => :scoreable
   # has_many :message_recipients
   has_many :responses, :class_name => "Response", :foreign_key => "parent_id", dependent: :destroy
+  
   def self.id_sym(type)
     h = {
       "Business" => "business_id",

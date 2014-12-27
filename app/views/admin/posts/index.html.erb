@@ -2,12 +2,12 @@
   <table class="table table-condensed table__admin">
     <thead>
       <tr>
-        <th>ID</th>
-        <th>Entity</th>
-        <th>Content</th>
-        <th>Type</th>
-
-        <th>Date</th>
+        <th><%= link_to_sort "ID", :sort => :id %></th>
+        <th><%= link_to_sort "Entity", :sort => :entity  %></th>
+        <th><%= link_to_sort "Content", :sort => :content %></th>
+        <th><%= link_to_sort "Type", :sort => :type  %></th>
+        <th><%= link_to_sort "Points", :sort => :total_points  %></th>
+        <th><%= link_to_sort "Date", :sort => :created_at  %></th>
         <th></th>
       </tr>
     </thead>
@@ -20,10 +20,12 @@
 
             <%="(#{post.entity.class.name[0]})" %></td>
           <td style="max-width: 400px"><%= post.content%></td>
-          <td><%= post.created_at.to_formatted_s(:short)  %></td>
-          <td><%= post.type %>
-          <td><%= button_to 'Delete', [:admin, post], method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger" %></td>
+          <td><%= post.type %></td>
 
+          <td><%= post.total_points %></td>
+          <td><%= post.created_at.to_formatted_s(:short)  %></td>
+
+          <td><%= button_to 'Delete', [:admin, post], method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger" %></td>
         </tr>
       <% end %>
     </tbody>

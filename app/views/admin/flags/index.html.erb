@@ -2,10 +2,10 @@
   <table class="table table-condensed table__admin">
     <thead>
       <tr>
-        <th>ID</th>
-        <th>Entity</th>
-        <th>Flagger</th>
-        <th>Date</th>
+        <th><%= link_to_sort "ID", :sort => :id %></th>
+        <th><%= link_to_sort "Entity", :sort => :entity  %></th>
+        <th><%= link_to_sort "Flagger", :sort => :flagger  %></th>
+        <th><%= link_to_sort "Date", :sort => :created_at  %></th>
         <th></th>
       </tr>
     </thead>
