@@ -6,7 +6,7 @@ class Admin::Alerts::AlertsController < Admin::AdminController
 
   def index
     super
-    @all_posts = Post.all.includes(:responses, :user, :business).where(type: [nil, "", "Post"]).sort_by{|e| e.send(sort) || ""}
+    @all_posts = Post.all.includes(:responses, :user, :business).where(type: [nil, "", "Post"])
     @rejected_posts = @all_posts.reject{|p| p.total_points > (DEFAULT_POST_THRESHOLD || params[:threshold])}
     @rejected_post_count = @rejected_posts.count
 
