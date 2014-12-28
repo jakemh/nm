@@ -5,6 +5,7 @@ class EntitySerializer < ActiveModel::Serializer
   attributes :thumb, :uri, :type
   attributes :latitude, :longitude, :distance
   attributes :follow_uri, :follower_uri_type, :follower_count
+  attributes :total_points
 
   has_many :followers, embed: :ids
   has_many :following, embed: :ids
@@ -16,6 +17,7 @@ class EntitySerializer < ActiveModel::Serializer
   # def followers
   #   object.
   # end
+
 
   def personal_posts
     object.posts.where(type: [nil, "", "Post"])

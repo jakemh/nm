@@ -27,7 +27,13 @@
     </div>
 
     <div class="user-prof__followers">
-      {{profileEntity.followerCount()}} Followers
+      <span>
+          {{profileEntity.followerCount()}} Followers
+        </span>
+
+        <span style="margin-left: 25px;">
+          Points: {{profileEntity.getTotalPoints()}}
+      </span>
     </div>
   </div>
 

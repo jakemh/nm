@@ -13,6 +13,9 @@ angular.module("NM").factory "RestEntity", [
       following: []
       followers: []
 
+      getTotalPoints: ()->
+        @total_points
+        
       link: () ->
         if @type == "Business"
           return "businesses/#{@id}"
