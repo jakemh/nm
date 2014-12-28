@@ -1,4 +1,5 @@
 class Post < ActiveRecord::Base
+  attr_accessor :top_voter_hash
 
   belongs_to :user
   belongs_to :business
@@ -40,6 +41,36 @@ class Post < ActiveRecord::Base
 
   def entity_name
     entity.name if entity
+  end
+
+  def top_voter
+    if !self.top_voter_hash.empty?
+      h = self.top_voter_hash.last
+      if h[0][0]
+        return User.find h[0][0]
+      elsif h[0][1]
+        return Business.find h[0][1]
+      end
+    else User.new
+    end
+  end
+
+  def top_voter_points
+    if !self.top_voter_hash.empty?
+      h = self.top_voter_hash.last
+      return h[1]
+    else 0
+    end
+  end
+
+
+  def top_voter_hash
+    @top_voter_hash ||= build_top_voter
+  end
+
+  def build_top_voter
+    hash = Point.where(:pointable_type => "Post", :pointable_id => self.id).group(:user_id, :business_id).sum(:score).sort_by{|k,v| v }
+    return hash
   end
 
   def entity_id

@@ -3,14 +3,13 @@ class Admin::Alerts::Points::PostsController < Admin::Alerts::AlertsController
   # layout "admin_alerts"
 
   def index
+    # super
     super
-    @posts = @posts.reject{|p| p.total_points > (DEFAULT_THRESHOLD || params[:threshold])}
+    # @rejected = @posts.reject{|p| p.total_points > (DEFAULT_THRESHOLD || params[:threshold])}
+    # @rejected_post_count = @rejected.count
   end
 
-  def self.controller_path
-    "admin/posts"
-  end
-
+ 
   protected
     def model_type
       Post
