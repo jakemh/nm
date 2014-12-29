@@ -228,8 +228,8 @@ angular.module("NM").controller "ProfileController", [
 
     $scope.followerCallback = (entity)->
 
-      current = AuthService.currentEntitySelection.selected
-      AuthService.currentEntitySelection.selected.pushFollowing(entity)
+      # current = AuthService.currentEntitySelection.selected
+      # AuthService.currentEntitySelection.selected.pushFollowing(entity)
 
 
     $scope.belongsToUser = ->
