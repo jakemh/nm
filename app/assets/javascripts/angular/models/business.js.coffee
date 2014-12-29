@@ -15,7 +15,7 @@ angular.module("NM").factory "Business", [
         self.reviews.push review
         
       self.owner = ->
-        Restangular.one("users", self.owner_id).get()
+        RestangularPlus.getModel("users", self.owner_id)
       
       self.ownedUnreadMessages = []
 

@@ -70,7 +70,13 @@ angular.module("NM").controller "ProfileController", [
     $scope.yours = null
 
     $scope.init = () ->
-    
+      if profileEntity.type == "Business"
+        $scope.profileEntity.owner().then (o)->
+          $scope.SideBar.delegate.businessOwner = o
+
+      $scope.profileEntity.getItems().then (items) -> 
+        $scope.profileEntity.items = items
+
       $scope.profileEntity.personalPosts().then (posts)->
         $scope.posts = posts
 
@@ -110,7 +116,7 @@ angular.module("NM").controller "ProfileController", [
 
     SideBar.delegate.isYours = $scope.isYours
     SideBar.delegate.profileEntity = profileEntity
-    SideBar.delegate.businessOwner = $scope.businessOwner
+    # SideBar.delegate.businessOwner = $scope.businessOwner
 
     $scope.sendReview = (business, post) ->
       if post.score > 0
@@ -195,10 +201,7 @@ angular.module("NM").controller "ProfileController", [
         $scope.profileEntity.items = items
     
     $scope.initSecondaryBoxBusiness = () ->
-      $scope.profileEntity.owner().then (o)->
-        $scope.businessOwner = o
-      $scope.profileEntity.getItems().then (items) -> 
-        $scope.profileEntity.items = items
+     
 
     $scope.buildReviewList = () ->
       $scope.profileEntity.getReviews().then (reviews)->

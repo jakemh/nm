@@ -6,10 +6,13 @@
 </div>
 
 
-<div class="profile__right-box profile__right-box--large profile__rght-box--padding">
+<div style="margin-bottom: 25px; text-align: center">
   <h4> {{delegate.profile.profileEntity.name}}'s People </h4>
-  <a ng-href="{{delegate.profile.businessOwner.uri}}">
-  {{delegate.profile.businessOwner.name}}</a>
+  <!-- <a ng-href="{{delegate.profile.businessOwner.uri}}">
+  {{delegate.profile.businessOwner.name}}</a> -->
+
+  <div ng-init="business=delegate.businessOwner" ng-include="'business_item.html'"></div>
+
 </div>
 
 
