@@ -24,7 +24,7 @@ class BusinessSerializer < EntitySerializer
     # end
     if object.cover_photo_id
       if object.cover_photo
-        object.cover_photo.image.url :medium
+        object.cover_photo.image.url :cover
       end
     end
   end
