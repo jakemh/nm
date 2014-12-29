@@ -111,8 +111,8 @@ angular.module("NM").controller "BusinessDirectoryController", [
   
     $scope.followerCallback = (entity)->
       
-      current = AuthService.currentEntitySelection.selected
-      AuthService.currentEntitySelection.selected.pushFollowing(entity)
+      # current = AuthService.currentEntitySelection.selected
+      # AuthService.currentEntitySelection.selected.pushFollowing(entity)
 
       # MapService.resetMap(MapService.mapToMarker($scope.businesses))
 

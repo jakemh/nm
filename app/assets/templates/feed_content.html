@@ -27,7 +27,7 @@
         </a> -->
         <div ng-switch="entity.models.entity.isFollowedBy(AuthService.currentEntitySelection.selected)">
           <div ng-switch-when="false">
-            <a ng-click="AuthService.messageFollowerHandle(entity, entity.models.entity, followerCallback)" href="#">
+            <a ng-click="AuthService.messageFollowerHandle(entity, entity.models.entity, AuthService.currentEntitySelection.selected, followerCallback)" href="#">
               Follow
              </a>
           </div>

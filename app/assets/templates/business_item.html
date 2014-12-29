@@ -16,7 +16,7 @@
           <div ng-init="feedback=false" ng-switch="business.isFollowedBy(AuthService.currentEntitySelection.selected)">
             <div ng-switch-when="false">
 
-              <a ng-click="AuthService.profileFollowerHandle(business, followerCallback); feedback=true" href="#">
+              <a ng-click="AuthService.profileFollowerHandle(business, AuthService.currentEntitySelection.selected, followerCallback); feedback=true" href="#">
                   Follow
                  </a>
             </div>

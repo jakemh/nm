@@ -86,10 +86,9 @@ angular.module("NM").controller "PostController", [
       newPost.type = 'Response'
       newPost.parent_id = entity.id
     
-    $scope.followerCallback = (viewModel, entity)->
+    $scope.followerCallback = (viewModel, entity, connection)->
       viewModel.followerFeedback = true
-      AuthService.currentEntitySelection.selected.pushFollowing(entity)
-   
+      # AuthService.currentEntitySelection.selected.pushFollowing(entity, connection)
       
     $scope.sendPost = (postObj, postSubmit, responseList)->
       ent = AuthService.currentEntitySelection.selected

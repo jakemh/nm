@@ -77,7 +77,9 @@ angular.module("NM").factory "RestEntity", [
 
       # addFollower: (entity)->
 
-      pushFollowing: (entity)->
+      pushFollowing: (entity, connection)->
+        @following_ids.push(connection.id)
+
         if entity.type == "User"
           @user_connection_ids.push(entity.id)
         else if entity.type = "Business"

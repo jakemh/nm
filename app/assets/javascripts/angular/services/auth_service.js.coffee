@@ -77,25 +77,26 @@ App.factory "AuthService", [
 
       return deferred.promise
       
-    messageFollowerHandle: (viewModel, entity, callback)->
-      @followerHandle(entity).then ()->
-        callback(viewModel, entity)
+    messageFollowerHandle: (viewModel, entity, currentEntity, callback)->
+      @followerHandle(entity, currentEntity).then (response)->
+        callback(viewModel, entity, response)
 
-    profileFollowerHandle: (entity, callback)->
-      @followerHandle(entity).then ()->
+    profileFollowerHandle: (entity, currentEntity, callback)->
+      @followerHandle(entity, currentEntity).then ()->
         callback(entity, callback)
         
-    followerHandle: (entity)->
+    followerHandle: (entity, currentEntity)->
       deferred = $q.defer();
 
-      cur =  @currentEntitySelection.selected
+      # cur =  @currentEntitySelection.selected
       params = 
         connect_to_id: entity.id
         type: entity.type
 
-      cur.post('followers', params).then (response)->
+      currentEntity.post('followers', params).then (response)->
         entity.follower_count += 1
         deferred.resolve(response)
+        currentEntity.pushFollowing(entity, response)
 
       return deferred.promise
 

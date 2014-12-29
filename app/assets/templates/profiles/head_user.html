@@ -43,7 +43,7 @@
         <button ng-click="MessageService.callModal('js-msg__modal', $event)" style="float: left" class="button__btn button__btn--gray button__btn--left button__btn--100">
           Message
         </button>
-      <button ng-if="profileEntity.canBeFollowedBy(AuthService.currentEntitySelection.selected)" ng-disabled="isFollowing(AuthService.currentEntitySelection.selected)" ng-click="AuthService.profileFollowerHandle(profileEntity, followerCallback)" class="button__btn  button__btn--right button__btn--right--padding button__btn--100" ng-class="{'button__btn--light-gray' : isFollowing(AuthService.currentEntitySelection.selected), 'button__btn--orange' : !isFollowing(AuthService.currentEntitySelection.selected)}">
+      <button ng-if="profileEntity.canBeFollowedBy(AuthService.currentEntitySelection.selected)" ng-disabled="isFollowing(AuthService.currentEntitySelection.selected)" ng-click="AuthService.profileFollowerHandle(profileEntity, AuthService.currentEntitySelection.selected, followerCallback)" class="button__btn  button__btn--right button__btn--right--padding button__btn--100" ng-class="{'button__btn--light-gray' : isFollowing(AuthService.currentEntitySelection.selected), 'button__btn--orange' : !isFollowing(AuthService.currentEntitySelection.selected)}">
 
         <div ng-switch="isFollowing(AuthService.currentEntitySelection.selected)">
           <div ng-switch-when="true">
