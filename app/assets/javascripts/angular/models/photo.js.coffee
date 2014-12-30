@@ -24,15 +24,15 @@ angular.module("NM").factory "ProfilePhoto", [
       return self
 ]
 
-angular.module("NM").factory "CoverPhoto", [
-  "$q"
-  "Restangular"
-  "RestangularPlus"
-  "RestEntity"
-  ($q, Restangular, RestangularPlus, RestEntity) ->
-    Restangular.extendModel "cover_photos", (self) ->
-      angular.extend self, RestangularPlus
-      # angular.extend self, RestEntity
+# angular.module("NM").factory "CoverPhoto", [
+#   "$q"
+#   "Restangular"
+#   "RestangularPlus"
+#   "RestEntity"
+#   ($q, Restangular, RestangularPlus, RestEntity) ->
+#     Restangular.extendModel "cover_photos", (self) ->
+#       angular.extend self, RestangularPlus
+#       # angular.extend self, RestEntity
 
-      return self
-]
+#       return self
+# ]

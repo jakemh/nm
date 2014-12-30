@@ -6,6 +6,8 @@ angular.module("NM").directive "imgCropped", ->
   scope:
     src: "@"
     selected: "&"
+    selectCallback: "="
+    photo: "="
 
   link: (scope, element, attr) ->
     myImg = undefined
@@ -32,6 +34,11 @@ angular.module("NM").directive "imgCropped", ->
           onSelect: (x) ->
             bounds = @getBounds()
             cords = x       
+            scope.photo.crop_x = x.x
+            scope.photo.crop_y = x.y
+            scope.photo.crop_h = x.h
+            scope.photo.crop_w = x.w
+            scope.selectCallback(cords)
             boundx = bounds[0]
             boundy = bounds[1]
             rx = 735 / cords.w
@@ -98,6 +105,13 @@ angular.module("NM").controller "ProfileController", [
     $scope.MessageService = MessageService
     $scope.isEditable = false
     $scope.editProfileText = "Edit Profile"
+    $scope.currentCoords = null
+    $scope.selected = (coords) ->
+
+      # alert JSON.stringify coords 
+      $scope.lastPhotoObj = (array) ->
+        if array[array.length - 1]
+          array[array.length - 1]
 
     $scope.lastPhoto = (array) ->
       if array[array.length - 1]
@@ -221,18 +235,22 @@ angular.module("NM").controller "ProfileController", [
       return true
 
     $scope.approveCoverPhoto = (photo) ->
-      $scope.profileEntity.cover_photo_id = photo.id 
-      $scope.profileEntity.put().then (entity)->
-        $scope.profileEntity.cover_photo_url = entity.cover_photo_url
-      $("#js__cover-photo-modal").modal('hide')
+      # photo = delegate.photoArray[delegate.photoArray.length - 1]
+      photo.put().then (photo) ->
+        debugger
+        $scope.profileEntity.cover_photo_id = photo.id 
+        $scope.profileEntity.put().then (entity)->
+          $scope.profileEntity.cover_photo_url = entity.cover_photo_url
+          $("#js__cover-photo-modal").modal('hide')
       return true
 
-    $scope.coverPhotoUploaded = (photo)->
+    $scope.coverPhotoUploaded = (photo)->        
+        photo = JSON.parse photo
+        key = Object.keys(photo)[0];
+        photo = photo[key]
 
-      photo = JSON.parse photo
-      key = Object.keys(photo)[0];
-      
-      $scope.uploadedCoverPhotos.push(photo[key])
+        restPhoto = Restangular.restangularizeElement($scope.profileEntity, photo, 'cover_photos')
+        $scope.uploadedCoverPhotos.push(restPhoto)
 
     $scope.coverPhotoModalInit = () ->
       photoType: 'CoverPhoto'

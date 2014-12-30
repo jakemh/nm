@@ -3,13 +3,6 @@ Rails.application.routes.draw do
 
 
 
-  namespace :admin do
-  namespace :alerts do
-    namespace :points do
-      get 'users/index'
-      end
-    end
-  end
 
   class Format
     attr_accessor :mime_type
@@ -100,6 +93,7 @@ Rails.application.routes.draw do
   resources :users, :businesses do
     resources :messages
     resources :photos
+    resources :cover_photos, :controller => :photos, :type => "CoverPhoto"
     resources :flags
     resources :sent_messages, :received_messages do
       # resources :message_responses
@@ -113,6 +107,7 @@ Rails.application.routes.draw do
     resources :following
   end
 
+  resources :cover_photos, controller: :photos, type: "CoverPhoto"
   resources :emails
 
   root to: 'temporary#index'

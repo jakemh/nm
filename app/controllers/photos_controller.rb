@@ -53,6 +53,11 @@ class PhotosController < ApplicationController
   end
 
   def update
+    photo = entity.photos.find params[:id]
+    coords = { "crop_x" => params[:crop_x], "crop_y" => params[:crop_y], "crop_h" => params[:crop_h], "crop_w" => params[:crop_w] }
+    coords.each{|k,v| photo.instance_variable_set("@#{k}",v)};
+    photo.image.reprocess!
+    render json: photo
   end
 
   def destroy
@@ -65,7 +70,7 @@ class PhotosController < ApplicationController
   end
   
   def whitelist
-    return params.require(:photo).permit(:file, :type) if params[:photo]
+    return params.require(:photo).permit(:file, :type, :crop_x, :crop_y, :crop_w, :crop_h) if params[:photo]
     return params.permit(:file, :type) if params[:file]
 
   end

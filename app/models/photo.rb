@@ -9,15 +9,15 @@ class Photo < ActiveRecord::Base
     }
 
   validates_attachment_content_type :image, :content_type => /\Aimage\/.*\Z/
-  after_update :reprocess_avatar, :if => :cropping?  
+  # after_update :reprocess_image, :if => :cropping?  
   
   def cropping?  
     !crop_x.blank? && !crop_y.blank? && !crop_w.blank? && !crop_h.blank?  
   end  
   
-  private  
-  def reprocess_avatar  
-    avatar.reprocess!  
+  protected  
+  def reprocess_image  
+    image.reprocess!  
   end 
   def self.default
     
