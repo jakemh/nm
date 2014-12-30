@@ -1,4 +1,5 @@
 class Photo < ActiveRecord::Base
+  attr_accessor :crop_x, :crop_y, :crop_w, :crop_h  
   belongs_to :imageable, :polymorphic => true
   has_attached_file :image, styles: {
       thumb: '100x100>',
@@ -8,7 +9,16 @@ class Photo < ActiveRecord::Base
     }
 
   validates_attachment_content_type :image, :content_type => /\Aimage\/.*\Z/
-
+  after_update :reprocess_avatar, :if => :cropping?  
+  
+  def cropping?  
+    !crop_x.blank? && !crop_y.blank? && !crop_w.blank? && !crop_h.blank?  
+  end  
+  
+  private  
+  def reprocess_avatar  
+    avatar.reprocess!  
+  end 
   def self.default
     
   end
