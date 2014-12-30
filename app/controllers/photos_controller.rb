@@ -54,9 +54,10 @@ class PhotosController < ApplicationController
 
   def update
     @entity = set_entity
-
+    # ratio = 1680.0 / 704.0
+    ratio = 1
     photo = @entity.photos.find params[:id]
-    coords = { "crop_x" => params[:crop_x], "crop_y" => params[:crop_y], "crop_h" => params[:crop_h], "crop_w" => params[:crop_w] }
+    coords = { "crop_x" => params[:crop_x] * ratio, "crop_y" => params[:crop_y] * ratio, "crop_h" => params[:crop_h] * ratio, "crop_w" => params[:crop_w] * ratio}
     coords.each{|k,v| photo.instance_variable_set("@#{k}",v)};
     photo.image.reprocess!
     render json: photo

@@ -34,10 +34,13 @@ angular.module("NM").directive "imgCropped", ->
           onSelect: (x) ->
             bounds = @getBounds()
             cords = x       
-            scope.photo.crop_x = x.x
-            scope.photo.crop_y = x.y
-            scope.photo.crop_h = x.h
-            scope.photo.crop_w = x.w
+            naturalWidth = $("#preview")[0].naturalWidth
+            actualWidth = $(".jcrop-holder").width()
+            ratio = naturalWidth / actualWidth
+            scope.photo.crop_x = x.x * ratio
+            scope.photo.crop_y = x.y * ratio
+            scope.photo.crop_h = x.h * ratio
+            scope.photo.crop_w = x.w * ratio
             scope.selectCallback(cords)
             boundx = bounds[0]
             boundy = bounds[1]
@@ -237,7 +240,6 @@ angular.module("NM").controller "ProfileController", [
     $scope.approveCoverPhoto = (photo) ->
       # photo = delegate.photoArray[delegate.photoArray.length - 1]
       photo.put().then (photo) ->
-        debugger
         $scope.profileEntity.cover_photo_id = photo.id 
         $scope.profileEntity.put().then (entity)->
           $scope.profileEntity.cover_photo_url = entity.cover_photo_url
