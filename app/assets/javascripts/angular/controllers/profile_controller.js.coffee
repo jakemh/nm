@@ -19,11 +19,15 @@ angular.module("NM").directive "imgCropped", ->
     scope.$watch "src", (nv) ->
       clear()
       if nv
-        
+      
         element.after "<img />"
         myImg = element.next()
         myImg.attr "src", nv
         $(myImg).Jcrop
+          aspectRatio: (735 / 200) #If you want to keep aspectRatio
+          boxWidth: 700  #Maximum width you want for your bigger images
+          # boxHeight: 400,  #Maximum Height for your bigger images
+            
           trackDocument: true
           onSelect: (x) ->
             bounds = @getBounds()
@@ -96,7 +100,8 @@ angular.module("NM").controller "ProfileController", [
     $scope.editProfileText = "Edit Profile"
 
     $scope.lastPhoto = (array) ->
-      array[array.length - 1].url
+      if array[array.length - 1]
+        array[array.length - 1].url
 
     $scope.trustSrc = (src) ->
        return $sce.trustAsResourceUrl(src);
@@ -223,6 +228,7 @@ angular.module("NM").controller "ProfileController", [
       return true
 
     $scope.coverPhotoUploaded = (photo)->
+
       photo = JSON.parse photo
       key = Object.keys(photo)[0];
       
@@ -352,7 +358,7 @@ angular.module("NM").controller "ProfileController", [
 
 
     $scope.sendPost = (postObj, postSubmit)->
-      debugger
+      
       ent = AuthService.currentEntitySelection.selected
       entityAttrs = 
         entity_id: ent.id
