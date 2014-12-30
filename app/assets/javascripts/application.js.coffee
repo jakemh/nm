@@ -43,6 +43,7 @@
 #= require typeahead/dist/bloodhound
 #= require typeahead/dist/typeahead.jquery
 #= require typeahead/dist/typeahead.bundle
+#= require Jcrop/js/jquery.Jcrop
 
 #= require_self
 #= require next_mission

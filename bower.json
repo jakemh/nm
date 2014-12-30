@@ -35,7 +35,8 @@
     "venturocket-angular-slider": "",
     "angular-touch": "",
     "angular-linkify": "",
-    "ngFitText": ""
+    "ngFitText": "", 
+    "Jcrop": ""
   },
   "resolutions": {
      "angular": "1.3.3"

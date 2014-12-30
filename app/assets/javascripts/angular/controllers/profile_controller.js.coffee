@@ -1,8 +1,62 @@
 "use strict";
 
+angular.module("NM").directive "imgCropped", ->
+  restrict: "E"
+  replace: true
+  scope:
+    src: "@"
+    selected: "&"
+
+  link: (scope, element, attr) ->
+    myImg = undefined
+    clear = ->
+      if myImg
+        myImg.next().remove()
+        myImg.remove()
+        myImg = `undefined`
+      return
+
+    scope.$watch "src", (nv) ->
+      clear()
+      if nv
+        
+        element.after "<img />"
+        myImg = element.next()
+        myImg.attr "src", nv
+        $(myImg).Jcrop
+          trackDocument: true
+          onSelect: (x) ->
+            bounds = @getBounds()
+            cords = x       
+            boundx = bounds[0]
+            boundy = bounds[1]
+            rx = 735 / cords.w
+            ry = 200 / cords.h
+            $("#preview").css
+              width: Math.round(rx * boundx) + "px"
+              height: Math.round(ry * boundy) + "px"
+              marginLeft: "-" + Math.round(rx * cords.x) + "px"
+              marginTop: "-" + Math.round(ry * cords.y) + "px"
+
+            
+
+            return
+        , ->
+          
+          # Use the API to get the real image size  
+         
+          return
+
+      return
+
+    scope.$on "$destroy", clear
+    return
+
+
 angular.module("NM").controller "ProfileController", [
   
   "$scope"
+  "$sce"
   "$q"
   "$routeParams"
   "$location"
@@ -18,7 +72,7 @@ angular.module("NM").controller "ProfileController", [
   "ReviewDisplay"
   "profileEntity"
 
-  ($scope, $q, $routeParams, $location, Utilities, Review, AuthService, MessagesDisplay, MessageService, Restangular, SideBar, MapService, ReviewService, ReviewDisplay, profileEntity) ->
+  ($scope, $sce, $q, $routeParams, $location, Utilities, Review, AuthService, MessagesDisplay, MessageService, Restangular, SideBar, MapService, ReviewService, ReviewDisplay, profileEntity) ->
     
     # alert my#FriendsHotel.hotelName( );
     
@@ -40,6 +94,15 @@ angular.module("NM").controller "ProfileController", [
     $scope.MessageService = MessageService
     $scope.isEditable = false
     $scope.editProfileText = "Edit Profile"
+
+    $scope.lastPhoto = (array) ->
+      array[array.length - 1].url
+
+    $scope.trustSrc = (src) ->
+       return $sce.trustAsResourceUrl(src);
+     
+
+
     $scope.isFollowing = (userEntity) ->
       pe = $scope.profileEntity
       return pe.canBeFollowedBy(userEntity) && pe.isFollowedBy(userEntity)
