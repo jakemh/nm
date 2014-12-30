@@ -53,7 +53,9 @@ class PhotosController < ApplicationController
   end
 
   def update
-    photo = entity.photos.find params[:id]
+    @entity = set_entity
+
+    photo = @entity.photos.find params[:id]
     coords = { "crop_x" => params[:crop_x], "crop_y" => params[:crop_y], "crop_h" => params[:crop_h], "crop_w" => params[:crop_w] }
     coords.each{|k,v| photo.instance_variable_set("@#{k}",v)};
     photo.image.reprocess!
