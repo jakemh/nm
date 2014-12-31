@@ -12,7 +12,7 @@
 
     <div flow-drop class="photo-up profile__head photo__box" ng-class="{'profile__head--white-text': lastPhoto(delegate.photoArray)}" flow-drag-enter="class='photo-up photo-up--drag'" flow-drag-leave="style={}">
 
-      <div id="cropped-image" class="photo__box">
+      <div class="cropped-image photo__box">
         <div class="nm__abs-centered">Drop and preview image here</div>
         <img class="preview" ng-src="{{lastPhoto(delegate.photoArray)}}">
       </div>
@@ -33,7 +33,7 @@
 
     <div>
       <div style="margin: 15px" class="row">
-        <div class="photo__parent-force-small col-sm-6">
+        <div class="col-sm-6">
 
           <img class="img-cropped">
         

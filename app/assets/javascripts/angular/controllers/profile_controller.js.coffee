@@ -27,6 +27,7 @@ angular.module("NM").directive "imgCropped", ->
       if nv
         
         img = element.find(".img-cropped")
+        img.css(maxWidth: scope.maxWidth)
         img.attr "src", nv
         $(img).Jcrop
           aspectRatio: (scope.aspectWidth / scope.aspectHeight) #If you want to keep aspectRatio
@@ -40,6 +41,7 @@ angular.module("NM").directive "imgCropped", ->
             naturalWidth = element.find(".preview")[0].naturalWidth
             actualWidth = element.find(".jcrop-holder").width()
             ratio = naturalWidth / actualWidth
+            
             scope.photo.crop_x = x.x * ratio
             scope.photo.crop_y = x.y * ratio
             scope.photo.crop_h = x.h * ratio
