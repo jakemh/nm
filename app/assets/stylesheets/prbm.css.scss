@@ -26,7 +26,7 @@ body{
 .container__profile{
   // margin-top: $top-bar-offset;
   overflow: auto;
-  float: left;
+  vertical-align: top;
   height: 100%;
   overflow-x: hidden;
   // overflow: hidden !important;
