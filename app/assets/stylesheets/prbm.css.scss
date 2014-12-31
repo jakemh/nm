@@ -26,6 +26,7 @@ body{
 .container__profile{
   // margin-top: $top-bar-offset;
   overflow: auto;
+  float: left;
   height: 100%;
   overflow-x: hidden;
   // overflow: hidden !important;
@@ -45,7 +46,7 @@ body{
     // overflow: hidden;
 
     width:  $left-bar-width;
-    float: left;
+    // float: left;
     margin-top: 60px;
 }
 
