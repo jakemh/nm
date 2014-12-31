@@ -57,9 +57,11 @@ class PhotosController < ApplicationController
     # ratio = 1680.0 / 704.0
     ratio = 1
     photo = @entity.photos.find params[:id]
-    coords = { "crop_x" => params[:crop_x] * ratio, "crop_y" => params[:crop_y] * ratio, "crop_h" => params[:crop_h] * ratio, "crop_w" => params[:crop_w] * ratio}
-    coords.each{|k,v| photo.instance_variable_set("@#{k}",v)};
-    photo.image.reprocess!
+    if params[:crop_x] && params[:crop_y] && params[:crop_h] && params[:crop_w] 
+      coords = { "crop_x" => params[:crop_x] * ratio, "crop_y" => params[:crop_y] * ratio, "crop_h" => params[:crop_h] * ratio, "crop_w" => params[:crop_w] * ratio}
+      coords.each{|k,v| photo.instance_variable_set("@#{k}",v)};
+      photo.crop_image
+    end
     render json: photo
   end
 

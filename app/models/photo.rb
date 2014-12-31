@@ -15,7 +15,14 @@ class Photo < ActiveRecord::Base
     !crop_x.blank? && !crop_y.blank? && !crop_w.blank? && !crop_h.blank?  
   end  
   
-  protected  
+    
+
+  def crop_image
+    if self.cropping?
+      self.reprocess_image
+    end
+  end
+
   def reprocess_image  
     image.reprocess!  
   end 
