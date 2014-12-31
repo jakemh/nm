@@ -1,34 +1,47 @@
-<div flow-init="{target: profileEntity.uri+'/photos.json', testChunks:false, query:{type: delegate.photoType}}" flow-files-submitted="$flow.upload()" flow-file-success="delegate.successCallback($message)" style=" text-align: center">
+<div 
+  img-cropped
+  max-width="maxWidth" 
+  aspect-width="aspectWidth" 
+  aspect-height="aspectHeight" 
+  photo="delegate.photoArray[delegate.photoArray.length - 1]" 
+  select-callback="selected" 
+  src="{{trustSrc(lastPhoto(delegate.photoArray))}}"
 
-  <div flow-drop class="photo-up profile__head" ng-class="{'profile__head--white-text': lastPhoto(delegate.photoArray)}" flow-drag-enter="class='photo-up photo-up--drag'" flow-drag-leave="style={}" style="height: 200px; width: 735px;">
+>
+  <div flow-init="{target: profileEntity.uri+'/photos.json', testChunks:false, query:{type: delegate.photoType}}" flow-files-submitted="$flow.upload()" flow-file-success="delegate.successCallback($message)" style=" text-align: center">
 
-    <div id="cropped-image">
-      <div class="nm__abs-centered">Drop and preview image here</div>
-      <img id="preview" ng-src="{{lastPhoto(delegate.photoArray)}}">
+    <div flow-drop class="photo-up profile__head photo__box" ng-class="{'profile__head--white-text': lastPhoto(delegate.photoArray)}" flow-drag-enter="class='photo-up photo-up--drag'" flow-drag-leave="style={}">
+
+      <div id="cropped-image" class="photo__box">
+        <div class="nm__abs-centered">Drop and preview image here</div>
+        <img class="preview" ng-src="{{lastPhoto(delegate.photoArray)}}">
+      </div>
+
+
     </div>
-
-
-  </div>
-  <!--  <div class="profile__head" style="background: white url('{{delegate.photoArray[delegate.photoArray.length - 1].url}}');" flow-drop class="photo-up" 
+    <!--  <div class="profile__head" style="background: white url('{{delegate.photoArray[delegate.photoArray.length - 1].url}}');" flow-drop class="photo-up" 
   flow-drag-enter="class='photo-up photo-up--drag'"
   flow-drag-leave="style={}"
        >
 
     {{delegate.message}}
   </div> -->
-  <input type="file" flow-btn/>
-  <button ng-if="lastPhoto(delegate.photoArray)" ng-click="delegate.approval(delegate.photoArray[delegate.photoArray.length - 1])" class="btn btn-primary">
-    Approve?
-  </button>
+    <input type="file" flow-btn/>
+    <button ng-if="lastPhoto(delegate.photoArray)" ng-click="delegate.approval(delegate.photoArray[delegate.photoArray.length - 1])" class="btn btn-primary">
+      Approve?
+    </button>
 
-  <div>
-    <div style="margin: 15px" class="row">
-      <div class="photo__parent-force-small col-sm-6">
+    <div>
+      <div style="margin: 15px" class="row">
+        <div class="photo__parent-force-small col-sm-6">
 
-        <img-cropped photo="delegate.photoArray[delegate.photoArray.length - 1]" select-callback="selected" src="{{trustSrc(lastPhoto(delegate.photoArray))}}"></img-cropped>
+          <img class="img-cropped">
+        
+          </img>
 
+        </div>
       </div>
-    </div>
 
+    </div>
   </div>
 </div>

@@ -94,6 +94,8 @@ Rails.application.routes.draw do
     resources :messages
     resources :photos
     resources :cover_photos, :controller => :photos, :type => "CoverPhoto"
+    resources :profile_photos, :controller => :photos, :type => "ProfilePhoto"
+
     resources :flags
     resources :sent_messages, :received_messages do
       # resources :message_responses
@@ -107,7 +109,7 @@ Rails.application.routes.draw do
     resources :following
   end
 
-  resources :cover_photos, controller: :photos, type: "CoverPhoto"
+  # resources :cover_photos, controller: :photos, type: "CoverPhoto"
   resources :emails
 
   root to: 'temporary#index'

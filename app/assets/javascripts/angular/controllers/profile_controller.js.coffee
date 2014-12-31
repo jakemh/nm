@@ -1,15 +1,19 @@
 "use strict";
 
 angular.module("NM").directive "imgCropped", ->
-  restrict: "E"
+  restrict: "A"
   replace: true
   scope:
     src: "@"
     selected: "&"
     selectCallback: "="
     photo: "="
+    maxWidth: "="
+    aspectWidth: "="
+    aspectHeight: "="
 
   link: (scope, element, attr) ->
+
     myImg = undefined
     clear = ->
       if myImg
@@ -21,21 +25,20 @@ angular.module("NM").directive "imgCropped", ->
     scope.$watch "src", (nv) ->
       clear()
       if nv
-      
-        element.after "<img />"
-        myImg = element.next()
-        myImg.attr "src", nv
-        $(myImg).Jcrop
-          aspectRatio: (735 / 200) #If you want to keep aspectRatio
-          boxWidth: 700  #Maximum width you want for your bigger images
+        
+        img = element.find(".img-cropped")
+        img.attr "src", nv
+        $(img).Jcrop
+          aspectRatio: (scope.aspectWidth / scope.aspectHeight) #If you want to keep aspectRatio
+          boxWidth: scope.maxWidth  #Maximum width you want for your bigger images
           # boxHeight: 400,  #Maximum Height for your bigger images
             
           trackDocument: true
           onSelect: (x) ->
             bounds = @getBounds()
             cords = x       
-            naturalWidth = $("#preview")[0].naturalWidth
-            actualWidth = $(".jcrop-holder").width()
+            naturalWidth = element.find(".preview")[0].naturalWidth
+            actualWidth = element.find(".jcrop-holder").width()
             ratio = naturalWidth / actualWidth
             scope.photo.crop_x = x.x * ratio
             scope.photo.crop_y = x.y * ratio
@@ -44,9 +47,9 @@ angular.module("NM").directive "imgCropped", ->
             scope.selectCallback(cords)
             boundx = bounds[0]
             boundy = bounds[1]
-            rx = 735 / cords.w
-            ry = 200 / cords.h
-            $("#preview").css
+            rx = scope.aspectWidth / cords.w
+            ry = scope.aspectHeight / cords.h
+            element.find(".preview").css
               width: Math.round(rx * boundx) + "px"
               height: Math.round(ry * boundy) + "px"
               marginLeft: "-" + Math.round(rx * cords.x) + "px"
@@ -226,15 +229,27 @@ angular.module("NM").controller "ProfileController", [
       # $scope.profileEntity.cover_photo_url = photo
       # $scope.profileEntity.thumb = photo
       # alert JSON.stringify {"TEST": [1,3,3]}
+      # photo = JSON.parse photo
+      # key = Object.keys(photo)[0];
+      # $scope.uploadedProfilePhotos.push(photo[key])
       photo = JSON.parse photo
       key = Object.keys(photo)[0];
-      $scope.uploadedProfilePhotos.push(photo[key])
+      photo = photo[key]
+
+      restPhoto = Restangular.restangularizeElement($scope.profileEntity, photo, 'profile_photos')
+      $scope.uploadedProfilePhotos.push(restPhoto)
 
     $scope.approveProfilePhoto = (photo) ->
-      $scope.profileEntity.profile_photo_id = photo.id 
-      $scope.profileEntity.put().then (entity)->
-        $scope.profileEntity.thumb = entity.thumb
-      $("#js__profile-photo-modal").modal('hide')
+      # $scope.profileEntity.profile_photo_id = photo.id 
+      # $scope.profileEntity.put().then (entity)->
+      #   $scope.profileEntity.thumb = entity.thumb
+      # $("#js__profile-photo-modal").modal('hide')
+      # return true
+      photo.put().then (photo) ->
+        $scope.profileEntity.profile_photo_id = photo.id 
+        $scope.profileEntity.put().then (entity)->
+          $scope.profileEntity.thumb = entity.thumb
+          $("#js__profile-photo-modal").modal('hide')
       return true
 
     $scope.approveCoverPhoto = (photo) ->

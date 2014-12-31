@@ -8,6 +8,35 @@
   max-width: 700px;
 }
 
+.photo__box--cover{
+  height: 200px; 
+  width: 735px;
+}
+
+.photo--profile img{
+  height: 150px; 
+  width: 150px;
+}
+.photo__box--prof{
+  height: 150px; 
+  width: 150px;
+  margin: auto;
+}
+
+
+.photo__box{
+  position: relative;
+}
+.photo--cover .photo__box{
+  height: 200px; 
+  width: 735px;
+}
+
+.photo--prof .photo__box{
+  height: 150px; 
+  width: 150px;
+}
+
 .main__photo{
   text-align: center;
   height: 65%;
