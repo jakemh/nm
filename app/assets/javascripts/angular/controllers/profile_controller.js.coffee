@@ -22,49 +22,122 @@ angular.module("NM").directive "imgCropped", ->
         myImg = `undefined`
       return
 
+    scope.naturalWidth = ->
+      element.find(".preview")[0].naturalWidth
+
+    scope.actualWidth = ->
+      Math.min(scope.maxWidth, scope.naturalWidth())
+
+    scope.actualHeight = ->
+      element.find(".jcrop-holder").height()
+
+    scope.aspectRatio = ->
+      scope.actualWidth() / scope.actualHeight()
+
+    scope.selectAspectRatio = ->
+      scope.aspectWidth / scope.aspectHeight
+
+    scope.maxCropBounds = ->
+      bounds = 
+        x: null
+        y: null
+        h: null
+        w: null
+
+      width = scope.actualWidth()
+      height = scope.actualHeight()
+      selectAr = scope.selectAspectRatio()
+      ar = scope.aspectRatio()
+      # inverseAspectRatio = 1 / aspectRatio
+
+      if selectAr < ar 
+        bounds.h = height
+        bounds.y = 0
+        bounds.w = height * selectAr
+        bounds.x = (width - bounds.w) / 2
+      else if selectAr > ar 
+        bounds.w = width
+        bounds.x = 0
+        bounds.h = width * (1 / selectAr)
+        bounds.y = (height - bounds.h) / 2
+ 
+      else
+        bounds.w = width
+        bounds.h = height
+        bounds.x = 0
+        bounds.y = 0
+
+      
+      # ratio = scope.naturalWidth() / scope.actualWidth()
+
+      # aBounds = 
+      #   x: bounds.x * ratio
+      #   y: bounds.y * ratio
+      #   h: bounds.h * ratio
+      #   w: bounds.w * ratio
+      
+      
+      return bounds
+      # if width > height
+      #   bounds.w = width
+      # else if height > width
+      #   bounds.h = height
+      # else 
+      #   bounds.w = width
+      #   bounds.h = height
+      #   bounds.x = 0
+      #   bounds.y = 0
+
+    scope.cropPhoto = (coords)->
+      # x = scope.maxCropBounds()
+      
+      ratio = scope.naturalWidth() / scope.actualWidth()
+      
+      scope.photo.crop_x = coords.x * ratio
+      scope.photo.crop_y = coords.y * ratio
+      scope.photo.crop_h = coords.h * ratio
+      scope.photo.crop_w = coords.w * ratio
+
+
+
+    scope.setPreviewWindow = (coords) ->
+      boundx = scope.actualWidth()
+      boundy = scope.actualHeight()
+      rx = scope.aspectWidth / coords.w
+      ry = scope.aspectHeight / coords.h
+      element.find(".preview").css
+        width: Math.round(rx * boundx) + "px"
+        height: Math.round(ry * boundy) + "px"
+        marginLeft: "-" + Math.round(rx * coords.x) + "px"
+        marginTop: "-" + Math.round(ry * coords.y) + "px"
+
+      
+
+
     scope.$watch "src", (nv) ->
       clear()
+
       if nv
-        
         img = element.find(".img-cropped")
         img.css(maxWidth: scope.maxWidth)
         img.attr "src", nv
         $(img).Jcrop
-          aspectRatio: (scope.aspectWidth / scope.aspectHeight) #If you want to keep aspectRatio
+          aspectRatio: scope.selectAspectRatio() #If you want to keep aspectRatio
           boxWidth: scope.maxWidth  #Maximum width you want for your bigger images
           # boxHeight: 400,  #Maximum Height for your bigger images
             
           trackDocument: true
           onSelect: (x) ->
-            bounds = @getBounds()
-            cords = x       
-            naturalWidth = element.find(".preview")[0].naturalWidth
-            actualWidth = element.find(".jcrop-holder").width()
-            ratio = naturalWidth / actualWidth
-            
-            scope.photo.crop_x = x.x * ratio
-            scope.photo.crop_y = x.y * ratio
-            scope.photo.crop_h = x.h * ratio
-            scope.photo.crop_w = x.w * ratio
-            scope.selectCallback(cords)
-            boundx = bounds[0]
-            boundy = bounds[1]
-            rx = scope.aspectWidth / cords.w
-            ry = scope.aspectHeight / cords.h
-            element.find(".preview").css
-              width: Math.round(rx * boundx) + "px"
-              height: Math.round(ry * boundy) + "px"
-              marginLeft: "-" + Math.round(rx * cords.x) + "px"
-              marginTop: "-" + Math.round(ry * cords.y) + "px"
-
-            
-
+            scope.cropPhoto(x)
+            scope.setPreviewWindow(x)
             return
         , ->
+          defaultCropCoords = scope.maxCropBounds()
+          scope.setPreviewWindow(defaultCropCoords)
+          scope.cropPhoto(defaultCropCoords)
           
-          # Use the API to get the real image size  
-         
           return
+        
 
       return
 
