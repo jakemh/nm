@@ -3,7 +3,7 @@ class Photo < ActiveRecord::Base
   belongs_to :imageable, :polymorphic => true
   has_attached_file :image, styles: {
       thumb: '100x100>',
-      square: '150x150#',
+      square: '165x165#',
       medium: '300x300>',
       cover: '735x200>'
     }, :processors => [:cropper] 

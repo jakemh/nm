@@ -5,12 +5,13 @@
   margin: auto;
   height: 100%;
   padding: 25px;
+  padding-top: 70px;
   position: relative;
 }
 
 .profile__photo img{
-  height: 150px;
-  width: 150px;
+  height: 165px;
+  width: 165px;
   // float: left;
 }
 
@@ -27,7 +28,7 @@
 }
 
 .profile__head{
-  height: 200px;
+  height: 250px;
   position: relative;
 
   background-color: white;
@@ -62,6 +63,15 @@
   background: white;
   text-align: center;
 }
+
+.profile__head{
+  height: 250px;
+  position: relative;
+
+  background: white;
+  margin-top: 15px;
+}
+
 
 .profile__right-button--right{
   margin-left: 100px;
