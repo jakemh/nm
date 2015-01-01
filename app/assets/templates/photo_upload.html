@@ -1,4 +1,4 @@
-<div 
+<div
   img-cropped
   max-width="maxWidth" 
   aspect-width="aspectWidth" 
@@ -6,19 +6,20 @@
   photo="delegate.photoArray[delegate.photoArray.length - 1]" 
   select-callback="selected" 
   src="{{trustSrc(lastPhoto(delegate.photoArray))}}"
-
+  init-callback="cropperCallback()"
 >
-  <div flow-init="{target: profileEntity.uri+'/photos.json', testChunks:false, query:{type: delegate.photoType}}" flow-files-submitted="$flow.upload()" flow-file-success="delegate.successCallback($message)" style=" text-align: center">
+  <div flow-init="{target: profileEntity.uri+'/photos.json', testChunks:false, query:{type: delegate.photoType}}" flow-files-submitted="$flow.upload(); startSpin('spinner-1')" flow-file-success="delegate.successCallback($message)" style=" text-align: center">
 
     <div flow-drop class="photo-up profile__head photo__box" ng-class="{'profile__head--white-text': lastPhoto(delegate.photoArray)}" flow-drag-enter="class='photo-up photo-up--drag'" flow-drag-leave="style={}">
 
-      <div class="cropped-image photo__box">
-        <div class="nm__abs-centered">Drop and preview image here</div>
-        <img class="preview" ng-src="{{lastPhoto(delegate.photoArray)}}">
+        <div class="cropped-image photo__box">
+          <div ng-hide="spinnerVisible" class="nm__abs-centered">Drop and preview image here</div>
+
+         <span us-spinner="{radius:30, width:8, length: 16}" spinner-key="spinner-1"></span>
+
+          <img class="preview" ng-src="{{lastPhoto(delegate.photoArray)}}">
+        </div>
       </div>
-
-
-    </div>
     <!--  <div class="profile__head" style="background: white url('{{delegate.photoArray[delegate.photoArray.length - 1].url}}');" flow-drop class="photo-up" 
   flow-drag-enter="class='photo-up photo-up--drag'"
   flow-drag-leave="style={}"
@@ -27,7 +28,7 @@
     {{delegate.message}}
   </div> -->
     <input type="file" flow-btn/>
-    <button ng-if="lastPhoto(delegate.photoArray)" ng-click="delegate.approval(delegate.photoArray[delegate.photoArray.length - 1])" class="btn btn-primary">
+    <button  ladda="photoCropping" data-style="zoom-out" ng-if="lastPhoto(delegate.photoArray)" ng-click="delegate.approval(delegate.photoArray[delegate.photoArray.length - 1])" class="btn btn-primary">
       Approve?
     </button>
 

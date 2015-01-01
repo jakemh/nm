@@ -44,6 +44,10 @@
 #= require typeahead/dist/typeahead.jquery
 #= require typeahead/dist/typeahead.bundle
 #= require Jcrop/js/jquery.Jcrop
+#= require spin.js/spin
+#= require angular-spinner/angular-spinner
+#= require ladda/js/ladda
+#= require angular-ladda/src/angular-ladda
 
 #= require_self
 #= require next_mission

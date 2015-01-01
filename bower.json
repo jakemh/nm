@@ -36,7 +36,11 @@
     "angular-touch": "",
     "angular-linkify": "",
     "ngFitText": "", 
-    "Jcrop": ""
+    "Jcrop": "",
+    "spin.js": "",
+    "angular-spinner": "",
+    "angular-ladda": "",
+    "ladda": ""
   },
   "resolutions": {
      "angular": "1.3.3"

@@ -6,7 +6,7 @@ angular.module("NM").directive "imgCropped", ->
   scope:
     src: "@"
     selected: "&"
-    selectCallback: "="
+    initCallback: "&"
     photo: "="
     maxWidth: "="
     aspectWidth: "="
@@ -67,26 +67,8 @@ angular.module("NM").directive "imgCropped", ->
         bounds.x = 0
         bounds.y = 0
 
-      
-      # ratio = scope.naturalWidth() / scope.actualWidth()
-
-      # aBounds = 
-      #   x: bounds.x * ratio
-      #   y: bounds.y * ratio
-      #   h: bounds.h * ratio
-      #   w: bounds.w * ratio
-      
-      
       return bounds
-      # if width > height
-      #   bounds.w = width
-      # else if height > width
-      #   bounds.h = height
-      # else 
-      #   bounds.w = width
-      #   bounds.h = height
-      #   bounds.x = 0
-      #   bounds.y = 0
+
 
     scope.cropPhoto = (coords)->
       # x = scope.maxCropBounds()
@@ -112,8 +94,6 @@ angular.module("NM").directive "imgCropped", ->
         marginTop: "-" + Math.round(ry * coords.y) + "px"
 
       
-
-
     scope.$watch "src", (nv) ->
       clear()
 
@@ -129,13 +109,17 @@ angular.module("NM").directive "imgCropped", ->
           trackDocument: true
           onSelect: (x) ->
             scope.cropPhoto(x)
+            boundx = scope.actualWidth()
+            boundy = scope.actualHeight()
+            console.log @getBounds()
+            console.log [boundx, boundy]
             scope.setPreviewWindow(x)
             return
         , ->
           defaultCropCoords = scope.maxCropBounds()
           scope.setPreviewWindow(defaultCropCoords)
           scope.cropPhoto(defaultCropCoords)
-          
+          scope.initCallback()
           return
         
 
@@ -163,8 +147,8 @@ angular.module("NM").controller "ProfileController", [
   "ReviewService"
   "ReviewDisplay"
   "profileEntity"
-
-  ($scope, $sce, $q, $routeParams, $location, Utilities, Review, AuthService, MessagesDisplay, MessageService, Restangular, SideBar, MapService, ReviewService, ReviewDisplay, profileEntity) ->
+  "usSpinnerService"
+  ($scope, $sce, $q, $routeParams, $location, Utilities, Review, AuthService, MessagesDisplay, MessageService, Restangular, SideBar, MapService, ReviewService, ReviewDisplay, profileEntity, usSpinnerService) ->
     
     # alert my#FriendsHotel.hotelName( );
     
@@ -187,6 +171,14 @@ angular.module("NM").controller "ProfileController", [
     $scope.isEditable = false
     $scope.editProfileText = "Edit Profile"
     $scope.currentCoords = null
+    $scope.spinnerVisible = false
+    $scope.photoCropping = false
+
+   
+
+    $scope.cropperCallback = ->
+      $scope.stopSpin('spinner-1')
+
     $scope.selected = (coords) ->
 
       # alert JSON.stringify coords 
@@ -200,8 +192,18 @@ angular.module("NM").controller "ProfileController", [
 
     $scope.trustSrc = (src) ->
        return $sce.trustAsResourceUrl(src);
-     
 
+    $scope.startSpin = (key) ->
+      usSpinnerService.spin key
+      $scope.spinnerVisible = true
+      return
+
+    $scope.stopSpin = (key) ->
+      usSpinnerService.stop key
+      $scope.spinnerVisible = false
+      $scope.$apply()
+
+      return
 
     $scope.isFollowing = (userEntity) ->
       pe = $scope.profileEntity
@@ -315,24 +317,26 @@ angular.module("NM").controller "ProfileController", [
       $scope.uploadedProfilePhotos.push(restPhoto)
 
     $scope.approveProfilePhoto = (photo) ->
-      # $scope.profileEntity.profile_photo_id = photo.id 
-      # $scope.profileEntity.put().then (entity)->
-      #   $scope.profileEntity.thumb = entity.thumb
-      # $("#js__profile-photo-modal").modal('hide')
-      # return true
+      $scope.photoCropping = true
+
       photo.put().then (photo) ->
         $scope.profileEntity.profile_photo_id = photo.id 
         $scope.profileEntity.put().then (entity)->
           $scope.profileEntity.thumb = entity.thumb
+          $scope.photoCropping = false
+
           $("#js__profile-photo-modal").modal('hide')
       return true
 
     $scope.approveCoverPhoto = (photo) ->
+      $scope.photoCropping = true
       # photo = delegate.photoArray[delegate.photoArray.length - 1]
       photo.put().then (photo) ->
         $scope.profileEntity.cover_photo_id = photo.id 
         $scope.profileEntity.put().then (entity)->
           $scope.profileEntity.cover_photo_url = entity.cover_photo_url
+          $scope.photoCropping = false
+
           $("#js__cover-photo-modal").modal('hide')
       return true
 

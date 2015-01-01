@@ -77,6 +77,8 @@ window.App = angular.module("NM", [
   "linkify"
   "vr.directives.slider"
   "ngFitText"
+  "angularSpinner"
+  "angular-ladda"
   
 ]).config ($routeProvider, $locationProvider, $httpProvider, RestangularProvider) ->
   $httpProvider.defaults.headers.common['X-CSRF-Token'] = $('meta[name=csrf-token]').attr('content')
