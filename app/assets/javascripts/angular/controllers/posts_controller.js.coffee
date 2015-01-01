@@ -50,17 +50,40 @@ angular.module("NM").controller "PostController", [
     $scope.alreadyVoted = (post) ->
       moment(post.last_vote_current_user).add(1, "days").diff(moment()) > 0
 
+
+    $scope.disableTop = (post) ->
+      console.log post.getExistingScore()
+      post.getExistingScore() >= 1
+
+    $scope.disableBottom = (post) ->
+      post.getExistingScore() <= -1
+
+    $scope.existingScore = (post) ->
+      post.getExistingScore()
+
+   
+
     $scope.upVote = (post) ->
+      # originalPoints = post.getPoints()
+      # originalScore = post.getExistingScore()
       post.addPoints(1)
-      post.post("points", angular.extend({}, {score: 1}, AuthService.currentId())).then (newPost) ->
-        post.setPoints(newPost.points)
-        post.last_vote_current_user = newPost.last_vote_current_user
+      post.post("points", angular.extend({}, {score: 1}, AuthService.currentId())).then (point) ->
+        # post.setPoints(originalPoints += point.score)
+        # post.setExistingScore(originalScore += point.score)
+
+        # post.last_vote_current_user = newPost.last_vote_current_user
+
 
     $scope.downVote = (post) ->
+      # originalPoints = post.getPoints()
+      # originalScore = post.getExistingScore()
       post.addPoints(-1)
-      post.post("points", angular.extend({}, {score: -1}, AuthService.currentId())).then (newPost) ->
-        post.setPoints(newPost.points)
-        post.last_vote_current_user = newPost.last_vote_current_user
+      post.post("points", angular.extend({}, {score: -1}, AuthService.currentId())).then (point) ->
+        # post.setPoints(originalPoints += point.score)
+        # post.setExistingScore(originalScore += point.score)
+
+        # post.last_vote_current_user = newPost.last_vote_current_user
+
 
     $scope.loadPosts = () ->
       $scope.disableInfiniteLoad = true

@@ -32,6 +32,9 @@ module Entity
     self.posts.joins(:points).sum(:score)
   end
 
+  def all_votes_for(object)
+    self.votes.where(:pointable_id => object.id, :pointable_type => object.class.name)
+  end
 
   def last_vote_for(object)
     self.votes.where(:pointable_id => object.id, :pointable_type => object.class.name).last

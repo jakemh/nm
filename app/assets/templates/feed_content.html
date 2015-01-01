@@ -7,11 +7,27 @@
   </div>
   <div class="feed__content-votes votes">
     <div class="votes__arrow">
-      <a ng-hide="alreadyVoted(entity.models.post)" ng-click="upVote(entity.models.post)" href="#"><i class="fa fa-sort-asc"></i></a>
+      <a 
+       ng-click="upVote(entity.models.post)" 
+       href="#"
+       class="noselect"
+       ng-class="{'nm__link--disabled': disableTop(entity.models.post)}"
+       >
+       <i class="fa fa-sort-asc"></i>
+     </a>
     </div>
     {{entity.getPoints()}}
     <div class="votes__arrow">
-      <a  ng-hide="alreadyVoted(entity.models.post)"ng-click="downVote(entity.models.post)" href="#"><i class="fa fa-sort-desc"></i></a>
+      <a 
+      class="noselect"
+
+      ng-click="downVote(entity.models.post)" 
+      href="#"
+      ng-class="{'nm__link--disabled': disableBottom(entity.models.post)}"
+
+      >
+      <i class="fa fa-sort-desc"></i>
+    </a>
     </div>
 
   </div>

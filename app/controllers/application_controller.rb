@@ -6,6 +6,7 @@ class ApplicationController < ActionController::Base
   after_filter :track_action
   serialization_scope :view_context
   before_filter :authenticate_user!
+  include SqlConcern
 
   # attr_accessor :entity
 

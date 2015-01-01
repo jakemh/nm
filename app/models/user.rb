@@ -93,6 +93,10 @@ class User < ActiveRecord::Base
     return self.all_owned.inject([]){|list, entity| list << entity.last_vote_for(post); list}.compact
   end
 
+  def owned_entity_all_votes(post)
+    return self.all_owned.inject([]){|list, entity| list << entity.last_vote_for(post); list}.compact
+  end
+
   def all_added_points
     self.all_owned.inject(0){|sum, e| sum += e.votes.sum(:score)}
   end

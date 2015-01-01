@@ -24,6 +24,18 @@
   background: orange-color(.8)
 }
 
+.nohover{
+ 
+}
+.noselect {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
 .nm__abs-centered{
   position: absolute;
   margin-left: auto;
@@ -111,13 +123,42 @@
 .nm__map--medium{
   width: 390px; 
   height: 390px;
+} 
+
+.nm__link--disabled{
+  color: gray;
+  pointer-events: none;
+  &:hover{
+    text-decoration:none;
+    color:gray;
+  }
+
+  &:focus{
+    text-decoration:none;
+    color:gray;
+  }
+
+  &:active{
+    text-decoration:none;
+    color:gray;
+  }
+
+  &:link{
+    text-decoration:none;
+    color:gray;
+  }
+
+  &:visited{
+    text-decoration:none;
+    color:gray;
+  }
 }
 
 .nm__inline{
   display: inline-block;
 }
 .nm__map--small{
-  height: 250px;
+  height: 20px;
 }
 
 .error{

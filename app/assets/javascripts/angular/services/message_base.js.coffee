@@ -31,12 +31,18 @@ App.factory "MessageBase", [
     getPoints: ->
       @points || 0
 
+    getExistingScore: ->
+      @existing_score
+
     addPoints: (incr) ->
-      
+      @existing_score += incr
       @points += incr
 
     setPoints: (score) ->
       @points = score
+
+    setExistingScore: (score) ->
+      @existing_score = score
       
     fromEntity: (params) ->
       @entity(params)
