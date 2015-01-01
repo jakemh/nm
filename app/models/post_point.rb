@@ -10,7 +10,12 @@ class PostPoint < Point
   end
 
   def valid_vote?(post, condition)
-    return (PostPoint.sum_for(post, condition) + self.score).abs <= 1
+    sum = PostPoint.sum_for(post, condition)
+    if sum.abs > 1 #edge case 
+      return (sum + self.score).abs < sum.abs
+    else 
+      return (sum + self.score).abs <= 1
+    end
   end
 
   def self.already_voted?(compare_against)
