@@ -42,27 +42,7 @@
     | audienceTypeFilter:AuthService.currentEntitySelection.selected:followerFilter:followingFilter 
     | orderBy:sortVal.selected.name 
     | userBusinessFilter:filterVal.selected">
-      <div class="aud__member connect {{audMemberClass($index)}}">
-        <div class="top-right " style="top: 2px; right: 10px;">
-          <span ng-if="entity.isFollowing()">
-            <i class="fa fa-arrow-right"></i>
-          </span>
-          <span ng-if="entity.isFollower()"> 
-            <i class="fa fa-arrow-left"></i>
-          </span>
-
-
-        </div>
-        <div style="height: 130px; background: white; padding: 15px;">
-          <div style="width: 100px; height: 100px; margin-right: 15px;" class="left thumb--100">
-            <img ng-src="{{entity.thumb}}">
-
-          </div>
-          <div class="nm__item-name nm__bold">
-            <a ng-href="{{entity.models.entity.uri}}">{{entity.name}}</a>
-          </div>
-        </div>
-      </div>
+     <div ng-include="'audience_item.html'"></div>
     </div>
   </div>
 </div>

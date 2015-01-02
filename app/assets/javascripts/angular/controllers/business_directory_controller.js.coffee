@@ -30,6 +30,17 @@ angular.module("NM").controller "BusinessDirectoryController", [
     # $scope.loadMap()  
     SideBar.tabBarVisible = false 
 
+    $scope.setDelegate = (business) ->
+      delegate = {}
+      delegate.getBusiness = ->
+        return business
+
+      return delegate
+
+    SideBar.delegate.getBusiness = ->
+      
+
+
     $scope.applyMarkers = ->
       addMarkers = $filter('entityFilter')($scope.displayList, $scope.filters.person, $scope.filters.business);
       hasMarkers = false

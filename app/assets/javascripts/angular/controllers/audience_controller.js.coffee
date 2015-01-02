@@ -60,7 +60,6 @@ angular.module("NM").controller "AudienceController", [
         $scope.current.following = following
 
     $scope.audMemberClass = (index)->
-      console.log "INDEX: " + index
       if index % 2 == 0
         return "aud__member--left" 
       else return "aud__member--right"

@@ -225,6 +225,13 @@ angular.module("NM").controller "ProfileController", [
     SideBar.delegate.ReviewService = ReviewService
     SideBar.delegate.rateFunction = ReviewService.rateFunction
     SideBar.delegate.userBusinesses = []
+    SideBar.delegate.getBusiness = ->
+      $scope.businessOwner
+
+
+    $scope.SideBar.delegate.getBusinessOwner = ->
+      $scope.businessOwner
+
     SideBar.delegate.entity = profileEntity
     SideBar.delegate.review = $scope.reviewPost
     SideBar.delegate.validateStars = false
@@ -237,7 +244,7 @@ angular.module("NM").controller "ProfileController", [
     $scope.init = () ->
       if profileEntity.type == "Business"
         $scope.profileEntity.owner().then (o)->
-          $scope.SideBar.delegate.businessOwner = o
+          $scope.businessOwner = o
 
       $scope.profileEntity.getItems().then (items) -> 
         $scope.profileEntity.items = items

@@ -1,26 +1,26 @@
 <div  class="bus__item utils__hover--orange">
 
  
-  <img ng-src={{business.thumb}}>
+  <img ng-src={{delegate.getBusiness().thumb}}>
   <div class="bus__item-top">
-    <a ng-href="{{business.uri}}">{{business.name}}</a>
+    <a ng-href="{{delegate.getBusiness().uri}}">{{delegate.getBusiness().name}}</a>
   </div>
 
   <div class="bus__item-bottom">
     <div class="row">
       <div class="col-sm-4">
-        <div ng-if="business.canBeFollowedBy(AuthService.currentEntitySelection.selected)" class="feed_content-follow">
+        <div ng-if="delegate.getBusiness().canBeFollowedBy(AuthService.currentEntitySelection.selected)" class="feed_content-follow">
           <!--  <a ng-click="AuthService.followerHandle(entity.models.entity, followerCallback)" href="#"><span ng-bind-html="entity.followerUriType"></span>
 
             </a> -->
-          <div ng-init="feedback=false" ng-switch="business.isFollowedBy(AuthService.currentEntitySelection.selected)">
+          <div ng-init="feedback=false" ng-switch="delegate.getBusiness().isFollowedBy(AuthService.currentEntitySelection.selected)">
             <div ng-switch-when="false">
 
-              <a ng-click="AuthService.profileFollowerHandle(business, AuthService.currentEntitySelection.selected, followerCallback); feedback=true" href="#">
+              <a ng-click="AuthService.profileFollowerHandle(delegate.getBusiness(), AuthService.currentEntitySelection.selected, followerCallback); feedback=true" href="#">
                   Follow
                  </a>
             </div>
-            <div ng-if="business.isFollowedBy(AuthService.currentEntitySelection.selected)">
+            <div ng-if="delegate.getBusiness().isFollowedBy(AuthService.currentEntitySelection.selected)">
               <i class="fa fa-check"></i> Connected
             </div>
           </div>
@@ -28,7 +28,7 @@
       </div>
       <div class="col-sm-4">
         <div class="modal-link-container">
-          <div  ng-init="toEntity=business" ng-include="'modals/message_modal.html'">
+          <div  ng-init="toEntity=delegate.getBusiness()" ng-include="'modals/message_modal.html'">
           </div>
         <a ng-click="MessageService.callModal('js-msg__modal', $event)" ng-href="#">Message</a>
         </div>

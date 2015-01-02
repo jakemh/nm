@@ -31,6 +31,7 @@ class Business < ActiveRecord::Base
 
  
   has_many :users, :through => :ownerships
+  has_many :owners, :through => :ownerships, :source => :user
   has_many :tags, :as => :taggable
   has_many :items, :class_name => "Tag", as: :taggable
 

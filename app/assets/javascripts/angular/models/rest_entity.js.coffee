@@ -21,7 +21,10 @@ angular.module("NM").factory "RestEntity", [
           return "businesses/#{@id}"
         else if @type == "User"
           return "users/#{@id}"
-          
+      
+      getType: () ->
+        @type
+         
       sentMessagesTo: (entity) ->
         @getListPlus "sent_messages",
           from_id: entity.id 

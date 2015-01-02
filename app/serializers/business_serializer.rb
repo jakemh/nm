@@ -8,7 +8,9 @@ class BusinessSerializer < EntitySerializer
   has_many :user_connections, embed: :ids
   has_many :business_connections, embed: :ids
   has_many :reviews, embed: :ids
-  
+  has_many :owners, embed: :ids
+
+
   def business_connections
     object.business_friends
   end
@@ -28,6 +30,7 @@ class BusinessSerializer < EntitySerializer
       end
     end
   end
+
 
   def owner_id
     if object.ownerships.first
