@@ -282,6 +282,14 @@ angular.module("NM").controller "ProfileController", [
 
           SideBar.rightBarTemplate = "right_bar_business.html"
  
+    $scope.setItemDelegate = (business) ->
+      delegate = {}
+      delegate.getBusiness = ->
+        business
+
+      return delegate
+
+    SideBar.delegate.itemDelegate = $scope.setItemDelegate
 
     $scope.isYours = ->
       return $scope.yours
