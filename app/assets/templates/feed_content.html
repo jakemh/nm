@@ -16,7 +16,9 @@
        <i class="fa fa-sort-asc"></i>
      </a>
     </div>
-    {{entity.getPoints()}}
+    <div class="votes__score">
+      {{entity.getPoints()}}
+    </div>
     <div class="votes__arrow">
       <a 
       class="noselect"
@@ -35,7 +37,9 @@
   <div class="feed__content">
     <div class="feed__content-title">
       <div class="thumb--85">
-        <img ng-src="{{entity.models.entity.thumb}}">
+        <a ng-href="{{entity.uri}}">
+          <img ng-src="{{entity.models.entity.thumb}}">
+        </a>
       </div>
       <div ng-if="entity.models.entity.canBeFollowedBy(AuthService.currentEntitySelection.selected)" class="feed_content-follow">
         <!--  <a ng-click="AuthService.followerHandle(entity.models.entity, followerCallback)" href="#"><span ng-bind-html="entity.followerUriType"></span>

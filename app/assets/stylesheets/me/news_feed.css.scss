@@ -173,7 +173,11 @@
 .votes{
   text-align: center;
   line-height: 0em;
+  font-size: 1.1em;
+}
 
+.votes__score{
+  font-size: 1.15em;
 }
 
 .votes__arrow::before{
