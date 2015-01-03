@@ -112,7 +112,7 @@ angular.module("NM").controller "BusinessDirectoryController", [
     
     $scope.letterClick = (letter) -> 
       Restangular.all("entities").getList({first_letter: letter}).then (entities)->
-        $scope.displayList = entities
+        $scope.displayList = _.map entities, (e) -> e.restangularize()
         $scope.applyMarkers()
 
     $scope.randomClick = (bus)->

@@ -99,28 +99,33 @@ angular.module("NM").controller "AudienceController", [
     $scope.filterVal = {}
     $scope.filterVal.selected = $scope.filterOptions[0]
 
+    $scope.displayHash = (entity, f, aes) ->
+      models: {entity: entity, connection: f}
+      name: entity.name
+      associatedEntities: aes
+      distance: entity.distance
+      added: f.created_at
+      thumb: entity.thumb
+      profile: entity.uri
+      type: f.type
+      entityType: entity.type
+      isFollower: -> _.contains this.relationships, "Follower"
+      isFollowing: -> _.contains this.relationships, "Following"
+
     $scope.$watch 'current.followers', ->
         # $q.all(AuthService.currentFollowers)
       $scope.currentDisplayEntity().followersDisplay = []
       for f in $scope.current.followers
         do (f) -> 
-          f.entity().then (e) ->
-            entity = e
-            # alert JSON.stringify entity
+          f.entity()
+            .then (e) ->
+              entity = e
 
-            $scope.currentDisplayEntity().followersDisplay.push
-              models: {entity: entity, connection: f}
-              name: entity.name
-              distance: entity.distance
-              added: f.created_at
-              thumb: entity.thumb
-              profile: entity.uri
-              type: f.type
-              entityType: entity.type
-              isFollower: -> _.contains this.relationships, "Follower"
-              isFollowing: -> _.contains this.relationships, "Following"
-
-              relationships: ["Follower"]
+              e.associatedEntities().then (aes) ->
+                $scope.currentDisplayEntity().followersDisplay.push(
+                  angular.extend $scope.displayHash(e, f, aes), 
+                    relationships: ["Follower"]
+                )
    
     $scope.$watch 'currentDisplayEntity().followingDisplay.length + currentDisplayEntity().followersDisplay.length', ->
       # alert $scope.currentDisplayEntity().followingDisplay.length + " " + $scope.currentDisplayEntity().followersDisplay.length
@@ -136,19 +141,12 @@ angular.module("NM").controller "AudienceController", [
           f.entity().then (e) ->
             entity = e
 
-            $scope.currentDisplayEntity().followingDisplay.push
-              models: {entity: entity, connection: f}
-              name: entity.name
-              distance: entity.distance
-              added: f.created_at
-              thumb: entity.thumb
-              profile: entity.uri
-              type: f.type
-              entityType: entity.type
-              isFollower: -> _.contains this.relationships, "Follower"
-              isFollowing: -> _.contains this.relationships, "Following"
+            e.associatedEntities().then (aes) ->
 
-              relationships: ["Following"]
+              $scope.currentDisplayEntity().followingDisplay.push(
+                angular.extend $scope.displayHash(e, f, aes), 
+                  relationships: ["Following"]
+              )
 ]
 
 

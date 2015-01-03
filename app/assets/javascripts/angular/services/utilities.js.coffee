@@ -3,8 +3,15 @@ App.factory "Utilities", [
     ($sce) ->
       trustAsHtml: (value) ->
         return $sce.trustAsHtml(value);
-        
+      
+
       millisecondsPerDay: 86400000
+
+      entityLink: (type, id) ->
+        if type == "Business"
+          return "businesses/#{id}"
+        else if type == "User"
+          return "users/#{id}"
 
       timeAgoThreshhold: ->
         days = 3
