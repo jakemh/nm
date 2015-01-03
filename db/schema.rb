@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141226161128) do
+ActiveRecord::Schema.define(version: 20150103204029) do
 
   create_table "ahoy_events", force: true do |t|
     t.uuid     "visit_id"
@@ -89,6 +89,11 @@ ActiveRecord::Schema.define(version: 20141226161128) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "pending"
+  end
+
+  create_table "interactions", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "locations", force: true do |t|
