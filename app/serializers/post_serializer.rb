@@ -17,7 +17,9 @@ class PostSerializer < ActiveModel::Serializer
   end
 
   def existing_vote
-    scope.current_user.owned_entity_last_votes(object).last.score
+    if scope.current_user
+      scope.current_user.owned_entity_last_votes(object).last.score
+    end
   end
 
   # def last_vote_current_user
