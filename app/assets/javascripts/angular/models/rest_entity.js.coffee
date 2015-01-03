@@ -1,11 +1,14 @@
 angular.module("NM").factory "RestEntity", [
   "RestangularPlus"
+  "Restangular"
   "$q"
-  (RestangularPlus, $q) ->
+  (RestangularPlus, Restangular, $q) ->
 
       items: []
       receivedMessages: []
       sentMessages: []
+
+
       allMessages: ->
         @receivedMessages.concat @sentMessages
 
@@ -13,18 +16,28 @@ angular.module("NM").factory "RestEntity", [
       following: []
       followers: []
 
+      associatedEntities: () ->
+        # throw new Error("Override associatedEntities");
+        # business will return owners
+        # user will return businesses
+
       getTotalPoints: ()->
         @total_points
         
       link: () ->
-        if @type == "Business"
-          return "businesses/#{@id}"
-        else if @type == "User"
-          return "users/#{@id}"
+        # throw new Error("Override link");
+
+        # if @type == "Business"
+        #   return "businesses/#{@id}"
+        # else if @type == "User"
+        #   return "users/#{@id}"
       
       getType: () ->
         @type
-         
+        
+      getName: () ->
+        @name 
+
       sentMessagesTo: (entity) ->
         @getListPlus "sent_messages",
           from_id: entity.id 
@@ -91,31 +104,40 @@ angular.module("NM").factory "RestEntity", [
       followerCount: () ->
         this.follower_count
 
-      canBeFollowedBy: (userEntity) ->
-        if this == userEntity
-          return false #same entity
+      # canBeFollowedBy: (userEntity) ->
+      #   # throw new Error("Override canBeFollowedBy");
 
+      #   # if this == userEntity
+      #   #   return false #same entity
+
+      #   # if @type == "Business"
+      #   #   return true #business can be followed by anythign but themselves
+
+      #   # else if @type == "User"
+      #   #   if userEntity.type == "User"
+      #   #     true #users can follow any user but themselves
+      #   #   else if userEntity.type == "Business"
+      #   #     return false #busines cannot follower user
+
+
+      # isFollowedBy: (userEntity) ->
+      #   # throw new Error("Override isFollowdBy");
+
+      #   # if @type == "Business"
+      #   #   if _.contains(userEntity.business_connection_ids, this.id)
+      #   #     return true
+      #   #   else return false
+      #   # else if @type == "User"
+      #   #   if _.contains(userEntity.user_connection_ids, this.id)
+      #   #     return true 
+      #   #   else return false
+      #   # else return false
+
+      restangularize: () ->
         if @type == "Business"
-          return true #business can be followed by anythign but themselves
-
+          Restangular.restangularizeElement(null, @, 'businesses')
         else if @type == "User"
-          if userEntity.type == "User"
-            true #users can follow any user but themselves
-          else if userEntity.type == "Business"
-            return false #busines cannot follower user
-
-
-      isFollowedBy: (userEntity) ->
-        if @type == "Business"
-          if _.contains(userEntity.business_connection_ids, this.id)
-            return true
-          else return false
-        else if @type == "User"
-          if _.contains(userEntity.user_connection_ids, this.id)
-            return true 
-          else return false
-        else return false
-
+          Restangular.restangularizeElement(null, @, 'users')
 
       posts: (params) ->
         # @getListPlus("posts", params)
@@ -130,7 +152,6 @@ angular.module("NM").factory "RestEntity", [
         # @getListPlus("flags", params).post(params)
 
       getFollowers: () ->
-        console.log @follower_ids
         @severalPlus2("followers", @follower_ids)
 
       getFollowing: () ->

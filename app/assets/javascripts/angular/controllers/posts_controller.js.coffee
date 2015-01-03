@@ -52,7 +52,6 @@ angular.module("NM").controller "PostController", [
 
 
     $scope.disableTop = (post) ->
-      console.log post.getExistingScore()
       post.getExistingScore() >= 1
 
     $scope.disableBottom = (post) ->

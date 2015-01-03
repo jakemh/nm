@@ -10,6 +10,9 @@ angular.module("NM").factory "User", [
       angular.extend self, RestangularPlus
       angular.extend self, angular.copy(RestEntity)
       
+      self.link = ->
+        return "users/#{self.id}"
+
       self.ownedEntities = ->
         deferred = $q.defer();
         returnList = [self]
@@ -22,15 +25,25 @@ angular.module("NM").factory "User", [
 
         return deferred.promise
 
+      self.associatedEntities = ->
+        return self.ownedEntities()
+
       self.businesses = ->
         # self.getListPlus("businesses")
         
         self.severalPlus("businesses", self.business_ids)
 
       
-      # self.getSkills = ->
-      #   self.getListPlus("items")
+      self.isFollowedBy = (userEntity) ->
+        return true
+      self.canBeFollowedBy = (userEntity) ->
+        if self == userEntity
+          return false #same entity
 
-      # self.items = []
+        if userEntity.type == "User"
+          return true #users can follow any user but themselves
+        else if userEntity.type == "Business"
+          return false #business cannot follow user
+
       return self
 ]

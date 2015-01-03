@@ -6,9 +6,8 @@
     <span ng-if="entity.isFollower()"> 
       <i class="fa fa-arrow-left"></i>
     </span>
-
-
   </div>
+
   <div style="height: 130px; background: white; padding: 15px;">
     <div style="width: 100px; height: 100px; margin-right: 15px;" class="left thumb--100">
       <img ng-src="{{entity.thumb}}">
@@ -17,5 +16,17 @@
     <div class="nm__item-name nm__bold">
       <a ng-href="{{entity.models.entity.uri}}">{{entity.name}}</a>
     </div>
+
+    <div ng-switch="entity.models.entity.getType()">
+      <div ng-switch-when="Business">
+        <div><a ng-href={{entity.associatedEntities[0].link()}}>{{entity.associatedEntities[0]}}</a>
+        </div>
+      <div ng-switch-when="User">
+        <div>
+          <a href={{entity.models.entity.link()}}>{{entity.models.entity.getName()}}</a>
+        </div>
+      </div>
+    </div>
   </div>
+
 </div>
