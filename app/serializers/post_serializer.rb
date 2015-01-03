@@ -13,13 +13,14 @@ class PostSerializer < ActiveModel::Serializer
   end
 
   def existing_score
-    PostPoint.sum_for(object, entity_condition(scope.current_user))
+      PostPoint.sum_for(object, entity_condition(scope.current_user))
+
   end
 
   def existing_vote
-    if scope.current_user
+
       scope.current_user.owned_entity_last_votes(object).last.score
-    end
+   
   end
 
   # def last_vote_current_user

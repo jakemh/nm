@@ -20,7 +20,7 @@ class PostsController < ApplicationController
     @post = entity.posts.build whitelist
     id_key = nil
     if @post.save
-      json = PostSerializer.new(@post).to_json
+      # json = PostSerializer.new(@post).to_json
       render json: @post, serialzer: PostSerializer
     end
   end
