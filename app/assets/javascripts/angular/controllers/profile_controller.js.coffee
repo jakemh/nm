@@ -182,9 +182,9 @@ angular.module("NM").controller "ProfileController", [
     $scope.selected = (coords) ->
 
       # alert JSON.stringify coords 
-      $scope.lastPhotoObj = (array) ->
-        if array[array.length - 1]
-          array[array.length - 1]
+    $scope.lastPhotoObj = (array) ->
+      if array[array.length - 1]
+        array[array.length - 1]
 
     $scope.lastPhoto = (array) ->
       if array[array.length - 1]
@@ -298,14 +298,22 @@ angular.module("NM").controller "ProfileController", [
     SideBar.delegate.profileEntity = profileEntity
     # SideBar.delegate.businessOwner = $scope.businessOwner
 
-    $scope.sendReview = (business, post) ->
-      if post.score > 0
-        ReviewService.sendPost(business, post).then (response) ->
-          $("#js__business-review-modal").modal('hide')
-          $scope.buildReviewList()
+    $scope.reviewValidate = (obj, entryForm, submit) ->
+      
+      if obj.reviewObj.score > 0
 
+        MessageService.submitHandler(obj, entryForm, submit)
       else 
         SideBar.delegate.validateStars = true
+
+    $scope.reviewCallback = (response) ->
+      $("#js__business-review-modal").modal('hide')
+      $scope.buildReviewList()
+
+    SideBar.delegate.reviewValidate = $scope.reviewValidate
+    SideBar.delegate.reviewCallback = $scope.reviewCallback
+
+
     SideBar.delegate.sendPost = $scope.sendReview
     $scope.uploadedProfilePhotos = []
     $scope.uploadedCoverPhotos = []

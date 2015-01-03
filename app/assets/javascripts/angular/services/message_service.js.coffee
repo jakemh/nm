@@ -126,7 +126,7 @@ App.factory "MessageService", [
         submit(obj)
         # model.content = ""
       else 
-        obj.entryForm.hasError = true
+        entryForm.hasError = true
       
     submit: (model, entity, entryForm, callback, parentList) ->
       # debugger

@@ -16,9 +16,17 @@
          <!--  <div ng-include8="'feed_head_outer.html'" ng-init="newPost = newPostMain; headOuterInit(newPost); feedHeadBody = messageForm; entity = profileEntity">
           </div> -->
             <div ng-include="'forms/post/form.html'" ng-init="
-            newPost = delegate.review; entity = delegate.entity; sendPost = delegate.sendPost;
+            entity = delegate.entity; 
+            sendPost = delegate.sendPost;
             rowsQuantity=8; placeHolder='Enter a Review'; buttonTitle='Review';
+
+            newPost=delegate.review;
+            object=ReviewService.initReviewModal(delegate.review, delegate.entity, delegate.reviewCallback);
+            validationHandler=delegate.reviewValidate;
+            submitHandler=ReviewService.sendReview
             "
+
+
             ></div>
 
         </div>

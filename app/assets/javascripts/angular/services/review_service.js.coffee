@@ -10,6 +10,13 @@ App.factory "ReviewService", [
     
     # setMessageEntity: (entity)->
     #   @messageEntity = entity
+    class SendReview
+      constructor: (@reviewObj, @toEntity, @callback) ->
+
+    initReviewModal: (reviewObj, toEntity, callback) ->
+      sr = new SendReview(reviewObj, toEntity, callback)
+      return sr
+
 
     newReview: ()->
       return {score: 0, content: ""}
@@ -42,10 +49,14 @@ App.factory "ReviewService", [
       return
     
    
-    sendPost: (business, post)->
-      business.review(post).then (response) =>
+    sendReview: (sendReviewObj)->
+      r = sendReviewObj
+      business = r.toEntity
+      business.review(r.reviewObj).then (response) =>
         business.addReview(response)
-        $q.when(response)
+        # $q.when(response)
+        # $("#js__business-review-modal").modal('hide')
+        r.callback(response)
     # submit: (model, entity, entryForm, callback) ->
     #   alert JSON.stringify model
     #   if entryForm.$valid
