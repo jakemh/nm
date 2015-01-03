@@ -38,6 +38,9 @@ module NextMission
 
    config.action_mailer.perform_deliveries = true
    config.action_mailer.raise_delivery_errors = true
+
+   config.autoload_paths << Rails.root.join('services')
+
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.

@@ -26,7 +26,7 @@ angular.module("NM").factory "User", [
         return deferred.promise
 
       self.associatedEntities = ->
-        return self.ownedEntities()
+        return self.businesses()
 
       self.businesses = ->
         # self.getListPlus("businesses")
@@ -35,7 +35,10 @@ angular.module("NM").factory "User", [
 
       
       self.isFollowedBy = (userEntity) ->
-        return true
+        if _.contains(userEntity.user_connection_ids, self.id)
+          return true 
+        else return false
+      
       self.canBeFollowedBy = (userEntity) ->
         if self == userEntity
           return false #same entity

@@ -6,8 +6,8 @@ module SqlConcern
   end
 
 
-  def entity_condition
-    ["business_id IN (?) OR user_id IN (?)", User.first.businesses.pluck(:id), User.first.id]
+  def entity_condition(business_ids = nil, )
+    ["business_id IN (?) OR user_id IN (?)", current_user.businesses.pluck(:id), current_user.first.id]
   end
   
 end

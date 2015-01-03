@@ -17,14 +17,18 @@
       <a ng-href="{{entity.models.entity.uri}}">{{entity.name}}</a>
     </div>
 
+    <div>
+      <a ng-href={{entity.associatedEntities[0].link()}}>{{entity.associatedEntities[0].getName()}}</a>
+    </div>
+    <div style="margin-top: 15px">
+      {{entity.models.entity.followerCount()}} Followers
+    </div>
     <div ng-switch="entity.models.entity.getType()">
       <div ng-switch-when="Business">
-        <div><a ng-href={{entity.associatedEntities[0].link()}}>{{entity.associatedEntities[0]}}</a>
-        </div>
+        
+      </div>
       <div ng-switch-when="User">
-        <div>
-          <a href={{entity.models.entity.link()}}>{{entity.models.entity.getName()}}</a>
-        </div>
+      
       </div>
     </div>
   </div>

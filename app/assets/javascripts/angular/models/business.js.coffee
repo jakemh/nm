@@ -11,7 +11,7 @@ angular.module("NM").factory "Business", [
       self.reviews = []
 
       self.link = ->
-        return "business/#{self.id}"
+        return "businesses/#{self.id}"
 
       self.addReview = (review) ->
         self.review_ids.push review.id

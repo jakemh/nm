@@ -15,7 +15,7 @@ class User < ActiveRecord::Base
   
   include Profile
   include Messaging
-  include Interaction 
+  include Connect 
   include Search
   include Entity
 

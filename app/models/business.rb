@@ -10,7 +10,7 @@ class Business < ActiveRecord::Base
   INTER_CONNECTION = "BusinessConnection"
   # acts_as_gmappable
   include Profile
-  include Interaction
+  include Connect
   include Messaging
   include Directory
   include Search
