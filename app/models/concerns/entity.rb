@@ -5,6 +5,9 @@ module Entity
     has_many :flags, :as => :flaggable
     has_many :photos, :as => :imageable, :dependent => :destroy
     has_one :score, :as => :scoreable
+    has_many :points, :through => :posts
+    has_many :points_given, :class => Point
+    has_many :responses
     # has_many :votes, :through => :posts, :source => :points
     #  scope :votes, -> { Point.all.where(published: true) }
  
@@ -17,6 +20,7 @@ module Entity
       {:user_id => self.id}
     end
   end
+
 
   def votes
     Point.all.where(entity_id)

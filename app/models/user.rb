@@ -23,6 +23,7 @@ class User < ActiveRecord::Base
   has_many :business_received_messages, through: :businesses, source: :received_messages
   has_many :issued_flags
   has_many :skills
+  has_many :reviews
   has_many :items, :foreign_key => 'user_id', :class_name => "Skill"
   # has_many :received_messages, -> { where(:to_entity => "User") }, class_name: "Message", foreign_key: :to_id
   has_many :intra_connections, class_name: INTRA_CONNECTION 

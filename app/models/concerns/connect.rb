@@ -41,6 +41,14 @@ module Connect
     self.connections.where.not(type: 'Ownership')
   end
 
+  def followed_by?(entity)
+
+  end
+
+  def is_following?(entity)
+    
+  end
+
   def follow(entity)
     if entity.class.name == "Business"
       self.connections.create(:connect_to_id => entity.id, :type => self.class::INTER_CONNECTION)
