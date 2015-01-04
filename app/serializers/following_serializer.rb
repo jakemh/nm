@@ -1,3 +1,3 @@
-class FollowingSerializer < FollowerSerializer
-  
+class FollowingSerializer < ConnectionSerializer
+ 
 end

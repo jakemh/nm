@@ -109,6 +109,9 @@ angular.module("NM").controller "AudienceController", [
       profile: entity.uri
       type: f.type
       entityType: entity.type
+      interactions: f.getInteractions()
+      interactionsIn: f.getInteractionsIn() || 0
+
       isFollower: -> _.contains this.relationships, "Follower"
       isFollowing: -> _.contains this.relationships, "Following"
 

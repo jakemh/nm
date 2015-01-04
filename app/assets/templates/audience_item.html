@@ -23,6 +23,9 @@
     <div style="margin-top: 15px">
       {{entity.models.entity.followerCount()}} Followers
     </div>
+    <div>
+     </i>{{entity.interactions || 0}} Interactions ({{entity.interactionsIn}} <i style="font-weight: light; font-size: .8em" class="fa fa-arrow-left"></i>)
+    </div>
     <div ng-switch="entity.models.entity.getType()">
       <div ng-switch-when="Business">
         
