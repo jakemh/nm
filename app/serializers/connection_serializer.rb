@@ -19,6 +19,7 @@ class ConnectionSerializer < ActiveModel::Serializer
     interactions_out = iOut.total_interaction_count(object.entity)
     interactions_in = iIn.total_interaction_count(object.connection_entity)
     @interactions_in = interactions_in
+    @interactions_out = interactions_out
     total_interactions = interactions_out + interactions_in
   end
 
