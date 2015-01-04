@@ -3,11 +3,17 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
   # before_action :authenticate 
+  # before_action :set_business_ids
+  before_action :authenticate_entity, except: [:index, :show]
+  # before_action :authenticate_business
+
   after_filter :track_action
   serialization_scope :view_context
   before_filter :authenticate_user!
+
   include SqlConcern
 
+  attr_accessor :business_ids
   # attr_accessor :entity
 
   # check_authorization :unless => :devise_controller?
@@ -18,7 +24,11 @@ class ApplicationController < ActionController::Base
   end
 
   protected
- 
+  
+  def set_business_ids
+    @business_ids = current_user.businesses.pluck :id
+  end
+
   def parse_show_array(model)
 
     models = []
@@ -59,8 +69,9 @@ class ApplicationController < ActionController::Base
     end
 
     def user_or_belongs_to_user
-      return true if entity == current_user 
-      return true if current_user.businesses.include? entity
+      @entity = set_entity
+      return true if @entity == current_user 
+      return true if current_user.businesses.include? @entity
       return false
     end
 
@@ -68,6 +79,7 @@ class ApplicationController < ActionController::Base
       if user_or_belongs_to_user
         return true
       else
+        p "AUTHENTICATION FAILED!"
         raise CanCan::AccessDenied
       end
     end
@@ -106,14 +118,14 @@ class ApplicationController < ActionController::Base
 
   def set_entity
     p "SET ENTITY"
-   if params[:business_id]
+    if params[:business_id]
       p params[:business_id]
-     return Business.find(params[:business_id])
-     p "ENTITY: ", @entity
-   elsif params[:user_id]
-     return  User.find(params[:user_id]) 
-    else raise "Applicable entity not found!"
-
+      return Business.find(params[:business_id])
+      p "ENTITY: ", @entity
+    elsif params[:user_id]
+      return  User.find(params[:user_id]) 
+    # else raise "Applicable entity not found!"
+    else return current_user 
     end
   end
   # def after_sign_in_path_for(resource)

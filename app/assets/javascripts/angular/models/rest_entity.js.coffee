@@ -133,6 +133,9 @@ angular.module("NM").factory "RestEntity", [
       #   #   else return false
       #   # else return false
 
+      kindOf: (type) ->
+        @type == type
+        
       restangularize: () ->
         if @type == "Business"
           Restangular.restangularizeElement(null, @, 'businesses')

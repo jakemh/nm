@@ -136,11 +136,15 @@ window.App = angular.module("NM", [
   # controller: "PostController"
 
     templateUrl: "feed.html"
+    reloadOnSearch: false
+
     resolve: 
       testing: ->
         return "100"
   .when "/users/:id",
     templateUrl: "profile.html"
+    reloadOnSearch: false
+
     controller: "ProfileController"
     resolve:
       profileEntity: ($route, RestangularPlus)->
@@ -150,6 +154,8 @@ window.App = angular.module("NM", [
 
   .when "/me/audience",
     templateUrl: "audience.html"
+    reloadOnSearch: false
+
     controller: "AudienceController"
     resolve: 
       entityHash: ($route, AuthService, RestangularPlus)->
@@ -158,6 +164,8 @@ window.App = angular.module("NM", [
       
   .when "/messages",
     templateUrl: "private_messages.html"
+    reloadOnSearch: false
+
     controller: "MessagesController"
     resolve: 
       entityHash: ($route, AuthService, RestangularPlus)->
@@ -165,8 +173,12 @@ window.App = angular.module("NM", [
           return h
   .when "/me/followers",
     templateUrl: "followers.html"
+    reloadOnSearch: false
+
   .when "/businesses/:id",
     templateUrl: "profile.html"
+    reloadOnSearch: false
+
     controller: "ProfileController"
     resolve:
       profileEntity: ($route, RestangularPlus)->

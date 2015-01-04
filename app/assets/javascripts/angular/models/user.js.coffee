@@ -13,6 +13,10 @@ angular.module("NM").factory "User", [
       self.link = ->
         return "users/#{self.id}"
 
+      self.isUser = () ->
+        true
+        
+
       self.ownedEntities = ->
         deferred = $q.defer();
         returnList = [self]

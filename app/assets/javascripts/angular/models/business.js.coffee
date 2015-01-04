@@ -9,7 +9,7 @@ angular.module("NM").factory "Business", [
       angular.extend self, angular.copy(RestEntity)
 
       self.reviews = []
-
+      
       self.link = ->
         return "businesses/#{self.id}"
 
