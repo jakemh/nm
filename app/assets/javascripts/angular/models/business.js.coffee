@@ -42,9 +42,10 @@ angular.module("NM").factory "Business", [
         else return false
       
       self.canBeFollowedBy = (userEntity) ->
-        
-        if self == userEntity
-          return false #same entity
+         # if self == userEntity
+         #  return false #same entity
+        if userEntity.type == "Business"
+          return false if userEntity.id == self.id
 
         return true #business can be followed by anythign but themselves
 
