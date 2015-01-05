@@ -3,13 +3,15 @@ angular.module("NM").controller "BusinessDirectoryController", [
   "Business"
   "User"
   "Restangular"
+  "RestangularPlus"
   "SideBar"
   "MapService"
   "$location"
   "$filter"
   "RestEntity"
   "AuthService"
-  ($scope, Business, User, Restangular, SideBar, MapService, $location, $filter, RestEntity, AuthService) ->
+  "Utilities"
+  ($scope, Business, User, Restangular, RestangularPlus, SideBar, MapService, $location, $filter, RestEntity, AuthService, Utilities) ->
     
     $scope.SideBar = SideBar
     # SideBar.rightBarTemplate = "right_bar_bus_dir.html"     
@@ -93,13 +95,11 @@ angular.module("NM").controller "BusinessDirectoryController", [
 
     # $scope.$watch "businesses + displayList", ->
 
-
     $scope.$watch "query", ->
       if $scope.query
         $scope.submit()
 
-   
-
+  
     $scope.$watch "businessFilter", ->
       # $scope.$apply()
 
@@ -112,7 +112,8 @@ angular.module("NM").controller "BusinessDirectoryController", [
     
     $scope.letterClick = (letter) -> 
       Restangular.all("entities").getList({first_letter: letter}).then (entities)->
-        $scope.displayList = _.map entities, (e) -> e.restangularize()
+        $scope.displayList = RestangularPlus.restangularizeList(entities, Utilities.entityRoute)
+        
         $scope.applyMarkers()
 
     $scope.randomClick = (bus)->
@@ -129,12 +130,7 @@ angular.module("NM").controller "BusinessDirectoryController", [
 
     $scope.submit = () ->
       $scope.engine.get $scope.query, (suggestions) ->
-        formattedSuggestions = []
-        for entity in suggestions[0]
-          
-          formattedSuggestions.push(angular.extend entity, angular.copy(RestEntity))
-        $scope.displayList = formattedSuggestions
-        # MapService.resetMap(MapService.mapToMarker($scope.displayList))
+        $scope.displayList = RestangularPlus.restangularizeList(suggestions[0], Utilities.entityRoute)
         $scope.applyMarkers()
         $scope.$apply()
 ]

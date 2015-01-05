@@ -9,6 +9,13 @@ angular.module("NM").factory "RestEntity", [
       sentMessages: []
 
 
+      getRoute: () ->
+        if @type == "Business"
+          "businesses"
+        else if @type == "User"
+          "users"
+
+
       allMessages: ->
         @receivedMessages.concat @sentMessages
 

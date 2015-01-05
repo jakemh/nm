@@ -7,6 +7,12 @@ App.factory "Utilities", [
 
       millisecondsPerDay: 86400000
 
+      entityRoute: (entity) ->
+        if entity.type == "User"
+          return "users"
+        else if entity.type == "Business"
+          return "businesses"
+          
       entityLink: (type, id) ->
         if type == "Business"
           return "businesses/#{id}"

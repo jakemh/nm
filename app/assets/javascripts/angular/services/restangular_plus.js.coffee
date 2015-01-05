@@ -4,6 +4,13 @@ App.factory "RestangularPlus", [
   "Restangular"
   ($q, CacheService, Restangular) ->
 
+    getRoute: () ->
+      @route
+
+    restangularizeList: (list, route, parent = null) ->
+      return _.map list, (e) -> 
+        Restangular.restangularizeElement(parent, e, route(e))
+
     removeFromCache: ()->
       CacheService.modelsToCache()[this.route].cache.remove(this.id)
     
