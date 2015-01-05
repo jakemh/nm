@@ -148,7 +148,8 @@ angular.module("NM").controller "ProfileController", [
   "ReviewDisplay"
   "profileEntity"
   "usSpinnerService"
-  ($scope, $sce, $q, $routeParams, $location, Utilities, Review, AuthService, MessagesDisplay, MessageService, Restangular, SideBar, MapService, ReviewService, ReviewDisplay, profileEntity, usSpinnerService) ->
+  "PointService"
+  ($scope, $sce, $q, $routeParams, $location, Utilities, Review, AuthService, MessagesDisplay, MessageService, Restangular, SideBar, MapService, ReviewService, ReviewDisplay, profileEntity, usSpinnerService, PointService) ->
     
     # alert my#FriendsHotel.hotelName( );
     
@@ -175,6 +176,15 @@ angular.module("NM").controller "ProfileController", [
     $scope.photoCropping = false
 
    
+    $scope.alreadyVoted = (post) ->
+      moment(post.last_vote_current_user).add(1, "days").diff(moment()) > 0
+
+
+    $scope.disableTop = PointService.disableTop
+    $scope.disableBottom = PointService.disableBottom
+    $scope.existingScore = PointService.existingScore
+    $scope.upVote = PointService.upVote
+    $scope.downVote = PointService.downVote
 
     $scope.cropperCallback = ->
       $scope.stopSpin('spinner-1')
