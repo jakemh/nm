@@ -1,7 +1,7 @@
 class FollowingSerializer < ConnectionSerializer
   
   def interactions_in
-    @interactions_out
+    @interactions_in
   end
 
 end
