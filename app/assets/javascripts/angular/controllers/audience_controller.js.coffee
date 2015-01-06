@@ -42,11 +42,11 @@ angular.module("NM").controller "AudienceController", [
     $scope.$watch "AuthService.currentEntitySelection.selected", ->
       AuthService.currentEntitySelection.selected.all("interactions").getList().then (i) ->
         list = i[0]
-        dates = _.map list.dates, (item) -> moment(item).format("LL")
+        dates = _.map list.dates, (item) -> moment(item).format("ll")
         interactions = list.interactions
         $scope.chart.labels = dates
         $scope.chart.datasets[0].data = interactions
-        
+
       ent = AuthService.currentEntitySelection.selected
       $scope.getFollowing(ent)
       $scope.getFollowers(ent)
@@ -54,6 +54,10 @@ angular.module("NM").controller "AudienceController", [
     $scope.chart = {
         # labels : ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
         labels: []
+        options:  
+          scaleLabel: "<%=value%>",
+
+
         datasets : [
             {
                 fillColor : "rgba(151,187,205,0)",
