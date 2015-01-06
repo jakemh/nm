@@ -8,7 +8,8 @@ angular.module("NM").controller "AudienceController", [
   "AuthService"
   "SideBar"
   "entityHash"
-  ($scope, $q, Utilities, Restangular, AuthService, SideBar, entityHash) ->
+  "$location"
+  ($scope, $q, Utilities, Restangular, AuthService, SideBar, entityHash, $location) ->
 
     $scope.current = AuthService.currentEntitySelection.selected
     $scope.entityHash = entityHash
@@ -36,6 +37,15 @@ angular.module("NM").controller "AudienceController", [
     
     $scope.followerFilter = true
     $scope.followingFilter = false
+
+    # $scope.getFollowerFilter = ->
+    #   $scope.followerFilter
+
+    # $scope.getFollowingFilter = ->
+    #   if AuthService.currentEntitySelection.selected.group
+    #   if !$scope.noConnections() && AuthService.currentEntitySelection.selected.getFollowerIds > 0
+    #     true
+    #   else return $scope.followingFilter
     # $scope.interactions = {data: null, labels: null}
     
 
@@ -51,11 +61,18 @@ angular.module("NM").controller "AudienceController", [
       $scope.getFollowing(ent)
       $scope.getFollowers(ent)
 
+    $scope.noConnections = ->
+
+      if AuthService.currentEntitySelection.selected.connectionCount() == 0
+        true
+      else 
+        false
+
     $scope.chart = {
         # labels : ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
         labels: []
-        options:  
-          scaleLabel: "<%=value%>",
+        # options:  
+        #   scaleLabel: "<%=value%>",
 
 
         datasets : [
@@ -72,7 +89,10 @@ angular.module("NM").controller "AudienceController", [
     };
 
     $scope.init = () ->
+
       ent = AuthService.currentEntitySelection.selected
+      if !$scope.noConnections() && ent.getFollowingIds() > 0
+        $scope.followingFilter = true
       # $scope.currentDisplayEntity()
       
         
@@ -82,6 +102,9 @@ angular.module("NM").controller "AudienceController", [
     $scope.getFollowers = (ent)->
       ent.getFollowers().then (followers)->
         $scope.current.followers = followers
+
+    $scope.visitNewsFeed = () ->
+      $location.path("me/feed");
 
     $scope.getFollowing = (ent)->
       ent.getFollowing().then (following)->

@@ -41,7 +41,14 @@
     <input type="checkbox" ng-model="followingFilter" ng-checked="followingFilter">
     <label name="following-filter">Following</label>
   </div>
-
+  <div ng-show="noConnections()" class="nm__lightest-gray" style="height: 125px; text-align: center; overflow: auto; padding: 15px; font-size: 1.2em; color: gray; margin-top: 1px;">
+    Check out the news feed to add connections
+    <div style="margin-top: 15px; font-size: .9em">
+      <button style="margin: auto" class="feed__button button__btn button__btn--orange" ng-click="visitNewsFeed()">
+        Get Started
+      </button>
+    </div>
+  </div>
   <div class="aud__members">
     <div ng-repeat="entity in currentDisplayEntity().allConnections
     | audienceTypeFilter:AuthService.currentEntitySelection.selected:followerFilter:followingFilter 

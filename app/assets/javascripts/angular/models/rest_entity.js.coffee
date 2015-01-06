@@ -14,7 +14,16 @@ angular.module("NM").factory "RestEntity", [
           "businesses"
         else if @type == "User"
           "users"
-          
+      
+      getFollowerIds: () ->
+        @follower_ids
+
+      getFollowingIds: () ->
+        @following_ids
+
+      connectionCount: () ->
+        @getFollowerIds().length + @getFollowingIds().length 
+
       allMessages: ->
         @receivedMessages.concat @sentMessages
 
@@ -154,7 +163,6 @@ angular.module("NM").factory "RestEntity", [
 
       personalPosts: (params) ->
         @severalPlus2("posts", @personal_post_ids)
-
 
       flag: (params) ->
         @post('flags', params)
