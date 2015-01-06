@@ -5,37 +5,44 @@ class InteractionAll < Interaction
   end
 
   def total_post_points_to
-    PostPoint.scored_by(entity).joins(:post).where("posts.#{@current_entity.entity_id.keys.first} = ?", @current_entity.id)
+    @current_entity.posts
+    .joins(:points)
+    .where.not("points.#{@id_string} = ? AND points.#{@id_string} IS NOT NULL", @current_entity.id)
   end
 
-  def total_responses_from(entity)
-    entity.responses.joins("INNER JOIN posts as parents on parents.id = posts.parent_id").where("parents.#{@current_entity.entity_id.keys.first} = ?", @current_entity.id)
+  def total_responses_to
+    Response.all.joins("INNER JOIN posts as parents on parents.id = posts.parent_id").where("parents.#{@id_string} = ?", @current_entity.id)
   end
 
-  def total_reviews_from(entity) 
-    entity.reviews.where(:reviewable_type => "Business", :reviewable_id => @current_entity.id)
-
+  def total_reviews_to
+    Review.sent_to(@current_entity)
   end 
 
-  def total_connections_from(entity)
-    entity.connection_with(@current_entity)
+  def total_inverse_intra_connections_to
+    @current_entity.inverse_intra_connections
   end
 
-  def total_interaction_count(entity)
+  def total_inverse_inter_connections_to
+    @current_entity.inverse_inter_connections
+  end
+
+  def total_connections_to
+    @current_entity.inverse_connections
+  end
+
+  def total_count(range = [])
     total = 0
     methods = [
-    :total_messages_from,
-    :total_post_points_from,
-    :total_responses_from,
-    :total_reviews_from,
-    :total_connections_from,
+      :total_messages_to,
+      :total_post_points_to,
+      :total_responses_to,
+      :total_reviews_to,
+      :total_inverse_intra_connections_to,
+      :total_inverse_inter_connections_to
     ] 
 
-    methods.inject(0){ |count, m| count += send(m, entity).count}
+    methods.inject(0){ |count, m| count += send(m).where(:created_at => range[0]..range[1]).count }
+
   end
 
-  # def total_requests_from(entity)
-  #   # nothing to put here yet
-  # end
-  
 end

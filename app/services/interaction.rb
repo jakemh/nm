@@ -1,9 +1,10 @@
 class Interaction
   include SqlConcern
-  attr_accessor :current_entity
+  attr_accessor :current_entity, :id_string
 
   def initialize(current_entity)
     @current_entity = current_entity
+    @id_string = @current_entity.entity_id.keys.first
   end
 
   def total_messages_from(entity)
@@ -19,7 +20,7 @@ class Interaction
   end
 
   def total_reviews_from(entity) 
-    entity.reviews.where(:reviewable_type => "Business", :reviewable_id => @current_entity.id)
+    entity.reviews.where(:reviewable_type => @current_entity.class.to_s, :reviewable_id => @current_entity.id)
 
   end 
 

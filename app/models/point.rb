@@ -4,7 +4,7 @@ class Point < ActiveRecord::Base
   has_one :self_ref, :class_name => self, :foreign_key => :id
 
   has_one :post, :through => :self_ref, :source => :pointable, :source_type => Post
-  has_many :message_recipients, through: :post
+
   def scorer
     if self.user_id
       User.find user_id
