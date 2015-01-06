@@ -79,6 +79,7 @@ window.App = angular.module("NM", [
   "ngFitText"
   "angularSpinner"
   "angular-ladda"
+  "angles"
   
 ]).config ($routeProvider, $locationProvider, $httpProvider, RestangularProvider) ->
   $httpProvider.defaults.headers.common['X-CSRF-Token'] = $('meta[name=csrf-token]').attr('content')
@@ -107,7 +108,6 @@ window.App = angular.module("NM", [
     # alert JSON.stringify data
     if key == "user" || key == "business" || key == "tags" || key == "post" || key == "response" || key == "message" || key == "received_message" || key == "sent_messages" || key == "cover_photo" || key == "profile_photo" || key == "review"
       extractedData = data[key]
-    
 
     if (operation == "getList")
 

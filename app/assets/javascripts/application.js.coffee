@@ -48,6 +48,9 @@
 #= require angular-spinner/angular-spinner
 #= require ladda/js/ladda
 #= require angular-ladda/src/angular-ladda
+#= require chartjs/Chart.js
+#= require angles/angles.js
+
 
 #= require_self
 #= require next_mission

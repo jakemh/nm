@@ -40,7 +40,9 @@
     "spin.js": "",
     "angular-spinner": "",
     "angular-ladda": "",
-    "ladda": ""
+    "ladda": "",
+    "chartjs": "", 
+    "angles": ""
   },
   "resolutions": {
      "angular": "1.3.3"

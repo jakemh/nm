@@ -36,18 +36,42 @@ angular.module("NM").controller "AudienceController", [
     
     $scope.followerFilter = true
     $scope.followingFilter = false
-
-
+    # $scope.interactions = {data: null, labels: null}
+    
 
     $scope.$watch "AuthService.currentEntitySelection.selected", ->
+      AuthService.currentEntitySelection.selected.all("interactions").getList().then (i) ->
+        list = i[0]
+        dates = _.map list.dates, (item) -> moment(item).format("LL")
+        interactions = list.interactions
+        $scope.chart.labels = dates
+        $scope.chart.datasets[0].data = interactions
+        
       ent = AuthService.currentEntitySelection.selected
       $scope.getFollowing(ent)
       $scope.getFollowers(ent)
 
+    $scope.chart = {
+        # labels : ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+        labels: []
+        datasets : [
+            {
+                fillColor : "rgba(151,187,205,0)",
+                strokeColor : "#e67e22",
+                pointColor : "rgba(151,187,205,0)",
+                pointStrokeColor : "#e67e22",
+                data : []
+                # data: []
+            }
+      
+        ], 
+    };
+
     $scope.init = () ->
       ent = AuthService.currentEntitySelection.selected
       # $scope.currentDisplayEntity()
-
+      
+        
       # $scope.getFollowing(ent)
       # $scope.getFollowers(ent)
 

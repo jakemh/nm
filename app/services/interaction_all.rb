@@ -45,4 +45,21 @@ class InteractionAll < Interaction
 
   end
 
+  def total_count_list(count)
+
+    interval = (Time.now - @current_entity.created_at) / count
+
+    startingTime = @current_entity.created_at
+    endingTime = startingTime + interval
+    interactions = []
+
+    count.times do |n|
+      interactions << {total_count([startingTime, endingTime]) => [startingTime, endingTime] }
+      startingTime = endingTime
+      endingTime += interval
+
+    end
+
+    return interactions
+  end
 end

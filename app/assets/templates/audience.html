@@ -1,6 +1,11 @@
 <div ng-if="AuthService.currentEntitySelection.selected" ng-init="init()">
 
   <!-- <div ng-include="'feed_head_outer.html'"></div> -->
+  <div class="chart">
+    <div class="chart__title"><h4>Interactions</h4></div>
+    <canvas chart="Line" responsive=true options="options" data="chart" width="730" height="200">
+    </canvas>
+  </div>
 
   <div class="row">
 

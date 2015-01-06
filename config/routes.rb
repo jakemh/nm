@@ -92,17 +92,15 @@ Rails.application.routes.draw do
 
   resources :users, :businesses do
     resources :messages
+    resources :interactions
     resources :photos
     resources :cover_photos, :controller => :photos, :type => "CoverPhoto"
     resources :profile_photos, :controller => :photos, :type => "ProfilePhoto"
 
     resources :flags
     resources :sent_messages, :received_messages do
-      # resources :message_responses
+
     end
-
-
-
 
     resources :posts
     resources :followers
