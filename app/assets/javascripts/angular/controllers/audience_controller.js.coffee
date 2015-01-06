@@ -104,9 +104,6 @@ angular.module("NM").controller "AudienceController", [
       {name: "name", id: 3, attr: "name"}
       {name: "total interactions", id: 4, attr: "interactions", reverse: true}
       {name: "interactions to you", id: 5, attr: "interactionsIn", reverse: true}
-
-
-
     ]
     
     $scope.filterOptions = [

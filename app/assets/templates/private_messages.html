@@ -1,24 +1,33 @@
-<div tyle="height: 100%; overflow: auto"  ng-if="AuthService.currentEntitySelection.selected">
+<div style="height: 100%; overflow: auto" ng-if="AuthService.currentEntitySelection.selected">
+  <div ng-switch="displayEnt().getEntitiesList().length == 0 && entitiesLoaded">
 
-  <div  class="row" style="height: 100%; overflow: auto; margin: 0">
-    <div class="col-sm-6 no-padding no-margin" style="height: 100%; overflow: auto; padding: 0">
-      <ul class="nm__list" ng-repeat="displayEntity in displayEnt().getEntitiesList() | orderBy:'lastMessage().id':true">
-        <li ng-click="selectEntity(displayEntity)" style="height: 55px; position: relative" class="nm__list-item nm__list-item--unread" ng-class="{'nm__selected' : Utilities.entityCompare(displayEntity.entity, selectedEntity.entity)}">
-          <div ng-if="displayEntity.lastDisplayMessage()" ng-init="message=displayEntity.lastDisplayMessage()"class="bottom-right nm__time" style="bottom: 2px; right: 5px;">
-
-           <span ng-if="Utilities.exceedThreshold(message.timeFromNow)">{{message.timeStamp | amDateFormat:'MMMM Do'}}</span>
-           <span ng-if="!Utilities.exceedThreshold(message.timeFromNow)" am-time-ago="message.timeStamp"></span>
-          </div>
-          <span class="badge pull-right">{{unreadQuantity(displayEntity)}}</span>
-          <div style="width: 50px; height: 50px;" class="left thumb--44">
-            <img ng-src="{{displayEntity.entity.thumb}}">
-          </div>
-          <div class="nm__item-name nm__bold">
-            {{displayEntity.entity.name}}
-          </div>
-        </li>
-      </ul>
+    <div ng-switch-when="true" class="nm__lightest-gray" style="height: 125px; text-align: center; overflow: auto; padding: 15px; font-size: 1.2em; color: gray; margin-top: 1px;">
+      View a profile to send a message
+      <div style="margin-top: 15px; font-size: .9em">
+        <button style="margin: auto" class="feed__button button__btn button__btn--orange" ng-click="randomProfile()">
+          Get Started
+        </button>
+      </div>
     </div>
+    <div  ng-switch-when="false" class="row" style="height: 100%; overflow: auto; margin: 0">
+      <div class="col-sm-6 no-padding no-margin" style="height: 100%; overflow: auto; padding: 0">
+        <ul class="nm__list" ng-repeat="displayEntity in displayEnt().getEntitiesList() | orderBy:'lastMessage().id':true">
+          <li ng-click="selectEntity(displayEntity)" style="height: 55px; position: relative" class="nm__list-item nm__list-item--unread" ng-class="{'nm__selected' : Utilities.entityCompare(displayEntity.entity, selectedEntity.entity)}">
+            <div ng-if="displayEntity.lastDisplayMessage()" ng-init="message=displayEntity.lastDisplayMessage()" class="bottom-right nm__time" style="bottom: 2px; right: 5px;">
+
+              <span ng-if="Utilities.exceedThreshold(message.timeFromNow)">{{message.timeStamp | amDateFormat:'MMMM Do'}}</span>
+              <span ng-if="!Utilities.exceedThreshold(message.timeFromNow)" am-time-ago="message.timeStamp"></span>
+            </div>
+            <span class="badge pull-right">{{unreadQuantity(displayEntity)}}</span>
+            <div style="width: 50px; height: 50px;" class="left thumb--44">
+              <img ng-src="{{displayEntity.entity.thumb}}">
+            </div>
+            <div class="nm__item-name nm__bold">
+              {{displayEntity.entity.name}}
+            </div>
+          </li>
+        </ul>
+      </div>
     <div class="col-sm-6 no-padding no-margin" style="padding: 0">
       <div class="msg__form" style="padding-bottom: 5px;">
         <div ng-init="
@@ -33,13 +42,9 @@
       </div>
 
       <ul class="nm__list" ng-repeat="msg in selectedEntity.displayMessages | orderBy:'models.post.id': true">
-        <li 
-        class="nm__list-item"
-        ng-class="{'highlight' : unread(msg)}"
-        ng-click="markAsRead(msg)"
-        >
+        <li class="nm__list-item" ng-class="{'highlight' : unread(msg)}" ng-click="markAsRead(msg)">
           <div class="top-right nm__time" style="top: 2px; right: 10px;">
-           <div ng-init="message=msg" ng-include="'time_stamp.html'"></div>
+            <div ng-init="message=msg" ng-include="'time_stamp.html'"></div>
           </div>
           <!-- <div class="arrow"></div> -->
           <div style="width: 50px; height: 50px;" class="left thumb--44">
@@ -54,7 +59,7 @@
         </li>
       </ul>
     </div>
-
   </div>
+</div>
 
 </div>

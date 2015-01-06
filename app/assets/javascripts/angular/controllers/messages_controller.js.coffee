@@ -28,8 +28,9 @@ angular.module("NM").controller "MessagesController", [
   "UsersCache"
   "entityHash"
   "$filter"
+  "$location"
 
-  ($scope, $q,  Utilities, AuthService, MessagesDisplay, Restangular, SideBar, MessageService, RestangularPlus, UsersCache, entityHash, $filter) ->
+  ($scope, $q,  Utilities, AuthService, MessagesDisplay, Restangular, SideBar, MessageService, RestangularPlus, UsersCache, entityHash, $filter, $location) ->
     # $scope.messages = []
     $scope.current = AuthService.currentEntitySelection.selected
     $scope.entityHash = entityHash
@@ -46,14 +47,13 @@ angular.module("NM").controller "MessagesController", [
     $scope.displayMessages = []
     $scope.newMessage = {}
     SideBar.tabBarVisible = true 
-
+    $scope.displayEntities = null
     # $scope.userList = []
     # $scope.unreadList = []
     # $scope.entityList = []
     # $scope.allMessages = []
     # $scope.feedHeadBody = "feed_head_form.html"
-    $scope.selectedEntity = null
-
+    $scope.entitiesLoaded = false
     $scope.feedCornerPartial = "feed_body_comment.html"
     $scope.SideBar = SideBar
     SideBar.rightBarTemplate = "blank.html"  
@@ -61,6 +61,10 @@ angular.module("NM").controller "MessagesController", [
 
     # $scope.headOuterInit = (newPost, entity) ->
     #   newPost.type = ''
+
+    $scope.randomProfile = ->
+      Restangular.all("businesses").getList({random: true}).then (businesses)=>
+        $location.path(businesses[0].link());
 
     $scope.submitHandler = ->
       MessageService.submit(newPost, entity, entryForm, sendPost)
@@ -200,7 +204,6 @@ angular.module("NM").controller "MessagesController", [
           $scope.displayEnt().entitiesList = []
           # console.log entities
       
-
           for entity in _.uniq entities
             displaySubEnt = new MessageEntity(entity)
             $scope.displayEnt().entitiesList.push(displaySubEnt)
@@ -212,9 +215,11 @@ angular.module("NM").controller "MessagesController", [
       return deferred.promise
     
     $scope.$watch 'AuthService.currentEntitySelection.selected', ->
-    
+      $scope.entitiesLoaded = false
+
       currentEntity = AuthService.currentEntitySelection.selected
       $scope.buildMessages(currentEntity).then () ->
+        $scope.entitiesLoaded = true
         list = _.sortBy $scope.displayEnt().getEntitiesList(), (item) -> item.lastMessage().id
         $scope.selectedEntity = list[list.length - 1]
     

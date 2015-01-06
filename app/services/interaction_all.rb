@@ -11,7 +11,7 @@ class InteractionAll < Interaction
   end
 
   def total_responses_to
-    Response.all.joins("INNER JOIN posts as parents on parents.id = posts.parent_id").where("parents.#{@id_string} = ?", @current_entity.id)
+    Response.all.joins("INNER JOIN posts AS parents ON parents.id = posts.parent_id").where("parents.#{@id_string} = ?", @current_entity.id)
   end
 
   def total_reviews_to
