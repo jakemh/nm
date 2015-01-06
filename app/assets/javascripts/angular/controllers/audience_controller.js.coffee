@@ -71,12 +71,16 @@ angular.module("NM").controller "AudienceController", [
     #   $scope.displayList = $scope.followersDisplay.concat($scope.followingDisplay)
 
     $scope.sortOptions = [
-      {name: "added", id: 1}
-      {name: "distance", id: 2}
-      {name: "name", id: 3}
+      {name: "added", id: 1, attr: "added"}
+      {name: "distance", id: 2, attr: "distance"}
+      {name: "name", id: 3, attr: "name"}
+      {name: "total interactions", id: 4, attr: "interactions", reverse: true}
+      {name: "interactions to you", id: 5, attr: "interactionsIn", reverse: true}
+
+
 
     ]
- 
+    
     $scope.filterOptions = [
       {name: "Show All", id: 0, group: "Main"}
       {name: "Businesses Only", id: 1, group: "Main"}

@@ -14,8 +14,7 @@ angular.module("NM").factory "RestEntity", [
           "businesses"
         else if @type == "User"
           "users"
-
-
+          
       allMessages: ->
         @receivedMessages.concat @sentMessages
 

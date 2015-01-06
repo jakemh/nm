@@ -40,7 +40,7 @@
   <div class="aud__members">
     <div ng-repeat="entity in currentDisplayEntity().allConnections
     | audienceTypeFilter:AuthService.currentEntitySelection.selected:followerFilter:followingFilter 
-    | orderBy:sortVal.selected.name 
+    | orderBy:sortVal.selected.attr:sortVal.selected.reverse
     | userBusinessFilter:filterVal.selected">
      <div ng-include="'audience_item.html'"></div>
     </div>
