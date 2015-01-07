@@ -19,7 +19,7 @@ class User < ActiveRecord::Base
   include Search
   include Entity
 
-
+  
   has_many :business_received_messages, through: :businesses, source: :received_messages
   has_many :issued_flags
   has_many :skills

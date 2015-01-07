@@ -24,6 +24,9 @@ angular.module("NM").factory "RestEntity", [
       connectionCount: () ->
         @getFollowerIds().length + @getFollowingIds().length 
 
+      review: (params) ->
+        @post('reviews', {reviewable_type: params.toType, reviewable_id: params.toId, score: params.score, content: params.content})
+        
       allMessages: ->
         @receivedMessages.concat @sentMessages
 
@@ -150,7 +153,7 @@ angular.module("NM").factory "RestEntity", [
 
       kindOf: (type) ->
         @type == type
-        
+
       restangularize: () ->
         if @type == "Business"
           Restangular.restangularizeElement(null, @, 'businesses')

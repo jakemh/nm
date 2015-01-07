@@ -76,7 +76,6 @@ Rails.application.routes.draw do
   resources :businesses do
     # resources :tags
     resources :items, :controller => :tags
-    resources :reviews
   end
 
   resources :users do
@@ -94,6 +93,8 @@ Rails.application.routes.draw do
     resources :messages
     resources :interactions
     resources :photos
+    resources :reviews
+
     resources :cover_photos, :controller => :photos, :type => "CoverPhoto"
     resources :profile_photos, :controller => :photos, :type => "ProfilePhoto"
 

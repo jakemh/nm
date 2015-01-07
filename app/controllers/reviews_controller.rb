@@ -14,8 +14,8 @@ class ReviewsController < ApplicationController
   end
 
   def create
-    if !user_or_belongs_to_user
-      review = entity.reviews.build whitelist.merge({:user_id => current_user.id})
+    if true
+      review = entity.reviews.build whitelist
 
       if review.save
         render json: review
@@ -29,6 +29,6 @@ class ReviewsController < ApplicationController
 
   private
     def whitelist
-      params.require(:review).permit(:score, :content)
+      params.require(:review).permit(:score, :content, :reviewable_type, :reviewable_id)
     end
 end

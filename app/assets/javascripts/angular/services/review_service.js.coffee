@@ -4,8 +4,9 @@ App.factory "ReviewService", [
   "$q"
   "CacheService"
   "Restangular"
-  
-  ($q, CacheService, Restangular) ->
+  "AuthService"
+
+  ($q, CacheService, Restangular, AuthService) ->
     messageEntity: null
     
     # setMessageEntity: (entity)->
@@ -52,7 +53,15 @@ App.factory "ReviewService", [
     sendReview: (sendReviewObj)->
       r = sendReviewObj
       business = r.toEntity
-      business.review(r.reviewObj).then (response) =>
+      # currentEntity = AuthService.currentEntitySelection.selected
+      currentEntity = AuthService.currentUser
+      reviewObj = 
+        score: r.reviewObj.score
+        content: r.reviewObj.content
+        toType: business.type 
+        toId: business.id 
+
+      currentEntity.review(reviewObj).then (response) =>
         business.addReview(response)
         # $q.when(response)
         # $("#js__business-review-modal").modal('hide')
