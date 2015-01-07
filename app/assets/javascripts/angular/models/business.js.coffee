@@ -9,7 +9,7 @@ angular.module("NM").factory "Business", [
       angular.extend self, angular.copy(RestEntity)
 
       self.reviews = []
-      
+
       self.link = ->
         return "businesses/#{self.id}"
 
@@ -31,12 +31,10 @@ angular.module("NM").factory "Business", [
       self.getReviews = ->
         self.getListPlus("reviews")
 
-
       self.review = (params) ->
         @post('reviews', {score: params.score, content: params.content})
 
       self.isFollowedBy = (userEntity) ->
-        
         if _.contains(userEntity.business_connection_ids, self.id)
           return true
         else return false

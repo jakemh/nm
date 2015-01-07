@@ -309,9 +309,9 @@ angular.module("NM").controller "ProfileController", [
     # SideBar.delegate.businessOwner = $scope.businessOwner
 
     $scope.reviewValidate = (obj, entryForm, submit) ->
-      
-      if obj.reviewObj.score > 0
 
+      if obj.reviewObj.score > 0
+        
         MessageService.submitHandler(obj, entryForm, submit)
       else 
         SideBar.delegate.validateStars = true
