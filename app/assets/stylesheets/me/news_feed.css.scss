@@ -113,7 +113,7 @@
 
 }
 .feed__content-top{
-  padding: 5px;
+  padding: 5px 0;
   color: $light-gray-color;
 }
 .feed__entry-select{
@@ -193,7 +193,9 @@
 }
 .feed__content-body{
   // display: inline-block;
-  width: 90%;
+  // width: 90%;
+  white-space: pre-wrap;
+
   // background: red;
 } 
 
@@ -271,6 +273,7 @@
 
 .feed__time{
   color: $light-gray-color;
+  float: right;
 }
 
 #js-msg__modal .modal-body{

@@ -33,6 +33,7 @@ module SearchConcern
   def search_fields
     [
       {name: :word_start},
+      {item: :word_start},
       {url: :word_start},
       {first_name: :word_start},
       {last_name: :word_start},

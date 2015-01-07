@@ -1,5 +1,5 @@
-<div style="position: relative"class="feed__content-outer">
-  <div class="top-right top-right--padding">
+<div style="position: relative" class="feed__content-outer">
+  <!--  <div class="top-right top-right--padding">
     <div class="feed__time">
       <span ng-if="Utilities.exceedThreshold(entity.timeFromNow)">{{entity.timeStamp | amDateFormat:'MMMM Do'}}</span>
       <span ng-if="!Utilities.exceedThreshold(entity.timeFromNow)" am-time-ago="entity.timeStamp"></span>
@@ -7,64 +7,82 @@
   </div>
   <div class="feed__content-votes votes">
     <div class="votes__arrow">
-      <a 
-       ng-click="upVote(entity.models.post)" 
-       href="#"
-       class="noselect"
-       ng-class="{'nm__link--disabled': disableTop(entity.models.post)}"
-       >
-       <i class="fa fa-sort-asc"></i>
-     </a>
+      <a ng-click="upVote(entity.models.post)" href="#" class="noselect" ng-class="{'nm__link--disabled': disableTop(entity.models.post)}">
+        <i class="fa fa-sort-asc"></i>
+      </a>
     </div>
     <div class="votes__score">
       {{entity.getPoints()}}
     </div>
     <div class="votes__arrow">
-      <a 
-      class="noselect"
-
-      ng-click="downVote(entity.models.post)" 
-      href="#"
-      ng-class="{'nm__link--disabled': disableBottom(entity.models.post)}"
-
-      >
-      <i class="fa fa-sort-desc"></i>
-    </a>
+      <a class="noselect" ng-click="downVote(entity.models.post)" href="#" ng-class="{'nm__link--disabled': disableBottom(entity.models.post)}">
+        <i class="fa fa-sort-desc"></i>
+      </a>
     </div>
 
-  </div>
+  </div> -->
 
   <div class="feed__content">
-    <div class="feed__content-title">
-      <div class="thumb--85">
-        <a ng-href="{{entity.uri}}">
-          <img ng-src="{{entity.models.entity.thumb}}">
-        </a>
-      </div>
-      <div ng-if="entity.models.entity.canBeFollowedBy(AuthService.currentEntitySelection.selected)" class="feed_content-follow">
-        <!--  <a ng-click="AuthService.followerHandle(entity.models.entity, followerCallback)" href="#"><span ng-bind-html="entity.followerUriType"></span>
+    <!-- <div class="feed__content-title"> -->
+    <div class="row" style="margin: 0; padding: 0">
+      <div class="col-sm-2" style="margin: 0; padding: 0">
+        <div class="thumb--85">
+          <a ng-href="{{entity.uri}}">
+            <img ng-src="{{entity.models.entity.thumb}}">
+          </a>
+        </div>
+        <div ng-if="entity.models.entity.canBeFollowedBy(AuthService.currentEntitySelection.selected)" class="feed_content-follow">
+          <!--  <a ng-click="AuthService.followerHandle(entity.models.entity, followerCallback)" href="#"><span ng-bind-html="entity.followerUriType"></span>
 
         </a> -->
-        <div ng-switch="entity.models.entity.isFollowedBy(AuthService.currentEntitySelection.selected)">
-          <div ng-switch-when="false">
-            <a ng-click="AuthService.messageFollowerHandle(entity, entity.models.entity, AuthService.currentEntitySelection.selected, followerCallback)" href="#">
+          <div ng-switch="entity.models.entity.isFollowedBy(AuthService.currentEntitySelection.selected)">
+            <div ng-switch-when="false">
+              <a ng-click="AuthService.messageFollowerHandle(entity, entity.models.entity, AuthService.currentEntitySelection.selected, followerCallback)" href="#">
               Follow
              </a>
-          </div>
-          <div ng-if="entity.followerFeedback && entity.models.entity.isFollowedBy(AuthService.currentEntitySelection.selected)">
-            <i class="fa fa-check"></i> Added
+            </div>
+            <div ng-if="entity.followerFeedback && entity.models.entity.isFollowedBy(AuthService.currentEntitySelection.selected)">
+              <i class="fa fa-check"></i> Added
+            </div>
           </div>
         </div>
       </div>
-    </div>
-    <div class="feed__content-top">
+      <!-- </div> -->
+      <!--  <div class="feed__content-top">
       <a ng-href="{{entity.uri}}">{{entity.models.entity.name}}</a>
-    </div>
-    <div linkify class="feed__content-body">
+    </div> -->
+      <div class="col-sm-9" style="margin: 0; padding: 0">
+        <div class="feed__content-top">
+          <a ng-href="{{entity.uri}}">{{entity.models.entity.name}}</a>
 
-      {{entity.content}}
-    </div>
+          <div class="feed__time">
+            <span ng-if="Utilities.exceedThreshold(entity.timeFromNow)">{{entity.timeStamp | amDateFormat:'MMMM Do'}}</span>
+            <span ng-if="!Utilities.exceedThreshold(entity.timeFromNow)" am-time-ago="entity.timeStamp"></span>
+          </div>
+        </div>
+        <div linkify class="feed__content-body">{{entity.content}}</div>
+      </div>
 
+      <div class="col-sm-1" style="margin: 0; padding: 0">
+
+        <div class="feed__content-votes votes">
+          <div class="votes__arrow">
+            <a ng-click="upVote(entity.models.post)" href="#" class="noselect" ng-class="{'nm__link--disabled': disableTop(entity.models.post)}">
+              <i class="fa fa-sort-asc"></i>
+            </a>
+          </div>
+          <div class="votes__score">
+            {{entity.getPoints()}}
+          </div>
+          <div class="votes__arrow">
+            <a class="noselect" ng-click="downVote(entity.models.post)" href="#" ng-class="{'nm__link--disabled': disableBottom(entity.models.post)}">
+              <i class="fa fa-sort-desc"></i>
+            </a>
+          </div>
+
+        </div>
+      </div>
+    </div>
   </div>
   <!--  -->
   <div class="feed__comment-container">

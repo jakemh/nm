@@ -16,6 +16,10 @@ class Business < ActiveRecord::Base
   include Search
   include Entity
 
+   def search_data
+    {items: items.pluck(:name)}
+  end
+
   has_many :reviews, :as => :reviewable
   has_many :cover_photos, :as => :imageable
   has_one :cover_photo,  :as => :imageable
