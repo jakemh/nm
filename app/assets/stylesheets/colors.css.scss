@@ -1,4 +1,4 @@
-$orange-color: rgba(255, 118, 24, 1);
+$orange-color: #F28D33;
 $gray-color: rgba(51, 51, 51, 1);
 $light-gray-color: rgba(175, 175, 175, 1);
 $lighter-gray-color: rgba(222, 222, 222, 1);
@@ -10,6 +10,10 @@ $red-color: #990000;
 
 @function orange-color($a){
   @return rgba(255, 118, 24, $a);
+}
+@function orange-new-color($a){
+
+  @return rgba(151,187,205,0)
 }
 
 @function gray-color($a){
