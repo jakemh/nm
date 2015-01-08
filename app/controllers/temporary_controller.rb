@@ -9,6 +9,8 @@ class TemporaryController < ApplicationController
       if Rails.env.production?
         redirect_to me_feed_index_path
       end
+    else 
+      redirect_to new_user_session_path
     end
   end
 
