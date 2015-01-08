@@ -40,6 +40,10 @@
       <body>
           <%= yield :admin %>
       </body>
+    <% elsif content_for?(:devise) %>
+      <body>
+          <%= yield :devise %>
+      </body>
     <% else  %>
       <body>
         <%= yield %>
