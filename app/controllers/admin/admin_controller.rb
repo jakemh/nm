@@ -5,7 +5,7 @@ class Admin::AdminController < ApplicationController
 
   attr_accessor :model_name
 
-  def index
+  def index(options = {})
     #eg Flag -> @flags
     # params[:reverse] = true
     @model = model_type

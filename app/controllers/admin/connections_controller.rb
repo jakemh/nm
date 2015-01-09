@@ -1,6 +1,6 @@
 class Admin::ConnectionsController <  Admin::AdminController
   def index
-    @connections = Connection.all.where.not(:type => "Ownership")
+    super("type != ownership")
   end
 
   # def show
