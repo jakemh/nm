@@ -67,16 +67,6 @@ class User < ActiveRecord::Base
   validates :zip, :presence => true, :on => :create
   accepts_nested_attributes_for :skills
   
-  # def all_received_messages(from_entity)
-  #   all_received_messages = []
-  #   all_received_messages << self.received_messages.includes(:message_recipients).from_entity(from_entity)
-  #   all_received_messages << self.business_received_messages.includes(:message_recipients).from_entity(from_entity)
-  #   # self.businesses.each do |b|
-  #   #   all_received_messages << b.received_messages.includes(:message_recipients).from_entity(from_entity)
-  #   # end
-
-  #   return all_received_messages.flatten
-  # end
 
   def all_unread_messages
     all_received_messages = []
@@ -112,7 +102,7 @@ class User < ActiveRecord::Base
   end
 
   def is_admin?
-    self.role? "Admin"
+    self.role? "AdminRole"
   end
 
   def all_received_messages(from_entity)
@@ -186,7 +176,7 @@ class User < ActiveRecord::Base
   end
 
   def role?(role)
-    return self.roles.pluck(:name).include? role
+    return self.roles.pluck(:roleable_type).include? role
   end
 
   def address

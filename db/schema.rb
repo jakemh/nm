@@ -11,7 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150103204029) do
+ActiveRecord::Schema.define(version: 20150109004819) do
+
+  create_table "admin_roles", force: true do |t|
+    t.integer  "status"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "ahoy_events", force: true do |t|
     t.uuid     "visit_id"
@@ -103,6 +109,12 @@ ActiveRecord::Schema.define(version: 20150103204029) do
     t.datetime "updated_at"
     t.string   "locatable_type"
     t.integer  "locatable_id"
+  end
+
+  create_table "mentor_roles", force: true do |t|
+    t.integer  "category"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "message_polies", force: true do |t|
@@ -232,6 +244,8 @@ ActiveRecord::Schema.define(version: 20150103204029) do
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "roleable_id"
+    t.string   "roleable_type"
   end
 
   create_table "scores", force: true do |t|
