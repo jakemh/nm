@@ -1,0 +1,35 @@
+<div class="table-responsive">
+  <table class="table table-condensed table__admin">
+    <thead>
+      <tr>
+        <th><%= link_to_sort "ID", :sort => :id %></th>
+        <th><%= link_to_sort "Follower", :sort => :entity  %></th>
+        <th><%= link_to_sort "Following", :sort => :entity_id  %></th>
+        <th><%= link_to_sort "Type", :sort => :type  %></th>
+        <th><%= link_to_sort "Date", :sort => :created_at  %></th>
+
+        <th></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @connections.each do |connection| %>
+        <tr>
+          <td><%= connection.id %></td>
+          <td><%= link_to(connection.entity.name, [:admin, connection.entity]) unless connection.entity.kind_of?GenericEntity %>
+            <%= "(#{connection.entity.class.to_s})" %>
+          </td>
+         <td><%= link_to(connection.connection_entity.name, [:admin, connection.connection_entity]) unless connection.connection_entity.kind_of? GenericEntity   %>
+           <%= "(#{connection.connection_entity.class.to_s})" %>
+         </td>
+         <td><%= connection.type %></td>
+         <td><%= connection.created_at %></td>
+
+          <td><%= button_to 'Delete', [:admin, connection.becomes(Connection)], method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger" %></td>
+
+        </tr>
+      <% end %> </td>
+    </tbody>
+  </table>
+</div>
+

@@ -4,6 +4,22 @@ Rails.application.routes.draw do
 
 
 
+  namespace :admin do
+  get 'ownerships/index'
+  end
+
+  namespace :admin do
+  get 'ownerships/show'
+  end
+
+  namespace :admin do
+  get 'connections/index'
+  end
+
+  namespace :admin do
+  get 'connections/show'
+  end
+
   class Format
     attr_accessor :mime_type
 
@@ -123,6 +139,9 @@ Rails.application.routes.draw do
     resources :responses, :only => [:index, :show, :destroy], :controller => :posts
     resources :messages, :only => [:index, :show, :destroy]
     resources :message_responses, :controller => :messages
+    resources :connections
+    resources :ownerships
+
     resources :flags
     resources :reviews
     resource :alerts, :controller => :alerts, :module => :alerts do

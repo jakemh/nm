@@ -32,10 +32,13 @@ class Connection < ActiveRecord::Base
   # end
 
   def connection_entity
-    if self.is_inverse
-      entity_type.find(self.user_id)
-    else
-      entity_type.find(self.connect_to_id)
+    if entity_type
+      if self.is_inverse
+          entity_type.where(id: self.user_id).first || GenericEntity.new
+      else
+        entity_type.where(id: self.connect_to_id).first || GenericEntity.new
+      end
+    else GenericEntity.new
     end
   end 
 

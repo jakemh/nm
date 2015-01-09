@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150109004819) do
+ActiveRecord::Schema.define(version: 20150109222413) do
 
   create_table "admin_roles", force: true do |t|
     t.integer  "status"
@@ -95,6 +95,11 @@ ActiveRecord::Schema.define(version: 20150109004819) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "pending"
+  end
+
+  create_table "generic_entities", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "interactions", force: true do |t|

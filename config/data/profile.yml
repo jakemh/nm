@@ -25,6 +25,13 @@ admin-side:
   - title: Businesses
     path: admin_businesses_path
 
+  - title: Connections
+    path: admin_connections_path
+
+  - title: Ownerships
+    path: admin_ownerships_path
+
+
   - title: Posts
     path: admin_posts_path
 

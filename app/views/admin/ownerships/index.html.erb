@@ -1,0 +1,35 @@
+<div class="table-responsive">
+  <table class="table table-condensed table__admin">
+    <thead>
+      <tr>
+        <th><%= link_to_sort "ID", :sort => :id %></th>
+        <th><%= link_to_sort "Owner", :sort => :entity  %></th>
+        <th><%= link_to_sort "Business", :sort => :entity_id  %></th>
+        <th><%= link_to_sort "Type", :sort => :type  %></th>
+        <th><%= link_to_sort "Date", :sort => :created_at  %></th>
+
+        <th></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @ownerships.each do |ownership| %>
+        <tr>
+          <td><%= ownership.id %></td>
+          <td><%= link_to(ownership.entity.name, [:admin, ownership.entity]) unless ownership.entity.kind_of?GenericEntity %>
+            <%= "(#{ownership.entity.class.to_s})" %>
+          </td>
+         <td><%= link_to(ownership.connection_entity.name, [:admin, ownership.connection_entity]) unless ownership.connection_entity.kind_of? GenericEntity   %>
+           <%= "(#{ownership.connection_entity.class.to_s})" %>
+         </td>
+         <td><%= ownership.type %></td>
+         <td><%= ownership.created_at %></td>
+
+          <td><%= button_to 'Delete', [:admin, ownership.becomes(Connection)], method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger" %></td>
+
+        </tr>
+      <% end %> </td>
+    </tbody>
+  </table>
+</div>
+
