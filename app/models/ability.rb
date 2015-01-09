@@ -4,7 +4,7 @@ class Ability
   def initialize(user)
 
     user ||= User.new # guest user (not logged in)
-    if user.role?("Admin") || user.role?("super_admin")
+    if user.is_admin? || user.role?("super_admin")
       can :manage, :all
       can :show, :all
       can :index, :all
