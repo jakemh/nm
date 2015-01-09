@@ -24,7 +24,8 @@
   end
 
   def is_admin
-    object.role? "Admin"
+    # object.role? "Admin"
+    object.is_admin?
   end
   # def friendships
   #   object.friendships
