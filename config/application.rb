@@ -22,6 +22,8 @@ module NextMission
     config.to_prepare do
 
       Devise::SessionsController.skip_before_filter :authenticate_user!
+      Admin::AdminController.skip_before_action :authenticate_entity
+
       TemporaryController.skip_before_filter :authenticate_user!
       # TemporaryController.skip_before_filter :authenticate
     end

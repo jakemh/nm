@@ -1,5 +1,3 @@
-roles = ["Admin", "User"]
-
-roles.each do |role|
-  Role.create(:name => role)
-end
+# define roles
+Role.create :roleable => AdminRole.create()
+Role.create :roleable => MentorRole.create(category: 0)

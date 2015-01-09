@@ -4,7 +4,8 @@ class User < ActiveRecord::Base
   geocoded_by :zip
   searchkick text_start: [:first_name, :last_name, :email, :zip], 
   word_start: [:first_name, :last_name]
-
+  # validates :zipcode, :uniqueness => {:scope => [:recorded_at, :something_else]}
+  # validates :mentor_role, :uniqueness => {scope: [:category] }
   # User.reindex
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
@@ -18,13 +19,13 @@ class User < ActiveRecord::Base
   include Connect 
   include Search
   include Entity
-
   
   has_many :business_received_messages, through: :businesses, source: :received_messages
   has_many :issued_flags
   has_many :skills
   has_many :reviews
   has_many :items, :foreign_key => 'user_id', :class_name => "Skill"
+  has_many :mentor_roles, :through => :roles, :source => :roleable, :source_type => "MentorRole"
   # has_many :received_messages, -> { where(:to_entity => "User") }, class_name: "Message", foreign_key: :to_id
   has_many :intra_connections, class_name: INTRA_CONNECTION 
   has_many :inter_connections, class_name: INTER_CONNECTION
@@ -67,7 +68,6 @@ class User < ActiveRecord::Base
   validates :zip, :presence => true, :on => :create
   accepts_nested_attributes_for :skills
   
-
   def all_unread_messages
     all_received_messages = []
     all_received_messages << self.received_messages.unread_by(self).each{|m|m.to_entity = self}
