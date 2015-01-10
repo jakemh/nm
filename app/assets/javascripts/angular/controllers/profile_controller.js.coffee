@@ -525,7 +525,7 @@ angular.module("NM").controller "ProfileController", [
     angular.extend SideBar.delegate, 
       isYours: $scope.isYours
       profileEntity: profileEntity
-      itemDelegate: $scope.setItemDelegate
+      itemDelegate: @itemDelegate || $scope.setItemDelegate
       userBusinesses: []
       businessOwner: null
       getBusiness: ->
