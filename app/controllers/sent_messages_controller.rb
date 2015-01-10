@@ -13,7 +13,8 @@ class SentMessagesController < MessagesController
   end
 
   def show
-    @sent_messages = parse_show_array(Message)
+    # @sent_messages = parse_show_array(Message)
+    @sent_messages = entity.messages.find(parse_ids(params[:id]))
     render json: @sent_messages, each_serializer: SentMessagesSerializer
     # render json: entity.sent_messages.find(params[:id].split(","))
   end

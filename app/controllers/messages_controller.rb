@@ -1,6 +1,9 @@
 class MessagesController < ApplicationController
   before_filter :set_to_entity, only: [:new, :create, :edit, :save]
   before_filter :set_from_entity, only: [:index]
+  before_action :authenticate_entity # all actions
+
+  # before_action :authentiate_message_access, only: [:index, :show]
   # before_filter :authenticate_entity, only: [:index, :show]
 
   def index
@@ -55,7 +58,12 @@ class MessagesController < ApplicationController
   def destroy
   end
 
-   private
+  protected
+
+  def authentiate_message_access
+
+  end
+
    def authenticate_entity
      return true if entity == current_user 
      return true if current_user.businesses.include? entity

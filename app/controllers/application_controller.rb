@@ -29,10 +29,15 @@ class ApplicationController < ActionController::Base
     @business_ids = current_user.businesses.pluck :id
   end
 
+  def parse_ids(id_array)
+    ids = id_array.split(",")
+  end
+
   def parse_show_array(model)
 
     models = []
-    ids = params[:id].split(",")
+    ids = parse_ids(params[:id])
+    # ids = params[:id].split(",")
     @models =  model.find(ids)
     # @models = if ids.length == 1
     #   # current_user.businesses.find(params[:id].split(","))
