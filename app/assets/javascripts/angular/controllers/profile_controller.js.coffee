@@ -527,12 +527,12 @@ angular.module("NM").controller "ProfileController", [
       profileEntity: profileEntity
       itemDelegate: $scope.setItemDelegate
       userBusinesses: []
-
+      businessOwner: null
       getBusiness: ->
-        $scope.businessOwner
+        @businessOwner
 
       getBusinessOwner: ->
-        $scope.businessOwner
+        @businessOwner
 
       review:
         newPost: angular.copy $scope.reviewPost
@@ -553,6 +553,7 @@ angular.module("NM").controller "ProfileController", [
       if profileEntity.type == "Business"
         $scope.profileEntity.owner().then (o)->
           $scope.businessOwner = o
+          SideBar.delegate.businessOwner = o
 
       $scope.profileEntity.getItems().then (items) -> 
         $scope.profileEntity.items = items
