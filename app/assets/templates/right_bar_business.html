@@ -1,4 +1,4 @@
-<div ng-if="delegate.itemDelegate">
+<div ng-if="delegate.itemDelegate && delegate.businessOwner">
   <div class="profile__right-box profile__right-box--large">
     <div ng-include="'map_template.html'" class="nm__map nm__map--small">
 
@@ -10,7 +10,7 @@
   <div style="margin-bottom: 25px; text-align: center">
     <h4> {{delegate.profileEntity.name}}'s People </h4>
 
-    <div ng-init="businessItemDelegate=delegate.itemDelegate(delegate.profileEntity)" ng-include="'business_item.html'"></div>
+    <div ng-init="businessItemDelegate=delegate.itemDelegate(delegate.businessOwner)" ng-include="'business_item.html'"></div>
 
   </div>
 
