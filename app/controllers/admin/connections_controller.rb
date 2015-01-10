@@ -1,6 +1,6 @@
 class Admin::ConnectionsController <  Admin::AdminController
   def index
-    super("type != ownership")
+    super("type != 'Ownership'")
   end
 
   # def show
