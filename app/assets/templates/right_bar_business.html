@@ -9,8 +9,8 @@
 
   <div style="margin-bottom: 25px; text-align: center">
     <h4> {{delegate.profileEntity.name}}'s People </h4>
-  
-    <div ng-init="businessItemDelegate=delegate.itemDelegate(delegate.businessOwner)" ng-include="'business_item.html'"></div>
+
+    <div ng-init="businessItemDelegate=delegate.itemDelegate(delegate.profileEntity)" ng-include="'business_item.html'"></div>
 
   </div>
 
