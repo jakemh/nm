@@ -7,11 +7,11 @@
 
 
 <div style="margin-bottom: 25px; text-align: center">
-  <h4> {{delegate.profile.profileEntity.name}}'s People </h4>
+  <h4> {{delegate.profileEntity.name}}'s People </h4>
   <!-- <a ng-href="{{delegate.profile.businessOwner.uri}}">
   {{delegate.profile.businessOwner.name}}</a> -->
 
-  <div ng-include="'business_item.html'"></div>
+  <div ng-init="businessItemDelegate=delegate.itemDelegate(delegate.getBusinessOwner())" ng-include="'business_item.html'"></div>
 
 </div>
 
@@ -19,13 +19,13 @@
 <div class="row" style="height: 38px">
   <div class="col-sm-6" style="text-align: right">
     <div ng-show="delegate.isYours() != null && !delegate.isYours()">
-      <button ng-click="delegate.ReviewService.callModal()" class="button__btn button__btn--orange">Review
+      <button ng-click="ReviewService.callModal()" class="button__btn button__btn--orange">Review
       </button>
     </div>
   </div>
   <div style="font-size: 1.4em" class="col-sm-6"> 
-    <span ng-show="delegate.profile.reviewList.length > 0">
-      Rating: {{ReviewService.averageScore(delegate.entity.reviews)}} 
+    <span ng-show="delegate.reviews.length > 0">
+      Rating: {{ReviewService.averageScore(delegate.profileEntity.reviews)}} 
     </span>
   </div>
   
@@ -33,7 +33,7 @@
 
 <div class="review profile__right-box profile__right-box--small" style="margin-top: 0">
   
-  <div ng-repeat="review in delegate.profile.reviewList | orderBy:'id':true">
+  <div ng-repeat="review in delegate.reviews | orderBy:'id':true">
     <div class="review__item">
       {{review.score}}/5
       <div class="review__item-thumb thumb thumb--44">
@@ -54,4 +54,4 @@
   </div>
 </div>
 
-<div ng-include="'modals/review_modal.html'"></div>
+<div ng-init="reviewModalDelegate=delegate.review" ng-include="'modals/review_modal.html'"></div>

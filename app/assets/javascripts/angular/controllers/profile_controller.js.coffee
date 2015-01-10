@@ -171,11 +171,23 @@ angular.module("NM").controller "ProfileController", [
     $scope.MessageService = MessageService
     $scope.isEditable = false
     $scope.editProfileText = "Edit Profile"
+    $scope.reviews = []
+
     $scope.currentCoords = null
     $scope.spinnerVisible = false
     $scope.photoCropping = false
 
-   
+    # $scope.messageObject 
+    # SideBar.delegate.submitHandler = ReviewService.sendReview
+    # SideBar.delegate.messageObject = (newPost) ->
+    #   ReviewService.initReviewModal(angular.copy(newPost), profileEntity, $scope.reviewCallback);
+    #   newPost = $scope.reviewPost
+
+    # SideBar.delegate.messageObject = (newPost) ->
+    #   o = ReviewService.initReviewModal(newPost, profileEntity, $scope.reviewCallback);
+    #   SideBar.delegate.newPost = angular.copy($scope.reviewPost)
+    #   return o
+
     $scope.alreadyVoted = (post) ->
       moment(post.last_vote_current_user).add(1, "days").diff(moment()) > 0
 
@@ -231,81 +243,50 @@ angular.module("NM").controller "ProfileController", [
     $scope.sentFlag = false
     $scope.ReviewService = ReviewService
     $scope.reviewPost = {score: 0, content: ""}
-    SideBar.delegate.profile = $scope
-    SideBar.delegate.ReviewService = ReviewService
-    SideBar.delegate.rateFunction = ReviewService.rateFunction
-    SideBar.delegate.userBusinesses = []
-    SideBar.delegate.getBusiness = ->
-      $scope.businessOwner
+    # SideBar.delegate.profile = $scope
+    # SideBar.delegate.ReviewService = ReviewService
+    # SideBar.delegate.rateFunction = ReviewService.rateFunction
+    # SideBar.delegate.userBusinesses = []
+    # SideBar.delegate.getBusiness = ->
+    #   $scope.businessOwner
 
 
-    $scope.SideBar.delegate.getBusinessOwner = ->
-      $scope.businessOwner
+    # $scope.SideBar.delegate.getBusinessOwner = ->
+    #   $scope.businessOwner
 
-    SideBar.delegate.entity = profileEntity
-    SideBar.delegate.review = $scope.reviewPost
-    SideBar.delegate.validateStars = false
+    # SideBar.delegate.entity = profileEntity
+    # SideBar.delegate.newPost = angular.copy($scope.reviewPost)
+    # SideBar.delegate.validateStars = false
 
     # ReviewService.entity = $scope.profileEntity
     $scope.reviews = []
-    SideBar.delegate.reviews = $scope.reviews
+    # SideBar.delegate.reviews = $scope.reviews
     $scope.yours = null
 
-    $scope.init = () ->
-      if profileEntity.type == "Business"
-        $scope.profileEntity.owner().then (o)->
-          $scope.businessOwner = o
-
-      $scope.profileEntity.getItems().then (items) -> 
-        $scope.profileEntity.items = items
-
-      $scope.profileEntity.personalPosts().then (posts)->
-        $scope.posts = posts
-
-      # if AuthService.currentUser
-      current = AuthService.currentUser
-
-      if profileEntity == AuthService.currentUser
-        $scope.yours = true
-      $scope.userOrBelongsToUser().then (belongs)->
-
-        $scope.yours = belongs
-
-        if $scope.yours
-          AuthService.currentEntitySelection.selected = $scope.profileEntity
-
-        if $scope.profileEntity.type == "User"
-
-          if $scope.yours
-            SideBar.rightBarTemplate = "right_bar_profile_internal.html" 
-          else 
-            SideBar.rightBarTemplate = "right_bar_profile_external.html"  
-            profileEntity.businesses().then (businesses) ->
-              SideBar.delegate.userBusinesses = businesses
-
-        else if $scope.profileEntity.type == "Business" 
-          $scope.buildReviewList()
-          MapService.coordsArray = MapService.mapToMarker([profileEntity])
-
-          if MapService.mapObj
-            MapService.resetMap(MapService.coordsArray)
-
-          SideBar.rightBarTemplate = "right_bar_business.html"
- 
+    
     $scope.setItemDelegate = (business) ->
-      delegate = {}
-      delegate.getBusiness = ->
+      delegate = 
+      message:
+        newPost: {}
+        validationHandler: MessageService.submitHandler
+        submitHandler: MessageService.sendMessage
+        messageObject: (newPost) ->
+          o = MessageService.initMessageModal(newPost, business, null)
+          $scope.delegate.newPost = {}
+          return o
+      
+
+      getBusiness: ->
         business
 
       return delegate
-
-    SideBar.delegate.itemDelegate = $scope.setItemDelegate
+    # SideBar.delegate.itemDelegate = $scope.setItemDelegate
 
     $scope.isYours = ->
       return $scope.yours
 
-    SideBar.delegate.isYours = $scope.isYours
-    SideBar.delegate.profileEntity = profileEntity
+    # SideBar.delegate.isYours = $scope.isYours
+    # SideBar.delegate.profileEntity = profileEntity
     # SideBar.delegate.businessOwner = $scope.businessOwner
 
     $scope.reviewValidate = (obj, entryForm, submit) ->
@@ -320,11 +301,11 @@ angular.module("NM").controller "ProfileController", [
       $("#js__business-review-modal").modal('hide')
       $scope.buildReviewList()
 
-    SideBar.delegate.reviewValidate = $scope.reviewValidate
-    SideBar.delegate.reviewCallback = $scope.reviewCallback
+    # SideBar.delegate.validationHandler = $scope.reviewValidate
+    # SideBar.delegate.reviewCallback = $scope.reviewCallback
 
 
-    SideBar.delegate.sendPost = $scope.sendReview
+    # SideBar.delegate.sendPost = $scope.sendReview
     $scope.uploadedProfilePhotos = []
     $scope.uploadedCoverPhotos = []
 
@@ -529,6 +510,84 @@ angular.module("NM").controller "ProfileController", [
     $scope.$watch 'posts', ->
 
         MessagesDisplay.buildMessageDisplay2($scope.displayList, $scope.posts)
+    
+    # $scope.messageObject 
+
+    $scope.delegate = 
+      newPost: {}
+      validationHandler: MessageService.submitHandler
+      submitHandler: MessageService.sendMessage
+      messageObject: (newPost) ->
+        o = MessageService.initMessageModal(newPost, profileEntity, null)
+        $scope.delegate.newPost = {}
+        return o
+
+    angular.extend SideBar.delegate, 
+      isYours: $scope.isYours
+      profileEntity: profileEntity
+      itemDelegate: $scope.setItemDelegate
+      userBusinesses: []
+
+      getBusiness: ->
+        $scope.businessOwner
+
+      getBusinessOwner: ->
+        $scope.businessOwner
+
+      review:
+        newPost: angular.copy $scope.reviewPost
+        validationHandler: MessageService.submitHandler
+        submitHandler: ReviewService.sendReview
+        rateFunction: ReviewService.rateFunction
+        validateStars: false
+
+        messageObject: (newPost) ->
+          o = ReviewService.initReviewModal(angular.copy(newPost), profileEntity, $scope.reviewCallback);
+          @newPost = angular.copy($scope.reviewPost)
+          return o
+          
+      entity: profileEntity
+      reviews: $scope.reviewList
       
+    $scope.init = () ->
+      if profileEntity.type == "Business"
+        $scope.profileEntity.owner().then (o)->
+          $scope.businessOwner = o
+
+      $scope.profileEntity.getItems().then (items) -> 
+        $scope.profileEntity.items = items
+
+      $scope.profileEntity.personalPosts().then (posts)->
+        $scope.posts = posts
+
+      # if AuthService.currentUser
+      current = AuthService.currentUser
+
+      if profileEntity == AuthService.currentUser
+        $scope.yours = true
+      $scope.userOrBelongsToUser().then (belongs)->
+
+        $scope.yours = belongs
+
+        if $scope.yours
+          AuthService.currentEntitySelection.selected = $scope.profileEntity
+
+        if $scope.profileEntity.type == "User"
+
+          if $scope.yours
+            SideBar.rightBarTemplate = "right_bar_profile_internal.html" 
+          else 
+            SideBar.rightBarTemplate = "right_bar_profile_external.html"  
+            profileEntity.businesses().then (businesses) ->
+              SideBar.delegate.userBusinesses = businesses
+        else if $scope.profileEntity.type == "Business" 
+          $scope.buildReviewList()
+          MapService.coordsArray = MapService.mapToMarker([profileEntity])
+
+          if MapService.mapObj
+            MapService.resetMap(MapService.coordsArray)
+
+          SideBar.rightBarTemplate = "right_bar_business.html"
+    
       
 ]

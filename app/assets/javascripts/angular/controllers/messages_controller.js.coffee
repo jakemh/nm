@@ -57,8 +57,11 @@ angular.module("NM").controller "MessagesController", [
     $scope.feedCornerPartial = "feed_body_comment.html"
     $scope.SideBar = SideBar
     SideBar.rightBarTemplate = "blank.html"  
-  
 
+    $scope.messageObject = (newPost) ->
+      object = angular.copy(newPost)
+      $scope.delegate.newPost = {}
+      return object
     # $scope.headOuterInit = (newPost, entity) ->
     #   newPost.type = ''
 
@@ -223,5 +226,10 @@ angular.module("NM").controller "MessagesController", [
         list = _.sortBy $scope.displayEnt().getEntitiesList(), (item) -> item.lastMessage().id
         $scope.selectedEntity = list[list.length - 1]
     
+    $scope.delegate = 
+      newPost: {}
+      validationHandler: MessageService.submitHandler
+      submitHandler: $scope.sendPost
+      messageObject: $scope.messageObject
       
 ]

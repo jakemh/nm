@@ -6,14 +6,15 @@
 >
 
   <div style="text-align: center" class="feed__entry-inner-main">
-    <input ng-model="newPost.type" type="hidden">
+    <input ng-model="delegate.newPost.type" type="hidden">
     <div style="text-align: center" ng-include="'forms/post/content.html'"></div>
 
 
    <!--  <div ng-include="'forms/post/button.html'">
 
     </div> -->
-     <button class="feed__button button__btn button__btn--orange" name="commit" style=" width: 100px; margin: auto !important" ng-click="validationHandler(object, entryForm, submitHandler)     ">
+     <button class="feed__button button__btn button__btn--orange" name="commit" style=" width: 100px; margin: auto !important" ng-click="delegate.validationHandler(delegate.messageObject(delegate.newPost), entryForm, delegate.submitHandler);
+    ">
       {{buttonTitle || "Post"}}
     </button>
 

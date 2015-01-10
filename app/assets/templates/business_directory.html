@@ -42,7 +42,7 @@
       <div class="col-sm-6">
         <div class="bus__list">
           <div ng-repeat="business in displayList | orderBy:'name': false | entityFilter:filters.person:filters.business">
-            <div ng-init="delegate = setDelegate(business)" ng-include="'business_item.html'"></div>
+            <div ng-init="delegate = setItemDelegate(business)" ng-include="'business_item.html'"></div>
           </div>
           <div class="bus__none" ng-hide="(displayList | entityFilter:filters.person:filters.business).length">
             Find some more businesses!

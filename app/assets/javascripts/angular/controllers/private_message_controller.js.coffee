@@ -22,16 +22,7 @@ angular.module("NM").controller "PrivateMessageController", [
         to_type: toEntity.type
         type: "Message"
 
-      # entityAttrs = 
-      #   parent_id: postObj.id
-      #   entity_id: selectedEntity.id
-      #   entity_type: selectedEntity.type
-      #   from_id: selectedEntity.id 
-      #   from_type: selectedEntity.type
-      #   to_id: postObj.entityId
-      #   to_type: postObj.entityType
-      #   type: "MessageResponse"
-
+     
       postSubmit = angular.extend({}, postSubmit, entityAttrs)
 
 
@@ -40,26 +31,15 @@ angular.module("NM").controller "PrivateMessageController", [
       currentEntity.post('messages', postSubmit).then (response)->
         $("#js-msg__modal").modal('hide')
 
-        # $scope.getAllMessages($scope.selectedEntity).then (all)->
-        #   $scope.allMessages = all
+    $scope.messageObject = (newPost) ->
+      debugger
+      o = MessageService.initMessageModal(newPost, profileEntity, null)
+      $scope.delegate.newPost = {}
+      return o
 
-    # $scope.sendPost = (postObj, postSubmit)->
-    #   selectedEntity = AuthService.currentEntitySelection.selected
-    #   entityAttrs = 
-    #     entity_id: selectedEntity.id
-    #     entity_type: selectedEntity.type
-    #     from_id: selectedEntity.id
-    #     from_type: selectedEntity.type
-    #     to_id: MessageService.messageEntity.id
-    #     to_type: MessageService.messageEntity.type
-    #     type: "Message"
-
-    #   postSubmit = angular.extend({}, postSubmit, entityAttrs)
-
-    #   route = selectedEntity.message_route
-    #   selectedEntity.post("messages", postSubmit).then (response)->
-    #     # $scope.posts = $scope.posts.concat(response)
-    #     AuthService.currentUser.sentMessages().then (sentMessages) ->
-    #       $("#js-msg__modal").modal('hide')
-
+    $scope.delegate = 
+      newPost: {}
+      validationHandler: MessageService.submitHandler
+      submitHandler: MessageService.sendMessage
+      messageObject: $scope.messageObject
 ]

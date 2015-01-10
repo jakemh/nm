@@ -6,7 +6,9 @@ App.factory "Utilities", [
       
 
       millisecondsPerDay: 86400000
-
+      copy: (obj) ->
+        angular.copy(obj)
+        
       entityRoute: (entity) ->
         if entity.type == "User"
           return "users"

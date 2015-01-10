@@ -4,6 +4,7 @@ angular.module("NM").controller "BusinessDirectoryController", [
   "User"
   "Restangular"
   "RestangularPlus"
+  "MessageService"
   "SideBar"
   "MapService"
   "$location"
@@ -11,7 +12,7 @@ angular.module("NM").controller "BusinessDirectoryController", [
   "RestEntity"
   "AuthService"
   "Utilities"
-  ($scope, Business, User, Restangular, RestangularPlus, SideBar, MapService, $location, $filter, RestEntity, AuthService, Utilities) ->
+  ($scope, Business, User, Restangular, RestangularPlus, MessageService, SideBar, MapService, $location, $filter, RestEntity, AuthService, Utilities) ->
     
     $scope.SideBar = SideBar
     # SideBar.rightBarTemplate = "right_bar_bus_dir.html"     
@@ -32,12 +33,19 @@ angular.module("NM").controller "BusinessDirectoryController", [
     # $scope.loadMap()  
     SideBar.tabBarVisible = false 
 
-    $scope.setDelegate = (business) ->
-      delegate = {}
-      delegate.getBusiness = ->
-        return business
+    $scope.setItemDelegate = (business) ->
+      message:
+        newPost: {}
+        validationHandler: MessageService.submitHandler
+        submitHandler: MessageService.sendMessage
+        messageObject: (newPost) ->
+          o = MessageService.initMessageModal(newPost, business, null)
+          @newPost = {}
+          return o
+      getBusiness: ->
+        business
 
-      return delegate
+
 
     SideBar.delegate.getBusiness = ->
       

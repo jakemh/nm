@@ -18,7 +18,7 @@ App.factory "MessageService", [
     initMessageModal: (messageObj, toEntity, callback) ->
       # @setMessageEntity(entity)
       # @callModal('js-msg__modal')
-      sm = new SendMessage(messageObj, toEntity, callback)
+      sm = new SendMessage(angular.copy(messageObj), toEntity, callback)
       return sm
     
     initMessageForm: (messageObj, toEntity, callback) ->
@@ -115,6 +115,7 @@ App.factory "MessageService", [
       postSubmit = angular.extend({}, sm.messageObj, entityAttrs)
       currentEntity.post('messages', postSubmit).then (response)->
         sm.callback(response) if sm.callback
+        sm.messageObj = {}
         $(".js-msg__modal").modal('hide')
 
 
@@ -123,10 +124,12 @@ App.factory "MessageService", [
       if entryForm.$valid
         entryForm.hasError = false;
         # obj.callback(obj.entity, obj.model) if callback
-        submit(obj)
+        submit(angular.copy(obj))
         # model.content = ""
       else 
         entryForm.hasError = true
+
+      obj = null
       
     submit: (model, entity, entryForm, callback, parentList) ->
       # debugger
