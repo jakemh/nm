@@ -72,6 +72,9 @@ GEM
     capistrano-rvm (0.1.1)
       capistrano (~> 3.0)
       sshkit (~> 1.2)
+    capistrano3-puma (0.8.3)
+      capistrano (~> 3.0)
+      puma (>= 2.6)
     climate_control (0.0.3)
       activesupport (>= 3.0)
     cocaine (0.5.4)
@@ -334,6 +337,7 @@ DEPENDENCIES
   capistrano-rails (~> 1.1)
   capistrano-rbenv (~> 2.0)
   capistrano-rvm
+  capistrano3-puma
   coffee-rails (~> 4.0.0)
   devise
   exception_notification

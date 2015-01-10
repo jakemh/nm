@@ -11,6 +11,23 @@ set :deploy_via, :copy
 set :puma_pid, '/home/jake/repos/nextmission-core/shared/tmp/pids/puma.pid'
 # set :puma_pid, '/home/oli/www/shared/tmp/pids/puma.pid'
 set :branch, "angular"
+set :puma_conf, "#{shared_path}/puma.rb"
+set :puma_access_log, "#{deploy_to}/log/puma_access.log"
+set :puma_error_log, "#{deploy_to}/log/puma_error.log"
+
+
+# root = '/home/jake/repos/nextmission-core/shared'
+
+# working_directory = '/home/jake/repos/nextmission-core/current'
+
+# pidfile "#{root}/tmp/pids/puma.pid"
+
+# railsenv = 'production'
+# directory working_directory
+# environment railsenv
+# state_path "#{root}/tmp/pids/puma.state"
+# stdout_redirect "#{working_directory}/log/puma-#{railsenv}.stdout.log", "#{working_directory}/log/puma-#{railsenv}.stderr.log"
+# bind "unix:///tmp/next_mission.sock"
 # set :notifier_mail_options, {
 #   :method => :smtp,
 #   :from   => 'next.mission.notifier@gmail.com',
@@ -107,7 +124,7 @@ namespace :deploy do
       within current_path do
         puts "RESTARTING PUMA"
         # execute "kill -s USR2 `cat #{puma_pid}`"
-        execute :bundle, "exec pumactl -P #{puma_pid} phased-restart -C config/puma.rb "
+        execute :bundle, "exec pumactl -P #{puma_pid} phased-restart -C config/puma.rb"
       end
     end
   end
