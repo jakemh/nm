@@ -1,57 +1,57 @@
-<div class="profile__right-box profile__right-box--large">
-  <div  ng-include="'map_template.html'" class="nm__map nm__map--small">
-  
-
-  </div>
-</div>
+<div ng-if="delegate">
+  <div class="profile__right-box profile__right-box--large">
+    <div ng-include="'map_template.html'" class="nm__map nm__map--small">
 
 
-<div style="margin-bottom: 25px; text-align: center">
-  <h4> {{delegate.profileEntity.name}}'s People </h4>
-  <!-- <a ng-href="{{delegate.profile.businessOwner.uri}}">
-  {{delegate.profile.businessOwner.name}}</a> -->
-
-  <div ng-init="businessItemDelegate=delegate.itemDelegate(delegate.businessOwner)" ng-include="'business_item.html'"></div>
-
-</div>
-
-
-<div class="row" style="height: 38px">
-  <div class="col-sm-6" style="text-align: right">
-    <div ng-show="delegate.isYours() != null && !delegate.isYours()">
-      <button ng-click="ReviewService.callModal()" class="button__btn button__btn--orange">Review
-      </button>
     </div>
   </div>
-  <div style="font-size: 1.4em" class="col-sm-6"> 
-    <span ng-show="delegate.reviews.length > 0">
+
+
+  <div style="margin-bottom: 25px; text-align: center">
+    <h4> {{delegate.profileEntity.name}}'s People </h4>
+  
+    <div ng-init="businessItemDelegate=delegate.itemDelegate(delegate.businessOwner)" ng-include="'business_item.html'"></div>
+
+  </div>
+
+
+  <div class="row" style="height: 38px">
+    <div class="col-sm-6" style="text-align: right">
+      <div ng-show="delegate.isYours() != null && !delegate.isYours()">
+        <button ng-click="ReviewService.callModal()" class="button__btn button__btn--orange">Review
+        </button>
+      </div>
+    </div>
+    <div style="font-size: 1.4em" class="col-sm-6">
+      <span ng-show="delegate.reviews.length > 0">
       Rating: {{ReviewService.averageScore(delegate.profileEntity.reviews)}} 
     </span>
+    </div>
+
   </div>
-  
-</div>
 
-<div class="review profile__right-box profile__right-box--small" style="margin-top: 0">
-  
-  <div ng-repeat="review in delegate.reviews | orderBy:'id':true">
-    <div class="review__item">
-      {{review.score}}/5
-      <div class="review__item-thumb thumb thumb--44">
-        <img ng-src="{{review.reviewer.thumb}}">
+  <div class="review profile__right-box profile__right-box--small" style="margin-top: 0">
 
-      </div>
-      <div class="review__item-main">
-        <div class="review__item-title">    
-          {{review.reviewer.name}}
+    <div ng-repeat="review in delegate.reviews | orderBy:'id':true">
+      <div class="review__item">
+        {{review.score}}/5
+        <div class="review__item-thumb thumb thumb--44">
+          <img ng-src="{{review.reviewer.thumb}}">
 
         </div>
+        <div class="review__item-main">
+          <div class="review__item-title">
+            {{review.reviewer.name}}
 
-        <div class="review__item-content">
-          {{review.content}}
+          </div>
+
+          <div class="review__item-content">
+            {{review.content}}
+          </div>
         </div>
       </div>
     </div>
   </div>
-</div>
 
-<div ng-init="reviewModalDelegate=delegate.review" ng-include="'modals/review_modal.html'"></div>
+  <div ng-init="reviewModalDelegate=delegate.review" ng-include="'modals/review_modal.html'"></div>
+</div>
