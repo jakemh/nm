@@ -23,7 +23,6 @@ module Entity
 
   def sort_attr
     self.name
-    
   end
 
   def votes
