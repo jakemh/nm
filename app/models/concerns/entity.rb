@@ -21,6 +21,10 @@ module Entity
     end
   end
 
+  def sort_attr
+    self.name
+    
+  end
 
   def votes
     Point.all.where(entity_id)

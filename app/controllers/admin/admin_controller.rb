@@ -9,9 +9,9 @@ class Admin::AdminController < ApplicationController
     #eg Flag -> @flags
     # params[:reverse] = true
     @model = model_type
-    
+    s = lambda{|e, a| e.send(a).respond_to?(:sort_attr)? e.send(a).sort_attr : e.send(a)}
     if model_type
-      models = model_type.all.where(options).sort_by{|e| e.send(sort) || ""}
+      models = model_type.all.where(options).sort_by{|e| s.call(e, sort) || ""}
       models.reverse! if reverse
       instance_variable_set("@#{model_type.to_s.downcase.pluralize}", models)
     else 

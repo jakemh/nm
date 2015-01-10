@@ -1,6 +1,8 @@
 class GenericEntity < ActiveRecord::Base
+  include Entity
+
   def name 
-    nil
+    ""
   end
 
 end
