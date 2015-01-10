@@ -14,7 +14,7 @@
 
   <div class="bus__list">
     <div ng-repeat="business in delegate.userBusinesses | orderBy:'name': false ">
-      <div ng-init="delegate=delegate.itemDelegate(business)" ng-include="'business_item.html'"></div>
+      <div ng-init="businessItemDelegate=delegate.itemDelegate(business)" ng-include="'business_item.html'"></div>
       <!--  <div class="bus__none" ng-hide="displayList.length">
       Find some more businesses!
     </div> -->
