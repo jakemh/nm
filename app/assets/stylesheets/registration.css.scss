@@ -35,11 +35,17 @@
 }
 
 .login__top{
-  position: absolute;
-  top: 0px;
-  right: 50px;
-  font-size: .8em;
+  // position: absolute;
+  // top: 50px;
+  // right: 50px;
+  margin: 25px auto;
+  height: 50px;
+  // font-size: .8em;
 }
+
+// .signup__main{
+//   min-height: 1000px;
+// }
 .login__top input{
   line-height: 1.2em;
   width: 115px;
@@ -47,6 +53,10 @@
   border: none;
   height: 2.2em;
   text-align: center;
+}
+
+.signup__col-caption{
+  // min-height: 80px !important;
 }
 
 .button__login{
@@ -58,11 +68,21 @@
   text-transform: uppercase;
   color: white !important;
 }
+
+.signup__already{
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", "Helvetica", Arial, "Lucida Grande", sans-serif !important;
+  // font-weight: 100; 
+  width: 100%; text-align: center;
+   margin: 15px auto; 
+   color: white;
+   font-size: 1.2em;
+}
+
 .form__login{
 
   margin: 0;
   padding: 0;
-  width: 370px;
+  min-width: 370px;
 }
 .form__login div{
   width: 120px;
@@ -70,9 +90,13 @@
 }
 
 .caption__reg{
-  position: relative;
+  position: absolute;
+  top: 0;
+  left: 0;
+  min-width: 250px !important;
   display: inline-block;
-  width: 300px;
+  // width: 300px;
+  min-height: 200px !important;
   bottom: 40%;
   font-size: 1.1em;
   font-family: 'lato', sans-serif !important;
@@ -196,9 +220,9 @@ select{
 .body__reg{
   background: $gray-color;
   padding: 20px;
-  margin-top: 150px;
+  // margin-top: 150px;
   // color: $red-color;
-  min-height: 500px;
+  // min-height: 500px;
 }
 
 .body__reg .error{
@@ -215,12 +239,14 @@ select{
 }
 
 .top__reg{
-  position: absolute;
-  height: 150px;
-  position: fixed;
+  // position: absolute;
+  min-height: 150px;
+  // position: fixed;
+
+  padding-top: 25px;
   width: 100%;
   text-align: center;
-  line-height: 150px;
+  // line-height: 150px;
   background: $black-color;
   z-index: 1000;
 }

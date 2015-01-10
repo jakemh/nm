@@ -10,7 +10,7 @@ class TemporaryController < ApplicationController
         redirect_to me_feed_index_path
       end
     else 
-      redirect_to new_user_session_path
+      redirect_to new_user_registration_path
     end
   end
 
