@@ -1,4 +1,4 @@
-class Admin::RolesController < AdminController
+class Admin::RolesController <Admin::AdminController
   protected
     def model_type
       Point
