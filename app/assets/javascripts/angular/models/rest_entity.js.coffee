@@ -167,8 +167,8 @@ angular.module("NM").factory "RestEntity", [
       personalPosts: (params) ->
         @severalPlus2("posts", @personal_post_ids)
 
-      flag: (params) ->
-        @post('flags', params)
+      flag: (entity, params) ->
+        @post('flags', {flaggable_type: entity.type, flaggable_id: entity.id})
         # @getListPlus("flags", params).post(params)
 
       getFollowers: () ->

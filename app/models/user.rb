@@ -21,9 +21,10 @@ class User < ActiveRecord::Base
   include Entity
   
   has_many :business_received_messages, through: :businesses, source: :received_messages
-  has_many :issued_flags
+  # has_many :issued_flags, :foreign_key => 'user_id', :class_name => "Flag"
   has_many :skills
   has_many :reviews
+  has_many :flags
   has_many :items, :foreign_key => 'user_id', :class_name => "Skill"
   has_many :mentor_roles, :through => :roles, :source => :roleable, :source_type => "MentorRole"
   # has_many :received_messages, -> { where(:to_entity => "User") }, class_name: "Message", foreign_key: :to_id

@@ -10,9 +10,9 @@ class FlagsController < ApplicationController
   end
 
   def create
-    flag = entity.flags.build whitelist.merge({:user_id => current_user.id})
+    flag = entity.flags.build whitelist
     if flag.save
-      render :json => {:status => true}
+      render :json => flag
     else render :json => {:status => false}
     end
   end
@@ -30,6 +30,6 @@ class FlagsController < ApplicationController
   # end
 
   def whitelist
-    params.require(:flag).permit(:category, :description)
+    params.require(:flag).permit(:flaggable_type, :flaggable_id, :category)
   end
 end

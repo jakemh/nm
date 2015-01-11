@@ -386,7 +386,7 @@ angular.module("NM").controller "ProfileController", [
       return true
 
     $scope.flag = ->
-      $scope.profileEntity.flag().then (response)->
+      AuthService.currentUser.flag(profileEntity).then (response)->
         $scope.sentFlag = true  
 
     $scope.initRightBarExternal = ->
