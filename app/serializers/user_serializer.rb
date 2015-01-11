@@ -1,7 +1,7 @@
  class UserSerializer < EntitySerializer
   attributes :user_post_associations, :business_post_associations, :message_route
   attributes :about, :work
-  attributes :is_admin
+  attributes :is_admin, :roles
   # :response_post_associations,
   attributes :first_name, :last_name
   has_many :businesses, embed: :ids
@@ -19,8 +19,16 @@
     object.connected_businesses
   end
 
+  # def is_mentor
+  #   object.mentor_roles.count > 0
+  # end
+
   def user_connections
     object.friends
+  end
+
+  def roles
+    object.roles.pluck :roleable_type
   end
 
   def is_admin

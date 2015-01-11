@@ -15,7 +15,12 @@ angular.module("NM").factory "User", [
 
       self.isUser = () ->
         true
-        
+      
+      self.isMentor = () ->
+        _.contains self.roles, "MentorRole"
+
+      self.addAssignment = (type, params) ->
+        self.post("assignments", angular.extend(roleable_type: type, params))
 
       self.ownedEntities = ->
         deferred = $q.defer();

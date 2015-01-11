@@ -4,6 +4,14 @@ Rails.application.routes.draw do
 
 
 
+  get 'assignments/create'
+
+  get 'assignments/destroy'
+
+  get 'roles/create'
+
+  get 'roles/destroy'
+
   namespace :admin do
   get 'ownerships/index'
   end
@@ -97,7 +105,8 @@ Rails.application.routes.draw do
   resources :users do
     # resources :skills
     resources :items, :controller => :skills
-
+    resources :roles
+    resources :assignments
     resources :businesses, :controller => :user_businesses
   end
 

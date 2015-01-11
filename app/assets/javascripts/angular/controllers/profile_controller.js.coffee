@@ -187,6 +187,11 @@ angular.module("NM").controller "ProfileController", [
     #   o = ReviewService.initReviewModal(newPost, profileEntity, $scope.reviewCallback);
     #   SideBar.delegate.newPost = angular.copy($scope.reviewPost)
     #   return o
+    $scope.becomeMentor = () ->
+      AuthService.currentUser.addAssignment("MentorRole", category: "general").then (ass) ->
+        
+        if ass.Restangular
+          AuthService.currentUser.roles.push("MentorRole")
 
     $scope.alreadyVoted = (post) ->
       moment(post.last_vote_current_user).add(1, "days").diff(moment()) > 0

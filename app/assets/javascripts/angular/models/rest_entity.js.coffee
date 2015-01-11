@@ -8,7 +8,6 @@ angular.module("NM").factory "RestEntity", [
       receivedMessages: []
       sentMessages: []
 
-
       getRoute: () ->
         if @type == "Business"
           "businesses"
