@@ -124,7 +124,7 @@ namespace :deploy do
       within current_path do
         puts "RESTARTING PUMA"
         # execute "kill -s USR2 `cat #{puma_pid}`"
-        execute :bundle, "exec pumactl -P #{puma_pid} phased-restart -C config/puma.rb"
+        execute :bundle, "exec pumactl -P #{puma_pid} phased-restart -F config/puma.rb"
       end
     end
   end
