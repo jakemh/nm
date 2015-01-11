@@ -4,6 +4,18 @@ Rails.application.routes.draw do
 
 
 
+  namespace :admin do
+  get 'assignments/index'
+  end
+
+  namespace :admin do
+  get 'assignments/show'
+  end
+
+  namespace :admin do
+  get 'roles/index'
+  end
+
   get 'assignments/create'
 
   get 'assignments/destroy'
@@ -150,7 +162,8 @@ Rails.application.routes.draw do
     resources :message_responses, :controller => :messages
     resources :connections
     resources :ownerships
-
+    resources :assignments
+    resources :roles
     resources :flags
     resources :reviews
     resource :alerts, :controller => :alerts, :module => :alerts do

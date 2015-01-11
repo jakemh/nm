@@ -1,5 +1,7 @@
 class Admin::AssignmentsController < Admin::AdminController
 
+
+
   def create
     user = User.find(params[:user_id])
     ass = nil
@@ -21,27 +23,34 @@ class Admin::AssignmentsController < Admin::AdminController
   end
 
   def destroy
-    user = User.find(params[:user_id])
-    role = params[:id].constantize.new
-    if user.role?(params[:id]) ||  user.role?(params[:id].titleize)
-      # role_id = Role.enum(params[:id])
+    # user = User.find(params[:user_id])
+    # role = params[:classification].constantize.new
+    assignments = Assignment.where(id: params[:id]) if params[:id]
+    user = assignments.count > 0 ? assignments.first.user : User.find(params[:user_id])
+    assignments = assignments || user.assignments.where(role: Role.add(classification.constantize, classification_options))
+    classification = assignments.first.role ? assignments.first.role.roleable_type : "Missing Role"
+
+    if assignments.count > 0
       
-      if (user.id == 1 || user == User.first) && params[:id] == "AdminRole"
-        flash[:notice] = "Hey!! >:("
+      if (user.id == 1 || user == User.first) && classification == "AdminRole"
+        flash[:notice] = ">:("
         redirect_to_back
       else
-        # user.assignments.where(:role_id => Role.enum(params[:id])).destroy_all
-        user.assignments.joins(:role).where("roles.roleable_type = '#{params[:id]}'").destroy_all
-        flash[:notice] = "Removed #{params[:id]}"
+        assignments.destroy_all
+        flash[:notice] = "Removed #{classification}"
         redirect_to_back
       end
     else
-      flash[:error] = "Was not #{params[:id]}"
+      flash[:error] = "Did not have #{classification}"
       redirect_to_back
     end
   end
 
   protected
+    def model_type
+      Assignment
+    end
+
     def whitelist
       params.permit(:classification, :classification_options)
     end

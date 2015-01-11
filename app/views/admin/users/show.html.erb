@@ -46,7 +46,10 @@
           <div style="display: inline-block">
 
             <%= button_to "Remove Admin", admin_user_assignment_path(@user, "AdminRole"), 
-            method: :delete, :class => "btn btn-danger" %>
+            method: :delete, :class => "btn btn-danger",
+            params: {
+                :classification => "AdminRole"
+              } %>
           </div>
         </div>
         <div class="panel-footer">

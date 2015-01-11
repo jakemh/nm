@@ -22,9 +22,15 @@ class Role < ActiveRecord::Base
   validates :roleable_type, presence: true
   validates :roleable_id, uniqueness: { scope: :roleable_type, message: "This role type has already been created"}
   
+  def sort_attr
+    self.roleable_type
+  end
+
   def self.registered_roles
     ["MentorRole", "AdminRole"]
   end
+
+
 
   # validates :roleable, uniqueness: true
   # enum name: [ :admin, :mentor]

@@ -1,0 +1,28 @@
+<div class="table-responsive">
+  <table class="table table-condensed table__admin">
+    <thead>
+      <tr>
+        <th><%= link_to_sort "ID", :sort => :id %></th>
+        <th><%= link_to_sort "User", :sort => :entity  %></th>
+        <th><%= link_to_sort "Role", :sort => :role  %></th>
+        <th><%= link_to_sort "Date", :sort => :created_at  %></th>
+        <th></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @assignments.each do |assignment| %>
+        <tr>
+          <td><%= assignment.id %></td>
+          <td><%= link_to(assignment.entity.name, [:admin, assignment.entity])  %>
+          </td>
+          <td><%= (assignment.role || Role.new).roleable_type %>
+          <td><%= assignment.created_at.to_formatted_s(:short)  %></td>
+          <td><%= button_to 'Delete', [:admin, assignment.entity, assignment], method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger" %></td>
+
+        </tr>
+      <% end %> </td>
+    </tbody>
+  </table>
+</div>
+
