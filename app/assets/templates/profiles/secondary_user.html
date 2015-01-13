@@ -2,6 +2,15 @@
   <div class="halves">
     <div class="halves__box">
       <div class="halves__box-row">
+        <div ng-switch="profileEntity.isMentor()">
+          <div ng-switch-when="false">
+            <button ng-if="isEditable" style="padding: 10px" class="feed__button button__btn button__btn--orange" ng-click="becomeMentor()" ng-disabled="profileEntity.isMentor()" ng-class="{'button__btn--light-gray' : profileEntity.isMentor()}">
+              Become a Mentor
+            </button>
+          </div>
+          <div ng-switch-when="true">
+          </div>
+        </div>
         <p>About Me:</p>
         <p>
           <a href editable-text="profileEntity.about" ng-if="isEditable">   

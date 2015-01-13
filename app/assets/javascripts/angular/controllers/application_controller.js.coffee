@@ -11,6 +11,7 @@ angular.module("NM").controller "ApplicationController", [
   "Following"
   "Post"
   "Assignment"
+  "Affiliation"
   "Review"
   "ReviewService"
   "Response"
@@ -29,7 +30,7 @@ angular.module("NM").controller "ApplicationController", [
   "RestangularPlus"
 
 
-  ($scope, User, SentMessage, ReceivedMessage, Message, Follower, Business, Entity, RestEntity, Following, Post, Assignment, Review, ReviewService, Response, MessageResponse, MessageService, AuthService, Restangular, SideBar, MapService, Utilities, ProfilePhoto, CoverPhoto, $rootScope, $location, $routeParams, RestangularPlus) ->
+  ($scope, User, SentMessage, ReceivedMessage, Message, Follower, Business, Entity, RestEntity, Following, Post, Assignment, Affiliation, Review, ReviewService, Response, MessageResponse, MessageService, AuthService, Restangular, SideBar, MapService, Utilities, ProfilePhoto, CoverPhoto, $rootScope, $location, $routeParams, RestangularPlus) ->
     $scope.Utilities = Utilities
     $scope.MessageService = MessageService
     $scope.AuthService = AuthService

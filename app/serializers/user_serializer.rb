@@ -2,6 +2,7 @@
   attributes :user_post_associations, :business_post_associations, :message_route
   attributes :about, :work
   attributes :is_admin, :roles
+  has_many :branches, embed: :ids
   # :response_post_associations,
   attributes :first_name, :last_name
   has_many :businesses, embed: :ids

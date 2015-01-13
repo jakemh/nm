@@ -142,6 +142,7 @@ angular.module("NM").controller "ProfileController", [
   "MessagesDisplay"
   "MessageService"
   "Restangular"
+  "RestangularPlus"
   "SideBar"
   "MapService"
   "ReviewService"
@@ -150,7 +151,7 @@ angular.module("NM").controller "ProfileController", [
   "usSpinnerService"
   "PointService"
   "ImageService"
-  ($scope, $sce, $q, $routeParams, $location, Utilities, Review, AuthService, MessagesDisplay, MessageService, Restangular, SideBar, MapService, ReviewService, ReviewDisplay, profileEntity, usSpinnerService, PointService, ImageService) ->
+  ($scope, $sce, $q, $routeParams, $location, Utilities, Review, AuthService, MessagesDisplay, MessageService, Restangular, RestangularPlus, SideBar, MapService, ReviewService, ReviewDisplay, profileEntity, usSpinnerService, PointService, ImageService) ->
     
     # alert my#FriendsHotel.hotelName( );
     
@@ -178,16 +179,6 @@ angular.module("NM").controller "ProfileController", [
     $scope.spinnerVisible = false
     $scope.photoCropping = false
 
-    # $scope.messageObject 
-    # SideBar.delegate.submitHandler = ReviewService.sendReview
-    # SideBar.delegate.messageObject = (newPost) ->
-    #   ReviewService.initReviewModal(angular.copy(newPost), profileEntity, $scope.reviewCallback);
-    #   newPost = $scope.reviewPost
-
-    # SideBar.delegate.messageObject = (newPost) ->
-    #   o = ReviewService.initReviewModal(newPost, profileEntity, $scope.reviewCallback);
-    #   SideBar.delegate.newPost = angular.copy($scope.reviewPost)
-    #   return o
     $scope.becomeMentor = () ->
       AuthService.currentUser.addAssignment("MentorRole", category: "general").then (ass) ->
         
@@ -197,7 +188,8 @@ angular.module("NM").controller "ProfileController", [
     $scope.alreadyVoted = (post) ->
       moment(post.last_vote_current_user).add(1, "days").diff(moment()) > 0
 
-
+    $scope.branches = []
+    $scope.branch = {}
     $scope.disableTop = PointService.disableTop
     $scope.disableBottom = PointService.disableBottom
     $scope.existingScore = PointService.existingScore
@@ -514,10 +506,14 @@ angular.module("NM").controller "ProfileController", [
         $location.path( AuthService.currentEntitySelection.selected.uri );
 
     $scope.$watch 'posts', ->
-
-        MessagesDisplay.buildMessageDisplay2($scope.displayList, $scope.posts)
+      MessagesDisplay.buildMessageDisplay2($scope.displayList, $scope.posts)
     
     # $scope.messageObject 
+    $scope.$watch 'branch.selected', ->
+      if $scope.branch.selected
+        RestangularPlus.getModel("branches", $scope.branch.selected.id).then (branch) ->
+          profileEntity.addBranch(branch)
+          profileEntity.post("affiliations", {branch_id: branch.id})
 
     $scope.delegate = 
       newPost: {}
@@ -554,10 +550,19 @@ angular.module("NM").controller "ProfileController", [
           
       entity: profileEntity
       reviews: $scope.reviewList
-      
+    
+    $scope.loadBranches = ->
+      RestangularPlus.getListPlus2("branches").then (branches) ->
+        branches = _.filter branches, (item) -> !_.contains(profileEntity.branch_ids, item.id)
+        $scope.branches = _.map branches, (item) -> 
+          id: item.id 
+          name: item.name
+
+
     $scope.init = () ->
-      i = ImageService
-      debugger
+      $scope.loadBranches().then () ->
+        profileEntity.buildBranches()
+
       if profileEntity.type == "Business"
         $scope.profileEntity.owner().then (o)->
           $scope.businessOwner = o

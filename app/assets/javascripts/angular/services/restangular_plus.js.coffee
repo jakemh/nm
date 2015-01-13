@@ -184,25 +184,3 @@ App.factory "RestangularPlus", [
     Restangular: Restangular
 ]
 
-# App.factory "RestangularPlus", [
-#   "$q"
-#   "CacheService"
-#   "Restangular"
-#   ($q, CacheService, Restangular) ->
-#     several: (obj, route, ids) ->
-#       if self.ids.length > 0
-#         obj.several(route, ids)
-#       else $q.when([])
-
-#     one: (obj, route, ids) ->
-#       # obj.several(route, ids)
-#       cached = CacheService.modelsToCache[obh]
-#       # cached = UsersCache.cache.get(model.user_id)
-#       if !cached
-#         # alert "NOT CACHED: " + JSON.stringify model
-#         Restangular.one("users", model.user_id).get()
-#       else 
-#         # alert "CACHED"
-#         $q.when(cached)
-
-# ]

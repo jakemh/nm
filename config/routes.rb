@@ -2,43 +2,13 @@
 Rails.application.routes.draw do
 
 
+  get 'affiliations/create'
 
+  get 'affiliations/destroy'
 
-  namespace :admin do
-  get 'assignments/index'
-  end
+  get 'branches/index'
 
-  namespace :admin do
-  get 'assignments/show'
-  end
-
-  namespace :admin do
-  get 'roles/index'
-  end
-
-  get 'assignments/create'
-
-  get 'assignments/destroy'
-
-  get 'roles/create'
-
-  get 'roles/destroy'
-
-  namespace :admin do
-  get 'ownerships/index'
-  end
-
-  namespace :admin do
-  get 'ownerships/show'
-  end
-
-  namespace :admin do
-  get 'connections/index'
-  end
-
-  namespace :admin do
-  get 'connections/show'
-  end
+  get 'branches/show'
 
   class Format
     attr_accessor :mime_type
@@ -89,8 +59,7 @@ Rails.application.routes.draw do
   #API for angular
   resources :messages
   resources :posts
-
-  # mount Monologue::Engine, at: '/blog' # or whatever path, be it "/blog" or "/monologue"
+  resources :branches
 
   get 'search', to: 'search#index', as: :search
   get 'auto_complete', to: 'me#autocomplete', as: :autocomplete
@@ -119,6 +88,8 @@ Rails.application.routes.draw do
     resources :items, :controller => :skills
     resources :roles
     resources :assignments
+    resources :affiliations
+    resources :branches
     resources :businesses, :controller => :user_businesses
   end
 
