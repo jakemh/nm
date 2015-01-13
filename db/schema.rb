@@ -11,10 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150109222413) do
+ActiveRecord::Schema.define(version: 20150112055403) do
 
   create_table "admin_roles", force: true do |t|
     t.integer  "status"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "affiliations", force: true do |t|
+    t.integer  "branch_id"
+    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -35,6 +42,20 @@ ActiveRecord::Schema.define(version: 20150109222413) do
   create_table "assignments", force: true do |t|
     t.integer  "user_id"
     t.integer  "role_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "badges", force: true do |t|
+    t.integer  "awardable_id"
+    t.string   "awardable_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "branches", force: true do |t|
+    t.integer  "affiliation_id"
+    t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

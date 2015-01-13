@@ -149,7 +149,8 @@ angular.module("NM").controller "ProfileController", [
   "profileEntity"
   "usSpinnerService"
   "PointService"
-  ($scope, $sce, $q, $routeParams, $location, Utilities, Review, AuthService, MessagesDisplay, MessageService, Restangular, SideBar, MapService, ReviewService, ReviewDisplay, profileEntity, usSpinnerService, PointService) ->
+  "ImageService"
+  ($scope, $sce, $q, $routeParams, $location, Utilities, Review, AuthService, MessagesDisplay, MessageService, Restangular, SideBar, MapService, ReviewService, ReviewDisplay, profileEntity, usSpinnerService, PointService, ImageService) ->
     
     # alert my#FriendsHotel.hotelName( );
     
@@ -555,6 +556,8 @@ angular.module("NM").controller "ProfileController", [
       reviews: $scope.reviewList
       
     $scope.init = () ->
+      i = ImageService
+      debugger
       if profileEntity.type == "Business"
         $scope.profileEntity.owner().then (o)->
           $scope.businessOwner = o

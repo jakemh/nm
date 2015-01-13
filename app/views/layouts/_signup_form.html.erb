@@ -24,22 +24,42 @@
           input_html: { class: 'input__form-reg' },
           wrapper_html: {class: "padding__form nowrap"} %>
   <%= f.error :zip, class: "error" %>
+    <div class="row">
+    
+    <div style="text-align: center" class="col-sm-6">
+      <div class="row">
+        <div  style="padding-top: 10px" class="col-sm-3 check-container__form-reg">
+          <div class="checkboxFive">
+            <%= f.input_field  :is_veteran, as: :boolean, 
+                     :id => "checkboxFiveInput",
 
-  <div class="check-container__form-reg">
-    <div class="checkboxFive">
-      <%= f.input_field  :is_veteran, as: :boolean, 
-               :id => "checkboxFiveInput",
-
-              
-             boolean_style: :inline,
-             label: false
-              %>
-      <label for="checkboxFiveInput"></label>
+                  style: "display: none",
+                   boolean_style: :inline,
+                   label: false
+                    %>
+            <label for="checkboxFiveInput"></label>
+          </div>
+        
+        </div>
+        <div class="col-sm-9 check-label__form-reg <%=veteran_error_helper(resource)%>">
+          I certify that I am a veteran of the US Armed Forces*
+        </div>
+      </div>
     </div>
-    <div class="check-label__form-reg <%=veteran_error_helper(resource)%>">
-      I certify that I am a veteran of the US Armed Forces*
+    <div class="col-sm-6">
+      <%= f.simple_fields_for :affiliations, resource.affiliations.build do |a| %>
+      <%= a.input :branch_id, 
+        collection: Branch.all.collect{|item| [item.name, item.id ]},
+        label: false,
+        prompt: "Branch",  
+        input_html: { style: "margin-top: 10px", class: 'input__form-bus select__form', id: "js-industry-select" },
+         wrapper_html: {class: "wrapper__form-bus"}, :placeholder => "TSTE"
+      %>
+      <% end %>
     </div>
   </div>
+
+ 
   <%= f.error :is_veteran, class: "error" %>
 
   <%= f.input :password, 

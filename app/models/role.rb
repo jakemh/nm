@@ -1,19 +1,3 @@
-# class Role < ActiveRecord::Base
-#   has_many :assignments
-#   has_many :users, :through => :assignments
-#   # enum name: [ :admin, :mentor]
-
-#   def self.enum(type)
-#     hash = {
-#       admin: 1
-#       mentor: 2
-#     }
-#     hash[type.intern]
-#   end
-
-# end
-
-
 class Role < ActiveRecord::Base
   # has_many :assignments
   has_many :users, :through => :assignments
@@ -30,22 +14,6 @@ class Role < ActiveRecord::Base
     ["MentorRole", "AdminRole"]
   end
 
-
-
-  # validates :roleable, uniqueness: true
-  # enum name: [ :admin, :mentor]
-
-  # def self.enum(type)
-  #   hash = {
-  #     admin: 1,
-  #     mentor: 2
-  #   }
-  #   hash[type.intern]
-  # end
-  # def self.addMentorRole
-  # def self.addRole(options)
-  #   roleObj = model_constant.where(options).first
-  # end
   def self.getRole(options)
     roleObj = options.delete(:roleable_type).constantize.where(options).first
     roleObj.role

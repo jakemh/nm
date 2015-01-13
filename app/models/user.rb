@@ -37,6 +37,8 @@ class User < ActiveRecord::Base
   # has_many :received_messages, class_name: "Message", foreign_key: 
     
   has_many :assignments
+  has_many :affiliations
+  has_many :branches, through: :affiliations
   has_many :roles, :through => :assignments
   has_many :ownerships, dependent: :destroy
   has_many :businesses, :through => :ownerships, :source => :connect_to
@@ -67,7 +69,7 @@ class User < ActiveRecord::Base
   validates :last_name, :presence => true, :on => :create
   validates :first_name, :presence => true, :on => :create
   validates :zip, :presence => true, :on => :create
-  accepts_nested_attributes_for :skills
+  accepts_nested_attributes_for :skills, :affiliations
   
   def all_unread_messages
     all_received_messages = []

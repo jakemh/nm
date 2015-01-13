@@ -1,0 +1,20 @@
+"use strict";
+
+App.factory "ImageService", [
+  "$q"
+  "CacheService"
+  "Restangular"
+  "AuthService"
+
+  ($q, CacheService, Restangular, AuthService) ->
+    class BranchLogos
+      constructor: ->
+        @navy = "<%= image_url 'military_icons/navy.png' %>"
+        @marines = "<%= image_url 'military_icons/marine_corps.png' %>"
+        @airForce = "<%= image_url 'military_icons/air_force.png' %>"
+        @army = "<%= image_url 'military_icons/army.png' %>"
+        @coastGuard = "<%= image_url 'military_icons/coast_guard.png' %>"
+
+    
+    branchLogos: new BranchLogos() 
+]
