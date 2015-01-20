@@ -1,9 +1,9 @@
 module SearchConcern
   extend ActiveSupport::Concern
 
-  included do
+  # included do
   
-  end
+  # end
 
   def search_for(entity, query)
     entity.search(
