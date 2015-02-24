@@ -1,0 +1,3717 @@
+commit 9f69a57a7fcdae251f7ab613e17d3b968421081b
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Tue Jan 20 12:52:32 2015 -0800
+
+    fixed business search
+
+commit 7e763e1ed0689582c778c022284048fb769baca6
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Tue Jan 13 04:35:15 2015 -0500
+
+    can add branch affiliation from profile edit
+
+commit a573ae385213fdae3e6bb40f966e665b1b21d8af
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Mon Jan 12 23:07:37 2015 -0500
+
+    can add branch affiliation in user sign up
+
+commit 9c2a0b8524d80c45e77d0cd25b95f9c014d3a170
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Sun Jan 11 15:32:06 2015 -0500
+
+    fixed broken admin::roles controller
+
+commit 7dbd65292f69a2bc0680547b7855ee32d2e4cc17
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Sun Jan 11 15:25:58 2015 -0500
+
+    added assignments page to admin panel
+
+commit 395697c2ed7e7e1deb80295128a59c3fa7d8d4d6
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Sun Jan 11 01:02:05 2015 -0500
+
+    fixed puma deploy command
+
+commit a3a0cbd9fd4b8f00746886962ef093c59e5d2762
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Sun Jan 11 00:55:27 2015 -0500
+
+    fixed huge validations bug
+
+commit a58403907ddd1408e498bd408bc5a830f742ae31
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Sun Jan 11 00:12:55 2015 -0500
+
+    can assign self as user in profile edit
+
+commit 555960634d0ba7d8d28b05d330ac947db75ffcf2
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Sat Jan 10 20:16:11 2015 -0500
+
+    fixed flag system following security lock-down
+
+commit c14ac1a879509d3e169be75dffed2fe35ccef6e2
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Sat Jan 10 19:31:56 2015 -0500
+
+    fixed robots
+
+commit 2b07f326cc971509195a956227d4f3f2dedaae43
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Sat Jan 10 18:17:44 2015 -0500
+
+    installed capistrano puma gem
+
+commit 0637f72e3cab4237fb76b05332a839b047b31aad
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Sat Jan 10 18:08:59 2015 -0500
+
+    modified deploy puma command
+
+commit 22ffc3f76ce54f2cb9a376eec76bb2ac6ca03f20
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Sat Jan 10 18:03:23 2015 -0500
+
+    debugging business prof issue
+
+commit b9f47187ec08c611381c9963f75f4f625b0a1a49
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Sat Jan 10 17:58:38 2015 -0500
+
+    debugging business prof issue
+
+commit 787bb106c79771a41af486ddf03c35ea4382ba8a
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Sat Jan 10 17:47:24 2015 -0500
+
+    added item delegate check to right bar business
+
+commit af834899845aaef252192c1b0470d37340962d20
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Sat Jan 10 17:41:29 2015 -0500
+
+    added delegate check to right bar business
+
+commit 966793e599f4ddecc358a8553a6e90527322d60a
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Sat Jan 10 16:57:23 2015 -0500
+
+    fix to user external right bar issue
+
+commit f7a43d30bd399a995de6e055ae00d01b627c4a17
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Sat Jan 10 16:43:11 2015 -0500
+
+    fix to user external right bar issue
+
+commit 7084e12efad2fec466f92221697a335c0d22ebe5
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Sat Jan 10 04:04:32 2015 -0500
+
+    another refactor of messaging; improved reliablity; fixed message persistence
+
+commit ec13afac13591b2878f65e8abd85f0ee81928898
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Fri Jan 9 21:53:41 2015 -0500
+
+    locked down security for messages controller
+
+commit 93c10019c4af30219cd164b8ad4a078d4a0d7c81
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Fri Jan 9 21:23:51 2015 -0500
+
+    improved admin panel layout
+
+commit 1ffb646e363f395238501b30fcb9711e6fc5c124
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Fri Jan 9 21:19:16 2015 -0500
+
+    fixed sorting by entity in admin panel by giving relevant objects a sort_attr method
+
+commit 02f1a6dd9b453ca7a116b5c7317cc9b477b27871
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Fri Jan 9 20:52:44 2015 -0500
+
+    improved admin panel structure
+
+commit a67cd4ca1c0408c90929586bff5ad034308e5dfd
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Fri Jan 9 20:37:23 2015 -0500
+
+    added robots.txt
+
+commit 26f5fecdf7f2715add21cf697bb328dd20d9bd87
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Fri Jan 9 20:12:06 2015 -0500
+
+    improved votes layout
+
+commit 3fbc99b5b5f80fc2ad8e70afe907b565f2f915f1
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Fri Jan 9 19:12:27 2015 -0500
+
+    signup page design improved
+
+commit a7a9dc1ed90fcb7cc5af30805e0a24e14be9e6cb
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Fri Jan 9 19:08:19 2015 -0500
+
+    modified signup page and improved responsiveness
+
+commit 725a185b925b81d75dbbcf645e8d67ceddeaef88
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Fri Jan 9 17:41:21 2015 -0500
+
+    fixed sorting issue in admin panel
+
+commit a77b73ea14d10d923c55e949e428fe4052a35506
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Fri Jan 9 17:34:16 2015 -0500
+
+    added connections and ownerships to admin panel
+
+commit a367273999da02fc466104f62bdee17b758f87ac
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Fri Jan 9 17:06:19 2015 -0500
+
+    improved role system with thorough validations and avoided duplicate roles
+
+commit c7ec102c62284a4055e831a5dd611a72d7196511
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Thu Jan 8 20:44:35 2015 -0500
+
+    fixed admin check in authorization system
+
+commit bcffce2bf0e39867221ae52c44ca2824f1842974
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Thu Jan 8 20:34:27 2015 -0500
+
+    fixed user serializer admin check
+
+commit a9f46e0a42544bb669a780bd9022d4d413a8efbf
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Thu Jan 8 20:10:29 2015 -0500
+
+    modified role system; added mentor and admin role
+
+commit 4b88f74c45bb80164c195f98353777acd39b21f7
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Thu Jan 8 11:17:57 2015 -0500
+
+    added splash page redirect; added signin/signup links; improved structure of sign in template
+
+commit dba888223e04ab716cba3baa6a1ea1a163493a59
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Wed Jan 7 20:29:03 2015 -0500
+
+    root redirects to log in page
+
+commit 0919174ab8251969401f4d9a39e363c3e95572ca
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Wed Jan 7 19:25:01 2015 -0500
+
+    switched capistrano to beta.nextmission
+
+commit 92d8e3bee5f65a7ac58eea3fc8470d522628cadb
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Wed Jan 7 15:42:13 2015 -0500
+
+    preserves spacing in feed post and improves layout structure
+
+commit 5991a1ffbf27370e2dd823d5501c66e19cac5510
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Wed Jan 7 00:28:18 2015 -0500
+
+    changed orange color
+
+commit 14f5c8fa01339973585037a0628a696b552c74cb
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Tue Jan 6 23:01:17 2015 -0500
+
+    fixed typo in business create page
+
+commit 04ec93f2671cb15c6b83415a67c2ee319f2c980a
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Tue Jan 6 21:47:32 2015 -0500
+
+    improved business right bar
+
+commit e4f166ded5b945d406fb28b4f80f6b12e21c9433
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Tue Jan 6 21:24:18 2015 -0500
+
+    #94 switched review association for consistency and security
+
+commit 0aed69e3aa17626abf8d78966b229ca6406d3d95
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Tue Jan 6 20:49:46 2015 -0500
+
+    #92 clears post object after submitting
+
+commit 5d10e99e098f3236376a2ca87675aa6834444eab
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Tue Jan 6 20:20:22 2015 -0500
+
+    #91 removed 'user businesses' if user doesn't have any businesses
+
+commit 6fb71f444a454fce3bb82f6444a3f2e8eb293646
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Tue Jan 6 18:52:09 2015 -0500
+
+    added audience page place holder and conditional checks
+
+commit f35e10484b99b9e8d765b0e957cebedce3d417ef
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Tue Jan 6 18:28:36 2015 -0500
+
+    added placeholder for message center if user has no entities in message list
+
+commit 64665e6cb3ea2a6669a2507116027ba108ca5e10
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Mon Jan 5 23:48:43 2015 -0500
+
+    improved chart layout
+
+commit d2fdb5b2ffa4cf1794d5870b109f4a4219e26694
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Mon Jan 5 23:37:15 2015 -0500
+
+    chart implemented for audience page
+
+commit 2ebd5c317baf7c4fa09f3e94238a9f0d8bae5f21
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Mon Jan 5 20:54:47 2015 -0500
+
+    added audience sorting options interactions and interactionsIn
+
+commit 190ef01ddb787d937bfe8905af1b2e8b63b1f988
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Mon Jan 5 19:56:58 2015 -0500
+
+    interactions API for total interactions
+
+commit b6ca000c0ba98d64edeef16991f6a9f2583f583b
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Mon Jan 5 14:38:08 2015 -0500
+
+    refactored list restangularization and fixed object types of results returned from bus dir search
+
+commit f04ede5641cba193c7f24378851d8fad3b43c7d8
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Mon Jan 5 02:45:38 2015 -0500
+
+    fixed self-check condition of follow compatibility
+
+commit d1c6a90ec38c61b2b933241b312bd864c542b875
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Mon Jan 5 02:36:11 2015 -0500
+
+    fixed logical error in following_serializer
+
+commit b4b4374636c3f723c16f962473c557c076eb2a96
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Mon Jan 5 02:33:04 2015 -0500
+
+    fixes interactions bug by updated following controller to use correct serializer
+
+commit 9fd0c2ca8c0da936457b39b3ede7b59c3d554784
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Mon Jan 5 01:52:43 2015 -0500
+
+    # 89 refactored points sytem into PointService
+
+commit 0e3c8a990ebe2eff1ddb64b215e98fffa2d70903
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Sun Jan 4 18:47:28 2015 -0500
+
+    fixed logical error in interaction calculation
+
+commit a19fdb32169539384de7fedc5de4bed3d4cc3de6
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Sun Jan 4 18:44:54 2015 -0500
+
+    fixed logical error in interaction calculation
+
+commit 79b2245eb71f3032c838c63259ecc5956e4b51f5
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Sun Jan 4 18:34:48 2015 -0500
+
+    updated interactions on audience page
+
+commit 08aaa6e48bce5515a58ca61a05922af68ec5e880
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Sun Jan 4 17:51:41 2015 -0500
+
+    finished first v1 of interaction API
+
+commit 0fac354196d3efc9102e5df99b4c1baccdda50ee
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Sun Jan 4 13:34:08 2015 -0500
+
+    improved app security; added business id query param; updated interaction API
+
+commit 7a549e316ba86c8f94934867ce90220be1a79d02
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Sat Jan 3 17:25:15 2015 -0500
+
+    fixed bug causing feed not to update on post
+
+commit 0530cece16b76ffd8cb65423e279c74efe8151a2
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Sat Jan 3 17:20:31 2015 -0500
+
+    fix to feed not updating on post
+
+commit 6231ecdfd0765f4cc37c8649840efd4759eb8519
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Sat Jan 3 17:15:54 2015 -0500
+
+    fixed sql concern entity_condition error
+
+commit 567f58314b4cddfa64866f7fd3963266e9537469
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Sat Jan 3 17:08:53 2015 -0500
+
+    cleanup
+
+commit 2f536cd4a8dcb7e5b094f0026547df93aaf3b35d
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Sat Jan 3 17:03:06 2015 -0500
+
+    updated sql concern
+
+commit 502996cf74f3dc65f513deb566f4d6406cfd9b81
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Sat Jan 3 16:55:48 2015 -0500
+
+    fixed bug in SqlConcern#entity_condition; updated audience page; added interaction service object
+
+commit 6df4be66fe672405eb3ee64f8c893d14cd55ce4f
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Sat Jan 3 16:52:40 2015 -0500
+
+    fixed bug in SqlConcern#entity_condition; updated audience page; added interaction service object
+
+commit 0995de735383d5cd272290f16b771636e01615ec
+Merge: 7e7d45b 281e368
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Sat Jan 3 14:38:37 2015 -0500
+
+    Merge branch 'audience-update' into angular
+
+commit 7e7d45b263a3c492a0090f8096c3939fd6347b62
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Fri Jan 2 22:27:17 2015 -0500
+
+    fixed review system
+
+commit 281e36810bc6c1abb110b75f5780d5dc60f69e58
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Fri Jan 2 21:47:06 2015 -0500
+
+    rest entity refactoring and updated audience display model
+
+commit 4690d62c742edd8dd5e492938193ecb56be60611
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Fri Jan 2 17:29:56 2015 -0500
+
+    fixed side bar bug in user external profile
+
+commit 58f6cd04f0cc6cd3959e762677f48cc2d0b38699
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Fri Jan 2 17:04:21 2015 -0500
+
+    fixed bug involving side bar in business profile displaying incorrect owner
+
+commit 6ec4c553b66210d9b309904fb6ebba0411bf4134
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Fri Jan 2 11:27:53 2015 -0500
+
+    improved audience page layout
+
+commit 4573d32f1b0ff548fedf1007469f68b4203dc9d4
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Fri Jan 2 11:21:54 2015 -0500
+
+    #83 feed thumb links to profile
+
+commit cbce5d957ac3d3d881a24bee232a945d19b5c977
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Thu Jan 1 15:38:39 2015 -0500
+
+    fixed map height issue in bus prof
+
+commit dffb5dba82ec2eb775ce6ee739c04106e51daada
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Thu Jan 1 15:32:56 2015 -0500
+
+    handles edge case where abs(sum) user's entities votes for a post > 1
+
+commit a68b70f7d632157b3fbd073f533154233a1c8e8b
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Thu Jan 1 14:47:13 2015 -0500
+
+    implemented new vote system
+
+commit 02e5f3a80b28e581c7cf8788f78a94415f89a96a
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Thu Jan 1 11:06:36 2015 -0500
+
+    provided feedback to upload modal
+
+commit fe57b618b86667e81e3bddb59aadbb0c6fb08319
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Wed Dec 31 18:04:15 2014 -0500
+
+    cropper sets default cropping coords as largest possible area while remaining centered
+
+commit ea4114f3490ac8ad839fda08a895e0762a6eaa3c
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Wed Dec 31 14:45:50 2014 -0500
+
+    fixed photo uploads for non-cropped images
+
+commit 16fbaf45c27e051934a9b9f36af01bb8ae44ffa8
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Wed Dec 31 12:16:33 2014 -0500
+
+    fixed main col rendering
+
+commit 3d6f50030fd51282428ba4adab54f166bc644457
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Wed Dec 31 11:57:41 2014 -0500
+
+    fixed rendering bug in safari
+
+commit b0ba87a5b09a2474b4db68a16374b0f607441407
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Wed Dec 31 10:05:04 2014 -0500
+
+    increased size of business prof map and improved positioning
+
+commit c3ab071b786c3ac01874c462061f3c15f6c2cc20
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Tue Dec 30 22:18:10 2014 -0500
+
+    increased profile top box height to 250px from 200 and profile profil hight and width to 165 from 150
+
+commit afda5c6f5ed8abdbbd01a6933ad44adf2b071326
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Tue Dec 30 21:46:23 2014 -0500
+
+    cropping tool working for profile photos
+
+commit c335d2e2907a76972ec501f94575e6f6aba3e67d
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Tue Dec 30 21:14:21 2014 -0500
+
+    refactored image cropping directive
+
+commit deb66800734dfdd164a23a9b0cd8062c11136b4a
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Tue Dec 30 14:53:15 2014 -0500
+
+    math fixed for cover photo cropping
+
+commit e58f3a4c0b6d2029ed3d6b755552f427a369d037
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Tue Dec 30 13:41:51 2014 -0500
+
+    fixed photo controller error
+
+commit eabb23b2b4ed854ca639044e89a3d3dd5a0c5e48
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Tue Dec 30 13:35:11 2014 -0500
+
+    able to handle smaller images with cover photo cropper
+
+commit e905bba244ec73b84b42a6ad9c2c340066f57d19
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Tue Dec 30 00:06:39 2014 -0500
+
+    added cropping initializer and fixed broken admin panel link
+
+commit 963f902b1598af3003e670c89bed1f83eecf71f3
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Mon Dec 29 22:43:38 2014 -0500
+
+    improved resizing of large images
+
+commit 33ccc5c6d23e716a149a39851be83987e8daa231
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Mon Dec 29 19:28:48 2014 -0500
+
+    new cover photo upload interface with cropping tool
+
+commit d466a528053bc11eb0c817f3220413fabdd6e484
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Mon Dec 29 16:48:24 2014 -0500
+
+    improved right bar for external businesses
+
+commit de81fd97665fba3ff90950b2fef3000a276a5ff1
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Mon Dec 29 14:28:21 2014 -0500
+
+    delivers correct image cover photo size
+
+commit 21977555c811304dfc272a366948c67c7b831766
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Mon Dec 29 12:04:19 2014 -0500
+
+    minor js error fix
+
+commit 5c5b83761f16e8be0562dfd07223212a1e0dbec1
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Mon Dec 29 11:48:07 2014 -0500
+
+    #68 following connections are reflected immediately in audience page
+
+commit 48b9eeae68b194f638dfafd7ab589f1062ef59fd
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Sat Dec 27 19:59:52 2014 -0500
+
+    added total points to entity profile
+
+commit d13a58f54ab1645377a6e79a1544a27c12d8c520
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Sat Dec 27 19:46:15 2014 -0500
+
+    fixed broken admin panel link
+
+commit 0e626e7d2436256806ec60575b432f6a6da6c8e5
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Sat Dec 27 19:37:09 2014 -0500
+
+    improved admin panel analytics and notifications
+
+commit 46e60841998e02e499c58323817f7b07c7ca902d
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Sat Dec 27 16:42:55 2014 -0500
+
+    fixed broken alerts link
+
+commit a4111fc6386a1bdba901a75cb0ac686eafef691a
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Sat Dec 27 16:37:57 2014 -0500
+
+    added admin panel alerts and user vote analytics
+
+commit 44f551e84de1fcb7d125b6d13ab86d6a44d77d03
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Sat Dec 27 13:31:01 2014 -0500
+
+    added post_point score validation and added sorting to admin panel
+
+commit 3dbee4b8ab08d278d24f9b79c3643f174a363246
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Fri Dec 26 13:14:17 2014 -0500
+
+    prevented post serializer not finding scope object
+
+commit 5f5004b7e1a3a86d3a8f1ebd66fd2e2612aaeeb8
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Fri Dec 26 13:09:09 2014 -0500
+
+    fixed client side valid point time window
+
+commit 33c316c8d89cf1699e7da9c7e15b773bb84dcb47
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Fri Dec 26 13:00:46 2014 -0500
+
+    implemented client-side enforecement of vote window
+
+commit 2302c32fb1f40ebc6d4ab1b6a168c01eb6d0f2e9
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Fri Dec 26 12:22:02 2014 -0500
+
+    valiates post vote window (server side only)
+
+commit 01cb2f30f32c5e65c5da32edef8cda9c89ca6f7f
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Fri Dec 26 11:03:47 2014 -0500
+
+    added points admin panel
+
+commit 6a14a072476c3f2d7b99909f0f81ef98bb9f3b7d
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Fri Dec 26 07:47:15 2014 -0500
+
+    centered new business form
+
+commit 81297edef62bccee7049915b31e23671c9fe46da
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Fri Dec 26 07:43:46 2014 -0500
+
+    can add and substract points
+
+commit d2c3dd90064055876c42c4f5c7654401d2be6418
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Thu Dec 25 19:12:49 2014 -0500
+
+    added voting interface
+
+commit 4c48d4a883121d4502004ff9e28e72f0037a116e
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Thu Dec 25 18:26:27 2014 -0500
+
+    added voting interface
+
+commit e3e6c0a42577bacacae061c7da3f84e6b93f1440
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Thu Dec 25 11:51:46 2014 -0500
+
+    added points database models and associations
+
+commit 4cd093bdc8853a51f81c03123b0e7b0e3b9e9a82
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Thu Dec 25 10:56:45 2014 -0500
+
+    fixed undefined attribute error
+
+commit f70d26ac0dab3c7ecd6f2e1340f47b266b5d6fa3
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Thu Dec 25 06:27:24 2014 -0500
+
+    fixed message center post issue following refactor
+
+commit ee11f7d6138a5b6e207d9e98e7fb219143e30272
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Wed Dec 24 14:33:25 2014 -0500
+
+    #80 comma separated tag string is no longer saved to database
+
+commit a632fc03dad669f2ee7e0e17b274b3da2ed5a3a5
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Wed Dec 24 12:20:23 2014 -0500
+
+    #76
+
+commit ef36f780a19740c72aba78aa8e4ca455f4faaf95
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Wed Dec 24 11:03:39 2014 -0500
+
+    #77 removed photo upload from signup flow
+
+commit a1928260d5a5dc230ce4c489ea35890262661cf9
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Wed Dec 24 10:55:53 2014 -0500
+
+    centered form on new business page
+
+commit 3a9eca3f5b7ed61a13beec2c6ec7074161f2c1bd
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Wed Dec 24 10:14:14 2014 -0500
+
+    #70 refactored message modal system and fixed messaging for right bar
+
+commit a0cc1092f563028385e6f64e0371a851cbfd2c3e
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Tue Dec 23 20:51:44 2014 -0500
+
+    #71 following works on bus dir and profile
+
+commit 4f18eae13e4c6f2e0fbeb286527c52434e45dd2f
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Tue Dec 23 17:56:54 2014 -0500
+
+    admin panel interface to add/remove admin
+
+commit 8fda5fe6ee25f5cd65abe57631418e218da792ca
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Tue Dec 23 15:53:36 2014 -0500
+
+    #79 removed user serializer override
+
+commit d971698fcf2bcf5b4df7a60d72fa1146fd33601f
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Tue Dec 23 14:48:42 2014 -0500
+
+    #81 checks to make sure correct div before moving gmap
+
+commit 125340b08301eb77357fe77cae0666d49cdd818a
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Tue Dec 23 12:42:53 2014 -0500
+
+    adding daniel to mailer list
+
+commit 28fab52fc1ae0c12d34e88436865ca3465e642b6
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Tue Dec 23 12:39:31 2014 -0500
+
+    added mailer
+
+commit 7951d4982dcaa1e87c19ce913a410630d077d66a
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Tue Dec 23 12:07:08 2014 -0500
+
+    added rails mailer
+
+commit b29761278cf3c00f94f0d69fd33a36ec9eb1b49a
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Tue Dec 23 09:02:26 2014 -0500
+
+    #75 moves map to new div with ugly jQuery replaceWith method; placeholder until angular gmaps directive is implemented
+
+commit 08a663b4b8f51c32168a6baf4f6f1bb153f05187
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Tue Dec 23 08:13:34 2014 -0500
+
+    #74 revised cap_first method and added to city
+
+commit e11fbe5cfaf3ab9eb751b7a1cd29de8d457eec79
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Tue Dec 23 07:40:36 2014 -0500
+
+    removed HTTP authentication
+
+commit 13d65610b94af0ee70f22920c492a305023f7718
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Mon Dec 22 11:20:48 2014 -0500
+
+    added reviews to admin panel
+
+commit f74a370d18ddb3176a3f8b8da48a1a4b71776b45
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Mon Dec 22 11:01:27 2014 -0500
+
+    #60 reviews now require at least one star to submit
+
+commit 3283924d680b40eaa152e990aaf1760c43dcd8f5
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Mon Dec 22 03:56:08 2014 -0500
+
+    improved admin panel layout
+
+commit fb4cd94faa7eb0747b9407ab2adcbc9c39e46fe1
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Sun Dec 21 15:32:18 2014 -0500
+
+    fixed feed in profile page
+
+commit c863cb177f6101e41a9ad1208c816678cd20bbf3
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Sun Dec 21 14:55:32 2014 -0500
+
+    re-enabled dynaming loading
+
+commit cd6069e75ffa6b35d2266fba68ac5ff621534b3f
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Sun Dec 21 14:52:22 2014 -0500
+
+    sorted feed array on init to prevent missing posts
+
+commit d6fa7fc09382aa6ee1cbe0e6ef91c64f408afa32
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Sun Dec 21 14:43:34 2014 -0500
+
+    fixed loading order issue
+
+commit a348896de075083d0a8f7d10d633dc7d0c6900a8
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Sun Dec 21 14:26:26 2014 -0500
+
+    first dynamic loading of news feed implementation
+
+commit f8c877d1203c920a1da2f0595a76ade095077639
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Sun Dec 21 04:58:53 2014 -0500
+
+    minor design improvements
+
+commit fb78b8962fc19554cce469745f9f26c68444522b
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Sun Dec 21 04:47:07 2014 -0500
+
+    fixed links in admin panel
+
+commit 60f84c825a33a0bad2cf1e9d79c10760434ef21e
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Sun Dec 21 04:38:34 2014 -0500
+
+    fix to tab bar visibility issue in message center
+
+commit e31b3337df2dc6dc8781ae5eb75546440029aa66
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Sun Dec 21 02:38:00 2014 -0500
+
+    fixed bus dir search bug by merging suggestion obj with RestEntity obj
+
+commit bbe672895eb8ccf8ed09530c56483ee04b10a08e
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Sun Dec 21 02:15:37 2014 -0500
+
+    improved info window formatting
+
+commit fdc52ee7c2e758f9b8cc791c47683d1a21af94e8
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Sun Dec 21 02:12:04 2014 -0500
+
+    added info window for maps
+
+commit 949749eb33e408270077b5de7f49e086fba0296f
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Sun Dec 21 00:00:35 2014 -0500
+
+    fixed external user right bar
+
+commit 0e675ed57144a2be3d61e7fe445763fee12d835b
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Sat Dec 20 22:34:01 2014 -0500
+
+    fixed bug where follower and following were reversed in audience angular controller
+
+commit 0bd51de480506759edb057169e87e87dfd59a473
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Sat Dec 20 22:31:31 2014 -0500
+
+    sorted and reverse admin panel lists
+
+commit c3a9ca6e9655babeaa3d4389ac4c3874016edaec
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Sat Dec 20 21:27:26 2014 -0500
+
+    fixed issue with maps not loading properly in profile
+
+commit e776bfc75f259e828e9298fc8662e16015b406e5
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Sat Dec 20 21:08:41 2014 -0500
+
+    #62 profiles now show correct feed
+
+commit e8e2bdf50cb705e8daaf35388f9def113051f69f
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Sat Dec 20 20:58:26 2014 -0500
+
+    fixed map display bug with bus dir search box
+
+commit ed568ef779dcee280c68ca4f0a3fd8c36b648e8b
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Sat Dec 20 20:55:46 2014 -0500
+
+    #65, #66, #67
+
+commit e54746c6c67ffa8df9aa1b1642bb50b9398f37a1
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Sat Dec 20 20:23:16 2014 -0500
+
+    #61 modified how markers are applied; ensures markers are applied after map is refreshed in container
+
+commit 63dbb24175586cd2549f8d31ad702de8dd90238c
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Sat Dec 20 19:31:32 2014 -0500
+
+    fixed broken admin panel deletion
+
+commit b84f0ce4bc1099babf286d6987c66e661d8956ce
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Sat Dec 20 19:12:51 2014 -0500
+
+    ensures audience display build function watches both follower and following arrays
+
+commit 7fc26ee85610e58c2ea9ef019789856fbfd7fa08
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Sat Dec 20 18:58:05 2014 -0500
+
+    improved audience filter logic
+
+commit e9775a8d75ca03447c46ad7d8198177277eaa3af
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Sat Dec 20 18:42:33 2014 -0500
+
+    improved how audience display list is built for constinency and efficiency
+
+commit ef2b12e8bb3da2ee09b24d7a8ba42c63b1578520
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Sat Dec 20 17:36:18 2014 -0500
+
+    #64 filters for overlapping follower and following and applies arrows to respesent connection
+
+commit 57fc709eaab1d5eead3ee01e9448437a3b469cbf
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Fri Dec 19 04:29:42 2014 -0500
+
+    #63 prevent maps from persisiting between profile and bus dir
+
+commit d6811645c8ca89113608a5540b12105dd2910864
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Fri Dec 19 02:39:28 2014 -0500
+
+    fixed bug in admin message panel
+
+commit 2ddd0c6c0c679faa67d27ce3ec15bf71a5806987
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Fri Dec 19 02:32:03 2014 -0500
+
+    added business profile for admin panel
+
+commit b9b6a5d8c9d1aafb1a5e3fc9a9072abc59405ece
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Fri Dec 19 01:59:53 2014 -0500
+
+    improved user profile admin layout
+
+commit 2ee6109e99b944247104083b9590968b307fdfa4
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Fri Dec 19 01:57:02 2014 -0500
+
+    added user profile in admin panel
+
+commit 1e13ce30d84b1c048c25e8f6188dfb00a6f871dd
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Thu Dec 18 16:06:01 2014 -0500
+
+    fixed #cap_first bug
+
+commit a8e3b3764594ec6ebee35580e64c83d72cac4653
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Thu Dec 18 16:00:23 2014 -0500
+
+    fixed name upcasing
+
+commit 5c7b93c151c4e14243bd224eeda2a43682e010b0
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Thu Dec 18 15:47:26 2014 -0500
+
+    improved admin panel layout
+
+commit 5464826080a3fa4a26c7f0cb7cbef4d1c1b04234
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Thu Dec 18 15:38:16 2014 -0500
+
+    added flag menu option
+
+commit 4b361a432542552b4ade0590914d6da8b83a225c
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Thu Dec 18 15:31:06 2014 -0500
+
+    added admin panel for flags
+
+commit 482ea94b1c8593e9f462dce857cf727d581203ae
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Wed Dec 17 22:19:50 2014 -0800
+
+    prevents obsolete MessageResponse model type from crashing messaging admin panel
+
+commit 21bdf3edebe1a46bbfb7d163cc41b077527d5606
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Wed Dec 17 22:00:50 2014 -0800
+
+    fixed admin message delete
+
+commit a25cb627d29d4e61bdcada3b4b0f0c6406a62188
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Wed Dec 17 21:58:27 2014 -0800
+
+    top bar display admin panel link if user is admin
+
+commit b61178012e35e6580bed8fe889afdef9b3c8483a
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Wed Dec 17 21:44:55 2014 -0800
+
+    fixing profile yml parsing
+
+commit f1ee653ebb6e1f46efbd072aee05a34d8b5d02ff
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Wed Dec 17 21:44:08 2014 -0800
+
+    updated admin panel
+
+commit e7282298b38a8930cc79a93b6f3fc83a798ef2d5
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Wed Dec 17 18:46:07 2014 -0800
+
+    added posts and messages panels
+
+commit d18275275e6d1c63a98770e388e306f9d2dbd83d
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Wed Dec 17 08:54:48 2014 -0800
+
+    improved admin panel interface w.r.t angular
+
+commit 690384cad5f594e98127a8de95168a75b8df625b
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Mon Dec 15 01:56:31 2014 -0800
+
+    fixed review score
+
+commit ecc59fcc38b302ee87dd36968cc0b69f0216614d
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Mon Dec 15 01:34:02 2014 -0800
+
+    improved map zoom to bounds
+
+commit 68d5f91101ff0a034c98421ebf0a1e9387e1acde
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Sun Dec 14 22:22:49 2014 -0800
+
+    #47 shows map correctly in profile and fits map to zoom
+
+commit 6d7a321ef9c7c6afbec737f11740bfb30efcd1be
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Sun Dec 14 22:04:45 2014 -0800
+
+    fixed review button for owned profiles
+
+commit fdff77718ee4e461729a12247154a6d09cd42493
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Sun Dec 14 21:15:27 2014 -0800
+
+    removed typo
+
+commit e49c1b14b6f6e20ec24bd44cd6c88a660c76d62b
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Sun Dec 14 21:12:28 2014 -0800
+
+    #56 removes review button from owned profiles and validates on server
+
+commit 392d515e296f0fdce948ca48349cd692ed2857e9
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Sun Dec 14 20:46:52 2014 -0800
+
+    #59 reviews are updated on submit
+
+commit 6dedb901401419d4a6d77e926d7f2d891392b044
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Sun Dec 14 19:58:41 2014 -0800
+
+    improved review box layout
+
+commit 5242b60c38253542ee8f7cbc2deeab9f43032baa
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Sun Dec 14 16:14:54 2014 -0800
+
+    #53 added time stamps to message display entity items and message display posts
+
+commit 9aeb39345b32536fe0c59e4bd0aea0c30df40825
+Merge: abdee79 5a91de9
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Sun Dec 14 04:36:28 2014 -0800
+
+    Merge branch 'message-center-restructure' into angular
+
+commit abdee790c21633a64a73195c973f0031e6426601
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Sun Dec 14 04:36:04 2014 -0800
+
+    cleanup
+
+commit 5a91de9635e34ce8662207706247e30ee102675b
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Sun Dec 14 04:35:16 2014 -0800
+
+    improved unread message system
+
+commit 4007bd6b58af786d389ca7525fa23bd30fde9450
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Sun Dec 14 04:02:45 2014 -0800
+
+    improved ordering
+
+commit cd8d4a5df340abd8117c4fc30517b6828668af2b
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Sun Dec 14 01:40:04 2014 -0800
+
+    does not show sent messages as unread
+
+commit 5dbf9377a5903305fcf21ae847dc9dc49409cc36
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Sun Dec 14 01:37:22 2014 -0800
+
+    enabled reading messages
+
+commit 6c193134bf362ef62db0b09d8722736b6b707b93
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Sun Dec 14 01:21:44 2014 -0800
+
+    improved ordering by sorting display array
+
+commit 8a27f2f7ab811cf3d32cf9a0f1ea4666c5e4d78a
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Sun Dec 14 00:49:54 2014 -0800
+
+    entities in message center sort based on id value of last message
+
+commit 248b040f62c7bc9b29f762d0afaef7f544401079
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Sun Dec 14 00:49:26 2014 -0800
+
+    improved message feedback in message center
+
+commit 636185031b5d50eb5bac34725d1b834f17db0d01
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Sat Dec 13 22:29:15 2014 -0800
+
+    implemented new system for messaging; still issues with unread messages and data binding
+
+commit 7e15198570928ede0a17ca450cf262b7a29a9edf
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Fri Dec 12 17:51:55 2014 -0800
+
+    renamed follow/following initializer in rest entity to fix bug
+
+commit eb7608cb07912a61650a7348c549607d9e052ffb
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Fri Dec 12 17:48:14 2014 -0800
+
+    new display system implemented for audience
+
+commit 00a02d3019c9e6793480cd6e21798b2ba9321403
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Fri Dec 12 17:14:46 2014 -0800
+
+    implemented entity hash
+
+commit 27327cf413110820404838592d20fd8c96da4e9e
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Wed Dec 10 17:48:29 2014 -0800
+
+    fixed review math
+
+commit 9356e2369d714b8e5e4a115b9ee4c66f80f91a76
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Wed Dec 10 17:46:43 2014 -0800
+
+    instant feedback on adding posts and messages
+
+commit 33415cb1e24687394ee677065476fadbd2a70d3b
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Tue Dec 9 18:38:29 2014 -0800
+
+    re-enabled distance
+
+commit b8f1171603b860aaa2c5f106f88fa4665b43b65a
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Tue Dec 9 18:30:56 2014 -0800
+
+    fixed bug in cache service and improved audience displaying duplicates
+
+commit 287be4c13fe77e8e39fe1d761ed49569635d2691
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Tue Dec 9 18:00:47 2014 -0800
+
+    can filter between followers and following in audience page
+
+commit 7f6e178c6b8cd655e29691b1764a9bbd952acea7
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Tue Dec 9 14:39:39 2014 -0800
+
+    refactored show array parsing
+
+commit fc2cef3ba73b1226fe29e942c203d78c474730e4
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Tue Dec 9 13:12:52 2014 -0800
+
+    reverted top left landing page logo back to nm logo without tm
+
+commit 8acf6dea79cbbf6eda0f2ddab084daca3d961a2a
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Mon Dec 8 20:42:40 2014 -0800
+
+    changed domain all option to devise session store
+
+commit c228e969e5c3f8f889e53c6bfeb604c5989a06d2
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Mon Dec 8 20:37:02 2014 -0800
+
+    added domain all option to devise session store
+
+commit 0a841983a307218802377af8c52fc710694c9183
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Mon Dec 8 20:05:32 2014 -0800
+
+    minor style changes
+
+commit 90c9575e1edb4e0236574369d197de284ffadd35
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Mon Dec 8 20:02:54 2014 -0800
+
+    added legal disclaimer
+
+commit 7f90281aed1c68ca8f795ff4957ca14fbb55cd48
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Mon Dec 8 14:16:29 2014 -0800
+
+    updated nm logo
+
+commit 0654213b2ae7e3dc4066a557eaba5789dbd5e3f5
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Sun Dec 7 17:56:17 2014 -0800
+
+    set follower associations for both user and business serializer, excluded from entity serializer
+
+commit 11aedbe6761737700f8653257a523603bda9b1ea
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Sun Dec 7 17:48:02 2014 -0800
+
+    removed associations from entity serializer
+
+commit 46424fdf0df23953a26cccb1561fe79eb421fb8d
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Sun Dec 7 15:30:23 2014 -0800
+
+    can add followers from profile page
+
+commit 12e5839534d7209d7f2c40d236669f47bd467756
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Sun Dec 7 13:43:32 2014 -0800
+
+    modified BusinessConnection inverse query
+
+commit 14d6a2020e8abb8a9213e9392ee7ac359f92a6ec
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Sun Dec 7 13:05:11 2014 -0800
+
+    removed ability to follow users from businesses (front end only)
+
+commit ba4624e3772f6c11587e5e30540fb5ee4f86bd30
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Sun Dec 7 13:02:45 2014 -0800
+
+    removed ability to follow users from businesses (front end only)
+
+commit 714615e0fb91170381f7e3c4ba26420f8378964d
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Sun Dec 7 12:51:54 2014 -0800
+
+    significant redesign of following interface
+
+commit 3ff7df4fa011dacbabf87478e286bc28b79373a0
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Sun Dec 7 08:06:57 2014 -0800
+
+    fixed profile edit when entity does not have any skills/tags
+
+commit e282800e7870ff35aca7a9d7fc1a8f25b651c505
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Sun Dec 7 00:27:43 2014 -0800
+
+    #15 sets current entity to profile entity if profile entity is owned by user
+
+commit a7c146dc2aa347115f07a8c33e5cadd2b332472e
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Sat Dec 6 21:12:47 2014 -0800
+
+    refactored belongsToUser and fixed bug in caching system
+
+commit 33612a29a17cb77603d36ec1e3478ddc8f1025f8
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Sat Dec 6 20:25:41 2014 -0800
+
+    removing old profile file
+
+commit ced75f1ae9735d2325ea67c6481e08394984854b
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Sat Dec 6 20:25:01 2014 -0800
+
+    refactored some entity functions
+
+commit fcd8c6a6c74d5251d9fd21b42e04bb3eb37cac10
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Sat Dec 6 20:04:13 2014 -0800
+
+    refactoring out angular ()
+
+commit d20e39e65e65bdbe8f0e19f173d529ed5dbe09ed
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Sat Dec 6 18:08:31 2014 -0800
+
+    fixed thumb not always showing up issue
+
+commit a04de249211590da4733539cce92e32411c41092
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Sat Dec 6 18:00:04 2014 -0800
+
+    fixed thumb not always showing up issue
+
+commit 8f3b68a49eb7b812fb900ed1aacb861861e6625b
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Sat Dec 6 16:56:02 2014 -0800
+
+    imploved caching system, data binding and responsiveness of making changes to data models
+
+commit 7942c2a587e9ad9364849651f79271a3fa5aaf75
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Sat Dec 6 16:05:15 2014 -0800
+
+    fixed capitalization errors
+
+commit 6c5e0583e1d4f1e0ff6bc51c7ca7f10b5cc7042d
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Sat Dec 6 15:56:47 2014 -0800
+
+    capitalizes first name, last name, city and address
+
+commit f5ab30d5e4941dcc90d20089cc456dc9ed0693cb
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Fri Dec 5 01:43:42 2014 -0800
+
+    improved audience page
+
+commit 2078e17ec8387c2d06184328b909810e4597b727
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Fri Dec 5 00:50:00 2014 -0800
+
+    modified first letter query to make case insensitive to prevent postgres bug
+
+commit 0c55261db5c77f9664919ccb619f787468c71938
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Fri Dec 5 00:29:03 2014 -0800
+
+    improved marker display based on filter settings
+
+commit 1694f37393bbdc09b83770203b71ef89f17c937c
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Thu Dec 4 23:55:06 2014 -0800
+
+    #29 #30 bus dir  map is displayed at the bottom and only if markers are present
+
+commit d2dad7ff31b571e68bc631c64e812652734b1b18
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Thu Dec 4 19:33:59 2014 -0800
+
+    nm logo links to news feed
+
+commit 4f57fee228e96f03aeb2e682ae340ddccd6aff64
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Thu Dec 4 17:09:38 2014 -0800
+
+    improved thread responsiveness
+
+commit 817a270a17fe9ad7552236d44899eac8de45b738
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Thu Dec 4 16:51:57 2014 -0800
+
+    implemented delay to improve news feed UI hang
+
+commit 175ff400d9a6399352345e23eb9173ecfb4af1bc
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Thu Dec 4 16:18:08 2014 -0800
+
+    improved news feed loading
+
+commit 2e8d67f023dfb572bc0fb77695f9ded62d898db2
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Thu Dec 4 14:50:15 2014 -0800
+
+    #42 can send messages via profile page
+
+commit 2424c5b8e7295ea3d5b87c5661696a9862b70f88
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Thu Dec 4 13:27:40 2014 -0800
+
+    added padding to middle column to improve display of elements
+
+commit 3ea275d390d76d12545ea52fbb5fe87aded3d52e
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Thu Dec 4 13:13:18 2014 -0800
+
+    converts http:// and www. into links
+
+commit cd3b7f6ee6ada2a320fe1dc81f845aaa03b3a17d
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Thu Dec 4 12:43:35 2014 -0800
+
+    modified caching service to fix bug
+
+commit 76677775e8d17658530e91c7d9e5ab61f50c6fdd
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Thu Dec 4 03:11:55 2014 -0800
+
+    do not show tab bar messages if count is 0
+
+commit 97fa5a7d9756d4b0f90f1547cd25381bf2a36494
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Thu Dec 4 02:56:03 2014 -0800
+
+    improved unready message count in tab bar system
+
+commit ab116e0bf1cfc1085b0b8950606a0f9f6fb913d6
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Thu Dec 4 02:26:15 2014 -0800
+
+    displays unread message count for each entity in tab bar
+
+commit edc65e45caf8989da020c38e20e7f31ad80a6499
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Thu Dec 4 01:00:24 2014 -0800
+
+    implemented new caching system
+
+commit 148f02a101604b78b9353d9c1732e2df589c742d
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Wed Dec 3 16:42:22 2014 -0800
+
+    refactored skill saving system and implemented new system for business tags
+
+commit 409b2eb005a2ab577e0037228018250602fbc705
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Wed Dec 3 15:41:21 2014 -0800
+
+    implemented skill add/delete system where skills won't be deleted erroneouslyd
+
+commit 1386ed20efa8019369d05e97cd8f944dffa49802
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Wed Dec 3 15:01:19 2014 -0800
+
+    #44 skills are now working again
+
+commit 63912882b3b6a1f277e344450160b1adacf15014
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Tue Dec 2 19:51:03 2014 -0800
+
+    #37 added appropriate right bar templates to audience and message center pages
+
+commit 8587438ee9edec7781f50a05a2cc9b682ab780b5
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Tue Dec 2 19:42:13 2014 -0800
+
+    added background shadow to white profile head text
+
+commit 48a2559333e673b9bc14aa0b43daf1e75544de00
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Tue Dec 2 19:31:58 2014 -0800
+
+    reversed order of feed comments
+
+commit 51e44767d408bce2e3f0bbe337598567e1c8746f
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Tue Dec 2 17:02:23 2014 -0800
+
+    can add and edit profile photos from profile page and modal provides prompt for approval
+
+commit a31eb046226e93dd382f0e57458f0cd270776319
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Mon Dec 1 16:31:10 2014 -0800
+
+    can add photos to business from new business flow
+
+commit 45afeb4cc1a769f28e141d0b563a6415c334e17d
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Mon Dec 1 14:25:43 2014 -0800
+
+    #34 no longer shows message badge when count is 0
+
+commit 85e89aa073889cedcf0137295b914f0c20d0f1a7
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Mon Dec 1 14:12:54 2014 -0800
+
+    #38 fixed feed not updating when making post
+
+commit 45aa07a9e187808cb79a96eca2b8059395b21f45
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Mon Dec 1 00:51:14 2014 -0800
+
+    fixed bug with profile bar message badge
+
+commit ffc1ea379136386d78e21cc152f711d750ea7ff1
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Sun Nov 30 23:36:49 2014 -0800
+
+    fixed bug with unread badge display
+
+commit 03c727337652058cf8d8ec6c2d5a0b764fa63fff
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Sun Nov 30 23:30:11 2014 -0800
+
+    refactored message code into message service and unread messages now accurately reflected in side bar
+
+commit ef2ea6cefdccb1e196d732995001147743c47dbd
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Sun Nov 30 22:18:40 2014 -0800
+
+    can mark messages as read and msg count on entity list is updated
+
+commit 33fcc0f2b93a83cf5dc36434e5a1053289d88ba0
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Sun Nov 30 17:53:19 2014 -0800
+
+    displays indicator for unread messages
+
+commit c64f4f12835d528674ba421536939a6f584b66c9
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Sun Nov 30 15:46:09 2014 -0800
+
+    msg center indicators reflect currently selected entity
+
+commit ca93ba06b4e31bb30c282971bcc3dc5254577d3f
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Sun Nov 30 15:15:38 2014 -0800
+
+    updated message center left bar indicator to reflect unread for all associated entities
+
+commit 338c839de0559c5debd16f9c9d03246f9900a407
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Sun Nov 30 15:10:10 2014 -0800
+
+    shows unread message count in msg center and sorts by unread messages
+
+commit 15469bbd6ddaa12daf4dbbde5e3a3d871f6df59a
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Fri Nov 28 22:24:14 2014 -0800
+
+    can switch between conversations with tabs
+
+commit d0794915fac271b293c7ab1e37368c1b7053b162
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Fri Nov 28 22:17:33 2014 -0800
+
+    improved pvt msg ordering
+
+commit fb503b44d522cf47389f2fe47717fec17801fa84
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Fri Nov 28 22:03:27 2014 -0800
+
+    modified query to fix postgres error
+
+commit 08d5a6293d26902451fee21110ed7d40e2404a9a
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Fri Nov 28 20:30:45 2014 -0800
+
+    modified query to fix postgres error
+
+commit fea6d07c78918ad29a9a77b74e743e1769686185
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Fri Nov 28 20:28:05 2014 -0800
+
+    modified query to fix postgres error
+
+commit a042a5d7d62e7bc26559a13c014ed4f6f6bb6d7a
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Fri Nov 28 20:02:01 2014 -0800
+
+    fixed bus dir random choices
+
+commit b832c49667b0ec1ce9b34a8039840b4d73103ae5
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Fri Nov 28 19:59:43 2014 -0800
+
+    can send message to any user from message center
+
+commit 754fce7ecb0de5afd91c1cad70398210ae45e6fa
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Thu Nov 27 15:59:31 2014 -0800
+
+    fixed bug in cache service if association list is empty
+
+commit 62da5fa238eab4a21bb012d4ce935621b3dbb50d
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Mon Nov 24 19:42:33 2014 -0800
+
+    #25 fixed front end but to enable following from profile
+
+commit 090d6a60ccdffd25750795510f2ecb1fcb1a4516
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Mon Nov 24 19:09:43 2014 -0800
+
+    set entity to set_entity
+
+commit cbcbd759f60dc2d413b102e385817dea379045b0
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Mon Nov 24 18:00:40 2014 -0800
+
+    removing logic (which fixed problem) and changing private to protected
+
+commit 003d2ff0e7d55fe0453d8a994a095e30e0bb3072
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Mon Nov 24 17:51:35 2014 -0800
+
+    moved entity logic to photos controller
+
+commit e3171b68cf94e30cff54ccf5987a47b6a1f85af1
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Mon Nov 24 17:43:17 2014 -0800
+
+    cleanup
+
+commit fab55d3b9ad1af11313a908bcdb6eca00bb4ff42
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Mon Nov 24 17:31:56 2014 -0800
+
+    fixed typo
+
+commit 0d061a58c65f54fe1c24ebec0e544e98f67041c5
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Mon Nov 24 17:24:28 2014 -0800
+
+    removed lazy instantiation of entity in app controller rb
+
+commit b4dffb477a87d6406c98c4d2b83bd99c9fd0b6f7
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Mon Nov 24 17:15:02 2014 -0800
+
+    raised logging level
+
+commit 3e65899bffb00bcc8235346c4271828a7fc48499
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Mon Nov 24 11:39:31 2014 -0800
+
+    fixed business description saving
+
+commit 1eacaf7a838fcb65d8b9aed84d235c113e9c70dd
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Mon Nov 24 01:39:56 2014 -0800
+
+    displays reviews in list form
+
+commit ba626355bd49d8eb4ce118e64adf6a10e11b3f94
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Sun Nov 23 21:06:15 2014 -0800
+
+    improved profile button layout
+
+commit e8818ceaf84038e81010477cba0f64072fd0ab83
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Sun Nov 23 18:32:24 2014 -0800
+
+    can add reviews for business profiles
+
+commit 8a81c25a4aad0acecb048c24c82ea95f851c2824
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Sat Nov 22 23:07:26 2014 -0800
+
+    #24 refactored profiles to use angular routeparams and load profile entity before profile controller is loaded
+
+commit e2396eda638c6dd354a9793069f563b253b72f52
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Sat Nov 22 17:13:05 2014 -0800
+
+    added review model
+
+commit b39a5b8f5f03f7b5cae6160140c4c093525eeb36
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Sat Nov 22 17:04:44 2014 -0800
+
+    added review model
+
+commit e1094a73a2cb6de530f256695a25111c1a5c41da
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Sat Nov 22 16:58:14 2014 -0800
+
+    added review box in right bar
+
+commit cfd79aee55b3ca500a63ce05bec380e9ed65ece7
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Sat Nov 22 16:40:28 2014 -0800
+
+    refactored right bar and re-aligned business profile right bar with mockups
+
+commit f84fbfc2d6ea3914d9443976aa4135d54df516dc
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Sat Nov 22 16:14:19 2014 -0800
+
+    improved cover photo system:  photo updates automatically, different text+icon depending on existance of photo, provides default background color
+
+commit 4a748c6d8fbb1e4de21f93c6706588e588d7d824
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Sat Nov 22 01:03:47 2014 -0800
+
+    fixed scrolling and layout errors by adding app controller initilization to body and separating app rendering into two separate body containers
+
+commit bd579d54c1d5354f105418cf9ec1a62227e0b6b8
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Fri Nov 21 14:34:06 2014 -0800
+
+    #22 fixed application controller issue
+
+commit 9e6d75914330994a1fc0639a46ddd062a3cd36fd
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Fri Nov 21 01:49:34 2014 -0800
+
+    reimplemented google analytics
+
+commit 307632fe19a80d69761636efbd29e0cbbd8ceeb8
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Fri Nov 21 00:50:37 2014 -0800
+
+    reimplementing http auth
+
+commit 91cc9b1dc6a22f0d3df08cdec16d01dc95177d4b
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Fri Nov 21 00:20:41 2014 -0800
+
+    removed old photos controllers
+
+commit 8d37cebfd9764c480ecf1117dbab9c5126dbfb00
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Thu Nov 20 23:57:37 2014 -0800
+
+    disabled auth
+
+commit f4a232e55a09386749af40873aef485c6c047ded
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Thu Nov 20 23:48:44 2014 -0800
+
+    removed google analytics
+
+commit a8c70759bb7a22c41bcef4056247b3d6e2e3ae86
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Thu Nov 20 23:04:17 2014 -0800
+
+    move angular app controller to angular index file
+
+commit 1490958cdde54bdca3297b4badc66d30b4eb83cd
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Thu Nov 20 22:32:41 2014 -0800
+
+    moved google analytics to app layout
+
+commit 0a0bb32c46b95ac4cfba3b0bb06e88b3c92f3fd3
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Thu Nov 20 22:27:05 2014 -0800
+
+    removing deleted files
+
+commit 768a0f4383a30b96a0754de966a0439aec6f341a
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Thu Nov 20 19:32:05 2014 -0800
+
+    (#20) post display checkmark when successfully adding follower
+
+commit 47fee60e236921ae9bd88697a8cb5631d18a5eb0
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Thu Nov 20 15:09:41 2014 -0800
+
+    #21 removed flag from owned profiles
+
+commit a51f97382e99d4e2123bbaa44899822b91b0a3a8
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Thu Nov 20 15:05:15 2014 -0800
+
+    added google analytics
+
+commit 5014aa7e322de5cd1d29d036eeec21c61d5f72ff
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Thu Nov 20 03:13:02 2014 -0800
+
+    improved background css
+
+commit 9e18a312b1045ca23a099ebaf70b0824448d5933
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Thu Nov 20 03:05:44 2014 -0800
+
+    profile text is white if background image is added
+
+commit ab2a7201d3bcc6b2f933b0c6e99e5f05069f0791
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Thu Nov 20 01:23:48 2014 -0800
+
+    can add cover photo
+
+commit 67eec7c2d9525a73c2ec9f7bebd32e370d06a8d6
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Wed Nov 19 18:46:42 2014 -0800
+
+    refactored photo system; added cover photo and added overhaul task to rename profile photos
+
+commit d824928b94863431fdc474ca9a70a3f17763f9a9
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Wed Nov 19 17:32:45 2014 -0800
+
+    css and html modifications to profiles and feed
+
+commit 0ab9de50e86787942c65bd500fb88e105bae202c
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Wed Nov 19 13:30:04 2014 -0800
+
+    (is #13) added angular route override to rails routes to prevent white page on refresh
+
+commit 06a26c623c9a66da04d48b7e3955a32776200039
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Wed Nov 19 13:17:47 2014 -0800
+
+    displays find more businesses even when there are people (is #14)
+
+commit a9850efa845a19965ceed3d599160cc0bb2ec02d
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Wed Nov 19 12:50:41 2014 -0800
+
+    removed followers route
+
+commit 8101707d21c2294be004a0a887b9fa2954045a35
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Wed Nov 19 12:48:46 2014 -0800
+
+    removed followers link
+
+commit 0eda7c43423f59edc3e8464bf235516caf7d68af
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Tue Nov 18 22:13:09 2014 -0800
+
+    implemented business directory right bar template
+
+commit 5b0ebd7b1e9c2b08901e0464f16509a12ed9fe55
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Tue Nov 18 16:57:16 2014 -0800
+
+    fixed asymmetry issue
+
+commit 4286a219b09e5d09fe228993af49fd6878f7b807
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Tue Nov 18 16:39:45 2014 -0800
+
+    improved centering but still asymetrical at some screen sizes
+
+commit afb026711b011a8cf9c4ca427644bd82b5dadefc
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Tue Nov 18 16:34:40 2014 -0800
+
+    centered about columns
+
+commit a67249dc8deddae5a8b4d756852753d6ed41528a
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Tue Nov 18 14:57:25 2014 -0800
+
+    switched do and grow icons
+
+commit 6e61e58fb3ba10195faad213baafa66aff286da7
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Tue Nov 18 02:26:34 2014 -0800
+
+    markers no longer persist between bus dir and profs
+
+commit c3e29d2d39db8547a4a11c7bd2b542f705cece1d
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Tue Nov 18 02:13:39 2014 -0800
+
+    bus dir no longer accumulates map markers
+
+commit 79338a55e76f9df391df6b310108cf33f4261b64
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Tue Nov 18 01:38:57 2014 -0800
+
+    created map service
+
+commit ca6e771bb0df367680de097ca45c6e8a20116169
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Tue Nov 18 00:42:13 2014 -0800
+
+    fixed comment field scrolling
+
+commit ee8b9591dc8b1235605a8a4818fec9486ccf8e11
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Mon Nov 17 02:04:35 2014 -0800
+
+    fixed sign in and add business layouts (is #2)
+
+commit c5571610f3143ca21c9216e4a410208b7119ce40
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Mon Nov 17 00:31:25 2014 -0800
+
+    fixed disappearing comment box (is #4)
+
+commit 2ff1f897d77c2b0eb9d8b929395ab397bf2d5214
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Sun Nov 16 22:20:19 2014 -0800
+
+    deploying to nextmission.us (no beta)
+
+commit eb2951392b16f5bc99cf91d31f916cb8df674526
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Sun Nov 16 22:19:56 2014 -0800
+
+    deploying to nextmission.us (no beta)
+
+commit b948ea0bd598b66c301e7d43c4340351aeff91ce
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Sun Nov 16 22:13:04 2014 -0800
+
+    changed landing page font sizes
+
+commit d31004571dc7f6f8030615da5112371db847da1f
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Sun Nov 16 20:51:55 2014 -0800
+
+    improved spacing on landing page non-mobile
+
+commit 9d3398c19b2a15c8213209606058eaee6fa183ae
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Sun Nov 16 20:49:31 2014 -0800
+
+    landing page should look OK on mobile and desktop now
+
+commit 14cedbc29af6bf659851f75c33b3f789e27a7675
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Sun Nov 16 20:06:36 2014 -0800
+
+    aligned landing titles center
+
+commit 73ec3388504822850ece415e0f24432d5baf5df6
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Sat Nov 15 18:25:39 2014 -0800
+
+    added feedback for flags
+
+commit cc4e94f82fdd8935b6b36216ca3845d7f78e8c10
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Sat Nov 15 18:12:26 2014 -0800
+
+    can add flags to profile accounts
+
+commit 81f07f54361d929171bb1eb2ba1159a752deeaa3
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Sat Nov 15 17:40:49 2014 -0800
+
+    added entity concern and flag model + controller
+
+commit 953512d6dc18b6d12000a55640c82c6662fb24cd
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Fri Nov 14 19:44:26 2014 -0800
+
+    checks for ownerships in business serializer to prevent exception if business does not have any ownerships (edge case; businesses should always have at least one ownership)
+
+commit dbcbc7e4ab43885ee974d0d9c426e39c2496d04e
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Fri Nov 14 04:27:34 2014 -0800
+
+    improved landing page for mobile device
+
+commit c6b83fde9644ac348e2d412b52b9fb2beca887ad
+Author: Jake Hurley <jakemh@gmail.com>
+Date:   Fri Nov 14 04:22:01 2014 -0800
+
+    improved landing page for mobile device
+
+commit 65cdfbf3e784f59f59f3c1f82eeb451b90ec6496
+Author: Jake Hurley <jakemh@Daniel-McFarlands-MacBook-Pro-2.local>
+Date:   Fri Nov 14 04:16:58 2014 -0800
+
+    fixed landing page typo
+
+commit 8a9c1cf39e334d815e96e51dc91549d96f8e442e
+Author: Jake Hurley <jakemh@Daniel-McFarlands-MacBook-Pro-2.local>
+Date:   Fri Nov 14 04:14:36 2014 -0800
+
+    removed stray character from landing page
+
+commit 064fed0ea72b12f2536a69775b41e56e83ef29ff
+Author: Jake Hurley <jakemh@Daniel-McFarlands-MacBook-Pro-2.local>
+Date:   Fri Nov 14 04:10:27 2014 -0800
+
+    more bus prof functionality; interface is bad still
+
+commit 91f7f867504cff52c1c8d59b306a866881a78a67
+Author: Jake Hurley <jakemh@Daniel-McFarlands-MacBook-Pro-2.local>
+Date:   Fri Nov 14 03:43:23 2014 -0800
+
+    added new fields to business profile; added model attributes; updated business ruby controller
+
+commit 65b30de281b066c697c6f2c3fddb3d90502a2899
+Author: Jake Hurley <jakemh@Daniel-McFarlands-MacBook-Pro-2.local>
+Date:   Fri Nov 14 01:38:06 2014 -0800
+
+    implemented new landing page
+
+commit 40978ce4bcff3fa26b639a58da144c193798f043
+Author: Jake Hurley <jakemh@Daniel-McFarlands-MacBook-Pro-2.local>
+Date:   Thu Nov 13 23:31:42 2014 -0800
+
+    modified authentication settings for rails controllers
+
+commit 680c54cee59de4027cf217dcf0787a71e5da2cd3
+Author: Jake Hurley <jakemh@Daniel-McFarlands-MacBook-Pro-2.local>
+Date:   Thu Nov 13 22:15:25 2014 -0800
+
+    added last git commit to deploy mail
+
+commit 4e887dd642a7907ce3080e18a8c754352fa6b305
+Author: Jake Hurley <jakemh@Daniel-McFarlands-MacBook-Pro-2.local>
+Date:   Thu Nov 13 22:11:41 2014 -0800
+
+    removed changes to mail script; mail was going to spam folder
+
+commit 4489bb36cb1eb4ea6e192d19bbf9b7e3414d7928
+Author: Jake Hurley <jakemh@Daniel-McFarlands-MacBook-Pro-2.local>
+Date:   Thu Nov 13 21:59:57 2014 -0800
+
+    added escape to mail script
+
+commit 2d3119796ea569ad402ba2500e0f9ee484b45a51
+Author: Jake Hurley <jakemh@Daniel-McFarlands-MacBook-Pro-2.local>
+Date:   Thu Nov 13 20:59:40 2014 -0800
+
+    removed slide class from comment form to prevent angular errors
+
+commit eb93927f5f4b7f1365451b6a85b66f095cbb834f
+Author: Jake Hurley <jakemh@Daniel-McFarlands-MacBook-Pro-2.local>
+Date:   Thu Nov 13 20:56:09 2014 -0800
+
+    all posts have comment fields; no expandable forms; note that feed takes longer to load due to all of the bindings angular creates when the forms load; this will be addressed later
+
+commit 571c4fbfa223ee99d6781b79a24eec422260d04b
+Author: Jake Hurley <jakemh@Daniel-McFarlands-MacBook-Pro-2.local>
+Date:   Thu Nov 13 16:36:44 2014 -0800
+
+    moved for validation to module; clears form after submission
+
+commit bc8e68b727c8cae329717427a5157a42deeccf7b
+Author: Jake Hurley <jakemh@Daniel-McFarlands-MacBook-Pro-2.local>
+Date:   Thu Nov 13 15:04:54 2014 -0800
+
+    added form validation server side
+
+commit dce46b9d30f9201aa43cea4e2e42a0003fbeb0c7
+Merge: a81a7ce 7e74ee8
+Author: Jake Hurley <jakemh@Daniel-McFarlands-MacBook-Pro-2.local>
+Date:   Thu Nov 13 14:58:07 2014 -0800
+
+    Merge branch 'angular' of github.com:nextmission/nextmission-core into angular
+
+commit a81a7cece7906f01f68338a625651a5a54782e4c
+Author: Jake Hurley <jakemh@Daniel-McFarlands-MacBook-Pro-2.local>
+Date:   Thu Nov 13 14:57:17 2014 -0800
+
+    added form validation
+
+commit 7e74ee8460e836719164145dba6cb93b36a8d4fc
+Author: Daniel McFarland <daniel@duettoresarch.com>
+Date:   Wed Nov 12 16:31:01 2014 -0800
+
+    added a quick email for every deploy
+
+commit 1b5d3af7404791dcc5de57eafa6c5a2dba721bf2
+Author: Jake Hurley <jakemh@Daniel-McFarlands-MacBook-Pro-2.local>
+Date:   Wed Nov 12 10:58:30 2014 -0800
+
+    Removing mailer
+
+commit 552594e0f687e85faeea409911f5898b692ea88d
+Author: Jake Hurley <jakemh@Daniel-McFarlands-MacBook-Pro-2.local>
+Date:   Wed Nov 12 10:58:02 2014 -0800
+
+    DAMN! Mailer requires older version of capistrano. Will work on solution another time
+
+commit 576bbe612f8d538a0c36152f7b84f9ae424845ac
+Author: Jake Hurley <jakemh@Daniel-McFarlands-MacBook-Pro-2.local>
+Date:   Wed Nov 12 10:56:46 2014 -0800
+
+    added mailer to deploy script
+
+commit da2804b0297ee7bb99696208e8e39db2f6900834
+Author: Jake Hurley <jakemh@Daniel-McFarlands-MacBook-Pro-2.local>
+Date:   Tue Nov 11 18:35:55 2014 -0800
+
+    displays businesses list for external profile; also improved some internal stuff
+
+commit 368593c4b989635dc51850ad8e8bb3ef758a301f
+Author: Jake Hurley <jakemh@Daniel-McFarlands-MacBook-Pro-2.local>
+Date:   Tue Nov 11 01:02:49 2014 -0800
+
+    reenabled add business link but layout is broken
+
+commit db5139de2c560e61b1006eebbbe3d63004613481
+Author: Jake Hurley <jakemh@Daniel-McFarlands-MacBook-Pro-2.local>
+Date:   Tue Nov 11 00:38:54 2014 -0800
+
+    changed timestamp to date if older than 3 days
+
+commit 30317f29cd11b7dabf54055241e78ae9b0ffb506
+Author: Jake Hurley <jakemh@Daniel-McFarlands-MacBook-Pro-2.local>
+Date:   Tue Nov 11 00:36:01 2014 -0800
+
+    changed timestamp to date if older than 7 days
+
+commit c04ad60ed4e3139e3fb0fe44591e20e986920dc1
+Author: Jake Hurley <jakemh@Daniel-McFarlands-MacBook-Pro-2.local>
+Date:   Mon Nov 10 23:39:35 2014 -0800
+
+    set restart to phased restart
+
+commit e0848c1bb6446ab4068d3c23020b105906ce6ce6
+Author: Jake Hurley <jakemh@Daniel-McFarlands-MacBook-Pro-2.local>
+Date:   Mon Nov 10 23:27:19 2014 -0800
+
+    fixed audience layout
+
+commit 2ad7e79d585c33de008e015235a66d17215a7704
+Author: Jake Hurley <jakemh@Daniel-McFarlands-MacBook-Pro-2.local>
+Date:   Mon Nov 10 19:24:37 2014 -0800
+
+    fixed profile switching bug by removing profilecontroller scope from template and setting it in route
+
+commit c5b55c17f89c11eff7873ba844219988a3d5304a
+Author: Jake Hurley <jakemh@Daniel-McFarlands-MacBook-Pro-2.local>
+Date:   Mon Nov 10 19:17:54 2014 -0800
+
+    disabled tab when editing profile
+
+commit c0680e3989f253ba6dec675b4be5f46d3db31e66
+Author: Jake Hurley <jakemh@Daniel-McFarlands-MacBook-Pro-2.local>
+Date:   Mon Nov 10 18:27:54 2014 -0800
+
+    switching between internal profiles implemented
+
+commit a4cab59d105c528931eab9e10f10c53e0c86f81c
+Author: Jake Hurley <jakemh@Daniel-McFarlands-MacBook-Pro-2.local>
+Date:   Mon Nov 10 17:56:14 2014 -0800
+
+    can switch between internal profiles on profile page, but page is broken on business profile
+
+commit 6234699d69c3064f64209e02349d0e8ddf9af42a
+Author: Jake Hurley <jakemh@Daniel-McFarlands-MacBook-Pro-2.local>
+Date:   Mon Nov 10 17:52:41 2014 -0800
+
+    fixed right bar for externa/internal profiles
+
+commit 097eff1faae1dcf4432e439bf9d2d48c38ba7c7c
+Author: Jake Hurley <jakemh@Daniel-McFarlands-MacBook-Pro-2.local>
+Date:   Mon Nov 10 17:37:51 2014 -0800
+
+    restructured rails-level layout; removed some legacy code; broke admin panel
+
+commit 6db6f9113f928bd65880c352267f4dab91a6fbdf
+Author: Jake Hurley <jakemh@Daniel-McFarlands-MacBook-Pro-2.local>
+Date:   Mon Nov 10 17:09:10 2014 -0800
+
+    fixed issue #1 by fixing rails route constraints for user/:id
+
+commit d0d57cab34776ca3454943d75d75b9200aa10e9e
+Author: Jake Hurley <jakemh@Daniel-McFarlands-MacBook-Pro-2.local>
+Date:   Mon Nov 10 15:57:16 2014 -0800
+
+    added tab bar switching
+
+commit b1eb965331eee4a5a12add4c2319d24a71fdc356
+Author: Jake Hurley <jakemh@Daniel-McFarlands-MacBook-Pro-2.local>
+Date:   Mon Nov 10 14:41:08 2014 -0800
+
+    added infinite scdrolling (CURRENTLY DISABLED)
+
+commit e161d80a95e3480a3ae7164080c067e2ebb1cc83
+Author: Jake Hurley <jakemh@Daniel-McFarlands-MacBook-Pro-3.local>
+Date:   Sat Nov 8 19:40:13 2014 -0800
+
+    updated puma hot restart
+
+commit 0ba3783c2eacc80e927162a862a852d3441a5450
+Author: Jake Hurley <jakemh@Daniel-McFarlands-MacBook-Pro-3.local>
+Date:   Sat Nov 8 19:36:09 2014 -0800
+
+    updated layout AND modified puma hot restarts
+
+commit 108c7bf5aca2b8ef98da84eff5fbc58033d4db3d
+Author: Jake Hurley <jakemh@Daniel-McFarlands-MacBook-Pro-3.local>
+Date:   Fri Nov 7 15:51:26 2014 -0800
+
+    updated tab layout
+
+commit 545798df291d070e5231ee2a8eacb6934f94a728
+Author: Jake Hurley <jakemh@Daniel-McFarlands-MacBook-Pro-3.local>
+Date:   Fri Nov 7 15:48:49 2014 -0800
+
+    updated tab layout
+
+commit 6dfb5268f6b78b4ae672869db5d666e399c02ef9
+Author: Jake Hurley <jakemh@Daniel-McFarlands-MacBook-Pro-3.local>
+Date:   Fri Nov 7 08:43:25 2014 -0800
+
+    unbroke messages display
+
+commit 018005745e9b7a74107f819a73043baa63101cc2
+Author: Jake Hurley <jakemh@Daniel-McFarlands-MacBook-Pro-3.local>
+Date:   Fri Nov 7 08:36:40 2014 -0800
+
+    added constrain to router to fix login issue
+
+commit dabae315eb2cab441d6d23da1223bd2f74bca7eb
+Author: Jake Hurley <jakemh@Daniel-McFarlands-MacBook-Pro-3.local>
+Date:   Fri Nov 7 02:08:48 2014 -0800
+
+    fixed follow button for user account profiles
+
+commit 83a90c3c8a2282baabb26e8ca87e2a9a24733c09
+Author: Jake Hurley <jakemh@Daniel-McFarlands-MacBook-Pro-3.local>
+Date:   Fri Nov 7 01:21:00 2014 -0800
+
+    changed how feed posts load
+
+commit 810e4efb9a926d0d4fef4138f8f2bffa469b2f30
+Author: Jake Hurley <jakemh@Daniel-McFarlands-MacBook-Pro-3.local>
+Date:   Fri Nov 7 00:33:54 2014 -0800
+
+    tab bar implemented and mostly functional
+
+commit 4c090bd56ce5621306bf5c68952be27a9731aa94
+Author: Jake Hurley <jakemh@Daniel-McFarlands-MacBook-Pro-3.local>
+Date:   Thu Nov 6 23:40:46 2014 -0800
+
+    big upgrade: implemented angular routing as prereq for tab bar system. might be bugs
+
+commit 091e016d65a2a3918e78fd438edd2862e94fb637
+Author: Jake Hurley <jakemh@Daniel-McFarlands-MacBook-Pro-3.local>
+Date:   Thu Nov 6 18:23:17 2014 -0800
+
+    added favicon
+
+commit d2de3f9c68f7640195dcee6c5d68de0898ce383b
+Author: Jake Hurley <jakemh@Daniel-McFarlands-MacBook-Pro-3.local>
+Date:   Thu Nov 6 18:01:04 2014 -0800
+
+    skill interface satisfactory
+
+commit 5945527643168f04d60a6d49624a7cae8e34edcc
+Author: Jake Hurley <jakemh@Daniel-McFarlands-MacBook-Pro-3.local>
+Date:   Thu Nov 6 15:28:25 2014 -0800
+
+    does not display skills on edit
+
+commit bacb6ccea4acc211cb537177b0a153d0b8a89790
+Author: Jake Hurley <jakemh@Daniel-McFarlands-MacBook-Pro-3.local>
+Date:   Thu Nov 6 13:40:28 2014 -0800
+
+    skills bugs fixed and skills layout improved
+
+commit eb2cb555e3ff2f173bd2cc391d933c8dd1a306e1
+Author: Jake Hurley <jakemh@Daniel-McFarlands-MacBook-Pro-3.local>
+Date:   Thu Nov 6 12:54:32 2014 -0800
+
+    added timestamps
+
+commit b7a4587d491a4c10e9f87e646374f82f4806309a
+Author: Jake Hurley <jakemh@Daniel-McFarlands-MacBook-Pro-3.local>
+Date:   Thu Nov 6 00:12:27 2014 -0800
+
+    fixed bus dir
+
+commit 4470e26bbf5edf089f6c9ed188e08b095013da6b
+Author: Jake Hurley <jakemh@Daniel-McFarlands-MacBook-Pro-3.local>
+Date:   Wed Nov 5 23:18:04 2014 -0800
+
+    skills working, bad design
+
+commit 2254ed359a096b25373d24b4a198777a3d5d78bb
+Author: Jake Hurley <jakemh@Daniel-McFarlands-MacBook-Pro-3.local>
+Date:   Wed Nov 5 22:40:04 2014 -0800
+
+    can add skills
+
+commit 3707a24af26316ef1a0e9d12a1e8136d0b7e5f07
+Author: Jake Hurley <jakemh@Daniel-McFarlands-MacBook-Pro-3.local>
+Date:   Wed Nov 5 21:29:17 2014 -0800
+
+    added angular tags input
+
+commit b6718b87a895242c96c94c7595e94ab658d6f36b
+Author: Jake Hurley <jakemh@Daniel-McFarlands-MacBook-Pro-3.local>
+Date:   Wed Nov 5 21:28:59 2014 -0800
+
+    fixed rest-related bugs
+
+commit 1c61ec83caa81bff05e2d7c5d00907bd77f4c070
+Author: Jake Hurley <jakemh@Daniel-McFarlands-MacBook-Pro-3.local>
+Date:   Wed Nov 5 03:41:16 2014 -0800
+
+    enabled following from profile page with basic feedback
+
+commit c0882e31f79bf9ff8b8a84cd0cb0c47d7888eeae
+Author: Jake Hurley <jakemh@Daniel-McFarlands-MacBook-Pro-3.local>
+Date:   Wed Nov 5 03:01:54 2014 -0800
+
+    editing profile enabled and some interface improvements
+
+commit 0b4b36fbbd9129bb201f399606a5de19bc26f869
+Author: Jake Hurley <jakemh@Daniel-McFarlands-MacBook-Pro-3.local>
+Date:   Tue Nov 4 06:07:16 2014 -0800
+
+    messaging working
+
+commit ea364184dcb54865b52d95e34579f5cd751f354d
+Author: Jake Hurley <jakemh@Daniel-McFarlands-MacBook-Pro-3.local>
+Date:   Tue Nov 4 05:20:14 2014 -0800
+
+    fixed business loading
+
+commit 2dccabdb12e332ad5510978fa36ca8992b3907b9
+Author: Jake Hurley <jakemh@Daniel-McFarlands-MacBook-Pro-3.local>
+Date:   Tue Nov 4 05:10:00 2014 -0800
+
+    smalled comments
+
+commit 79e430ebf2eeb604cae7fcdc5954ee75c5e2f150
+Author: Jake Hurley <jakemh@Daniel-McFarlands-MacBook-Pro-3.local>
+Date:   Tue Nov 4 04:55:22 2014 -0800
+
+    improved feed
+
+commit 0a4029eaac1a25f3041caa59378e7a3ad9ef084f
+Author: Jake Hurley <jakemh@Daniel-McFarlands-MacBook-Pro-3.local>
+Date:   Tue Nov 4 04:29:58 2014 -0800
+
+    improved profile
+
+commit 15cda813405ddf3bc589ca83f1f84a1a7f37f6b7
+Author: Jake Hurley <jakemh@Daniel-McFarlands-MacBook-Pro-3.local>
+Date:   Tue Nov 4 03:59:01 2014 -0800
+
+    improved profile
+
+commit 38a833c0d3e8d1caea01a1753db7d1f952227567
+Author: Jake Hurley <jakemh@Daniel-McFarlands-MacBook-Pro-3.local>
+Date:   Tue Nov 4 03:07:49 2014 -0800
+
+    improved profile
+
+commit 4abbd3d64684e4548f89d3e86ed3b1474119fe96
+Author: Jake Hurley <jakemh@Daniel-McFarlands-MacBook-Pro-3.local>
+Date:   Tue Nov 4 02:03:17 2014 -0800
+
+    improved profile and added user attrs
+
+commit 734ab603efd17916927ff8715c3e162741adec26
+Author: Jake Hurley <jakemh@Daniel-McFarlands-MacBook-Pro-3.local>
+Date:   Mon Nov 3 23:43:28 2014 -0800
+
+    added followers working
+
+commit ce9a785de5bb84c2d886b44300196060f18aa803
+Author: jh <jh@jhs-MacBook-Pro.local>
+Date:   Mon Nov 3 15:19:43 2014 -0800
+
+    updating follower links
+
+commit 1bdc911f75d8bfb49d3afa40fa65194a3994483c
+Author: jh <jh@jhs-MacBook-Pro.local>
+Date:   Mon Nov 3 14:27:53 2014 -0800
+
+    fixing bugs in followers link and creation
+
+commit 1ef2f1ab92c4ecc6bcef465c6b7bc980cb5812b0
+Author: jh <jh@jhs-MacBook-Pro.local>
+Date:   Mon Nov 3 13:47:09 2014 -0800
+
+    updated followers code and followers api
+
+commit 32ad166a9a33d96a1a15a88477189fc8fad27cdb
+Author: jh <jh@jhs-MacBook-Pro.local>
+Date:   Mon Nov 3 12:55:48 2014 -0800
+
+    updated messaging and links
+
+commit 226c36e07f0135226e50b077d504e04af1642eef
+Author: jh <jh@jhs-MacBook-Pro.local>
+Date:   Mon Nov 3 12:32:17 2014 -0800
+
+    updated rest module and integrating new api
+
+commit 9748aa30ab7cba0162537982ef48e08271fb227d
+Author: Jake Hurley <jakemh@Daniel-McFarlands-MacBook-Pro.local>
+Date:   Sun Nov 2 16:44:53 2014 -0800
+
+    updated restangular extension module for caching and param validation
+
+commit 5bc23fdd826f6209e74e3edf9d15cbf5b6cb0932
+Author: Jake Hurley <jakemh@Daniel-McFarlands-MacBook-Pro.local>
+Date:   Sat Nov 1 03:14:09 2014 -0700
+
+    fixed messaging center; still needs to be cached
+
+commit 255eddd6538fa2028c536be6fbddf1345cdcd256
+Author: Jake Hurley <jakemh@Daniel-McFarlands-MacBook-Pro.local>
+Date:   Sat Nov 1 02:24:01 2014 -0700
+
+    fixed profile page bugs
+
+commit e53af4fe3d36f2e7d3660d1f5bf994190016ccef
+Author: Jake Hurley <jakemh@Daniel-McFarlands-MacBook-Pro.local>
+Date:   Fri Oct 31 21:37:40 2014 -0700
+
+    fixed profile page bugs
+
+commit 6dcb863c06559e7f1c2948a247e8e2faaa21f481
+Author: Jake Hurley <jakemh@Daniel-McFarlands-MacBook-Pro.local>
+Date:   Fri Oct 31 21:34:40 2014 -0700
+
+    fixed profile page bugs
+
+commit 6795447cfddd8b18d54fd3cd6ed25b6324d0adeb
+Author: Jake Hurley <jakemh@Daniel-McFarlands-MacBook-Pro.local>
+Date:   Fri Oct 31 21:31:00 2014 -0700
+
+    fixed profile page bugs
+
+commit 8532f1824f6076b5f81e66a5a29dfe451b0587ee
+Author: Jake Hurley <jakemh@Daniel-McFarlands-MacBook-Pro.local>
+Date:   Fri Oct 31 21:09:57 2014 -0700
+
+    removed more one-time bindings
+
+commit a9daa90dfe9938d9515f9bc9ce5f86e16d3066dc
+Author: Jake Hurley <jakemh@Daniel-McFarlands-MacBook-Pro.local>
+Date:   Fri Oct 31 21:05:47 2014 -0700
+
+    fixed post button layout
+
+commit 1e4246d9c2cd5383f2b9bfa32fcff81bfba8ba8d
+Author: Jake Hurley <jakemh@Daniel-McFarlands-MacBook-Pro.local>
+Date:   Fri Oct 31 20:50:34 2014 -0700
+
+    removing one way bindings
+
+commit 202addb930298b2008f91b5bd5207ce547c4f10f
+Author: Jake Hurley <jakemh@Daniel-McFarlands-MacBook-Pro.local>
+Date:   Fri Oct 31 20:47:04 2014 -0700
+
+    added console.log for post cont
+
+commit 7f2ab6bc06955c35bfd65190e0e56a37d6cdeb17
+Author: Jake Hurley <jakemh@Daniel-McFarlands-MacBook-Pro.local>
+Date:   Fri Oct 31 20:41:28 2014 -0700
+
+    added console.log for post cont
+
+commit 75c50d1fbe77b89d9b885d3ebc23c257f467773c
+Author: Jake Hurley <jakemh@Daniel-McFarlands-MacBook-Pro.local>
+Date:   Fri Oct 31 20:34:46 2014 -0700
+
+    increased feed load time and improved profile
+
+commit 8a1ba3bb4e464b08ffa3f27b11dffef5950d8baa
+Author: Jake Hurley <jakemh@Daniel-McFarlands-MacBook-Pro.local>
+Date:   Thu Oct 30 23:10:43 2014 -0700
+
+    removed js alert box
+
+commit 253563d483b0ff24dfefede2aaa9ebb57ff9f30f
+Author: Jake Hurley <jakemh@Daniel-McFarlands-MacBook-Pro.local>
+Date:   Thu Oct 30 17:19:51 2014 -0700
+
+    fixed messaging
+
+commit 1fce030d8d2aa7df205a255726a13b09b8c9ec5c
+Author: Jake Hurley <jakemh@Daniel-McFarlands-MacBook-Pro.local>
+Date:   Thu Oct 30 16:46:04 2014 -0700
+
+    fixed messaging
+
+commit 05d2d780b4253a6c1c491987ae33027dcb85012a
+Author: Jake Hurley <jakemh@Daniel-McFarlands-MacBook-Pro.local>
+Date:   Thu Oct 30 11:26:19 2014 -0700
+
+    almost migrated messaging
+
+commit c349ba7126d228f1d829d634ea75d5b2ae5d00b2
+Author: Jake Hurley <jakemh@Daniel-McFarlands-MacBook-Pro.local>
+Date:   Thu Oct 30 01:35:51 2014 -0700
+
+    fixed followers page
+
+commit 4942ea4a450d85bf2c1ad95e322f8d08f9c4c740
+Author: Jake Hurley <jakemh@Daniel-McFarlands-MacBook-Pro.local>
+Date:   Wed Oct 29 23:52:55 2014 -0700
+
+    removed ahoy gem
+
+commit f72dc82656249587dc1f58d48428ac95f8f25039
+Author: Jake Hurley <jakemh@Daniel-McFarlands-MacBook-Pro.local>
+Date:   Wed Oct 29 22:58:18 2014 -0700
+
+    turned caching back on
+
+commit a6dc7581bbc727fd5bb38f15b2067fba7d84c3d9
+Author: Jake Hurley <jakemh@Daniel-McFarlands-MacBook-Pro.local>
+Date:   Wed Oct 29 22:46:45 2014 -0700
+
+    removed caching
+
+commit f386278365c8b33bf22347695c00ddb3577c9c64
+Author: Jake Hurley <jakemh@Daniel-McFarlands-MacBook-Pro.local>
+Date:   Wed Oct 29 22:23:31 2014 -0700
+
+    fixed follow_uri
+
+commit f9706ae6827fccbd0bcde262c3c8c819caa7054d
+Author: Jake Hurley <jakemh@Daniel-McFarlands-MacBook-Pro.local>
+Date:   Wed Oct 29 22:19:40 2014 -0700
+
+    increased db pool size
+
+commit 8fe53582ce066d10e4d76529f4b4ce5aca17f901
+Author: Jake Hurley <jakemh@Daniel-McFarlands-MacBook-Pro.local>
+Date:   Wed Oct 29 12:33:48 2014 -0700
+
+    news feed working but needs sideloading badly
+
+commit 53e3d26b4162404190c82c4468a61a0640f4086d
+Author: Jake Hurley <jakemh@Daniel-McFarlands-MacBook-Pro.local>
+Date:   Wed Oct 29 11:39:36 2014 -0700
+
+    removed entity select from profile page
+
+commit a19dfcd467a9e071e9052d0355cb91f6df6aad2d
+Author: Jake Hurley <jakemh@Daniel-McFarlands-MacBook-Pro.local>
+Date:   Wed Oct 29 11:28:19 2014 -0700
+
+    improved news feed
+
+commit 0dcb420ae1d409f7a54d61394db4b9a2f9a49a8d
+Author: Jake Hurley <jakemh@Daniel-McFarlands-MacBook-Pro.local>
+Date:   Wed Oct 29 02:32:10 2014 -0700
+
+    feed posts do work
+
+commit 1a25cc8cbd8f68fa86efc3605d525fa2dc489775
+Author: Jake Hurley <jakemh@Daniel-McFarlands-MacBook-Pro.local>
+Date:   Wed Oct 29 01:22:00 2014 -0700
+
+    news feed comments should be working
+
+commit 722d1fa8bb81c23084c8e3285502f700be2f42a5
+Author: Jake Hurley <jakemh@Daniel-McFarlands-MacBook-Pro.local>
+Date:   Tue Oct 28 22:45:55 2014 -0700
+
+    improved responses
+
+commit c518c1d41ff7eab0e9b5379b9fdfcf125065315d
+Author: jh <jh@jhs-MacBook-Pro.local>
+Date:   Tue Oct 28 15:51:55 2014 -0700
+
+    uddated comment div
+
+commit d5058c7df9d27d205969f7c5f5598a82db2c9579
+Author: jh <jh@jhs-MacBook-Pro.local>
+Date:   Tue Oct 28 11:12:36 2014 -0700
+
+    adding comments
+
+commit 0556d6977e4661947313b95fcdfd28c9b78cdef7
+Author: jh <jh@jhs-MacBook-Pro.local>
+Date:   Tue Oct 28 00:18:35 2014 -0700
+
+    cleanup
+
+commit 1897abee4910951ffd1569f3ef699d246b3b069d
+Author: jh <jh@jhs-MacBook-Pro.local>
+Date:   Mon Oct 27 15:59:21 2014 -0700
+
+    fixed feed
+
+commit c59e2201d31bd21bbc95cc1f68d6592e21d8e0ce
+Author: jh <jh@jhs-MacBook-Pro.local>
+Date:   Mon Oct 27 15:47:53 2014 -0700
+
+    fixed feed
+
+commit 5dd8413b75016e7270ec6817de23ac5bd8ab895f
+Author: jh <jh@jhs-MacBook-Pro.local>
+Date:   Mon Oct 27 15:40:56 2014 -0700
+
+    fixed feed
+
+commit a6a71037d3b02d72d433bae9e6c2ad524aacf8a1
+Author: jh <jh@jhs-MacBook-Pro.local>
+Date:   Mon Oct 27 15:19:45 2014 -0700
+
+    fixed search
+
+commit a197c46e5fcd0cabca23ca6404601980f8466e4c
+Author: jh <jh@jhs-MacBook-Pro.local>
+Date:   Mon Oct 27 14:53:14 2014 -0700
+
+    added fallback promises to user model js
+
+commit b6b5dcab274f1648d8e0d37aa5f37d476fa65200
+Author: jh <jh@jhs-MacBook-Pro.local>
+Date:   Mon Oct 27 14:08:21 2014 -0700
+
+    debugging Object.keys
+
+commit 31825f2159f556dff84b70e772fdf7388da070b3
+Author: jh <jh@jhs-MacBook-Pro.local>
+Date:   Mon Oct 27 14:05:56 2014 -0700
+
+    debugging Object.keys
+
+commit aac1fa261f035add556b4d850226ebb88ccb068b
+Author: jh <jh@jhs-MacBook-Pro.local>
+Date:   Mon Oct 27 14:02:08 2014 -0700
+
+    debugging Object.keys
+
+commit 6c078e1c645cfe4fef94bfe289872337d2b3e7b8
+Author: jh <jh@jhs-MacBook-Pro.local>
+Date:   Mon Oct 27 13:59:54 2014 -0700
+
+    debugging Object.keys
+
+commit 6f6c0aeb6f399173c3cdcfa925e8446e9c80d889
+Author: jh <jh@jhs-MacBook-Pro.local>
+Date:   Mon Oct 27 13:53:25 2014 -0700
+
+    debugging Object.keys
+
+commit 2b6e3c53efd160d0eb566e67988bf3da2df7ae1b
+Author: jh <jh@jhs-MacBook-Pro.local>
+Date:   Mon Oct 27 13:39:13 2014 -0700
+
+    debugging Object.keys
+
+commit bcaead5dcee90893f22453d8a610499587d80bf6
+Author: jh <jh@jhs-MacBook-Pro.local>
+Date:   Mon Oct 27 13:38:16 2014 -0700
+
+    debugging Object.keys
+
+commit 1f596ea192749ac0230d070eebf81b176c270d03
+Author: jh <jh@jhs-MacBook-Pro.local>
+Date:   Mon Oct 27 13:36:57 2014 -0700
+
+    debugging Object.keys
+
+commit 582c695bb3dce49fc9ebb07deb72661335b62631
+Author: jh <jh@jhs-MacBook-Pro.local>
+Date:   Mon Oct 27 13:35:07 2014 -0700
+
+    debugging Object.keys
+
+commit f3fe090cfe72a7385dbc069695aee2936c2444da
+Author: jh <jh@jhs-MacBook-Pro.local>
+Date:   Mon Oct 27 13:31:57 2014 -0700
+
+    debugging Object.keys
+
+commit c3d43231cdda66f66c2943a29a714c89258cc9fd
+Author: jh <jh@jhs-MacBook-Pro.local>
+Date:   Mon Oct 27 12:56:19 2014 -0700
+
+    fixed error in business.random
+
+commit b0d41bb783adb3b96a058ebf8a56d37b33c38e64
+Author: jh <jh@jhs-MacBook-Pro.local>
+Date:   Mon Oct 27 12:38:17 2014 -0700
+
+    removed select array
+
+commit b87f6e7c4bb1c868fb94c998dcb6f8d159fae15f
+Author: jh <jh@jhs-MacBook-Pro.local>
+Date:   Mon Oct 27 12:25:38 2014 -0700
+
+    fixed received messages
+
+commit 2bd78aa1043bef45708ae624c587c2fb3edd347e
+Author: jh <jh@jhs-MacBook-Pro.local>
+Date:   Mon Oct 27 12:07:51 2014 -0700
+
+    removed blog and updated messages
+
+commit e15b7a19c1ff522f8a34b6e92bd9b64bcad97c9b
+Author: jh <jh@jhs-MacBook-Pro.local>
+Date:   Mon Oct 27 12:05:52 2014 -0700
+
+    removed blog and updated messages
+
+commit c16d228dad0b61b8d2f22d58f31f8beba6a53ccf
+Author: jh <jh@jhs-MacBook-Pro.local>
+Date:   Mon Oct 27 11:50:57 2014 -0700
+
+    removed blog and updated messages
+
+commit f251c54d8667f59b22c394dece8b216a8d3491aa
+Author: jh <jh@jhs-MacBook-Pro.local>
+Date:   Sun Oct 26 23:47:35 2014 -0700
+
+    added posts form, not functional yet
+
+commit 2feebfa44c15a4c3f10db4b519dfac5fc8b20fcb
+Author: jh <jh@jhs-MacBook-Pro.local>
+Date:   Sun Oct 26 20:56:14 2014 -0700
+
+    migrating models to restangular
+
+commit 637130591854177b127eadbf3fe2f8420dee1c5f
+Author: jh <jh@jhs-MacBook-Pro.local>
+Date:   Sat Oct 25 23:57:58 2014 -0700
+
+    migrating messages to angular
+
+commit 3ada3be5723d7006654c81e15261410ced623be2
+Author: jh <jh@jhs-MacBook-Pro.local>
+Date:   Sat Oct 25 14:38:09 2014 -0700
+
+    fix for angular link problem
+
+commit b22f12bd57512e0624566dff0b75a824f966fe47
+Author: jh <jh@jhs-MacBook-Pro.local>
+Date:   Sat Oct 25 14:10:47 2014 -0700
+
+    fixed alert and angular link problem
+
+commit 3171014c7de65afc91be04f0b97705190d84ddc1
+Author: jh <jh@jhs-MacBook-Pro.local>
+Date:   Sat Oct 25 00:57:24 2014 -0700
+
+    set mangle to false
+
+commit fd2d770e055c88691045a232cad5e4463d12dcaa
+Author: jh <jh@jhs-MacBook-Pro.local>
+Date:   Fri Oct 24 22:04:42 2014 -0700
+
+    attempting to fix monologue icon problem
+
+commit 0be9fd5fdf6378f105715256181d5a87b7648d9e
+Author: jh <jh@jhs-MacBook-Pro.local>
+Date:   Fri Oct 24 21:52:50 2014 -0700
+
+    attempting to fix monologue icon problem
+
+commit 88c278e311adfac99b67c765c0791818f58870ec
+Author: jh <jh@jhs-MacBook-Pro.local>
+Date:   Fri Oct 24 21:37:26 2014 -0700
+
+    attempting to fix monologue icon problem
+
+commit 7f7b9eb2b66bb1744acba95c286c52295ce50641
+Author: jh <jh@jhs-MacBook-Pro.local>
+Date:   Fri Oct 24 20:27:24 2014 -0700
+
+    messed with assets
+
+commit 613293d80c56439b70d3b48dbf003985742a84b5
+Author: jh <jh@jhs-MacBook-Pro.local>
+Date:   Fri Oct 24 20:05:47 2014 -0700
+
+    fixed missing home page fonts
+
+commit 4a89a6e2797134653ae4b12da73eab9aa54b29c6
+Author: jh <jh@jhs-MacBook-Pro.local>
+Date:   Fri Oct 24 19:51:42 2014 -0700
+
+    updated deploy rb
+
+commit f1f071169c20f541d54be2d32c2e6ad1b5b0a38a
+Author: jh <jh@jhs-MacBook-Pro.local>
+Date:   Fri Oct 24 19:40:25 2014 -0700
+
+    enabled assets.rb
+
+commit b5fe2b185fcd665344afdf85da1a11811c31bead
+Author: jh <jh@jhs-MacBook-Pro.local>
+Date:   Fri Oct 24 19:36:06 2014 -0700
+
+    updated puma config and added blog
+
+commit cfdb1ee7ee945b1b30a4121529fb0aef8870bb84
+Author: jh <jh@jhs-MacBook-Pro.local>
+Date:   Fri Oct 24 19:32:12 2014 -0700
+
+    commented out assets.rb
+
+commit 078d86684ec06859006193257856364f67a23383
+Author: jh <jh@jhs-MacBook-Pro.local>
+Date:   Fri Oct 24 19:19:14 2014 -0700
+
+    updated puma config and added blog
+
+commit 2a23cc35341ec7fcc5cb24321f396142f9e891a2
+Author: jh <jh@jhs-MacBook-Pro.local>
+Date:   Fri Oct 24 16:53:10 2014 -0700
+
+    fixed routes
+
+commit 5580698c16fa042766abf4c22993a671fad32028
+Author: jh <jh@jhs-MacBook-Pro.local>
+Date:   Fri Oct 24 16:14:52 2014 -0700
+
+    fixed broken routes
+
+commit ddb0ce29cf203cbf8ac6b6d4a4512867d1562bea
+Author: jh <jh@jhs-MacBook-Pro.local>
+Date:   Fri Oct 24 10:43:46 2014 -0700
+
+    set temp devise secret key
+
+commit 03ca282b742d2ed1a45ac03938edb5472a1f0733
+Author: jh <jh@jhs-MacBook-Pro.local>
+Date:   Fri Oct 24 10:41:06 2014 -0700
+
+    set temp devise secret key
+
+commit 2da2efd60950900bc3a750f8abee1cd4ad1e6f4a
+Author: jh <jh@jhs-MacBook-Pro.local>
+Date:   Fri Oct 24 10:39:19 2014 -0700
+
+    set temp devise secret key
+
+commit a925fc9a012178d69b4c52ab3905cefb9b49f16c
+Author: jh <jh@jhs-MacBook-Pro.local>
+Date:   Fri Oct 24 10:38:21 2014 -0700
+
+    set temp devise secret key
+
+commit 23b7e18b8090f1ff9c7e9388bb76e5cf90324f3c
+Author: jh <jh@jhs-MacBook-Pro.local>
+Date:   Fri Oct 24 09:41:38 2014 -0700
+
+    modified capistrano
+
+commit 740055a0ee7811767c9ab05b3b6950142749c6c3
+Author: jh <jh@jhs-MacBook-Pro.local>
+Date:   Thu Oct 23 22:40:15 2014 -0700
+
+    updated capfile
+
+commit ae1ca0955e9e852061794dad8b5099f63725a9ca
+Author: jh <jh@jhs-MacBook-Pro.local>
+Date:   Thu Oct 23 22:36:33 2014 -0700
+
+    updated capfile
+
+commit ee901a8ecb7c2a40aae8578fb1d3de2300158157
+Author: jh <jh@jhs-MacBook-Pro.local>
+Date:   Thu Oct 23 22:35:29 2014 -0700
+
+    updated capfile
+
+commit 4d49461425ee76e2d0e7c9d774b9098908830aa9
+Author: jh <jh@jhs-MacBook-Pro.local>
+Date:   Thu Oct 23 22:33:49 2014 -0700
+
+    updated capfile
+
+commit 86fb1f6cf9a38da529d7ae99b04e31b962657c9d
+Author: jh <jh@jhs-MacBook-Pro.local>
+Date:   Thu Oct 23 22:23:03 2014 -0700
+
+    updated deploy script
+
+commit 364c1b61d4465b92e3f5ade50c8733ac2d6c84c9
+Author: jh <jh@jhs-MacBook-Pro.local>
+Date:   Thu Oct 23 22:12:40 2014 -0700
+
+    updated deploy script
+
+commit 2bdffe7938e322837bd8cf6954d793745658ff80
+Author: jh <jh@jhs-MacBook-Pro.local>
+Date:   Thu Oct 23 22:09:35 2014 -0700
+
+    updated capfile
+
+commit c7a1d95880c39c0e36181ae2dd2d94345710e6b2
+Author: jh <jh@jhs-MacBook-Pro.local>
+Date:   Thu Oct 23 13:49:07 2014 -0700
+
+    migrating audience page
+
+commit e62c3659c9982dc8e1069fcf81aa8ee80ec99de5
+Merge: 3caf590 d5ae0be
+Author: jh <jh@jhs-MacBook-Pro.local>
+Date:   Wed Oct 22 15:56:48 2014 -0700
+
+    Merge branch 'master' of github.com:nextmission/nextmission-core into angular
+
+commit 3caf59010e6e749906cfcaa27125b0c8555630db
+Author: jh <jh@jhs-MacBook-Pro.local>
+Date:   Wed Oct 22 15:41:26 2014 -0700
+
+    migrating models to angular
+
+commit d5ae0be774615207deaf51a8b2a9117fcf25c7e8
+Author: nextmission <daniel@nextmission.us>
+Date:   Wed Oct 22 15:27:44 2014 -0700
+
+    Initial commit
+
+commit 0786c30d15b243bafd9704d05abc6579b7e69a02
+Author: jh <jh@jhs-MacBook-Pro.local>
+Date:   Mon Oct 20 23:40:54 2014 -0700
+
+    migrating audience
+
+commit aa54e7b79eddf5f096d5c9dd632c61e88f0cbe0d
+Author: jh <jh@jhs-MacBook-Pro.local>
+Date:   Mon Oct 20 22:55:43 2014 -0700
+
+    added maps
+
+commit e464d42ed81b5439a7307f1f90d43818e71c3cbf
+Author: jh <jh@jhs-MacBook-Pro.local>
+Date:   Mon Oct 20 14:42:23 2014 -0700
+
+    added locations
+
+commit 37fda634ea5922f04967cec7642f74310b759079
+Author: jh <jh@jhs-MacBook-Pro.local>
+Date:   Fri Oct 17 01:57:53 2014 -0700
+
+    added search and alph bar to bus directory
+
+commit 7c45e2d6b29feccd7b1c57a5be56ad5697f977b2
+Author: jh <jh@jhs-MacBook-Pro.local>
+Date:   Thu Oct 16 23:34:14 2014 -0700
+
+    improved business directory, added business angular model
+
+commit 6bb23cc2ffdf2cdcb0b7b516545e9cbee3e735cb
+Author: jh <jh@jhs-MacBook-Pro.local>
+Date:   Wed Oct 15 11:23:39 2014 -0700
+
+    added angular controller
+
+commit 6d6500c9407ce01ffc9a2c31aab74991aae08006
+Author: jh <jh@jhs-MacBook-Pro.local>
+Date:   Wed Oct 15 00:06:27 2014 -0700
+
+    improvement to scroll
+
+commit 661cf1ffbd3ec11777ff91caa71b0169564a81af
+Author: jh <jh@jhs-MacBook-Pro.local>
+Date:   Tue Oct 14 23:30:38 2014 -0700
+
+    removed unnecessary overflow:hidden
+
+commit cca7ada35ae1de355d61532d1386423467d81030
+Author: jh <jh@jhs-MacBook-Pro.local>
+Date:   Tue Oct 14 23:19:09 2014 -0700
+
+    set overflow to hidden on profile cols
+
+commit 560630a32c6c139464ea6ad38e1b48c9014ae395
+Author: jh <jh@jhs-MacBook-Pro.local>
+Date:   Tue Oct 14 23:10:51 2014 -0700
+
+    removed overflow:auto from profile container div to remove scrollbars
+
+commit d9e013782e2a402dd10afa95fd8b6bbb22ba1b3c
+Author: jh <jh@jhs-MacBook-Pro.local>
+Date:   Tue Oct 14 18:24:22 2014 -0700
+
+    added search and dropdown box
+
+commit f0ad4bac9dcf10ed31b32bf51683fcbd24aba9a1
+Author: jh <jh@jhs-MacBook-Pro.local>
+Date:   Tue Oct 14 12:49:12 2014 -0700
+
+    removing faye because of conflict with puma
+
+commit 3ed7993bd56ea6ac9a8a76dbb148347bf9fd58e3
+Author: jh <jh@jhs-MacBook-Pro.local>
+Date:   Tue Oct 14 12:35:24 2014 -0700
+
+    fixed msg cetner bug and feed bug, also removed paloma
+
+commit 5e716b443f8beecbcb06895538bd00ee2b3ed52c
+Author: jh <jh@jhs-MacBook-Pro.local>
+Date:   Sat Oct 11 22:51:34 2014 -0700
+
+    fixed profile bar nil error
+
+commit 5a6815db468be33d37f8a279ce7090a7579a0846
+Author: jh <jh@jhs-MacBook-Pro.local>
+Date:   Sat Oct 11 22:38:00 2014 -0700
+
+    added update badge
+
+commit a3af1fae114873161b1c7e0b10f9ea6bf3263784
+Author: jh <jh@jhs-MacBook-Pro.local>
+Date:   Sat Oct 11 19:20:04 2014 -0700
+
+    added posts to admin panel
+
+commit 065ce83850b84f84ccbbd49f6458299e49f4a45a
+Author: jh <jh@jhs-MacBook-Pro.local>
+Date:   Sat Oct 11 18:49:39 2014 -0700
+
+    fixed multiple scroll bar issue
+
+commit ca9bf238a5fae206d45ebf843a743893e9c45a8a
+Author: jh <jh@jhs-MacBook-Pro.local>
+Date:   Sat Oct 11 18:41:22 2014 -0700
+
+    prevent pvt msgs from showing up in external news feed
+
+commit 792114d4d1bcb528344fef78429fe5d6ea3d0520
+Author: jh <jh@jhs-MacBook-Pro.local>
+Date:   Sat Oct 11 17:32:15 2014 -0700
+
+    improved redirect after sending message and fixed user to x message
+
+commit 9ec5fc25b34334c7fc9d6ab6bc634558e63e1b94
+Author: jh <jh@jhs-MacBook-Pro.local>
+Date:   Sat Oct 11 17:22:38 2014 -0700
+
+    fixed profile partial
+
+commit 40c5b49bd98770185cf099d134e9bc1f5e7975c7
+Author: jh <jh@jhs-MacBook-Pro.local>
+Date:   Sat Oct 11 17:17:34 2014 -0700
+
+    added ahoy migrations
+
+commit 25b64adbd6d5d203f89b5e3c6c9a42a367690be0
+Author: jh <jh@jhs-MacBook-Pro.local>
+Date:   Sat Oct 11 17:09:17 2014 -0700
+
+    removed handlebars from app js
+
+commit b5d77cd4721d00aacfdaad36b550fc7ca596e45a
+Author: jh <jh@jhs-MacBook-Pro.local>
+Date:   Sat Oct 11 17:06:52 2014 -0700
+
+    cleanup
+
+commit 872a90513a55eaed371ec433a8b5c7438c4abe96
+Author: jh <jh@jhs-MacBook-Pro.local>
+Date:   Sat Oct 11 17:06:16 2014 -0700
+
+    cleanup
+
+commit 9ad93147de06be74fa626aa3d54c8e9eba899414
+Author: jh <jh@jhs-MacBook-Pro.local>
+Date:   Sat Oct 11 16:57:38 2014 -0700
+
+    changed order of requiring paloma
+
+commit e3df34b84101f85e835caeacdc330524af5f58db
+Author: jh <jh@jhs-MacBook-Pro.local>
+Date:   Sat Oct 11 16:51:57 2014 -0700
+
+    fixed landing page controller bug in production
+
+commit eb2d8ba333e31ed797be92d1db57b4b3de642eae
+Author: jh <jh@jhs-MacBook-Pro.local>
+Date:   Sat Oct 11 16:48:06 2014 -0700
+
+    removed ember reference
+
+commit 09dee3b137675df4fb0b554e17b7ea62eb9272b3
+Author: jh <jh@jhs-MacBook-Pro.local>
+Date:   Sat Oct 11 16:44:49 2014 -0700
+
+    improved msg interface
+
+commit dc64dfa521a6432baef5ddf996db42544d7c20c0
+Author: jh <jh@jhs-MacBook-Pro.local>
+Date:   Sat Oct 11 16:05:21 2014 -0700
+
+    added messaging with basic interface
+
+commit c113842bf0e40dcc2c3a96f976f31baea073bf64
+Author: jh <jh@jhs-MacBook-Pro.local>
+Date:   Thu Oct 9 10:41:08 2014 -0700
+
+    fixed users routing issue
+
+commit 2e5dc1a07683f6e912b04d8b11f68b20061e9743
+Author: jh <jh@jhs-MacBook-Pro.local>
+Date:   Thu Oct 9 01:58:53 2014 -0700
+
+    added user and bus profiles
+
+commit 5af57e359d68b76b733c8db359155db9241acf03
+Author: jh <jh@jhs-MacBook-Pro.local>
+Date:   Thu Oct 9 01:51:09 2014 -0700
+
+    added user and bus profiles
+
+commit 3b707f57f8547d340d3cf85d0b69027588a0c1bf
+Author: jh <jh@jhs-MacBook-Pro.local>
+Date:   Wed Oct 8 14:55:35 2014 -0700
+
+    fixed comments and added redirect to landing page if logged in
+
+commit a2f9e4ba834a2136f7228c9d777e6ce682ab07e0
+Author: jh <jh@jhs-MacBook-Pro.local>
+Date:   Sat Oct 4 15:34:48 2014 -0700
+
+    overhauled follower code
+
+commit 1713fe8bcd9c08345101902b88b20ac2227d1f0d
+Author: jh <jh@guest-wireless-207-151-035-007.usc.edu>
+Date:   Thu Oct 2 20:53:14 2014 -0700
+
+    fixed repsonse content bug
+
+commit 4d34b338ccaca633c0cff302a73a9feedd4b6a87
+Author: jh <jh@guest-wireless-207-151-035-007.usc.edu>
+Date:   Thu Oct 2 20:50:07 2014 -0700
+
+    added audience page and sign up error messages
+
+commit 197c5ecf7f987be7ce470c3c10986fc2f3f10734
+Author: jh <jh@jhs-MacBook-Pro.local>
+Date:   Thu Oct 2 15:00:14 2014 -0700
+
+    fixed response display b ug
+
+commit f40ca0afcc0ac17fbc56f0b936a0285ebd5fe2ce
+Author: jh <jh@jhs-MacBook-Pro.local>
+Date:   Thu Oct 2 14:49:37 2014 -0700
+
+    added comments on feed
+
+commit 611e596e2a6e4e9aa55c8a505f4383a5ae7e8502
+Author: jh <jh@jhs-MacBook-Pro.local>
+Date:   Wed Oct 1 22:00:55 2014 -0700
+
+    modified bg image in select2 css
+
+commit c5229a3169c91c6734331b74a8d28947c6fc6929
+Author: jh <jh@jhs-MacBook-Pro.local>
+Date:   Wed Oct 1 21:59:07 2014 -0700
+
+    linkified posts
+
+commit cd4ce743b737b54addbfc4acb6c193d630644b40
+Author: jh <jh@jhs-MacBook-Pro.local>
+Date:   Wed Oct 1 21:51:49 2014 -0700
+
+    deleted assets
+
+commit 36ab3a1b49e96605fdc8b4f9b1421503cb427141
+Author: jh <jh@jhs-MacBook-Pro.local>
+Date:   Wed Oct 1 21:44:50 2014 -0700
+
+    linkified posts
+
+commit c6861a46e527e66dc2c3cba2fce828fa88c1126e
+Author: jh <jh@jhs-MacBook-Pro.local>
+Date:   Wed Oct 1 21:43:21 2014 -0700
+
+    linkified posts
+
+commit 1c9569a94b9a7bf538f951402aa4f56b5f21a364
+Author: jh <jh@jhs-MacBook-Pro.local>
+Date:   Wed Oct 1 21:02:50 2014 -0700
+
+    linkified posts
+
+commit fdeb66bfb010b44b97eb7a408f5a7af075e75647
+Author: jh <jh@jhs-MacBook-Pro.local>
+Date:   Wed Oct 1 20:26:07 2014 -0700
+
+    added skip buttons
+
+commit 25c4276c1c81cbeb5a304bc3978806e39ba8e411
+Author: jh <jh@jhs-MacBook-Pro.local>
+Date:   Wed Oct 1 19:56:51 2014 -0700
+
+    fixed fonts
+
+commit a6c3441668f5fb305b0bcd1b009f6acc01ace5cf
+Author: jh <jh@jhs-MacBook-Pro.local>
+Date:   Wed Oct 1 19:47:30 2014 -0700
+
+    clean up
+
+commit 41e7a6d0c8e30de21f842d3589afa9582b35e063
+Author: jh <jh@jhs-MacBook-Pro.local>
+Date:   Wed Oct 1 19:45:13 2014 -0700
+
+    small visual upgrade
+
+commit cf7919063d231508ee825f3ab6ecd94c5eaeef05
+Author: jh <jh@jhs-MacBook-Pro.local>
+Date:   Wed Oct 1 19:36:04 2014 -0700
+
+    small visual upgrade
+
+commit 7fce70354f11dab82e8ae8a69b21c27e229f1ea8
+Author: jh <jh@jhs-MacBook-Pro.local>
+Date:   Wed Oct 1 19:20:18 2014 -0700
+
+    small visual upgrade
+
+commit 0d7fb8f229df4f0853cec33553a5673ba7444c42
+Author: jh <jh@jhs-MacBook-Pro.local>
+Date:   Wed Oct 1 18:42:24 2014 -0700
+
+    added login error message
+
+commit 2c747e1a1fc93d4c15c30c14a8d75eeaf6ee41b4
+Author: jh <jh@jhs-MacBook-Pro.local>
+Date:   Wed Oct 1 18:26:34 2014 -0700
+
+    added dep dest to user
+
+commit b5dfbaa241d9e9ca112f717da374b314ff4257c4
+Author: jh <jh@jhs-MacBook-Pro.local>
+Date:   Wed Oct 1 18:10:42 2014 -0700
+
+    fixed ownership belongs_to error
+
+commit f6ae7da21dd13f34eda26e2812343c3950dcda0c
+Author: jh <jh@jhs-MacBook-Pro.local>
+Date:   Wed Oct 1 18:06:57 2014 -0700
+
+    ownership no longer subclasses buscon
+
+commit 08e41775e2573536993a14b634ba1a6cf232faaf
+Author: jh <jh@jhs-MacBook-Pro.local>
+Date:   Wed Oct 1 18:05:28 2014 -0700
+
+    ownership no longer subclasses buscon
+
+commit f9ed2069d65c4fd68737f9e54d7f89764c9d102a
+Author: jh <jh@jhs-MacBook-Pro.local>
+Date:   Wed Oct 1 17:49:23 2014 -0700
+
+    added default images
+
+commit d06a288b08553929ec8d1bc3b0f4f556f8255070
+Author: jh <jh@jhs-MacBook-Pro.local>
+Date:   Wed Oct 1 17:26:53 2014 -0700
+
+    added default images
+
+commit 38cb0b7d83d3e4f40b9f369b41cb5f336c9bb412
+Author: jh <jh@jhs-MacBook-Pro.local>
+Date:   Wed Oct 1 17:23:02 2014 -0700
+
+    added default images
+
+commit 76dcdbc9e7a0091b7c65f38cd1cf077fe3604405
+Author: jh <jh@jhs-MacBook-Pro.local>
+Date:   Wed Oct 1 17:20:58 2014 -0700
+
+    added default images
+
+commit de6b5dd5339034e5ee749bdf7c66f943c3bc186c
+Author: jh <jh@jhs-MacBook-Pro.local>
+Date:   Wed Oct 1 17:17:25 2014 -0700
+
+    added default images
+
+commit 195fd2bd533b44ad740712b962b4ee2c2a8a5900
+Author: jh <jh@jhs-MacBook-Pro.local>
+Date:   Wed Oct 1 17:08:15 2014 -0700
+
+    added default images
+
+commit 680b107a898ceb2419adf1c7d453b0f39e6908ff
+Author: jh <jh@jhs-MacBook-Pro.local>
+Date:   Wed Oct 1 17:07:08 2014 -0700
+
+    added default images
+
+commit 76dd676184fec0caca871fec860c7532be826b71
+Author: jh <jh@jhs-MacBook-Pro.local>
+Date:   Wed Oct 1 17:04:59 2014 -0700
+
+    added default images
+
+commit 09b431f25f6f7e49a2293c91a4eeb7997e78a6c2
+Author: jh <jh@jhs-MacBook-Pro.local>
+Date:   Wed Oct 1 16:49:47 2014 -0700
+
+    added default images
+
+commit e4be96c13ad60ebaffe802eefcb9b5e6ebc121bf
+Author: jh <jh@jhs-MacBook-Pro.local>
+Date:   Wed Oct 1 16:10:23 2014 -0700
+
+    fixed following
+
+commit ff568c57e899c75fbd9b44dd9f54662bafe831c9
+Author: jh <jh@jhs-MacBook-Pro.local>
+Date:   Wed Oct 1 15:58:52 2014 -0700
+
+    added following and followers
+
+commit 5af1e918d575836b7b3efabea214621e71a14a4d
+Author: jh <jh@jhs-MacBook-Pro.local>
+Date:   Wed Oct 1 15:57:07 2014 -0700
+
+    added following and followers
+
+commit b36ee265d686570b272b5a2bf064ae5ffc70f8f4
+Author: jh <jh@jhs-MacBook-Pro.local>
+Date:   Tue Sep 30 20:53:30 2014 -0700
+
+    following and feed working
+
+commit 3750118402b66043307b5d6312a6e9223346c70e
+Author: jh <jh@jhs-MacBook-Pro.local>
+Date:   Tue Sep 30 20:38:52 2014 -0700
+
+    following and feed working
+
+commit 967be6846b8c9c1e78f59477c566ec8c53b33c17
+Author: jh <jh@jhs-MacBook-Pro.local>
+Date:   Tue Sep 30 18:19:12 2014 -0700
+
+    cleaning up
+
+commit 6396483a9478522908ce904f01bc0ffee21fff2b
+Author: jh <jh@jhs-MacBook-Pro.local>
+Date:   Tue Sep 30 18:02:52 2014 -0700
+
+    added user feed
+
+commit 94447efe23d096dc6a45ad1a87c2cdf08a931fa9
+Author: jh <jh@jhs-MacBook-Pro.local>
+Date:   Tue Sep 30 17:02:52 2014 -0700
+
+    added user feed
+
+commit e50bde0f3692538fa72919e6e29a7d9f39782c96
+Author: jh <jh@jhs-MacBook-Pro.local>
+Date:   Tue Sep 30 16:56:18 2014 -0700
+
+    added user feed
+
+commit 0d7e9128fec35842dc826ae4f3ccf6c41ad9335b
+Author: jh <jh@jhs-MacBook-Pro.local>
+Date:   Tue Sep 30 16:54:16 2014 -0700
+
+    added user feed
+
+commit 6d0d4f2b2de11e6b48891a98e870118d20e2f533
+Author: jh <jh@jhs-MacBook-Pro.local>
+Date:   Tue Sep 30 16:46:27 2014 -0700
+
+    added user feed
+
+commit a70bd2b3c3fe8194e4715e119b6314bc9e38f89d
+Author: jh <jh@jhs-MacBook-Pro.local>
+Date:   Tue Sep 30 15:57:51 2014 -0700
+
+    added user feed
+
+commit 8091dcad84395146682d8bc3c786a42cbad20fd1
+Author: jh <jh@jhs-MacBook-Pro.local>
+Date:   Thu Sep 25 14:25:46 2014 -0400
+
+    fixed 404 and landing page responsiveness
+
+commit b837d20272991055a4660838dc12e4198db1431b
+Author: jh <jh@jhs-MacBook-Pro.local>
+Date:   Wed Sep 24 13:48:30 2014 -0400
+
+    switched landing background with jpg
+
+commit b78f82aa54e3c5967c473c880f88cb0ddb2c254f
+Author: jh <jh@jhs-MacBook-Pro.local>
+Date:   Wed Sep 24 00:40:15 2014 -0400
+
+    added photo to business admin
+
+commit a3cfc1578991b006eae52d31b4470acbd04a2e05
+Author: jh <jh@jhs-MacBook-Pro.local>
+Date:   Wed Sep 24 00:29:45 2014 -0400
+
+    added alert flash to temp landing page
+
+commit 3065758289969722d8e021fbac4614da1236d6a6
+Author: jh <jh@jhs-MacBook-Pro.local>
+Date:   Wed Sep 24 00:22:03 2014 -0400
+
+    added admin panel and roles
+
+commit 2bf59c345275120161310b4f9a6f7efdb29bcc49
+Author: jh <jh@jhs-MacBook-Pro.local>
+Date:   Tue Sep 23 17:39:49 2014 -0400
+
+    updated puma.rb config
+
+commit 2bd82fcfed1a842c6b2f7d08b55310ec2eeee475
+Author: jh <jh@jhs-MacBook-Pro.local>
+Date:   Tue Sep 23 17:36:02 2014 -0400
+
+    updated puma.rb config
+
+commit 02d4ccdcccb98c11d951cab91af3c128512acfbb
+Author: jh <jh@jhs-MacBook-Pro.local>
+Date:   Tue Sep 23 17:26:09 2014 -0400
+
+    added some logger stuff
+
+commit 00a8728d313483c7b0eb25f5fa2b665e303312a1
+Author: jh <jh@jhs-MacBook-Pro.local>
+Date:   Tue Sep 23 17:22:43 2014 -0400
+
+    added some logger stuff
+
+commit 8a0c5be28af71e8b0454e9d8dc308d2d9b1dd3bf
+Author: jh <jh@jhs-MacBook-Pro.local>
+Date:   Tue Sep 23 16:58:27 2014 -0400
+
+    finished image upload
+
+commit b907a2b2432c49f6346fb110d8c04cfbe94b0f90
+Author: jh <jh@jhs-MacBook-Pro.local>
+Date:   Tue Sep 23 16:18:23 2014 -0400
+
+    finished image upload
+
+commit 921dd314e3e08409a27a39d6e4b9d8229974ea96
+Author: jh <jh@jhs-MacBook-Pro.local>
+Date:   Sat Sep 20 23:35:09 2014 -0400
+
+    added signup with design
+
+commit 54e0240502c82fac462f8e6bdf75e058debbda0b
+Author: jh <jh@jhs-MacBook-Pro.local>
+Date:   Sat Sep 13 17:52:38 2014 -0400
+
+    fixed flash bar on mobile
+
+commit cc927d15ee8efcaf796e5b3cdf6740127cf4e30a
+Author: jh <jh@jhs-MacBook-Pro.local>
+Date:   Sat Sep 13 17:32:29 2014 -0400
+
+    added temporary landing page
+
+commit 03a93b8867d0de20185da79a256c02a696b27350
+Author: jh <jh@jhs-MacBook-Pro.local>
+Date:   Sat Sep 13 17:30:16 2014 -0400
+
+    added temporary landing page
+
+commit baa9317c0d9cb6a5e317d64514d4084f0d8c6475
+Author: jh <jh@jhs-MacBook-Pro.local>
+Date:   Sat Sep 13 17:16:28 2014 -0400
+
+    added temporary landing page
+
+commit 2ca7a5b2408509e284296e3b25c32bee4219d941
+Author: jh <jh@jhs-MacBook-Pro.local>
+Date:   Sat Sep 13 17:13:01 2014 -0400
+
+    added temporary landing page
+
+commit b75130bec6cfa1c71701c4953bad7fded0aa6d32
+Author: jh <jh@jhs-MacBook-Pro.local>
+Date:   Fri Aug 29 00:58:56 2014 -0400
+
+    added sign up
+
+commit 389c486683eb6959b9898c3932c53d99358d6eaf
+Author: jh <jh@jhs-MacBook-Pro.local>
+Date:   Fri Aug 29 00:56:57 2014 -0400
+
+    added sign up
+
+commit f2cc5167de32a5b1c5d397d0cc035db558faf298
+Author: jh <jh@jhs-MacBook-Pro.local>
+Date:   Fri Aug 29 00:54:21 2014 -0400
+
+    added sign up
+
+commit a3e836f3c74e2ff8ffb7b2a71e436da0505754ef
+Author: jh <jh@jhs-MacBook-Pro.local>
+Date:   Fri Aug 29 00:49:16 2014 -0400
+
+    added sign up
+
+commit c23ed4f275cb3db6a97956133efe8ae7a867ea45
+Author: jh <jh@jhs-MacBook-Pro.local>
+Date:   Thu Aug 28 21:08:49 2014 -0400
+
+    updated landing page
+
+commit b9867ab6d6dff4d33af9206cd1a302fa0ff9a7cb
+Author: jh <jh@jhs-MacBook-Pro.local>
+Date:   Thu Aug 28 17:42:36 2014 -0400
+
+    added landing page and bower
+
+commit 465bf51ec71e9ac8c1742672bc49f00efece2e52
+Author: jh <jh@jhs-MacBook-Pro.local>
+Date:   Wed Aug 27 21:17:42 2014 -0400
+
+    configured cap
+
+commit bc742268c03e82f48a41651bd0278edadfe331e5
+Author: jh <jh@jhs-MacBook-Pro.local>
+Date:   Wed Aug 27 21:15:22 2014 -0400
+
+    configured cap
+
+commit 7269b601a82722239417c051e4624652f98724f7
+Author: jh <jh@jhs-MacBook-Pro.local>
+Date:   Wed Aug 27 21:13:23 2014 -0400
+
+    configured cap
+
+commit ad18f12ed97edc23a2149033fe72142f72a801f2
+Author: jh <jh@jhs-MacBook-Pro.local>
+Date:   Wed Aug 27 21:11:58 2014 -0400
+
+    configured cap
+
+commit 9587af5d80e0d6ceffa0779f8d86363d7c28277d
+Author: jh <jh@jhs-MacBook-Pro.local>
+Date:   Wed Aug 27 21:01:35 2014 -0400
+
+    configured cap
+
+commit baf54c83988b8930137114a82b72f947ae6d8d89
+Author: jh <jh@jhs-MacBook-Pro.local>
+Date:   Wed Aug 27 21:00:04 2014 -0400
+
+    configured cap
+
+commit ebfcf9ccb0a705712faa57a03144c719e11bca23
+Author: jh <jh@jhs-MacBook-Pro.local>
+Date:   Wed Aug 27 20:58:21 2014 -0400
+
+    configured cap
+
+commit a9acba7cca8c5785f49dc074871c7dab330e5c5a
+Author: jh <jh@jhs-MacBook-Pro.local>
+Date:   Wed Aug 27 20:57:50 2014 -0400
+
+    configured cap
+
+commit 5bb9d1f2ebc86eb46740c6624587e10f4b4315fc
+Author: jh <jh@jhs-MacBook-Pro.local>
+Date:   Wed Aug 27 17:09:43 2014 -0400
+
+    configured cap
+
+commit f04c56301584da0b1debfcd1820ab1e0173240f5
+Author: jh <jh@jhs-MacBook-Pro.local>
+Date:   Wed Aug 27 16:59:59 2014 -0400
+
+    configured cap
+
+commit 784eca4e4914b3628dbcb3dbdb0dd4171ad605c2
+Author: jh <jh@jhs-MacBook-Pro.local>
+Date:   Wed Aug 27 16:56:01 2014 -0400
+
+    configured cap
+
+commit 2061f398d3a40574315b93baa48986c0fdba641f
+Author: jh <jh@jhs-MacBook-Pro.local>
+Date:   Wed Aug 27 16:32:54 2014 -0400
+
+    configured cap
+
+commit 3f65f8b14667e9e8cffb4a108639efc8eb291954
+Author: jh <jh@jhs-MacBook-Pro.local>
+Date:   Wed Aug 27 16:16:07 2014 -0400
+
+    configured cap
+
+commit 2711c5c0e42282a908733ac6792722b5cf916a86
+Author: jh <jh@jhs-MacBook-Pro.local>
+Date:   Wed Aug 27 16:15:45 2014 -0400
+
+    configured cap
+
+commit 57fc32596e072036a80a0de206ba2c3c6fa12a3b
+Author: jh <jh@jhs-MacBook-Pro.local>
+Date:   Wed Aug 27 16:09:29 2014 -0400
+
+    configured cap
+
+commit c0fb1242e6b0fd043c671b7bbbeee1eb0b7fa273
+Author: jh <jh@jhs-MacBook-Pro.local>
+Date:   Wed Aug 27 15:29:05 2014 -0400
+
+    modified cap
+
+commit 15ab7767b1474b8eef0bd10bcb6a240d39295c5b
+Author: jh <jh@jhs-MacBook-Pro.local>
+Date:   Wed Aug 27 14:08:14 2014 -0400
+
+    modified cap
+
+commit f37a618ad9d19dc83a9140a28fb7a552add49fd9
+Author: jh <jh@jhs-MacBook-Pro.local>
+Date:   Wed Aug 27 14:05:00 2014 -0400
+
+    modified cap
+
+commit 3303e0b95bbe852780db9697075ca297ab31e311
+Author: jh <jh@jhs-MacBook-Pro.local>
+Date:   Wed Aug 27 14:01:14 2014 -0400
+
+    modified cap
+
+commit af215917454bc884b61665cd2ec9c2b18cadaa19
+Author: jh <jh@jhs-MacBook-Pro.local>
+Date:   Tue Aug 26 23:12:56 2014 -0400
+
+    configuring cap
+
+commit c1db1707961532978df497aed882529bcf01d02f
+Author: jh <jh@jhs-MacBook-Pro.local>
+Date:   Tue Aug 26 22:26:20 2014 -0400
+
+    configuring capistrano
+
+commit 69cbfc3a09dedcb26275cabcff39468c683b1808
+Author: jh <jh@jhs-MacBook-Pro.local>
+Date:   Tue Aug 26 22:24:09 2014 -0400
+
+    configuring capistrano
+
+commit 185d90ab5cb7193899e791fb1e4dc2446a0b161c
+Author: jh <jh@jhs-MacBook-Pro.local>
+Date:   Tue Aug 26 22:23:38 2014 -0400
+
+    configuring capistrano
+
+commit 5bc2efb0a4284f8f371c58f498a4c6dd38defb48
+Author: jh <jh@jhs-MacBook-Pro.local>
+Date:   Tue Aug 26 22:19:03 2014 -0400
+
+    configuring capistrano
+
+commit 3c0145bd993bcca360b75ee696e14d8a8238ff56
+Author: jh <jh@jhs-MacBook-Pro.local>
+Date:   Tue Aug 26 22:18:20 2014 -0400
+
+    configuring capistrano
+
+commit e8c25f900b45e66bd722a79b00f89d52fb024382
+Author: jh <jh@jhs-MacBook-Pro.local>
+Date:   Tue Aug 26 22:17:45 2014 -0400
+
+    configuring capistrano
+
+commit f22afb18edf24b8af5f42c135f413eaa3a635fc0
+Author: jh <jh@jhs-MacBook-Pro.local>
+Date:   Tue Aug 26 22:13:46 2014 -0400
+
+    configuring capistrano
+
+commit 98a2f1fd9dae0cbb13678c9bc8dff1f3ad88bffb
+Author: jh <jh@jhs-MacBook-Pro.local>
+Date:   Tue Aug 26 22:10:30 2014 -0400
+
+    configuring capistrano
+
+commit d5583fe2cc3618c8f6e414c9cf93de0b9462b22c
+Author: jh <jh@jhs-MacBook-Pro.local>
+Date:   Tue Aug 26 22:08:42 2014 -0400
+
+    configuring capistrano
+
+commit e62c1bd98bc176ee8ce169cf8e82c654f9628934
+Author: jh <jh@jhs-MacBook-Pro.local>
+Date:   Tue Aug 26 22:07:13 2014 -0400
+
+    configuring capistrano
+
+commit ee9c595e34e279afc7b7eb77579c989067a4b7c3
+Author: jh <jh@jhs-MacBook-Pro.local>
+Date:   Tue Aug 26 22:06:39 2014 -0400
+
+    configuring capistrano
+
+commit 9d8112d1f28b37a54010c9332b32b8c0ba036cff
+Author: jh <jh@jhs-MacBook-Pro.local>
+Date:   Tue Aug 26 22:04:14 2014 -0400
+
+    configuring capistrano
+
+commit cdc32375b59b5869a20f8f69b0d02024035adef2
+Author: jh <jh@jhs-MacBook-Pro.local>
+Date:   Tue Aug 26 22:03:20 2014 -0400
+
+    configuring capistrano
+
+commit 2d57b905d438584e902390b22779052c78eba774
+Author: jh <jh@jhs-MacBook-Pro.local>
+Date:   Tue Aug 26 22:03:03 2014 -0400
+
+    configuring capistrano
+
+commit 326e44e5fed68c7ade0ad40f793bbba7b9ae69de
+Author: jh <jh@jhs-MacBook-Pro.local>
+Date:   Tue Aug 26 21:46:00 2014 -0400
+
+    initial commit
