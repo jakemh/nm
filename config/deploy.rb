@@ -3,7 +3,7 @@ lock '3.3.5'
 
 set :application, 'NextMission'
 # set :repo_url, "git@github.com:nextmission/nextmission-core.git"
-set :repo_url, "git@beta.nextmission.com"
+set :repo_url, "git@beta.nextmission.com:next-mission.git"
 # set :repository,  "/Users/jh/Developer/NextMission/.git"
 # set :local_repository, "/Users/jh/Developer/NextMission/.git"
 # set :deploy_to, '/home/nm/www/'
