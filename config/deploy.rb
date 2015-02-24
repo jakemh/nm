@@ -2,13 +2,14 @@
 lock '3.2.1'
 
 set :application, 'NextMission'
-set :repo_url, "git@github.com:nextmission/nextmission-core.git"
+# set :repo_url, "git@github.com:nextmission/nextmission-core.git"
+set :repo_url, "git@beta.nextmission.com"
 # set :repository,  "/Users/jh/Developer/NextMission/.git"
 # set :local_repository, "/Users/jh/Developer/NextMission/.git"
 # set :deploy_to, '/home/nm/www/'
-set :deploy_to, '/home/jake/repos/nextmission-core'
+set :deploy_to, '/home/jake/apps/nm'
 set :deploy_via, :copy
-set :puma_pid, '/home/jake/repos/nextmission-core/shared/tmp/pids/puma.pid'
+set :puma_pid, '/home/jake/apps/nm/shared/tmp/pids/puma.pid'
 # set :puma_pid, '/home/oli/www/shared/tmp/pids/puma.pid'
 set :branch, "angular"
 set :puma_conf, "#{shared_path}/puma.rb"
@@ -87,13 +88,13 @@ end
 namespace :deploy do
   def root
     # "/home/nm/www/shared"
-    '/home/jake/repos/nextmission-core/shared'
+    '/home/jake/apps/nm/shared'
   end
 
   def working_directory
 
     # "/home/nm/www/current"
-    '/home/jake/repos/nextmission-core/current'
+    '/home/jake/apps/nm/current'
   end
 
   def puma_pid
@@ -143,12 +144,11 @@ namespace :deploy do
     load 'config/environment.rb'
     body = `git log --name-status HEAD^..HEAD`    
     ActionMailer::Base.mail(to: [
-      "daniel.mcfarland@gmail.com", 
       "jakemh@gmail.com"
       ], 
       from: "nextmissionnotifications@gmail.com", 
       :subject => "Deploy completed!", 
-      :body => body).deliver!
+      :body => body.deliver!
   end
 
   after :publishing, :restart_puma
