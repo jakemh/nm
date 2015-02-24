@@ -1,3 +1,3 @@
-# Rails.application.config.assets.precompile += %w( monologue/foundation_icons/social_foundicons.eot )
-# Rails.application.config.assets.precompile += %w( monologue/foundation_icons/social_foundicons.woff )
-# Rails.application.config.assets.precompile += %w( monologue/foundation_icons/social_foundicons.ttf )
+Rails.application.config.assets.precompile += %w( bootstrap/glyphicons-halflings-regular.eot )
+Rails.application.config.assets.precompile += %w( bootstrap/glyphicons-halflings-regular.woff )
+Rails.application.config.assets.precompile += %w( bootstrap/glyphicons-halflings-regular.ttf )

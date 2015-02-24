@@ -26,19 +26,6 @@ ActiveRecord::Schema.define(version: 20150112055403) do
     t.datetime "updated_at"
   end
 
-  create_table "ahoy_events", force: true do |t|
-    t.uuid     "visit_id"
-    t.integer  "user_id"
-    t.string   "name"
-    t.text     "properties"
-    t.datetime "time"
-  end
-
-  add_index "ahoy_events", ["id"], name: "sqlite_autoindex_ahoy_events_1", unique: true
-  add_index "ahoy_events", ["time"], name: "index_ahoy_events_on_time"
-  add_index "ahoy_events", ["user_id"], name: "index_ahoy_events_on_user_id"
-  add_index "ahoy_events", ["visit_id"], name: "index_ahoy_events_on_visit_id"
-
   create_table "assignments", force: true do |t|
     t.integer  "user_id"
     t.integer  "role_id"
@@ -60,24 +47,19 @@ ActiveRecord::Schema.define(version: 20150112055403) do
     t.datetime "updated_at"
   end
 
-  create_table "business_connections", force: true do |t|
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "businesses", force: true do |t|
     t.string   "name"
     t.string   "website"
     t.string   "address"
     t.string   "city"
     t.string   "state"
+    t.integer  "zip"
     t.string   "business_type"
     t.string   "industry"
     t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "profile_photo_id"
-    t.string   "zip"
     t.string   "phone"
     t.string   "email"
     t.integer  "cover_photo_id"
@@ -170,31 +152,30 @@ ActiveRecord::Schema.define(version: 20150112055403) do
   end
 
   create_table "monologue_posts", force: true do |t|
+    t.integer  "posts_revision_id"
     t.boolean  "published"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "user_id"
+  end
+
+  create_table "monologue_posts_revisions", force: true do |t|
     t.string   "title"
     t.text     "content"
     t.string   "url"
+    t.integer  "user_id"
+    t.integer  "post_id"
     t.datetime "published_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
-  add_index "monologue_posts", ["url"], name: "index_monologue_posts_on_url", unique: true
-
-  create_table "monologue_taggings", force: true do |t|
-    t.integer "post_id"
-    t.integer "tag_id"
-  end
-
-  add_index "monologue_taggings", ["post_id"], name: "index_monologue_taggings_on_post_id"
-  add_index "monologue_taggings", ["tag_id"], name: "index_monologue_taggings_on_tag_id"
+  add_index "monologue_posts_revisions", ["id"], name: "index_monologue_posts_revisions_on_id", unique: true
+  add_index "monologue_posts_revisions", ["post_id"], name: "index_monologue_posts_revisions_on_post_id"
+  add_index "monologue_posts_revisions", ["published_at"], name: "index_monologue_posts_revisions_on_published_at"
 
   create_table "monologue_tags", force: true do |t|
     t.string "name"
   end
-
-  add_index "monologue_tags", ["name"], name: "index_monologue_tags_on_name"
 
   create_table "monologue_users", force: true do |t|
     t.string   "name"
@@ -244,6 +225,11 @@ ActiveRecord::Schema.define(version: 20150112055403) do
     t.string   "type"
     t.integer  "parent_id"
     t.text     "subject"
+  end
+
+  create_table "posts_tags", id: false, force: true do |t|
+    t.integer "post_id"
+    t.integer "tag_id"
   end
 
   create_table "read_marks", force: true do |t|
@@ -324,31 +310,5 @@ ActiveRecord::Schema.define(version: 20150112055403) do
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
-
-  create_table "visits", force: true do |t|
-    t.uuid     "visitor_id"
-    t.string   "ip"
-    t.text     "user_agent"
-    t.text     "referrer"
-    t.text     "landing_page"
-    t.integer  "user_id"
-    t.string   "referring_domain"
-    t.string   "search_keyword"
-    t.string   "browser"
-    t.string   "os"
-    t.string   "device_type"
-    t.string   "country"
-    t.string   "region"
-    t.string   "city"
-    t.string   "utm_source"
-    t.string   "utm_medium"
-    t.string   "utm_term"
-    t.string   "utm_content"
-    t.string   "utm_campaign"
-    t.datetime "started_at"
-  end
-
-  add_index "visits", ["id"], name: "sqlite_autoindex_visits_1", unique: true
-  add_index "visits", ["user_id"], name: "index_visits_on_user_id"
 
 end
