@@ -148,7 +148,7 @@ namespace :deploy do
       ], 
       from: "nextmissionnotifications@gmail.com", 
       :subject => "Deploy completed!", 
-      :body => body.deliver!
+      :body => body).deliver!
   end
 
   after :publishing, :restart_puma
