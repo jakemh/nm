@@ -3,9 +3,9 @@ threads 1, 6
 workers 2
 daemonize true
 
-root = '/home/jake/repos/nextmission-core/shared'
+root = '/home/jake/apps/nm/shared'
 
-working_directory = '/home/jake/repos/nextmission-core/current'
+working_directory = '/home/jake/apps/nm/current'
 
 pidfile "#{root}/tmp/pids/puma.pid"
 
