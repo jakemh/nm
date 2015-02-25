@@ -146,14 +146,14 @@ namespace :deploy do
   end
 
   task :email do
-    load 'config/environment.rb'
-    body = `git log --name-status HEAD^..HEAD`    
-    ActionMailer::Base.mail(to: [
-      "jakemh@gmail.com"
-      ], 
-      from: "nextmissionnotifications@gmail.com", 
-      :subject => "Deploy completed!", 
-      :body => body).deliver!
+    # load 'config/environment.rb'
+    # body = `git log --name-status HEAD^..HEAD`    
+    # ActionMailer::Base.mail(to: [
+    #   "jakemh@gmail.com"
+    #   ], 
+    #   from: "nextmissionnotifications@gmail.com", 
+    #   :subject => "Deploy completed!", 
+    #   :body => body).deliver!
   end
 
   after :publishing, :restart_puma
