@@ -12,8 +12,13 @@ App.factory "BranchesCache", [
   "Restangular"
   ($cacheFactory, Restangular) ->
     cache: $cacheFactory('branches');
+]
 
-
+App.factory "AffiliationsCache", [
+  "$cacheFactory"
+  "Restangular"
+  ($cacheFactory, Restangular) ->
+    cache: $cacheFactory('affiliations');
 ]
 
 App.factory "SentMessagesCache", [

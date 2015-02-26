@@ -179,6 +179,20 @@ angular.module("NM").controller "ProfileController", [
     $scope.spinnerVisible = false
     $scope.photoCropping = false
 
+    $scope.removeAffiliation = (aff) ->
+
+      aff.remove().then (aff) ->
+
+        #toRemove = _.findWhere $scope.affiliations, {id: aff.id}
+
+        #$scope.affiliations = _.without( $scope.affiliations, _.findWhere($scope.affiliations, {id: aff.id}));
+        arr = profileEntity.affiliation_ids
+        arr = _.without( arr, _.find(arr, (item) -> item == aff.id) );
+        profileEntity.affiliation_ids = arr
+        RestangularPlus.getModel("branches", aff.branch_id).then (branch) =>
+          $scope.branches.push branch
+
+
     $scope.becomeMentor = () ->
       AuthService.currentUser.addAssignment("MentorRole", category: "general").then (ass) ->
         
@@ -189,6 +203,7 @@ angular.module("NM").controller "ProfileController", [
       moment(post.last_vote_current_user).add(1, "days").diff(moment()) > 0
 
     $scope.branches = []
+    $scope.affiliations = []
     $scope.branch = {}
     $scope.disableTop = PointService.disableTop
     $scope.disableBottom = PointService.disableBottom
@@ -222,7 +237,6 @@ angular.module("NM").controller "ProfileController", [
       usSpinnerService.stop key
       $scope.spinnerVisible = false
       $scope.$apply()
-
       return
 
     $scope.isFollowing = (userEntity) ->
@@ -290,7 +304,6 @@ angular.module("NM").controller "ProfileController", [
     $scope.reviewValidate = (obj, entryForm, submit) ->
 
       if obj.reviewObj.score > 0
-        
         MessageService.submitHandler(obj, entryForm, submit)
       else 
         SideBar.delegate.validateStars = true
@@ -511,9 +524,14 @@ angular.module("NM").controller "ProfileController", [
     # $scope.messageObject 
     $scope.$watch 'branch.selected', ->
       if $scope.branch.selected
-        RestangularPlus.getModel("branches", $scope.branch.selected.id).then (branch) ->
-          profileEntity.addBranch(branch)
-          profileEntity.post("affiliations", {branch_id: branch.id})
+        RestangularPlus.getModel("branches", $scope.branch.selected.id).then (branch) =>
+          #profileEntity.addBranch(branch)
+          profileEntity.post("affiliations", {branch_id: branch.id}).then (affiliation) =>
+          #$scope.branches.push branch
+            profileEntity.affiliation_ids.push affiliation.id
+            $scope.branches = _.without( $scope.branches, _.find($scope.branches, (item) -> item.id == affiliation.branch_id) );
+
+
 
     $scope.delegate = 
       newPost: {}
@@ -553,15 +571,35 @@ angular.module("NM").controller "ProfileController", [
     
     $scope.loadBranches = ->
       RestangularPlus.getListPlus2("branches").then (branches) ->
+        branch_ids = _.map branches, (b) -> b.id
         branches = _.filter branches, (item) -> !_.contains(profileEntity.branch_ids, item.id)
         $scope.branches = _.map branches, (item) -> 
           id: item.id 
           name: item.name
 
+      
+
+
+    $scope.updateAffiliationDisplay = ()->
+      $scope.affiliationDisplay = []
+      profileEntity.affiliations().then (as) =>
+
+       for a in as 
+         do (a) =>
+
+           a.branch().then (b) =>
+             $scope.affiliationDisplay.push  
+               id: a.id
+               branch: b
+               model: a
+
+    $scope.affiliationDisplay = []
+    $scope.$watchCollection "profileEntity.affiliation_ids", $scope.updateAffiliationDisplay, true
 
     $scope.init = () ->
       $scope.loadBranches().then () ->
-        profileEntity.buildBranches()
+       # profileEntity.buildBranches()
+        #profileEntity.buildAffiliations()
 
       if profileEntity.type == "Business"
         $scope.profileEntity.owner().then (o)->

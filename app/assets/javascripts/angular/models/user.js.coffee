@@ -13,23 +13,35 @@ angular.module("NM").factory "User", [
       self.link = ->
         return "users/#{self.id}"
 
-      self.branches = []
+      #self.branches = []
+
+      self.affiliations = () ->
+        self.severalPlus2("affiliations", self.affiliation_ids)
+
+
       self.isUser = () ->
         true
       
       self.isMentor = () ->
         _.contains self.roles, "MentorRole"
 
+      self.addAffiliation = (aff) ->
+        self.affiliation_ids.push aff.id
+        
       self.addAssignment = (type, params) ->
         self.post("assignments", angular.extend(roleable_type: type, params))
 
-      self.buildBranches = () ->
-        self.severalPlus("branches", self.branch_ids).then (branches) ->
-          self.branches = branches
+     # self.buildBranches = () ->
+      #  self.severalPlus("branches", self.branch_ids).then (branches) ->
+      #    self.branches = branches
+
+      self.buildAffiliations = () ->
+        self.severalPlus2("affiliations", self.affiliation_ids).then (affiliations) ->
+          self.affiliations = affiliations
 
       self.addBranch = (branch) ->
-        self.branches.push(branch)
-        self.branch_ids.push(branch.id)
+        #self.branches.push(branch)
+        #self.branch_ids.push(branch.id)
 
       self.ownedEntities = ->
         deferred = $q.defer();

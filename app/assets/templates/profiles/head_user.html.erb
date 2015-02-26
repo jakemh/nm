@@ -1,6 +1,8 @@
 <div class="modal-link-container">
+
   <div ng-init="toEntity=profileEntity" ng-include="'modals/message_modal.html'">
   </div>
+
   <div class="profile__head thirds">
     <div class="top-right top-right--padding">
       <div ng-if="isEditable">
@@ -13,17 +15,22 @@
           </ui-select-choices>
         </ui-select>
       </div>
-      <div class="thumb--75" ng-repeat="branch in profileEntity.branches">
-        <img ng-src="{{branch.image_src}}">
+      <div class="thumb--75" ng-repeat="affiliation in affiliationDisplay">
+        <div class="branch__outer">
+          <div ng-if="isEditable" class="branch__outer-abs" ng-click="removeAffiliation(affiliation.model)">
+            <div class="nm__x nm__x--top-right nm__x--branch"></div>
+
+          </div>
+          <img ng-src="{{affiliation.branch.image_src}}">
+        </div>
       </div>
       <div ng-if="!profileEntity.isMentor()">
         <button ng-if="isEditable" style="padding: 10px" class="feed__button button__btn button__btn--orange" ng-click="becomeMentor()" ng-disabled="profileEntity.isMentor()" ng-class="{'button__btn--light-gray' : profileEntity.isMentor()}">
           Become a Mentor
         </button>
       </div>
-     
-
     </div>
+
     <div ng-click="addProfilePhoto()" ng-if="isEditable" class="profile__photo-edit">
       <div class="profile__head-link nm__link" style="font-size: 1em;">
         <i class="fa fa-upload"> </i> Edit Profile Photo
@@ -35,7 +42,8 @@
 
     <div class="user-prof__head-content column-middle">
       <div class="user-prof__name">
-        <a href editable-text="profileEntity.name" ng-if="isEditable">  {{profileEntity.name || "Enter a name!"}}
+        <a href editable-text="profileEntity.name" ng-if="isEditable">  
+          {{profileEntity.name || "Enter a name!"}}
         </a>
         <span ng-if="!isEditable">{{profileEntity.name}}</span>
         <span class="thumb--35" ng-if="profileEntity.isMentor()">

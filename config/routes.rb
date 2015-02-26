@@ -1,11 +1,6 @@
 
 Rails.application.routes.draw do
 
-
-  get 'affiliations/create'
-
-  get 'affiliations/destroy'
-
   get 'branches/index'
 
   get 'branches/show'

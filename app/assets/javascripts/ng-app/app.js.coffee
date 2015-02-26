@@ -106,7 +106,7 @@ window.App = angular.module("NM", [
     formattedData = extractedData[key]
     # console.log data
     # alert JSON.stringify data
-    if key == "user" || key == "business" || key == "tags" || key == "post" || key == "response" || key == "message" || key == "received_message" || key == "sent_messages" || key == "cover_photo" || key == "profile_photo" || key == "review"  || key == "assignment"
+    if key == "user" || key == "business" || key == "tags" || key == "post" || key == "response" || key == "message" || key == "received_message" || key == "sent_messages" || key == "cover_photo" || key == "profile_photo" || key == "review"  || key == "assignment" || key == "affiliation"
       extractedData = data[key]
 
     if (operation == "getList")

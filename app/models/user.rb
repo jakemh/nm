@@ -175,7 +175,7 @@ class User < ActiveRecord::Base
 
   def role
     role = self.roles.first
-    self.roles.first.name if role
+    self.roles.first.type if role
   end
 
   def role?(role)

@@ -220,3 +220,20 @@
   top: 15px;
   right: 15px;
 }
+
+.nm__x{
+  // width: 10px;
+  position: absolute;
+  font-size: 1.3em;
+  line-height: 1em;
+}
+
+.nm__x:after{
+  content: "x";
+  // margin: 2px 2px 0 0;
+}
+
+.nm__x--top-right{
+  top: 0px;
+  right: 0px;
+}

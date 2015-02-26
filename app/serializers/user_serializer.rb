@@ -3,6 +3,7 @@
   attributes :about, :work
   attributes :is_admin, :roles
   has_many :branches, embed: :ids
+  has_many :affiliations, embed: :ids
   # :response_post_associations,
   attributes :first_name, :last_name
   has_many :businesses, embed: :ids
